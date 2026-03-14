@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" data-lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eethuis Leyenburger — Halal Burgers & Grill · Den Haag</title>
-<meta name="description" content="Eethuis Leyenburger in Den Haag. Verse halal burgers, shawarma, kebab en mixed grill. Elke dag open. Afhalen. Escamplaan 283.">
+<title>Eethuis Leyenburger — Halal Döner, Pizza & Grill · Den Haag</title>
+<meta name="description" content="Eethuis Leyenburger in Den Haag. Verse halal döner, Turkse pizza, kapsalon, wrap en mixed grill. Elke dag open. Afhalen. Escamplaan 283, Leyenburg.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ink:#0c0b09;
   --smoke:#141210;
   --ash:#1f1d1a;
+  --char:#2a2825;
   --text:#f0ebe0;
   --muted:rgba(240,235,224,.5);
   --dim:rgba(240,235,224,.28);
@@ -24,30 +25,39 @@
 html{scroll-behavior:smooth}
 body{font-family:'Poppins',system-ui,sans-serif;background:var(--ink);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
 a{text-decoration:none}
-img{display:block;max-width:100%;height:100%;object-fit:cover}
+img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   height:64px;padding:0 5%;
   display:flex;align-items:center;justify-content:space-between;
-  transition:background .35s,backdrop-filter .35s,border-color .35s;
+  transition:background .35s,border-color .35s;
   border-bottom:1px solid transparent;
 }
-nav.scrolled{background:rgba(12,11,9,.92);backdrop-filter:blur(16px);border-color:rgba(255,255,255,.06)}
-.nav-logo{
-  font-size:19px;font-weight:800;color:var(--text);letter-spacing:-.5px;
-  display:flex;align-items:center;gap:4px;
-}
+nav.scrolled{background:rgba(12,11,9,.94);backdrop-filter:blur(16px);border-color:rgba(255,255,255,.06)}
+.nav-logo{font-size:18px;font-weight:800;color:var(--text);letter-spacing:-.5px;display:flex;align-items:center;gap:4px}
 .nav-logo .dot{color:var(--gold)}
-.nav-right{display:flex;align-items:center;gap:20px}
-.nav-link{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s;letter-spacing:.2px}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-link{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s}
 .nav-link:hover{color:var(--text)}
+/* Language switcher */
+.lang-sw{
+  display:flex;align-items:center;gap:0;
+  border:1px solid rgba(255,255,255,.15);border-radius:4px;overflow:hidden;
+}
+.lang-btn{
+  padding:5px 10px;font-size:11px;font-weight:700;letter-spacing:.5px;
+  background:transparent;color:var(--muted);border:none;cursor:pointer;
+  font-family:'Poppins',sans-serif;transition:all .2s;
+}
+.lang-btn.active{background:var(--gold);color:var(--ink)}
+.lang-btn:not(.active):hover{color:var(--text)}
 .nav-cta{
   display:flex;align-items:center;gap:7px;
   font-size:13px;font-weight:600;color:var(--ink);
   background:var(--gold);padding:9px 20px;border-radius:4px;
-  transition:background .2s,transform .15s;letter-spacing:.1px;
+  transition:background .2s,transform .15s;
 }
 .nav-cta:hover{background:var(--gold-dk);transform:translateY(-1px)}
 .nav-cta svg{width:14px;height:14px;flex-shrink:0}
@@ -60,25 +70,26 @@ nav.scrolled{background:rgba(12,11,9,.92);backdrop-filter:blur(16px);border-colo
 }
 .hero-bg{
   position:absolute;inset:0;
-  background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1600&q=85');
-  background-size:cover;background-position:center 40%;
+  background-image:url('https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1600&q=85');
+  background-size:cover;background-position:center 35%;
   transform:scale(1.04);transition:transform 8s ease-out;
 }
 .hero-bg.loaded{transform:scale(1)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,11,9,1) 0%,rgba(12,11,9,.55) 40%,rgba(12,11,9,.2) 100%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,11,9,1) 0%,rgba(12,11,9,.6) 40%,rgba(12,11,9,.3) 100%)}
 .hero-content{position:relative;z-index:2;max-width:900px;padding:0 20px}
 .hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;gap:10px;
   font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:24px;
+  color:var(--gold);margin-bottom:20px;
 }
-.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.4;width:28px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';height:1px;background:var(--gold);opacity:.4;width:24px;flex-shrink:0}
+.hero-name-label{font-size:clamp(12px,1.4vw,14px);font-weight:400;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin-bottom:10px}
 .hero h1{
-  font-size:clamp(72px,14vw,168px);font-weight:900;line-height:.9;
-  letter-spacing:-4px;color:var(--text);
-  text-transform:uppercase;
+  font-size:clamp(68px,13vw,156px);font-weight:900;line-height:.92;
+  letter-spacing:-3px;color:var(--text);text-transform:uppercase;
+  word-break:keep-all;white-space:nowrap;
 }
-.hero h1 .line2{display:block;color:var(--gold)}
+.hero h1 .accent{color:var(--gold)}
 .hero-sub{
   margin-top:28px;font-size:clamp(14px,1.6vw,17px);
   color:var(--muted);max-width:460px;margin-left:auto;margin-right:auto;
@@ -95,164 +106,166 @@ nav.scrolled{background:rgba(12,11,9,.92);backdrop-filter:blur(16px);border-colo
 .btn-gold:hover{background:var(--gold-dk);transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--text);border:1.5px solid rgba(255,255,255,.2)}
 .btn-outline:hover{border-color:rgba(255,255,255,.5)}
-.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--dim);font-size:10px;letter-spacing:2px;text-transform:uppercase}
-.hero-scroll .line{width:1px;height:36px;background:var(--dim);animation:scrollpulse 2s ease-in-out infinite}
-@keyframes scrollpulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.6)}}
+.hero-scroll{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--dim);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+}
+.hero-scroll .sline{width:1px;height:36px;background:var(--dim);animation:spulse 2s ease-in-out infinite}
+@keyframes spulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.6)}}
 
-/* ── TICKER STRIP ── */
-.ticker{overflow:hidden;background:var(--gold);padding:13px 0}
-.ticker-inner{display:flex;gap:0;white-space:nowrap;animation:ticker 28s linear infinite}
+/* ── TICKER ── */
+.ticker{overflow:hidden;background:var(--gold);padding:12px 0;cursor:default}
+.ticker-inner{display:flex;white-space:nowrap;animation:tick 30s linear infinite}
 .ticker-inner:hover{animation-play-state:paused}
 .ticker-item{
-  display:inline-flex;align-items:center;gap:24px;
-  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:var(--ink);padding:0 36px;
+  display:inline-flex;align-items:center;gap:22px;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink);padding:0 32px;
 }
-.ticker-item::before{content:'◆';font-size:8px}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item::before{content:'◆';font-size:7px;opacity:.6}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ── SECTION BASE ── */
-.sec{padding:100px 5%}
+.divider{height:1px;background:rgba(255,255,255,.07)}
 .sec-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-.sec-title{font-size:clamp(34px,5vw,58px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;color:var(--text);margin-bottom:0}
-.sec-sub{font-size:16px;color:var(--muted);line-height:1.75;max-width:480px}
-.divider{width:100%;height:1px;background:rgba(255,255,255,.07);margin:0}
+.sec-title{font-size:clamp(32px,4.5vw,54px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;color:var(--text)}
+.sec-sub{font-size:15px;color:var(--muted);line-height:1.75;max-width:480px}
 
-/* ── SIGNATURE DISH ── */
-.signature{display:grid;grid-template-columns:1fr 1fr;min-height:620px}
-.sig-photo{position:relative;overflow:hidden}
-.sig-photo img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
-.sig-photo:hover img{transform:scale(1.04)}
-.sig-photo-label{
-  position:absolute;bottom:24px;left:24px;
-  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
-  color:rgba(255,255,255,.45);background:rgba(0,0,0,.5);
+/* ── SPLIT FEATURE (signature) ── */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.split-photo{position:relative;overflow:hidden}
+.split-photo img{transition:transform 6s ease}
+.split-photo:hover img{transform:scale(1.05)}
+.split-photo-tag{
+  position:absolute;bottom:22px;left:22px;
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.5);background:rgba(0,0,0,.55);
   padding:6px 14px;border-radius:2px;backdrop-filter:blur(4px);
 }
-.sig-body{
+.split-body{
   background:var(--smoke);display:flex;flex-direction:column;
-  justify-content:center;padding:72px 60px;
+  justify-content:center;padding:70px 56px;
 }
-.sig-badge{
+.split-badge{
   display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:var(--gold);border:1px solid var(--gold);padding:5px 14px;border-radius:2px;
-  margin-bottom:28px;
+  color:var(--gold);border:1px solid rgba(212,168,67,.4);padding:5px 14px;border-radius:2px;
+  margin-bottom:26px;
 }
-.sig-body h2{font-size:clamp(36px,4vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:20px}
-.sig-body p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:32px;font-weight:300}
-.sig-price{font-size:42px;font-weight:900;color:var(--gold);letter-spacing:-2px;line-height:1}
-.sig-price-label{font-size:12px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.split-body h2{font-size:clamp(34px,4vw,50px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin-bottom:18px}
+.split-body p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px;font-weight:300}
+.price-big{font-size:40px;font-weight:900;color:var(--gold);letter-spacing:-2px;line-height:1}
+.price-label{font-size:11px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 
 /* ── MENU GRID ── */
-.menu-sec{background:var(--ash);padding:100px 5%}
-.menu-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:60px;gap:24px;flex-wrap:wrap}
+.menu-sec{background:var(--ash);padding:96px 5%}
+.menu-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;gap:24px;flex-wrap:wrap}
 .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06)}
-.mitem{background:var(--ash);padding:32px 28px;transition:background .25s}
-.mitem:hover{background:var(--smoke)}
-.mitem-num{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--dim);margin-bottom:16px}
-.mitem h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.3px}
-.mitem p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px;font-weight:300}
-.mitem-price{font-size:16px;font-weight:700;color:var(--gold);letter-spacing:-.5px}
-.mitem-price small{font-size:11px;font-weight:400;color:var(--dim);font-weight:400;margin-left:4px}
-.mitem.highlight{background:var(--gold)}
-.mitem.highlight:hover{background:#c99a3a}
-.mitem.highlight .mitem-num{color:rgba(12,11,9,.4)}
-.mitem.highlight h3{color:var(--ink)}
-.mitem.highlight p{color:rgba(12,11,9,.65)}
-.mitem.highlight .mitem-price{color:var(--ink)}
-.mitem.highlight .mitem-price small{color:rgba(12,11,9,.5)}
+.mi{background:var(--ash);padding:30px 26px;transition:background .2s;cursor:default}
+.mi:hover{background:#242220}
+.mi-num{font-size:9px;font-weight:700;letter-spacing:2.5px;color:var(--dim);margin-bottom:14px;text-transform:uppercase}
+.mi h3{font-size:17px;font-weight:700;color:var(--text);margin-bottom:7px;letter-spacing:-.3px}
+.mi p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px;font-weight:300}
+.mi-price{font-size:15px;font-weight:700;color:var(--gold);letter-spacing:-.3px}
+.mi-price small{font-size:11px;font-weight:400;color:var(--dim);margin-left:3px}
+.mi.gold{background:var(--gold)}
+.mi.gold:hover{background:#c99a3a}
+.mi.gold .mi-num{color:rgba(12,11,9,.38)}
+.mi.gold h3{color:var(--ink)}
+.mi.gold p{color:rgba(12,11,9,.6)}
+.mi.gold .mi-price{color:var(--ink)}
+.mi.gold .mi-price small{color:rgba(12,11,9,.45)}
 
-/* ── ATMOSPHERE SECTION ── */
-.atm{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
-.atm-photo{position:relative;overflow:hidden}
-.atm-photo img{width:100%;height:100%;object-fit:cover}
-.atm-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(12,11,9,.4),transparent)}
-.atm-body{background:var(--smoke);display:flex;flex-direction:column;justify-content:center;padding:72px 60px}
-.atm-body h2{font-size:clamp(32px,4vw,50px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:24px}
-.atm-body h2 em{font-style:normal;color:var(--gold)}
-.atm-body p{font-size:15px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:16px}
-.atm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:36px;border-top:1px solid rgba(255,255,255,.07)}
-.astat{text-align:center}
-.astat-n{font-size:32px;font-weight:900;color:var(--gold);letter-spacing:-1px;line-height:1}
-.astat-l{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+/* ── PIZZA SECTION ── */
+.pizza-sec{background:var(--smoke);padding:96px 5%}
+.pizza-header{margin-bottom:52px}
+.pizza-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);max-width:860px}
+.pi{background:var(--smoke);padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .2s}
+.pi:hover{background:#1a1816}
+.pi-name{font-size:14px;font-weight:600;color:var(--text);letter-spacing:-.2px}
+.pi-desc{font-size:11px;color:var(--muted);margin-top:2px;font-weight:300}
+.pi-price{font-size:14px;font-weight:700;color:var(--gold);white-space:nowrap;flex-shrink:0}
 
-/* ── INFO DARK ── */
-.info-sec{background:var(--ink);padding:100px 5%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.info-col h3{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:36px}
+/* ── ABOUT SPLIT ── */
+.about-split{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
+.about-photo{position:relative;overflow:hidden}
+.about-photo img{transition:transform 6s ease}
+.about-photo:hover img{transform:scale(1.04)}
+.about-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(12,11,9,.3),transparent)}
+.about-body{background:var(--smoke);display:flex;flex-direction:column;justify-content:center;padding:70px 56px}
+.about-body h2{font-size:clamp(30px,3.5vw,46px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:22px}
+.about-body h2 em{font-style:normal;color:var(--gold)}
+.about-body p{font-size:15px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:14px}
+.about-body p:last-of-type{margin-bottom:0}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:38px;padding-top:32px;border-top:1px solid rgba(255,255,255,.07)}
+.astat-n{font-size:30px;font-weight:900;color:var(--gold);letter-spacing:-1px;line-height:1}
+.astat-l{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px}
+
+/* ── INFO / HOURS ── */
+.info-sec{background:var(--ink);padding:96px 5%;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.info-col-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:32px}
 .hours-list{list-style:none}
 .hours-list li{
   display:flex;justify-content:space-between;align-items:center;
-  padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);
-  font-size:14px;
+  padding:13px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;
 }
 .hours-list li:last-child{border-bottom:none}
-.hours-list .day{color:var(--muted);font-weight:400;letter-spacing:.2px}
-.hours-list .time{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
-.hours-list li.today .day,.hours-list li.today .time{color:var(--gold)}
-.hours-list li.today .day::after{content:' ←';font-size:10px;opacity:.6}
-.contact-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:28px}
-.contact-row svg{width:18px;height:18px;stroke:var(--gold);flex-shrink:0;margin-top:2px}
-.contact-row-text{font-size:14px;color:var(--muted);line-height:1.65;font-weight:300}
-.contact-row-text a{color:var(--gold);font-weight:600;transition:color .2s}
-.contact-row-text a:hover{color:var(--text)}
-.contact-row-text strong{color:var(--text);font-weight:600}
+.hours-list .hday{color:var(--muted);font-weight:400}
+.hours-list .htime{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+.hours-list li.today .hday,.hours-list li.today .htime{color:var(--gold)}
+.hours-list li.today .hday::after{content:' ←';font-size:10px;opacity:.5}
+.crow{display:flex;gap:14px;align-items:flex-start;margin-bottom:26px}
+.crow svg{width:18px;height:18px;stroke:var(--gold);flex-shrink:0;margin-top:2px}
+.crow-text{font-size:14px;color:var(--muted);line-height:1.65;font-weight:300}
+.crow-text a{color:var(--gold);font-weight:600;transition:color .2s}
+.crow-text a:hover{color:var(--text)}
+.crow-text strong{color:var(--text);font-weight:600}
 
-/* ── REACH US MAP ── */
-.reach{background:var(--ash);padding:80px 5%;text-align:center}
-.reach .sec-title{margin-bottom:16px}
-.reach .sec-sub{margin:0 auto 48px;text-align:center}
-.map-frame{
-  width:100%;max-width:860px;margin:0 auto;
-  border-radius:8px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.08);
-  height:360px;background:var(--smoke);
-  display:flex;align-items:center;justify-content:center;
-}
-.map-placeholder{text-align:center;padding:40px}
-.map-placeholder p{font-size:14px;color:var(--muted);margin-bottom:20px}
-.map-placeholder .map-address{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.5px;margin-bottom:8px}
-.map-placeholder .map-city{font-size:14px;color:var(--gold);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:28px}
+/* ── MAP CTA ── */
+.map-cta{background:var(--ash);padding:72px 5%;text-align:center}
+.map-cta .sec-title{margin-bottom:12px}
+.map-cta .sec-sub{margin:0 auto 36px;text-align:center}
+.map-address-big{font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--text);letter-spacing:-1px;margin-bottom:6px}
+.map-address-city{font-size:13px;color:var(--gold);font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:32px}
 
 /* ── FOOTER ── */
-footer{background:var(--ink);padding:48px 5%;border-top:1px solid rgba(255,255,255,.06)}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
-.footer-logo{font-size:18px;font-weight:900;color:var(--text);letter-spacing:-.5px;text-transform:uppercase}
+footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:17px;font-weight:900;color:var(--text);letter-spacing:-.5px;text-transform:uppercase}
 .footer-logo span{color:var(--gold)}
-.footer-copy{font-size:12px;color:var(--dim);text-align:center;letter-spacing:.3px}
+.footer-copy{font-size:12px;color:var(--dim);text-align:center;line-height:1.65}
 .footer-copy a{color:var(--dim);transition:color .2s}
 .footer-copy a:hover{color:var(--gold)}
-.footer-socials{display:flex;gap:12px}
-.fsocial{
-  width:38px;height:38px;border-radius:4px;
-  border:1px solid rgba(255,255,255,.1);
+.footer-socials{display:flex;gap:10px}
+.fsoc{
+  width:36px;height:36px;border-radius:4px;border:1px solid rgba(255,255,255,.1);
   display:flex;align-items:center;justify-content:center;
   color:var(--muted);transition:all .2s;
 }
-.fsocial:hover{border-color:var(--gold);color:var(--gold)}
-.fsocial svg{width:16px;height:16px}
+.fsoc:hover{border-color:var(--gold);color:var(--gold)}
+.fsoc svg{width:15px;height:15px}
 
-/* ── SCROLL REVEAL ── */
-.rv{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease}
 .rv.in{opacity:1;transform:none}
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
-  .sig-body,.atm-body{padding:52px 40px}
+  .split-body,.about-body{padding:52px 36px}
 }
 @media(max-width:800px){
-  .signature,.atm{grid-template-columns:1fr}
-  .sig-photo{height:55vw;min-height:280px}
-  .atm-photo{height:55vw;min-height:280px;order:-1}
-  .sig-body,.atm-body{padding:52px 6%}
-  .menu-grid{grid-template-columns:1fr 1fr}
-  .info-sec{grid-template-columns:1fr;gap:56px}
-  .menu-header{flex-direction:column;align-items:flex-start}
-  .atm-stats{grid-template-columns:repeat(3,1fr)}
+  .split,.about-split{grid-template-columns:1fr}
+  .split-photo{height:56vw;min-height:280px}
+  .about-photo{height:56vw;min-height:280px;order:-1}
+  .split-body,.about-body{padding:48px 6%}
+  .menu-grid,.pizza-grid{grid-template-columns:1fr}
+  .info-sec{grid-template-columns:1fr;gap:52px}
+  .menu-top{flex-direction:column;align-items:flex-start}
+  .about-stats{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:560px){
-  .menu-grid{grid-template-columns:1fr}
-  .hero h1{letter-spacing:-2px}
+  .hero h1{letter-spacing:-2px;font-size:clamp(52px,15vw,90px);white-space:normal}
   .hero-btns{flex-direction:column;align-items:center}
   .nav-right .nav-link{display:none}
   .footer-inner{flex-direction:column;align-items:flex-start}
@@ -264,13 +277,17 @@ footer{background:var(--ink);padding:48px 5%;border-top:1px solid rgba(255,255,2
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="#">LEYEN<span class="dot">.</span>BURGER</a>
+  <a class="nav-logo" href="#">LEYENBURGER<span class="dot">.</span></a>
   <div class="nav-right">
-    <a class="nav-link" href="#menu">Menu</a>
-    <a class="nav-link" href="#info">Info</a>
+    <a class="nav-link" href="#menu" data-nl="Menu" data-en="Menu">Menu</a>
+    <a class="nav-link" href="#info" data-nl="Info" data-en="Info">Info</a>
+    <div class="lang-sw" role="group" aria-label="Taal / Language">
+      <button class="lang-btn active" id="btn-nl" onclick="setLang('nl')">NL</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
     <a class="nav-cta" href="tel:+31702050003">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Bel ons
+      <span data-nl="Bel ons" data-en="Call us">Bel ons</span>
     </a>
   </div>
 </nav>
@@ -280,193 +297,230 @@ footer{background:var(--ink);padding:48px 5%;border-top:1px solid rgba(255,255,2
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">100% Halal &nbsp;·&nbsp; Escamplaan 283, Den Haag</div>
-    <h1>LEYEN<span class="line2">BURGER</span></h1>
-    <p class="hero-sub">Verse halal burgers, kebab, shawarma en grill. Elke dag vers bereid — puur, eerlijk en vol smaak.</p>
+    <div class="hero-eyebrow">
+      <span data-nl="100% Halal · Escamplaan 283, Den Haag" data-en="100% Halal · Escamplaan 283, The Hague">100% Halal · Escamplaan 283, Den Haag</span>
+    </div>
+    <div class="hero-name-label">Eethuis</div>
+    <h1>LEYEN<span class="accent">BURGER</span></h1>
+    <p class="hero-sub" data-nl="Verse halal döner, Turkse pizza, kapsalon en grill. Elke dag vers bereid — puur, eerlijk en vol smaak." data-en="Fresh halal döner, Turkish pizza, kapsalon and grill. Prepared fresh every day — pure, honest and full of flavour.">Verse halal döner, Turkse pizza, kapsalon en grill. Elke dag vers bereid — puur, eerlijk en vol smaak.</p>
     <div class="hero-btns">
-      <a href="#menu" class="btn btn-gold">Ons menu →</a>
-      <a href="#info" class="btn btn-outline">Openingstijden</a>
+      <a href="#menu" class="btn btn-gold" data-nl="Bekijk ons menu →" data-en="See our menu →">Bekijk ons menu →</a>
+      <a href="#info" class="btn btn-outline" data-nl="Openingstijden" data-en="Opening hours">Openingstijden</a>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="line"></div>
-    scroll
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="sline"></div>
+    <span data-nl="scroll" data-en="scroll">scroll</span>
   </div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
-  <div class="ticker-inner" id="tickerInner">
-    <span class="ticker-item">100% Halal gecertificeerd</span>
-    <span class="ticker-item">Escamplaan 283 · Den Haag</span>
-    <span class="ticker-item">Maandag t/m zondag open</span>
-    <span class="ticker-item">Afhalen — verse bereiding</span>
-    <span class="ticker-item">Mixed Grill Plank voor 2 pers.</span>
-    <span class="ticker-item">Bereikbaar met Tram 4 &amp; 6</span>
+  <div class="ticker-inner" id="tickerEl">
+    <span class="ticker-item" data-nl="100% Halal gecertificeerd" data-en="100% Halal certified">100% Halal gecertificeerd</span>
+    <span class="ticker-item" data-nl="Escamplaan 283 · Den Haag" data-en="Escamplaan 283 · The Hague">Escamplaan 283 · Den Haag</span>
+    <span class="ticker-item" data-nl="Elke dag open van 10:00" data-en="Open every day from 10:00">Elke dag open van 10:00</span>
+    <span class="ticker-item" data-nl="Vers gehakt — elke dag" data-en="Fresh minced — every day">Vers gehakt — elke dag</span>
+    <span class="ticker-item" data-nl="Döner · Turkse Pizza · Kapsalon" data-en="Döner · Turkish Pizza · Kapsalon">Döner · Turkse Pizza · Kapsalon</span>
+    <span class="ticker-item" data-nl="Afhalen — Tram 4 &amp; 6" data-en="Takeaway — Tram 4 &amp; 6">Afhalen — Tram 4 &amp; 6</span>
     <span class="ticker-item">070 205 0003</span>
-    <span class="ticker-item">100% Halal gecertificeerd</span>
-    <span class="ticker-item">Escamplaan 283 · Den Haag</span>
-    <span class="ticker-item">Maandag t/m zondag open</span>
-    <span class="ticker-item">Afhalen — verse bereiding</span>
-    <span class="ticker-item">Mixed Grill Plank voor 2 pers.</span>
-    <span class="ticker-item">Bereikbaar met Tram 4 &amp; 6</span>
+    <span class="ticker-item" data-nl="100% Halal gecertificeerd" data-en="100% Halal certified">100% Halal gecertificeerd</span>
+    <span class="ticker-item" data-nl="Escamplaan 283 · Den Haag" data-en="Escamplaan 283 · The Hague">Escamplaan 283 · Den Haag</span>
+    <span class="ticker-item" data-nl="Elke dag open van 10:00" data-en="Open every day from 10:00">Elke dag open van 10:00</span>
+    <span class="ticker-item" data-nl="Vers gehakt — elke dag" data-en="Fresh minced — every day">Vers gehakt — elke dag</span>
+    <span class="ticker-item" data-nl="Döner · Turkse Pizza · Kapsalon" data-en="Döner · Turkish Pizza · Kapsalon">Döner · Turkse Pizza · Kapsalon</span>
+    <span class="ticker-item" data-nl="Afhalen — Tram 4 &amp; 6" data-en="Takeaway — Tram 4 &amp; 6">Afhalen — Tram 4 &amp; 6</span>
     <span class="ticker-item">070 205 0003</span>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- SIGNATURE DISH -->
-<div class="signature">
-  <div class="sig-photo">
-    <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?auto=format&fit=crop&w=900&q=85" alt="Mixed Grill Plank — Leyenburger" loading="lazy">
-    <span class="sig-photo-label">Mixed Grill Plank</span>
+<!-- SIGNATURE / SPLIT -->
+<div class="split">
+  <div class="split-photo">
+    <img src="https://images.unsplash.com/photo-1555939594-5c4a4e2b83f5?auto=format&fit=crop&w=900&q=85" alt="Mixed Grill Plank — Leyenburger Den Haag" loading="lazy">
+    <span class="split-photo-tag" data-nl="Mixed Grill Plank" data-en="Mixed Grill Platter">Mixed Grill Plank</span>
   </div>
-  <div class="sig-body rv">
-    <span class="sig-badge">Onze Signature</span>
-    <h2>Mixed Grill<br>Plank</h2>
-    <p>Een feest op je bord. Kebab, shawarma, gegrilde kip, lamskoteletten, geroosterd brood en twee sauzen naar keuze. Perfect voor twee — of voor één hele hongerige.</p>
-    <div class="sig-price">€ 18,50</div>
-    <div class="sig-price-label">voor 2 personen</div>
+  <div class="split-body rv">
+    <span class="split-badge" data-nl="Onze Aanrader" data-en="Our Recommendation">Onze Aanrader</span>
+    <h2 data-nl="Mixed Grill Plank" data-en="Mixed Grill Platter">Mixed Grill<br>Plank</h2>
+    <p data-nl="Een feest op je bord. Döner, shawarma, gegrilde kip, lamskoteletten, geroosterd brood en twee sauzen naar keuze. Perfect voor twee — of voor één heel hongerig persoon." data-en="A feast on your plate. Döner, shawarma, grilled chicken, lamb chops, toasted bread and two sauces of your choice. Perfect for two — or one very hungry person.">Een feest op je bord. Döner, shawarma, gegrilde kip, lamskoteletten, geroosterd brood en twee sauzen naar keuze. Perfect voor twee — of voor één heel hongerig persoon.</p>
+    <div class="price-big">€ 18,50</div>
+    <div class="price-label" data-nl="voor 2 personen" data-en="for 2 persons">voor 2 personen</div>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- MENU -->
+<!-- MAIN MENU -->
 <section class="menu-sec" id="menu">
-  <div class="menu-header rv">
+  <div class="menu-top rv">
     <div>
-      <div class="sec-label">Ons Menu</div>
-      <h2 class="sec-title">Alles vers.<br>Alles halal.</h2>
+      <div class="sec-label" data-nl="Ons Menu" data-en="Our Menu">Ons Menu</div>
+      <h2 class="sec-title" data-nl="Altijd vers.<br>Altijd halal." data-en="Always fresh.<br>Always halal.">Altijd vers.<br>Altijd halal.</h2>
     </div>
-    <p class="sec-sub">Van onze handgemaakte signature burger tot slow-roasted shawarma van het spit — dagelijks vers bereid.</p>
+    <p class="sec-sub" data-nl="Van onze handgemaakte Leyenburger tot de verse Turkse pizza — dagelijks vers bereid van kwaliteitsingrediënten." data-en="From our handmade Leyenburger to fresh Turkish pizza — prepared daily from quality ingredients.">Van onze handgemaakte Leyenburger tot de verse Turkse pizza — dagelijks vers bereid van kwaliteitsingrediënten.</p>
   </div>
   <div class="menu-grid">
-    <div class="mitem highlight rv">
-      <div class="mitem-num">01 — SIGNATURE</div>
-      <h3>De Leyenburger</h3>
-      <p>Handgemaakte burger met verse shawarma, krokante sla, tomaat en onze geheime saus. Geserveerd met goudgele frites.</p>
-      <div class="mitem-price">Vraag naar prijs</div>
+    <div class="mi gold rv">
+      <div class="mi-num" data-nl="01 — SIGNATURE" data-en="01 — SIGNATURE">01 — SIGNATURE</div>
+      <h3 data-nl="De Leyenburger" data-en="The Leyenburger">De Leyenburger</h3>
+      <p data-nl="Onze handgemaakte burger gevuld met verse döner, krokante sla, tomaat en onze geheime saus. Geserveerd met goudgele patat." data-en="Our handmade burger filled with fresh döner, crispy lettuce, tomato and our secret sauce. Served with golden fries.">Onze handgemaakte burger gevuld met verse döner, krokante sla, tomaat en onze geheime saus. Geserveerd met goudgele patat.</p>
+      <div class="mi-price" data-nl="Vraag naar prijs" data-en="Ask for price">Vraag naar prijs</div>
     </div>
-    <div class="mitem rv d1">
-      <div class="mitem-num">02</div>
-      <h3>Kebab &amp; Shawarma</h3>
-      <p>Slow-roasted vlees, dagelijks vers van het spit. Geserveerd in een warm broodje of op een bord met salade en saus.</p>
-      <div class="mitem-price">Vraag naar prijs</div>
+    <div class="mi rv d1">
+      <div class="mi-num">02</div>
+      <h3 data-nl="Döner &amp; Broodjes" data-en="Döner &amp; Sandwiches">Döner &amp; Broodjes</h3>
+      <p data-nl="Dagelijks vers gesneden van het spit. Broodje Döner Kip of Kalf — zacht broodje, warm vlees, verse groenten en saus." data-en="Freshly sliced from the spit every day. Döner Kip or Kalf sandwich — soft bread, warm meat, fresh vegetables and sauce.">Dagelijks vers gesneden van het spit. Broodje Döner Kip of Kalf — zacht broodje, warm vlees, verse groenten en saus.</p>
+      <div class="mi-price">€ 7,50 – 8,80</div>
     </div>
-    <div class="mitem rv d2">
-      <div class="mitem-num">03</div>
-      <h3>Kip Gerechten</h3>
-      <p>Gegrilde kipfilet, kip shawarma of krokante kip — vol smaak, perfect als broodje of op een bord met garnituur.</p>
-      <div class="mitem-price">Vraag naar prijs</div>
+    <div class="mi rv d2">
+      <div class="mi-num">03</div>
+      <h3 data-nl="Kapsalon" data-en="Kapsalon">Kapsalon</h3>
+      <p data-nl="De Haagse klassieker. Knapperige patat, döner of kip, gesmolten kaas, frisse salade en saus. Een maaltijd op zich." data-en="The Hague classic. Crispy fries, döner or chicken, melted cheese, fresh salad and sauce. A meal in itself.">De Haagse klassieker. Knapperige patat, döner of kip, gesmolten kaas, frisse salade en saus. Een maaltijd op zich.</p>
+      <div class="mi-price" data-nl="Vraag naar prijs" data-en="Ask for price">Vraag naar prijs</div>
     </div>
-    <div class="mitem rv">
-      <div class="mitem-num">04 — VOOR 2</div>
-      <h3>Mixed Grill Plank</h3>
-      <p>Kebab, shawarma, lamskoteletten, kip, geroosterd brood en sauzen. Gedeeld genieten op zijn best.</p>
-      <div class="mitem-price">€ 18,50 <small>· voor 2 pers.</small></div>
+    <div class="mi rv">
+      <div class="mi-num">04</div>
+      <h3 data-nl="Wrap" data-en="Wrap">Wrap</h3>
+      <p data-nl="Gevuld met döner kip of kalf, verse groenten en saus naar keuze. Strak gerold, warm en vullend — ideaal voor onderweg." data-en="Filled with döner chicken or veal, fresh vegetables and sauce of your choice. Tightly rolled, warm and filling — ideal on the go.">Gevuld met döner kip of kalf, verse groenten en saus naar keuze. Strak gerold, warm en vullend — ideaal voor onderweg.</p>
+      <div class="mi-price" data-nl="Vraag naar prijs" data-en="Ask for price">Vraag naar prijs</div>
     </div>
-    <div class="mitem rv d1">
-      <div class="mitem-num">05</div>
-      <h3>Broodjes &amp; Wraps</h3>
-      <p>Vers beleg op een zacht broodje of in een knapperige wrap. Kies je eigen vulling en saus — warm of koud.</p>
-      <div class="mitem-price">Vraag naar prijs</div>
+    <div class="mi rv d1">
+      <div class="mi-num" data-nl="05 — VOOR 2" data-en="05 — FOR 2">05 — VOOR 2</div>
+      <h3 data-nl="Mixed Grill Plank" data-en="Mixed Grill Platter">Mixed Grill Plank</h3>
+      <p data-nl="Döner, kip, lamskoteletten, geroosterd brood en sauzen. Delen op zijn best — vers van de grill." data-en="Döner, chicken, lamb chops, toasted bread and sauces. Sharing at its best — fresh from the grill.">Döner, kip, lamskoteletten, geroosterd brood en sauzen. Delen op zijn best — vers van de grill.</p>
+      <div class="mi-price">€ 18,50 <small data-nl="· voor 2 pers." data-en="· for 2 persons">· voor 2 pers.</small></div>
     </div>
-    <div class="mitem rv d2">
-      <div class="mitem-num">06</div>
-      <h3>Frites &amp; Bijgerechten</h3>
-      <p>Knapperige friet geserveerd met satésaus, mayo of sambal. Ook als bijgerecht bij elk gerecht van je keuze.</p>
-      <div class="mitem-price">Vraag naar prijs</div>
+    <div class="mi rv d2">
+      <div class="mi-num">06</div>
+      <h3 data-nl="Patat &amp; Snacks" data-en="Fries &amp; Snacks">Patat &amp; Snacks</h3>
+      <p data-nl="Knapperige patat met satésaus, mayo of sambal. Ook frikandel, groentekebab en andere snacks — vers en krokant." data-en="Crispy fries with satay sauce, mayo or sambal. Also frikandel, vegetable kebab and other snacks — fresh and crispy.">Knapperige patat met satésaus, mayo of sambal. Ook frikandel, groentekebab en andere snacks — vers en krokant.</p>
+      <div class="mi-price" data-nl="Vanaf € 3,00" data-en="From € 3.00">Vanaf € 3,00</div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ATMOSPHERE / ABOUT -->
-<div class="atm">
-  <div class="atm-photo">
-    <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=85" alt="Gegrild vlees — Leyenburger Den Haag" loading="lazy">
+<!-- TURKSE PIZZA -->
+<section class="pizza-sec">
+  <div class="pizza-header rv">
+    <div class="sec-label" data-nl="Vers Gehakt · Verse Groenten" data-en="Fresh Minced Meat · Fresh Vegetables">Vers Gehakt · Verse Groenten</div>
+    <h2 class="sec-title" data-nl="Turkse Pizza" data-en="Turkish Pizza">Turkse Pizza</h2>
+    <p class="sec-sub" style="margin-top:12px" data-nl="Elke dag maken we vers gehakt en snijden we verse groenten voor onze Turkse pizza. Vers bereid, altijd vers, elke dag." data-en="Every day we make fresh minced meat and cut fresh vegetables for our Turkish pizza. Freshly prepared, always fresh, every day.">Elke dag maken we vers gehakt en snijden we verse groenten voor onze Turkse pizza. Vers bereid, altijd vers, elke dag.</p>
   </div>
-  <div class="atm-body rv">
-    <div class="sec-label">Over Ons</div>
-    <h2>Uit de buurt,<br>voor de <em>buurt</em>.</h2>
-    <p>Eethuis Leyenburger is een vaste waarde in Leyenburg. Wij serveren verse, eerlijke halal gerechten — bereid met zorg en geserveerd met trots.</p>
-    <p>Geen compromissen. Alleen smaak. Want wij geloven dat goed eten niet duur hoeft te zijn.</p>
-    <div class="atm-stats">
-      <div class="astat">
-        <div class="astat-n">7×</div>
-        <div class="astat-l">Per week open</div>
-      </div>
-      <div class="astat">
-        <div class="astat-n">100%</div>
-        <div class="astat-l">Halal</div>
-      </div>
-      <div class="astat">
-        <div class="astat-n">Vers</div>
-        <div class="astat-l">Elke dag</div>
-      </div>
+  <div class="pizza-grid rv d1">
+    <div class="pi">
+      <div><div class="pi-name">Tr. Pizza</div><div class="pi-desc" data-nl="Klassiek, licht en lekker" data-en="Classic, light and delicious">Klassiek, licht en lekker</div></div>
+      <div class="pi-price">€ 3,50</div>
+    </div>
+    <div class="pi">
+      <div><div class="pi-name" data-nl="Tr. Pizza Veggie" data-en="Turkish Pizza Veggie">Tr. Pizza Veggie</div><div class="pi-desc" data-nl="Met verse groenten" data-en="With fresh vegetables">Met verse groenten</div></div>
+      <div class="pi-price">€ 3,50</div>
+    </div>
+    <div class="pi">
+      <div><div class="pi-name" data-nl="Tr. Pizza Sucuk" data-en="Turkish Pizza Sucuk">Tr. Pizza Sucuk</div><div class="pi-desc" data-nl="Met Turks rundvleesworst" data-en="With Turkish beef sausage">Met Turks rundvleesworst</div></div>
+      <div class="pi-price">€ 5,00</div>
+    </div>
+    <div class="pi">
+      <div><div class="pi-name" data-nl="Tr. Pizza Kaas" data-en="Turkish Pizza Cheese">Tr. Pizza Kaas</div><div class="pi-desc" data-nl="Met gesmolten kaas" data-en="With melted cheese">Met gesmolten kaas</div></div>
+      <div class="pi-price">€ 5,00</div>
+    </div>
+    <div class="pi">
+      <div><div class="pi-name" data-nl="Tr. Pizza Kaas Sucuk" data-en="Turkish Pizza Cheese &amp; Sucuk">Tr. Pizza Kaas Sucuk</div><div class="pi-desc" data-nl="Kaas én Turks rundvleesworst" data-en="Cheese &amp; Turkish beef sausage">Kaas én Turks rundvleesworst</div></div>
+      <div class="pi-price">€ 6,00</div>
+    </div>
+    <div class="pi">
+      <div><div class="pi-name" data-nl="Tr. Pizza Kip" data-en="Turkish Pizza Chicken">Tr. Pizza Kip</div><div class="pi-desc" data-nl="Met verse kip" data-en="With fresh chicken">Met verse kip</div></div>
+      <div class="pi-price">€ 7,50</div>
+    </div>
+    <div class="pi" style="grid-column:1/-1">
+      <div><div class="pi-name" data-nl="Tr. Pizza Kalf" data-en="Turkish Pizza Veal">Tr. Pizza Kalf</div><div class="pi-desc" data-nl="Premium kalfsgehakt, vers bereid" data-en="Premium minced veal, freshly prepared">Premium kalfsgehakt, vers bereid</div></div>
+      <div class="pi-price">€ 8,80</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<div class="about-split">
+  <div class="about-photo">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=85" alt="Eethuis Leyenburger — Winkelcentrum Leyenburg Den Haag" loading="lazy">
+  </div>
+  <div class="about-body rv">
+    <div class="sec-label" data-nl="Over Ons" data-en="About Us">Over Ons</div>
+    <h2 data-nl="Uit de buurt,<br>voor de <em>buurt</em>." data-en="From the neighbourhood,<br>for the <em>neighbourhood</em>.">Uit de buurt,<br>voor de <em>buurt</em>.</h2>
+    <p data-nl="Bij Leyenburger maken we elke dag vers gehakt én snijden we verse groenten voor onze Turkse pizza. Vers gehakt. Verse groente. Vers bereid. Altijd vers. Elke dag." data-en="At Leyenburger we make fresh minced meat every day and cut fresh vegetables for our Turkish pizza. Fresh minced. Fresh vegetables. Freshly prepared. Always fresh. Every day.">Bij Leyenburger maken we elke dag vers gehakt én snijden we verse groenten voor onze Turkse pizza. Vers gehakt. Verse groente. Vers bereid. Altijd vers. Elke dag.</p>
+    <p data-nl="Geen compromissen. Alleen smaak. Want wij geloven dat goed eten niet duur hoeft te zijn." data-en="No compromises. Just flavour. Because we believe that good food doesn't have to be expensive.">Geen compromissen. Alleen smaak. Want wij geloven dat goed eten niet duur hoeft te zijn.</p>
+    <div class="about-stats">
+      <div><div class="astat-n">7×</div><div class="astat-l" data-nl="Per week open" data-en="Open per week">Per week open</div></div>
+      <div><div class="astat-n">100%</div><div class="astat-l">Halal</div></div>
+      <div><div class="astat-n" data-nl="Vers" data-en="Fresh">Vers</div><div class="astat-l" data-nl="Elke dag" data-en="Every day">Elke dag</div></div>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- HOURS + CONTACT -->
+<!-- HOURS & INFO -->
 <section class="info-sec" id="info">
   <div class="rv">
-    <h3>Openingstijden</h3>
+    <div class="info-col-label" data-nl="Openingstijden" data-en="Opening Hours">Openingstijden</div>
     <ul class="hours-list">
-      <li><span class="day">Maandag</span><span class="time">10:00 – 22:00</span></li>
-      <li><span class="day">Dinsdag</span><span class="time">10:00 – 22:00</span></li>
-      <li><span class="day">Woensdag</span><span class="time">10:00 – 22:00</span></li>
-      <li><span class="day">Donderdag</span><span class="time">10:00 – 22:00</span></li>
-      <li><span class="day">Vrijdag</span><span class="time">10:00 – 23:00</span></li>
-      <li><span class="day">Zaterdag</span><span class="time">10:00 – 23:00</span></li>
-      <li><span class="day">Zondag</span><span class="time">10:00 – 22:00</span></li>
+      <li><span class="hday" data-nl="Maandag" data-en="Monday">Maandag</span><span class="htime">10:00 – 22:00</span></li>
+      <li><span class="hday" data-nl="Dinsdag" data-en="Tuesday">Dinsdag</span><span class="htime">10:00 – 22:00</span></li>
+      <li><span class="hday" data-nl="Woensdag" data-en="Wednesday">Woensdag</span><span class="htime">10:00 – 22:00</span></li>
+      <li><span class="hday" data-nl="Donderdag" data-en="Thursday">Donderdag</span><span class="htime">10:00 – 22:00</span></li>
+      <li><span class="hday" data-nl="Vrijdag" data-en="Friday">Vrijdag</span><span class="htime">10:00 – 23:00</span></li>
+      <li><span class="hday" data-nl="Zaterdag" data-en="Saturday">Zaterdag</span><span class="htime">10:00 – 23:00</span></li>
+      <li><span class="hday" data-nl="Zondag" data-en="Sunday">Zondag</span><span class="htime">10:00 – 22:00</span></li>
     </ul>
   </div>
   <div class="rv d1">
-    <h3>Bezoek Ons</h3>
-    <div class="contact-row">
+    <div class="info-col-label" data-nl="Bezoek Ons" data-en="Visit Us">Bezoek Ons</div>
+    <div class="crow">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <div class="contact-row-text">
-        <strong>Escamplaan 283</strong><br>2547 EA Den Haag<br>
-        <a href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank">Bekijk op Google Maps →</a>
+      <div class="crow-text">
+        <strong>Escamplaan 283</strong><br>
+        2547 EA Den Haag<br>
+        <span data-nl="Winkelcentrum Leyenburg" data-en="Leyenburg Shopping Centre">Winkelcentrum Leyenburg</span><br>
+        <a href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank" data-nl="Bekijk op Google Maps →" data-en="View on Google Maps →">Bekijk op Google Maps →</a>
       </div>
     </div>
-    <div class="contact-row">
+    <div class="crow">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <div class="contact-row-text"><a href="tel:+31702050003"><strong>070 205 0003</strong></a></div>
+      <div class="crow-text"><a href="tel:+31702050003"><strong>070 205 0003</strong></a></div>
     </div>
-    <div class="contact-row">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      <div class="contact-row-text">Afhalen aan de balie<br><span style="font-size:12px;color:var(--dim)">Geen bezorging</span></div>
+    <div class="crow">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+      <div class="crow-text">
+        <span data-nl="Alleen afhalen aan de balie" data-en="Takeaway only at the counter">Alleen afhalen aan de balie</span><br>
+        <span style="font-size:12px;color:var(--dim)" data-nl="Geen bezorging" data-en="No delivery">Geen bezorging</span>
+      </div>
     </div>
-    <div class="contact-row">
+    <div class="crow">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      <div class="contact-row-text">Bereikbaar met <strong>Tram 4</strong> en <strong>Tram 6</strong><br>Halte Escamplaan</div>
+      <div class="crow-text">
+        <span data-nl="Bereikbaar met Tram 4 en Tram 6" data-en="Accessible by Tram 4 and Tram 6">Bereikbaar met <strong>Tram 4</strong> en <strong>Tram 6</strong></span><br>
+        <span data-nl="Halte Escamplaan" data-en="Stop Escamplaan">Halte Escamplaan</span>
+      </div>
     </div>
-    <div class="contact-row">
+    <div class="crow">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      <div class="contact-row-text"><a href="https://www.instagram.com/leyenburger/" target="_blank">@leyenburger</a> op Instagram</div>
+      <div class="crow-text"><a href="https://www.instagram.com/leyenburger/" target="_blank">@leyenburger</a> <span data-nl="op Instagram" data-en="on Instagram">op Instagram</span></div>
     </div>
   </div>
 </section>
 
-<!-- MAP / REACH -->
-<section class="reach">
-  <div class="sec-label rv">Hoe ons te vinden</div>
-  <h2 class="sec-title rv">Escamplaan 283,<br>Den Haag</h2>
-  <p class="sec-sub rv d1">Op loopafstand van tram 4 en 6, halte Escamplaan. Parkeren mogelijk in de buurt.</p>
-  <div class="map-frame rv d2">
-    <div class="map-placeholder">
-      <div class="map-address">Escamplaan 283</div>
-      <div class="map-city">2547 EA · Den Haag</div>
-      <a href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank" class="btn btn-gold" style="display:inline-flex">Open in Google Maps →</a>
-    </div>
-  </div>
+<!-- MAP CTA -->
+<section class="map-cta rv">
+  <div class="sec-label" data-nl="Kom Langs" data-en="Come Visit">Kom Langs</div>
+  <div class="map-address-big">Escamplaan 283</div>
+  <div class="map-address-city" data-nl="2547 EA · Den Haag" data-en="2547 EA · The Hague">2547 EA · Den Haag</div>
+  <a href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank" class="btn btn-gold" data-nl="Open in Google Maps →" data-en="Open in Google Maps →">Open in Google Maps →</a>
 </section>
 
 <!-- FOOTER -->
@@ -475,13 +529,13 @@ footer{background:var(--ink);padding:48px 5%;border-top:1px solid rgba(255,255,2
     <div class="footer-logo">LEYEN<span>BURGER</span></div>
     <div class="footer-copy">
       © 2025 Eethuis Leyenburger · Escamplaan 283, 2547 EA Den Haag<br>
-      Website door <a href="index.html">WebKreatives</a>
+      <span data-nl="Website door" data-en="Website by">Website door</span> <a href="index.html">WebKreatives</a>
     </div>
     <div class="footer-socials">
-      <a class="fsocial" href="https://www.instagram.com/leyenburger/" target="_blank" aria-label="Instagram">
+      <a class="fsoc" href="https://www.instagram.com/leyenburger/" target="_blank" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
-      <a class="fsocial" href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank" aria-label="Google Maps">
+      <a class="fsoc" href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank" aria-label="Google Maps">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       </a>
     </div>
@@ -489,31 +543,72 @@ footer{background:var(--ink);padding:48px 5%;border-top:1px solid rgba(255,255,2
 </footer>
 
 <script>
-// Nav scroll
+/* ── LANGUAGE SWITCHER ── */
+const DAYS_NL = ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'];
+const DAYS_EN = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+function setLang(lang) {
+  const prev = document.documentElement.dataset.lang || 'nl';
+  document.documentElement.lang = lang;
+  document.documentElement.dataset.lang = lang;
+
+  // Toggle button states
+  document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  // Update all data-nl / data-en elements
+  document.querySelectorAll('[data-nl]').forEach(el => {
+    const val = el.dataset[lang];
+    if (!val) return;
+    // Handle HTML content (e.g. <br>, <em>)
+    if (val.includes('<')) {
+      el.innerHTML = val;
+    } else {
+      el.textContent = val;
+    }
+  });
+
+  // Update page title
+  document.title = lang === 'nl'
+    ? 'Eethuis Leyenburger — Halal Döner, Pizza & Grill · Den Haag'
+    : 'Eethuis Leyenburger — Halal Döner, Pizza & Grill · The Hague';
+
+  // Update today-highlight label
+  updateTodayHighlight(lang);
+  localStorage.setItem('leyen-lang', lang);
+}
+
+/* ── NAV SCROLL ── */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
-// Hero BG load with Ken Burns
-const bg = document.getElementById('heroBg');
-const img = new Image();
-img.onload = () => { bg.style.backgroundImage = `url('${img.src}')`; bg.classList.add('loaded'); };
-img.src = 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1600&q=85';
+/* ── HERO BG ── */
+const heroBg = document.getElementById('heroBg');
+const heroImg = new Image();
+heroImg.onload = () => { heroBg.style.backgroundImage = `url('${heroImg.src}')`; heroBg.classList.add('loaded'); };
+heroImg.src = 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1600&q=85';
 
-// Scroll reveal
+/* ── SCROLL REVEAL ── */
 const rvEls = document.querySelectorAll('.rv');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-}, { threshold: 0.08 });
-rvEls.forEach(el => obs.observe(el));
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); } });
+}, { threshold: 0.07 });
+rvEls.forEach(el => revObs.observe(el));
 
-// Today highlight
-const days = ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'];
-const today = days[new Date().getDay()];
-document.querySelectorAll('.hours-list li').forEach(li => {
-  if (li.querySelector('.day')?.textContent.trim().replace(/ ←/,'') === today) li.classList.add('today');
-});
+/* ── TODAY HOURS HIGHLIGHT ── */
+function updateTodayHighlight(lang) {
+  const todayIdx = new Date().getDay();
+  const days = lang === 'nl' ? DAYS_NL : DAYS_EN;
+  document.querySelectorAll('.hours-list li').forEach((li, i) => {
+    li.classList.toggle('today', i === todayIdx);
+  });
+}
+
+/* ── INIT ── */
+const savedLang = localStorage.getItem('leyen-lang') || 'nl';
+setLang(savedLang);
 </script>
 </body>
 </html>
