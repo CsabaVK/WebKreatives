@@ -3,386 +3,516 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eethuis Leyenburger — Vers, Halal & Lekker · Den Haag</title>
-<meta name="description" content="Eethuis Leyenburger in Den Haag. Verse halal burgers, shawarma, kebab en mixed grill. Elke dag open. Afhalen & bezorgen. Escamplaan 283.">
+<title>Eethuis Leyenburger — Halal Burgers & Grill · Den Haag</title>
+<meta name="description" content="Eethuis Leyenburger in Den Haag. Verse halal burgers, shawarma, kebab en mixed grill. Elke dag open. Afhalen. Escamplaan 283.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#FDF6EE;
-  --brown:#2C1A10;
-  --brown-md:#3D2B1F;
-  --rust:#C4622D;
-  --rust-dk:#A0491F;
-  --terra:#D4855A;
-  --beige:#EAD5BC;
-  --beige-lt:#F5EDE0;
-  --olive:#5C6B3A;
-  --text:#3D2B1F;
-  --text-light:#7A5C4A;
-  --r:10px;
+  --ink:#0c0b09;
+  --smoke:#141210;
+  --ash:#1f1d1a;
+  --text:#f0ebe0;
+  --muted:rgba(240,235,224,.5);
+  --dim:rgba(240,235,224,.28);
+  --gold:#d4a843;
+  --gold-dk:#b88830;
+  --r:6px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Poppins',system-ui,sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--ink);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
+a{text-decoration:none}
+img{display:block;max-width:100%;height:100%;object-fit:cover}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:100;height:64px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(253,246,238,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--beige)}
-.nav-logo{font-size:18px;font-weight:800;color:var(--brown);text-decoration:none;letter-spacing:-.3px}
-.nav-logo span{color:var(--rust)}
-.nav-phone{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--rust);text-decoration:none;border:1.5px solid var(--rust);padding:7px 16px;border-radius:50px;transition:all .2s}
-.nav-phone:hover{background:var(--rust);color:#fff}
-.nav-phone svg{width:15px;height:15px;flex-shrink:0}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:64px;padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .35s,backdrop-filter .35s,border-color .35s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{background:rgba(12,11,9,.92);backdrop-filter:blur(16px);border-color:rgba(255,255,255,.06)}
+.nav-logo{
+  font-size:19px;font-weight:800;color:var(--text);letter-spacing:-.5px;
+  display:flex;align-items:center;gap:4px;
+}
+.nav-logo .dot{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-link{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s;letter-spacing:.2px}
+.nav-link:hover{color:var(--text)}
+.nav-cta{
+  display:flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:600;color:var(--ink);
+  background:var(--gold);padding:9px 20px;border-radius:4px;
+  transition:background .2s,transform .15s;letter-spacing:.1px;
+}
+.nav-cta:hover{background:var(--gold-dk);transform:translateY(-1px)}
+.nav-cta svg{width:14px;height:14px;flex-shrink:0}
 
 /* ── HERO ── */
-.hero{background:var(--brown);min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 6% 60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(196,98,45,.18) 0%,transparent 70%);pointer-events:none}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--terra);font-size:13px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:28px}
-.hero-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--rust);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
-.hero h1{font-size:clamp(44px,7vw,86px);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-2px;max-width:820px;margin-bottom:20px}
-.hero h1 em{font-style:normal;color:var(--terra)}
-.hero p{font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,.6);max-width:520px;margin-bottom:36px;font-weight:400}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all .2s}
-.btn-primary{background:var(--rust);color:#fff}
-.btn-primary:hover{background:var(--rust-dk);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.25)}
-.btn-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff}
-.hero-deco{position:absolute;opacity:.04;font-size:320px;font-weight:900;color:#fff;bottom:-40px;right:-20px;line-height:1;pointer-events:none;user-select:none}
+.hero{
+  position:relative;height:100svh;min-height:640px;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding-bottom:80px;text-align:center;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1600&q=85');
+  background-size:cover;background-position:center 40%;
+  transform:scale(1.04);transition:transform 8s ease-out;
+}
+.hero-bg.loaded{transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,11,9,1) 0%,rgba(12,11,9,.55) 40%,rgba(12,11,9,.2) 100%)}
+.hero-content{position:relative;z-index:2;max-width:900px;padding:0 20px}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.4;width:28px}
+.hero h1{
+  font-size:clamp(72px,14vw,168px);font-weight:900;line-height:.9;
+  letter-spacing:-4px;color:var(--text);
+  text-transform:uppercase;
+}
+.hero h1 .line2{display:block;color:var(--gold)}
+.hero-sub{
+  margin-top:28px;font-size:clamp(14px,1.6vw,17px);
+  color:var(--muted);max-width:460px;margin-left:auto;margin-right:auto;
+  font-weight:300;line-height:1.75;
+}
+.hero-btns{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;
+  padding:14px 30px;border-radius:4px;cursor:pointer;border:none;
+  transition:all .2s;letter-spacing:.2px;
+}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-dk);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--text);border:1.5px solid rgba(255,255,255,.2)}
+.btn-outline:hover{border-color:rgba(255,255,255,.5)}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--dim);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.hero-scroll .line{width:1px;height:36px;background:var(--dim);animation:scrollpulse 2s ease-in-out infinite}
+@keyframes scrollpulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.6)}}
 
-/* ── BADGES ── */
-.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;padding:28px 6%;background:var(--beige-lt);border-top:1px solid var(--beige)}
-.badge-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text-light)}
-.badge-item svg{width:16px;height:16px;stroke:var(--rust);flex-shrink:0}
+/* ── TICKER STRIP ── */
+.ticker{overflow:hidden;background:var(--gold);padding:13px 0}
+.ticker-inner{display:flex;gap:0;white-space:nowrap;animation:ticker 28s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ticker-item{
+  display:inline-flex;align-items:center;gap:24px;
+  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink);padding:0 36px;
+}
+.ticker-item::before{content:'◆';font-size:8px}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ── MENU ── */
-.menu{padding:90px 6%;background:var(--cream)}
-.section-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rust);margin-bottom:10px}
-.section-title{font-size:clamp(30px,4vw,46px);font-weight:800;color:var(--brown);letter-spacing:-1px;line-height:1.1;margin-bottom:14px}
-.section-sub{font-size:16px;color:var(--text-light);max-width:480px}
-.menu-header{margin-bottom:52px}
-.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px}
-.dish{background:#fff;border:1.5px solid var(--beige);border-radius:16px;padding:28px 24px;transition:transform .2s,box-shadow .2s}
-.dish:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(44,26,16,.1)}
-.dish-icon{width:50px;height:50px;border-radius:12px;background:var(--beige-lt);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:26px}
-.dish h3{font-size:17px;font-weight:700;color:var(--brown);margin-bottom:6px}
-.dish p{font-size:13px;color:var(--text-light);line-height:1.65;margin-bottom:12px}
-.dish-price{font-size:15px;font-weight:700;color:var(--rust)}
-.dish.featured{background:var(--brown);border-color:var(--brown)}
-.dish.featured .dish-icon{background:rgba(255,255,255,.08)}
-.dish.featured h3{color:#fff}
-.dish.featured p{color:rgba(255,255,255,.55)}
-.dish.featured .dish-price{color:var(--terra)}
-.dish-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:var(--rust);color:#fff;padding:3px 10px;border-radius:50px;margin-bottom:10px}
+/* ── SECTION BASE ── */
+.sec{padding:100px 5%}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.sec-title{font-size:clamp(34px,5vw,58px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;color:var(--text);margin-bottom:0}
+.sec-sub{font-size:16px;color:var(--muted);line-height:1.75;max-width:480px}
+.divider{width:100%;height:1px;background:rgba(255,255,255,.07);margin:0}
 
-/* ── ABOUT ── */
-.about{background:var(--beige-lt);padding:90px 6%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about-text .section-label{margin-bottom:10px}
-.about-text h2{font-size:clamp(28px,3.5vw,42px);font-weight:800;color:var(--brown);letter-spacing:-1px;line-height:1.15;margin-bottom:20px}
-.about-text p{font-size:15px;color:var(--text-light);line-height:1.8;margin-bottom:16px}
-.about-text p:last-of-type{margin-bottom:0}
-.about-visual{background:var(--brown);border-radius:20px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.about-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 70%,rgba(196,98,45,.35) 0%,transparent 60%)}
-.about-visual-inner{position:relative;z-index:1;text-align:center;padding:32px}
-.about-visual-inner p{font-size:13px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
-.about-visual-inner .big{font-size:clamp(48px,6vw,72px);font-weight:900;color:rgba(255,255,255,.08);line-height:1;letter-spacing:-3px;display:block}
-.about-stat{display:flex;gap:32px;margin-top:32px}
-.astat{border-left:3px solid var(--rust);padding-left:16px}
-.astat-num{font-size:28px;font-weight:900;color:var(--brown);letter-spacing:-1px;line-height:1}
-.astat-label{font-size:12px;color:var(--text-light);font-weight:500}
+/* ── SIGNATURE DISH ── */
+.signature{display:grid;grid-template-columns:1fr 1fr;min-height:620px}
+.sig-photo{position:relative;overflow:hidden}
+.sig-photo img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.sig-photo:hover img{transform:scale(1.04)}
+.sig-photo-label{
+  position:absolute;bottom:24px;left:24px;
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.45);background:rgba(0,0,0,.5);
+  padding:6px 14px;border-radius:2px;backdrop-filter:blur(4px);
+}
+.sig-body{
+  background:var(--smoke);display:flex;flex-direction:column;
+  justify-content:center;padding:72px 60px;
+}
+.sig-badge{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold);padding:5px 14px;border-radius:2px;
+  margin-bottom:28px;
+}
+.sig-body h2{font-size:clamp(36px,4vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:20px}
+.sig-body p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:32px;font-weight:300}
+.sig-price{font-size:42px;font-weight:900;color:var(--gold);letter-spacing:-2px;line-height:1}
+.sig-price-label{font-size:12px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 
-/* ── HOURS / INFO ── */
-.info{background:var(--brown);padding:80px 6%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.info-block h3{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:20px}
-.hours-table{width:100%}
-.hours-table tr{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px}
-.hours-table tr:last-child{border-bottom:none}
-.hours-table .day{color:rgba(255,255,255,.5);font-weight:500}
-.hours-table .time{color:#fff;font-weight:600}
-.hours-table .today .day,.hours-table .today .time{color:var(--terra)}
-.info-detail{display:flex;align-items:flex-start;gap:12px;margin-bottom:20px}
-.info-detail svg{width:18px;height:18px;stroke:var(--terra);flex-shrink:0;margin-top:2px}
-.info-detail p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6}
-.info-detail a{color:var(--terra);text-decoration:none;font-weight:600}
-.info-detail a:hover{color:#fff}
+/* ── MENU GRID ── */
+.menu-sec{background:var(--ash);padding:100px 5%}
+.menu-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:60px;gap:24px;flex-wrap:wrap}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06)}
+.mitem{background:var(--ash);padding:32px 28px;transition:background .25s}
+.mitem:hover{background:var(--smoke)}
+.mitem-num{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--dim);margin-bottom:16px}
+.mitem h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.3px}
+.mitem p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px;font-weight:300}
+.mitem-price{font-size:16px;font-weight:700;color:var(--gold);letter-spacing:-.5px}
+.mitem-price small{font-size:11px;font-weight:400;color:var(--dim);font-weight:400;margin-left:4px}
+.mitem.highlight{background:var(--gold)}
+.mitem.highlight:hover{background:#c99a3a}
+.mitem.highlight .mitem-num{color:rgba(12,11,9,.4)}
+.mitem.highlight h3{color:var(--ink)}
+.mitem.highlight p{color:rgba(12,11,9,.65)}
+.mitem.highlight .mitem-price{color:var(--ink)}
+.mitem.highlight .mitem-price small{color:rgba(12,11,9,.5)}
 
-/* ── CONTACT ── */
-.contact{padding:90px 6%;background:var(--cream)}
-.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start;max-width:1000px;margin:0 auto}
-.contact-form{background:#fff;border:1.5px solid var(--beige);border-radius:20px;padding:36px}
-.fg{margin-bottom:16px}
-.fg label{display:block;font-size:13px;font-weight:600;color:var(--brown);margin-bottom:6px}
-.fg input,.fg textarea,.fg select{width:100%;border:1.5px solid var(--beige);border-radius:var(--r);padding:11px 14px;font-family:'Poppins',sans-serif;font-size:14px;color:var(--text);outline:none;background:#fff;transition:border-color .2s}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--rust)}
-.fg textarea{resize:vertical;min-height:110px}
-.csub{width:100%;padding:14px;border:none;border-radius:50px;background:var(--rust);color:#fff;cursor:pointer;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;transition:background .2s,transform .15s;margin-top:4px}
-.csub:hover{background:var(--rust-dk);transform:translateY(-2px)}
-.contact-info .section-label{margin-bottom:10px}
-.contact-info h2{font-size:clamp(26px,3vw,38px);font-weight:800;color:var(--brown);letter-spacing:-1px;line-height:1.2;margin-bottom:16px}
-.contact-info p{font-size:15px;color:var(--text-light);margin-bottom:32px;line-height:1.7}
-.cdetail{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-size:14px;color:var(--text)}
-.cdetail svg{width:18px;height:18px;stroke:var(--rust);flex-shrink:0}
-.cdetail a{color:var(--rust);font-weight:600;text-decoration:none}
-.cdetail a:hover{text-decoration:underline}
+/* ── ATMOSPHERE SECTION ── */
+.atm{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+.atm-photo{position:relative;overflow:hidden}
+.atm-photo img{width:100%;height:100%;object-fit:cover}
+.atm-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(12,11,9,.4),transparent)}
+.atm-body{background:var(--smoke);display:flex;flex-direction:column;justify-content:center;padding:72px 60px}
+.atm-body h2{font-size:clamp(32px,4vw,50px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:24px}
+.atm-body h2 em{font-style:normal;color:var(--gold)}
+.atm-body p{font-size:15px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:16px}
+.atm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:36px;border-top:1px solid rgba(255,255,255,.07)}
+.astat{text-align:center}
+.astat-n{font-size:32px;font-weight:900;color:var(--gold);letter-spacing:-1px;line-height:1}
+.astat-l{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+
+/* ── INFO DARK ── */
+.info-sec{background:var(--ink);padding:100px 5%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.info-col h3{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:36px}
+.hours-list{list-style:none}
+.hours-list li{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);
+  font-size:14px;
+}
+.hours-list li:last-child{border-bottom:none}
+.hours-list .day{color:var(--muted);font-weight:400;letter-spacing:.2px}
+.hours-list .time{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+.hours-list li.today .day,.hours-list li.today .time{color:var(--gold)}
+.hours-list li.today .day::after{content:' ←';font-size:10px;opacity:.6}
+.contact-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:28px}
+.contact-row svg{width:18px;height:18px;stroke:var(--gold);flex-shrink:0;margin-top:2px}
+.contact-row-text{font-size:14px;color:var(--muted);line-height:1.65;font-weight:300}
+.contact-row-text a{color:var(--gold);font-weight:600;transition:color .2s}
+.contact-row-text a:hover{color:var(--text)}
+.contact-row-text strong{color:var(--text);font-weight:600}
+
+/* ── REACH US MAP ── */
+.reach{background:var(--ash);padding:80px 5%;text-align:center}
+.reach .sec-title{margin-bottom:16px}
+.reach .sec-sub{margin:0 auto 48px;text-align:center}
+.map-frame{
+  width:100%;max-width:860px;margin:0 auto;
+  border-radius:8px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  height:360px;background:var(--smoke);
+  display:flex;align-items:center;justify-content:center;
+}
+.map-placeholder{text-align:center;padding:40px}
+.map-placeholder p{font-size:14px;color:var(--muted);margin-bottom:20px}
+.map-placeholder .map-address{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.5px;margin-bottom:8px}
+.map-placeholder .map-city{font-size:14px;color:var(--gold);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:28px}
 
 /* ── FOOTER ── */
-footer{background:var(--brown-md);padding:36px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(255,255,255,.06)}
-.footer-logo{font-size:17px;font-weight:800;color:#fff;letter-spacing:-.3px}
-.footer-logo span{color:var(--terra)}
-.footer-mid{font-size:13px;color:rgba(255,255,255,.35);text-align:center}
-.footer-social{display:flex;gap:12px}
-.footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;transition:all .2s}
-.footer-social a:hover{border-color:var(--terra);color:var(--terra)}
-.footer-social svg{width:16px;height:16px}
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .menu-grid{grid-template-columns:1fr 1fr}
-  .about,.info,.contact-wrap{grid-template-columns:1fr;gap:40px}
-  .about-visual{display:none}
-  .about-stat{gap:20px}
+footer{background:var(--ink);padding:48px 5%;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.footer-logo{font-size:18px;font-weight:900;color:var(--text);letter-spacing:-.5px;text-transform:uppercase}
+.footer-logo span{color:var(--gold)}
+.footer-copy{font-size:12px;color:var(--dim);text-align:center;letter-spacing:.3px}
+.footer-copy a{color:var(--dim);transition:color .2s}
+.footer-copy a:hover{color:var(--gold)}
+.footer-socials{display:flex;gap:12px}
+.fsocial{
+  width:38px;height:38px;border-radius:4px;
+  border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);transition:all .2s;
 }
-@media(max-width:600px){
-  .menu-grid{grid-template-columns:1fr}
-  .hero h1{letter-spacing:-1.5px}
-  .hero-btns{flex-direction:column;align-items:center}
-  footer{flex-direction:column;text-align:center}
-}
+.fsocial:hover{border-color:var(--gold);color:var(--gold)}
+.fsocial svg{width:16px;height:16px}
 
 /* ── SCROLL REVEAL ── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease}
-.reveal.visible{opacity:1;transform:none}
-.reveal.d1{transition-delay:.1s}
-.reveal.d2{transition-delay:.2s}
-.reveal.d3{transition-delay:.3s}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .sig-body,.atm-body{padding:52px 40px}
+}
+@media(max-width:800px){
+  .signature,.atm{grid-template-columns:1fr}
+  .sig-photo{height:55vw;min-height:280px}
+  .atm-photo{height:55vw;min-height:280px;order:-1}
+  .sig-body,.atm-body{padding:52px 6%}
+  .menu-grid{grid-template-columns:1fr 1fr}
+  .info-sec{grid-template-columns:1fr;gap:56px}
+  .menu-header{flex-direction:column;align-items:flex-start}
+  .atm-stats{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:560px){
+  .menu-grid{grid-template-columns:1fr}
+  .hero h1{letter-spacing:-2px}
+  .hero-btns{flex-direction:column;align-items:center}
+  .nav-right .nav-link{display:none}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .footer-copy{text-align:left}
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">Leyenburger<span>.</span></a>
-  <a class="nav-phone" href="tel:+31702050003">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    070 205 0003
-  </a>
+<nav id="nav">
+  <a class="nav-logo" href="#">LEYEN<span class="dot">.</span>BURGER</a>
+  <div class="nav-right">
+    <a class="nav-link" href="#menu">Menu</a>
+    <a class="nav-link" href="#info">Info</a>
+    <a class="nav-cta" href="tel:+31702050003">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Bel ons
+    </a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Nu open — Escamplaan 283, Den Haag</div>
-  <h1>Echt Goed Eten,<br><em>Elke Dag Vers.</em></h1>
-  <p>Verse halal burgers, shawarma, kebab en grill. Bereid met zorg, geserveerd met passie — afhalen of laten bezorgen.</p>
-  <div class="hero-btns">
-    <a href="#menu" class="btn btn-primary">Bekijk ons menu →</a>
-    <a href="tel:+31702050003" class="btn btn-ghost">Bel ons direct</a>
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">100% Halal &nbsp;·&nbsp; Escamplaan 283, Den Haag</div>
+    <h1>LEYEN<span class="line2">BURGER</span></h1>
+    <p class="hero-sub">Verse halal burgers, kebab, shawarma en grill. Elke dag vers bereid — puur, eerlijk en vol smaak.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn btn-gold">Ons menu →</a>
+      <a href="#info" class="btn btn-outline">Openingstijden</a>
+    </div>
   </div>
-  <div class="hero-deco">🍔</div>
+  <div class="hero-scroll">
+    <div class="line"></div>
+    scroll
+  </div>
 </section>
 
-<!-- BADGES -->
-<div class="badges">
-  <div class="badge-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    100% Halal
-  </div>
-  <div class="badge-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    Elke dag open 10:00–22:00
-  </div>
-  <div class="badge-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-    Afhalen &amp; bezorgen
-  </div>
-  <div class="badge-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    Tram 2 · Bus 26
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner" id="tickerInner">
+    <span class="ticker-item">100% Halal gecertificeerd</span>
+    <span class="ticker-item">Escamplaan 283 · Den Haag</span>
+    <span class="ticker-item">Maandag t/m zondag open</span>
+    <span class="ticker-item">Afhalen — verse bereiding</span>
+    <span class="ticker-item">Mixed Grill Plank voor 2 pers.</span>
+    <span class="ticker-item">Bereikbaar met Tram 4 &amp; 6</span>
+    <span class="ticker-item">070 205 0003</span>
+    <span class="ticker-item">100% Halal gecertificeerd</span>
+    <span class="ticker-item">Escamplaan 283 · Den Haag</span>
+    <span class="ticker-item">Maandag t/m zondag open</span>
+    <span class="ticker-item">Afhalen — verse bereiding</span>
+    <span class="ticker-item">Mixed Grill Plank voor 2 pers.</span>
+    <span class="ticker-item">Bereikbaar met Tram 4 &amp; 6</span>
+    <span class="ticker-item">070 205 0003</span>
   </div>
 </div>
 
+<div class="divider"></div>
+
+<!-- SIGNATURE DISH -->
+<div class="signature">
+  <div class="sig-photo">
+    <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?auto=format&fit=crop&w=900&q=85" alt="Mixed Grill Plank — Leyenburger" loading="lazy">
+    <span class="sig-photo-label">Mixed Grill Plank</span>
+  </div>
+  <div class="sig-body rv">
+    <span class="sig-badge">Onze Signature</span>
+    <h2>Mixed Grill<br>Plank</h2>
+    <p>Een feest op je bord. Kebab, shawarma, gegrilde kip, lamskoteletten, geroosterd brood en twee sauzen naar keuze. Perfect voor twee — of voor één hele hongerige.</p>
+    <div class="sig-price">€ 18,50</div>
+    <div class="sig-price-label">voor 2 personen</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <!-- MENU -->
-<section class="menu" id="menu">
-  <div class="menu-header reveal">
-    <span class="section-label">Ons Menu</span>
-    <h2 class="section-title">Onze Specialiteiten</h2>
-    <p class="section-sub">Alles vers bereid. Van onze signature Leyenburger tot een feestelijke mixed grill voor twee.</p>
+<section class="menu-sec" id="menu">
+  <div class="menu-header rv">
+    <div>
+      <div class="sec-label">Ons Menu</div>
+      <h2 class="sec-title">Alles vers.<br>Alles halal.</h2>
+    </div>
+    <p class="sec-sub">Van onze handgemaakte signature burger tot slow-roasted shawarma van het spit — dagelijks vers bereid.</p>
   </div>
   <div class="menu-grid">
-    <div class="dish featured reveal">
-      <div class="dish-badge">Onze Signature</div>
-      <div class="dish-icon">🍔</div>
+    <div class="mitem highlight rv">
+      <div class="mitem-num">01 — SIGNATURE</div>
       <h3>De Leyenburger</h3>
-      <p>Onze handgemaakte burger gevuld met verse shawarma, krokante sla, tomaat en onze geheime saus. Geserveerd met goudgele frites.</p>
-      <span class="dish-price">Vraag naar prijs</span>
+      <p>Handgemaakte burger met verse shawarma, krokante sla, tomaat en onze geheime saus. Geserveerd met goudgele frites.</p>
+      <div class="mitem-price">Vraag naar prijs</div>
     </div>
-    <div class="dish reveal d1">
-      <div class="dish-icon">🥩</div>
-      <h3>Mixed Grill Plank</h3>
-      <p>Een feest voor twee. Kebab, shawarma, kip, lamskoteletten, gegrilde groenten, vers brood en twee sauzen naar keuze.</p>
-      <span class="dish-price">€ 18,50 <span style="font-size:12px;font-weight:400;color:var(--text-light)">· voor 2 pers.</span></span>
-    </div>
-    <div class="dish reveal d2">
-      <div class="dish-icon">🌯</div>
+    <div class="mitem rv d1">
+      <div class="mitem-num">02</div>
       <h3>Kebab &amp; Shawarma</h3>
-      <p>Slow-roasted vlees, vers gesneden van het spit. Geserveerd in een warm broodje of op een bord met salade en saus.</p>
-      <span class="dish-price">Vraag naar prijs</span>
+      <p>Slow-roasted vlees, dagelijks vers van het spit. Geserveerd in een warm broodje of op een bord met salade en saus.</p>
+      <div class="mitem-price">Vraag naar prijs</div>
     </div>
-    <div class="dish reveal">
-      <div class="dish-icon">🍟</div>
-      <h3>Frites met Satésaus</h3>
-      <p>Knapperige Nederlandse friet, geserveerd met onze romige satésaus. Ook met mayo, ketchup of sambal — jij kiest.</p>
-      <span class="dish-price">Vraag naar prijs</span>
-    </div>
-    <div class="dish reveal d1">
-      <div class="dish-icon">🍗</div>
+    <div class="mitem rv d2">
+      <div class="mitem-num">03</div>
       <h3>Kip Gerechten</h3>
-      <p>Gegrilde kipfilet, kip shawarma of krokante kip — vers bereid en vol smaak. Perfect als broodje of op een bord.</p>
-      <span class="dish-price">Vraag naar prijs</span>
+      <p>Gegrilde kipfilet, kip shawarma of krokante kip — vol smaak, perfect als broodje of op een bord met garnituur.</p>
+      <div class="mitem-price">Vraag naar prijs</div>
     </div>
-    <div class="dish reveal d2">
-      <div class="dish-icon">🥙</div>
+    <div class="mitem rv">
+      <div class="mitem-num">04 — VOOR 2</div>
+      <h3>Mixed Grill Plank</h3>
+      <p>Kebab, shawarma, lamskoteletten, kip, geroosterd brood en sauzen. Gedeeld genieten op zijn best.</p>
+      <div class="mitem-price">€ 18,50 <small>· voor 2 pers.</small></div>
+    </div>
+    <div class="mitem rv d1">
+      <div class="mitem-num">05</div>
       <h3>Broodjes &amp; Wraps</h3>
       <p>Vers beleg op een zacht broodje of in een knapperige wrap. Kies je eigen vulling en saus — warm of koud.</p>
-      <span class="dish-price">Vraag naar prijs</span>
+      <div class="mitem-price">Vraag naar prijs</div>
+    </div>
+    <div class="mitem rv d2">
+      <div class="mitem-num">06</div>
+      <h3>Frites &amp; Bijgerechten</h3>
+      <p>Knapperige friet geserveerd met satésaus, mayo of sambal. Ook als bijgerecht bij elk gerecht van je keuze.</p>
+      <div class="mitem-price">Vraag naar prijs</div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-text reveal">
-    <span class="section-label">Over Ons</span>
-    <h2>Uit de buurt,<br>voor de buurt.</h2>
-    <p>Eethuis Leyenburger is al jaren een vaste waarde in Leyenburg. Wij serveren verse, eerlijke halal gerechten — van onze handgemaakte Leyenburger tot een mixed grill plank voor het hele gezin.</p>
-    <p>Alles wordt dagelijks vers bereid met kwaliteitsingrediënten. Geen compromissen, alleen smaak. Want wij geloven dat goed eten niet duur hoeft te zijn.</p>
-    <div class="about-stat">
-      <div class="astat">
-        <div class="astat-num">7×</div>
-        <div class="astat-label">Per week open</div>
-      </div>
-      <div class="astat">
-        <div class="astat-num">100%</div>
-        <div class="astat-label">Halal gecertificeerd</div>
-      </div>
-      <div class="astat">
-        <div class="astat-num">Vers</div>
-        <div class="astat-label">Elke dag bereid</div>
-      </div>
-    </div>
-  </div>
-  <div class="about-visual reveal d1">
-    <div class="about-visual-inner">
-      <p>Leyenburg's finest</p>
-      <span class="big">LEYEN<br>BURGER</span>
-    </div>
-  </div>
-</section>
+<div class="divider"></div>
 
-<!-- HOURS & INFO -->
-<section class="info" id="info">
-  <div class="reveal">
+<!-- ATMOSPHERE / ABOUT -->
+<div class="atm">
+  <div class="atm-photo">
+    <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=85" alt="Gegrild vlees — Leyenburger Den Haag" loading="lazy">
+  </div>
+  <div class="atm-body rv">
+    <div class="sec-label">Over Ons</div>
+    <h2>Uit de buurt,<br>voor de <em>buurt</em>.</h2>
+    <p>Eethuis Leyenburger is een vaste waarde in Leyenburg. Wij serveren verse, eerlijke halal gerechten — bereid met zorg en geserveerd met trots.</p>
+    <p>Geen compromissen. Alleen smaak. Want wij geloven dat goed eten niet duur hoeft te zijn.</p>
+    <div class="atm-stats">
+      <div class="astat">
+        <div class="astat-n">7×</div>
+        <div class="astat-l">Per week open</div>
+      </div>
+      <div class="astat">
+        <div class="astat-n">100%</div>
+        <div class="astat-l">Halal</div>
+      </div>
+      <div class="astat">
+        <div class="astat-n">Vers</div>
+        <div class="astat-l">Elke dag</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HOURS + CONTACT -->
+<section class="info-sec" id="info">
+  <div class="rv">
     <h3>Openingstijden</h3>
-    <table class="hours-table">
-      <tr><td class="day">Maandag</td><td class="time">10:00 – 22:00</td></tr>
-      <tr><td class="day">Dinsdag</td><td class="time">10:00 – 22:00</td></tr>
-      <tr><td class="day">Woensdag</td><td class="time">10:00 – 22:00</td></tr>
-      <tr><td class="day">Donderdag</td><td class="time">10:00 – 22:00</td></tr>
-      <tr><td class="day">Vrijdag</td><td class="time">10:00 – 23:00</td></tr>
-      <tr><td class="day">Zaterdag</td><td class="time">10:00 – 23:00</td></tr>
-      <tr><td class="day">Zondag</td><td class="time">10:00 – 22:00</td></tr>
-    </table>
+    <ul class="hours-list">
+      <li><span class="day">Maandag</span><span class="time">10:00 – 22:00</span></li>
+      <li><span class="day">Dinsdag</span><span class="time">10:00 – 22:00</span></li>
+      <li><span class="day">Woensdag</span><span class="time">10:00 – 22:00</span></li>
+      <li><span class="day">Donderdag</span><span class="time">10:00 – 22:00</span></li>
+      <li><span class="day">Vrijdag</span><span class="time">10:00 – 23:00</span></li>
+      <li><span class="day">Zaterdag</span><span class="time">10:00 – 23:00</span></li>
+      <li><span class="day">Zondag</span><span class="time">10:00 – 22:00</span></li>
+    </ul>
   </div>
-  <div class="reveal d1">
-    <h3>Ons Adres</h3>
-    <div class="info-detail">
+  <div class="rv d1">
+    <h3>Bezoek Ons</h3>
+    <div class="contact-row">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <p>Escamplaan 283<br>2547 EA Den Haag<br><a href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank">Bekijk op Google Maps →</a></p>
+      <div class="contact-row-text">
+        <strong>Escamplaan 283</strong><br>2547 EA Den Haag<br>
+        <a href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank">Bekijk op Google Maps →</a>
+      </div>
     </div>
-    <div class="info-detail">
+    <div class="contact-row">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <p><a href="tel:+31702050003">070 205 0003</a></p>
+      <div class="contact-row-text"><a href="tel:+31702050003"><strong>070 205 0003</strong></a></div>
     </div>
-    <div class="info-detail">
+    <div class="contact-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <div class="contact-row-text">Afhalen aan de balie<br><span style="font-size:12px;color:var(--dim)">Geen bezorging</span></div>
+    </div>
+    <div class="contact-row">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      <p>Afhalen of laten bezorgen.<br>Ook bereikbaar via Tram 2 en Bus 26 (halte Escamplaan).</p>
+      <div class="contact-row-text">Bereikbaar met <strong>Tram 4</strong> en <strong>Tram 6</strong><br>Halte Escamplaan</div>
     </div>
-    <div class="info-detail">
+    <div class="contact-row">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      <p><a href="https://www.instagram.com/leyenburger/" target="_blank">@leyenburger op Instagram</a></p>
+      <div class="contact-row-text"><a href="https://www.instagram.com/leyenburger/" target="_blank">@leyenburger</a> op Instagram</div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-wrap">
-    <div class="contact-info reveal">
-      <span class="section-label">Contact</span>
-      <h2>Vraag of<br>bestelling?</h2>
-      <p>Laat een bericht achter en we nemen zo snel mogelijk contact met je op. Liever direct bellen? Dat kan ook.</p>
-      <div class="cdetail">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <a href="tel:+31702050003">070 205 0003</a>
-      </div>
-      <div class="cdetail">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Escamplaan 283, Den Haag</span>
-      </div>
-    </div>
-    <div class="contact-form reveal d1">
-      <div class="fg"><label>Je naam</label><input type="text" placeholder="Mohammed, Sarah, Pieter..."></div>
-      <div class="fg"><label>Telefoonnummer of e-mail</label><input type="text" placeholder="+31 6 ..."></div>
-      <div class="fg"><label>Je bericht</label><textarea placeholder="Vraag over het menu, catering voor een event, feedback..."></textarea></div>
-      <button class="csub" type="button">Verstuur bericht →</button>
+<!-- MAP / REACH -->
+<section class="reach">
+  <div class="sec-label rv">Hoe ons te vinden</div>
+  <h2 class="sec-title rv">Escamplaan 283,<br>Den Haag</h2>
+  <p class="sec-sub rv d1">Op loopafstand van tram 4 en 6, halte Escamplaan. Parkeren mogelijk in de buurt.</p>
+  <div class="map-frame rv d2">
+    <div class="map-placeholder">
+      <div class="map-address">Escamplaan 283</div>
+      <div class="map-city">2547 EA · Den Haag</div>
+      <a href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank" class="btn btn-gold" style="display:inline-flex">Open in Google Maps →</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Leyen<span>burger</span></div>
-  <div class="footer-mid">© 2025 Eethuis Leyenburger · Escamplaan 283, 2547 EA Den Haag<br>Website door <a href="index.html" style="color:rgba(255,255,255,.4);text-decoration:none">WebKreatives</a></div>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/leyenburger/" target="_blank" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-    </a>
-    <a href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank" aria-label="Google Maps">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-    </a>
+  <div class="footer-inner">
+    <div class="footer-logo">LEYEN<span>BURGER</span></div>
+    <div class="footer-copy">
+      © 2025 Eethuis Leyenburger · Escamplaan 283, 2547 EA Den Haag<br>
+      Website door <a href="index.html">WebKreatives</a>
+    </div>
+    <div class="footer-socials">
+      <a class="fsocial" href="https://www.instagram.com/leyenburger/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a class="fsocial" href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank" aria-label="Google Maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </a>
+    </div>
   </div>
 </footer>
 
 <script>
-// Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.08 });
-revealEls.forEach(el => obs.observe(el));
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
 
-// Highlight today's hours
+// Hero BG load with Ken Burns
+const bg = document.getElementById('heroBg');
+const img = new Image();
+img.onload = () => { bg.style.backgroundImage = `url('${img.src}')`; bg.classList.add('loaded'); };
+img.src = 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1600&q=85';
+
+// Scroll reveal
+const rvEls = document.querySelectorAll('.rv');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+rvEls.forEach(el => obs.observe(el));
+
+// Today highlight
 const days = ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'];
 const today = days[new Date().getDay()];
-document.querySelectorAll('.hours-table tr').forEach(row => {
-  if (row.querySelector('.day')?.textContent === today) row.classList.add('today');
-});
-
-// Form submit
-document.querySelector('.csub').addEventListener('click', function() {
-  const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
-  let ok = true;
-  inputs.forEach(i => {
-    i.style.borderColor = '';
-    if (!i.value.trim()) { i.style.borderColor = '#C4622D'; ok = false; }
-  });
-  if (ok) {
-    this.textContent = '✓ Bericht verzonden!';
-    this.style.background = '#5C6B3A';
-    inputs.forEach(i => i.value = '');
-    setTimeout(() => { this.textContent = 'Verstuur bericht →'; this.style.background = ''; }, 3000);
-  }
+document.querySelectorAll('.hours-list li').forEach(li => {
+  if (li.querySelector('.day')?.textContent.trim().replace(/ ←/,'') === today) li.classList.add('today');
 });
 </script>
 </body>

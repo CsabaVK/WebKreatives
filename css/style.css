@@ -114,11 +114,11 @@ h2.st.lt{color:var(--white)}
 /* ── WORK ── */
 .work{padding:100px 6%;background:var(--white)}
 .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1140px;margin:0 auto 44px}
-.wcard{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--grey-200);transition:transform .2s,box-shadow .2s}
+.wcard{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--grey-200);transition:transform .2s,box-shadow .2s;display:block;color:inherit;text-decoration:none}
 .wcard:hover{transform:translateY(-6px);box-shadow:var(--sh-xl)}
 .wthumb{height:220px;position:relative;overflow:hidden}
-.wthumb svg{width:100%;height:100%;display:block;transition:transform .4s}
-.wcard:hover .wthumb svg{transform:scale(1.04)}
+.wthumb svg,.wthumb img{width:100%;height:100%;display:block;transition:transform .4s;object-fit:cover}
+.wcard:hover .wthumb svg,.wcard:hover .wthumb img{transform:scale(1.04)}
 .wtag{position:absolute;bottom:14px;left:14px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);padding:4px 10px;border-radius:100px}
 .wbody{padding:26px 28px}
 .wbody h3{font-family:var(--fh);font-size:19px;font-weight:700;color:var(--black);margin-bottom:7px}
