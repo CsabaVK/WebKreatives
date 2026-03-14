@@ -23,8 +23,8 @@
   --sh-md:0 4px 16px rgba(0,0,0,.08);
   --sh-lg:0 12px 40px rgba(0,0,0,.10);
   --sh-xl:0 24px 64px rgba(0,0,0,.13);
-  --fh:'Fraunces',Georgia,serif;
-  --fb:'Plus Jakarta Sans',system-ui,sans-serif;
+  --fh:'Poppins',system-ui,sans-serif;
+  --fb:'Poppins',system-ui,sans-serif;
   --ease:cubic-bezier(.4,0,.2,1)
 }
 html{scroll-behavior:smooth}
