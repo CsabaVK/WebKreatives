@@ -93,8 +93,9 @@ h2.st.lt{color:var(--white)}
 .svc{padding:36px 30px;border-radius:var(--r-lg);border:1px solid var(--grey-200);background:var(--grey-50);transition:transform .2s,box-shadow .2s}
 .svc:hover{transform:translateY(-5px);box-shadow:var(--sh-lg)}
 .svc.dark{background:var(--black);border-color:#1a1a1a}
-.svc-ic{width:48px;height:48px;border-radius:var(--r-sm);background:var(--white);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
-.svc.dark .svc-ic{background:#181818}
+.svc-ic{width:48px;height:48px;border-radius:var(--r-sm);background:var(--white);box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;color:var(--red)}
+.svc-ic svg{width:26px;height:26px}
+.svc.dark .svc-ic{background:#181818;color:var(--yellow)}
 .svc h3{font-family:var(--fh);font-size:19px;font-weight:700;color:var(--black);margin-bottom:9px}
 .svc.dark h3{color:var(--white)}
 .svc p{font-size:14px;color:var(--grey-600);line-height:1.7}
