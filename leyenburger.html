@@ -7,7 +7,6 @@
 <meta name="description" content="Eethuis Leyenburger in Den Haag. Verse halal döner, Turkse pizza, kapsalon, wrap en grill. Elke dag open. Afhalen. Escamplaan 283, Leyenburg.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://lh3.googleusercontent.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -89,11 +88,15 @@ nav.scrolled{background:rgba(12,11,9,.94);backdrop-filter:blur(16px);border-colo
 .im-header{text-align:center;margin-bottom:56px}
 .im-header .sec-sub{margin:14px auto 0}
 .im-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1200px;margin:0 auto;align-items:start}
-.im-card{background:var(--char);border-radius:var(--r);overflow:hidden;transition:background .4s ease,box-shadow .4s ease;cursor:default}
+.im-card{background:var(--char);border-radius:var(--r);overflow:hidden;transition:background .4s ease,box-shadow .4s ease,border-color .4s ease;cursor:default;border:1px solid transparent}
 .im-card:hover{background:var(--gold);box-shadow:0 8px 32px rgba(212,168,67,.15)}
-.im-photo{height:140px;overflow:hidden;background:var(--smoke)}
+/* ★ Highlighted / popular cards */
+.im-card.im-star{border-color:rgba(212,168,67,.25);background:linear-gradient(160deg,var(--char) 0%,#302a1e 100%)}
+.im-card.im-star:hover{background:var(--gold);border-color:var(--gold)}
+.im-photo{height:140px;overflow:hidden;background:var(--smoke);position:relative}
 .im-photo img{transition:transform .6s ease}
 .im-card:hover .im-photo img{transform:scale(1.08)}
+.im-star-tag{position:absolute;top:10px;right:10px;z-index:2;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:4px 10px;border-radius:2px}
 .im-body{padding:22px 20px 24px}
 .im-cat{font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.3px;margin-bottom:4px;transition:color .4s}
 .im-card:hover .im-cat{color:var(--ink)}
@@ -270,11 +273,11 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
 <!-- KAPSALON SHOWCASE -->
 <div class="split">
   <div class="split-photo">
-    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqFHAWFNrBrhzKcNnlPLKAEi4-x3yPQfWv03H1FZ1-WkLaCUh8Asuud6jVTV3ZWVFbl_mSBopgEyUpLXr-R12ghRbYFNIYXXi1QXeCR6cIy5Yjg74yqehZ0hyn9My-NSuo5WqSf=w900" alt="Kapsalon — Eethuis Leyenburger Den Haag" loading="lazy">
-    <span class="split-photo-tag" data-nl="Echte foto · Google Maps" data-en="Real photo · Google Maps">Echte foto · Google Maps</span>
+    <img src="https://images.unsplash.com/photo-1555939594-5c4a4e2b83f5?auto=format&fit=crop&w=900&q=85" alt="Kapsalon — Eethuis Leyenburger Den Haag" loading="lazy">
+    <span class="split-photo-tag" data-nl="Onze Specialiteit" data-en="Our Specialty">Onze Specialiteit</span>
   </div>
   <div class="split-body rv">
-    <span class="split-badge" data-nl="Populair" data-en="Popular">Populair</span>
+    <span class="split-badge" data-nl="★ Populair" data-en="★ Popular">★ Populair</span>
     <h2>Kapsalon</h2>
     <p data-nl="De Haagse klassieker. Knapperige patat, vers gesneden döner of kip, gesmolten kaas, frisse salade en saus naar keuze. Een complete maaltijd in één bak." data-en="The Hague classic. Crispy fries, freshly sliced döner or chicken, melted cheese, fresh salad and sauce of your choice. A complete meal in one box.">De Haagse klassieker. Knapperige patat, vers gesneden döner of kip, gesmolten kaas, frisse salade en saus naar keuze. Een complete maaltijd in één bak.</p>
     <div class="price-big" data-nl="Vanaf € 7,00" data-en="From € 7.00">Vanaf € 7,00</div>
@@ -294,40 +297,30 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
 
   <div class="im-grid">
 
-    <!-- 1 · BROODJES -->
-    <div class="im-card rv">
-      <div class="im-photo"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep51ZeKzXABu1nQ3PSlmWNHFjPXtgAtMHust7XT-xlP4_sC3OZqqg5K7Jtu2BD3zb9FKmkQTU1jNHezOqajkYbUkSoy3xkNRBuUsjmvOMVdP3kNNZlEALXcGAHEZFK_-OwsB6HVGg=w400" alt="Broodjes" loading="lazy" style="object-position:center 35%"></div>
+    <!-- ★ 1 · KAPSALON — highlighted -->
+    <div class="im-card im-star rv">
+      <div class="im-photo">
+        <span class="im-star-tag" data-nl="★ Populair" data-en="★ Popular">★ Populair</span>
+        <img src="https://images.unsplash.com/photo-1555939594-5c4a4e2b83f5?auto=format&fit=crop&w=400&q=80" alt="Kapsalon" loading="lazy">
+      </div>
       <div class="im-body">
-        <h3 class="im-cat" data-nl="Broodjes" data-en="Sandwiches">Broodjes</h3>
-        <div class="im-range" data-nl="Vanaf € 5,50" data-en="From € 5.50">Vanaf € 5,50</div>
+        <h3 class="im-cat">Kapsalon</h3>
+        <div class="im-range" data-nl="Klein / Groot · vanaf € 7,00" data-en="Small / Large · from € 7.00">Klein / Groot · vanaf € 7,00</div>
         <ul class="im-list">
-          <li class="im-item"><span>Br. Döner Kip</span><span class="im-p">€ 5,50</span></li>
-          <li class="im-item"><span>Br. Döner Kalf</span><span class="im-p">€ 6,50</span></li>
-          <li class="im-item"><span>Br. Kipfilet</span><span class="im-p">€ 7,00</span></li>
-          <li class="im-item"><span>Br. Lams Shoarma</span><span class="im-p">€ 8,00</span></li>
+          <li class="im-item"><span>Kapsalon Kip</span><span class="im-p">€ 7 / € 9</span></li>
+          <li class="im-item"><span>Kapsalon Kipfilet</span><span class="im-p">€ 8 / € 9,50</span></li>
+          <li class="im-item"><span>Kapsalon Kalf</span><span class="im-p">€ 7 / € 8,50</span></li>
+          <li class="im-item"><span>Kapsalon Lams</span><span class="im-p">€ 7,50 / € 9,50</span></li>
         </ul>
       </div>
     </div>
 
-    <!-- 2 · WRAPS -->
-    <div class="im-card rv d1">
-      <div class="im-photo"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqFHAWFNrBrhzKcNnlPLKAEi4-x3yPQfWv03H1FZ1-WkLaCUh8Asuud6jVTV3ZWVFbl_mSBopgEyUpLXr-R12ghRbYFNIYXXi1QXeCR6cIy5Yjg74yqehZ0hyn9My-NSuo5WqSf=w400" alt="Wraps" loading="lazy" style="object-position:center 60%"></div>
-      <div class="im-body">
-        <h3 class="im-cat">Wraps</h3>
-        <div class="im-range" data-nl="Vanaf € 5,00" data-en="From € 5.00">Vanaf € 5,00</div>
-        <ul class="im-list">
-          <li class="im-item"><span>Wrap Schnitzel</span><span class="im-p">€ 5,00</span></li>
-          <li class="im-item"><span>Wrap Kip</span><span class="im-p">€ 5,50</span></li>
-          <li class="im-item"><span>Wrap Kalf</span><span class="im-p">€ 6,50</span></li>
-          <li class="im-item"><span>Wrap Kipfilet</span><span class="im-p">€ 7,00</span></li>
-          <li class="im-item"><span>Wrap Lams Shoarma</span><span class="im-p">€ 8,00</span></li>
-        </ul>
+    <!-- ★ 2 · TURKSE PIZZA — highlighted -->
+    <div class="im-card im-star rv d1">
+      <div class="im-photo">
+        <span class="im-star-tag" data-nl="★ Populair" data-en="★ Popular">★ Populair</span>
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Turkse Pizza" loading="lazy">
       </div>
-    </div>
-
-    <!-- 3 · TURKSE PIZZA -->
-    <div class="im-card rv d2">
-      <div class="im-photo"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwer369X4O8kT0-ZaxMxI2DUr40iCBhgCZB26iimESoRvU5Rmr63EIZkUyHNEMCY2fKCcWqYODhzeLyOTd4zQ-jimdKlIM0hqPD9rLt1A_6xzSn4bNT7EX7Q1JUJjWWtz3PKZ8516=w400" alt="Turkse Pizza" loading="lazy" style="object-position:center 25%"></div>
       <div class="im-body">
         <h3 class="im-cat" data-nl="Turkse Pizza" data-en="Turkish Pizza">Turkse Pizza</h3>
         <div class="im-range" data-nl="Vanaf € 3,00" data-en="From € 3.00">Vanaf € 3,00</div>
@@ -343,55 +336,12 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
       </div>
     </div>
 
-    <!-- 4 · DÖNER BOX -->
-    <div class="im-card rv">
-      <div class="im-photo"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqFHAWFNrBrhzKcNnlPLKAEi4-x3yPQfWv03H1FZ1-WkLaCUh8Asuud6jVTV3ZWVFbl_mSBopgEyUpLXr-R12ghRbYFNIYXXi1QXeCR6cIy5Yjg74yqehZ0hyn9My-NSuo5WqSf=w400" alt="Döner Box" loading="lazy" style="object-position:center 40%"></div>
-      <div class="im-body">
-        <h3 class="im-cat">Döner Box</h3>
-        <div class="im-range" data-nl="Klein / Groot · vanaf € 6,00" data-en="Small / Large · from € 6.00">Klein / Groot · vanaf € 6,00</div>
-        <ul class="im-list">
-          <li class="im-item"><span>Box Kip</span><span class="im-p">€ 6 / € 7</span></li>
-          <li class="im-item"><span>Box Kipfilet</span><span class="im-p">€ 7 / € 8,50</span></li>
-          <li class="im-item"><span>Box Kalf</span><span class="im-p">€ 7 / € 8,50</span></li>
-          <li class="im-item"><span>Box Lams</span><span class="im-p">€ 7,50 / € 9</span></li>
-        </ul>
+    <!-- ★ 3 · PATAT — highlighted -->
+    <div class="im-card im-star rv d2">
+      <div class="im-photo">
+        <span class="im-star-tag" data-nl="★ Populair" data-en="★ Popular">★ Populair</span>
+        <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e4?auto=format&fit=crop&w=400&q=80" alt="Patat" loading="lazy">
       </div>
-    </div>
-
-    <!-- 5 · KAPSALON -->
-    <div class="im-card rv d1">
-      <div class="im-photo"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqFHAWFNrBrhzKcNnlPLKAEi4-x3yPQfWv03H1FZ1-WkLaCUh8Asuud6jVTV3ZWVFbl_mSBopgEyUpLXr-R12ghRbYFNIYXXi1QXeCR6cIy5Yjg74yqehZ0hyn9My-NSuo5WqSf=w400" alt="Kapsalon" loading="lazy"></div>
-      <div class="im-body">
-        <h3 class="im-cat">Kapsalon</h3>
-        <div class="im-range" data-nl="Klein / Groot · vanaf € 7,00" data-en="Small / Large · from € 7.00">Klein / Groot · vanaf € 7,00</div>
-        <ul class="im-list">
-          <li class="im-item"><span>Kapsalon Kip</span><span class="im-p">€ 7 / € 9</span></li>
-          <li class="im-item"><span>Kapsalon Kipfilet</span><span class="im-p">€ 8 / € 9,50</span></li>
-          <li class="im-item"><span>Kapsalon Kalf</span><span class="im-p">€ 7 / € 8,50</span></li>
-          <li class="im-item"><span>Kapsalon Lams</span><span class="im-p">€ 7,50 / € 9,50</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 6 · BURGERS -->
-    <div class="im-card rv d2">
-      <div class="im-photo"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwer369X4O8kT0-ZaxMxI2DUr40iCBhgCZB26iimESoRvU5Rmr63EIZkUyHNEMCY2fKCcWqYODhzeLyOTd4zQ-jimdKlIM0hqPD9rLt1A_6xzSn4bNT7EX7Q1JUJjWWtz3PKZ8516=w400" alt="Burgers" loading="lazy" style="object-position:center 75%"></div>
-      <div class="im-body">
-        <h3 class="im-cat">Burgers</h3>
-        <div class="im-range" data-nl="Vanaf € 2,50" data-en="From € 2.50">Vanaf € 2,50</div>
-        <ul class="im-list">
-          <li class="im-item"><span>Hilal Burger</span><span class="im-p">€ 2,50</span></li>
-          <li class="im-item"><span>Hilal Schnitzel</span><span class="im-p">€ 4,50</span></li>
-          <li class="im-item"><span>Spicy Chicken Burger</span><span class="im-p">€ 5,00</span></li>
-          <li class="im-item"><span>Crispy Chicken Burger</span><span class="im-p">€ 5,00</span></li>
-          <li class="im-item"><span>Hamburger (Rund)</span><span class="im-p">€ 5,00</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 7 · PATAT -->
-    <div class="im-card rv">
-      <div class="im-photo"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep51ZeKzXABu1nQ3PSlmWNHFjPXtgAtMHust7XT-xlP4_sC3OZqqg5K7Jtu2BD3zb9FKmkQTU1jNHezOqajkYbUkSoy3xkNRBuUsjmvOMVdP3kNNZlEALXcGAHEZFK_-OwsB6HVGg=w400" alt="Patat" loading="lazy" style="object-position:center 55%"></div>
       <div class="im-body">
         <h3 class="im-cat" data-nl="Patat" data-en="Fries">Patat</h3>
         <div class="im-range" data-nl="Vanaf € 3,00" data-en="From € 3.00">Vanaf € 3,00</div>
@@ -406,9 +356,68 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
       </div>
     </div>
 
+    <!-- 4 · CHICKEN BURGER -->
+    <div class="im-card rv">
+      <div class="im-photo"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80" alt="Chicken Burger" loading="lazy"></div>
+      <div class="im-body">
+        <h3 class="im-cat">Chicken Burger</h3>
+        <div class="im-range" data-nl="Vanaf € 5,00" data-en="From € 5.00">Vanaf € 5,00</div>
+        <ul class="im-list">
+          <li class="im-item"><span>Spicy Chicken Burger</span><span class="im-p">€ 5,00</span></li>
+          <li class="im-item"><span>Crispy Chicken Burger</span><span class="im-p">€ 5,00</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5 · BROODJES -->
+    <div class="im-card rv d1">
+      <div class="im-photo"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=400&q=80" alt="Broodjes" loading="lazy" style="object-position:center 35%"></div>
+      <div class="im-body">
+        <h3 class="im-cat" data-nl="Broodjes" data-en="Sandwiches">Broodjes</h3>
+        <div class="im-range" data-nl="Vanaf € 5,50" data-en="From € 5.50">Vanaf € 5,50</div>
+        <ul class="im-list">
+          <li class="im-item"><span>Br. Döner Kip</span><span class="im-p">€ 5,50</span></li>
+          <li class="im-item"><span>Br. Döner Kalf</span><span class="im-p">€ 6,50</span></li>
+          <li class="im-item"><span>Br. Kipfilet</span><span class="im-p">€ 7,00</span></li>
+          <li class="im-item"><span>Br. Lams Shoarma</span><span class="im-p">€ 8,00</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6 · WRAPS -->
+    <div class="im-card rv d2">
+      <div class="im-photo"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80" alt="Wraps" loading="lazy"></div>
+      <div class="im-body">
+        <h3 class="im-cat">Wraps</h3>
+        <div class="im-range" data-nl="Vanaf € 5,00" data-en="From € 5.00">Vanaf € 5,00</div>
+        <ul class="im-list">
+          <li class="im-item"><span>Wrap Schnitzel</span><span class="im-p">€ 5,00</span></li>
+          <li class="im-item"><span>Wrap Kip</span><span class="im-p">€ 5,50</span></li>
+          <li class="im-item"><span>Wrap Kalf</span><span class="im-p">€ 6,50</span></li>
+          <li class="im-item"><span>Wrap Kipfilet</span><span class="im-p">€ 7,00</span></li>
+          <li class="im-item"><span>Wrap Lams Shoarma</span><span class="im-p">€ 8,00</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 7 · DÖNER BOX -->
+    <div class="im-card rv">
+      <div class="im-photo"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Döner Box" loading="lazy" style="object-position:center 60%"></div>
+      <div class="im-body">
+        <h3 class="im-cat">Döner Box</h3>
+        <div class="im-range" data-nl="Klein / Groot · vanaf € 6,00" data-en="Small / Large · from € 6.00">Klein / Groot · vanaf € 6,00</div>
+        <ul class="im-list">
+          <li class="im-item"><span>Box Kip</span><span class="im-p">€ 6 / € 7</span></li>
+          <li class="im-item"><span>Box Kipfilet</span><span class="im-p">€ 7 / € 8,50</span></li>
+          <li class="im-item"><span>Box Kalf</span><span class="im-p">€ 7 / € 8,50</span></li>
+          <li class="im-item"><span>Box Lams</span><span class="im-p">€ 7,50 / € 9</span></li>
+        </ul>
+      </div>
+    </div>
+
     <!-- 8 · SNACKS -->
     <div class="im-card rv d1">
-      <div class="im-photo"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep51ZeKzXABu1nQ3PSlmWNHFjPXtgAtMHust7XT-xlP4_sC3OZqqg5K7Jtu2BD3zb9FKmkQTU1jNHezOqajkYbUkSoy3xkNRBuUsjmvOMVdP3kNNZlEALXcGAHEZFK_-OwsB6HVGg=w400" alt="Snacks" loading="lazy" style="object-position:right 40%"></div>
+      <div class="im-photo"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Snacks" loading="lazy" style="object-position:center 80%"></div>
       <div class="im-body">
         <h3 class="im-cat">Snacks</h3>
         <div class="im-range" data-nl="Vanaf € 2,25" data-en="From € 2.25">Vanaf € 2,25</div>
@@ -425,7 +434,7 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
 
     <!-- 9 · FRISDRANKEN -->
     <div class="im-card rv d2">
-      <div class="im-photo"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwer369X4O8kT0-ZaxMxI2DUr40iCBhgCZB26iimESoRvU5Rmr63EIZkUyHNEMCY2fKCcWqYODhzeLyOTd4zQ-jimdKlIM0hqPD9rLt1A_6xzSn4bNT7EX7Q1JUJjWWtz3PKZ8516=w400" alt="Frisdranken" loading="lazy" style="object-position:center 90%"></div>
+      <div class="im-photo"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80" alt="Frisdranken" loading="lazy" style="object-position:center 40%"></div>
       <div class="im-body">
         <h3 class="im-cat" data-nl="Frisdranken" data-en="Soft Drinks">Frisdranken</h3>
         <div class="im-range" data-nl="Vanaf € 1,50" data-en="From € 1.50">Vanaf € 1,50</div>
@@ -449,14 +458,14 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
   <div class="gal-header rv">
     <div class="sec-label" data-nl="Bij Leyenburger" data-en="At Leyenburger">Bij Leyenburger</div>
     <h2 class="sec-title" data-nl="Ons Team &amp; Zaak" data-en="Our Team &amp; Place">Ons Team &amp; Zaak</h2>
-    <p class="sec-sub" data-nl="Echte foto's van ons team, onze gerechten en ons menu — recht uit de keuken van Leyenburger." data-en="Real photos of our team, our dishes and our menu — straight from the Leyenburger kitchen.">Echte foto's van ons team, onze gerechten en ons menu — recht uit de keuken van Leyenburger.</p>
+    <p class="sec-sub" data-nl="Een kijkje in onze keuken en zaak — dagelijks vers, altijd met smaak." data-en="A peek inside our kitchen and place — fresh every day, always with flavour.">Een kijkje in onze keuken en zaak — dagelijks vers, altijd met smaak.</p>
   </div>
   <div class="gal-wrap rv d1">
     <button class="gal-arrow gal-prev" onclick="galSlide(-1)" aria-label="Vorige">&#8249;</button>
     <div class="gal-track" id="galTrack">
-      <div class="gal-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep51ZeKzXABu1nQ3PSlmWNHFjPXtgAtMHust7XT-xlP4_sC3OZqqg5K7Jtu2BD3zb9FKmkQTU1jNHezOqajkYbUkSoy3xkNRBuUsjmvOMVdP3kNNZlEALXcGAHEZFK_-OwsB6HVGg=w1200" alt="Ons team aan het werk"></div>
-      <div class="gal-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqFHAWFNrBrhzKcNnlPLKAEi4-x3yPQfWv03H1FZ1-WkLaCUh8Asuud6jVTV3ZWVFbl_mSBopgEyUpLXr-R12ghRbYFNIYXXi1QXeCR6cIy5Yjg74yqehZ0hyn9My-NSuo5WqSf=w1200" alt="Verse kapsalon"></div>
-      <div class="gal-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwer369X4O8kT0-ZaxMxI2DUr40iCBhgCZB26iimESoRvU5Rmr63EIZkUyHNEMCY2fKCcWqYODhzeLyOTd4zQ-jimdKlIM0hqPD9rLt1A_6xzSn4bNT7EX7Q1JUJjWWtz3PKZ8516=w1200" alt="Ons volledige menu"></div>
+      <div class="gal-slide"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=85" alt="Ons team aan het werk"></div>
+      <div class="gal-slide"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=85" alt="Verse gerechten"></div>
+      <div class="gal-slide"><img src="https://images.unsplash.com/photo-1555939594-5c4a4e2b83f5?auto=format&fit=crop&w=1200&q=85" alt="Van de grill"></div>
     </div>
     <button class="gal-arrow gal-next" onclick="galSlide(1)" aria-label="Volgende">&#8250;</button>
   </div>
@@ -473,7 +482,7 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
 <!-- ABOUT -->
 <div class="about-split">
   <div class="about-photo">
-    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep51ZeKzXABu1nQ3PSlmWNHFjPXtgAtMHust7XT-xlP4_sC3OZqqg5K7Jtu2BD3zb9FKmkQTU1jNHezOqajkYbUkSoy3xkNRBuUsjmvOMVdP3kNNZlEALXcGAHEZFK_-OwsB6HVGg=w900" alt="Eethuis Leyenburger — Winkelcentrum Leyenburg Den Haag" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=85" alt="Eethuis Leyenburger — Winkelcentrum Leyenburg Den Haag" loading="lazy">
   </div>
   <div class="about-body rv">
     <div class="sec-label" data-nl="Over Ons" data-en="About Us">Over Ons</div>
@@ -568,19 +577,17 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
 </footer>
 
 <script>
-/* ── GALLERY CAPTIONS ── */
-const GAL_CAPTIONS = {
-  nl: ['Ons team aan het werk', 'Verse kapsalon — recht uit de keuken', 'Ons volledige menu'],
-  en: ['Our team at work', 'Fresh kapsalon — straight from the kitchen', 'Our full menu']
+/* ── GALLERY ── */
+var GAL_CAPTIONS = {
+  nl: ['Ons team aan het werk', 'Verse gerechten — dagelijks bereid', 'Vers van de grill'],
+  en: ['Our team at work', 'Fresh dishes — prepared daily', 'Fresh from the grill']
 };
-let galIdx = 0;
-const GAL_COUNT = 3;
+var galIdx = 0, GAL_COUNT = 3;
 
 function galSlide(dir) {
   galIdx = (galIdx + dir + GAL_COUNT) % GAL_COUNT;
   galGo(galIdx);
 }
-
 function galGo(i) {
   galIdx = i;
   document.getElementById('galTrack').style.transform = 'translateX(-' + (i * 100) + '%)';
@@ -589,31 +596,26 @@ function galGo(i) {
   document.getElementById('galCaption').textContent = GAL_CAPTIONS[lang][i];
 }
 
-/* ── LANGUAGE SWITCHER ── */
+/* ── LANGUAGE ── */
 function setLang(lang) {
   document.documentElement.lang = lang;
   document.documentElement.dataset.lang = lang;
-
   document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-
   document.querySelectorAll('[data-nl]').forEach(function(el) {
     var val = el.dataset[lang];
     if (!val) return;
     if (val.indexOf('<') !== -1) { el.innerHTML = val; } else { el.textContent = val; }
   });
-
   document.title = lang === 'nl'
     ? 'Eethuis Leyenburger — Halal Döner, Pizza & Grill · Den Haag'
     : 'Eethuis Leyenburger — Halal Döner, Pizza & Grill · The Hague';
-
   updateTodayHighlight();
-  // Update gallery caption for new language
   document.getElementById('galCaption').textContent = GAL_CAPTIONS[lang][galIdx];
   localStorage.setItem('leyen-lang', lang);
 }
 
-/* ── NAV SCROLL ── */
+/* ── NAV ── */
 var nav = document.getElementById('nav');
 window.addEventListener('scroll', function() {
   nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -623,7 +625,7 @@ window.addEventListener('scroll', function() {
 var heroBg = document.getElementById('heroBg');
 var heroImg = new Image();
 heroImg.onload = function() { heroBg.style.backgroundImage = "url('" + heroImg.src + "')"; heroBg.classList.add('loaded'); };
-heroImg.src = 'https://lh3.googleusercontent.com/gps-cs-s/AHVAwep51ZeKzXABu1nQ3PSlmWNHFjPXtgAtMHust7XT-xlP4_sC3OZqqg5K7Jtu2BD3zb9FKmkQTU1jNHezOqajkYbUkSoy3xkNRBuUsjmvOMVdP3kNNZlEALXcGAHEZFK_-OwsB6HVGg=w1600';
+heroImg.src = 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=85';
 
 /* ── SCROLL REVEAL ── */
 var rvEls = document.querySelectorAll('.rv');
@@ -632,10 +634,10 @@ var revObs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.07 });
 rvEls.forEach(function(el) { revObs.observe(el); });
 
-/* ── TODAY HOURS HIGHLIGHT ── */
+/* ── TODAY HIGHLIGHT ── */
 function updateTodayHighlight() {
-  var dayJs = new Date().getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
-  var listIdx = (dayJs + 6) % 7;  // Maps to Mon=0, Tue=1, ..., Sun=6
+  var dayJs = new Date().getDay();
+  var listIdx = (dayJs + 6) % 7;
   document.querySelectorAll('.hours-list li').forEach(function(li, i) {
     li.classList.toggle('today', i === listIdx);
   });
