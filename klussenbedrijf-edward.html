@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Klussenbedrijf Edward - Klusbedrijf Deventer</title>
+<meta name="description" content="Klussenbedrijf Edward in Deventer. Vakkundig klussen, verbouwen en onderhoud voor particulieren. Gratis offerte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --orange:#e8742a;
+  --orange-dark:#c75f1e;
+  --orange-light:#fdf0e6;
+  --charcoal:#1e1e1e;
+  --dark:#2a2a2a;
+  --slate:#3d3d3d;
+  --gray-100:#f5f5f3;
+  --gray-200:#e8e6e1;
+  --gray-300:#d1cec7;
+  --gray-500:#8a8780;
+  --gray-700:#555350;
+  --white:#ffffff;
+  --radius:12px;
+  --radius-lg:20px;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;color:var(--charcoal);background:var(--white);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:18px 0;transition:all .35s}
+.nav.scrolled{background:rgba(30,30,30,.97);backdrop-filter:blur(10px);padding:12px 0}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--white);display:flex;align-items:center;gap:10px}
+.nav-logo .dot{width:10px;height:10px;background:var(--orange);border-radius:2px;transform:rotate(45deg)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.7);transition:color .2s;min-width:50px;text-align:center}
+.nav-links a:hover{color:var(--white)}
+.nav-lang{display:flex;gap:2px;margin-left:12px;border:1px solid rgba(255,255,255,.15);border-radius:6px;overflow:hidden}
+.nav-lang button{border:none;background:transparent;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;color:rgba(255,255,255,.4);transition:all .2s;font-family:inherit;min-width:38px}
+.nav-lang button.active{background:var(--orange);color:var(--white)}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--orange);color:var(--white);padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;transition:all .25s;min-width:120px}
+.nav-cta:hover{background:var(--orange-dark);transform:translateY(-1px)}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.nav-mobile span{display:block;width:22px;height:2px;background:var(--white);transition:.3s}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--charcoal);color:var(--white);position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.25}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,30,30,.92) 0%,rgba(30,30,30,.6) 100%);z-index:1}
+.hero-stripe{position:absolute;bottom:0;left:0;right:0;height:6px;background:var(--orange);z-index:3}
+.hero-inner{max-width:1140px;margin:0 auto;padding:140px 24px 100px;position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:40px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,116,42,.15);border:1px solid rgba(232,116,42,.3);color:var(--orange);padding:8px 18px;border-radius:6px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;width:fit-content}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.05;letter-spacing:-2px;max-width:750px}
+.hero h1 .accent{color:var(--orange)}
+.hero-sub{font-size:18px;color:rgba(255,255,255,.6);max-width:520px;line-height:1.7;margin-top:20px}
+.hero-btns{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.btn-orange{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--white);padding:16px 36px;border-radius:8px;font-size:16px;font-weight:700;transition:all .25s;min-width:200px}
+.btn-orange:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,116,42,.3)}
+.btn-white{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:var(--white);padding:16px 36px;border-radius:8px;font-size:16px;font-weight:700;border:2px solid rgba(255,255,255,.2);transition:all .25s;min-width:200px}
+.btn-white:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05)}
+.hero-stats{display:flex;gap:48px;margin-top:60px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08)}
+.hero-stat-num{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--orange)}
+.hero-stat-label{font-size:13px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* ── SERVICES ── */
+.services{padding:100px 0;background:var(--gray-100)}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+.section-label{font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:16px}
+.section-desc{font-size:16px;color:var(--gray-500);max-width:500px;line-height:1.7}
+.section-head{margin-bottom:56px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--white);border-radius:var(--radius);padding:32px 28px;border:1px solid var(--gray-200);transition:all .3s;position:relative}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06);border-color:var(--orange)}
+.svc-num{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:var(--gray-200);line-height:1;margin-bottom:16px}
+.svc-card h3{font-size:18px;font-weight:700;margin-bottom:10px}
+.svc-card p{font-size:14px;color:var(--gray-500);line-height:1.7}
+
+/* ── WHY ── */
+.why{padding:100px 0;background:var(--charcoal);color:var(--white);position:relative;overflow:hidden}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.why-img{border-radius:var(--radius-lg);overflow:hidden;position:relative}
+.why-img img{width:100%;height:420px;object-fit:cover}
+.why-img-badge{position:absolute;bottom:20px;left:20px;background:var(--orange);color:var(--white);padding:14px 24px;border-radius:var(--radius);display:flex;align-items:center;gap:12px}
+.why-img-badge .big{font-family:'Syne',sans-serif;font-size:32px;font-weight:800}
+.why-img-badge .small{font-size:12px;text-transform:uppercase;letter-spacing:1px;opacity:.8}
+.why-text .section-label{color:var(--orange)}
+.why-text .section-title{color:var(--white)}
+.why-text p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:16px}
+.why-checks{display:grid;gap:14px;margin-top:28px}
+.why-check{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:var(--white)}
+.why-check-dot{width:28px;height:28px;border-radius:6px;background:rgba(232,116,42,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--orange);font-weight:800;font-size:14px}
+
+/* ── PROJECTS ── */
+.projects{padding:100px 0;background:var(--white)}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.proj-card{border-radius:var(--radius-lg);overflow:hidden;position:relative;height:320px;cursor:default}
+.proj-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.proj-card:hover img{transform:scale(1.05)}
+.proj-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(30,30,30,.85) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.proj-card-tag{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.proj-card h3{font-size:20px;font-weight:700;color:var(--white)}
+.proj-card p{font-size:13px;color:rgba(255,255,255,.6);margin-top:4px}
+
+/* ── CONTACT ── */
+.contact{padding:100px 0;background:var(--gray-100)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info{padding:20px 0}
+.contact-info h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,38px);font-weight:800;letter-spacing:-1px;margin-bottom:20px}
+.contact-info > p{font-size:15px;color:var(--gray-500);line-height:1.8;margin-bottom:32px}
+.contact-items{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;align-items:flex-start;gap:16px}
+.contact-item-icon{width:48px;height:48px;border-radius:var(--radius);background:var(--orange-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-item-icon svg{width:22px;height:22px;color:var(--orange)}
+.contact-item h4{font-size:14px;font-weight:700;margin-bottom:2px}
+.contact-item p{font-size:14px;color:var(--gray-500)}
+.contact-item a{color:var(--orange);font-weight:600}
+.contact-map{border-radius:var(--radius-lg);overflow:hidden;height:100%;min-height:380px;box-shadow:0 8px 32px rgba(0,0,0,.06)}
+.contact-map iframe{width:100%;height:100%;border:none}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:var(--orange);padding:80px 0;text-align:center;color:var(--white)}
+.cta-banner h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1px;margin-bottom:16px}
+.cta-banner p{font-size:16px;opacity:.85;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.btn-dark{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--charcoal);color:var(--white);padding:16px 40px;border-radius:8px;font-size:16px;font-weight:700;transition:all .25s;min-width:200px}
+.btn-dark:hover{background:#111;transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+.footer{background:var(--charcoal);color:rgba(255,255,255,.5);padding:60px 0 24px}
+.footer-inner{max-width:1140px;margin:0 auto;padding:0 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-brand{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--white);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.footer-brand .dot{width:8px;height:8px;background:var(--orange);border-radius:2px;transform:rotate(45deg)}
+.footer-desc{font-size:14px;line-height:1.7;max-width:320px}
+.footer h4{font-size:13px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:14px;transition:color .2s}
+.footer-links a:hover{color:var(--orange)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:13px}
+.footer-credit{color:var(--orange)}
+.footer-credit a{text-decoration:underline}
+
+/* ── MOBILE OVERLAY ── */
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(30,30,30,.98);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.nav-overlay.open{display:flex}
+.nav-overlay a{font-size:20px;font-weight:700;color:var(--white)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{padding-top:120px}
+  .hero h1{font-size:clamp(32px,8vw,48px)}
+  .hero-stats{flex-wrap:wrap;gap:32px}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr;gap:40px}
+  .proj-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .nav-links{display:none}
+  .nav-mobile{display:flex}
+}
+@media(max-width:600px){
+  .svc-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;gap:20px}
+  .hero-btns .btn-orange,.hero-btns .btn-white{width:100%;min-width:auto}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="dot"></span>
+      Klussenbedrijf Edward
+    </a>
+    <div class="nav-links">
+      <a href="#diensten" data-nl="Diensten" data-en="Services">Diensten</a>
+      <a href="#waarom" data-nl="Waarom wij" data-en="Why us">Waarom wij</a>
+      <a href="#projecten" data-nl="Projecten" data-en="Projects">Projecten</a>
+      <a href="#contact" data-nl="Contact" data-en="Contact">Contact</a>
+      <div class="nav-lang">
+        <button onclick="setLang('nl')" class="active" id="btn-nl">NL</button>
+        <button onclick="setLang('en')" id="btn-en">EN</button>
+      </div>
+      <a href="tel:0642920203" class="nav-cta" data-nl="Bel direct" data-en="Call now">Bel direct</a>
+    </div>
+    <button class="nav-mobile" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="nav-overlay" id="mobileNav">
+  <a href="#diensten" onclick="closeMenu()" data-nl="Diensten" data-en="Services">Diensten</a>
+  <a href="#waarom" onclick="closeMenu()" data-nl="Waarom wij" data-en="Why us">Waarom wij</a>
+  <a href="#projecten" onclick="closeMenu()" data-nl="Projecten" data-en="Projects">Projecten</a>
+  <a href="#contact" onclick="closeMenu()" data-nl="Contact" data-en="Contact">Contact</a>
+  <div class="nav-lang" style="border-color:rgba(255,255,255,.2)">
+    <button onclick="setLang('nl')" class="active">NL</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
+  <a href="tel:0642920203" class="nav-cta" data-nl="Bel direct" data-en="Call now">Bel direct</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&h=800&fit=crop" alt="Klusbedrijf werkzaamheden">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge" data-nl="Klusbedrijf in Deventer" data-en="Handyman in Deventer">Klusbedrijf in Deventer</div>
+      <h1>
+        <span data-nl="Klussen?" data-en="Repairs?">Klussen?</span><br>
+        <span class="accent" data-nl="Wij regelen het." data-en="We handle it.">Wij regelen het.</span>
+      </h1>
+      <p class="hero-sub" data-nl="Van kleine reparaties tot complete verbouwingen - Klussenbedrijf Edward is uw betrouwbare vakman in Deventer en omgeving. Persoonlijk, vakkundig en altijd op tijd." data-en="From small repairs to complete renovations - Klussenbedrijf Edward is your reliable handyman in Deventer and surroundings. Personal, skilled and always on time.">Van kleine reparaties tot complete verbouwingen - Klussenbedrijf Edward is uw betrouwbare vakman in Deventer en omgeving. Persoonlijk, vakkundig en altijd op tijd.</p>
+      <div class="hero-btns">
+        <a href="tel:0642920203" class="btn-orange" data-nl="Gratis offerte aanvragen" data-en="Request free quote">Gratis offerte aanvragen</a>
+        <a href="#diensten" class="btn-white" data-nl="Bekijk diensten" data-en="View services">Bekijk diensten</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">10+</div>
+          <div class="hero-stat-label" data-nl="Jaar ervaring" data-en="Years experience">Jaar ervaring</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">5.0</div>
+          <div class="hero-stat-label" data-nl="Google score" data-en="Google score">Google score</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">200+</div>
+          <div class="hero-stat-label" data-nl="Projecten" data-en="Projects">Projecten</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services" id="diensten">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label" data-nl="Onze diensten" data-en="Our services">Onze diensten</div>
+      <h2 class="section-title" data-nl="Wat kunnen wij voor u doen?" data-en="What can we do for you?">Wat kunnen wij voor u doen?</h2>
+      <p class="section-desc" data-nl="Geen klus te groot, geen klus te klein. Wij helpen u met alles in en om het huis." data-en="No job too big, no job too small. We help you with everything in and around the house.">Geen klus te groot, geen klus te klein. Wij helpen u met alles in en om het huis.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <h3 data-nl="Timmerwerk" data-en="Carpentry">Timmerwerk</h3>
+        <p data-nl="Deuren, kozijnen, vloeren en meer. Vakkundig timmerwerk voor nieuwbouw en renovatie." data-en="Doors, frames, floors and more. Expert carpentry for new builds and renovations.">Deuren, kozijnen, vloeren en meer. Vakkundig timmerwerk voor nieuwbouw en renovatie.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <h3 data-nl="Schilderwerk" data-en="Painting">Schilderwerk</h3>
+        <p data-nl="Binnen en buiten schilderen, behangen en lakken. Een frisse uitstraling voor uw woning." data-en="Interior and exterior painting, wallpapering and lacquering. A fresh look for your home.">Binnen en buiten schilderen, behangen en lakken. Een frisse uitstraling voor uw woning.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <h3 data-nl="Loodgieterwerk" data-en="Plumbing">Loodgieterwerk</h3>
+        <p data-nl="Lekkages, verstoppingen en installatiewerk. Snel en degelijk opgelost." data-en="Leaks, blockages and installation work. Resolved quickly and thoroughly.">Lekkages, verstoppingen en installatiewerk. Snel en degelijk opgelost.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <h3 data-nl="Tegelwerk" data-en="Tiling">Tegelwerk</h3>
+        <p data-nl="Badkamers, keukens en vloeren. Strak tegelwerk met oog voor detail." data-en="Bathrooms, kitchens and floors. Clean tiling with attention to detail.">Badkamers, keukens en vloeren. Strak tegelwerk met oog voor detail.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <h3 data-nl="Verbouwingen" data-en="Renovations">Verbouwingen</h3>
+        <p data-nl="Complete badkamer- en keukenrenovaties. Van ontwerp tot oplevering." data-en="Complete bathroom and kitchen renovations. From design to completion.">Complete badkamer- en keukenrenovaties. Van ontwerp tot oplevering.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <h3 data-nl="Onderhoud" data-en="Maintenance">Onderhoud</h3>
+        <p data-nl="Regelmatig onderhoud om uw woning in topconditie te houden. Klein en groot." data-en="Regular maintenance to keep your home in top condition. Small and large.">Regelmatig onderhoud om uw woning in topconditie te houden. Klein en groot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section class="why" id="waarom">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-img">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=420&fit=crop" alt="Vakman aan het werk">
+        <div class="why-img-badge">
+          <div class="big">10+</div>
+          <div>
+            <div class="small" data-nl="Jaar" data-en="Years">Jaar</div>
+            <div class="small" data-nl="ervaring" data-en="experience">ervaring</div>
+          </div>
+        </div>
+      </div>
+      <div class="why-text">
+        <div class="section-label" data-nl="Waarom wij" data-en="Why us">Waarom wij</div>
+        <h2 class="section-title" data-nl="Betrouwbaar, vakkundig en persoonlijk" data-en="Reliable, skilled and personal">Betrouwbaar, vakkundig en persoonlijk</h2>
+        <p data-nl="Bij Klussenbedrijf Edward staat kwaliteit voorop. Als eenmanszaak in Deventer ken ik mijn klanten persoonlijk en lever ik maatwerk voor elke situatie." data-en="At Klussenbedrijf Edward, quality comes first. As a sole proprietorship in Deventer, I know my customers personally and deliver custom work for every situation.">Bij Klussenbedrijf Edward staat kwaliteit voorop. Als eenmanszaak in Deventer ken ik mijn klanten persoonlijk en lever ik maatwerk voor elke situatie.</p>
+        <p data-nl="Ik werk netjes, communiceer helder en ruim altijd mijn eigen rommel op. Dat is vanzelfsprekend." data-en="I work neatly, communicate clearly and always clean up after myself. That goes without saying.">Ik werk netjes, communiceer helder en ruim altijd mijn eigen rommel op. Dat is vanzelfsprekend.</p>
+        <div class="why-checks">
+          <div class="why-check"><div class="why-check-dot">&#10003;</div><span data-nl="Gratis offerte, geen verplichtingen" data-en="Free quote, no obligations">Gratis offerte, geen verplichtingen</span></div>
+          <div class="why-check"><div class="why-check-dot">&#10003;</div><span data-nl="Altijd netjes en op tijd" data-en="Always neat and on time">Altijd netjes en op tijd</span></div>
+          <div class="why-check"><div class="why-check-dot">&#10003;</div><span data-nl="Transparante prijzen, geen verrassingen" data-en="Transparent prices, no surprises">Transparante prijzen, geen verrassingen</span></div>
+          <div class="why-check"><div class="why-check-dot">&#10003;</div><span data-nl="Deventer en omgeving" data-en="Deventer and surroundings">Deventer en omgeving</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section class="projects" id="projecten">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label" data-nl="Projecten" data-en="Projects">Projecten</div>
+      <h2 class="section-title" data-nl="Recent uitgevoerd werk" data-en="Recently completed work">Recent uitgevoerd werk</h2>
+      <p class="section-desc" data-nl="Een greep uit onze afgeronde projecten in Deventer en omgeving." data-en="A selection of our completed projects in Deventer and surroundings.">Een greep uit onze afgeronde projecten in Deventer en omgeving.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&h=400&fit=crop" alt="Badkamer renovatie" loading="lazy">
+        <div class="proj-card-overlay">
+          <div class="proj-card-tag" data-nl="Verbouwing" data-en="Renovation">Verbouwing</div>
+          <h3 data-nl="Badkamer renovatie - Deventer" data-en="Bathroom renovation - Deventer">Badkamer renovatie - Deventer</h3>
+          <p data-nl="Complete vernieuwing inclusief tegelwerk en leidingwerk" data-en="Complete renewal including tiling and plumbing">Complete vernieuwing inclusief tegelwerk en leidingwerk</p>
+        </div>
+      </div>
+      <div class="proj-card">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop" alt="Keuken plaatsing" loading="lazy">
+        <div class="proj-card-overlay">
+          <div class="proj-card-tag" data-nl="Keuken" data-en="Kitchen">Keuken</div>
+          <h3 data-nl="Keuken plaatsing - Colmschate" data-en="Kitchen installation - Colmschate">Keuken plaatsing - Colmschate</h3>
+          <p data-nl="Nieuwe keuken inclusief aansluitingen en afwerking" data-en="New kitchen including connections and finishing">Nieuwe keuken inclusief aansluitingen en afwerking</p>
+        </div>
+      </div>
+      <div class="proj-card">
+        <img src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=600&h=400&fit=crop" alt="Schilderwerk woning" loading="lazy">
+        <div class="proj-card-overlay">
+          <div class="proj-card-tag" data-nl="Schilderwerk" data-en="Painting">Schilderwerk</div>
+          <h3 data-nl="Buitenschilderwerk - Diepenveen" data-en="Exterior painting - Diepenveen">Buitenschilderwerk - Diepenveen</h3>
+          <p data-nl="Volledig buitenschilderwerk van een vrijstaande woning" data-en="Complete exterior painting of a detached house">Volledig buitenschilderwerk van een vrijstaande woning</p>
+        </div>
+      </div>
+      <div class="proj-card">
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&h=400&fit=crop" alt="Laminaat vloer" loading="lazy">
+        <div class="proj-card-overlay">
+          <div class="proj-card-tag" data-nl="Vloeren" data-en="Floors">Vloeren</div>
+          <h3 data-nl="Laminaat leggen - Deventer" data-en="Laminate flooring - Deventer">Laminaat leggen - Deventer</h3>
+          <p data-nl="60m2 laminaat inclusief ondervloer en plinten" data-en="60m2 laminate including underlay and skirting boards">60m2 laminaat inclusief ondervloer en plinten</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 data-nl="Klus in huis? Bel Edward." data-en="Job around the house? Call Edward.">Klus in huis? Bel Edward.</h2>
+    <p data-nl="Vraag vandaag nog een gratis en vrijblijvende offerte aan. Wij reageren binnen 24 uur." data-en="Request a free, no-obligation quote today. We respond within 24 hours.">Vraag vandaag nog een gratis en vrijblijvende offerte aan. Wij reageren binnen 24 uur.</p>
+    <a href="tel:0642920203" class="btn-dark" data-nl="Bel 06 42920203" data-en="Call 06 42920203">Bel 06 42920203</a>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label">Contact</div>
+        <h2 data-nl="Neem contact op" data-en="Get in touch">Neem contact op</h2>
+        <p data-nl="Heeft u een klus of verbouwing in gedachten? Neem vrijblijvend contact op voor een gratis offerte. Ik kom graag even langs om de situatie te bekijken." data-en="Do you have a job or renovation in mind? Contact us for a free quote. I'm happy to come by and assess the situation.">Heeft u een klus of verbouwing in gedachten? Neem vrijblijvend contact op voor een gratis offerte. Ik kom graag even langs om de situatie te bekijken.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 1C6.6 1 3 4.1 3 8c0 5.2 7 12.5 7.3 12.8a1 1 0 001.4 0C12 20.5 19 13.2 19 8c0-3.9-3.6-7-8-7z"/><circle cx="11" cy="8" r="2.5"/></svg>
+            </div>
+            <div>
+              <h4 data-nl="Adres" data-en="Address">Adres</h4>
+              <p>P.C. Hooftlaan 58<br>7412 PT Deventer</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 15.5v2.5a2 2 0 01-2 2A17 17 0 012 4a2 2 0 012-2h2.5a1 1 0 011 .8l.8 3.2a1 1 0 01-.3 1L6.5 8.5a13 13 0 007 7l1.5-1.5a1 1 0 011-.3l3.2.8a1 1 0 01.8 1z"/></svg>
+            </div>
+            <div>
+              <h4 data-nl="Telefoon" data-en="Phone">Telefoon</h4>
+              <p><a href="tel:0642920203">06 42920203</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="18" height="14" rx="2"/><path d="M2 4l9 7 9-7"/></svg>
+            </div>
+            <div>
+              <h4>E-mail</h4>
+              <p><a href="mailto:info@klussenbedrijfedward.nl">info@klussenbedrijfedward.nl</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="9"/><path d="M11 7v4l3 3"/></svg>
+            </div>
+            <div>
+              <h4 data-nl="Werkgebied" data-en="Service area">Werkgebied</h4>
+              <p data-nl="Deventer, Colmschate, Diepenveen, Bathmen, Olst en omgeving" data-en="Deventer, Colmschate, Diepenveen, Bathmen, Olst and surroundings">Deventer, Colmschate, Diepenveen, Bathmen, Olst en omgeving</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2400!2d6.1396488!3d52.2671908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7ea0b17fbc2f7%3A0x3f59f2338e4afe41!2sKlussenbedrijf%20Edward!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Klussenbedrijf Edward locatie"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="dot"></span> Klussenbedrijf Edward</div>
+        <p class="footer-desc" data-nl="Uw betrouwbare klusbedrijf in Deventer en omgeving. Vakkundig, persoonlijk en altijd een eerlijke prijs." data-en="Your reliable handyman in Deventer and surroundings. Skilled, personal and always a fair price.">Uw betrouwbare klusbedrijf in Deventer en omgeving. Vakkundig, persoonlijk en altijd een eerlijke prijs.</p>
+      </div>
+      <div>
+        <h4 data-nl="Diensten" data-en="Services">Diensten</h4>
+        <ul class="footer-links">
+          <li><a href="#diensten" data-nl="Timmerwerk" data-en="Carpentry">Timmerwerk</a></li>
+          <li><a href="#diensten" data-nl="Schilderwerk" data-en="Painting">Schilderwerk</a></li>
+          <li><a href="#diensten" data-nl="Loodgieterwerk" data-en="Plumbing">Loodgieterwerk</a></li>
+          <li><a href="#diensten" data-nl="Verbouwingen" data-en="Renovations">Verbouwingen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>P.C. Hooftlaan 58</li>
+          <li>7412 PT Deventer</li>
+          <li><a href="tel:0642920203">06 42920203</a></li>
+          <li><a href="mailto:info@klussenbedrijfedward.nl">info@klussenbedrijfedward.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Klussenbedrijf Edward. <span data-nl="Alle rechten voorbehouden." data-en="All rights reserved.">Alle rechten voorbehouden.</span></span>
+      <span class="footer-credit" data-nl="Website door <a href='index.html'>WebKreatives</a>" data-en="Website by <a href='index.html'>WebKreatives</a>">Website door <a href="index.html">WebKreatives</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+let lang='nl';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('[data-'+l+']').forEach(el=>{
+    const val=el.getAttribute('data-'+l);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=val;
+    else el.innerHTML=val;
+  });
+  document.querySelectorAll('.nav-lang button').forEach(b=>{
+    b.classList.toggle('active',b.textContent===l.toUpperCase());
+  });
+  document.documentElement.lang=l;
+}
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+function toggleMenu(){document.getElementById('mobileNav').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileNav').classList.remove('open')}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
+  });
+},{threshold:.15});
+document.querySelectorAll('.svc-card,.contact-item,.why-grid,.proj-card,.hero-stats').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .6s ease, transform .6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
