@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tandarts Knoll - Uw tandarts in Staphorst</title>
+<meta name="description" content="Tandarts Knoll in Staphorst. Persoonlijke tandheelkundige zorg voor het hele gezin. Controle, vullingen, kronen en meer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --sky:#e8f4f8;
+  --teal:#0d7c8f;
+  --teal-dark:#096b7c;
+  --teal-light:#b2e0e8;
+  --mint:#f0faf7;
+  --white:#ffffff;
+  --gray-50:#f8fafb;
+  --gray-100:#f1f5f7;
+  --gray-200:#e2e8ec;
+  --gray-300:#c9d3da;
+  --gray-500:#6b7f8e;
+  --gray-700:#3a4f5c;
+  --gray-900:#1a2b36;
+  --accent:#e8a838;
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow:0 4px 24px rgba(13,124,143,.08);
+  --shadow-lg:0 12px 48px rgba(13,124,143,.12);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;color:var(--gray-900);background:var(--white);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:16px 0;transition:all .35s ease}
+.nav.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 12px rgba(0,0,0,.06);padding:10px 0}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--teal)}
+.nav-logo svg{width:36px;height:36px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--gray-700);transition:color .2s;min-width:60px;text-align:center}
+.nav-links a:hover{color:var(--teal)}
+.nav-lang{display:flex;gap:4px;margin-left:16px;background:var(--gray-100);border-radius:8px;padding:3px}
+.nav-lang button{border:none;background:transparent;padding:6px 14px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;color:var(--gray-500);transition:all .2s;font-family:inherit;min-width:42px}
+.nav-lang button.active{background:var(--teal);color:var(--white)}
+.nav-cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:10px 24px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;transition:all .25s;border:none;cursor:pointer;min-width:130px;justify-content:center}
+.nav-cta-btn:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-mobile-btn span{display:block;width:24px;height:2px;background:var(--gray-700);margin:5px 0;transition:all .3s}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--sky) 0%,var(--mint) 50%,var(--white) 100%)}
+.hero-shapes{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-shapes .circle{position:absolute;border-radius:50%;opacity:.12}
+.hero-shapes .c1{width:600px;height:600px;background:var(--teal);top:-200px;right:-100px}
+.hero-shapes .c2{width:400px;height:400px;background:var(--teal-light);bottom:-100px;left:-100px}
+.hero-shapes .c3{width:200px;height:200px;background:var(--accent);top:40%;right:20%}
+.hero-inner{max-width:1200px;margin:0 auto;padding:120px 24px 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+.hero-text{max-width:540px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(13,124,143,.1);color:var(--teal);padding:8px 18px;border-radius:40px;font-size:13px;font-weight:600;margin-bottom:24px}
+.hero-badge svg{width:16px;height:16px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,56px);font-weight:700;line-height:1.15;color:var(--gray-900);margin-bottom:20px}
+.hero h1 span{color:var(--teal);display:block}
+.hero-sub{font-size:18px;color:var(--gray-500);line-height:1.7;margin-bottom:36px;max-width:460px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--teal);color:var(--white);padding:14px 32px;border-radius:var(--radius-sm);font-size:15px;font-weight:600;transition:all .25s;border:none;cursor:pointer;min-width:180px}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:var(--teal);padding:14px 32px;border-radius:var(--radius-sm);font-size:15px;font-weight:600;border:2px solid var(--teal-light);transition:all .25s;cursor:pointer;min-width:180px}
+.btn-outline:hover{border-color:var(--teal);background:rgba(13,124,143,.04)}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-img-wrap{width:100%;max-width:480px;aspect-ratio:4/5;border-radius:32px;overflow:hidden;position:relative;box-shadow:var(--shadow-lg)}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover}
+.hero-card{position:absolute;background:var(--white);border-radius:var(--radius);padding:16px 20px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px}
+.hero-card.card-1{bottom:-20px;left:-30px}
+.hero-card.card-2{top:40px;right:-30px}
+.hero-card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-card-icon.green{background:#e6f7ef}
+.hero-card-icon.blue{background:#e6f0ff}
+.hero-card-icon svg{width:22px;height:22px}
+.hero-card-text{font-size:13px;font-weight:600;color:var(--gray-900);white-space:nowrap}
+.hero-card-sub{font-size:11px;color:var(--gray-500);font-weight:400}
+
+/* ── STATS BAR ── */
+.stats{background:var(--white);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200)}
+.stats-inner{max-width:1200px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--teal)}
+.stat-label{font-size:14px;color:var(--gray-500);margin-top:4px}
+
+/* ── SERVICES ── */
+.services{padding:100px 0;background:var(--gray-50)}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--gray-900);margin-bottom:16px}
+.section-sub{font-size:16px;color:var(--gray-500);max-width:560px;line-height:1.7}
+.section-header{margin-bottom:60px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--white);border-radius:var(--radius);padding:36px 28px;transition:all .3s;border:1px solid var(--gray-200);position:relative;overflow:hidden}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;border-radius:14px;background:var(--sky);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.service-icon svg{width:28px;height:28px;color:var(--teal)}
+.service-card h3{font-size:18px;font-weight:700;margin-bottom:10px;color:var(--gray-900)}
+.service-card p{font-size:14px;color:var(--gray-500);line-height:1.7}
+
+/* ── ABOUT ── */
+.about{padding:100px 0;background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img{position:relative}
+.about-img-main{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.about-img-main img{width:100%;height:400px;object-fit:cover}
+.about-accent{position:absolute;bottom:-20px;right:-20px;width:180px;height:180px;border-radius:var(--radius);background:var(--teal);display:flex;align-items:center;justify-content:center;color:var(--white);text-align:center;padding:20px}
+.about-accent-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:700}
+.about-accent-label{font-size:12px;text-transform:uppercase;letter-spacing:1px;opacity:.8}
+.about-text h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,38px);font-weight:700;margin-bottom:20px}
+.about-text p{font-size:15px;color:var(--gray-500);line-height:1.8;margin-bottom:16px}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.about-feat{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--gray-700)}
+.about-feat svg{width:20px;height:20px;color:var(--teal);flex-shrink:0}
+
+/* ── HOURS ── */
+.hours{padding:100px 0;background:linear-gradient(135deg,var(--teal) 0%,var(--teal-dark) 100%);color:var(--white);position:relative;overflow:hidden}
+.hours::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.05)}
+.hours .section-badge{color:var(--teal-light)}
+.hours .section-title{color:var(--white)}
+.hours .section-sub{color:rgba(255,255,255,.7)}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.hours-table{background:rgba(255,255,255,.08);border-radius:var(--radius);padding:36px;backdrop-filter:blur(8px)}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:15px}
+.hours-row:last-child{border-bottom:none}
+.hours-day{font-weight:500}
+.hours-time{color:var(--teal-light);font-weight:600}
+.hours-closed{color:rgba(255,255,255,.4);font-style:italic}
+.hours-info{padding:20px 0}
+.hours-info h3{font-size:22px;font-weight:700;margin-bottom:16px}
+.hours-info p{font-size:15px;line-height:1.8;color:rgba(255,255,255,.8);margin-bottom:16px}
+.hours-emergency{background:rgba(255,255,255,.1);border-radius:var(--radius-sm);padding:20px 24px;display:flex;align-items:center;gap:16px;margin-top:24px}
+.hours-emergency svg{width:24px;height:24px;color:var(--accent);flex-shrink:0}
+.hours-emergency-text{font-size:14px;line-height:1.6}
+.hours-emergency-text strong{display:block;font-size:15px;margin-bottom:2px}
+
+/* ── CONTACT ── */
+.contact{padding:100px 0;background:var(--gray-50)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-cards{display:flex;flex-direction:column;gap:20px}
+.contact-card{background:var(--white);border-radius:var(--radius);padding:28px;display:flex;align-items:flex-start;gap:16px;border:1px solid var(--gray-200);transition:all .3s}
+.contact-card:hover{box-shadow:var(--shadow);border-color:transparent}
+.contact-card-icon{width:48px;height:48px;border-radius:12px;background:var(--sky);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-card-icon svg{width:22px;height:22px;color:var(--teal)}
+.contact-card h4{font-size:15px;font-weight:700;margin-bottom:4px}
+.contact-card p{font-size:14px;color:var(--gray-500);line-height:1.6}
+.contact-card a{color:var(--teal);font-weight:600}
+.contact-map{border-radius:var(--radius);overflow:hidden;height:100%;min-height:360px;box-shadow:var(--shadow)}
+.contact-map iframe{width:100%;height:100%;border:none}
+
+/* ── FOOTER ── */
+.footer{background:var(--gray-900);color:rgba(255,255,255,.6);padding:60px 0 28px}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--white);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.footer-brand svg{width:32px;height:32px;color:var(--teal-light)}
+.footer-desc{font-size:14px;line-height:1.7;max-width:340px;margin-top:8px}
+.footer h4{font-size:14px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:14px;transition:color .2s}
+.footer-links a:hover{color:var(--teal-light)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:13px}
+.footer-credit{color:var(--teal-light);font-weight:500}
+.footer-credit a{text-decoration:underline}
+
+/* ── MOBILE NAV OVERLAY ── */
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(255,255,255,.98);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.nav-overlay.open{display:flex}
+.nav-overlay a{font-size:20px;font-weight:600;color:var(--gray-900)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;padding-top:100px}
+  .hero-text{max-width:100%;margin:0 auto}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}
+  .hero-visual{order:-1;margin-bottom:20px}
+  .hero-img-wrap{max-width:320px;aspect-ratio:3/4}
+  .hero-card{display:none}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:24px}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-accent{width:140px;height:140px;right:-10px;bottom:-10px}
+  .hours-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr;gap:32px}
+  .nav-links{display:none}
+  .nav-mobile-btn{display:block}
+}
+@media(max-width:600px){
+  .services-grid{grid-template-columns:1fr}
+  .about-features{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(28px,8vw,42px)}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="currentColor" stroke-width="2"/><path d="M12 14c0-3.3 2.7-6 6-6s6 2.7 6 6v2c0 1.1-.9 2-2 2h-2v6h-4v-6h-2c-1.1 0-2-.9-2-2v-2z" fill="currentColor" opacity=".2"/><rect x="15" y="18" width="6" height="8" rx="1" fill="currentColor" opacity=".6"/><circle cx="18" cy="12" r="3" fill="currentColor"/></svg>
+      Tandarts Knoll
+    </a>
+    <div class="nav-links">
+      <a href="#diensten" data-nl="Diensten" data-en="Services">Diensten</a>
+      <a href="#over-ons" data-nl="Over ons" data-en="About us">Over ons</a>
+      <a href="#openingstijden" data-nl="Tijden" data-en="Hours">Tijden</a>
+      <a href="#contact" data-nl="Contact" data-en="Contact">Contact</a>
+      <div class="nav-lang">
+        <button onclick="setLang('nl')" class="active" id="btn-nl">NL</button>
+        <button onclick="setLang('en')" id="btn-en">EN</button>
+      </div>
+      <a href="tel:0522460277" class="nav-cta-btn" data-nl="Bel ons" data-en="Call us">Bel ons</a>
+    </div>
+    <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="nav-overlay" id="mobileNav">
+  <a href="#diensten" onclick="closeMenu()" data-nl="Diensten" data-en="Services">Diensten</a>
+  <a href="#over-ons" onclick="closeMenu()" data-nl="Over ons" data-en="About us">Over ons</a>
+  <a href="#openingstijden" onclick="closeMenu()" data-nl="Tijden" data-en="Hours">Tijden</a>
+  <a href="#contact" onclick="closeMenu()" data-nl="Contact" data-en="Contact">Contact</a>
+  <div class="nav-lang" style="margin:0">
+    <button onclick="setLang('nl')" class="active" id="btn-nl-m">NL</button>
+    <button onclick="setLang('en')" id="btn-en-m">EN</button>
+  </div>
+  <a href="tel:0522460277" class="nav-cta-btn" data-nl="Bel ons" data-en="Call us">Bel ons</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-shapes">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2 5h5l-4 3.5 1.5 5L8 10.5 3.5 13.5 5 8.5 1 5h5z"/></svg>
+        <span data-nl="Persoonlijke zorg in Staphorst" data-en="Personal care in Staphorst">Persoonlijke zorg in Staphorst</span>
+      </div>
+      <h1>
+        <span data-nl="Uw glimlach," data-en="Your smile,">Uw glimlach,</span>
+        <span style="color:var(--gray-900)" data-nl="onze prioriteit." data-en="our priority.">onze prioriteit.</span>
+      </h1>
+      <p class="hero-sub" data-nl="Tandarts Knoll biedt persoonlijke tandheelkundige zorg voor het hele gezin. Met aandacht, rust en vakmanschap - al meer dan 15 jaar in het hart van Staphorst." data-en="Tandarts Knoll offers personal dental care for the whole family. With attention, calm and craftsmanship - for over 15 years in the heart of Staphorst.">Tandarts Knoll biedt persoonlijke tandheelkundige zorg voor het hele gezin. Met aandacht, rust en vakmanschap - al meer dan 15 jaar in het hart van Staphorst.</p>
+      <div class="hero-btns">
+        <a href="tel:0522460277" class="btn-primary" data-nl="Maak een afspraak" data-en="Make an appointment">Maak een afspraak</a>
+        <a href="#diensten" class="btn-outline" data-nl="Onze diensten" data-en="Our services">Onze diensten</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=750&fit=crop&crop=center" alt="Tandarts praktijk interieur" loading="eager">
+      </div>
+      <div class="hero-card card-1">
+        <div class="hero-card-icon green">
+          <svg viewBox="0 0 22 22" fill="none" stroke="#22c55e" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-text" data-nl="500+ patienten" data-en="500+ patients">500+ patienten</div>
+          <div class="hero-card-sub" data-nl="Tevreden gezinnen" data-en="Happy families">Tevreden gezinnen</div>
+        </div>
+      </div>
+      <div class="hero-card card-2">
+        <div class="hero-card-icon blue">
+          <svg viewBox="0 0 22 22" fill="none" stroke="#3b82f6" stroke-width="2"><circle cx="11" cy="11" r="9"/><path d="M11 7v4l3 3"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-text" data-nl="Korte wachttijden" data-en="Short wait times">Korte wachttijden</div>
+          <div class="hero-card-sub" data-nl="Op afspraak" data-en="By appointment">Op afspraak</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<section class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">15+</div>
+      <div class="stat-label" data-nl="Jaar ervaring" data-en="Years experience">Jaar ervaring</div>
+    </div>
+    <div>
+      <div class="stat-num">500+</div>
+      <div class="stat-label" data-nl="Patienten" data-en="Patients">Patienten</div>
+    </div>
+    <div>
+      <div class="stat-num">5.0</div>
+      <div class="stat-label" data-nl="Google beoordeling" data-en="Google rating">Google beoordeling</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label" data-nl="Persoonlijke zorg" data-en="Personal care">Persoonlijke zorg</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services" id="diensten">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge" data-nl="Onze diensten" data-en="Our services">Onze diensten</div>
+      <h2 class="section-title" data-nl="Volledige tandheelkundige zorg" data-en="Complete dental care">Volledige tandheelkundige zorg</h2>
+      <p class="section-sub" data-nl="Van preventieve controles tot cosmetische behandelingen - wij bieden alles onder een dak." data-en="From preventive checkups to cosmetic treatments - we offer everything under one roof.">Van preventieve controles tot cosmetische behandelingen - wij bieden alles onder een dak.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3c-3 0-5.5 2-6.5 5-.5 1.5-.5 3 0 5 1 3 3 6 6.5 12 3.5-6 5.5-9 6.5-12 .5-2 .5-3.5 0-5-1-3-3.5-5-6.5-5z"/><circle cx="14" cy="11" r="2.5"/></svg>
+        </div>
+        <h3 data-nl="Controle en preventie" data-en="Checkup and prevention">Controle en preventie</h3>
+        <p data-nl="Regelmatige controles en professionele gebitsreiniging om problemen te voorkomen." data-en="Regular checkups and professional teeth cleaning to prevent problems.">Regelmatige controles en professionele gebitsreiniging om problemen te voorkomen.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="8" width="20" height="12" rx="3"/><path d="M10 8V6a4 4 0 018 0v2"/><circle cx="14" cy="14" r="2"/></svg>
+        </div>
+        <h3 data-nl="Vullingen en kronen" data-en="Fillings and crowns">Vullingen en kronen</h3>
+        <p data-nl="Duurzame restauraties met moderne materialen die er natuurlijk uitzien." data-en="Durable restorations with modern materials that look natural.">Duurzame restauraties met moderne materialen die er natuurlijk uitzien.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3v22M7 8l7-5 7 5M7 20l7 5 7-5"/><circle cx="14" cy="14" r="3"/></svg>
+        </div>
+        <h3 data-nl="Wortelkanaalbehandeling" data-en="Root canal treatment">Wortelkanaalbehandeling</h3>
+        <p data-nl="Pijnvrije behandeling om uw eigen tand te behouden met moderne technieken." data-en="Pain-free treatment to preserve your own tooth with modern techniques.">Pijnvrije behandeling om uw eigen tand te behouden met moderne technieken.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 14h16M14 6v16"/><circle cx="14" cy="14" r="10"/></svg>
+        </div>
+        <h3 data-nl="Implantaten" data-en="Implants">Implantaten</h3>
+        <p data-nl="Vervanging van ontbrekende tanden met hoogwaardige implantaten voor een blijvend resultaat." data-en="Replacement of missing teeth with high-quality implants for a lasting result.">Vervanging van ontbrekende tanden met hoogwaardige implantaten voor een blijvend resultaat.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 14c0-5 4-9 9-9s9 4 9 9-4 9-9 9"/><path d="M14 9v5l3 3"/></svg>
+        </div>
+        <h3 data-nl="Cosmetische tandheelkunde" data-en="Cosmetic dentistry">Cosmetische tandheelkunde</h3>
+        <p data-nl="Tanden bleken, facings en esthetische behandelingen voor een stralende glimlach." data-en="Teeth whitening, veneers and aesthetic treatments for a radiant smile.">Tanden bleken, facings en esthetische behandelingen voor een stralende glimlach.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4C8 4 4 8 4 14s4 10 10 10c2 0 4-.5 5.5-1.5"/><path d="M17 10l4-4m0 0l4 4m-4-4v8"/></svg>
+        </div>
+        <h3 data-nl="Kindertandheelkunde" data-en="Pediatric dentistry">Kindertandheelkunde</h3>
+        <p data-nl="Speelse en angstvrije behandelingen speciaal afgestemd op kinderen." data-en="Playful and anxiety-free treatments specially tailored to children.">Speelse en angstvrije behandelingen speciaal afgestemd op kinderen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="over-ons">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">
+        <div class="about-img-main">
+          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=400&fit=crop" alt="Tandarts behandeling">
+        </div>
+        <div class="about-accent">
+          <div>
+            <div class="about-accent-num">15+</div>
+            <div class="about-accent-label" data-nl="Jaar" data-en="Years">Jaar</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-badge" data-nl="Over ons" data-en="About us">Over ons</div>
+        <h2 data-nl="Uw vertrouwde tandarts in Staphorst" data-en="Your trusted dentist in Staphorst">Uw vertrouwde tandarts in Staphorst</h2>
+        <p data-nl="Bij Tandarts Knoll geloven we dat goede tandzorg begint met vertrouwen. Als kleine praktijk in het hart van Staphorst kennen we onze patienten persoonlijk en nemen we de tijd voor elke behandeling." data-en="At Tandarts Knoll we believe that good dental care starts with trust. As a small practice in the heart of Staphorst, we know our patients personally and take time for every treatment.">Bij Tandarts Knoll geloven we dat goede tandzorg begint met vertrouwen. Als kleine praktijk in het hart van Staphorst kennen we onze patienten persoonlijk en nemen we de tijd voor elke behandeling.</p>
+        <p data-nl="Onze moderne apparatuur en continue bijscholing garanderen dat u de beste zorg ontvangt. Van jong tot oud - iedereen is welkom." data-en="Our modern equipment and continuous training guarantee that you receive the best care. From young to old - everyone is welcome.">Onze moderne apparatuur en continue bijscholing garanderen dat u de beste zorg ontvangt. Van jong tot oud - iedereen is welkom.</p>
+        <div class="about-features">
+          <div class="about-feat">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm-1 15l-5-5 1.4-1.4L9 12.2l5.6-5.6L16 8l-7 7z"/></svg>
+            <span data-nl="Moderne apparatuur" data-en="Modern equipment">Moderne apparatuur</span>
+          </div>
+          <div class="about-feat">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm-1 15l-5-5 1.4-1.4L9 12.2l5.6-5.6L16 8l-7 7z"/></svg>
+            <span data-nl="Pijnvrij werken" data-en="Pain-free work">Pijnvrij werken</span>
+          </div>
+          <div class="about-feat">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm-1 15l-5-5 1.4-1.4L9 12.2l5.6-5.6L16 8l-7 7z"/></svg>
+            <span data-nl="Alle verzekeringen" data-en="All insurances">Alle verzekeringen</span>
+          </div>
+          <div class="about-feat">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zm-1 15l-5-5 1.4-1.4L9 12.2l5.6-5.6L16 8l-7 7z"/></svg>
+            <span data-nl="Angstbegeleiding" data-en="Anxiety guidance">Angstbegeleiding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOURS ── -->
+<section class="hours" id="openingstijden">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge" data-nl="Openingstijden" data-en="Opening hours">Openingstijden</div>
+      <h2 class="section-title" data-nl="Wanneer kunt u bij ons terecht?" data-en="When can you visit us?">Wanneer kunt u bij ons terecht?</h2>
+      <p class="section-sub" data-nl="Wij ontvangen u graag op afspraak. Bel ons om een tijd te reserveren die u het beste uitkomt." data-en="We are happy to welcome you by appointment. Call us to reserve a time that suits you best.">Wij ontvangen u graag op afspraak. Bel ons om een tijd te reserveren die u het beste uitkomt.</p>
+    </div>
+    <div class="hours-grid">
+      <div class="hours-table">
+        <div class="hours-row">
+          <span class="hours-day" data-nl="Maandag" data-en="Monday">Maandag</span>
+          <span class="hours-time">08:00 - 17:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day" data-nl="Dinsdag" data-en="Tuesday">Dinsdag</span>
+          <span class="hours-time">08:00 - 17:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day" data-nl="Woensdag" data-en="Wednesday">Woensdag</span>
+          <span class="hours-time">08:00 - 13:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day" data-nl="Donderdag" data-en="Thursday">Donderdag</span>
+          <span class="hours-time">08:00 - 17:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day" data-nl="Vrijdag" data-en="Friday">Vrijdag</span>
+          <span class="hours-time">08:00 - 13:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day" data-nl="Zaterdag" data-en="Saturday">Zaterdag</span>
+          <span class="hours-closed" data-nl="Gesloten" data-en="Closed">Gesloten</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day" data-nl="Zondag" data-en="Sunday">Zondag</span>
+          <span class="hours-closed" data-nl="Gesloten" data-en="Closed">Gesloten</span>
+        </div>
+      </div>
+      <div class="hours-info">
+        <h3 data-nl="Spoed buiten openingstijden?" data-en="Emergency outside hours?">Spoed buiten openingstijden?</h3>
+        <p data-nl="Bij tandheelkundige spoed buiten onze openingstijden kunt u contact opnemen met de dienstdoende tandarts via het spoednummer." data-en="For dental emergencies outside our opening hours, you can contact the on-call dentist via the emergency number.">Bij tandheelkundige spoed buiten onze openingstijden kunt u contact opnemen met de dienstdoende tandarts via het spoednummer.</p>
+        <p data-nl="Wij doen ons best om u zo snel mogelijk te helpen en adviseren u altijd om bij klachten niet te lang te wachten." data-en="We do our best to help you as quickly as possible and always advise you not to wait too long with complaints.">Wij doen ons best om u zo snel mogelijk te helpen en adviseren u altijd om bij klachten niet te lang te wachten.</p>
+        <div class="hours-emergency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <div class="hours-emergency-text">
+            <strong data-nl="Spoedlijn tandarts" data-en="Emergency dental line">Spoedlijn tandarts</strong>
+            <span data-nl="Bel 0900-8602 voor spoedeisende tandheelkundige hulp" data-en="Call 0900-8602 for emergency dental care">Bel 0900-8602 voor spoedeisende tandheelkundige hulp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge" data-nl="Contact" data-en="Contact">Contact</div>
+      <h2 class="section-title" data-nl="Neem contact met ons op" data-en="Get in touch with us">Neem contact met ons op</h2>
+      <p class="section-sub" data-nl="Heeft u een vraag of wilt u een afspraak maken? Neem gerust contact met ons op." data-en="Do you have a question or would you like to make an appointment? Feel free to contact us.">Heeft u een vraag of wilt u een afspraak maken? Neem gerust contact met ons op.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 1C6.6 1 3 4.1 3 8c0 5.2 7 12.5 7.3 12.8a1 1 0 001.4 0C12 20.5 19 13.2 19 8c0-3.9-3.6-7-8-7z"/><circle cx="11" cy="8" r="2.5"/></svg>
+          </div>
+          <div>
+            <h4 data-nl="Adres" data-en="Address">Adres</h4>
+            <p>Staphorster Kerkweg 36<br>7951 JS Staphorst</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 15.5v2.5a2 2 0 01-2 2A17 17 0 012 4a2 2 0 012-2h2.5a1 1 0 011 .8l.8 3.2a1 1 0 01-.3 1L6.5 8.5a13 13 0 007 7l1.5-1.5a1 1 0 011-.3l3.2.8a1 1 0 01.8 1z"/></svg>
+          </div>
+          <div>
+            <h4 data-nl="Telefoon" data-en="Phone">Telefoon</h4>
+            <p><a href="tel:0522460277">0522 460 277</a></p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="18" height="14" rx="2"/><path d="M2 4l9 7 9-7"/></svg>
+          </div>
+          <div>
+            <h4>E-mail</h4>
+            <p><a href="mailto:info@tandartsknoll.nl">info@tandartsknoll.nl</a></p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="9"/><path d="M11 7v4l3 3"/></svg>
+          </div>
+          <div>
+            <h4 data-nl="Bereikbaarheid" data-en="Accessibility">Bereikbaarheid</h4>
+            <p data-nl="Gratis parkeren voor de deur. Drempelvrije toegang voor rolstoelgebruikers." data-en="Free parking at the door. Step-free access for wheelchair users.">Gratis parkeren voor de deur. Drempelvrije toegang voor rolstoelgebruikers.</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2400!2d6.2171569!3d52.6377338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c8734d38d835ed%3A0x6b0eacc46b1da2ea!2sTandarts%20Knoll!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Tandarts Knoll locatie op Google Maps"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="currentColor" stroke-width="2"/><path d="M12 14c0-3.3 2.7-6 6-6s6 2.7 6 6v2c0 1.1-.9 2-2 2h-2v6h-4v-6h-2c-1.1 0-2-.9-2-2v-2z" fill="currentColor" opacity=".2"/><rect x="15" y="18" width="6" height="8" rx="1" fill="currentColor" opacity=".6"/><circle cx="18" cy="12" r="3" fill="currentColor"/></svg>
+          Tandarts Knoll
+        </div>
+        <p class="footer-desc" data-nl="Persoonlijke tandheelkundige zorg voor het hele gezin in Staphorst. Al meer dan 15 jaar uw vertrouwde tandarts." data-en="Personal dental care for the whole family in Staphorst. Your trusted dentist for over 15 years.">Persoonlijke tandheelkundige zorg voor het hele gezin in Staphorst. Al meer dan 15 jaar uw vertrouwde tandarts.</p>
+      </div>
+      <div>
+        <h4 data-nl="Diensten" data-en="Services">Diensten</h4>
+        <ul class="footer-links">
+          <li><a href="#diensten" data-nl="Controle en preventie" data-en="Checkup and prevention">Controle en preventie</a></li>
+          <li><a href="#diensten" data-nl="Vullingen en kronen" data-en="Fillings and crowns">Vullingen en kronen</a></li>
+          <li><a href="#diensten" data-nl="Implantaten" data-en="Implants">Implantaten</a></li>
+          <li><a href="#diensten" data-nl="Cosmetische tandheelkunde" data-en="Cosmetic dentistry">Cosmetische tandheelkunde</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>Staphorster Kerkweg 36</li>
+          <li>7951 JS Staphorst</li>
+          <li><a href="tel:0522460277">0522 460 277</a></li>
+          <li><a href="mailto:info@tandartsknoll.nl">info@tandartsknoll.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Tandarts Knoll. <span data-nl="Alle rechten voorbehouden." data-en="All rights reserved.">Alle rechten voorbehouden.</span></span>
+      <span class="footer-credit" data-nl="Website door <a href='index.html'>WebKreatives</a>" data-en="Website by <a href='index.html'>WebKreatives</a>">Website door <a href="index.html">WebKreatives</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Language switcher ── */
+let lang='nl';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('[data-'+l+']').forEach(el=>{
+    const val=el.getAttribute('data-'+l);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=val;
+    else el.innerHTML=val;
+  });
+  document.querySelectorAll('.nav-lang button').forEach(b=>{
+    b.classList.toggle('active',b.textContent===l.toUpperCase());
+  });
+  document.documentElement.lang=l;
+}
+
+/* ── Nav scroll effect ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+/* ── Mobile menu ── */
+function toggleMenu(){
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileNav').classList.remove('open');
+}
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* ── Fade-in animation ── */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
+  });
+},{threshold:.15});
+document.querySelectorAll('.service-card,.contact-card,.about-grid,.stats-inner,.hours-grid').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
