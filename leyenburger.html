@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eethuis Leyenburger — Halal Döner, Pizza & Grill · Den Haag</title>
+<title>Eethuis Leyenburger - Halal Döner, Pizza & Grill · Den Haag</title>
 <meta name="description" content="Eethuis Leyenburger in Den Haag. Verse halal döner, Turkse pizza, kapsalon, wrap en grill. Elke dag open. Afhalen. Escamplaan 283, Leyenburg.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,9 +11,9 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#0c0b09;--smoke:#141210;--ash:#1f1d1a;--char:#2a2825;
-  --text:#f0ebe0;--muted:rgba(240,235,224,.5);--dim:rgba(240,235,224,.28);
-  --gold:#d4a843;--gold-dk:#b88830;--r:6px;
+ --ink:#0c0b09;--smoke:#141210;--ash:#1f1d1a;--char:#2a2825;
+ --text:#f0ebe0;--muted:rgba(240,235,224,.5);--dim:rgba(240,235,224,.28);
+ --gold:#d4a843;--gold-dk:#b88830;--r:6px;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Poppins',system-ui,sans-serif;background:var(--ink);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
@@ -26,13 +26,13 @@ nav.scrolled{background:rgba(12,11,9,.94);backdrop-filter:blur(16px);border-colo
 .nav-logo{font-size:18px;font-weight:800;color:var(--text);letter-spacing:-.5px;display:flex;align-items:center;gap:4px}
 .nav-logo .dot{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:18px}
-.nav-link{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-link{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s;min-width:48px;text-align:center}
 .nav-link:hover{color:var(--text)}
 .lang-sw{display:flex;align-items:center;border:1px solid rgba(255,255,255,.15);border-radius:4px;overflow:hidden}
 .lang-btn{padding:5px 10px;font-size:11px;font-weight:700;letter-spacing:.5px;background:transparent;color:var(--muted);border:none;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
 .lang-btn.active{background:var(--gold);color:var(--ink)}
 .lang-btn:not(.active):hover{color:var(--text)}
-.nav-cta{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink);background:var(--gold);padding:9px 20px;border-radius:4px;transition:background .2s,transform .15s}
+.nav-cta{display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink);background:var(--gold);padding:9px 20px;border-radius:4px;transition:background .2s,transform .15s;min-width:110px}
 .nav-cta:hover{background:var(--gold-dk);transform:translateY(-1px)}
 .nav-cta svg{width:14px;height:14px;flex-shrink:0}
 
@@ -49,10 +49,10 @@ nav.scrolled{background:rgba(12,11,9,.94);backdrop-filter:blur(16px);border-colo
 .hero h1 .accent{color:var(--gold)}
 .hero-sub{margin-top:28px;font-size:clamp(14px,1.6vw,17px);color:var(--muted);max-width:460px;margin-left:auto;margin-right:auto;font-weight:300;line-height:1.75}
 .hero-btns{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;padding:14px 30px;border-radius:4px;cursor:pointer;border:none;transition:all .2s;letter-spacing:.2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;padding:14px 30px;border-radius:4px;cursor:pointer;border:none;transition:all .2s;letter-spacing:.2px;min-width:200px;text-align:center}
 .btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:var(--gold-dk);transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--text);border:1.5px solid rgba(255,255,255,.2)}.btn-outline:hover{border-color:rgba(255,255,255,.5)}
-.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--dim);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.hero-scroll{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:199;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--dim);font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:opacity .3s}
 .hero-scroll .sline{width:1px;height:36px;background:var(--dim);animation:spulse 2s ease-in-out infinite}
 @keyframes spulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.6)}}
 
@@ -77,7 +77,7 @@ nav.scrolled{background:rgba(12,11,9,.94);backdrop-filter:blur(16px);border-colo
 .split-photo:hover img{transform:scale(1.05)}
 .split-photo-tag{position:absolute;bottom:22px;left:22px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);background:rgba(0,0,0,.55);padding:6px 14px;border-radius:2px;backdrop-filter:blur(4px)}
 .split-body{background:var(--smoke);display:flex;flex-direction:column;justify-content:center;padding:70px 56px}
-.split-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,168,67,.4);padding:5px 14px;border-radius:2px;margin-bottom:26px;width:fit-content}
+.split-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,168,67,.4);padding:5px 14px;border-radius:2px;margin-bottom:26px;min-width:110px;text-align:center}
 .split-body h2{font-size:clamp(34px,4vw,50px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin-bottom:18px}
 .split-body p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px;font-weight:300}
 .price-big{font-size:40px;font-weight:900;color:var(--gold);letter-spacing:-2px;line-height:1}
@@ -238,17 +238,19 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
     </div>
     <div class="hero-name-label">Eethuis</div>
     <h1>LEYEN<span class="accent">BURGER</span></h1>
-    <p class="hero-sub" data-nl="Verse halal döner, Turkse pizza, kapsalon en grill. Elke dag vers bereid — puur, eerlijk en vol smaak." data-en="Fresh halal döner, Turkish pizza, kapsalon and grill. Prepared fresh every day — pure, honest and full of flavour.">Verse halal döner, Turkse pizza, kapsalon en grill. Elke dag vers bereid — puur, eerlijk en vol smaak.</p>
+    <p class="hero-sub" data-nl="Verse halal döner, Turkse pizza, kapsalon en grill. Elke dag vers bereid - puur, eerlijk en vol smaak." data-en="Fresh halal döner, Turkish pizza, kapsalon and grill. Prepared fresh every day - pure, honest and full of flavour.">Verse halal döner, Turkse pizza, kapsalon en grill. Elke dag vers bereid - puur, eerlijk en vol smaak.</p>
     <div class="hero-btns">
       <a href="#menu" class="btn btn-gold" data-nl="Bekijk ons menu →" data-en="See our menu →">Bekijk ons menu →</a>
       <a href="#info" class="btn btn-outline" data-nl="Openingstijden" data-en="Opening hours">Openingstijden</a>
     </div>
   </div>
-  <div class="hero-scroll" aria-hidden="true">
-    <div class="sline"></div>
-    <span data-nl="scroll" data-en="scroll">scroll</span>
-  </div>
 </section>
+
+<!-- SCROLL INDICATOR (fixed) -->
+<div class="hero-scroll" aria-hidden="true">
+  <div class="sline"></div>
+  <span data-nl="scroll" data-en="scroll">scroll</span>
+</div>
 
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
@@ -256,16 +258,16 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
     <span class="ticker-item" data-nl="100% Halal gecertificeerd" data-en="100% Halal certified">100% Halal gecertificeerd</span>
     <span class="ticker-item" data-nl="Escamplaan 283 · Den Haag" data-en="Escamplaan 283 · The Hague">Escamplaan 283 · Den Haag</span>
     <span class="ticker-item" data-nl="Elke dag open van 10:00" data-en="Open every day from 10:00">Elke dag open van 10:00</span>
-    <span class="ticker-item" data-nl="Vers gehakt — elke dag" data-en="Fresh minced — every day">Vers gehakt — elke dag</span>
+    <span class="ticker-item" data-nl="Vers gehakt - elke dag" data-en="Fresh minced - every day">Vers gehakt - elke dag</span>
     <span class="ticker-item" data-nl="Döner · Turkse Pizza · Kapsalon" data-en="Döner · Turkish Pizza · Kapsalon">Döner · Turkse Pizza · Kapsalon</span>
-    <span class="ticker-item" data-nl="Afhalen — Tram 4 &amp; 6" data-en="Takeaway — Tram 4 &amp; 6">Afhalen — Tram 4 &amp; 6</span>
+    <span class="ticker-item" data-nl="Afhalen - Tram 4 &amp; 6" data-en="Takeaway - Tram 4 &amp; 6">Afhalen - Tram 4 &amp; 6</span>
     <span class="ticker-item">070 205 0003</span>
     <span class="ticker-item" data-nl="100% Halal gecertificeerd" data-en="100% Halal certified">100% Halal gecertificeerd</span>
     <span class="ticker-item" data-nl="Escamplaan 283 · Den Haag" data-en="Escamplaan 283 · The Hague">Escamplaan 283 · Den Haag</span>
     <span class="ticker-item" data-nl="Elke dag open van 10:00" data-en="Open every day from 10:00">Elke dag open van 10:00</span>
-    <span class="ticker-item" data-nl="Vers gehakt — elke dag" data-en="Fresh minced — every day">Vers gehakt — elke dag</span>
+    <span class="ticker-item" data-nl="Vers gehakt - elke dag" data-en="Fresh minced - every day">Vers gehakt - elke dag</span>
     <span class="ticker-item" data-nl="Döner · Turkse Pizza · Kapsalon" data-en="Döner · Turkish Pizza · Kapsalon">Döner · Turkse Pizza · Kapsalon</span>
-    <span class="ticker-item" data-nl="Afhalen — Tram 4 &amp; 6" data-en="Takeaway — Tram 4 &amp; 6">Afhalen — Tram 4 &amp; 6</span>
+    <span class="ticker-item" data-nl="Afhalen - Tram 4 &amp; 6" data-en="Takeaway - Tram 4 &amp; 6">Afhalen - Tram 4 &amp; 6</span>
     <span class="ticker-item">070 205 0003</span>
   </div>
 </div>
@@ -275,7 +277,7 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
 <!-- KAPSALON SHOWCASE -->
 <div class="split">
   <div class="split-photo">
-    <img src="https://images.unsplash.com/photo-1639744210631-209fce3e256c?auto=format&fit=crop&w=900&q=85" alt="Kapsalon — Eethuis Leyenburger Den Haag" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1639744210631-209fce3e256c?auto=format&fit=crop&w=900&q=85" alt="Kapsalon - Eethuis Leyenburger Den Haag" loading="lazy">
     <span class="split-photo-tag" data-nl="Onze Specialiteit" data-en="Our Specialty">Onze Specialiteit</span>
   </div>
   <div class="split-body rv">
@@ -299,7 +301,7 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
 
   <div class="im-grid">
 
-    <!-- ★ 1 · KAPSALON — highlighted -->
+    <!-- ★ 1 · KAPSALON - highlighted -->
     <div class="im-card im-star rv">
       <div class="im-photo">
         <span class="im-star-tag" data-nl="★ Populair" data-en="★ Popular">★ Populair</span>
@@ -317,7 +319,7 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
       </div>
     </div>
 
-    <!-- ★ 2 · TURKSE PIZZA — highlighted -->
+    <!-- ★ 2 · TURKSE PIZZA - highlighted -->
     <div class="im-card im-star rv d1">
       <div class="im-photo">
         <span class="im-star-tag" data-nl="★ Populair" data-en="★ Popular">★ Populair</span>
@@ -338,7 +340,7 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
       </div>
     </div>
 
-    <!-- ★ 3 · PATAT — highlighted -->
+    <!-- ★ 3 · PATAT - highlighted -->
     <div class="im-card im-star rv d2">
       <div class="im-photo">
         <span class="im-star-tag" data-nl="★ Populair" data-en="★ Popular">★ Populair</span>
@@ -460,7 +462,7 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
   <div class="gal-header rv">
     <div class="sec-label" data-nl="Bij Leyenburger" data-en="At Leyenburger">Bij Leyenburger</div>
     <h2 class="sec-title" data-nl="Ons Team &amp; Zaak" data-en="Our Team &amp; Place">Ons Team &amp; Zaak</h2>
-    <p class="sec-sub" data-nl="Een kijkje in onze keuken en zaak — dagelijks vers, altijd met smaak." data-en="A peek inside our kitchen and place — fresh every day, always with flavour.">Een kijkje in onze keuken en zaak — dagelijks vers, altijd met smaak.</p>
+    <p class="sec-sub" data-nl="Een kijkje in onze keuken en zaak - dagelijks vers, altijd met smaak." data-en="A peek inside our kitchen and place - fresh every day, always with flavour.">Een kijkje in onze keuken en zaak - dagelijks vers, altijd met smaak.</p>
   </div>
   <div class="gal-wrap rv d1">
     <button class="gal-arrow gal-prev" onclick="galSlide(-1)" aria-label="Vorige">&#8249;</button>
@@ -484,7 +486,7 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
 <!-- ABOUT -->
 <div class="about-split">
   <div class="about-photo">
-    <img src="https://images.unsplash.com/photo-1526234362653-3b75a0c07438?auto=format&fit=crop&w=900&q=85" alt="Eethuis Leyenburger — Winkelcentrum Leyenburg Den Haag" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1526234362653-3b75a0c07438?auto=format&fit=crop&w=900&q=85" alt="Eethuis Leyenburger - Winkelcentrum Leyenburg Den Haag" loading="lazy">
   </div>
   <div class="about-body rv">
     <div class="sec-label" data-nl="Over Ons" data-en="About Us">Over Ons</div>
@@ -557,7 +559,7 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
   <div class="map-address-big">Escamplaan 283</div>
   <div class="map-address-city" data-nl="2547 EA · Den Haag" data-en="2547 EA · The Hague">2547 EA · Den Haag</div>
   <div class="map-embed">
-    <iframe src="https://maps.google.com/maps?q=Eethuis+Leyenburger+Escamplaan+283+Den+Haag&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Eethuis Leyenburger — Escamplaan 283, Den Haag" allowfullscreen></iframe>
+    <iframe src="https://maps.google.com/maps?q=Eethuis+Leyenburger+Escamplaan+283+Den+Haag&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Eethuis Leyenburger - Escamplaan 283, Den Haag" allowfullscreen></iframe>
   </div>
   <a href="https://maps.google.com/?q=Eethuis+Leyenburger+Den+Haag" target="_blank" class="btn btn-gold" data-nl="Open in Google Maps →" data-en="Open in Google Maps →">Open in Google Maps →</a>
 </section>
@@ -584,8 +586,8 @@ footer{background:var(--ink);padding:44px 5%;border-top:1px solid rgba(255,255,2
 <script>
 /* ── GALLERY ── */
 var GAL_CAPTIONS = {
-  nl: ['Ons team aan het werk', 'Verse döner van het spit', 'Afhaal bestelling — altijd vers'],
-  en: ['Our team at work', 'Fresh döner from the spit', 'Takeaway order — always fresh']
+  nl: ['Ons team aan het werk', 'Verse döner van het spit', 'Afhaal bestelling - altijd vers'],
+  en: ['Our team at work', 'Fresh döner from the spit', 'Takeaway order - always fresh']
 };
 var galIdx = 0, GAL_COUNT = 3;
 
@@ -613,8 +615,8 @@ function setLang(lang) {
     if (val.indexOf('<') !== -1) { el.innerHTML = val; } else { el.textContent = val; }
   });
   document.title = lang === 'nl'
-    ? 'Eethuis Leyenburger — Halal Döner, Pizza & Grill · Den Haag'
-    : 'Eethuis Leyenburger — Halal Döner, Pizza & Grill · The Hague';
+    ? 'Eethuis Leyenburger - Halal Döner, Pizza & Grill · Den Haag'
+    : 'Eethuis Leyenburger - Halal Döner, Pizza & Grill · The Hague';
   updateTodayHighlight();
   document.getElementById('galCaption').textContent = GAL_CAPTIONS[lang][galIdx];
   localStorage.setItem('leyen-lang', lang);
