@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,11 +26,28 @@
     </svg>
   </a>
   <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#work">Work</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#testimonials">Reviews</a>
-    <a href="#contact" class="btn-nav">Get a Quote</a>
+    <a href="#services" data-i18n="nav.services">Diensten</a>
+    <a href="#work" data-i18n="nav.work">Portfolio</a>
+    <a href="#pricing" data-i18n="nav.pricing">Prijzen</a>
+    <a href="#testimonials" data-i18n="nav.reviews">Reviews</a>
+    <a href="#contact" class="btn-nav" data-i18n="nav.cta">Offerte Aanvragen</a>
+  </div>
+  <div class="nav-controls">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-btn" id="langBtn">
+        <span class="lang-flag"><svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg></span>
+        <span class="lang-name">NL</span>
+        <span class="lang-arrow">▾</span>
+      </button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-option active" data-lang="nl"><span class="lang-flag"><svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg></span> Nederlands</button>
+        <button class="lang-option" data-lang="en"><span class="lang-flag"><svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg></span> English</button>
+      </div>
+    </div>
   </div>
   <button class="hamburger" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -40,12 +57,12 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-glow"></div>
-  <span class="badge">Web Design Agency — Netherlands</span>
-  <h1><span style="white-space:nowrap">Websites That <em>Win</em></span><br>Clients for You</h1>
-  <p>We design and build stunning, high-converting websites for small businesses using Webflow. Fast to launch, easy to manage, built to grow.</p>
+  <span class="badge" data-i18n="hero.badge">Webdesign Bureau — Nederland</span>
+  <h1><span style="white-space:nowrap" data-i18n="hero.h1.pre">Websites Die </span><em>Winnen</em><br><span data-i18n="hero.h1.post">Klanten Opleveren</span></h1>
+  <p data-i18n="hero.p">Wij ontwerpen en bouwen mooie, converterende websites voor kleine bedrijven met Webflow. Snel live, makkelijk te beheren, gebouwd om te groeien.</p>
   <div class="hero-btns">
-    <a href="#contact" class="btn btn-primary">Start Your Project →</a>
-    <a href="#work" class="btn btn-ghost">View Our Work</a>
+    <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Start Je Project →</a>
+    <a href="#work" class="btn btn-ghost" data-i18n="hero.cta2">Bekijk Ons Werk</a>
   </div>
   <div class="mockup-wrap">
     <div class="mockup-bar">
@@ -94,7 +111,7 @@
 
 <!-- TRUST -->
 <div class="trust">
-  <p>Trusted by small businesses across the Netherlands</p>
+  <p data-i18n="trust.p">Vertrouwd door kleine bedrijven in heel Nederland</p>
   <div class="trust-row">
     <span>Bakkerij Jansen</span>
     <span>Studio Bloom</span>
@@ -108,27 +125,27 @@
 <!-- STATS -->
 <div class="stats">
   <div class="stats-grid">
-    <div><span class="sn">5+</span><p class="sl">Websites Launched</p></div>
-    <div><span class="sn">1–2</span><p class="sl">Weeks to Go Live</p></div>
-    <div><span class="sn">100%</span><p class="sl">Client Satisfaction</p></div>
-    <div><span class="sn">5★</span><p class="sl">Average Rating</p></div>
+    <div><span class="sn">5+</span><p class="sl" data-i18n="stat.1">Websites Live</p></div>
+    <div><span class="sn">1–2</span><p class="sl" data-i18n="stat.2">Weken Online</p></div>
+    <div><span class="sn">100%</span><p class="sl" data-i18n="stat.3">Klanttevredenheid</p></div>
+    <div><span class="sn">5★</span><p class="sl" data-i18n="stat.4">Gem. Beoordeling</p></div>
   </div>
 </div>
 
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="sh">
-    <span class="label">Services</span>
-    <h2 class="st">Everything You Need<br>to Succeed Online</h2>
-    <p class="sub">From first impression to final conversion — we cover the full picture.</p>
+    <span class="label" data-i18n="svc.label">Diensten</span>
+    <h2 class="st" data-i18n-html="svc.title">Alles Wat Je Nodig Hebt<br>om Online te Slagen</h2>
+    <p class="sub" data-i18n="svc.sub">Van eerste indruk tot conversie — wij dekken het volledige plaatje.</p>
   </div>
   <div class="svc-grid">
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Website Design</h3><p>Custom-designed websites built on Webflow. Beautiful, fast, mobile-perfect, and easy for you to update without a developer.</p></div>
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3>eCommerce Shops</h3><p>Sell online with confidence. We build clean, conversion-optimized shops that make buying easy for your customers.</p></div>
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3>SEO &amp; Performance</h3><p>Get found on Google. We optimize every site for speed, accessibility, and search rankings so the right customers find you.</p></div>
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1" fill="currentColor" stroke="none"/><circle cx="17.5" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="8.5" cy="7.5" r="1" fill="currentColor" stroke="none"/><circle cx="6.5" cy="12.5" r="1" fill="currentColor" stroke="none"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div><h3>Brand &amp; Identity</h3><p>Logo, color palette, typography — we create a cohesive visual identity that makes your business look professional.</p></div>
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div><h3>Ongoing Support</h3><p>We don't disappear after launch. Monthly care plans keep your site secure, updated, and performing at its best.</p></div>
-    <div class="svc dark"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>Fast Turnaround</h3><p style="color:#555">Most projects delivered in 1–2 weeks. We move fast without cutting corners, so you can start growing sooner.</p></div>
+    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3 data-i18n="svc.1.h">Website Design</h3><p data-i18n="svc.1.p">Op maat gemaakte websites gebouwd in Webflow. Mooi, snel, perfect op mobiel en makkelijk zelf aan te passen.</p></div>
+    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3 data-i18n="svc.2.h">Webshops</h3><p data-i18n="svc.2.p">Verkoop online met vertrouwen. Wij bouwen overzichtelijke, conversie-geoptimaliseerde shops die het kopen makkelijk maken.</p></div>
+    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3 data-i18n="svc.3.h">SEO &amp; Prestaties</h3><p data-i18n="svc.3.p">Word gevonden op Google. Wij optimaliseren elke site voor snelheid, toegankelijkheid en zoekresultaten.</p></div>
+    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1" fill="currentColor" stroke="none"/><circle cx="17.5" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="8.5" cy="7.5" r="1" fill="currentColor" stroke="none"/><circle cx="6.5" cy="12.5" r="1" fill="currentColor" stroke="none"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div><h3 data-i18n="svc.4.h">Branding &amp; Identiteit</h3><p data-i18n="svc.4.p">Logo, kleurenpalet, typografie — wij creëren een samenhangende visuele identiteit die je bedrijf professioneel maakt.</p></div>
+    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div><h3 data-i18n="svc.5.h">Doorlopende Support</h3><p data-i18n="svc.5.p">Wij verdwijnen niet na de lancering. Maandelijkse zorgplannen houden je site veilig, up-to-date en op z'n best.</p></div>
+    <div class="svc dark"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3 data-i18n="svc.6.h">Snelle Oplevering</h3><p data-i18n="svc.6.p" style="color:#555">De meeste projecten binnen 1–2 weken opgeleverd. Wij werken snel zonder concessies te doen.</p></div>
   </div>
 </section>
 
@@ -136,15 +153,15 @@
 <section class="why" id="why-us">
   <div class="why-in">
     <div class="why-l">
-      <span class="label">Why WebKreatives</span>
-      <h2 class="st lt">Built for Small<br>Businesses,<br>Not Big Budgets</h2>
-      <p>Simple, transparent, and results-focused — we know small businesses don't have time or money to waste.</p>
+      <span class="label" data-i18n="why.label">Waarom WebKreatives</span>
+      <h2 class="st lt" data-i18n-html="why.title">Gemaakt voor Kleine<br>Bedrijven,<br>Niet Grote Budgetten</h2>
+      <p data-i18n="why.p">Simpel, transparant en resultaatgericht — wij weten dat kleine bedrijven geen tijd of geld te verspillen hebben.</p>
     </div>
     <div class="checks">
-      <div class="ck"><div class="ck-dot">✓</div><div><h4>Fixed Pricing, No Surprises</h4><p>You know exactly what you pay before we start. No hidden fees, no scope creep, ever.</p></div></div>
-      <div class="ck"><div class="ck-dot">✓</div><div><h4>You Own Everything</h4><p>Your site, your domain, your content. We hand it all over and teach you how to manage it.</p></div></div>
-      <div class="ck"><div class="ck-dot">✓</div><div><h4>Live in 1–2 Weeks</h4><p>Most websites are fully designed, built, and launched within two weeks. We move fast.</p></div></div>
-      <div class="ck"><div class="ck-dot">✓</div><div><h4>Webflow Certified</h4><p>We build on Webflow — the most powerful platform for professional, editable websites.</p></div></div>
+      <div class="ck"><div class="ck-dot">✓</div><div><h4 data-i18n="why.1.h">Vaste Prijzen, Geen Verrassingen</h4><p data-i18n="why.1.p">Je weet precies wat je betaalt voordat we beginnen. Geen verborgen kosten, nooit.</p></div></div>
+      <div class="ck"><div class="ck-dot">✓</div><div><h4 data-i18n="why.2.h">Alles Is Van Jou</h4><p data-i18n="why.2.p">Jouw site, jouw domein, jouw content. Wij dragen alles over en leren je hoe je het beheert.</p></div></div>
+      <div class="ck"><div class="ck-dot">✓</div><div><h4 data-i18n="why.3.h">Live in 1–2 Weken</h4><p data-i18n="why.3.p">De meeste websites zijn binnen twee weken ontworpen, gebouwd en gelanceerd. Wij werken snel.</p></div></div>
+      <div class="ck"><div class="ck-dot">✓</div><div><h4 data-i18n="why.4.h">Webflow Gecertificeerd</h4><p data-i18n="why.4.p">Wij bouwen op Webflow — het krachtigste platform voor professionele, bewerkbare websites.</p></div></div>
     </div>
   </div>
 </section>
@@ -152,20 +169,20 @@
 <!-- WORK -->
 <section class="work" id="work">
   <div class="sh">
-    <span class="label">Our Work</span>
-    <h2 class="st">Projects We're Proud Of</h2>
-    <p class="sub">Every site is custom-crafted for the brand, goals, and customers of that specific business.</p>
+    <span class="label" data-i18n="work.label">Ons Werk</span>
+    <h2 class="st" data-i18n="work.title">Projecten Waar We Trots Op Zijn</h2>
+    <p class="sub" data-i18n="work.sub">Elke site is op maat gemaakt voor het merk, de doelen en de klanten van dat specifieke bedrijf.</p>
   </div>
   <div class="work-grid">
     <a class="wcard" href="leyenburger.html" target="_blank">
       <div class="wthumb">
-        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=760&q=80" alt="Eethuis Leyenburger — Halal Burgers Den Haag" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1596995804697-27d11d43652e?auto=format&fit=crop&w=760&q=80" alt="Eethuis Leyenburger — Halal Burgers Den Haag" loading="lazy">
         <span class="wtag" style="background:rgba(12,11,9,.85)">Den Haag · Halal Grill</span>
       </div>
       <div class="wbody">
         <h3>Eethuis Leyenburger</h3>
-        <p>Dark, editorial one-pager for a halal burger & grill restaurant in Den Haag. Menu, hours, location — live in 5 days.</p>
-        <span class="wlink">View project →</span>
+        <p data-i18n="work.1.p">Donkere, redactionele one-pager voor een halal burger & grill restaurant in Den Haag. Menu, openingstijden, locatie — in 5 dagen live.</p>
+        <span class="wlink" data-i18n="work.view">Bekijk project →</span>
       </div>
     </a>
     <a class="wcard" href="tandarts-knoll.html" target="_blank">
@@ -175,8 +192,8 @@
       </div>
       <div class="wbody">
         <h3>Tandarts Knoll</h3>
-        <p>Clean, modern one-pager for a dental practice in Staphorst. Services, hours, contact & map — bilingual NL/EN with smooth animations.</p>
-        <span class="wlink">View project →</span>
+        <p data-i18n="work.2.p">Strakke, moderne one-pager voor een tandartspraktijk in Staphorst. Diensten, tijden, contact & kaart — tweetalig NL/EN.</p>
+        <span class="wlink" data-i18n="work.view">Bekijk project →</span>
       </div>
     </a>
     <a class="wcard" href="klussenbedrijf-edward.html" target="_blank">
@@ -186,19 +203,19 @@
       </div>
       <div class="wbody">
         <h3>Klussenbedrijf Edward</h3>
-        <p>Bold, industrial one-pager for a handyman in Deventer. Services, projects gallery, contact & map — bilingual NL/EN with scroll animations.</p>
-        <span class="wlink">View project →</span>
+        <p data-i18n="work.3.p">Stoere, industriële one-pager voor een klusjesman in Deventer. Diensten, projectgalerij, contact & kaart — tweetalig NL/EN.</p>
+        <span class="wlink" data-i18n="work.view">Bekijk project →</span>
       </div>
     </a>
   </div>
-  <div class="work-cta"><a href="#contact" class="btn btn-primary">Start Your Own Project →</a></div>
+  <div class="work-cta"><a href="#contact" class="btn btn-primary" data-i18n="work.cta">Start Je Eigen Project →</a></div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section class="testi" id="testimonials">
   <div class="sh">
-    <span class="label">Testimonials</span>
-    <h2 class="st">What Our Clients Say</h2>
+    <span class="label" data-i18n="testi.label">Referenties</span>
+    <h2 class="st" data-i18n="testi.title">Wat Onze Klanten Zeggen</h2>
   </div>
   <div class="tgrid">
     <div class="tcard">
@@ -222,34 +239,42 @@
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="sh">
-    <span class="label">FAQ</span>
-    <h2 class="st">Common Questions</h2>
-    <p class="sub">Everything you need to know before starting your project.</p>
+    <span class="label" data-i18n="faq.label">FAQ</span>
+    <h2 class="st" data-i18n="faq.title">Veelgestelde Vragen</h2>
+    <p class="sub" data-i18n="faq.sub">Alles wat je moet weten voordat je aan je project begint.</p>
   </div>
   <div class="faq-list">
     <div class="faq-item">
-      <button class="faq-q">How long does it take to build my website?</button>
-      <div class="faq-a"><p>Most projects are completed in 1–2 weeks depending on the package. The Starter package is typically done within 5 days, while larger Growth projects can take up to 2 weeks. We'll agree on a clear timeline before we start.</p></div>
+      <button class="faq-q" data-i18n="faq.1.q">Hoe lang duurt het om mijn website te bouwen?</button>
+      <div class="faq-a"><p data-i18n="faq.1.a">Het hangt af van je pakket. Het Starter-pakket (€199) is binnen 5 dagen klaar, het Business-pakket (€299) binnen 1 week, en het Growth-pakket (€599) binnen 2–3 weken. We houden je tijdens het hele proces op de hoogte.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Do I need to know how to code?</button>
-      <div class="faq-a"><p>Not at all. We build on Webflow, which gives you a simple visual editor to update text, images, and content yourself — no code required. We also provide a short walkthrough after launch so you're never lost.</p></div>
+      <button class="faq-q" data-i18n="faq.2.q">Wat is het verschil tussen de drie pakketten?</button>
+      <div class="faq-a"><p data-i18n="faq.2.a">Starter (€199) is een eenvoudige one-pager zonder contactformulier — ideaal als visitekaartje. Business (€299) bevat een werkend contactformulier en volledige SEO — onze meest gekozen optie. Growth (€599) biedt tot 3 pagina's, CMS/blog, geavanceerde SEO en analytics.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">What is Webflow and why do you use it?</button>
-      <div class="faq-a"><p>Webflow is a professional website platform that combines custom design with a visual editor. It's faster to build on, more flexible than WordPress, and gives you full ownership with no plugin vulnerabilities or maintenance headaches.</p></div>
+      <button class="faq-q" data-i18n="faq.3.q">Wat zijn de maandplannen en heb ik die nodig?</button>
+      <div class="faq-a"><p data-i18n="faq.3.a">Na de lancering kun je kiezen voor een maandplan: Basis (€19/ma) voor hosting, domein, backups en beveiliging. Groei (€39/ma) voegt content updates, formulierbeheer en SEO monitoring toe. Premium (€79/ma) biedt 2 uur designwerk, Google Bedrijfsprofiel beheer en een kwartaal strategiegesprek. Ze zijn optioneel, maar helpen je site veilig en up-to-date te houden.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Can I make changes to the site after launch?</button>
-      <div class="faq-a"><p>Yes — you'll own the site and can log into Webflow to edit text and images yourself anytime. For larger changes or new features, we offer monthly care plans and hourly support packages.</p></div>
+      <button class="faq-q" data-i18n="faq.4.q">Kan ik de site zelf aanpassen na de lancering?</button>
+      <div class="faq-a"><p data-i18n="faq.4.a">Ja — je bent eigenaar van de site en kunt inloggen bij Webflow om tekst en afbeeldingen zelf aan te passen. Geen code nodig. Voor grotere wijzigingen of doorlopend onderhoud kun je een van onze maandplannen kiezen.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Do you work with businesses outside the Netherlands?</button>
-      <div class="faq-a"><p>Absolutely. While we're based in Amsterdam, we work remotely with clients across Europe. All communication is via video call, email, and shared project tools — it's seamless.</p></div>
+      <button class="faq-q" data-i18n="faq.5.q">Kan ik ook een boekingssysteem of formulieren op mijn site krijgen?</button>
+      <div class="faq-a"><p data-i18n="faq.5.a">Zeker. Contactformulieren zitten standaard in het Business- en Growth-pakket. Voor online boekingen integreren we tools zoals Calendly, Cal.com of SimplyBook — afhankelijk van je branche. Dit kan als onderdeel van je pakket of als losse toevoeging.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">What do I need to provide to get started?</button>
-      <div class="faq-a"><p>Just your logo (if you have one), brand colors, any photos you want to use, and a rough idea of what you need. We guide you through the rest with a clear onboarding checklist and kickoff call.</p></div>
+      <button class="faq-q" data-i18n="faq.6.q">Wat is Webflow en waarom gebruiken jullie het?</button>
+      <div class="faq-a"><p data-i18n="faq.6.a">Webflow is een professioneel websiteplatform dat custom design combineert met een visuele editor. Het is sneller en flexibeler dan WordPress, je site is volledig van jou, en je kunt alles zelf aanpassen zonder te programmeren.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-i18n="faq.7.q">Werken jullie ook met bedrijven buiten Nederland?</button>
+      <div class="faq-a"><p data-i18n="faq.7.a">Absoluut. We werken op afstand met klanten door heel Europa. Alle communicatie gaat via videobellen, e-mail en gedeelde projecttools.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-i18n="faq.8.q">Wat moet ik aanleveren om te beginnen?</button>
+      <div class="faq-a"><p data-i18n="faq.8.a">Alleen je logo (als je er een hebt), merkkleuren, eventuele foto's en een globaal idee van wat je nodig hebt. Wij begeleiden je door de rest — van ontwerp tot lancering.</p></div>
     </div>
   </div>
 </section>
@@ -257,32 +282,90 @@
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="sh">
-    <span class="label">Pricing</span>
-    <h2 class="st">Simple, Transparent Pricing</h2>
-    <p class="sub">No hidden fees. No surprises. Pick the package that fits your business.</p>
+    <span class="label" data-i18n="price.label">Prijzen</span>
+    <h2 class="st" data-i18n="price.title">Simpele, Transparante Prijzen</h2>
+    <p class="sub" data-i18n="price.sub">Geen verborgen kosten. Geen verrassingen. Kies het pakket dat bij je past.</p>
   </div>
   <div class="pgrid">
     <div class="pcard">
       <span class="ptier">Starter</span>
       <div class="pprice">€199</div>
-      <span class="pper">One-time payment</span>
-      <ul class="pfs"><li>1-page landing site</li><li>Mobile responsive</li><li>No contact form</li><li>Basic SEO setup</li><li>2 revision rounds</li><li>Delivered in 5 days</li></ul>
-      <a href="#contact" class="pbtn pb-dk">Get Started</a>
+      <span class="pper" data-i18n="price.once">Eenmalige betaling</span>
+      <ul class="pfs"><li data-i18n="price.s1">1 pagina landingssite</li><li data-i18n="price.s2">Mobiel responsive</li><li data-i18n="price.s3">Geen contactformulier</li><li data-i18n="price.s4">Basis SEO setup</li><li data-i18n="price.s5">2 revisierondes</li><li data-i18n="price.s6">Opgeleverd in 5 dagen</li></ul>
+      <a href="#contact" class="pbtn pb-dk" data-i18n="price.cta">Aan de Slag</a>
     </div>
     <div class="pcard feat">
-      <span class="popular">MOST POPULAR</span>
+      <span class="popular" data-i18n="price.popular">MEEST GEKOZEN</span>
       <span class="ptier">Business</span>
       <div class="pprice">€299</div>
-      <span class="pper">One-time payment</span>
-      <ul class="pfs"><li>1-page landing site</li><li>Working contact form</li><li>Mobile responsive</li><li>Full SEO optimization</li><li>3 revision rounds</li><li>Delivered in 1 week</li></ul>
-      <a href="#contact" class="pbtn pb-rd">Get Started</a>
+      <span class="pper" data-i18n="price.once">Eenmalige betaling</span>
+      <ul class="pfs"><li data-i18n="price.b1">1 pagina landingssite</li><li data-i18n="price.b2">Werkend contactformulier</li><li data-i18n="price.b3">Mobiel responsive</li><li data-i18n="price.b4">Volledige SEO optimalisatie</li><li data-i18n="price.b5">3 revisierondes</li><li data-i18n="price.b6">Opgeleverd in 1 week</li></ul>
+      <a href="#contact" class="pbtn pb-rd" data-i18n="price.cta">Aan de Slag</a>
     </div>
     <div class="pcard">
       <span class="ptier">Growth</span>
       <div class="pprice">€599</div>
-      <span class="pper">One-time payment</span>
-      <ul class="pfs"><li>Up to 3 pages</li><li>Working contact form</li><li>CMS / blog setup</li><li>Advanced SEO + analytics</li><li>5 revision rounds</li><li>Delivered in 2–3 weeks</li></ul>
-      <a href="#contact" class="pbtn pb-dk">Get Started</a>
+      <span class="pper" data-i18n="price.once">Eenmalige betaling</span>
+      <ul class="pfs"><li data-i18n="price.g1">Tot 3 pagina's</li><li data-i18n="price.g2">Werkend contactformulier</li><li data-i18n="price.g3">CMS / blog setup</li><li data-i18n="price.g4">Geavanceerde SEO + analytics</li><li data-i18n="price.g5">5 revisierondes</li><li data-i18n="price.g6">Opgeleverd in 2–3 weken</li></ul>
+      <a href="#contact" class="pbtn pb-dk" data-i18n="price.cta">Aan de Slag</a>
+    </div>
+  </div>
+
+  <!-- SUBSCRIPTION REVEAL -->
+  <div class="sub-reveal">
+    <button class="sub-toggle" id="subToggle">
+      <span class="sub-toggle-text" data-i18n="sub.toggle">Website klaar? Laat het groeien</span>
+      <span class="sub-toggle-arrow">↓</span>
+    </button>
+    <div class="sub-panel" id="subPanel">
+      <div class="sub-header">
+        <span class="label" data-i18n="sub.label">Maandplannen</span>
+        <h3 class="sub-title" data-i18n-html="sub.title">Onderhouden, Beheren &amp; Groeien</h3>
+        <p class="sub-desc" data-i18n="sub.desc">Je website is live — laat ons de rest regelen. Domein, hosting, updates en alles daartussenin.</p>
+      </div>
+      <div class="sgrid">
+        <div class="scard">
+          <span class="stier">Basis</span>
+          <div class="sprice">€19<span>/mo</span></div>
+          <ul class="sfs">
+            <li data-i18n="sub.basis.1">Managed hosting &amp; SSL</li>
+            <li data-i18n="sub.basis.2">Domeinbeheer</li>
+            <li data-i18n="sub.basis.3">Dagelijkse backups</li>
+            <li data-i18n="sub.basis.4">Beveiligingsmonitoring</li>
+            <li data-i18n="sub.basis.5">Uptime monitoring 24/7</li>
+            <li data-i18n="sub.basis.6">Bugfixes</li>
+            <li data-i18n="sub.basis.7">Maandelijks prestatierapport</li>
+          </ul>
+          <a href="#contact" class="pbtn pb-dk" data-i18n="sub.basis.cta">Kies Basis</a>
+        </div>
+        <div class="scard sfeat">
+          <span class="popular" data-i18n="sub.recommended">AANBEVOLEN</span>
+          <span class="stier">Groei</span>
+          <div class="sprice">€39<span>/mo</span></div>
+          <ul class="sfs">
+            <li data-i18n="sub.groei.1">Alles in Basis</li>
+            <li class="hi" data-i18n="sub.groei.2">30 min content updates/ma</li>
+            <li class="hi" data-i18n="sub.groei.3">Formulier setup &amp; beheer</li>
+            <li data-i18n="sub.groei.4">Basis SEO monitoring</li>
+            <li data-i18n="sub.groei.5">Google Analytics rapporten</li>
+            <li data-i18n="sub.groei.6">Prioriteit e-mail support</li>
+          </ul>
+          <a href="#contact" class="pbtn pb-rd" data-i18n="sub.groei.cta">Kies Groei</a>
+        </div>
+        <div class="scard">
+          <span class="stier">Premium</span>
+          <div class="sprice">€79<span>/mo</span></div>
+          <ul class="sfs">
+            <li data-i18n="sub.prem.1">Alles in Groei</li>
+            <li class="hi" data-i18n="sub.prem.2">2 uur design/content updates</li>
+            <li class="hi" data-i18n="sub.prem.3">Google Bedrijfsprofiel beheer</li>
+            <li data-i18n="sub.prem.4">Geavanceerde SEO optimalisatie</li>
+            <li data-i18n="sub.prem.5">Kwartaal strategiegesprek</li>
+            <li data-i18n="sub.prem.6">Snelste reactietijd</li>
+          </ul>
+          <a href="#contact" class="pbtn pb-dk" data-i18n="sub.prem.cta">Kies Premium</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -291,24 +374,48 @@
 <section class="contact" id="contact">
   <div class="cwrap">
     <div class="sh">
-      <span class="label">Contact</span>
-      <h2 class="st">Let's Build Your Website</h2>
-      <p class="sub">Tell us about your project and we'll get back to you within 24 hours. No obligation, no pushy sales.</p>
+      <span class="label" data-i18n="contact.label">Contact</span>
+      <h2 class="st" data-i18n="contact.title">Laten We Je Website Bouwen</h2>
+      <p class="sub" data-i18n="contact.sub">Vertel ons over je project en we nemen binnen 24 uur contact op. Vrijblijvend, geen opdringerige verkoop.</p>
     </div>
-    <div class="cform">
+    <form class="cform" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="16fb32e8-43cd-4b8c-b6ad-904a4efd8e59">
+      <input type="hidden" name="subject" value="Nieuwe aanvraag via WebKreatives.com">
+      <input type="hidden" name="from_name" value="WebKreatives Contact">
+      <input type="checkbox" name="botcheck" style="display:none">
       <div class="frow">
-        <div class="fg"><label>Your Name</label><input type="text" placeholder="Jan de Vries"></div>
-        <div class="fg"><label>Email Address</label><input type="email" placeholder="jan@bedrijf.nl"></div>
+        <div class="fg"><label data-i18n="contact.name">Je Naam</label><input type="text" name="name" placeholder="Jan de Vries" data-i18n-placeholder="contact.name" required></div>
+        <div class="fg"><label data-i18n="contact.email">E-mailadres</label><input type="email" name="email" placeholder="jan@bedrijf.nl" required></div>
       </div>
-      <div class="fg"><label>Phone (optional)</label><input type="tel" placeholder="+31 6 12 34 56 78"></div>
-      <div class="fg"><label>Business Type</label>
-        <select><option value="">Select your industry...</option><option>Restaurant / Café</option><option>Retail / Shop</option><option>Professional Services</option><option>Health &amp; Beauty</option><option>Construction / Trades</option><option>Creative / Studio</option><option>Other</option></select>
+      <div class="fg"><label data-i18n="contact.phone">Telefoon (optioneel)</label><input type="tel" name="phone" placeholder="+31 6 12 34 56 78"></div>
+      <div class="fg"><label data-i18n="contact.type">Type Bedrijf</label>
+        <select name="type"><option value="" data-i18n="contact.type.placeholder">Selecteer je branche...</option><option data-i18n="contact.type.1">Restaurant / Caf&#233;</option><option data-i18n="contact.type.2">Retail / Winkel</option><option data-i18n="contact.type.3">Zakelijke Diensten</option><option data-i18n="contact.type.4">Gezondheid &amp; Beauty</option><option data-i18n="contact.type.5">Bouw / Vakwerk</option><option data-i18n="contact.type.6">Creatief / Studio</option><option data-i18n="contact.type.7">Anders</option></select>
       </div>
-      <div class="fg"><label>Package Interest</label>
-        <select><option value="">Select a package...</option><option>Starter — €199</option><option>Business — €299</option><option>Growth — €599</option><option>Not sure yet</option></select>
+      <div class="fg"><label data-i18n="contact.package">Pakket Interesse</label>
+        <select name="package"><option value="" data-i18n="contact.package.placeholder">Selecteer een pakket...</option><option>Starter - €199</option><option>Business - €299</option><option>Growth - €599</option><option data-i18n="contact.package.4">Nog niet zeker</option></select>
       </div>
-      <div class="fg"><label>Tell us about your project</label><textarea placeholder="What kind of website do you need? Any specific features, ideas, or inspiration sites you love?"></textarea></div>
-      <button class="fsub">Send Message →</button>
+      <div class="fg"><label data-i18n="contact.message">Vertel ons over je project</label><textarea name="message" placeholder="Wat voor website heb je nodig? Specifieke wensen, ideeën of inspiratiesites?" data-i18n-placeholder="contact.message.placeholder" required></textarea></div>
+      <button type="submit" class="fsub" data-i18n="contact.send">Bericht Versturen →</button>
+      <div id="formStatus" style="margin-top:12px;font-size:14px;display:none"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ABOUT / FOUNDER -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-photo">
+      <div class="about-ring">
+        <img class="about-avatar" src="assets/csaba.jpg" alt="Csaba G.">
+      </div>
+      <div class="team-dot td1"><img src="assets/team1.png" alt="Team member"></div>
+      <div class="team-dot td2"><img src="assets/team2.png" alt="Team member"></div>
+      <div class="team-dot td3"><span>?</span></div>
+    </div>
+    <div class="about-text">
+      <span class="label" data-i18n="about.label">Achter WebKreatives</span>
+      <h3 class="about-name">Csaba G.</h3>
+      <p data-i18n="about.p">Ik heb te veel goede kleine bedrijven onzichtbaar zien blijven omdat hun website niet deed wat het moest doen — of omdat ze er helemaal geen hadden. Dat is op te lossen, en het hoeft geen fortuin te kosten. Wij zijn een klein bedrijf dat andere kleine bedrijven helpt — vaste, eerlijke prijzen voor iedereen. Geen onderhandelingen, geen verrassingen. Ons team groeit, en als jij bereid bent te investeren in je bedrijf, zorgen wij dat je online aanwezigheid ook echt past bij het werk dat je erin stopt.</p>
     </div>
   </div>
 </section>
@@ -323,43 +430,44 @@
         <circle cx="26" cy="5" r="3.5" fill="#5B8AC5"/>
         <rect x="0" y="33" width="11" height="5" fill="#D4E157"/>
         <rect x="147" y="33" width="11" height="5" fill="#8BC34A"/>
-        <text x="16" y="18" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="white">Web</text>
-        <text x="16" y="32" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="white">Kreatives</text>
+        <text x="16" y="18" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="white" class="footer-logo-text">Web</text>
+        <text x="16" y="32" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="white" class="footer-logo-text">Kreatives</text>
       </svg>
-      <p>Beautiful, high-converting websites for small businesses. Fast, affordable, built on Webflow. Based in Amsterdam.</p>
+      <p data-i18n="footer.p">Mooie, converterende websites voor kleine bedrijven. Snel, betaalbaar, gebouwd op Webflow. Gevestigd in Amsterdam.</p>
       <a href="/cdn-cgi/l/email-protection#fe969b929291be899b9c958c9b9f8a97889b8dd09092"><span class="__cf_email__" data-cfemail="a3cbc6cfcfcce3d4c6c1c8d1c6c2d7cad5c6d08dcdcf">[email&#160;protected]</span></a>
       <span>+31 20 123 4567</span>
     </div>
     <div class="fcol">
-      <h4>Services</h4>
-      <a href="#services">Website Design</a>
-      <a href="#services">eCommerce Shops</a>
-      <a href="#services">SEO &amp; Performance</a>
-      <a href="#services">Brand &amp; Identity</a>
-      <a href="#services">Ongoing Support</a>
+      <h4 data-i18n="footer.services">Diensten</h4>
+      <a href="#services" data-i18n="footer.design">Website Design</a>
+      <a href="#services" data-i18n="footer.ecom">Webshops</a>
+      <a href="#services" data-i18n="footer.seo">SEO &amp; Prestaties</a>
+      <a href="#services" data-i18n="footer.brand">Branding &amp; Identiteit</a>
+      <a href="#services" data-i18n="footer.support">Doorlopende Support</a>
     </div>
     <div class="fcol">
-      <h4>Company</h4>
-      <a href="#work">Our Work</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
+      <h4 data-i18n="footer.company">Bedrijf</h4>
+      <a href="#work" data-i18n="footer.work">Ons Werk</a>
+      <a href="#why-us" data-i18n="footer.why">Waarom Wij</a>
+      <a href="#testimonials" data-i18n="footer.reviews">Reviews</a>
+      <a href="#pricing" data-i18n="footer.pricing">Prijzen</a>
+      <a href="#contact" data-i18n="footer.contact">Contact</a>
     </div>
     <div class="fcol">
-      <h4>Connect</h4>
-      <a href="#contact" class="g">Start a Project</a>
+      <h4 data-i18n="footer.connect">Verbinden</h4>
+      <a href="#contact" class="g" data-i18n="footer.start">Start een Project</a>
       <a href="https://linkedin.com" target="_blank">LinkedIn</a>
       <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://wa.me/31201234567" target="_blank" class="g">WhatsApp Us</a>
+      <a href="https://wa.me/31201234567" target="_blank" class="g" data-i18n="footer.whatsapp">WhatsApp Ons</a>
     </div>
   </div>
   <div class="fbot">
     <p>© 2026 WebKreatives · KvK: 12345678 · Amsterdam, Netherlands</p>
-    <p>Built with ♥ on Webflow · Privacy Policy · Terms</p>
+    <p>Privacy Policy · Terms</p>
   </div>
 </footer>
 
+<script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
