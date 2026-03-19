@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bakkerij Hartman — Haarlem, since 1987</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --paper:   #FDF4E0;
+      --espresso:#2C1A0A;
+      --amber:   #C97D3F;
+      --wheat:   #E8C9A0;
+      --rose:    #D4846A;
+      --cream:   #F5EDD8;
+      --shadow:  rgba(44,26,10,0.12);
+    }
+
+    /* ─── RESET / BASE ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--espresso);
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ─── SCROLL FADE-IN ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── ORNAMENTAL HELPERS ─────────────────────────────────── */
+    .orn-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--amber);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    .orn-rule::before,
+    .orn-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--amber);
+      opacity: 0.55;
+    }
+
+    /* ─── NAVIGATION ─────────────────────────────────────────── */
+    nav {
+      background: var(--paper);
+      border-bottom: 1px solid rgba(201,125,63,0.3);
+      padding: 18px 24px 14px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 14px rgba(44,26,10,0.06);
+    }
+
+    .nav-logo-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 4px;
+    }
+    .nav-logo-rule span.dash-line {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--amber);
+      opacity: 0.7;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1rem, 2.2vw, 1.35rem);
+      letter-spacing: 0.06em;
+      color: var(--espresso);
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0 6px;
+      list-style: none;
+      margin-top: 8px;
+    }
+    .nav-links li {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--espresso);
+    }
+    .nav-links li a {
+      transition: color 0.2s;
+    }
+    .nav-links li a:hover { color: var(--amber); }
+    .nav-links li.sep {
+      opacity: 0.45;
+      user-select: none;
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      background: var(--paper);
+      padding: 64px 24px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-frame-wrap {
+      position: relative;
+      display: inline-block;
+      padding: 44px 52px 36px;
+      max-width: 720px;
+      width: 100%;
+    }
+    .hero-frame-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .est-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: 2px solid var(--amber);
+      background: var(--cream);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin: 0 auto 22px;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .hero-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(2.6rem, 6.5vw, 5rem);
+      line-height: 1.1;
+      color: var(--espresso);
+      margin-bottom: 22px;
+    }
+
+    .hero-sub {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--espresso);
+      opacity: 0.72;
+    }
+
+    .hero-image-band {
+      margin-top: 52px;
+      width: 100%;
+      max-height: 480px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-image-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--paper) 0%, transparent 18%, transparent 82%, var(--paper) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-image-band img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      filter: sepia(20%) saturate(90%) brightness(0.97);
+    }
+
+    /* ─── SECTION SHARED ─────────────────────────────────────── */
+    section { padding: 88px 24px; }
+
+    .section-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+      color: var(--espresso);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    /* Handdrawn SVG underline */
+    .underline-svg {
+      display: block;
+      margin: 0 auto 44px;
+    }
+
+    /* ─── PRODUCTS ───────────────────────────────────────────── */
+    #producten {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--wheat);
+      border: 1px solid rgba(201,125,63,0.45);
+      box-shadow: 3px 4px 18px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 4px 10px 28px rgba(44,26,10,0.18);
+    }
+    .product-card-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+    .product-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(15%) saturate(95%);
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-card-img img {
+      transform: scale(1.05);
+    }
+    .product-card-body {
+      padding: 20px 18px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.18rem;
+      color: var(--espresso);
+      margin-bottom: 7px;
+    }
+    .product-desc {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.8rem;
+      color: var(--espresso);
+      opacity: 0.75;
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .product-price {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+      border-top: 1px solid rgba(201,125,63,0.35);
+      padding-top: 11px;
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────────── */
+    #over-ons {
+      background: var(--paper);
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-wrap::before {
+      content: '';
+      position: absolute;
+      left: -12px;
+      top: 12px;
+      bottom: -12px;
+      width: 4px;
+      background: var(--amber);
+      border-radius: 2px;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      filter: sepia(25%) saturate(85%) brightness(0.95);
+    }
+
+    .about-text .section-label { text-align: left; }
+    .about-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      line-height: 1.25;
+      color: var(--espresso);
+      margin-bottom: 24px;
+    }
+    .about-body {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: var(--espresso);
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+
+    .orn-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0;
+      color: var(--amber);
+      opacity: 0.7;
+    }
+    .orn-divider::before,
+    .orn-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--amber);
+      opacity: 0.5;
+    }
+    .orn-divider-symbol {
+      font-size: 0.85rem;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--rose);
+      padding: 14px 0 14px 22px;
+      margin-left: 0;
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.08rem;
+      line-height: 1.65;
+      color: var(--espresso);
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 9px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-style: normal;
+    }
+
+    /* ─── HOURS ──────────────────────────────────────────────── */
+    #openingstijden {
+      background: var(--espresso);
+      color: var(--paper);
+      text-align: center;
+    }
+
+    #openingstijden .section-label { color: var(--amber); }
+    #openingstijden .section-heading { color: var(--paper); }
+
+    .hours-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 32px;
+    }
+    .hours-table tr {
+      border-bottom: 1px solid rgba(201,125,63,0.2);
+    }
+    .hours-table tr:first-child {
+      border-top: 1px solid rgba(201,125,63,0.2);
+    }
+    .hours-table td {
+      padding: 14px 10px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.88rem;
+    }
+    .hours-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--wheat);
+    }
+    .hours-table td:last-child {
+      text-align: right;
+      font-weight: 300;
+      color: var(--paper);
+      opacity: 0.85;
+      letter-spacing: 0.05em;
+    }
+    .hours-closed {
+      color: rgba(245,237,216,0.4) !important;
+      font-style: italic;
+    }
+
+    .hours-amber-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--amber);
+      margin: 28px auto 0;
+      opacity: 0.55;
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    #contact {
+      background: var(--paper);
+      text-align: center;
+    }
+
+    .contact-inner { max-width: 620px; margin: 0 auto; }
+
+    .contact-tagline {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      color: var(--espresso);
+      opacity: 0.72;
+      margin-bottom: 38px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .contact-link-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--espresso);
+      opacity: 0.55;
+      width: 52px;
+      text-align: right;
+    }
+    .contact-link-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--amber);
+      transition: color 0.2s;
+    }
+    .contact-link-value:hover { color: var(--rose); }
+
+    .contact-address {
+      margin-top: 38px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      color: var(--espresso);
+      opacity: 0.6;
+      line-height: 1.9;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--espresso);
+      color: var(--paper);
+      text-align: center;
+      padding: 52px 24px 36px;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.07em;
+      margin-bottom: 10px;
+    }
+    .footer-address {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      color: var(--wheat);
+      opacity: 0.7;
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+    .footer-orn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      color: var(--amber);
+      opacity: 0.5;
+    }
+    .footer-orn::before,
+    .footer-orn::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--amber);
+    }
+    .footer-copy {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--paper);
+      opacity: 0.35;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .about-img-wrap img { height: 340px; }
+    }
+
+    @media (max-width: 560px) {
+      section { padding: 64px 18px; }
+      .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .hero-frame-wrap { padding: 32px 22px 28px; }
+      .nav-links { gap: 0 4px; font-size: 0.6rem; }
+    }
+
+    @media (max-width: 380px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo-rule">
+    <span class="dash-line"></span>
+    <span class="nav-brand">✦ BAKKERIJ HARTMAN ✦</span>
+    <span class="dash-line"></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#producten">Producten</a></li>
+    <li class="sep">·</li>
+    <li><a href="#over-ons">Over Ons</a></li>
+    <li class="sep">·</li>
+    <li><a href="#openingstijden">Openingstijden</a></li>
+    <li class="sep">·</li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<section id="hero">
+
+  <div style="display:flex; justify-content:center;">
+    <div class="hero-frame-wrap reveal">
+
+      <!-- Ornamental SVG border frame -->
+      <svg class="hero-frame-svg" viewBox="0 0 700 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer rect -->
+        <rect x="6" y="6" width="688" height="348" fill="none" stroke="#C97D3F" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.45"/>
+        <!-- Inner rect -->
+        <rect x="18" y="18" width="664" height="324" fill="none" stroke="#C97D3F" stroke-width="0.8" opacity="0.3"/>
+        <!-- Corner ornaments TL -->
+        <path d="M6,36 L6,6 L36,6" fill="none" stroke="#C97D3F" stroke-width="2" opacity="0.7"/>
+        <circle cx="6" cy="6" r="3" fill="#C97D3F" opacity="0.5"/>
+        <!-- TR -->
+        <path d="M694,36 L694,6 L664,6" fill="none" stroke="#C97D3F" stroke-width="2" opacity="0.7"/>
+        <circle cx="694" cy="6" r="3" fill="#C97D3F" opacity="0.5"/>
+        <!-- BL -->
+        <path d="M6,318 L6,354 L36,354" fill="none" stroke="#C97D3F" stroke-width="2" opacity="0.7"/>
+        <circle cx="6" cy="354" r="3" fill="#C97D3F" opacity="0.5"/>
+        <!-- BR -->
+        <path d="M694,318 L694,354 L664,354" fill="none" stroke="#C97D3F" stroke-width="2" opacity="0.7"/>
+        <circle cx="694" cy="354" r="3" fill="#C97D3F" opacity="0.5"/>
+        <!-- Mid top ornament -->
+        <path d="M320,6 Q350,22 380,6" fill="none" stroke="#C97D3F" stroke-width="1" opacity="0.4"/>
+        <circle cx="350" cy="6" r="2" fill="#C97D3F" opacity="0.5"/>
+        <!-- Mid bottom ornament -->
+        <path d="M320,354 Q350,338 380,354" fill="none" stroke="#C97D3F" stroke-width="1" opacity="0.4"/>
+        <circle cx="350" cy="354" r="2" fill="#C97D3F" opacity="0.5"/>
+      </svg>
+
+      <div class="est-badge">EST.<br>1987</div>
+
+      <h1 class="hero-heading">
+        Vers Gebakken,<br>Elke Dag.
+      </h1>
+
+      <p class="hero-sub">Ambachtelijk brood &amp; banket — Haarlem</p>
+
+    </div>
+  </div>
+
+  <!-- Full-width image band -->
+  <div class="hero-image-band">
+    <img
+      src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80"
+      alt="Ambachtelijk gebakken brood uit de oven van Bakkerij Hartman"
+      loading="eager"
+    />
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     PRODUCTS
+═══════════════════════════════════════════════ -->
+<section id="producten">
+  <div class="reveal" style="text-align:center; margin-bottom: 0;">
+    <p class="section-label">Onze Specialiteiten</p>
+    <h2 class="section-heading">Producten</h2>
+
+    <!-- Hand-drawn SVG underline -->
+    <svg class="underline-svg" width="180" height="14" viewBox="0 0 180 14" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4,9 C28,4 52,12 76,8 C100,4 124,11 148,7 C160,5 170,8 176,9"
+            fill="none" stroke="#C97D3F" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+      <path d="M20,12 C44,9 80,13 110,11 C135,9 158,12 164,11"
+            fill="none" stroke="#C97D3F" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- Zuurdesem Brood -->
+    <div class="product-card reveal">
+      <div class="product-card-img">
+        <img
+          src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          alt="Zuurdesem Brood"
+          loading="lazy"
+        />
+      </div>
+      <div class="product-card-body">
+        <p class="product-name">Zuurdesem Brood</p>
+        <p class="product-desc">Op traditionele wijze gefermenteerd, met een knapperige korst en een rijke smaak.</p>
+        <p class="product-price">€ 4,50</p>
+      </div>
+    </div>
+
+    <!-- Croissant -->
+    <div class="product-card reveal">
+      <div class="product-card-img">
+        <img
+          src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80"
+          alt="Croissant"
+          loading="lazy"
+        />
+      </div>
+      <div class="product-card-body">
+        <p class="product-name">Croissant</p>
+        <p class="product-desc">Boterig, luchtig en laagje voor laagje met liefde gevouwen. Elke ochtend vers gebakken.</p>
+        <p class="product-price">€ 2,50</p>
+      </div>
+    </div>
+
+    <!-- Appeltaart -->
+    <div class="product-card reveal">
+      <div class="product-card-img">
+        <img
+          src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?auto=format&fit=crop&w=400&q=80"
+          alt="Hollandse Appeltaart"
+          loading="lazy"
+        />
+      </div>
+      <div class="product-card-body">
+        <p class="product-name">Appeltaart</p>
+        <p class="product-desc">Oma's recept, onze handen. Een klassieke Hollandse appeltaart vol kaneel en geurige appels.</p>
+        <p class="product-price">€ 18,00</p>
+      </div>
+    </div>
+
+    <!-- Bruidstaart -->
+    <div class="product-card reveal">
+      <div class="product-card-img">
+        <img
+          src="https://images.unsplash.com/photo-1562777717-dc6984f65a63?auto=format&fit=crop&w=400&q=80"
+          alt="Bruidstaart op maat"
+          loading="lazy"
+        />
+      </div>
+      <div class="product-card-body">
+        <p class="product-name">Bruidstaart</p>
+        <p class="product-desc">Een taart zo uniek als uw grote dag. Wij maken uw droomtaart met zorg en precisie.</p>
+        <p class="product-price">Op aanvraag</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════════ -->
+<section id="over-ons">
+  <div class="about-inner">
+
+    <!-- Left: image -->
+    <div class="about-img-wrap reveal">
+      <img
+        src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=80"
+        alt="De ambachtelijke bakkerij van Hartman in Haarlem"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Right: text -->
+    <div class="about-text reveal">
+      <p class="section-label">Ons Verhaal</p>
+      <h2 class="about-heading">Een familiebakkerij<br>since 1987</h2>
+
+      <p class="about-body">
+        In het hart van Haarlem opende Piet Hartman in 1987 zijn eerste bakkerij met één oven, twee handen en een onwrikbaar geloof in het ambacht. Wat begon als een kleine winkel op de Grote Markt is uitgegroeid tot een begrip in de stad.
+      </p>
+      <p class="about-body">
+        Drie generaties later bakt de familie Hartman nog steeds met dezelfde toewijding. Wij werken met lokale molens, seizoensgebonden ingrediënten en recepten die van ouder op kind zijn doorgegeven. Geen shortcuts, geen compromissen.
+      </p>
+
+      <div class="orn-divider">
+        <span class="orn-divider-symbol">✦</span>
+      </div>
+
+      <blockquote class="pull-quote">
+        <p>"Het geheim van goed brood? Tijd, geduld en respect voor het deeg. De rest regelt de natuur."</p>
+        <cite>— Piet Hartman, oprichter</cite>
+      </blockquote>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     HOURS
+═══════════════════════════════════════════════ -->
+<section id="openingstijden">
+  <div class="hours-wrap reveal">
+    <p class="section-label">Wanneer u ons kunt vinden</p>
+    <h2 class="section-heading">Openingstijden</h2>
+
+    <table class="hours-table">
+      <tbody>
+        <tr>
+          <td>Maandag</td>
+          <td class="hours-closed">Gesloten</td>
+        </tr>
+        <tr>
+          <td>Dinsdag</td>
+          <td>07:00 – 18:00</td>
+        </tr>
+        <tr>
+          <td>Woensdag</td>
+          <td>07:00 – 18:00</td>
+        </tr>
+        <tr>
+          <td>Donderdag</td>
+          <td>07:00 – 18:00</td>
+        </tr>
+        <tr>
+          <td>Vrijdag</td>
+          <td>07:00 – 18:00</td>
+        </tr>
+        <tr>
+          <td>Zaterdag</td>
+          <td>07:00 – 16:00</td>
+        </tr>
+        <tr>
+          <td>Zondag</td>
+          <td class="hours-closed">Gesloten</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="hours-amber-rule"></div>
+
+    <p style="margin-top:24px; font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.78rem; letter-spacing:0.14em; color:var(--wheat); opacity:0.65; text-transform:uppercase;">
+      Haarlem · Grote Markt 14
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="contact-inner reveal">
+
+    <p class="section-label">Neem contact op</p>
+    <h2 class="section-heading">Wij horen graag van u</h2>
+
+    <p class="contact-tagline">
+      Wij zijn benieuwd naar uw wensen — of het nu gaat om een speciale bestelling,<br>een bruidstaart of cateringopdracht.
+    </p>
+
+    <div class="contact-links">
+      <div class="contact-link-item">
+        <span class="contact-link-label">E-mail</span>
+        <a href="mailto:info@bakkerijhartman.nl" class="contact-link-value">info@bakkerijhartman.nl</a>
+      </div>
+      <div class="contact-link-item">
+        <span class="contact-link-label">Telefoon</span>
+        <a href="tel:+31234567890" class="contact-link-value">+31 23 456 78 90</a>
+      </div>
+    </div>
+
+    <p class="contact-address">
+      Grote Markt 14<br>
+      2011 RD Haarlem<br>
+      Noord-Holland, Nederland
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer>
+  <p class="footer-brand">✦ BAKKERIJ HARTMAN ✦</p>
+  <p class="footer-address">
+    Grote Markt 14 · 2011 RD Haarlem<br>
+    info@bakkerijhartman.nl · +31 23 456 78 90
+  </p>
+  <div class="footer-orn">
+    <span>✦</span>
+  </div>
+  <p class="footer-copy">&copy; 2026 Bakkerij Hartman — Ambachtelijk Bakker Haarlem since 1987</p>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════
+     INTERSECTION OBSERVER — SCROLL REVEAL
+═══════════════════════════════════════════════ -->
+<script>
+  (function () {
+    const elements = document.querySelectorAll('.reveal');
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(function (el) { el.classList.add('visible'); });
+      return;
+    }
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    elements.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
