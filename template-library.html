@@ -14,14 +14,13 @@
 :root{
   --black:#0d0d0d;--white:#fff;--red:#E8392A;
   --grey-50:#f8f9fa;--grey-100:#f1f3f5;--grey-200:#e9ecef;
-  --grey-300:#dee2e6;--grey-400:#ced4da;--grey-500:#adb5bd;
-  --grey-600:#6c757d;--grey-700:#495057;
+  --grey-300:#dee2e6;--grey-500:#adb5bd;--grey-600:#6c757d;--grey-700:#495057;
   --yellow:#D4E157;--green:#8BC34A;--blue:#5B8AC5;
   --green-bg:#f7fce8;--green-bd:#d4e8a0;
-  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-xl:28px;
+  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-xl:24px;
   --sh-sm:0 1px 3px rgba(0,0,0,.07);
   --sh-md:0 4px 16px rgba(0,0,0,.08);
-  --sh-lg:0 12px 40px rgba(0,0,0,.10);
+  --sh-lg:0 12px 40px rgba(0,0,0,.12);
   --fh:'Poppins',system-ui,sans-serif;
   --ease:cubic-bezier(.4,0,.2,1)
 }
@@ -30,103 +29,99 @@ body{font-family:var(--fh);background:var(--grey-50);color:var(--black);-webkit-
 a{text-decoration:none;color:inherit}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--grey-200)}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--grey-200)}
 .logo{display:flex;align-items:center}
 .nav-right{display:flex;align-items:center;gap:20px}
 .nav-back{font-size:13px;font-weight:600;color:var(--grey-600);display:flex;align-items:center;gap:6px;transition:color .2s}
 .nav-back:hover{color:var(--black)}
-.nav-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .badge-internal{background:var(--black);color:var(--white);font-size:10px;font-weight:700;letter-spacing:.8px;padding:3px 10px;border-radius:100px;text-transform:uppercase}
 
 /* ── HEADER ── */
-.lib-header{background:var(--black);color:var(--white);padding:72px 40px 64px;text-align:center;position:relative;overflow:hidden}
+.lib-header{background:var(--black);color:var(--white);padding:60px 48px 52px;text-align:center;position:relative;overflow:hidden}
 .lib-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% -10%,rgba(212,225,87,.18),transparent 70%)}
-.lib-header .label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--yellow);background:rgba(212,225,87,.12);border:1px solid rgba(212,225,87,.25);padding:5px 14px;border-radius:100px;margin-bottom:20px}
-.lib-header h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(36px,5vw,60px);font-weight:900;line-height:1.05;margin-bottom:16px}
+.lib-header .label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--yellow);background:rgba(212,225,87,.12);border:1px solid rgba(212,225,87,.25);padding:5px 14px;border-radius:100px;margin-bottom:16px}
+.lib-header h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(32px,4.5vw,52px);font-weight:900;line-height:1.05;margin-bottom:12px}
 .lib-header h1 em{font-style:italic;color:var(--yellow)}
-.lib-header p{font-size:16px;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto 36px;line-height:1.7}
-.header-stats{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
-.header-stat{text-align:center}
-.header-stat strong{display:block;font-size:28px;font-weight:800;color:var(--white);font-family:'Fraunces',Georgia,serif}
-.header-stat span{font-size:12px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.6px}
+.lib-header p{font-size:15px;color:rgba(255,255,255,.55);max-width:480px;margin:0 auto 28px;line-height:1.65}
+.header-stats{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.header-stat strong{display:block;font-size:26px;font-weight:800;color:var(--white);font-family:'Fraunces',Georgia,serif}
+.header-stat span{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.6px}
 
 /* ── FILTERS ── */
-.filters{padding:28px 40px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:1200px;margin:0 auto}
+.filters{padding:20px 48px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:1480px;margin:0 auto}
 .filter-label{font-size:12px;font-weight:600;color:var(--grey-600);margin-right:4px}
-.filter-btn{padding:7px 18px;border-radius:100px;border:1.5px solid var(--grey-300);background:var(--white);font-family:var(--fh);font-size:13px;font-weight:600;color:var(--grey-700);cursor:pointer;transition:all .2s var(--ease)}
+.filter-btn{padding:6px 16px;border-radius:100px;border:1.5px solid var(--grey-200);background:var(--white);font-family:var(--fh);font-size:12px;font-weight:600;color:var(--grey-700);cursor:pointer;transition:all .2s var(--ease)}
 .filter-btn:hover{border-color:var(--black);color:var(--black)}
 .filter-btn.active{background:var(--black);border-color:var(--black);color:var(--white)}
-.results-count{margin-left:auto;font-size:13px;color:var(--grey-500)}
+.results-count{margin-left:auto;font-size:12px;color:var(--grey-500)}
 
 /* ── TEMPLATE LIST ── */
-.lib-list{max-width:1200px;margin:0 auto;padding:0 40px 80px;display:flex;flex-direction:column;gap:24px}
+.lib-list{max-width:1480px;margin:0 auto;padding:4px 48px 72px;display:flex;flex-direction:column;gap:14px}
 
-.tpl-card{background:var(--white);border:1px solid var(--grey-200);border-radius:var(--r-xl);overflow:hidden;display:grid;grid-template-columns:480px 1fr;box-shadow:var(--sh-sm);transition:box-shadow .3s var(--ease),transform .3s var(--ease)}
-.tpl-card:hover{box-shadow:var(--sh-lg);transform:translateY(-3px)}
+/* Card: horizontal, compact */
+.tpl-card{background:var(--white);border:1px solid var(--grey-200);border-radius:var(--r-xl);overflow:hidden;display:grid;grid-template-columns:380px 1fr;box-shadow:var(--sh-sm);transition:box-shadow .3s var(--ease),transform .25s var(--ease)}
+.tpl-card:hover{box-shadow:var(--sh-lg);transform:translateY(-2px)}
 
 /* Preview pane */
-.tpl-preview{position:relative;overflow:hidden;background:var(--grey-100);min-height:300px}
+.tpl-preview{position:relative;overflow:hidden;background:var(--grey-100);min-height:210px}
 .tpl-preview img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s var(--ease)}
-.tpl-card:hover .tpl-preview img{transform:scale(1.03)}
-.tpl-preview-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(255,255,255,.12));pointer-events:none}
-.tpl-number{position:absolute;top:16px;left:16px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.tpl-style-badge{position:absolute;bottom:16px;left:16px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);color:#fff;font-size:11px;font-weight:600;padding:5px 12px;border-radius:100px;letter-spacing:.3px}
+.tpl-card:hover .tpl-preview img{transform:scale(1.04)}
+.tpl-number{position:absolute;top:12px;left:12px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.tpl-style-badge{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);color:#fff;font-size:10px;font-weight:600;padding:4px 10px;border-radius:100px;letter-spacing:.3px}
 
 /* Info pane */
-.tpl-info{padding:36px 40px;display:flex;flex-direction:column;gap:0}
-.tpl-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.tpl-tag{font-size:11px;font-weight:700;letter-spacing:.4px;padding:4px 12px;border-radius:100px;text-transform:uppercase}
+.tpl-info{padding:20px 28px;display:flex;flex-direction:column}
+.tpl-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+.tpl-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tpl-tag{font-size:10px;font-weight:700;letter-spacing:.3px;padding:3px 9px;border-radius:100px;text-transform:uppercase}
 .tag-restaurant{background:#fff0ed;color:#c0392b}
 .tag-health{background:#e8f4f8;color:#0d7a8a}
 .tag-construction{background:#fff4e6;color:#c56b00}
 .tag-plumbing{background:#eef3ff;color:#3a5bc7}
 .tag-creative{background:#f5f0ff;color:#6b35c7}
 .tag-beauty{background:#fff0f7;color:#c7357a}
+.tag-bakery{background:#fff8ed;color:#a05a00}
+.tag-tech{background:#edf4ff;color:#1a56db}
+.tag-luxury{background:#faf7ee;color:#8a6c20}
 .tag-feature{background:var(--green-bg);color:#4a7c10;border:1px solid var(--green-bd)}
+.tpl-meta{text-align:right;flex-shrink:0}
+.tpl-meta span{display:block;font-size:10px;color:var(--grey-500)}
+.tpl-meta strong{font-size:12px;color:var(--grey-700);font-weight:600;white-space:nowrap}
 
-.tpl-name{font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:900;line-height:1.1;margin-bottom:6px}
-.tpl-business{font-size:13px;color:var(--grey-600);margin-bottom:16px;display:flex;align-items:center;gap:6px}
-.tpl-business svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
-.tpl-desc{font-size:14px;line-height:1.75;color:var(--grey-700);margin-bottom:24px;flex:1}
+.tpl-name{font-family:'Fraunces',Georgia,serif;font-size:20px;font-weight:900;line-height:1.15;margin-bottom:3px}
+.tpl-business{font-size:12px;color:var(--grey-600);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.tpl-business svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+.tpl-desc{font-size:12.5px;line-height:1.65;color:var(--grey-700);margin-bottom:12px;flex:1}
 
-.tpl-features{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-.tpl-feat{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--grey-600);background:var(--grey-50);border:1px solid var(--grey-200);padding:4px 10px;border-radius:6px}
-.tpl-feat svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;color:var(--green)}
+.tpl-features{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.tpl-feat{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--grey-600);background:var(--grey-50);border:1px solid var(--grey-200);padding:3px 8px;border-radius:5px}
+.tpl-feat svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;color:var(--green)}
 
-.tpl-actions{display:flex;gap:12px;align-items:center;padding-top:20px;border-top:1px solid var(--grey-100)}
-.btn-preview{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--black);color:var(--white);border-radius:var(--r-sm);font-family:var(--fh);font-size:14px;font-weight:700;transition:background .2s,transform .15s}
+.tpl-actions{display:flex;gap:8px;align-items:center;padding-top:12px;border-top:1px solid var(--grey-100)}
+.btn-preview{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:var(--black);color:var(--white);border-radius:var(--r-sm);font-family:var(--fh);font-size:13px;font-weight:700;transition:background .2s,transform .15s}
 .btn-preview:hover{background:var(--red);transform:translateY(-1px)}
-.btn-preview svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.btn-use{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;border:1.5px solid var(--grey-300);color:var(--grey-700);border-radius:var(--r-sm);font-family:var(--fh);font-size:14px;font-weight:600;transition:all .2s}
+.btn-preview svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn-use{display:inline-flex;align-items:center;gap:5px;padding:9px 16px;border:1.5px solid var(--grey-300);color:var(--grey-700);border-radius:var(--r-sm);font-family:var(--fh);font-size:13px;font-weight:600;transition:all .2s}
 .btn-use:hover{border-color:var(--black);color:var(--black)}
-.tpl-meta{margin-left:auto;text-align:right}
-.tpl-meta span{display:block;font-size:11px;color:var(--grey-400)}
-.tpl-meta strong{font-size:13px;color:var(--grey-600);font-weight:600}
 
-/* ── SECTION DIVIDER ── */
-.section-divider{max-width:1200px;margin:8px auto 32px;padding:0 40px}
-.section-divider h3{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--grey-400);display:flex;align-items:center;gap:12px}
-.section-divider h3::after{content:'';flex:1;height:1px;background:var(--grey-200)}
-
-/* ── FOOTER NOTE ── */
-.lib-footer{text-align:center;padding:40px;border-top:1px solid var(--grey-200);color:var(--grey-500);font-size:13px}
+/* ── FOOTER ── */
+.lib-footer{text-align:center;padding:32px;border-top:1px solid var(--grey-200);color:var(--grey-500);font-size:13px}
 .lib-footer a{color:var(--red);font-weight:600}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
-  nav{padding:0 20px}
-  .lib-header{padding:48px 24px 40px}
-  .filters{padding:20px 24px}
-  .lib-list{padding:0 24px 60px}
-  .section-divider{padding:0 24px}
+@media(max-width:1000px){
+  nav,.filters,.lib-list{padding-left:24px;padding-right:24px}
+  .lib-header{padding:44px 24px 36px}
   .tpl-card{grid-template-columns:1fr}
-  .tpl-preview{min-height:220px}
-  .tpl-info{padding:24px}
-  .header-stats{gap:24px}
+  .tpl-preview{min-height:200px}
+  .tpl-info{padding:18px 20px}
+  .header-stats{gap:28px}
 }
 @media(max-width:560px){
+  .tpl-top{flex-direction:column}
+  .tpl-meta{text-align:left}
   .tpl-actions{flex-wrap:wrap}
-  .tpl-meta{margin-left:0;text-align:left}
   .btn-preview,.btn-use{flex:1;justify-content:center}
 }
 </style>
@@ -136,7 +131,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 <!-- NAV -->
 <nav>
   <a class="logo" href="index.html">
-    <svg width="140" height="36" viewBox="0 0 158 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="130" height="34" viewBox="0 0 158 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="2" width="7" height="36" fill="#0d0d0d"/>
       <circle cx="13" cy="12" r="5" fill="#E8392A"/>
       <circle cx="26" cy="5" r="3.5" fill="#5B8AC5"/>
@@ -161,8 +156,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   <h1>Template <em>Library</em></h1>
   <p>All available website templates. Use as a starting point for new client projects — duplicate, adapt, launch.</p>
   <div class="header-stats">
-    <div class="header-stat"><strong>6</strong><span>Templates</span></div>
-    <div class="header-stat"><strong>6</strong><span>Industries</span></div>
+    <div class="header-stat"><strong>9</strong><span>Templates</span></div>
+    <div class="header-stat"><strong>9</strong><span>Industries</span></div>
     <div class="header-stat"><strong>1–5</strong><span>Days to live</span></div>
   </div>
 </div>
@@ -177,35 +172,34 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   <button class="filter-btn" data-filter="plumbing">Plumbing</button>
   <button class="filter-btn" data-filter="creative">Creative</button>
   <button class="filter-btn" data-filter="beauty">Beauty</button>
-  <span class="results-count" id="resultsCount">6 templates</span>
+  <button class="filter-btn" data-filter="bakery">Bakery</button>
+  <button class="filter-btn" data-filter="tech">Tech</button>
+  <button class="filter-btn" data-filter="luxury">Luxury</button>
+  <span class="results-count" id="resultsCount">9 templates</span>
 </div>
 
 <!-- TEMPLATE LIST -->
 <div class="lib-list" id="libList">
 
-  <!-- SECTION: EXISTING CLIENT WORK -->
-  <div class="section-divider"><h3>Built for clients</h3></div>
-
   <!-- 1. LEYENBURGER -->
   <div class="tpl-card" data-category="restaurant">
     <div class="tpl-preview">
-      <img src="https://images.unsplash.com/photo-1596995804697-27d11d43652e?auto=format&fit=crop&w=960&q=80" alt="Eethuis Leyenburger template preview">
-      <div class="tpl-preview-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1596995804697-27d11d43652e?auto=format&fit=crop&w=760&q=80" alt="Leyenburger preview">
       <div class="tpl-number">01</div>
       <div class="tpl-style-badge">Dark · Editorial</div>
     </div>
     <div class="tpl-info">
-      <div class="tpl-tags">
-        <span class="tpl-tag tag-restaurant">Restaurant</span>
-        <span class="tpl-tag tag-restaurant">Halal</span>
-        <span class="tpl-tag tag-feature">One-pager</span>
+      <div class="tpl-top">
+        <div class="tpl-tags">
+          <span class="tpl-tag tag-restaurant">Restaurant</span>
+          <span class="tpl-tag tag-restaurant">Halal</span>
+          <span class="tpl-tag tag-feature">One-pager</span>
+        </div>
+        <div class="tpl-meta"><span>Starting at</span><strong>€199 Starter</strong></div>
       </div>
       <h2 class="tpl-name">Eethuis Leyenburger</h2>
-      <p class="tpl-business">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Halal Grill &amp; Burger Restaurant — Den Haag
-      </p>
-      <p class="tpl-desc">Dark, editorial one-pager for a halal restaurant. Powerful hero with menu section, opening hours, location and Google Maps embed. Built for food businesses that want a premium, bold look.</p>
+      <p class="tpl-business"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Halal Grill &amp; Burger Restaurant — Den Haag</p>
+      <p class="tpl-desc">Dark, editorial one-pager for a halal restaurant. Powerful hero with menu section, opening hours, location and Google Maps. Built for food businesses that want a bold, premium look.</p>
       <div class="tpl-features">
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dark mode design</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Menu section</span>
@@ -215,17 +209,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 5 days</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/leyenburger.html" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Live preview
-        </a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Leyenburger">
-          Use as base
-        </a>
-        <div class="tpl-meta">
-          <span>Starting at</span>
-          <strong>€199 Starter</strong>
-        </div>
+        <a class="btn-preview" href="client-projects/leyenburger.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Leyenburger">Use as base</a>
       </div>
     </div>
   </div>
@@ -233,44 +218,33 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   <!-- 2. TANDARTS KNOLL -->
   <div class="tpl-card" data-category="health">
     <div class="tpl-preview">
-      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=960&q=80" alt="Tandarts Knoll template preview">
-      <div class="tpl-preview-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=760&q=80" alt="Tandarts Knoll preview">
       <div class="tpl-number">02</div>
       <div class="tpl-style-badge">Clean · Modern</div>
     </div>
     <div class="tpl-info">
-      <div class="tpl-tags">
-        <span class="tpl-tag tag-health">Health</span>
-        <span class="tpl-tag tag-health">Dental</span>
-        <span class="tpl-tag tag-feature">One-pager</span>
-        <span class="tpl-tag tag-feature">NL / EN</span>
+      <div class="tpl-top">
+        <div class="tpl-tags">
+          <span class="tpl-tag tag-health">Health</span>
+          <span class="tpl-tag tag-health">Dental</span>
+          <span class="tpl-tag tag-feature">One-pager</span>
+          <span class="tpl-tag tag-feature">NL / EN</span>
+        </div>
+        <div class="tpl-meta"><span>Starting at</span><strong>€299 Business</strong></div>
       </div>
       <h2 class="tpl-name">Tandarts Knoll</h2>
-      <p class="tpl-business">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Dental Practice — Staphorst
-      </p>
-      <p class="tpl-desc">Clean, modern one-pager for a dental practice. Light color palette, trust-building design with services section, opening hours, contact form and map. Bilingual NL/EN with smooth scroll animations.</p>
+      <p class="tpl-business"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Dental Practice — Staphorst</p>
+      <p class="tpl-desc">Clean, modern one-pager for a dental or medical practice. Light palette, trust-building design with services, hours, contact form and map. Bilingual NL/EN with scroll animations.</p>
       <div class="tpl-features">
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Light &amp; trustworthy</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Services section</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contact form</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bilingual NL/EN</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scroll animations</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 1 week</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/tandarts-knoll.html" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Live preview
-        </a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Tandarts Knoll">
-          Use as base
-        </a>
-        <div class="tpl-meta">
-          <span>Starting at</span>
-          <strong>€299 Business</strong>
-        </div>
+        <a class="btn-preview" href="client-projects/tandarts-knoll.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Tandarts Knoll">Use as base</a>
       </div>
     </div>
   </div>
@@ -278,44 +252,33 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   <!-- 3. KLUSSENBEDRIJF EDWARD -->
   <div class="tpl-card" data-category="construction">
     <div class="tpl-preview">
-      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=960&q=80" alt="Klussenbedrijf Edward template preview">
-      <div class="tpl-preview-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=760&q=80" alt="Klussenbedrijf Edward preview">
       <div class="tpl-number">03</div>
       <div class="tpl-style-badge">Bold · Industrial</div>
     </div>
     <div class="tpl-info">
-      <div class="tpl-tags">
-        <span class="tpl-tag tag-construction">Construction</span>
-        <span class="tpl-tag tag-construction">Trades</span>
-        <span class="tpl-tag tag-feature">One-pager</span>
-        <span class="tpl-tag tag-feature">NL / EN</span>
+      <div class="tpl-top">
+        <div class="tpl-tags">
+          <span class="tpl-tag tag-construction">Construction</span>
+          <span class="tpl-tag tag-construction">Trades</span>
+          <span class="tpl-tag tag-feature">One-pager</span>
+          <span class="tpl-tag tag-feature">NL / EN</span>
+        </div>
+        <div class="tpl-meta"><span>Starting at</span><strong>€299 Business</strong></div>
       </div>
       <h2 class="tpl-name">Klussenbedrijf Edward</h2>
-      <p class="tpl-business">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Handyman / Contractor — Deventer
-      </p>
-      <p class="tpl-desc">Bold, industrial one-pager for a handyman or contractor. Strong typography, project gallery, services overview, contact form and map. Bilingual NL/EN — ideal for any construction or installation business.</p>
+      <p class="tpl-business"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Handyman / Contractor — Deventer</p>
+      <p class="tpl-desc">Bold, industrial one-pager for a contractor or handyman. Strong typography, project gallery, services overview, bilingual NL/EN. Ideal for any construction or installation trade.</p>
       <div class="tpl-features">
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Industrial design</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Project gallery</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Services overview</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contact form</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bilingual NL/EN</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 1 week</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contact form</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scroll animations</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/klussenbedrijf-edward.html" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Live preview
-        </a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Klussenbedrijf Edward">
-          Use as base
-        </a>
-        <div class="tpl-meta">
-          <span>Starting at</span>
-          <strong>€299 Business</strong>
-        </div>
+        <a class="btn-preview" href="client-projects/klussenbedrijf-edward.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Klussenbedrijf Edward">Use as base</a>
       </div>
     </div>
   </div>
@@ -323,136 +286,197 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   <!-- 4. VANDERBERG LOODGIETER -->
   <div class="tpl-card" data-category="plumbing">
     <div class="tpl-preview">
-      <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=960&q=80" alt="Van der Berg Loodgieter template preview">
-      <div class="tpl-preview-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=760&q=80" alt="Van der Berg Loodgieter preview">
       <div class="tpl-number">04</div>
       <div class="tpl-style-badge">Professional · Trust</div>
     </div>
     <div class="tpl-info">
-      <div class="tpl-tags">
-        <span class="tpl-tag tag-plumbing">Plumbing</span>
-        <span class="tpl-tag tag-construction">Installation</span>
-        <span class="tpl-tag tag-feature">One-pager</span>
+      <div class="tpl-top">
+        <div class="tpl-tags">
+          <span class="tpl-tag tag-plumbing">Plumbing</span>
+          <span class="tpl-tag tag-construction">Installation</span>
+          <span class="tpl-tag tag-feature">One-pager</span>
+        </div>
+        <div class="tpl-meta"><span>Starting at</span><strong>€299 Business</strong></div>
       </div>
       <h2 class="tpl-name">Van der Berg Loodgietersbedrijf</h2>
-      <p class="tpl-business">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Plumber / Installation Company — Netherlands
-      </p>
-      <p class="tpl-desc">Professional, trust-first one-pager for a plumber or installation company. Clear services, emergency CTA, reviews section and contact form. Adaptable for any maintenance or installation trade.</p>
+      <p class="tpl-business"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Plumber / Installation Company — Netherlands</p>
+      <p class="tpl-desc">Professional, trust-first one-pager for a plumber or installer. Emergency CTA, services, reviews, contact form. Adaptable for any maintenance or installation trade.</p>
       <div class="tpl-features">
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trust-first design</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Emergency CTA</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Services section</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Reviews</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Reviews section</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contact form</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 1 week</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/vanderberg-loodgieter.html" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Live preview
-        </a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Van der Berg Loodgieter">
-          Use as base
-        </a>
-        <div class="tpl-meta">
-          <span>Starting at</span>
-          <strong>€299 Business</strong>
-        </div>
+        <a class="btn-preview" href="client-projects/vanderberg-loodgieter.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Van der Berg">Use as base</a>
       </div>
     </div>
   </div>
 
-  <!-- SECTION: NEW DESIGN CONCEPTS -->
-  <div class="section-divider" style="margin-top:20px"><h3>New design concepts</h3></div>
-
-  <!-- 5. STUDIO LENA — MINIMAL / TYPOGRAPHIC -->
+  <!-- 5. STUDIO LENA -->
   <div class="tpl-card" data-category="creative">
     <div class="tpl-preview">
-      <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=960&q=80" alt="Studio Lena — Minimal typographic photography template">
-      <div class="tpl-preview-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=760&q=80" alt="Studio Lena preview">
       <div class="tpl-number">05</div>
       <div class="tpl-style-badge">Minimal · Typographic</div>
     </div>
     <div class="tpl-info">
-      <div class="tpl-tags">
-        <span class="tpl-tag tag-creative">Creative</span>
-        <span class="tpl-tag tag-creative">Photography</span>
-        <span class="tpl-tag tag-feature">One-pager</span>
-        <span class="tpl-tag tag-feature">Portfolio</span>
+      <div class="tpl-top">
+        <div class="tpl-tags">
+          <span class="tpl-tag tag-creative">Creative</span>
+          <span class="tpl-tag tag-creative">Photography</span>
+          <span class="tpl-tag tag-feature">Portfolio</span>
+        </div>
+        <div class="tpl-meta"><span>Starting at</span><strong>€299 Business</strong></div>
       </div>
       <h2 class="tpl-name">Studio Lena — Fotografie</h2>
-      <p class="tpl-business">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Photography Studio / Creative Portfolio — Utrecht
-      </p>
-      <p class="tpl-desc">Scandinavian minimalism — typography-first, near-monochrome palette, generous whitespace. Asymmetric photo grid, numbered services list, pull-quote about section. Perfect for photographers, designers, studios and creative professionals who want their work to speak for itself.</p>
+      <p class="tpl-business"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Photography Studio — Utrecht</p>
+      <p class="tpl-desc">Scandinavian minimalism — typography-first, near-monochrome, generous whitespace. Asymmetric photo grid, numbered services, 100vh split hero. For photographers, creatives &amp; designers.</p>
       <div class="tpl-features">
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cormorant Garamond + Inter</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Asymmetric photo grid</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Numbered services</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100vh split hero</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scroll animations</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cormorant + Inter</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Asymmetric grid</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Warm greige accent</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scroll animations</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100vh split hero</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/studio-lena-fotografie.html" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Live preview
-        </a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Studio Lena (Minimal)">
-          Use as base
-        </a>
-        <div class="tpl-meta">
-          <span>Starting at</span>
-          <strong>€299 Business</strong>
-        </div>
+        <a class="btn-preview" href="client-projects/studio-lena-fotografie.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Studio Lena">Use as base</a>
       </div>
     </div>
   </div>
 
-  <!-- 6. LUNA BEAUTY — WARM / ORGANIC -->
+  <!-- 6. LUNA BEAUTY -->
   <div class="tpl-card" data-category="beauty">
     <div class="tpl-preview">
-      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=960&q=80" alt="Luna Beauty Studio — Warm organic beauty template">
-      <div class="tpl-preview-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=760&q=80" alt="Luna Beauty preview">
       <div class="tpl-number">06</div>
       <div class="tpl-style-badge">Warm · Organic</div>
     </div>
     <div class="tpl-info">
-      <div class="tpl-tags">
-        <span class="tpl-tag tag-beauty">Beauty</span>
-        <span class="tpl-tag tag-beauty">Wellness</span>
-        <span class="tpl-tag tag-feature">One-pager</span>
-        <span class="tpl-tag tag-feature">Booking</span>
+      <div class="tpl-top">
+        <div class="tpl-tags">
+          <span class="tpl-tag tag-beauty">Beauty</span>
+          <span class="tpl-tag tag-beauty">Wellness</span>
+          <span class="tpl-tag tag-feature">Booking CTA</span>
+        </div>
+        <div class="tpl-meta"><span>Starting at</span><strong>€299 Business</strong></div>
       </div>
       <h2 class="tpl-name">Luna Beauty Studio</h2>
-      <p class="tpl-business">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Beauty Salon / Skincare &amp; Wellness — Rotterdam
-      </p>
-      <p class="tpl-desc">Warm, feminine, organic lifestyle feel — think Aesop meets high-end spa. Cream backgrounds, terracotta accents, rounded shapes everywhere. Animated CSS blob shapes, testimonials, service cards with pricing, opening hours, and WhatsApp booking CTA. Perfect for beauty salons, skincare studios, yoga, wellness and lifestyle brands.</p>
+      <p class="tpl-business"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Beauty Salon / Skincare &amp; Wellness — Rotterdam</p>
+      <p class="tpl-desc">Warm, feminine, organic lifestyle feel — cream + terracotta, rounded shapes, animated CSS blob hero. Service cards with pricing, testimonials, WhatsApp booking. For salons, skincare &amp; wellness brands.</p>
       <div class="tpl-features">
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Playfair Display + Nunito</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Playfair + Nunito</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Animated blob shapes</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Service cards + pricing</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Service pricing cards</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp booking</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Testimonials</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp booking CTA</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cream + terracotta palette</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/luna-beauty-studio.html" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Live preview
-        </a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Luna Beauty (Warm Organic)">
-          Use as base
-        </a>
-        <div class="tpl-meta">
-          <span>Starting at</span>
-          <strong>€299 Business</strong>
+        <a class="btn-preview" href="client-projects/luna-beauty-studio.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Luna Beauty">Use as base</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. BAKKERIJ HARTMAN -->
+  <div class="tpl-card" data-category="bakery">
+    <div class="tpl-preview">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=760&q=80" alt="Bakkerij Hartman preview">
+      <div class="tpl-number">07</div>
+      <div class="tpl-style-badge">Retro · Artisan</div>
+    </div>
+    <div class="tpl-info">
+      <div class="tpl-top">
+        <div class="tpl-tags">
+          <span class="tpl-tag tag-bakery">Bakery</span>
+          <span class="tpl-tag tag-restaurant">Food</span>
+          <span class="tpl-tag tag-feature">One-pager</span>
         </div>
+        <div class="tpl-meta"><span>Starting at</span><strong>€199 Starter</strong></div>
+      </div>
+      <h2 class="tpl-name">Bakkerij Hartman</h2>
+      <p class="tpl-business"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Artisan Bakery &amp; Patisserie — Haarlem, est. 1987</p>
+      <p class="tpl-desc">Warm vintage European bakery feel — aged paper bg, ornamental details, Playfair Display + Josefin Sans. Product cards, founder story, opening hours. For bakeries, cafes &amp; artisan food shops.</p>
+      <div class="tpl-features">
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Aged paper palette</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Ornamental details</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Product cards</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Opening hours</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Founder story</span>
+      </div>
+      <div class="tpl-actions">
+        <a class="btn-preview" href="client-projects/bakkerij-hartman.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Bakkerij Hartman">Use as base</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. NEXUS IT -->
+  <div class="tpl-card" data-category="tech">
+    <div class="tpl-preview">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=760&q=80" alt="Nexus IT Solutions preview">
+      <div class="tpl-number">08</div>
+      <div class="tpl-style-badge">Tech · Glassmorphism</div>
+    </div>
+    <div class="tpl-info">
+      <div class="tpl-top">
+        <div class="tpl-tags">
+          <span class="tpl-tag tag-tech">Tech</span>
+          <span class="tpl-tag tag-tech">IT / SaaS</span>
+          <span class="tpl-tag tag-feature">Dark mode</span>
+        </div>
+        <div class="tpl-meta"><span>Starting at</span><strong>€299 Business</strong></div>
+      </div>
+      <h2 class="tpl-name">Nexus IT Solutions</h2>
+      <p class="tpl-business"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>IT Consultancy / Managed IT — Amsterdam</p>
+      <p class="tpl-desc">Modern dark SaaS / cybersecurity feel — deep navy, electric blue + cyan gradients, glassmorphism cards, dot-grid bg. Gradient text hero, glass service cards, trust stats. For tech, IT &amp; software companies.</p>
+      <div class="tpl-features">
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Space Grotesk font</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Glassmorphism cards</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Gradient hero text</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dot-grid bg</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trust/stats bar</span>
+      </div>
+      <div class="tpl-actions">
+        <a class="btn-preview" href="client-projects/nexus-it-solutions.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Nexus IT">Use as base</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. MAISON BLANC -->
+  <div class="tpl-card" data-category="luxury">
+    <div class="tpl-preview">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=760&q=80" alt="Maison Blanc preview">
+      <div class="tpl-number">09</div>
+      <div class="tpl-style-badge">Luxury · Editorial Gold</div>
+    </div>
+    <div class="tpl-info">
+      <div class="tpl-top">
+        <div class="tpl-tags">
+          <span class="tpl-tag tag-luxury">Luxury</span>
+          <span class="tpl-tag tag-luxury">Interior</span>
+          <span class="tpl-tag tag-feature">Portfolio</span>
+        </div>
+        <div class="tpl-meta"><span>Starting at</span><strong>€599 Growth</strong></div>
+      </div>
+      <h2 class="tpl-name">Maison Blanc Interieur</h2>
+      <p class="tpl-business"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Interior Design Studio — Amsterdam</p>
+      <p class="tpl-desc">Ultra-premium luxury editorial — off-white + warm near-black + antique gold, EB Garamond + Josefin Sans, zero border-radius. Magazine portfolio grid, numbered services, quiet luxury. For design studios, law firms, real estate &amp; premium brands.</p>
+      <div class="tpl-features">
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>EB Garamond + Josefin</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Magazine grid</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Gold accents</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Project hover reveal</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sharp-edge aesthetic</span>
+      </div>
+      <div class="tpl-actions">
+        <a class="btn-preview" href="client-projects/maison-blanc-interieur.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Maison Blanc">Use as base</a>
       </div>
     </div>
   </div>
@@ -468,7 +492,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 const filterBtns = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.tpl-card');
 const resultsCount = document.getElementById('resultsCount');
-
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
