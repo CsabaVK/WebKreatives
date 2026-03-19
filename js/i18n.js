@@ -11,7 +11,7 @@ const translations = {
     // Hero
     "hero.badge": "Webdesign Bureau — Nederland",
     "hero.h1.pre": "Websites Die ",
-    "hero.h1.post": "Klanten Opleveren",
+    "hero.h1.post": "Meer Klanten",
     "hero.p": "Wij ontwerpen en bouwen mooie, converterende websites voor kleine bedrijven. Snel live, makkelijk te beheren, gebouwd om te groeien.",
     "hero.cta1": "Start Je Project →",
     "hero.cta2": "Bekijk Ons Werk",
