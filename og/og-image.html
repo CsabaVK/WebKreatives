@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1200px; height: 630px; background: #0d0d0d; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.card {
+  width: 1200px; height: 630px;
+  background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 60px;
+  position: relative;
+}
+.card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, #E53935, #D4E157, #E53935);
+}
+.logo { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -0.5px; }
+.bars { display: flex; gap: 6px; margin-bottom: 40px; }
+.bar1 { width: 40px; height: 6px; background: #E53935; border-radius: 2px; }
+.bar2 { width: 20px; height: 6px; background: #D4E157; border-radius: 2px; }
+h1 { font-size: 52px; font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -1px; margin-bottom: 20px; }
+h1 em { font-style: italic; color: #E53935; }
+p { font-size: 20px; color: #999; line-height: 1.6; max-width: 600px; }
+.url { position: absolute; bottom: 40px; font-size: 16px; color: #D4E157; font-weight: 600; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">WebKreatives</div>
+  <div class="bars"><div class="bar1"></div><div class="bar2"></div></div>
+  <h1>Websites Die <em>Winnen</em><br>Klanten Opleveren</h1>
+  <p>Mooie, converterende websites voor kleine bedrijven. Op maat, betaalbaar, snel live.</p>
+  <div class="url">webkreatives.com</div>
+</div>
+</body>
+</html>
