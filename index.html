@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WebKreatives | Webdesign voor Kleine Bedrijven in Nederland</title>
-<meta name="description" content="WebKreatives bouwt mooie, converterende websites voor kleine bedrijven. Op maat gemaakt in Webflow, snel live, betaalbaar. Gevestigd in Amsterdam.">
-<meta name="keywords" content="webdesign, website laten maken, kleine bedrijven, webdesign bureau, Amsterdam, Webflow, betaalbare websites, website bouwen, Nederland">
+<meta name="description" content="WebKreatives bouwt mooie, converterende websites voor kleine bedrijven. Op maat gemaakt, snel live, betaalbaar. Gevestigd in Amsterdam.">
+<meta name="keywords" content="webdesign, website laten maken, kleine bedrijven, webdesign bureau, Amsterdam, betaalbare websites, website bouwen, Nederland">
 <meta name="author" content="WebKreatives">
 <meta name="robots" content="index, follow">
 <meta name="google-site-verification" content="wDDYs4JhiIfO8xqnPK1yaigw4a6iyPl4g83UiyfSzLY">
@@ -48,7 +48,7 @@
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "WebKreatives",
-  "description": "Webdesign bureau voor kleine bedrijven in Nederland. Op maat gemaakte websites in Webflow, snel en betaalbaar.",
+  "description": "Webdesign bureau voor kleine bedrijven in Nederland. Op maat gemaakte websites, snel en betaalbaar.",
   "url": "https://webkreatives.com",
   "email": "info@webkreatives.com",
   "areaServed": {
@@ -450,12 +450,20 @@
       </div>
       <div class="fg"><label data-i18n="contact.phone">Telefoon (optioneel)</label><input type="tel" name="phone" placeholder="+31 6 12 34 56 78"></div>
       <div class="fg"><label data-i18n="contact.type">Type Bedrijf</label>
-        <select name="type"><option value="" data-i18n="contact.type.placeholder">Selecteer je branche...</option><option data-i18n="contact.type.1">Restaurant / Caf&#233;</option><option data-i18n="contact.type.2">Retail / Winkel</option><option data-i18n="contact.type.3">Zakelijke Diensten</option><option data-i18n="contact.type.4">Gezondheid &amp; Beauty</option><option data-i18n="contact.type.5">Bouw / Vakwerk</option><option data-i18n="contact.type.6">Creatief / Studio</option><option data-i18n="contact.type.7">Anders</option></select>
+        <select name="type" required><option value="" data-i18n="contact.type.placeholder">Selecteer je branche...</option><option data-i18n="contact.type.1">Restaurant / Café</option><option data-i18n="contact.type.2">Retail / Winkel</option><option data-i18n="contact.type.3">Zakelijke Diensten</option><option data-i18n="contact.type.4">Gezondheid &amp; Beauty</option><option data-i18n="contact.type.5">Bouw / Vakwerk</option><option data-i18n="contact.type.6">Creatief / Studio</option><option data-i18n="contact.type.7">Anders</option></select>
       </div>
-      <div class="fg"><label data-i18n="contact.package">Pakket Interesse</label>
-        <select name="package"><option value="" data-i18n="contact.package.placeholder">Selecteer een pakket...</option><option>Starter - €199</option><option>Business - €299</option><option>Growth - €599</option><option data-i18n="contact.package.4">Nog niet zeker</option></select>
+      <div class="frow">
+        <div class="fg"><label data-i18n="contact.package">Website Pakket</label>
+          <select name="website_package"><option value="" data-i18n="contact.package.placeholder">Selecteer een pakket...</option><option>Starter - €199</option><option>Business - €299</option><option>Growth - €599</option><option data-i18n="contact.package.4">Nog niet zeker</option></select>
+        </div>
+        <div class="fg"><label data-i18n="contact.subscription">Maandplan</label>
+          <select name="subscription"><option value="" data-i18n="contact.sub.placeholder">Selecteer een plan...</option><option>Basis - €19/ma</option><option>Groei - €39/ma</option><option>Premium - €79/ma</option><option data-i18n="contact.sub.none">Niet van toepassing</option></select>
+        </div>
       </div>
-      <div class="fg"><label data-i18n="contact.message">Vertel ons over je project</label><textarea name="message" placeholder="Wat voor website heb je nodig? Specifieke wensen, ideeën of inspiratiesites?" data-i18n-placeholder="contact.message.placeholder" required></textarea></div>
+      <div class="fg"><label data-i18n="contact.lang">Voorkeurstaal</label>
+        <select name="preferred_language"><option value="" data-i18n="contact.lang.placeholder">Selecteer een taal...</option><option value="nl">Nederlands</option><option value="en">English</option></select>
+      </div>
+      <div class="fg"><label data-i18n="contact.message">Vertel ons over je project</label><textarea name="message" placeholder="Wat voor website heb je nodig? Specifieke wensen, ideeën of inspiratiesites?" data-i18n-placeholder="contact.message.placeholder"></textarea></div>
       <button type="submit" class="fsub" data-i18n="contact.send">Bericht Versturen →</button>
       <div id="formStatus" style="margin-top:12px;font-size:14px;display:none"></div>
     </form>
