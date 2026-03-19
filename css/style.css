@@ -191,6 +191,7 @@ h2.st.lt{color:var(--white)}
 .sub-toggle:hover{border-color:var(--black);box-shadow:var(--sh-md);transform:translateY(-2px)}
 .sub-toggle.open{border-color:var(--red);background:var(--black);color:var(--white)}
 .sub-toggle-arrow{display:inline-block;transition:transform .4s var(--ease);font-size:18px}
+.sub-opt{font-size:12px;font-weight:400;opacity:.65}
 .sub-toggle.open .sub-toggle-arrow{transform:rotate(180deg)}
 .sub-panel{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.4,0,.2,1),opacity .4s;opacity:0}
 .sub-panel.open{max-height:900px;opacity:1;margin-top:48px}
@@ -227,6 +228,7 @@ h2.st.lt{color:var(--white)}
 .fg input,.fg select,.fg textarea{border:1.5px solid var(--grey-300);border-radius:var(--r-sm);padding:11px 14px;font-family:var(--fb);font-size:14px;color:var(--black);outline:none;background:var(--white);transition:border-color .2s;width:100%}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green)}
 .fg textarea{resize:vertical;min-height:110px}
+.fg-hint{font-size:11px;color:var(--grey-600);margin-top:-2px}
 .fsub{width:100%;padding:15px;border:none;border-radius:var(--r-sm);background:var(--black);color:var(--white);cursor:pointer;font-family:var(--fh);font-size:17px;font-weight:700;transition:background .2s,transform .15s}
 .fsub:hover{background:var(--red);transform:translateY(-1px)}
 
@@ -422,3 +424,4 @@ body[data-theme="dark"] .cform{background:#141414;border-color:#252525}
 
 /* Form error */
 .fg input.err,.fg select.err,.fg textarea.err{border-color:var(--red);background:#fff8f7}
+body[data-theme="dark"] .fg-hint{color:#666}
