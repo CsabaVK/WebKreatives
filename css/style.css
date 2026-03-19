@@ -257,8 +257,10 @@ footer{background:var(--black);padding:72px 6% 36px}
   .svc-grid,.work-grid,.tgrid,.pgrid,.fgrid{grid-template-columns:1fr}
   .frow{grid-template-columns:1fr}
   .hero{padding:70px 5% 40px;min-height:auto}
-  .hero h1{letter-spacing:-1.5px;font-size:clamp(38px,10vw,56px)}
-  .hero h1 span[style]{white-space:normal!important}
+  .hero h1{letter-spacing:-1.5px;font-size:clamp(38px,10vw,56px);display:flex;flex-direction:column;align-items:center;gap:2px}
+  .hero h1 span{display:block;white-space:normal!important}
+  .hero h1 em{display:block}
+  .hero h1 br{display:none}
   .hero>p{font-size:15px;margin-bottom:28px}
   .hero-btns{gap:10px;margin-bottom:32px}
   .hero-btns .btn{padding:12px 22px;font-size:14px;width:100%;justify-content:center}
