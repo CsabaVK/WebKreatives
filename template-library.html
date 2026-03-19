@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,6 +80,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .tag-health{background:#e8f4f8;color:#0d7a8a}
 .tag-construction{background:#fff4e6;color:#c56b00}
 .tag-plumbing{background:#eef3ff;color:#3a5bc7}
+.tag-creative{background:#f5f0ff;color:#6b35c7}
+.tag-beauty{background:#fff0f7;color:#c7357a}
 .tag-feature{background:var(--green-bg);color:#4a7c10;border:1px solid var(--green-bd)}
 
 .tpl-name{font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:900;line-height:1.1;margin-bottom:6px}
@@ -101,9 +103,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .tpl-meta span{display:block;font-size:11px;color:var(--grey-400)}
 .tpl-meta strong{font-size:13px;color:var(--grey-600);font-weight:600}
 
-/* ── COMING SOON CARD ── */
-.tpl-card.coming-soon{opacity:.55;pointer-events:none}
-.coming-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--black);color:var(--white);font-size:12px;font-weight:700;padding:8px 20px;border-radius:100px;letter-spacing:.6px;white-space:nowrap}
+/* ── SECTION DIVIDER ── */
+.section-divider{max-width:1200px;margin:8px auto 32px;padding:0 40px}
+.section-divider h3{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--grey-400);display:flex;align-items:center;gap:12px}
+.section-divider h3::after{content:'';flex:1;height:1px;background:var(--grey-200)}
 
 /* ── FOOTER NOTE ── */
 .lib-footer{text-align:center;padding:40px;border-top:1px solid var(--grey-200);color:var(--grey-500);font-size:13px}
@@ -115,9 +118,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   .lib-header{padding:48px 24px 40px}
   .filters{padding:20px 24px}
   .lib-list{padding:0 24px 60px}
+  .section-divider{padding:0 24px}
   .tpl-card{grid-template-columns:1fr}
   .tpl-preview{min-height:220px}
-  .tpl-info{padding:24px 24px}
+  .tpl-info{padding:24px}
   .header-stats{gap:24px}
 }
 @media(max-width:560px){
@@ -143,10 +147,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
     </svg>
   </a>
   <div class="nav-right">
-    <span class="badge-internal">Intern</span>
+    <span class="badge-internal">Internal</span>
     <a class="nav-back" href="index.html">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      Terug naar website
+      Back to website
     </a>
   </div>
 </nav>
@@ -155,27 +159,32 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 <div class="lib-header">
   <span class="label">WebKreatives</span>
   <h1>Template <em>Library</em></h1>
-  <p>Overzicht van alle beschikbare website-templates. Gebruik als basis voor nieuwe klantprojecten.</p>
+  <p>All available website templates. Use as a starting point for new client projects — duplicate, adapt, launch.</p>
   <div class="header-stats">
-    <div class="header-stat"><strong>4</strong><span>Templates</span></div>
-    <div class="header-stat"><strong>4</strong><span>Branches</span></div>
-    <div class="header-stat"><strong>1–5</strong><span>Dagen live</span></div>
+    <div class="header-stat"><strong>6</strong><span>Templates</span></div>
+    <div class="header-stat"><strong>6</strong><span>Industries</span></div>
+    <div class="header-stat"><strong>1–5</strong><span>Days to live</span></div>
   </div>
 </div>
 
 <!-- FILTERS -->
 <div class="filters">
   <span class="filter-label">Filter:</span>
-  <button class="filter-btn active" data-filter="all">Alle</button>
+  <button class="filter-btn active" data-filter="all">All</button>
   <button class="filter-btn" data-filter="restaurant">Restaurant</button>
-  <button class="filter-btn" data-filter="health">Gezondheid</button>
-  <button class="filter-btn" data-filter="construction">Bouw &amp; Vakwerk</button>
-  <button class="filter-btn" data-filter="plumbing">Loodgieter</button>
-  <span class="results-count" id="resultsCount">4 templates</span>
+  <button class="filter-btn" data-filter="health">Health</button>
+  <button class="filter-btn" data-filter="construction">Construction</button>
+  <button class="filter-btn" data-filter="plumbing">Plumbing</button>
+  <button class="filter-btn" data-filter="creative">Creative</button>
+  <button class="filter-btn" data-filter="beauty">Beauty</button>
+  <span class="results-count" id="resultsCount">6 templates</span>
 </div>
 
 <!-- TEMPLATE LIST -->
 <div class="lib-list" id="libList">
+
+  <!-- SECTION: EXISTING CLIENT WORK -->
+  <div class="section-divider"><h3>Built for clients</h3></div>
 
   <!-- 1. LEYENBURGER -->
   <div class="tpl-card" data-category="restaurant">
@@ -196,14 +205,14 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
         <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Halal Grill &amp; Burger Restaurant — Den Haag
       </p>
-      <p class="tpl-desc">Donkere, redactionele one-pager voor een halal restaurant. Krachtig hero-gedeelte met menu-sectie, openingstijden, locatie en Google Maps embed. Gebouwd voor eetgelegenheden die een premium uitstraling willen.</p>
+      <p class="tpl-desc">Dark, editorial one-pager for a halal restaurant. Powerful hero with menu section, opening hours, location and Google Maps embed. Built for food businesses that want a premium, bold look.</p>
       <div class="tpl-features">
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dark mode design</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Menu sectie</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Openingstijden</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Menu section</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Opening hours</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Google Maps</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Mobiel responsive</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 5 dagen</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Mobile responsive</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 5 days</span>
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/leyenburger.html" target="_blank">
@@ -211,10 +220,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
           Live preview
         </a>
         <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Leyenburger">
-          Gebruik als basis
+          Use as base
         </a>
         <div class="tpl-meta">
-          <span>Startprijs</span>
+          <span>Starting at</span>
           <strong>€199 Starter</strong>
         </div>
       </div>
@@ -231,23 +240,23 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
     </div>
     <div class="tpl-info">
       <div class="tpl-tags">
-        <span class="tpl-tag tag-health">Gezondheid</span>
-        <span class="tpl-tag tag-health">Tandarts</span>
+        <span class="tpl-tag tag-health">Health</span>
+        <span class="tpl-tag tag-health">Dental</span>
         <span class="tpl-tag tag-feature">One-pager</span>
         <span class="tpl-tag tag-feature">NL / EN</span>
       </div>
       <h2 class="tpl-name">Tandarts Knoll</h2>
       <p class="tpl-business">
         <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Tandartspraktijk — Staphorst
+        Dental Practice — Staphorst
       </p>
-      <p class="tpl-desc">Strakke, moderne one-pager voor een tandartspraktijk. Licht kleurenpalet, vertrouwenwekkend ontwerp met diensten-sectie, openingstijden, contactformulier en kaart. Tweetalig NL/EN met soepele scroll-animaties.</p>
+      <p class="tpl-desc">Clean, modern one-pager for a dental practice. Light color palette, trust-building design with services section, opening hours, contact form and map. Bilingual NL/EN with smooth scroll animations.</p>
       <div class="tpl-features">
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Licht &amp; vertrouwenwekkend</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diensten sectie</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contactformulier</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tweetalig NL/EN</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scroll-animaties</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Light &amp; trustworthy</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Services section</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contact form</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bilingual NL/EN</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scroll animations</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 1 week</span>
       </div>
       <div class="tpl-actions">
@@ -256,10 +265,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
           Live preview
         </a>
         <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Tandarts Knoll">
-          Gebruik als basis
+          Use as base
         </a>
         <div class="tpl-meta">
-          <span>Startprijs</span>
+          <span>Starting at</span>
           <strong>€299 Business</strong>
         </div>
       </div>
@@ -272,27 +281,27 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=960&q=80" alt="Klussenbedrijf Edward template preview">
       <div class="tpl-preview-overlay"></div>
       <div class="tpl-number">03</div>
-      <div class="tpl-style-badge">Bold · Industrieel</div>
+      <div class="tpl-style-badge">Bold · Industrial</div>
     </div>
     <div class="tpl-info">
       <div class="tpl-tags">
-        <span class="tpl-tag tag-construction">Bouw</span>
-        <span class="tpl-tag tag-construction">Klusbedrijf</span>
+        <span class="tpl-tag tag-construction">Construction</span>
+        <span class="tpl-tag tag-construction">Trades</span>
         <span class="tpl-tag tag-feature">One-pager</span>
         <span class="tpl-tag tag-feature">NL / EN</span>
       </div>
       <h2 class="tpl-name">Klussenbedrijf Edward</h2>
       <p class="tpl-business">
         <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Klusbedrijf / Vakman — Deventer
+        Handyman / Contractor — Deventer
       </p>
-      <p class="tpl-desc">Stoere, industriële one-pager voor een klusjesman of aannemer. Krachtige typografie, projectgalerij, diensten-overzicht, contactformulier en kaart. Tweetalig NL/EN met scroll-animaties — ideaal voor elk bouw- of installatiebedrijf.</p>
+      <p class="tpl-desc">Bold, industrial one-pager for a handyman or contractor. Strong typography, project gallery, services overview, contact form and map. Bilingual NL/EN — ideal for any construction or installation business.</p>
       <div class="tpl-features">
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Industrieel design</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Projectgalerij</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diensten-overzicht</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contactformulier</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tweetalig NL/EN</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Industrial design</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Project gallery</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Services overview</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contact form</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bilingual NL/EN</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 1 week</span>
       </div>
       <div class="tpl-actions">
@@ -301,10 +310,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
           Live preview
         </a>
         <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Klussenbedrijf Edward">
-          Gebruik als basis
+          Use as base
         </a>
         <div class="tpl-meta">
-          <span>Startprijs</span>
+          <span>Starting at</span>
           <strong>€299 Business</strong>
         </div>
       </div>
@@ -321,22 +330,22 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
     </div>
     <div class="tpl-info">
       <div class="tpl-tags">
-        <span class="tpl-tag tag-plumbing">Loodgieter</span>
-        <span class="tpl-tag tag-construction">Installatie</span>
+        <span class="tpl-tag tag-plumbing">Plumbing</span>
+        <span class="tpl-tag tag-construction">Installation</span>
         <span class="tpl-tag tag-feature">One-pager</span>
       </div>
       <h2 class="tpl-name">Van der Berg Loodgietersbedrijf</h2>
       <p class="tpl-business">
         <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Loodgieter / Installatiebedrijf — Nederland
+        Plumber / Installation Company — Netherlands
       </p>
-      <p class="tpl-desc">Professionele, vertrouwenwekkende one-pager voor een loodgieter of installatiebedrijf. Duidelijke services, spoedhulp-sectie, reviews en contactformulier. Geschikt voor elk type installatie- of onderhoudsbedrijf.</p>
+      <p class="tpl-desc">Professional, trust-first one-pager for a plumber or installation company. Clear services, emergency CTA, reviews section and contact form. Adaptable for any maintenance or installation trade.</p>
       <div class="tpl-features">
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Vertrouwen-design</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Spoedhulp CTA</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diensten sectie</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trust-first design</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Emergency CTA</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Services section</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Reviews</span>
-        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contactformulier</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contact form</span>
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 1 week</span>
       </div>
       <div class="tpl-actions">
@@ -345,10 +354,103 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
           Live preview
         </a>
         <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Van der Berg Loodgieter">
-          Gebruik als basis
+          Use as base
         </a>
         <div class="tpl-meta">
-          <span>Startprijs</span>
+          <span>Starting at</span>
+          <strong>€299 Business</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: NEW DESIGN CONCEPTS -->
+  <div class="section-divider" style="margin-top:20px"><h3>New design concepts</h3></div>
+
+  <!-- 5. STUDIO LENA — MINIMAL / TYPOGRAPHIC -->
+  <div class="tpl-card" data-category="creative">
+    <div class="tpl-preview">
+      <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=960&q=80" alt="Studio Lena — Minimal typographic photography template">
+      <div class="tpl-preview-overlay"></div>
+      <div class="tpl-number">05</div>
+      <div class="tpl-style-badge">Minimal · Typographic</div>
+    </div>
+    <div class="tpl-info">
+      <div class="tpl-tags">
+        <span class="tpl-tag tag-creative">Creative</span>
+        <span class="tpl-tag tag-creative">Photography</span>
+        <span class="tpl-tag tag-feature">One-pager</span>
+        <span class="tpl-tag tag-feature">Portfolio</span>
+      </div>
+      <h2 class="tpl-name">Studio Lena — Fotografie</h2>
+      <p class="tpl-business">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Photography Studio / Creative Portfolio — Utrecht
+      </p>
+      <p class="tpl-desc">Scandinavian minimalism — typography-first, near-monochrome palette, generous whitespace. Asymmetric photo grid, numbered services list, pull-quote about section. Perfect for photographers, designers, studios and creative professionals who want their work to speak for itself.</p>
+      <div class="tpl-features">
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cormorant Garamond + Inter</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Asymmetric photo grid</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Numbered services</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100vh split hero</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scroll animations</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Warm greige accent</span>
+      </div>
+      <div class="tpl-actions">
+        <a class="btn-preview" href="client-projects/studio-lena-fotografie.html" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Live preview
+        </a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Studio Lena (Minimal)">
+          Use as base
+        </a>
+        <div class="tpl-meta">
+          <span>Starting at</span>
+          <strong>€299 Business</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. LUNA BEAUTY — WARM / ORGANIC -->
+  <div class="tpl-card" data-category="beauty">
+    <div class="tpl-preview">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=960&q=80" alt="Luna Beauty Studio — Warm organic beauty template">
+      <div class="tpl-preview-overlay"></div>
+      <div class="tpl-number">06</div>
+      <div class="tpl-style-badge">Warm · Organic</div>
+    </div>
+    <div class="tpl-info">
+      <div class="tpl-tags">
+        <span class="tpl-tag tag-beauty">Beauty</span>
+        <span class="tpl-tag tag-beauty">Wellness</span>
+        <span class="tpl-tag tag-feature">One-pager</span>
+        <span class="tpl-tag tag-feature">Booking</span>
+      </div>
+      <h2 class="tpl-name">Luna Beauty Studio</h2>
+      <p class="tpl-business">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Beauty Salon / Skincare &amp; Wellness — Rotterdam
+      </p>
+      <p class="tpl-desc">Warm, feminine, organic lifestyle feel — think Aesop meets high-end spa. Cream backgrounds, terracotta accents, rounded shapes everywhere. Animated CSS blob shapes, testimonials, service cards with pricing, opening hours, and WhatsApp booking CTA. Perfect for beauty salons, skincare studios, yoga, wellness and lifestyle brands.</p>
+      <div class="tpl-features">
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Playfair Display + Nunito</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Animated blob shapes</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Service cards + pricing</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Testimonials</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp booking CTA</span>
+        <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cream + terracotta palette</span>
+      </div>
+      <div class="tpl-actions">
+        <a class="btn-preview" href="client-projects/luna-beauty-studio.html" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Live preview
+        </a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Luna Beauty (Warm Organic)">
+          Use as base
+        </a>
+        <div class="tpl-meta">
+          <span>Starting at</span>
           <strong>€299 Business</strong>
         </div>
       </div>
@@ -357,13 +459,12 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 </div>
 
-<!-- FOOTER NOTE -->
+<!-- FOOTER -->
 <div class="lib-footer">
-  <p>WebKreatives Template Library — intern gebruik · <a href="index.html">Terug naar website</a></p>
+  <p>WebKreatives Template Library — internal use only · <a href="index.html">Back to website</a></p>
 </div>
 
 <script>
-// Filter logic
 const filterBtns = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.tpl-card');
 const resultsCount = document.getElementById('resultsCount');
