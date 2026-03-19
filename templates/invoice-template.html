@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factuur - WebKreatives</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', sans-serif; background: #f5f5f5; color: #333; }
+
+  .invoice {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 48px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    border-radius: 8px;
+  }
+
+  /* Top bar accent */
+  .accent-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #E53935, #D4E157);
+    border-radius: 4px 4px 0 0;
+    margin: -48px -48px 40px -48px;
+  }
+
+  /* Header */
+  .inv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+
+  .logo-area {}
+  .logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0d0d0d;
+    letter-spacing: -0.5px;
+  }
+  .logo-bars {
+    display: flex;
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .logo-bars span:first-child {
+    width: 28px; height: 4px; background: #E53935; border-radius: 2px; display: block;
+  }
+  .logo-bars span:last-child {
+    width: 12px; height: 4px; background: #D4E157; border-radius: 2px; display: block;
+  }
+  .logo-sub {
+    font-size: 11px;
+    color: #999;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .inv-title-area { text-align: right; }
+  .inv-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0d0d0d;
+    letter-spacing: -0.5px;
+  }
+  .inv-number {
+    font-size: 13px;
+    color: #999;
+    margin-top: 4px;
+  }
+  .inv-status {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .status-open { background: #FFF3E0; color: #E65100; }
+  .status-paid { background: #E8F5E9; color: #2E7D32; }
+
+  /* Info blocks */
+  .inv-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    gap: 40px;
+  }
+  .inv-info-block {}
+  .inv-info-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  .inv-info-value {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.7;
+  }
+  .inv-info-value strong {
+    color: #0d0d0d;
+  }
+
+  /* Dates row */
+  .inv-dates {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 36px;
+    padding: 16px 20px;
+    background: #fafafa;
+    border-radius: 6px;
+  }
+  .inv-date-block {}
+  .inv-date-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 4px;
+  }
+  .inv-date-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0d0d0d;
+  }
+
+  /* Table */
+  .inv-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+  }
+  .inv-table thead th {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    padding: 12px 0;
+    border-bottom: 2px solid #eee;
+    text-align: left;
+  }
+  .inv-table thead th:nth-child(n+2) {
+    text-align: right;
+  }
+  .inv-table tbody td {
+    padding: 14px 0;
+    font-size: 13px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+  }
+  .inv-table tbody td:nth-child(n+2) {
+    text-align: right;
+  }
+  .item-name {
+    font-weight: 600;
+    color: #0d0d0d;
+  }
+  .item-desc {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  /* Totals */
+  .inv-totals {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 36px;
+  }
+  .inv-totals-table {
+    width: 260px;
+  }
+  .inv-totals-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 13px;
+    color: #555;
+  }
+  .inv-totals-row.subtotal {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+  }
+  .inv-totals-row.total {
+    border-top: 2px solid #0d0d0d;
+    margin-top: 4px;
+    padding-top: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d0d0d;
+  }
+
+  /* Payment info */
+  .inv-payment {
+    padding: 20px 24px;
+    background: #fafafa;
+    border-radius: 6px;
+    border-left: 3px solid #E53935;
+    margin-bottom: 32px;
+  }
+  .inv-payment-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #0d0d0d;
+    margin-bottom: 8px;
+  }
+  .inv-payment-details {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  /* Notes */
+  .inv-notes {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.7;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .invoice { box-shadow: none; margin: 0; padding: 32px; }
+    .accent-bar { margin: -32px -32px 32px -32px; }
+    .no-print { display: none; }
+  }
+
+  /* Print button */
+  .print-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 28px;
+    background: #0d0d0d;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .print-btn:hover { background: #333; }
+</style>
+</head>
+<body>
+
+<div class="invoice">
+  <div class="accent-bar"></div>
+
+  <!-- Header -->
+  <div class="inv-header">
+    <div class="logo-area">
+      <div class="logo-text">WebKreatives</div>
+      <div class="logo-bars"><span></span><span></span></div>
+      <div class="logo-sub">Webdesign voor kleine bedrijven</div>
+    </div>
+    <div class="inv-title-area">
+      <div class="inv-title">Factuur</div>
+      <div class="inv-number">#WK-2026-001</div>
+      <span class="inv-status status-open">Openstaand</span>
+      <!-- <span class="inv-status status-paid">Betaald</span> -->
+    </div>
+  </div>
+
+  <!-- From / To -->
+  <div class="inv-info">
+    <div class="inv-info-block">
+      <div class="inv-info-label">Van</div>
+      <div class="inv-info-value">
+        <strong>WebKreatives</strong><br>
+        [Volledig adres]<br>
+        [Postcode, Plaats]<br>
+        info@webkreatives.com<br>
+        KvK: [je KvK-nummer]<br>
+        BTW-id: NL[je BTW-nummer]B01
+      </div>
+    </div>
+    <div class="inv-info-block">
+      <div class="inv-info-label">Aan</div>
+      <div class="inv-info-value">
+        <strong>[Bedrijfsnaam klant]</strong><br>
+        [Contactpersoon]<br>
+        [Adres]<br>
+        [Postcode, Plaats]<br>
+        KvK: [KvK klant, indien bekend]<br>
+        BTW-id: [BTW-id klant, indien van toepassing]
+      </div>
+    </div>
+  </div>
+
+  <!-- Dates -->
+  <div class="inv-dates">
+    <div class="inv-date-block">
+      <div class="inv-date-label">Factuurdatum</div>
+      <div class="inv-date-value">18 maart 2026</div>
+    </div>
+    <div class="inv-date-block">
+      <div class="inv-date-label">Leverdatum</div>
+      <div class="inv-date-value">18 maart 2026</div>
+    </div>
+    <div class="inv-date-block">
+      <div class="inv-date-label">Vervaldatum</div>
+      <div class="inv-date-value">1 april 2026</div>
+    </div>
+    <div class="inv-date-block">
+      <div class="inv-date-label">Betalingstermijn</div>
+      <div class="inv-date-value">14 dagen</div>
+    </div>
+  </div>
+
+  <!-- Line items -->
+  <table class="inv-table">
+    <thead>
+      <tr>
+        <th style="width:40%">Omschrijving</th>
+        <th style="width:10%">Aantal</th>
+        <th style="width:15%">Prijs excl.</th>
+        <th style="width:10%">BTW %</th>
+        <th style="width:12%">BTW</th>
+        <th style="width:13%">Totaal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="item-name">Business Website Pakket</div>
+          <div class="item-desc">One-pager, contactformulier, SEO, mobiel responsive</div>
+        </td>
+        <td>1</td>
+        <td>&euro;299,00</td>
+        <td>21%</td>
+        <td>&euro;62,79</td>
+        <td>&euro;361,79</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="item-name">Domeinregistratie</div>
+          <div class="item-desc">1 jaar .nl domein</div>
+        </td>
+        <td>1</td>
+        <td>&euro;12,00</td>
+        <td>21%</td>
+        <td>&euro;2,52</td>
+        <td>&euro;14,52</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="item-name">Groei Maandplan</div>
+          <div class="item-desc">Hosting, updates, SEO monitoring - eerste maand</div>
+        </td>
+        <td>1</td>
+        <td>&euro;39,00</td>
+        <td>21%</td>
+        <td>&euro;8,19</td>
+        <td>&euro;47,19</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Totals -->
+  <div class="inv-totals">
+    <div class="inv-totals-table">
+      <div class="inv-totals-row subtotal">
+        <span>Subtotaal excl. BTW</span>
+        <span>&euro;350,00</span>
+      </div>
+      <div class="inv-totals-row">
+        <span>BTW 21%</span>
+        <span>&euro;73,50</span>
+      </div>
+      <div class="inv-totals-row total">
+        <span>Totaal incl. BTW</span>
+        <span>&euro;423,50</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment info -->
+  <div class="inv-payment">
+    <div class="inv-payment-title">Betaalgegevens</div>
+    <div class="inv-payment-details">
+      <strong>IBAN:</strong> NL00 BANK 0000 0000 00<br>
+      <strong>T.n.v.:</strong> WebKreatives<br>
+      <strong>Referentie:</strong> WK-2026-001
+    </div>
+  </div>
+
+  <!-- Notes & Terms -->
+  <div class="inv-notes">
+    <strong>Betalingsvoorwaarden:</strong> Betaling wordt verwacht binnen 14 dagen na factuurdatum op het bovengenoemde rekeningnummer onder vermelding van het factuurnummer. Bij niet-tijdige betaling is de wettelijke handelsrente verschuldigd (art. 6:119a BW). Alle bedragen zijn in euro's.<br><br>
+    Bij vragen over deze factuur kun je contact opnemen via info@webkreatives.com.<br>
+    Bedankt voor het vertrouwen in WebKreatives.
+  </div>
+</div>
+
+<button class="print-btn no-print" onclick="window.print()">Opslaan als PDF</button>
+
+</body>
+</html>

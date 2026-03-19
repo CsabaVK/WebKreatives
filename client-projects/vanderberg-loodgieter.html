@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Van der Berg Loodgieter — Reliable Plumber in The Hague</title>
+<meta name="description" content="Professional plumbing services in The Hague. Emergency repairs, drain cleaning, heating installation, bathroom renovations. Available 24/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #1565C0;
+  --blue-dark: #0D47A1;
+  --blue-light: #E3F2FD;
+  --orange: #FF6F00;
+  --orange-light: #FFF3E0;
+  --dark: #1a1a2e;
+  --text: #333;
+  --muted: #777;
+  --light: #f8f9fc;
+  --white: #fff;
+  --radius: 10px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --fh: 'DM Serif Display', serif;
+  --fb: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--fb); color: var(--text); background: var(--white); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 5%; background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid #eee;
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  font-family: var(--fh); font-size: 20px; color: var(--dark);
+  text-decoration: none; display: flex; align-items: center; gap: 10px;
+}
+.nav-logo .logo-icon {
+  width: 36px; height: 36px; background: var(--blue);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+}
+.nav-logo .logo-icon svg { width: 20px; height: 20px; }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; }
+.nav-links a:hover { color: var(--dark); }
+.nav-cta {
+  background: var(--orange); color: #fff; padding: 10px 22px;
+  border-radius: 8px; font-size: 13px; font-weight: 600;
+  text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: #E65100; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+.hamburger span { width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: .3s; }
+
+/* HERO */
+.hero {
+  padding: 160px 5% 100px;
+  background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, var(--blue-dark) 100%);
+  color: #fff; position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
+  background: var(--white); clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
+}
+.hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.5px; margin-bottom: 20px; color: var(--orange);
+}
+.hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--orange); border-radius: 50%; }
+.hero h1 {
+  font-family: var(--fh); font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.1; font-weight: 400; margin-bottom: 20px;
+}
+.hero h1 em { font-style: italic; color: var(--orange); }
+.hero-sub { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 480px; margin-bottom: 32px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--orange); color: #fff; padding: 14px 28px;
+  border-radius: 8px; font-size: 14px; font-weight: 600;
+  text-decoration: none; transition: background .2s; border: none; cursor: pointer;
+}
+.btn-primary:hover { background: #E65100; }
+.btn-outline {
+  background: transparent; color: #fff; padding: 14px 28px;
+  border-radius: 8px; font-size: 14px; font-weight: 600;
+  text-decoration: none; border: 1px solid rgba(255,255,255,0.3);
+  transition: .2s;
+}
+.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+
+.hero-img {
+  position: relative;
+}
+.hero-card {
+  background: var(--white); border-radius: 16px; padding: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3); color: var(--dark);
+}
+.hero-card-title { font-family: var(--fh); font-size: 22px; margin-bottom: 16px; }
+.hero-card-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px;
+}
+.hero-card-item:last-child { border-bottom: none; }
+.hero-card-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-size: 16px;
+}
+.hci-blue { background: var(--blue-light); color: var(--blue); }
+.hci-orange { background: var(--orange-light); color: var(--orange); }
+.hero-card-item strong { color: var(--dark); }
+
+/* TRUST BAR */
+.trust {
+  padding: 40px 5%; text-align: center; background: var(--white); position: relative; z-index: 2;
+}
+.trust-items { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 10px; }
+.trust-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.ti-blue { background: var(--blue-light); color: var(--blue); }
+.ti-orange { background: var(--orange-light); color: var(--orange); }
+.trust-item span { font-size: 13px; font-weight: 600; color: var(--dark); }
+
+/* SECTIONS SHARED */
+.section { padding: 100px 5%; }
+.section-header { text-align: center; max-width: 600px; margin: 0 auto 56px; }
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 12px;
+}
+.section-title { font-family: var(--fh); font-size: clamp(28px, 3.5vw, 42px); color: var(--dark); line-height: 1.15; margin-bottom: 16px; }
+.section-sub { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+/* SERVICES */
+.services { background: var(--light); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+.svc-card {
+  background: var(--white); border-radius: var(--radius); padding: 32px 28px;
+  border: 1px solid #eee; transition: .3s;
+}
+.svc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--blue); }
+.svc-icon {
+  width: 48px; height: 48px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 20px;
+}
+.svc-icon.si-blue { background: var(--blue-light); color: var(--blue); }
+.svc-icon.si-orange { background: var(--orange-light); color: var(--orange); }
+.svc-card h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+.svc-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* WHY US */
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: center; }
+.why-left {}
+.why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+.why-stat {
+  background: var(--light); padding: 24px; border-radius: var(--radius);
+  border-left: 3px solid var(--blue);
+}
+.why-stat-number { font-family: var(--fh); font-size: 32px; color: var(--blue); }
+.why-stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 500; }
+.why-right { display: flex; flex-direction: column; gap: 20px; }
+.why-item { display: flex; gap: 16px; }
+.why-check {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  background: var(--blue-light); color: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 14px; margin-top: 2px;
+}
+.why-item h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+.why-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* AREAS */
+.areas { background: var(--dark); color: #fff; }
+.areas .section-label { color: var(--orange); }
+.areas .section-title { color: #fff; }
+.areas .section-sub { color: rgba(255,255,255,0.6); }
+.area-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 800px; margin: 0 auto; }
+.area-tag {
+  padding: 10px 24px; border-radius: 100px; font-size: 14px; font-weight: 500;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.8); transition: .2s;
+}
+.area-tag:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+.area-tag.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+/* REVIEWS */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+.review-card {
+  background: var(--white); border: 1px solid #eee; border-radius: var(--radius);
+  padding: 28px; transition: .3s;
+}
+.review-card:hover { box-shadow: var(--shadow); }
+.review-stars { color: var(--orange); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+.review-text { font-size: 14px; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 18px; }
+.review-author { display: flex; align-items: center; gap: 10px; }
+.review-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: #fff;
+}
+.review-name { font-size: 13px; font-weight: 600; color: var(--dark); }
+.review-loc { font-size: 11px; color: var(--muted); }
+
+/* CTA SECTION */
+.cta-section {
+  padding: 80px 5%;
+  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+  text-align: center; color: #fff;
+}
+.cta-section h2 { font-family: var(--fh); font-size: clamp(28px, 3.5vw, 40px); margin-bottom: 16px; }
+.cta-section p { font-size: 16px; opacity: 0.8; margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-white {
+  background: #fff; color: var(--blue-dark); padding: 14px 28px;
+  border-radius: 8px; font-size: 14px; font-weight: 600;
+  text-decoration: none; transition: .2s;
+}
+.btn-white:hover { background: #f0f0f0; }
+.btn-ghost {
+  background: transparent; color: #fff; padding: 14px 28px;
+  border-radius: 8px; font-size: 14px; font-weight: 600;
+  text-decoration: none; border: 1px solid rgba(255,255,255,0.3); transition: .2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1000px; margin: 0 auto; align-items: start; }
+.contact-info {}
+.contact-info h3 { font-family: var(--fh); font-size: 24px; color: var(--dark); margin-bottom: 16px; }
+.contact-info p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+.contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.contact-detail-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px;
+}
+.cdi-blue { background: var(--blue-light); color: var(--blue); }
+.contact-detail-text { font-size: 14px; color: var(--dark); font-weight: 500; }
+.contact-detail-label { font-size: 11px; color: var(--muted); font-weight: 400; }
+
+.contact-form {}
+.fg { margin-bottom: 16px; }
+.fg label { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+.fg input, .fg textarea, .fg select {
+  width: 100%; padding: 12px 16px; border: 1px solid #ddd;
+  border-radius: 8px; font-family: var(--fb); font-size: 14px;
+  transition: border .2s; background: var(--white); color: var(--text);
+}
+.fg input:focus, .fg textarea:focus, .fg select:focus { outline: none; border-color: var(--blue); }
+.fg textarea { min-height: 100px; resize: vertical; }
+.form-submit {
+  width: 100%; padding: 14px; background: var(--blue); color: #fff;
+  border: none; border-radius: 8px; font-family: var(--fb);
+  font-size: 14px; font-weight: 600; cursor: pointer; transition: .2s;
+}
+.form-submit:hover { background: var(--blue-dark); }
+
+/* FOOTER */
+footer {
+  background: var(--dark); color: rgba(255,255,255,0.6);
+  padding: 48px 5% 24px; text-align: center;
+}
+.footer-logo { font-family: var(--fh); font-size: 20px; color: #fff; margin-bottom: 12px; }
+.footer-text { font-size: 13px; margin-bottom: 24px; line-height: 1.6; }
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; }
+.footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; transition: color .2s; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+.footer-copy a { color: var(--orange); text-decoration: none; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-img { display: none; }
+  .hero { padding: 140px 5% 80px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; gap: 40px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .trust-items { gap: 20px; }
+  .why-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M6 12h.01M12 6v12M18 12h.01M9 3l-6 9 6 9M15 3l6 9-6 9"/></svg>
+    </div>
+    Van der Berg
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#why">About</a>
+    <a href="#areas">Areas</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+  <button class="hamburger" onclick="this.classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">24/7 Emergency Service</div>
+      <h1>Your Trusted <em>Plumber</em> in The Hague</h1>
+      <p class="hero-sub">Professional plumbing services for homes and businesses. Fast response, fair prices, over 20 years of experience in The Hague region.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get a Free Quote</a>
+        <a href="tel:+31703152847" class="btn-outline">Call 070-315 28 47</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="hero-card">
+        <div class="hero-card-title">How can we help?</div>
+        <div class="hero-card-item">
+          <div class="hero-card-icon hci-blue">&#128167;</div>
+          <div><strong>Leak Repair</strong><br><span style="font-size:12px;color:#999">Emergency response within 30 min</span></div>
+        </div>
+        <div class="hero-card-item">
+          <div class="hero-card-icon hci-orange">&#128293;</div>
+          <div><strong>Heating & Boiler</strong><br><span style="font-size:12px;color:#999">CV installation & annual servicing</span></div>
+        </div>
+        <div class="hero-card-item">
+          <div class="hero-card-icon hci-blue">&#128704;</div>
+          <div><strong>Bathroom Renovation</strong><br><span style="font-size:12px;color:#999">Full remodel, tiles & fixtures</span></div>
+        </div>
+        <div class="hero-card-item">
+          <div class="hero-card-icon hci-orange">&#128295;</div>
+          <div><strong>Drain Cleaning</strong><br><span style="font-size:12px;color:#999">Sinks, toilets, sewer lines</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="trust-items">
+    <div class="trust-item">
+      <div class="trust-icon ti-blue">&#9733;</div>
+      <span>4.6 Stars on Google</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon ti-orange">&#128197;</div>
+      <span>20+ Years Experience</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon ti-blue">&#9201;</div>
+      <span>30 Min Response</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon ti-orange">&#128176;</div>
+      <span>No Call-Out Fee</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon ti-blue">&#9989;</div>
+      <span>Certified & Insured</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="section-header">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">Everything Your Home Needs</h2>
+    <p class="section-sub">From a dripping tap to a full bathroom renovation, we handle it all with care and precision.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon si-blue">&#128167;</div>
+      <h3>Leak Detection & Repair</h3>
+      <p>Fast response to leaks and burst pipes. We use advanced detection equipment to find hidden leaks without unnecessary damage.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon si-orange">&#128293;</div>
+      <h3>Heating & Boiler Service</h3>
+      <p>CV boiler installation, repair and annual maintenance. We work with all major brands and keep your home warm year-round.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon si-blue">&#128704;</div>
+      <h3>Bathroom Renovations</h3>
+      <p>Complete bathroom redesigns from tiles to fixtures. We manage the full project so you get a beautiful result without the stress.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon si-orange">&#128295;</div>
+      <h3>Drain Unblocking</h3>
+      <p>Professional drain cleaning for sinks, toilets and sewer lines. We clear blockages quickly and prevent future problems.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon si-blue">&#9981;</div>
+      <h3>Gas Line Work</h3>
+      <p>Certified gas leak detection and pipe installation. Safety is our top priority when working with gas systems.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon si-orange">&#127760;</div>
+      <h3>Water Line Replacement</h3>
+      <p>Replacing old lead pipes in older Hague homes. We upgrade your water system to modern, safe standards.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section" id="why">
+  <div class="why-grid">
+    <div class="why-left">
+      <div class="section-label" style="text-align:left">Why Van der Berg</div>
+      <h2 class="section-title" style="text-align:left">A Family Business That Cares About Your Home</h2>
+      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-top:16px;">Paul van der Berg started this business over 20 years ago with one belief: plumbing should be honest, reliable, and fairly priced. That hasn't changed.</p>
+      <div class="why-stats">
+        <div class="why-stat">
+          <div class="why-stat-number">20+</div>
+          <div class="why-stat-label">Years in business</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-number">2,500+</div>
+          <div class="why-stat-label">Jobs completed</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-number">4.6</div>
+          <div class="why-stat-label">Google rating</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-number">30 min</div>
+          <div class="why-stat-label">Avg. response time</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="why-item">
+        <div class="why-check">&#10003;</div>
+        <div>
+          <h4>No Call-Out Charges</h4>
+          <p>You only pay for the work we do. No hidden fees, no surprises on the invoice.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">&#10003;</div>
+        <div>
+          <h4>Free, Clear Quotes</h4>
+          <p>We assess the job and give you a fixed price before any work begins. You approve, we start.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">&#10003;</div>
+        <div>
+          <h4>Certified & Insured</h4>
+          <p>Fully certified by Uneto-VNI and CRT. All work is guaranteed and insured for your peace of mind.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-check">&#10003;</div>
+        <div>
+          <h4>Clean Work, Every Time</h4>
+          <p>We treat your home with respect. We clean up after every job and leave everything tidy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section class="section areas" id="areas">
+  <div class="section-header">
+    <div class="section-label">Service Areas</div>
+    <h2 class="section-title">Serving The Hague & Surroundings</h2>
+    <p class="section-sub">Based in Loosduinen, we cover all of The Hague and nearby towns within 30 minutes.</p>
+  </div>
+  <div class="area-tags">
+    <span class="area-tag active">Den Haag</span>
+    <span class="area-tag">Rijswijk</span>
+    <span class="area-tag">Voorburg</span>
+    <span class="area-tag">Leidschendam</span>
+    <span class="area-tag">Wassenaar</span>
+    <span class="area-tag">Scheveningen</span>
+    <span class="area-tag">Loosduinen</span>
+    <span class="area-tag">Ypenburg</span>
+    <span class="area-tag">Laak</span>
+    <span class="area-tag">Segbroek</span>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" id="reviews" style="background:var(--light)">
+  <div class="section-header">
+    <div class="section-label">Reviews</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-sub">Real reviews from homeowners across The Hague.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Had a burst pipe at 11pm. Paul was here within 20 minutes and fixed it quickly. Professional, friendly, and the price was very fair."</p>
+      <div class="review-author">
+        <div class="review-avatar" style="background:var(--blue)">M</div>
+        <div><div class="review-name">Mark D.</div><div class="review-loc">Scheveningen</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"They renovated our entire bathroom and it looks amazing. Everything was done on time, within budget, and they even cleaned up perfectly."</p>
+      <div class="review-author">
+        <div class="review-avatar" style="background:var(--orange)">S</div>
+        <div><div class="review-name">Sandra K.</div><div class="review-loc">Voorburg</div></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Honest advice, no upselling. Fixed our boiler in under an hour and explained everything clearly. Will definitely use again."</p>
+      <div class="review-author">
+        <div class="review-avatar" style="background:#5B8AC5">J</div>
+        <div><div class="review-name">Jan W.</div><div class="review-loc">Den Haag Centrum</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Got a Plumbing Problem?</h2>
+  <p>Call us now or send a message. We respond fast and always give you an honest assessment.</p>
+  <div class="cta-btns">
+    <a href="tel:+31703152847" class="btn-white">Call 070-315 28 47</a>
+    <a href="#contact" class="btn-ghost">Send a Message</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-header">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-sub">Describe your problem and we'll get back to you within a few hours.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Van der Berg Loodgietersbedrijf</h3>
+      <p>Based in Loosduinen, Den Haag. Available for emergencies 24/7, regular work Mon-Sat.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon cdi-blue">&#128222;</div>
+        <div>
+          <div class="contact-detail-label">Phone</div>
+          <div class="contact-detail-text">070-315 28 47</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon cdi-blue">&#9993;</div>
+        <div>
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-text">info@vandenbergloodgieter.nl</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon cdi-blue">&#128205;</div>
+        <div>
+          <div class="contact-detail-label">Location</div>
+          <div class="contact-detail-text">Loosduinen, Den Haag</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon cdi-blue">&#128337;</div>
+        <div>
+          <div class="contact-detail-label">Hours</div>
+          <div class="contact-detail-text">Mon-Fri 08:00-18:00 | Sat 09:00-14:00<br>24/7 Emergency</div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form">
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="Jan Janssen" required></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+31 6 12 34 56 78" required></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="jan@email.nl"></div>
+      <div class="fg"><label>Type of Problem</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Leak / Burst Pipe</option>
+          <option>Drain Blockage</option>
+          <option>Heating / Boiler</option>
+          <option>Bathroom Renovation</option>
+          <option>Gas Line Issue</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Describe Your Problem</label><textarea placeholder="Tell us what's going on and we'll advise you..."></textarea></div>
+      <button type="submit" class="form-submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Van der Berg Loodgieter</div>
+  <p class="footer-text">Professional plumbing services in The Hague and surroundings.<br>Certified, insured, and always fair.</p>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#why">About</a>
+    <a href="#areas">Areas</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Van der Berg Loodgietersbedrijf | Website by <a href="https://webkreatives.com" target="_blank">WebKreatives</a></div>
+</footer>
+
+<!-- Smooth scroll -->
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>
