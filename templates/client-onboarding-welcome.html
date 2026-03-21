@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WebKreatives — Client Onboarding PDF</title>
+  <style>
+    :root{
+      --black:#0d0d0d;
+      --red:#E53935;
+      --yellow:#D4E157;
+      --green:#8BC34A;
+      --blue:#5B8AC5;
+      --paper:#f4f4f1;
+      --white:#ffffff;
+      --text:#242424;
+      --muted:#6f6f6f;
+      --line:#e8e8e8;
+      --soft:#fafaf8;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:#dcdcdc;color:var(--text);font-family:Arial,Helvetica,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .doc{padding:28px 0 60px}
+    .page{
+      width:210mm;
+      height:297mm;
+      margin:0 auto 20px;
+      background:var(--white);
+      box-shadow:0 10px 30px rgba(0,0,0,.10);
+      position:relative;
+      overflow:hidden;
+      page-break-after:always;
+    }
+    .page:last-child{page-break-after:auto}
+    .topbar{height:8px;background:linear-gradient(90deg,var(--red) 0%,var(--red) 56%,var(--yellow) 100%)}
+    .inner{padding:18mm 18mm 12mm 18mm;height:calc(297mm - 8px);display:flex;flex-direction:column}
+    .brand-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:18px}
+    .brand{display:flex;flex-direction:column;gap:8px}
+    .logo{font-size:32px;font-weight:800;letter-spacing:-0.8px;color:var(--black);line-height:1}
+    .logo span{color:var(--yellow)}
+    .subbrand{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#7c7c7c}
+    .badge{display:inline-block;padding:8px 14px;border-radius:999px;background:var(--black);color:var(--yellow);font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+    .hero{
+      background:linear-gradient(135deg,#121212 0%,#1d1d1d 65%,#202020 100%);
+      border-radius:18px;
+      padding:26px 28px;
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+      margin-bottom:24px;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;right:-70px;top:-60px;width:220px;height:220px;border-radius:50%;
+      background:rgba(212,225,87,.12);
+    }
+    .hero:after{
+      content:"";
+      position:absolute;right:60px;bottom:-45px;width:140px;height:140px;border-radius:50%;
+      background:rgba(229,57,53,.16);
+    }
+    .eyebrow{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;position:relative;z-index:1}
+    .hero h1{margin:0 0 12px 0;font-size:36px;line-height:1.04;letter-spacing:-1.1px;max-width:520px;position:relative;z-index:1}
+    .hero p{margin:0;max-width:520px;font-size:15px;line-height:1.8;color:rgba(255,255,255,.78);position:relative;z-index:1}
+    .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px;position:relative;z-index:1}
+    .meta-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:14px 14px 12px}
+    .meta-card .k{font-size:10px;text-transform:uppercase;letter-spacing:.9px;color:rgba(255,255,255,.45);margin-bottom:7px}
+    .meta-card .v{font-size:14px;font-weight:700;color:#fff;line-height:1.45}
+    h2{margin:0 0 14px 0;font-size:25px;letter-spacing:-.6px;color:var(--black)}
+    h3{margin:0 0 8px 0;font-size:15px;color:var(--black)}
+    p{margin:0 0 12px 0;font-size:14px;line-height:1.8;color:#4f4f4f}
+    .lead{font-size:15px;line-height:1.85;color:#555;max-width:95%}
+    .section{margin-bottom:26px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:16px 16px}
+    .card.dark{background:var(--black);border-color:var(--black);color:#fff}
+    .card.dark h3,.card.dark p,.card.dark li{color:#fff}
+    .step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:flex-start;padding:15px 0;border-top:1px solid var(--line)}
+    .step:first-child{border-top:none;padding-top:0}
+    .step-no{width:42px;height:42px;border-radius:12px;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800}
+    .step:nth-child(2) .step-no{background:var(--red)}
+    .step:nth-child(3) .step-no{background:var(--green);color:var(--black)}
+    .step:nth-child(4) .step-no{background:var(--blue)}
+    .step:nth-child(5) .step-no{background:#202020}
+    .step:nth-child(6) .step-no{background:var(--yellow);color:var(--black)}
+    ul.clean{padding:0;margin:0;list-style:none}
+    ul.clean li{position:relative;padding-left:16px;margin:0 0 8px 0;font-size:13px;line-height:1.7;color:#5b5b5b}
+    ul.clean li:before{content:"•";position:absolute;left:0;top:0;color:var(--red);font-weight:700}
+    .strip{background:#fff8ea;border:1px solid #efdca8;border-radius:14px;padding:16px 18px}
+    .strip strong{color:#7a5600}
+    .question{padding:14px 0;border-top:1px solid var(--line)}
+    .question:first-child{border-top:none;padding-top:0}
+    .question .q{font-size:14px;font-weight:700;color:var(--black);margin-bottom:6px}
+    .answer-line{height:34px;border-bottom:1px solid #bdbdbd;margin-top:8px}
+    .answer-box{height:64px;border:1px dashed #c6c6c6;border-radius:10px;background:#fcfcfc;margin-top:10px}
+    .mini-note{font-size:12px;color:#8a8a8a;line-height:1.6}
+    .tier{border-radius:16px;padding:18px;border:1px solid var(--line);background:var(--white)}
+    .tier.featured{border:2px solid var(--red);box-shadow:0 8px 18px rgba(229,57,53,.08)}
+    .tier-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:8px}
+    .tier-price{font-size:28px;font-weight:800;color:var(--black);letter-spacing:-.7px;margin-bottom:8px}
+    .tier-meta{font-size:12px;color:#858585;margin-bottom:12px}
+    .footer-note{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#9a9a9a;border-top:1px solid var(--line);padding-top:8px}
+    .signature{display:flex;align-items:center;gap:0;margin-top:22px;break-inside:avoid;page-break-inside:avoid}
+    .signature-photo{padding-right:16px;border-right:2px solid var(--red);margin-right:16px}
+    .avatar{width:62px;height:62px;border-radius:50%;border:2px solid var(--red);object-fit:cover;display:block}
+    .signature-meta{display:flex;flex-direction:column;gap:3px}
+    .pill{display:inline-block;padding:5px 10px;border-radius:999px;background:#f1f1f1;font-size:11px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:.7px}
+    .card,.strip,.grid-2,.grid-3,.tier,.hero,.signature{break-inside:avoid;page-break-inside:avoid}
+
+    @page{size:A4;margin:0}
+    @media print{
+      body{background:#fff}
+      .doc{padding:0}
+      .page{margin:0;box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="doc">
+
+    <section class="page">
+      <div class="topbar"></div>
+      <div class="inner">
+        <div class="brand-row">
+          <div class="brand">
+            <div class="logo">Web<span>Kreatives</span></div>
+            <div class="subbrand">Client onboarding document</div>
+          </div>
+          <div class="badge">PDF onboarding</div>
+        </div>
+
+        <div class="hero">
+          <div class="eyebrow">Welkom bij je project</div>
+          <h1>Welkom, [Bedrijfsnaam].<br>We gaan jouw website bouwen.</h1>
+          <p>
+            Dit document is bedoeld als vaste onboarding-PDF voor nieuwe WebKreatives-klanten.
+            Geen mail, geen losse notities — gewoon één helder startdocument dat je kunt bewaren,
+            invullen en terugsturen waar nodig.
+          </p>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <div class="k">Klant</div>
+              <div class="v">[Klantnaam]</div>
+            </div>
+            <div class="meta-card">
+              <div class="k">Bedrijf</div>
+              <div class="v">[Bedrijfsnaam]</div>
+            </div>
+            <div class="meta-card">
+              <div class="k">Pakket</div>
+              <div class="v">[Starter / Business / Growth]</div>
+            </div>
+            <div class="meta-card">
+              <div class="k">Startdatum</div>
+              <div class="v">[Datum]</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Wat je hier vindt</h2>
+          <p class="lead">
+            Zodra de factuur is betaald, gebruiken we dit document om het project strak te starten.
+            Hierin staat wat wij doen, wat wij van jou nodig hebben, hoe feedback werkt,
+            welke vragen je moet beantwoorden en welke afspraken horen bij jouw pakket.
+          </p>
+        </div>
+
+        <div class="grid-3 section">
+          <div class="card">
+            <h3>01 — Projectflow</h3>
+            <p>De stappen van intake tot livegang, kort en duidelijk uitgelegd.</p>
+          </div>
+          <div class="card">
+            <h3>02 — Client intake</h3>
+            <p>De vragen die jij invult over logo, kleuren, pagina's en stijl.</p>
+          </div>
+          <div class="card">
+            <h3>03 — Voorwaarden</h3>
+            <p>Revisies, timing, scope en wat wel of niet inbegrepen is.</p>
+          </div>
+        </div>
+
+        <div class="section card dark">
+          <h3 style="margin-bottom:10px;color:var(--yellow)">Korte samenvatting</h3>
+          <p>
+            WebKreatives werkt snel en simpel: jij levert de basis aan, wij bouwen een moderne,
+            duidelijke website die professioneel oogt en goed werkt op mobiel. Hoe sneller de input
+            compleet is, hoe sneller we live kunnen.
+          </p>
+        </div>
+
+
+        <div class="footer-note">
+          <span>WebKreatives · client onboarding</span>
+          <span>Pagina 1</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="topbar"></div>
+      <div class="inner">
+        <div class="brand-row" style="margin-bottom:10px">
+          <div>
+            <div class="pill">Projectflow</div>
+          </div>
+          <div style="font-size:12px;color:#8a8a8a">Van start tot livegang</div>
+        </div>
+
+        <div class="section">
+          <h2>Zo verloopt het project</h2>
+          <p class="lead">
+            Dit is de standaard werkwijze. Kort, praktisch en zonder agency-blabla.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="step">
+            <div class="step-no">1</div>
+            <div>
+              <h3>Onboarding & bevestiging</h3>
+              <p>We bevestigen het gekozen pakket, de contactpersoon, de planning en de gewenste richting van de site.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-no">2</div>
+            <div>
+              <h3>Aanlevering door klant</h3>
+              <p>Jij levert logo, gewenste kleuren, teksten, foto's, contactgegevens en eventuele extra input aan.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-no">3</div>
+            <div>
+              <h3>Design & opbouw</h3>
+              <p>Wij vertalen jouw input naar een professionele, mobiele en duidelijke website binnen de afgesproken scope.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-no">4</div>
+            <div>
+              <h3>Feedback & revisies</h3>
+              <p>Je ontvangt een preview en geeft je opmerkingen het liefst gebundeld terug, zodat we gericht kunnen doorwerken.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-no">5</div>
+            <div>
+              <h3>Finale check</h3>
+              <p>We controleren inhoud, mobiel, formulieren, links en basis-SEO voordat de site live gaat.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-no">6</div>
+            <div>
+              <h3>Livegang</h3>
+              <p>Na goedkeuring zetten we de site live. Daarna kan optioneel onderhoud of support starten.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="margin-top:20px">
+          <div class="strip">
+            <strong>Belangrijk:</strong>
+            <p style="margin:8px 0 0 0;color:#7a5d22">
+              Vertraging in content, feedback of toegang schuift de planning automatisch mee.
+              Dat is normaal bij websiteprojecten, dus snelle aanlevering maakt hier echt verschil.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2 section">
+          <div class="card">
+            <h3>Wat wij van jou nodig hebben</h3>
+            <ul class="clean">
+              <li>Logo of voorlopig beeldmerk</li>
+              <li>Gewenste kleuren of stijlrichting</li>
+              <li>Teksten of ruwe inhoud</li>
+              <li>Foto's van bedrijf, team of werk</li>
+              <li>Contactgegevens + openingstijden</li>
+              <li>Eventuele domein/hosting/logins</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Wat je van ons kunt verwachten</h3>
+            <ul class="clean">
+              <li>Snelle en duidelijke communicatie</li>
+              <li>Professionele visuele richting</li>
+              <li>Mobielvriendelijke opbouw</li>
+              <li>Duidelijke feedbackmomenten</li>
+              <li>Website binnen afgesproken pakketgrenzen</li>
+              <li>Nette livegang zonder onnodig gedoe</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          <span>WebKreatives · project flow</span>
+          <span>Pagina 2</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="topbar"></div>
+      <div class="inner">
+        <div class="brand-row" style="margin-bottom:10px">
+          <div><div class="pill">Client intake</div></div>
+          <div style="font-size:12px;color:#8a8a8a">In te vullen door klant</div>
+        </div>
+
+        <div class="section">
+          <h2>Client vragen & intake</h2>
+          <p class="lead">
+            Deze pagina is bewust praktisch. Geen twintig vragen te veel — alleen wat nodig is om snel goed te kunnen bouwen.
+          </p>
+        </div>
+
+        <div class="grid-2 section">
+          <div class="card">
+            <div class="question">
+              <div class="q">1. Hebben jullie al een logo?</div>
+              <div class="mini-note">Stuur het liefst PNG, SVG of PDF mee.</div>
+              <div class="answer-line"></div>
+            </div>
+            <div class="question">
+              <div class="q">2. Hebben jullie gewenste kleuren of een bestaande huisstijl?</div>
+              <div class="mini-note">Bijv. zwart/wit, luxe, modern, warm, strak, minimalistisch.</div>
+              <div class="answer-box"></div>
+            </div>
+            <div class="question">
+              <div class="q">3. Welke uitstraling moet de site hebben?</div>
+              <div class="mini-note">Bijv. professioneel, premium, vriendelijk, lokaal, modern, eenvoudig.</div>
+              <div class="answer-box"></div>
+            </div>
+            <div class="question">
+              <div class="q">4. Welke contactgegevens moeten op de website?</div>
+              <div class="answer-box"></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="question">
+              <div class="q">5. Welke diensten of producten moeten duidelijk zichtbaar zijn?</div>
+              <div class="answer-box"></div>
+            </div>
+            <div class="question">
+              <div class="q">6. Hebben jullie al teksten of moeten wij werken vanuit ruwe input?</div>
+              <div class="answer-box"></div>
+            </div>
+            <div class="question">
+              <div class="q">7. Hebben jullie eigen foto's die we moeten gebruiken?</div>
+              <div class="answer-line"></div>
+            </div>
+            <div class="question">
+              <div class="q">8. Is er iets dat absoluut wel of niet op de site moet komen?</div>
+              <div class="answer-box"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3 style="font-size:18px;margin-bottom:12px">Pagina's op basis van gekozen pakket</h3>
+          <div class="grid-3">
+            <div class="tier">
+              <div class="tier-name">Starter</div>
+              <div class="tier-price">€199</div>
+              <div class="tier-meta">1 pagina · 2 revisierondes · 5 dagen</div>
+              <ul class="clean">
+                <li>1 pagina landingssite</li>
+                <li>Mobiel responsive</li>
+                <li>Geen contactformulier</li>
+                <li>Basis SEO setup</li>
+              </ul>
+            </div>
+            <div class="tier featured">
+              <div class="tier-name">Business</div>
+              <div class="tier-price">€299</div>
+              <div class="tier-meta">1 pagina · 3 revisierondes · 1 week</div>
+              <ul class="clean">
+                <li>1 pagina landingssite</li>
+                <li>Werkend contactformulier</li>
+                <li>Volledige SEO optimalisatie</li>
+                <li>Meest gekozen pakket</li>
+              </ul>
+            </div>
+            <div class="tier">
+              <div class="tier-name">Growth</div>
+              <div class="tier-price">€599</div>
+              <div class="tier-meta">Tot 3 pagina's · 5 revisierondes · 2–3 weken</div>
+              <ul class="clean">
+                <li>Tot 3 pagina's</li>
+                <li>Werkend contactformulier</li>
+                <li>CMS / blog setup</li>
+                <li>Geavanceerde SEO + analytics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="section card dark" style="margin-top:18px">
+          <h3 style="color:var(--yellow)">Extra intakevraag die altijd belangrijk is</h3>
+          <p style="margin-bottom:8px">Welke pagina's of onderdelen wil je sowieso op de site?</p>
+          <p style="color:rgba(255,255,255,.7)">Bijvoorbeeld: home, diensten, over ons, reviews, contact, tarieven, portfolio, FAQ.</p>
+          <div style="height:68px;border:1px dashed rgba(255,255,255,.25);border-radius:12px;margin-top:12px"></div>
+        </div>
+
+        <div class="footer-note">
+          <span>WebKreatives · client intake</span>
+          <span>Pagina 3</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="topbar"></div>
+      <div class="inner">
+        <div class="brand-row" style="margin-bottom:10px">
+          <div><div class="pill">Terms & conditions</div></div>
+          <div style="font-size:12px;color:#8a8a8a">Samenvatting per project</div>
+        </div>
+
+        <div class="section">
+          <h2>Revisies, afspraken & voorwaarden</h2>
+          <p class="lead">
+            Deze pagina is bedoeld als korte, klantvriendelijke samenvatting van hoe we samenwerken.
+            Geen zwaar juridisch document, maar wel duidelijk genoeg om verwachtingen strak te zetten.
+          </p>
+        </div>
+
+        <div class="grid-2 section">
+          <div class="card">
+            <h3>Revisierondes</h3>
+            <ul class="clean">
+              <li>Starter: 2 revisierondes</li>
+              <li>Business: 3 revisierondes</li>
+              <li>Growth: 5 revisierondes</li>
+              <li>Feedback graag zoveel mogelijk gebundeld per ronde</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Planning</h3>
+            <ul class="clean">
+              <li>Starter: opgeleverd in 5 dagen</li>
+              <li>Business: opgeleverd in 1 week</li>
+              <li>Growth: opgeleverd in 2–3 weken</li>
+              <li>Alleen haalbaar bij tijdige input en feedback</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section card">
+          <h3>Belangrijke werkafspraken</h3>
+          <ul class="clean">
+            <li>De website wordt gebouwd binnen de grenzen van het gekozen pakket.</li>
+            <li>Extra pagina's, extra functies of nieuwe wensen buiten de oorspronkelijke scope zijn meerwerk en worden altijd eerst besproken.</li>
+            <li>De klant is verantwoordelijk voor het tijdig aanleveren van teksten, foto's, bedrijfsinformatie en benodigde toegang.</li>
+            <li>Vertraging in feedback of content verschuift automatisch de afgesproken opleverdatum.</li>
+            <li>Na livegang kan de klant kiezen voor een maandplan voor hosting, backups, beveiliging en verdere support.</li>
+            <li>De site blijft uiteindelijk van de klant volgens de afgesproken oplevering en setup.</li>
+          </ul>
+        </div>
+
+        <div class="grid-3 section">
+          <div class="card">
+            <h3>Basis</h3>
+            <p><strong>€19/ma</strong><br>Hosting, domein, backups en beveiliging.</p>
+          </div>
+          <div class="card">
+            <h3>Groei</h3>
+            <p><strong>€39/ma</strong><br>Content updates, formulierbeheer en SEO monitoring.</p>
+          </div>
+          <div class="card">
+            <h3>Premium</h3>
+            <p><strong>€79/ma</strong><br>2 uur designwerk, Google Bedrijfsprofiel beheer en kwartaalstrategie.</p>
+          </div>
+        </div>
+
+        <div class="section strip">
+          <strong>Praktische eindregel:</strong>
+          <p style="margin:8px 0 0 0;color:#7a5d22">
+            Als jij snel en duidelijk aanlevert, kunnen wij snel en strak opleveren. Dat is precies hoe WebKreatives het liefst werkt.
+          </p>
+        </div>
+
+        <div class="signature" style="margin-top:24px">
+          <div class="signature-photo">
+            <img class="avatar" src="https://webkreatives.com/assets/csaba.jpg" alt="Csaba G.">
+          </div>
+          <div class="signature-meta">
+            <div style="font-size:14px;font-weight:700;color:var(--black)">Csaba G.</div>
+            <div style="font-size:12px;color:#888">Co-Founder · WebKreatives</div>
+            <div style="font-size:12px;color:#888">info@webkreatives.com</div>
+            <div style="font-size:12px;color:#888">webkreatives.com</div>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          <span>WebKreatives · terms summary</span>
+          <span>Pagina 4</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
