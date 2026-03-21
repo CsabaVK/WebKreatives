@@ -83,6 +83,12 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 0 32px}
 .footer-bottom a{color:var(--teal);font-weight:600}
 .footer-kvk{font-size:11px;color:rgba(255,255,255,.3)}
 
+/* ── MOBILE NAV (hidden by default on all screen sizes) ── */
+.nav-mobile{display:none}
+.nav-mobile.open{display:flex;position:fixed;inset:0;background:var(--navy);z-index:99;padding:100px 40px 40px;flex-direction:column;gap:28px}
+.nav-mobile a{font-size:22px;font-weight:700;color:rgba(255,255,255,.85)}
+.nav-mobile a:hover{color:var(--teal)}
+
 /* ── FADE-IN ANIMATION ── */
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
 .fade-in.visible{opacity:1;transform:none}
@@ -98,10 +104,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:56px 0 32px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   nav ul{display:none}
   .nav-toggle{display:flex}
-  .nav-mobile{display:none;position:fixed;inset:0;background:var(--navy);z-index:99;padding:100px 40px 40px;flex-direction:column;gap:28px}
-  .nav-mobile.open{display:flex}
-  .nav-mobile a{font-size:22px;font-weight:700;color:rgba(255,255,255,.85)}
-  .nav-mobile a:hover{color:var(--teal)}
 }
 @media(max-width:560px){
   .footer-grid{grid-template-columns:1fr}
