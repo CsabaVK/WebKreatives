@@ -2,7 +2,7 @@
 
 > **Live:** [webkreatives.com](https://webkreatives.com)
 > Hosted via GitHub Pages — auto-deploys from `main` branch
-> Owner: Csaba Garaguly | KvK: 94051097 | BTW: NL381246668B01
+> Owner: Csaba Garaguly
 
 ---
 
@@ -40,12 +40,7 @@ WebKreatives is a Dutch freelance web design agency specialising in fast, afford
 │       └── client-preview.html
 │
 ├── client-projects/
-│   ├── de-groot-accountants/         ← Full multi-page accountancy site
-│   │   ├── index.html
-│   │   ├── over-ons.html
-│   │   ├── diensten.html
-│   │   ├── contact.html
-│   │   └── style.css
+│   ├── de-groot-accountants/
 │   ├── leyenburger.html
 │   ├── tandarts-knoll.html
 │   ├── studio-lena-fotografie.html
@@ -141,21 +136,6 @@ Templates are split into three categories:
 | GitHub Pages | Auto-deploys from `main` → `webkreatives.com` |
 | Web3Forms | Contact form handler → `info@webkreatives.com` |
 | Gmail | Connected via MCP for automated workflows |
-
----
-
-## Invoice Details
-
-Invoices are generated from `templates/universal/invoice-template.html`.
-
-```
-WebKreatives
-Mademblikstraat 275-96
-2547 GW Den Haag
-info@webkreatives.com
-KvK: 94051097
-BTW-id: NL381246668B01
-```
 
 ---
 
