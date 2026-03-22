@@ -1,11 +1,1 @@
-{
-  "version": "0.0.1",
-  "configurations": [
-    {
-      "name": "webkreatives",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["http-server", "C:/Users/csaba/Documents/webkreatives", "-p", "8080", "-c-1"],
-      "port": 8080
-    }
-  ]
-}
+{"version":"0.0.1","configurations":[{"name":"webkreatives","runtimeExecutable":"npx.cmd","runtimeArgs":["serve","-s",".","-l","8080"],"port":8080}]}

@@ -80,6 +80,7 @@ C:\Users\csaba\Documents\webkreatives\   ← SINGLE SOURCE OF TRUTH (local + Git
 |---------|-------------|
 | Web3Forms | Access key: `16fb32e8-43cd-4b8c-b6ad-904a4efd8e59` |
 | KVK | **94051097** — legal entity: Csaba Services, trade name: WebKreatives (updated 2026-03-22) |
+| BTW | **NL381246668B01** |
 | GitHub Pages | Auto-deploys from `main` branch |
 | Gmail | Connected via MCP — `notify@web3forms.com` filter needed (auto-reply setup) |
 
