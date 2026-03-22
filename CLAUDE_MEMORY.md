@@ -79,6 +79,7 @@ C:\Users\csaba\Documents\webkreatives\   ← SINGLE SOURCE OF TRUTH (local + Git
 | Service | Key / Detail |
 |---------|-------------|
 | Web3Forms | Access key: `16fb32e8-43cd-4b8c-b6ad-904a4efd8e59` |
+| KVK | **94051097** — legal entity: Csaba Services, trade name: WebKreatives (updated 2026-03-22) |
 | GitHub Pages | Auto-deploys from `main` branch |
 | Gmail | Connected via MCP — `notify@web3forms.com` filter needed (auto-reply setup) |
 
@@ -127,10 +128,11 @@ C:\Users\csaba\Documents\webkreatives\   ← SINGLE SOURCE OF TRUTH (local + Git
 ## 🔄 Workflow & Conventions
 
 ### Git Commits
-- Always `cd "C:\Users\csaba\Documents\webkreatives"` before git commands
+- Working directory (OpenClaw): `D:\.openclaw\workspace\projects\WebsitePrototypes\webkreatives-v3`
+- Old path (may still be valid): `C:\Users\csaba\Documents\webkreatives`
 - Commit specific files by name (never `git add -A` without checking)
 - Push to `origin main`
-- Shell working directory sometimes resets to `C:\Users\csaba\Downloads\webkreatives` — always use absolute paths
+- Always use absolute paths
 
 ### File Consolidation Rule
 > **The GitHub repo at `C:\Users\csaba\Documents\webkreatives\` is the single source of truth.**
