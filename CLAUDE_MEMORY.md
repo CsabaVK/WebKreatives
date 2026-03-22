@@ -22,14 +22,22 @@ C:\Users\csaba\Documents\webkreatives\   ← SINGLE SOURCE OF TRUTH (local + Git
 ├── CLAUDE_MEMORY.md                    ← This file
 │
 ├── templates/
-│   ├── client-onboarding-welcome.html  ← 4-page A4 onboarding PDF doc for new clients
-│   ├── email-template-dutch-website-refresh.html ← Cold email HTML for Dutch businesses
-│   ├── email-template.html
-│   ├── email-template-dutch.html
-│   ├── email-signature.html
-│   ├── auto-reply.html
-│   ├── invoice-template.html
-│   └── client-preview.html
+│   ├── dutch/                          ← Dutch language templates
+│   │   ├── auto-reply.html
+│   │   ├── client-onboarding.html
+│   │   ├── cold-email-outreach.html
+│   │   ├── cold-email-new-offer.html
+│   │   └── cold-email-website-refresh.html
+│   ├── english/                        ← English language templates (paired with dutch/)
+│   │   ├── auto-reply.html
+│   │   ├── client-onboarding.html
+│   │   ├── cold-email-outreach.html
+│   │   ├── cold-email-new-offer.html
+│   │   └── cold-email-website-refresh.html
+│   └── universal/                      ← Language-neutral templates
+│       ├── invoice-template.html
+│       ├── email-signature.html
+│       └── client-preview.html
 │
 ├── client-projects/
 │   ├── de-groot-accountants/           ← Multi-page accountancy site (FULL SITE)
@@ -88,7 +96,16 @@ C:\Users\csaba\Documents\webkreatives\   ← SINGLE SOURCE OF TRUTH (local + Git
 
 ## 📝 Templates — Key Details
 
-### `client-onboarding-welcome.html`
+### 🔁 Template Language Sync Rule (set 2026-03-22)
+> **IMPORTANT**: `dutch/` and `english/` templates are paired 1-to-1 by filename.
+> Whenever Csaba edits a file in `dutch/` OR `english/`, Claude MUST automatically update the matching file in the other language folder to keep content, structure, and tone in sync.
+> - Example: edit `dutch/auto-reply.html` → Claude also updates `english/auto-reply.html`
+> - Universal templates (`universal/`) have no pair — edit freely.
+> - Pairing is by filename (e.g. `dutch/client-onboarding.html` ↔ `english/client-onboarding.html`)
+
+---
+
+### `dutch/client-onboarding.html` (formerly `client-onboarding-welcome.html`)
 - 4-page A4 PDF-style document for new WebKreatives clients
 - Uses `@page{size:A4}`, `width:210mm`, `height:297mm`, `page-break-after:always`
 - **Page 1**: Welcome hero (dark) + meta-grid (Klant/Bedrijf/Pakket/Startdatum) + summary cards
