@@ -31,7 +31,8 @@ html{scroll-behavior:smooth}
 body{font-family:var(--fb);background:var(--white);color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:200;height:66px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--grey-200)}
+nav{position:sticky;top:0;z-index:200;height:66px;padding:0 6%;display:flex;align-items:center;justify-content:space-between}
+nav::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--grey-200);z-index:-1}
 .logo{text-decoration:none;display:flex;align-items:center}
 .nav-links{display:flex;align-items:center;gap:32px}
 .nav-links a{font-size:14px;font-weight:500;color:var(--grey-700);text-decoration:none;transition:color .2s}
@@ -297,7 +298,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.09)}
 @media(max-width:900px){
   .hamburger{display:flex}
   .nav-controls{margin-left:auto;margin-right:12px}
-  .nav-links{position:absolute;top:100%;left:0;right:0;min-height:calc(100vh - 66px);background:var(--white);flex-direction:column;gap:0;padding:12px 6%;display:none;border-top:1px solid var(--grey-200);z-index:199;overflow-y:auto;align-items:flex-start}
+  .nav-links{position:fixed;top:66px;left:0;right:0;bottom:0;background:var(--white);flex-direction:column;gap:0;padding:12px 6%;display:none;border-top:1px solid var(--grey-200);z-index:199;overflow-y:auto;align-items:flex-start}
   .nav-links.open{display:flex}
   .nav-links a{font-size:18px;padding:14px 0;border-bottom:1px solid var(--grey-100);width:100%}
   .btn-nav{margin-top:12px;align-self:stretch;text-align:center;padding:14px 20px!important}
@@ -356,7 +357,7 @@ body[data-theme="dark"]{
   --green-bd:#2a4a2e;
 }
 /* Nav */
-body[data-theme="dark"] nav{background:rgba(13,13,13,.95);border-bottom-color:#252525}
+body[data-theme="dark"] nav::before{background:rgba(13,13,13,.95);border-bottom-color:#252525}
 /* Logo SVG text */
 body[data-theme="dark"] .logo svg text{fill:#f0f0f0}
 /* Footer logo SVG text stays white */
