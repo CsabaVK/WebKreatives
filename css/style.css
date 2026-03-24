@@ -298,8 +298,8 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.09)}
 @media(max-width:900px){
   .hamburger{display:flex}
   .nav-controls{margin-left:auto;margin-right:12px}
-  .nav-links{position:fixed;top:66px;left:0;right:0;bottom:0;background:var(--white);flex-direction:column;gap:0;padding:12px 6%;display:none;border-top:1px solid var(--grey-200);z-index:199;overflow-y:auto;align-items:flex-start}
-  .nav-links.open{display:flex}
+  .nav-links{position:fixed;top:66px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;padding:0 6%;display:flex;border-top:1px solid var(--grey-200);z-index:199;overflow:hidden;align-items:flex-start;max-height:0;opacity:0;pointer-events:none;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .25s ease,padding .3s ease}
+  .nav-links.open{max-height:400px;opacity:1;pointer-events:auto;padding:12px 6% 20px}
   .nav-links a{font-size:18px;padding:14px 0;border-bottom:1px solid var(--grey-100);width:100%}
   .btn-nav{margin-top:12px;align-self:stretch;text-align:center;padding:14px 20px!important}
 }
