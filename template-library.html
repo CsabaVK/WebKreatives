@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Template Library — WebKreatives</title>
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
+<meta name="description" content="Browse WebKreatives website styles. Find the look that fits your business and we will build it for you — fast, affordable and fully custom.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,10 +33,12 @@ a{text-decoration:none;color:inherit}
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--grey-200)}
 .logo{display:flex;align-items:center}
 .nav-right{display:flex;align-items:center;gap:20px}
-.nav-back{font-size:13px;font-weight:600;color:var(--grey-600);display:flex;align-items:center;gap:6px;transition:color .2s}
-.nav-back:hover{color:var(--black)}
-.nav-back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.badge-internal{background:var(--black);color:var(--white);font-size:10px;font-weight:700;letter-spacing:.8px;padding:3px 10px;border-radius:100px;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:13px;font-weight:600;color:var(--grey-700);transition:color .2s}
+.nav-links a:hover{color:var(--black)}
+.btn-nav{background:var(--red);color:#fff!important;padding:8px 18px;border-radius:8px;transition:background .2s!important}
+.btn-nav:hover{background:#c0301f!important}
+@media(max-width:768px){.nav-links{display:none}}
 
 /* ── HEADER ── */
 .lib-header{background:var(--black);color:var(--white);padding:60px 48px 52px;text-align:center;position:relative;overflow:hidden}
@@ -65,7 +68,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 /* Preview pane */
 .tpl-preview{position:relative;overflow:hidden;background:var(--grey-100);min-height:210px}
-.tpl-preview img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s var(--ease)}
+.tpl-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s var(--ease)}
 .tpl-card:hover .tpl-preview img{transform:scale(1.04)}
 .tpl-number{position:absolute;top:12px;left:12px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .tpl-style-badge{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);color:#fff;font-size:10px;font-weight:600;padding:4px 10px;border-radius:100px;letter-spacing:.3px}
@@ -141,12 +144,12 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       <text x="16" y="32" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="#0d0d0d">Kreatives</text>
     </svg>
   </a>
-  <div class="nav-right">
-    <span class="badge-internal">Internal</span>
-    <a class="nav-back" href="index.html">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      Back to website
-    </a>
+  <div class="nav-links">
+    <a href="index.html#services">Diensten</a>
+    <a href="index.html#work">Portfolio</a>
+    <a href="index.html#pricing">Prijzen</a>
+    <a href="index.html#testimonials">Reviews</a>
+    <a href="index.html#contact" class="btn-nav">Offerte Aanvragen</a>
   </div>
 </nav>
 
@@ -154,7 +157,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 <div class="lib-header">
   <span class="label">WebKreatives</span>
   <h1>Template <em>Library</em></h1>
-  <p>All available website templates. Use as a starting point for new client projects — duplicate, adapt, launch.</p>
+  <p>Bekijk onze website stijlen. Zie je iets dat bij jouw bedrijf past? Wij bouwen het voor je — snel, betaalbaar en volledig op maat.</p>
   <div class="header-stats">
     <div class="header-stat"><strong>10</strong><span>Templates</span></div>
     <div class="header-stat"><strong>10</strong><span>Industries</span></div>
@@ -211,7 +214,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/leyenburger.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Leyenburger">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Leyenburger">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -245,7 +248,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/tandarts-knoll.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Tandarts Knoll">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Tandarts Knoll">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -279,7 +282,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/klussenbedrijf-edward.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Klussenbedrijf Edward">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Klussenbedrijf Edward">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -312,7 +315,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/vanderberg-loodgieter.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Van der Berg">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Van der Berg">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -345,7 +348,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/studio-lena-fotografie.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Studio Lena">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Studio Lena">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -378,7 +381,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/luna-beauty-studio.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Luna Beauty">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Luna Beauty">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -411,7 +414,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/bakkerij-hartman.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Bakkerij Hartman">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Bakkerij Hartman">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -444,7 +447,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/nexus-it-solutions.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Nexus IT">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Nexus IT">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -477,7 +480,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/maison-blanc-interieur.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Maison Blanc">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: Maison Blanc">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -513,7 +516,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       </div>
       <div class="tpl-actions">
         <a class="btn-preview" href="client-projects/de-groot-accountants/index.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: De Groot & Partners">Use as base</a>
+        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Template: De Groot & Partners">Ik wil deze stijl</a>
       </div>
     </div>
   </div>
@@ -522,7 +525,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 <!-- FOOTER -->
 <div class="lib-footer">
-  <p>WebKreatives Template Library — internal use only · <a href="index.html">Back to website</a></p>
+  <p>© 2026 WebKreatives · Zie je iets dat je aanspreekt? <a href="index.html#contact">Vraag een offerte aan</a></p>
 </div>
 
 <script>
