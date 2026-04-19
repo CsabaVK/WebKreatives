@@ -93,11 +93,11 @@
   /* ── Author Bio ───────────────────────────────────────────────────────── */
   function renderAuthorBio(el) {
     el.innerHTML = `
-      <img src="${AUTHOR_IMG}" alt="Csaba Garaguly — Co-founder WebKreatives" loading="lazy">
+      <img src="${AUTHOR_IMG}" alt="Csaba Garaguly, Co-founder WebKreatives" loading="lazy">
       <div>
         <h4>Csaba Garaguly</h4>
-        <span class="bio-role">Co-founder — WebKreatives</span>
-        <p>Csaba bouwt websites voor kleine bedrijven in Nederland en schrijft over alles wat te maken heeft met online groeien. WebKreatives helpt ondernemers die weten dat hun online aanwezigheid beter kan — zonder fortuin te betalen.</p>
+        <span class="bio-role">Co-founder · WebKreatives</span>
+        <p>Csaba bouwt websites voor kleine bedrijven in Nederland en schrijft over alles wat te maken heeft met online groeien. WebKreatives helpt ondernemers die weten dat hun online aanwezigheid beter kan, zonder fortuin te betalen.</p>
       </div>`;
   }
 
@@ -124,18 +124,6 @@
       </a>`).join('');
   }
 
-  /* ── Reading progress bar ─────────────────────────────────────────────── */
-  function initProgressBar() {
-    const bar = document.getElementById('read-progress');
-    if (!bar) return;
-    window.addEventListener('scroll', () => {
-      const doc = document.documentElement;
-      const top = doc.scrollTop || document.body.scrollTop;
-      const h   = doc.scrollHeight - doc.clientHeight;
-      bar.style.width = h > 0 ? Math.min((top / h) * 100, 100) + '%' : '0%';
-    }, { passive: true });
-  }
-
   /* ── Init ─────────────────────────────────────────────────────────────── */
   function init() {
     const shareEl   = document.querySelector('[data-wk-share]');
@@ -145,8 +133,6 @@
     if (shareEl)   renderShareBar(shareEl);
     if (authorEl)  renderAuthorBio(authorEl);
     if (relatedEl) renderRelated(relatedEl);
-
-    initProgressBar();
   }
 
   if (document.readyState === 'loading') {
