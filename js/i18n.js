@@ -3,7 +3,7 @@ const translations = {
   nl: {
     // Nav
     "nav.services": "Diensten",
-    "nav.work": "Portfolio",
+    "nav.work": "Onze Websites",
     "nav.pricing": "Prijzen",
     "nav.reviews": "Reviews",
     "nav.articles": "Blog",
@@ -58,8 +58,8 @@ const translations = {
     "why.4.p": "Wij bouwen op bewezen, professionele platforms — snel, veilig en makkelijk zelf te beheren.",
 
     // Work
-    "work.label": "Ons Werk",
-    "work.title": "Projecten Waar We Trots Op Zijn",
+    "work.label": "Onze Websites",
+    "work.title": "Websites Waar We Trots Op Zijn",
     "work.sub": "Elke site is op maat gemaakt voor het merk, de doelen en de klanten van dat specifieke bedrijf.",
     "work.1.p": "Donkere, redactionele one-pager voor een halal burger & grill restaurant in Den Haag. Menu, openingstijden, locatie — in 5 dagen live.",
     "work.2.p": "Strakke, moderne one-pager voor een tandartspraktijk in Staphorst. Diensten, tijden, contact & kaart — tweetalig NL/EN.",
@@ -192,7 +192,7 @@ const translations = {
     "footer.seo": "SEO & Prestaties",
     "footer.brand": "Branding & Identiteit",
     "footer.support": "Doorlopende Support",
-    "footer.work": "Ons Werk",
+    "footer.work": "Onze Websites",
     "footer.articles": "Blog & Tips",
     "footer.why": "Waarom Wij",
     "footer.reviews": "Reviews",
@@ -203,7 +203,7 @@ const translations = {
   },
   en: {
     "nav.services": "Services",
-    "nav.work": "Work",
+    "nav.work": "Our Websites",
     "nav.pricing": "Pricing",
     "nav.reviews": "Reviews",
     "nav.articles": "Blog",
@@ -246,8 +246,8 @@ const translations = {
     "why.3.p": "Most websites are fully designed, built, and launched within two weeks. We move fast.",
     "why.4.h": "Professional Platform",
     "why.4.p": "We build on proven, professional platforms — fast, secure, and easy for you to manage without any coding.",
-    "work.label": "Our Work",
-    "work.title": "Projects We're Proud Of",
+    "work.label": "Our Websites",
+    "work.title": "Websites We're Proud Of",
     "work.sub": "Every site is custom-crafted for the brand, goals, and customers of that specific business.",
     "work.1.p": "Dark, editorial one-pager for a halal burger & grill restaurant in Den Haag. Menu, hours, location — live in 5 days.",
     "work.2.p": "Clean, modern one-pager for a dental practice in Staphorst. Services, hours, contact & map — bilingual NL/EN with smooth animations.",
@@ -366,7 +366,7 @@ const translations = {
     "footer.seo": "SEO & Performance",
     "footer.brand": "Brand & Identity",
     "footer.support": "Ongoing Support",
-    "footer.work": "Our Work",
+    "footer.work": "Our Websites",
     "footer.articles": "Blog & Tips",
     "footer.why": "Why Us",
     "footer.reviews": "Reviews",
