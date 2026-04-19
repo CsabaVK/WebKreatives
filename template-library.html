@@ -38,7 +38,17 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-links a:hover{color:var(--black)}
 .btn-nav{background:var(--red);color:#fff!important;padding:8px 18px;border-radius:8px;transition:background .2s!important}
 .btn-nav:hover{background:#c0301f!important}
-@media(max-width:768px){.nav-links{display:none}}
+.lang-dropdown{position:relative}
+.lang-btn{display:flex;align-items:center;gap:10px;border:1px solid var(--grey-200);background:var(--white);border-radius:999px;padding:7px 12px;cursor:pointer;font:600 12px var(--fh);color:var(--grey-700)}
+.lang-btn:hover{border-color:var(--grey-500)}
+.lang-flag{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;flex-shrink:0}
+.lang-flag svg{width:100%;height:100%;display:block}
+.lang-arrow{font-size:11px;color:var(--grey-500)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:170px;background:var(--white);border:1px solid var(--grey-200);border-radius:14px;box-shadow:var(--sh-md);padding:6px;display:none}
+.lang-dropdown.open .lang-menu{display:block}
+.lang-option{width:100%;display:flex;align-items:center;gap:10px;border:none;background:transparent;border-radius:10px;padding:10px 12px;cursor:pointer;font:600 12px var(--fh);color:var(--grey-700);text-align:left}
+.lang-option:hover,.lang-option.active{background:var(--grey-100);color:var(--black)}
+@media(max-width:768px){.nav-links{display:none}nav{padding:0 24px}.lang-btn{padding:7px 10px}}
 
 /* ── HEADER ── */
 .lib-header{background:var(--black);color:var(--white);padding:60px 48px 52px;text-align:center;position:relative;overflow:hidden}
@@ -144,12 +154,25 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       <text x="16" y="32" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="#0d0d0d">Kreatives</text>
     </svg>
   </a>
-  <div class="nav-links">
-    <a href="index.html#services">Diensten</a>
-    <a href="index.html#work">Portfolio</a>
-    <a href="index.html#pricing">Prijzen</a>
-    <a href="index.html#testimonials">Reviews</a>
-    <a href="index.html#contact" class="btn-nav">Offerte Aanvragen</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="index.html#services" data-nav="services">Diensten</a>
+      <a href="index.html#work" data-nav="work">Portfolio</a>
+      <a href="index.html#pricing" data-nav="pricing">Prijzen</a>
+      <a href="index.html#testimonials" data-nav="reviews">Reviews</a>
+      <a href="index.html#contact" class="btn-nav" data-nav="cta">Offerte Aanvragen</a>
+    </div>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-btn" id="langBtn" type="button">
+        <span class="lang-flag"></span>
+        <span class="lang-name">NL</span>
+        <span class="lang-arrow">?</span>
+      </button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-option active" data-lang="nl" type="button"><span class="lang-flag"></span>Nederlands</button>
+        <button class="lang-option" data-lang="en" type="button"><span class="lang-flag"></span>English</button>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -529,23 +552,175 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 </div>
 
 <script>
+const flagSVGs = {
+  nl: '<svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>',
+  en: '<svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>'
+};
+
+const copy = {
+  nl: {
+    title: 'Website Showcase - WebKreatives',
+    metaDescription: 'Bekijk voorbeelden van WebKreatives-websites. Vind een stijl die bij jouw bedrijf past en wij bouwen hem snel, betaalbaar en volledig op maat.',
+    nav: { services: 'Diensten', work: 'Portfolio', pricing: 'Prijzen', reviews: 'Reviews', cta: 'Offerte Aanvragen' },
+    header: { title: 'Website <em>Showcase</em>', text: 'Bekijk voorbeelden van websites die we hebben ontworpen voor verschillende soorten bedrijven. Zie je een stijl die bij jouw merk past? Dan bouwen we een versie die volledig op jouw bedrijf, diensten en doelen is afgestemd.', stats: ['Website stijlen', 'Branches', 'Dagen tot livegang'] },
+    filters: { label: 'Bekijk per branche:', all: 'Alle', restaurant: 'Restaurant', health: 'Gezondheid', construction: 'Bouw', plumbing: 'Loodgieter', creative: 'Creatief', beauty: 'Beauty', bakery: 'Bakkerij', tech: 'Tech', luxury: 'Luxe', finance: 'Financieel' },
+    footer: '? 2026 WebKreatives ? Zie je iets dat je aanspreekt? <a href="index.html#contact">Vraag een offerte aan</a>',
+    results: (n) => `${n} ${n === 1 ? 'websitevoorbeeld' : 'websitevoorbeelden'}`,
+    buttons: { preview: 'Live preview', use: 'Ik wil een website zoals deze' },
+    metaLabel: 'Vanaf',
+    cards: [
+      { style:'Donker ? Editorial', tags:['Restaurant','Halal','One-pager'], business:'Halal grill- en burgerrestaurant ? Den Haag', desc:'Donkere, redactionele one-pager voor een halal restaurant. Sterke hero, menukaart, openingstijden, locatie en Google Maps. Gemaakt voor foodzaken die een krachtige premium uitstraling willen.', features:['Donker design','Menusectie','Openingstijden','Google Maps','Mobiel responsive'] },
+      { style:'Strak ? Modern', tags:['Gezondheid','Tandarts','One-pager','NL / EN'], business:'Tandartspraktijk ? Staphorst', desc:'Strakke, moderne one-pager voor een tandarts- of medische praktijk. Lichte kleuren, vertrouwenwekkend design met diensten, openingstijden, contactformulier en kaart. Tweetalig NL/EN met subtiele scrollanimaties.', features:['Licht & betrouwbaar','Dienstenoverzicht','Contactformulier','Tweetalig NL/EN','Scrollanimaties'] },
+      { style:'Stoer ? Industrieel', tags:['Bouw','Vakwerk','One-pager','NL / EN'], business:'Klusjesman / aannemer ? Deventer', desc:'Stoere, industri?le one-pager voor een aannemer of klusbedrijf. Sterke typografie, projectgalerij, dienstenoverzicht en tweetalige opzet. Ideaal voor bouw-, installatie- en vakbedrijven.', features:['Industrieel design','Projectgalerij','Tweetalig NL/EN','Contactformulier','Scrollanimaties'] },
+      { style:'Professioneel ? Vertrouwen', tags:['Loodgieter','Installatie','One-pager'], business:'Loodgieter / installatiebedrijf ? Nederland', desc:'Professionele one-pager die direct vertrouwen uitstraalt voor loodgieters en installateurs. Met spoed-CTA, diensten, reviews en contactformulier. Makkelijk aanpasbaar voor elk onderhouds- of installatiebedrijf.', features:['Vertrouwenwekkend design','Spoed-CTA','Reviewssectie','Contactformulier','Binnen 1 week live'] },
+      { style:'Minimal ? Typografisch', tags:['Creatief','Fotografie','Portfolio'], business:'Fotostudio ? Utrecht', desc:'Scandinavisch minimalisme met veel witruimte, sterke typografie en een asymmetrisch fotogrid. Geschikt voor fotografen, creatives en designers die een rustige premium uitstraling willen.', features:['Cormorant + Inter','Asymmetrisch grid','Warme greige-accenten','Scrollanimaties','100vh split hero'] },
+      { style:'Warm ? Organisch', tags:['Beauty','Wellness','Boekings-CTA'], business:'Beautysalon / skincare & wellness ? Rotterdam', desc:'Warme, vrouwelijke website met cr?me- en terracottatinten, ronde vormen en een zachte lifestyle-uitstraling. Inclusief dienstkaarten met prijzen, testimonials en WhatsApp-boeking.', features:['Playfair + Nunito','Geanimeerde blob-vormen','Prijscards voor diensten','WhatsApp-boeking','Testimonials'] },
+      { style:'Retro ? Ambachtelijk', tags:['Bakkerij','Food','One-pager'], business:'Ambachtelijke bakkerij & patisserie ? Haarlem, sinds 1987', desc:'Warme vintage uitstraling voor bakkerijen en ambachtelijke foodzaken. Denk aan papiertexturen, sierlijke details, productkaarten, openingstijden en een founders story.', features:['Papierachtige kleuren','Sierlijke details','Productkaarten','Openingstijden','Verhaal van de oprichter'] },
+      { style:'Tech ? Glassmorphism', tags:['Tech','IT / SaaS','Donkere modus'], business:'IT-consultancy / managed IT ? Amsterdam', desc:'Moderne donkere SaaS-look met diepe navykleuren, elektrische blauwe gradients en glassmorphism-kaarten. Ideaal voor techbedrijven, IT-diensten en softwaremerken.', features:['Space Grotesk-lettertype','Glassmorphism cards','Gradient hero-tekst','Dot-grid achtergrond','Trust/stats-bar'] },
+      { style:'Luxe ? Editorial Gold', tags:['Luxe','Interieur','Portfolio'], business:'Interieurstudio ? Amsterdam', desc:'Ultra-premium editorial stijl met off-white, warm zwart en antiekgouden accenten. Perfect voor interieurstudio?s, designmerken, vastgoed en andere premium dienstverleners.', features:['EB Garamond + Josefin','Magazine-grid','Gouden accenten','Hover reveal op projecten','Strakke scherpe look'] },
+      { style:'Zakelijk ? Multi-page', tags:['Finance','Professioneel','Multi-page','NL'], business:'Accountants & adviseurs ? Amsterdam', desc:'Moderne zakelijke multipage-site voor accountants- en advieskantoren. Navy + teal kleurensysteem, vier gekoppelde pagina?s en gedeelde navigatie. Ook sterk inzetbaar voor consultancy, legal en andere professionele diensten.', features:['4 gekoppelde pagina?s','Gedeelde nav & footer','Contactformulier','FAQ-accordion','Prijscards'] }
+    ]
+  },
+  en: {
+    title: 'Website Showcase - WebKreatives',
+    metaDescription: 'Browse WebKreatives website examples. Find a style that fits your business and we will build it fast, affordably, and fully custom.',
+    nav: { services: 'Services', work: 'Portfolio', pricing: 'Pricing', reviews: 'Reviews', cta: 'Get a Quote' },
+    header: { title: 'Website <em>Showcase</em>', text: 'Browse examples of websites we designed for different kinds of businesses. If you spot a style that fits your brand, we will create a version tailored to your business, services, and goals.', stats: ['Website styles', 'Industries', 'Days to launch'] },
+    filters: { label: 'Browse by industry:', all: 'All', restaurant: 'Restaurant', health: 'Health', construction: 'Construction', plumbing: 'Plumbing', creative: 'Creative', beauty: 'Beauty', bakery: 'Bakery', tech: 'Tech', luxury: 'Luxury', finance: 'Finance' },
+    footer: '? 2026 WebKreatives ? See something you like? <a href="index.html#contact">Request a quote</a>',
+    results: (n) => `${n} ${n === 1 ? 'website example' : 'website examples'}`,
+    buttons: { preview: 'Live preview', use: 'I want a website like this' },
+    metaLabel: 'Starting at',
+    cards: [
+      { style:'Dark ? Editorial', tags:['Restaurant','Halal','One-pager'], business:'Halal grill & burger restaurant ? The Hague', desc:'Dark editorial one-pager for a halal restaurant. Strong hero, menu section, opening hours, location, and Google Maps. Built for food businesses that want a bold premium look.', features:['Dark design','Menu section','Opening hours','Google Maps','Mobile responsive'] },
+      { style:'Clean ? Modern', tags:['Health','Dental','One-pager','NL / EN'], business:'Dental practice ? Staphorst', desc:'Clean modern one-pager for a dental or medical practice. Light palette, trust-building design with services, opening hours, contact form, and map. Bilingual NL/EN with subtle scroll animation.', features:['Light & trustworthy','Services overview','Contact form','Bilingual NL/EN','Scroll animations'] },
+      { style:'Bold ? Industrial', tags:['Construction','Trades','One-pager','NL / EN'], business:'Handyman / contractor ? Deventer', desc:'Bold industrial one-pager for a contractor or handyman business. Strong typography, projects gallery, services overview, and bilingual setup. Ideal for construction, installation, and trade businesses.', features:['Industrial design','Projects gallery','Bilingual NL/EN','Contact form','Scroll animations'] },
+      { style:'Professional ? Trust', tags:['Plumbing','Installation','One-pager'], business:'Plumber / installation company ? Netherlands', desc:'Professional trust-first one-pager for plumbers and installers. Includes emergency CTA, services, reviews, and a contact form. Easy to adapt for any maintenance or installation business.', features:['Trust-first design','Emergency CTA','Reviews section','Contact form','Live within 1 week'] },
+      { style:'Minimal ? Typographic', tags:['Creative','Photography','Portfolio'], business:'Photography studio ? Utrecht', desc:'Scandinavian minimalism with generous whitespace, strong typography, and an asymmetric photo grid. Great for photographers, creatives, and designers wanting a calm premium feel.', features:['Cormorant + Inter','Asymmetric grid','Warm greige accents','Scroll animations','100vh split hero'] },
+      { style:'Warm ? Organic', tags:['Beauty','Wellness','Booking CTA'], business:'Beauty salon / skincare & wellness ? Rotterdam', desc:'Warm feminine website with cream and terracotta tones, rounded shapes, and a soft lifestyle feel. Includes service pricing cards, testimonials, and WhatsApp booking.', features:['Playfair + Nunito','Animated blob shapes','Service pricing cards','WhatsApp booking','Testimonials'] },
+      { style:'Retro ? Artisan', tags:['Bakery','Food','One-pager'], business:'Artisan bakery & patisserie ? Haarlem, est. 1987', desc:'Warm vintage look for bakeries and artisan food brands. Think paper textures, ornamental details, product cards, opening hours, and a founder story.', features:['Paper-tone palette','Ornamental details','Product cards','Opening hours','Founder story'] },
+      { style:'Tech ? Glassmorphism', tags:['Tech','IT / SaaS','Dark mode'], business:'IT consultancy / managed IT ? Amsterdam', desc:'Modern dark SaaS feel with deep navy colors, electric blue gradients, and glassmorphism cards. Ideal for tech companies, IT services, and software brands.', features:['Space Grotesk font','Glassmorphism cards','Gradient hero text','Dot-grid background','Trust/stats bar'] },
+      { style:'Luxury ? Editorial Gold', tags:['Luxury','Interior','Portfolio'], business:'Interior design studio ? Amsterdam', desc:'Ultra-premium editorial style with off-white, warm black, and antique gold accents. Perfect for interior studios, design brands, real estate, and other premium services.', features:['EB Garamond + Josefin','Magazine grid','Gold accents','Project hover reveal','Sharp refined aesthetic'] },
+      { style:'Corporate ? Multi-page', tags:['Finance','Professional','Multi-page','NL'], business:'Accountants & advisors ? Amsterdam', desc:'Modern corporate multi-page site for accountancy and advisory firms. Navy + teal palette, four linked pages, and shared navigation. Also strong for consultancy, legal, and other professional services.', features:['4 linked pages','Shared nav & footer','Contact form','FAQ accordion','Pricing cards'] }
+    ]
+  }
+};
+
 const filterBtns = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.tpl-card');
 const resultsCount = document.getElementById('resultsCount');
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    let visible = 0;
-    cards.forEach(card => {
-      const match = filter === 'all' || card.dataset.category === filter;
-      card.style.display = match ? '' : 'none';
-      if (match) visible++;
-    });
-    resultsCount.textContent = visible + (visible === 1 ? ' website example' : ' website examples');
+const langBtn = document.getElementById('langBtn');
+const langMenu = document.getElementById('langMenu');
+const langDropdown = document.getElementById('langDropdown');
+const currentLangKey = 'wk-lang';
+let currentLang = localStorage.getItem(currentLangKey) || 'nl';
+let currentFilter = 'all';
+
+function setFlag(el, lang) {
+  if (!el) return;
+  el.innerHTML = flagSVGs[lang] || flagSVGs.nl;
+}
+
+function updateResultsCount() {
+  const visible = [...cards].filter(card => card.style.display !== 'none').length;
+  resultsCount.textContent = copy[currentLang].results(visible);
+}
+
+function applyFilter(filter) {
+  currentFilter = filter;
+  filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+  cards.forEach(card => {
+    const match = filter === 'all' || card.dataset.category === filter;
+    card.style.display = match ? '' : 'none';
   });
+  updateResultsCount();
+}
+
+function applyLanguage(lang) {
+  currentLang = copy[lang] ? lang : 'nl';
+  localStorage.setItem(currentLangKey, currentLang);
+  const t = copy[currentLang];
+  document.documentElement.lang = currentLang;
+  document.title = t.title;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', t.metaDescription);
+
+  document.querySelector('[data-nav="services"]').textContent = t.nav.services;
+  document.querySelector('[data-nav="work"]').textContent = t.nav.work;
+  document.querySelector('[data-nav="pricing"]').textContent = t.nav.pricing;
+  document.querySelector('[data-nav="reviews"]').textContent = t.nav.reviews;
+  document.querySelector('[data-nav="cta"]').textContent = t.nav.cta;
+
+  document.querySelector('.lib-header h1').innerHTML = t.header.title;
+  document.querySelector('.lib-header p').textContent = t.header.text;
+  document.querySelectorAll('.header-stat span').forEach((el, i) => el.textContent = t.header.stats[i] || '');
+
+  document.querySelector('.filter-label').textContent = t.filters.label;
+  filterBtns.forEach(btn => {
+    btn.textContent = t.filters[btn.dataset.filter] || btn.textContent;
+  });
+
+  cards.forEach((card, index) => {
+    const cardT = t.cards[index];
+    if (!cardT) return;
+    const styleBadge = card.querySelector('.tpl-style-badge');
+    const tags = card.querySelectorAll('.tpl-tag');
+    const metaLabel = card.querySelector('.tpl-meta span');
+    const business = card.querySelector('.tpl-business');
+    const desc = card.querySelector('.tpl-desc');
+    const features = card.querySelectorAll('.tpl-feat');
+    const previewBtn = card.querySelector('.btn-preview');
+    const useBtn = card.querySelector('.btn-use');
+    if (styleBadge) styleBadge.textContent = cardT.style;
+    tags.forEach((tag, i) => { if (cardT.tags[i]) tag.textContent = cardT.tags[i]; });
+    if (metaLabel) metaLabel.textContent = t.metaLabel;
+    if (business) {
+      const svg = business.querySelector('svg');
+      business.innerHTML = '';
+      if (svg) business.appendChild(svg);
+      business.appendChild(document.createTextNode(cardT.business));
+    }
+    if (desc) desc.textContent = cardT.desc;
+    features.forEach((feature, i) => {
+      const svg = feature.querySelector('svg');
+      feature.innerHTML = '';
+      if (svg) feature.appendChild(svg);
+      feature.appendChild(document.createTextNode(cardT.features[i] || ''));
+    });
+    if (previewBtn) {
+      const svg = previewBtn.querySelector('svg');
+      previewBtn.innerHTML = '';
+      if (svg) previewBtn.appendChild(svg);
+      previewBtn.appendChild(document.createTextNode(t.buttons.preview));
+    }
+    if (useBtn) {
+      useBtn.textContent = t.buttons.use;
+      const name = card.querySelector('.tpl-name')?.textContent?.trim() || 'Website';
+      useBtn.href = `mailto:info@webkreatives.com?subject=${encodeURIComponent((currentLang === 'nl' ? 'Website stijl: ' : 'Website style: ') + name)}`;
+    }
+  });
+
+  document.querySelector('.lib-footer p').innerHTML = t.footer;
+  setFlag(langBtn?.querySelector('.lang-flag'), currentLang);
+  if (langBtn) langBtn.querySelector('.lang-name').textContent = currentLang.toUpperCase();
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.lang === currentLang);
+    setFlag(opt.querySelector('.lang-flag'), opt.dataset.lang);
+  });
+  applyFilter(currentFilter);
+}
+
+filterBtns.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
+langBtn?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  langDropdown.classList.toggle('open');
 });
+document.querySelectorAll('.lang-option').forEach(opt => opt.addEventListener('click', () => {
+  applyLanguage(opt.dataset.lang);
+  langDropdown.classList.remove('open');
+}));
+document.addEventListener('click', () => langDropdown?.classList.remove('open'));
+applyLanguage(currentLang);
 </script>
 </body>
 </html>
