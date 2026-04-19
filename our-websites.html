@@ -93,7 +93,7 @@ body[data-theme="dark"] .nav-links a{color:#bbb;border-bottom-color:#1a1a1a}
 body[data-theme="dark"] .hamburger span{background:#f0f0f0}
 body[data-theme="dark"] footer{background:#0a0a0a}
 body[data-theme="dark"] .lib-header{background:#141414}
-body[data-theme="dark"] .lib-header .label{background:#141414;border-color:#333;color:#d1d5db;box-shadow:none}
+body[data-theme="dark"] .lib-header-glow{background:radial-gradient(ellipse,rgba(232,57,42,.09) 0%,transparent 68%)}
 body[data-theme="dark"] .lib-header h1{color:#f5f5f5}
 body[data-theme="dark"] .lib-header p{color:#b8b8b8}
 body[data-theme="dark"] .header-stat strong{color:#f5f5f5}
@@ -116,12 +116,11 @@ body[data-theme="dark"] .btn-preview:hover{background:#ddd}
 @media(max-width:560px){.fgrid{grid-template-columns:1fr}}
 
 /* ── HERO / HEADER ── */
-.lib-header{min-height:auto;padding:78px 48px 54px;justify-content:flex-start;background:var(--white);text-align:center}
-.lib-header .label{display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#6b7280;background:#fff;border:1px solid var(--grey-200);padding:6px 14px;border-radius:999px;margin-bottom:18px;box-shadow:none}
-.lib-header .label::before{content:none}
-.lib-header h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(38px,5vw,64px);font-weight:900;line-height:1.02;max-width:none;margin-bottom:14px;letter-spacing:0}
-.lib-header p{font-size:16px;color:var(--grey-700);max-width:760px;line-height:1.7;margin-bottom:26px}
-.lib-hero-actions{margin-bottom:28px}
+.lib-header{min-height:auto;padding:78px 48px 54px;justify-content:flex-start;background:var(--white);text-align:center;position:relative;overflow:hidden}
+.lib-header-glow{position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:1000px;height:600px;border-radius:50%;background:radial-gradient(ellipse,rgba(232,57,42,.06) 0%,transparent 68%);pointer-events:none}
+.lib-header h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(38px,5vw,64px);font-weight:900;line-height:1.02;max-width:none;margin-bottom:14px;letter-spacing:0;position:relative;z-index:1}
+.lib-header p{font-size:16px;color:var(--grey-700);max-width:760px;line-height:1.7;margin-bottom:26px;position:relative;z-index:1}
+.lib-hero-actions{margin-bottom:28px;position:relative;z-index:1}
 .header-stats{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;position:relative;z-index:1}
 .header-stat strong{display:block;font-size:28px;font-weight:800;color:var(--black);font-family:'Fraunces',Georgia,serif}
 .header-stat span{font-size:11px;color:var(--grey-600);text-transform:uppercase;letter-spacing:.6px}
@@ -205,8 +204,8 @@ body[data-theme="dark"] .btn-preview:hover{background:#ddd}
 
 <!-- HEADER -->
 <section class="hero lib-header">
-  <span class="label">Our Websites</span>
-  <h1><span class="lib-header-pre">Our</span> <em>Websites</em></h1>
+  <div class="hero-glow lib-header-glow" aria-hidden="true"></div>
+  <h1>Our <em>Websites</em></h1>
   <p class="lib-header-copy">Bekijk voorbeelden van websites die we hebben ontworpen voor verschillende soorten bedrijven. Zie je een stijl die bij jouw merk past? Dan bouwen we een versie die volledig op jouw bedrijf, diensten en doelen is afgestemd.</p>
   <div class="hero-btns lib-hero-actions">
     <a href="index.html#contact" class="btn btn-primary lib-hero-btn lib-hero-btn-primary" data-hero-cta="primary">Vraag jouw website aan →</a>
@@ -585,7 +584,7 @@ const copy = {
     title: 'Our Websites - WebKreatives',
     metaDescription: 'Bekijk voorbeelden van WebKreatives-websites. Ontdek websites die we hebben gemaakt en zie welke stijl bij jouw bedrijf past.',
     nav: { services: 'Diensten', work: 'Onze Websites', pricing: 'Prijzen', reviews: 'Reviews', cta: 'Offerte Aanvragen' },
-    header: { badge: 'Our Websites', titlePre: 'Our', titleEm: 'Websites', text: 'Bekijk websites die we hebben gemaakt voor verschillende soorten bedrijven. Zie je een stijl die bij jouw merk past? Dan bouwen we een versie die volledig op jouw bedrijf, diensten en doelen is afgestemd.', stats: ['Websites', 'Branches', 'Dagen tot livegang'], ctaPrimary: 'Vraag jouw website aan →', ctaSecondary: 'Bekijk alle websites' },
+    header: { text: 'Bekijk websites die we hebben gemaakt voor verschillende soorten bedrijven. Zie je een stijl die bij jouw merk past? Dan bouwen we een versie die volledig op jouw bedrijf, diensten en doelen is afgestemd.', stats: ['Websites', 'Branches', 'Dagen tot livegang'], ctaPrimary: 'Vraag jouw website aan →', ctaSecondary: 'Bekijk alle websites' },
     filters: { label: 'Bekijk per branche:', all: 'Alle', restaurant: 'Restaurant', health: 'Gezondheid', construction: 'Bouw', plumbing: 'Loodgieter', creative: 'Creatief', beauty: 'Beauty', bakery: 'Bakkerij', tech: 'Tech', luxury: 'Luxe', finance: 'Financieel' },
     footer: '? 2026 WebKreatives ? Zie je iets dat je aanspreekt? <a href="index.html#contact">Vraag een offerte aan</a>',
     results: (n) => `${n} ${n === 1 ? 'websitevoorbeeld' : 'websitevoorbeelden'}`,
@@ -608,7 +607,7 @@ const copy = {
     title: 'Our Websites - WebKreatives',
     metaDescription: 'Browse websites created by WebKreatives and discover which style fits your business best.',
     nav: { services: 'Services', work: 'Our Websites', pricing: 'Pricing', reviews: 'Reviews', cta: 'Get a Quote' },
-    header: { badge: 'Our Websites', titlePre: 'Our', titleEm: 'Websites', text: 'Browse websites we created for different kinds of businesses. If you spot a style that fits your brand, we will build a version tailored to your business, services, and goals.', stats: ['Websites', 'Industries', 'Days to launch'], ctaPrimary: 'Request your website →', ctaSecondary: 'Browse all websites' },
+    header: { text: 'Browse websites we created for different kinds of businesses. If you spot a style that fits your brand, we will build a version tailored to your business, services, and goals.', stats: ['Websites', 'Industries', 'Days to launch'], ctaPrimary: 'Request your website →', ctaSecondary: 'Browse all websites' },
     filters: { label: 'Browse by industry:', all: 'All', restaurant: 'Restaurant', health: 'Health', construction: 'Construction', plumbing: 'Plumbing', creative: 'Creative', beauty: 'Beauty', bakery: 'Bakery', tech: 'Tech', luxury: 'Luxury', finance: 'Finance' },
     footer: '? 2026 WebKreatives ? See something you like? <a href="index.html#contact">Request a quote</a>',
     results: (n) => `${n} ${n === 1 ? 'website example' : 'website examples'}`,
@@ -676,9 +675,7 @@ function renderLibraryLanguage(lang) {
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.setAttribute('content', t.metaDescription);
 
-  document.querySelector('.lib-header .label').textContent = t.header.badge;
-  document.querySelector('.lib-header .lib-header-pre').textContent = t.header.titlePre;
-  document.querySelector('.lib-header h1 em').textContent = t.header.titleEm;
+  document.querySelector('.lib-header h1').innerHTML = currentLang === 'nl' ? 'Onze <em>Websites</em>' : 'Our <em>Websites</em>';
   document.querySelector('.lib-header .lib-header-copy').textContent = t.header.text;
   document.querySelector('[data-hero-cta="primary"]').textContent = t.header.ctaPrimary;
   document.querySelector('[data-hero-cta="secondary"]').textContent = t.header.ctaSecondary;
