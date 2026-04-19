@@ -638,34 +638,25 @@ const copy = {
 const filterBtns = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.tpl-card');
 const resultsCount = document.getElementById('resultsCount');
-const langBtn = document.getElementById('langBtn');
-const langMenu = document.getElementById('langMenu');
-const langDropdown = document.getElementById('langDropdown');
-const currentLangKey = 'wk-lang';
-let currentLang = localStorage.getItem(currentLangKey) || 'nl';
+let currentLang = localStorage.getItem('wk-lang') || 'nl';
 let currentFilter = 'all';
-
-function setFlag(el, lang) {
-  if (!el) return;
-  el.innerHTML = flagSVGs[lang] || flagSVGs.nl;
-}
 
 function cleanCopyString(value) {
   return String(value || '')
-    .replace(/ \? /g, ' · ')
-    .replace(/\? Nederland/g, '— Nederland')
-    .replace(/\? Den Haag/g, '— Den Haag')
-    .replace(/\? Staphorst/g, '— Staphorst')
-    .replace(/\? Deventer/g, '— Deventer')
-    .replace(/\? Utrecht/g, '— Utrecht')
-    .replace(/\? Rotterdam/g, '— Rotterdam')
-    .replace(/\? Haarlem/g, '— Haarlem')
-    .replace(/\? Amsterdam/g, '— Amsterdam')
-    .replace(/\? The Hague/g, '— The Hague')
-    .replace(/cr\?me/g, 'crème')
-    .replace(/industri\?le/g, 'industriële')
-    .replace(/studio\?s/g, 'studio’s')
-    .replace(/pagina\?s/g, 'pagina’s');
+    .replace(/ \? /g, ' ? ')
+    .replace(/\? Nederland/g, '? Nederland')
+    .replace(/\? Den Haag/g, '? Den Haag')
+    .replace(/\? Staphorst/g, '? Staphorst')
+    .replace(/\? Deventer/g, '? Deventer')
+    .replace(/\? Utrecht/g, '? Utrecht')
+    .replace(/\? Rotterdam/g, '? Rotterdam')
+    .replace(/\? Haarlem/g, '? Haarlem')
+    .replace(/\? Amsterdam/g, '? Amsterdam')
+    .replace(/\? The Hague/g, '? The Hague')
+    .replace(/cr\?me/g, 'cr?me')
+    .replace(/industri\?le/g, 'industri?le')
+    .replace(/studio\?s/g, 'studio?s')
+    .replace(/pagina\?s/g, 'pagina?s');
 }
 
 function updateResultsCount() {
@@ -683,9 +674,8 @@ function applyFilter(filter) {
   updateResultsCount();
 }
 
-function applyLanguage(lang) {
+function renderLibraryLanguage(lang) {
   currentLang = copy[lang] ? lang : 'nl';
-  localStorage.setItem(currentLangKey, currentLang);
   const t = copy[currentLang];
   document.documentElement.lang = currentLang;
   document.title = t.title;
@@ -739,26 +729,15 @@ function applyLanguage(lang) {
     }
   });
 
-  setFlag(langBtn?.querySelector('.lang-flag'), currentLang);
-  if (langBtn) langBtn.querySelector('.lang-name').textContent = currentLang.toUpperCase();
-  document.querySelectorAll('.lang-option').forEach(opt => {
-    opt.classList.toggle('active', opt.dataset.lang === currentLang);
-    setFlag(opt.querySelector('.lang-flag'), opt.dataset.lang);
-  });
   applyFilter(currentFilter);
 }
 
 filterBtns.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
-langBtn?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  langDropdown.classList.toggle('open');
+document.addEventListener('wk:languagechange', (event) => {
+  const nextLang = event?.detail?.lang || localStorage.getItem('wk-lang') || 'nl';
+  renderLibraryLanguage(nextLang);
 });
-document.querySelectorAll('.lang-option').forEach(opt => opt.addEventListener('click', () => {
-  applyLanguage(opt.dataset.lang);
-  langDropdown.classList.remove('open');
-}));
-document.addEventListener('click', () => langDropdown?.classList.remove('open'));
-applyLanguage(currentLang);
+renderLibraryLanguage(currentLang);
 })();
 </script>
 </body>

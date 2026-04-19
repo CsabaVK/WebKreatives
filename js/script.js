@@ -182,6 +182,10 @@ function setLanguage(lang) {
   document.querySelectorAll('.lang-option').forEach(opt => {
     opt.classList.toggle('active', opt.dataset.lang === lang);
   });
+
+  document.dispatchEvent(new CustomEvent('wk:languagechange', {
+    detail: { lang, translations: t }
+  }));
 }
 
 if (langBtn) {
