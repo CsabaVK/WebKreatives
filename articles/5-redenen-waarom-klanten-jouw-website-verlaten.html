@@ -85,6 +85,7 @@
 
 <!-- Styles -->
 <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/article.css">
 
 <style>
   /* ── ARTICLE PAGE STYLES ── */
@@ -616,13 +617,13 @@
   <div class="art-hero-inner">
 
     <!-- Breadcrumb -->
-    <nav class="art-breadcrumb" aria-label="Breadcrumb">
-      <a href="https://webkreatives.com">Home</a>
+    <div class="art-breadcrumb" role="navigation" aria-label="Breadcrumb">
+      <a href="/">Home</a>
       <span>›</span>
-      <a href="https://webkreatives.com/articles/">Artikelen</a>
+      <a href="/articles/">Artikelen</a>
       <span>›</span>
-      <span style="color:#999">Website Fouten</span>
-    </nav>
+      <span class="arc-current">Website Fouten</span>
+    </div>
 
     <!-- Category -->
     <span class="art-category">Webdesign Tips</span>
@@ -828,36 +829,11 @@
 
     <p>De kloof tussen een website die werkt en een website die er alleen maar staat, zit niet in het budget. Het zit in de details — in laadsnelheid, in duidelijke knoppen, in een design dat vertrouwen uitstraalt. Kleine verbeteringen met grote gevolgen.</p>
 
-    <!-- Share bar -->
-    <div class="art-share">
-      <span class="art-share-label">Deel dit artikel:</span>
-      <a class="share-btn linkedin"
-         href="https://www.linkedin.com/sharing/share-offsite/?url=https://webkreatives.com/articles/5-redenen-waarom-klanten-jouw-website-verlaten"
-         target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A5 5 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12" rx=".5"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a>
-      <a class="share-btn twitter"
-         href="https://twitter.com/intent/tweet?text=5%20redenen%20waarom%20klanten%20jouw%20website%20verlaten%20%E2%80%94%20en%20hoe%20je%20dat%20oplost&url=https://webkreatives.com/articles/5-redenen-waarom-klanten-jouw-website-verlaten"
-         target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L2.025 2.25H8.08l4.264 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-        X / Twitter
-      </a>
-      <button class="share-btn copy" onclick="navigator.clipboard.writeText(window.location.href); this.textContent='✓ Gekopieerd!'">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Kopieer link
-      </button>
-    </div>
+    <!-- Share bar (rendered by article-utils.js) -->
+    <div class="art-share" data-wk-share></div>
 
-    <!-- Author bio -->
-    <div class="art-author-bio">
-      <img src="https://webkreatives.com/assets/csaba.jpg" alt="Csaba G. — oprichter WebKreatives">
-      <div>
-        <h4>Csaba G.</h4>
-        <span>Oprichter — WebKreatives</span>
-        <p>Csaba bouwt websites voor kleine bedrijven in Nederland en schrijft over alles wat te maken heeft met online groeien. WebKreatives helpt ondernemers die weten dat hun online aanwezigheid beter kan — zonder fortuin te betalen.</p>
-      </div>
-    </div>
+    <!-- Author bio (rendered by article-utils.js) -->
+    <div class="art-author-bio" data-wk-author></div>
 
     <!-- Bottom CTA -->
     <div class="art-bottom-cta">
@@ -870,26 +846,10 @@
       </div>
     </div>
 
-    <!-- Related articles -->
+    <!-- Related articles (auto-rendered by article-utils.js from articles-data.js) -->
     <div class="art-related">
       <h3>Meer lezen</h3>
-      <div class="art-related-grid">
-        <a class="art-related-card" href="waarom-jouw-kapsalon-een-website-nodig-heeft.html">
-          <span class="arc-cat">Kapsalon &amp; Beauty</span>
-          <div class="arc-title">Waarom Jouw Kapsalon Een Website Nodig Heeft</div>
-          <span class="arc-date">19 april 2026</span>
-        </a>
-        <a class="art-related-card" href="/articles/">
-          <span class="arc-cat">SEO &amp; Vindbaarheid</span>
-          <div class="arc-title">Lokale SEO: Hoe Google Jou Vindt in Jouw Stad</div>
-          <span class="arc-date">Binnenkort</span>
-        </a>
-        <a class="art-related-card" href="/articles/">
-          <span class="arc-cat">Business Tips</span>
-          <div class="arc-title">Hoe Je Meer Google Reviews Krijgt (Zonder Opdringerig te Zijn)</div>
-          <span class="arc-date">Binnenkort</span>
-        </a>
-      </div>
+      <div class="art-related-grid" data-wk-related></div>
     </div>
 
   </article>
@@ -901,16 +861,7 @@
 <script src="../js/global-components.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/script.js"></script>
-
-<script>
-  // Reading progress bar
-  const bar = document.getElementById('read-progress');
-  window.addEventListener('scroll', () => {
-    const doc = document.documentElement;
-    const top = doc.scrollTop || document.body.scrollTop;
-    const height = doc.scrollHeight - doc.clientHeight;
-    bar.style.width = Math.min((top / height) * 100, 100) + '%';
-  }, { passive: true });
-</script>
+<script src="articles-data.js"></script>
+<script src="article-utils.js"></script>
 </body>
 </html>

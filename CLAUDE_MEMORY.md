@@ -18,7 +18,7 @@
 C:\Users\csaba\Documents\webkreatives\   ← SINGLE SOURCE OF TRUTH (local + GitHub)
 │
 ├── index.html                           ← Main portfolio/homepage
-├── template-library.html               ← Showcase of all client templates (10 cards)
+├── our-websites.html               ← Showcase of all client templates (10 cards)
 ├── CLAUDE_MEMORY.md                    ← This file
 │
 ├── templates/
@@ -186,7 +186,7 @@ C:\Users\csaba\Documents\webkreatives\   ← SINGLE SOURCE OF TRUTH (local + Git
 
 - [ ] Fix Gmail auto-reply filter for `notify@web3forms.com` (so form submissions auto-reply to sender)
 - [ ] Check all other local files against repo for parity (user to provide file locations)
-- [ ] Verify `template-library.html` has De Groot & Partners as card #10 (check it renders correctly)
+- [ ] Verify `our-websites.html` has De Groot & Partners as card #10 (check it renders correctly)
 
 ---
 
@@ -199,3 +199,4 @@ C:\Users\csaba\Documents\webkreatives\   ← SINGLE SOURCE OF TRUTH (local + Git
 5. **Two AI tools on same repo** — Csaba uses both Claude and OpenClaw. Claude is authoritative for GitHub; when Csaba sends a file and says "this is the latest", overwrite without hesitation
 6. **HTML emails** — always table-based layout for email client compatibility, 580px max-width
 7. **PDF-style HTML docs** — use `@page{size:A4}`, `width:210mm`, per-page divs with `page-break-after:always`
+
