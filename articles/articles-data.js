@@ -25,6 +25,7 @@ const WK_ARTICLES = [
     date:          '2026-04-19',
     dateFormatted: '19 april 2026',
     readTime:      '7 min lezen',
+    publishedAt:   '2026-04-19T22:00:00+02:00',
     image:         'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=760&q=80',
     excerpt:       'Laadtijd, geen CTA, verouderd design: kleine fouten met grote gevolgen. Doe de zelfscan en ontdek wat je dagelijks misloopt.'
   },
@@ -35,6 +36,7 @@ const WK_ARTICLES = [
     date:          '2026-04-19',
     dateFormatted: '19 april 2026',
     readTime:      '6 min lezen',
+    publishedAt:   '2026-04-19T18:00:00+02:00',
     image:         'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=760&q=80',
     excerpt:       '81% van de klanten zoekt online voordat ze een kapsalon bezoeken. Zonder website ben je onzichtbaar voor nieuwe klanten.'
   }
