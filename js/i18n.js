@@ -64,7 +64,7 @@ const translations = {
     "work.2.p": "Strakke, moderne one-pager voor een tandartspraktijk in Staphorst. Diensten, tijden, contact & kaart — tweetalig NL/EN.",
     "work.3.p": "Stoere, industriële one-pager voor een klusjesman in Deventer. Diensten, projectgalerij, contact & kaart — tweetalig NL/EN.",
     "work.view": "Bekijk project →",
-    "work.cta": "Start Je Eigen Project →",
+    "work.cta": "Bekijk alle websitevoorbeelden →",
 
     // Testimonials
     "testi.label": "Referenties",
@@ -250,7 +250,7 @@ const translations = {
     "work.2.p": "Clean, modern one-pager for a dental practice in Staphorst. Services, hours, contact & map — bilingual NL/EN with smooth animations.",
     "work.3.p": "Bold, industrial one-pager for a handyman in Deventer. Services, projects gallery, contact & map — bilingual NL/EN with scroll animations.",
     "work.view": "View project →",
-    "work.cta": "Start Your Own Project →",
+    "work.cta": "Browse all website examples →",
     "testi.label": "Testimonials",
     "testi.title": "What Our Clients Say",
     "faq.label": "FAQ",

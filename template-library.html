@@ -50,16 +50,22 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .lang-option:hover,.lang-option.active{background:var(--grey-100);color:var(--black)}
 @media(max-width:768px){.nav-links{display:none}nav{padding:0 24px}.lang-btn{padding:7px 10px}}
 
-/* ── HEADER ── */
-.lib-header{background:var(--black);color:var(--white);padding:60px 48px 52px;text-align:center;position:relative;overflow:hidden}
-.lib-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% -10%,rgba(212,225,87,.18),transparent 70%)}
-.lib-header .label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--yellow);background:rgba(212,225,87,.12);border:1px solid rgba(212,225,87,.25);padding:5px 14px;border-radius:100px;margin-bottom:16px}
-.lib-header h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(32px,4.5vw,52px);font-weight:900;line-height:1.05;margin-bottom:12px}
-.lib-header h1 em{font-style:italic;color:var(--yellow)}
-.lib-header p{font-size:15px;color:rgba(255,255,255,.55);max-width:480px;margin:0 auto 28px;line-height:1.65}
-.header-stats{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
-.header-stat strong{display:block;font-size:26px;font-weight:800;color:var(--white);font-family:'Fraunces',Georgia,serif}
-.header-stat span{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.6px}
+/* ── HERO / HEADER ── */
+.lib-header{position:relative;overflow:hidden;padding:78px 48px 54px;background:linear-gradient(180deg,#fff 0%,#f8f9fa 100%);text-align:center}
+.lib-header::before{content:'';position:absolute;left:50%;top:-80px;transform:translateX(-50%);width:min(920px,92vw);height:280px;background:radial-gradient(circle,rgba(212,225,87,.34) 0%,rgba(212,225,87,.12) 38%,transparent 72%);pointer-events:none}
+.lib-header .label{display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#6b7280;background:#fff;border:1px solid var(--grey-200);padding:6px 14px;border-radius:999px;margin-bottom:18px;position:relative;z-index:1}
+.lib-header h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(38px,5vw,64px);font-weight:900;line-height:1.02;margin-bottom:14px;position:relative;z-index:1}
+.lib-header h1 em{font-style:italic;color:var(--red)}
+.lib-header p{font-size:16px;color:var(--grey-700);max-width:760px;margin:0 auto 26px;line-height:1.7;position:relative;z-index:1}
+.lib-hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;position:relative;z-index:1}
+.lib-hero-btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;border-radius:10px;font-size:14px;font-weight:700;transition:.2s ease;border:1px solid transparent}
+.lib-hero-btn-primary{background:var(--black);color:#fff}
+.lib-hero-btn-primary:hover{background:var(--red);transform:translateY(-1px)}
+.lib-hero-btn-secondary{background:#fff;color:var(--black);border-color:var(--grey-200)}
+.lib-hero-btn-secondary:hover{border-color:var(--black);transform:translateY(-1px)}
+.header-stats{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;position:relative;z-index:1}
+.header-stat strong{display:block;font-size:28px;font-weight:800;color:var(--black);font-family:'Fraunces',Georgia,serif}
+.header-stat span{font-size:11px;color:var(--grey-600);text-transform:uppercase;letter-spacing:.6px}
 
 /* ── FILTERS ── */
 .filters{padding:20px 48px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:1480px;margin:0 auto}
@@ -178,9 +184,13 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 <!-- HEADER -->
 <div class="lib-header">
-  <span class="label">WebKreatives</span>
-  <h1>Website <em>Showcase</em></h1>
-  <p>Bekijk voorbeelden van websites die we hebben ontworpen voor verschillende soorten bedrijven. Zie je een stijl die bij jouw merk past? Dan bouwen we een versie die volledig op jouw bedrijf, diensten en doelen is afgestemd.</p>
+  <span class="label">WebKreatives Showcase</span>
+  <h1><span class="lib-header-pre">Website</span> <em>Showcase</em></h1>
+  <p class="lib-header-copy">Bekijk voorbeelden van websites die we hebben ontworpen voor verschillende soorten bedrijven. Zie je een stijl die bij jouw merk past? Dan bouwen we een versie die volledig op jouw bedrijf, diensten en doelen is afgestemd.</p>
+  <div class="lib-hero-actions">
+    <a href="index.html#contact" class="lib-hero-btn lib-hero-btn-primary" data-hero-cta="primary">Vraag jouw website aan →</a>
+    <a href="#libList" class="lib-hero-btn lib-hero-btn-secondary" data-hero-cta="secondary">Bekijk alle voorbeelden</a>
+  </div>
   <div class="header-stats">
     <div class="header-stat"><strong>10</strong><span>Website styles</span></div>
     <div class="header-stat"><strong>10</strong><span>Industries</span></div>
@@ -562,7 +572,7 @@ const copy = {
     title: 'Website Showcase - WebKreatives',
     metaDescription: 'Bekijk voorbeelden van WebKreatives-websites. Vind een stijl die bij jouw bedrijf past en wij bouwen hem snel, betaalbaar en volledig op maat.',
     nav: { services: 'Diensten', work: 'Portfolio', pricing: 'Prijzen', reviews: 'Reviews', cta: 'Offerte Aanvragen' },
-    header: { title: 'Website <em>Showcase</em>', text: 'Bekijk voorbeelden van websites die we hebben ontworpen voor verschillende soorten bedrijven. Zie je een stijl die bij jouw merk past? Dan bouwen we een versie die volledig op jouw bedrijf, diensten en doelen is afgestemd.', stats: ['Website stijlen', 'Branches', 'Dagen tot livegang'] },
+    header: { badge: 'WebKreatives Showcase', titlePre: 'Website', titleEm: 'Showcase', text: 'Bekijk voorbeelden van websites die we hebben ontworpen voor verschillende soorten bedrijven. Zie je een stijl die bij jouw merk past? Dan bouwen we een versie die volledig op jouw bedrijf, diensten en doelen is afgestemd.', stats: ['Website stijlen', 'Branches', 'Dagen tot livegang'], ctaPrimary: 'Vraag jouw website aan →', ctaSecondary: 'Bekijk alle voorbeelden' },
     filters: { label: 'Bekijk per branche:', all: 'Alle', restaurant: 'Restaurant', health: 'Gezondheid', construction: 'Bouw', plumbing: 'Loodgieter', creative: 'Creatief', beauty: 'Beauty', bakery: 'Bakkerij', tech: 'Tech', luxury: 'Luxe', finance: 'Financieel' },
     footer: '? 2026 WebKreatives ? Zie je iets dat je aanspreekt? <a href="index.html#contact">Vraag een offerte aan</a>',
     results: (n) => `${n} ${n === 1 ? 'websitevoorbeeld' : 'websitevoorbeelden'}`,
@@ -585,7 +595,7 @@ const copy = {
     title: 'Website Showcase - WebKreatives',
     metaDescription: 'Browse WebKreatives website examples. Find a style that fits your business and we will build it fast, affordably, and fully custom.',
     nav: { services: 'Services', work: 'Portfolio', pricing: 'Pricing', reviews: 'Reviews', cta: 'Get a Quote' },
-    header: { title: 'Website <em>Showcase</em>', text: 'Browse examples of websites we designed for different kinds of businesses. If you spot a style that fits your brand, we will create a version tailored to your business, services, and goals.', stats: ['Website styles', 'Industries', 'Days to launch'] },
+    header: { badge: 'WebKreatives Showcase', titlePre: 'Website', titleEm: 'Showcase', text: 'Browse examples of websites we designed for different kinds of businesses. If you spot a style that fits your brand, we will create a version tailored to your business, services, and goals.', stats: ['Website styles', 'Industries', 'Days to launch'], ctaPrimary: 'Request your website →', ctaSecondary: 'Browse all examples' },
     filters: { label: 'Browse by industry:', all: 'All', restaurant: 'Restaurant', health: 'Health', construction: 'Construction', plumbing: 'Plumbing', creative: 'Creative', beauty: 'Beauty', bakery: 'Bakery', tech: 'Tech', luxury: 'Luxury', finance: 'Finance' },
     footer: '? 2026 WebKreatives ? See something you like? <a href="index.html#contact">Request a quote</a>',
     results: (n) => `${n} ${n === 1 ? 'website example' : 'website examples'}`,
@@ -651,8 +661,12 @@ function applyLanguage(lang) {
   document.querySelector('[data-nav="reviews"]').textContent = t.nav.reviews;
   document.querySelector('[data-nav="cta"]').textContent = t.nav.cta;
 
-  document.querySelector('.lib-header h1').innerHTML = t.header.title;
-  document.querySelector('.lib-header p').textContent = t.header.text;
+  document.querySelector('.lib-header .label').textContent = t.header.badge;
+  document.querySelector('.lib-header .lib-header-pre').textContent = t.header.titlePre;
+  document.querySelector('.lib-header h1 em').textContent = t.header.titleEm;
+  document.querySelector('.lib-header .lib-header-copy').textContent = t.header.text;
+  document.querySelector('[data-hero-cta="primary"]').textContent = t.header.ctaPrimary;
+  document.querySelector('[data-hero-cta="secondary"]').textContent = t.header.ctaSecondary;
   document.querySelectorAll('.header-stat span').forEach((el, i) => el.textContent = t.header.stats[i] || '');
 
   document.querySelector('.filter-label').textContent = t.filters.label;
