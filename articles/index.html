@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Blog & Tips | WebKreatives — Webdesign voor Kleine Bedrijven</title>
+<meta name="description" content="Praktische artikelen over webdesign, online vindbaarheid en meer klanten aantrekken — geschreven door WebKreatives voor Nederlandse kleine bedrijven.">
+<meta name="author" content="WebKreatives">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://webkreatives.com/articles/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webkreatives.com/articles/">
+<meta property="og:title" content="Blog & Tips | WebKreatives">
+<meta property="og:description" content="Praktische artikelen over webdesign, online vindbaarheid en meer klanten — voor kleine bedrijven in Nederland.">
+<meta property="og:image" content="https://webkreatives.com/og-image.svg">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="WebKreatives">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog & Tips | WebKreatives">
+<meta name="twitter:description" content="Praktische artikelen over webdesign, online vindbaarheid en meer klanten — voor kleine bedrijven.">
+
+<!-- Theme -->
+<meta name="theme-color" content="#0d0d0d">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CG9705BC61"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CG9705BC61');
+</script>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "WebKreatives Blog",
+  "description": "Praktische artikelen over webdesign, online vindbaarheid en meer klanten aantrekken voor kleine bedrijven.",
+  "url": "https://webkreatives.com/articles/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "WebKreatives",
+    "url": "https://webkreatives.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://webkreatives.com/favicon.svg"
+    }
+  },
+  "inLanguage": "nl-NL"
+}
+</script>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Shared styles -->
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+/* ── Articles Index Page ─────────────────────────────── */
+.articles-hero {
+  background: var(--black);
+  padding: 140px 6% 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.articles-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(232,57,42,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.articles-hero .label {
+  color: var(--yellow);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: block;
+}
+.articles-hero h1 {
+  font-family: var(--fh);
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+.articles-hero h1 em {
+  font-style: italic;
+  color: var(--red);
+}
+.articles-hero p {
+  font-size: 17px;
+  color: #999;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Filter bar ── */
+.articles-filter {
+  background: var(--white);
+  border-bottom: 1px solid var(--grey-200);
+  padding: 20px 6%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.filter-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--grey-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right: 4px;
+}
+.filter-btn {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1.5px solid var(--grey-200);
+  background: transparent;
+  color: var(--grey-600);
+  cursor: pointer;
+  transition: all .2s;
+  font-family: var(--fb);
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+.filter-btn.active {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+/* ── Articles Grid ── */
+.articles-main {
+  padding: 70px 6% 100px;
+  background: var(--grey-50);
+  min-height: 60vh;
+}
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1140px;
+  margin: 0 auto 60px;
+}
+
+/* Featured (first) article — full width */
+.acard.acard-featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.acard.acard-featured .acard-thumb {
+  height: 100%;
+  min-height: 280px;
+}
+.acard.acard-featured .acard-body {
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.acard.acard-featured .acard-body h3 {
+  font-size: 24px;
+  line-height: 1.3;
+}
+.acard.acard-featured .acard-body p {
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* Article cards (reuse from home) */
+.acard {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--grey-200);
+  background: var(--white);
+  transition: transform .2s, box-shadow .2s;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.acard:hover { transform: translateY(-6px); box-shadow: var(--sh-xl); }
+.acard-coming { opacity: .7; }
+.acard-coming:hover { transform: translateY(-3px); box-shadow: var(--sh-md); opacity: .9; }
+.acard-thumb { height: 210px; position: relative; overflow: hidden; }
+.acard-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+.acard:hover .acard-thumb img { transform: scale(1.04); }
+.acard-thumb-ph { background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%); display: flex; align-items: center; justify-content: center; }
+.acard-ph-icon { font-size: 48px; opacity: .4; }
+.acard-tag { position: absolute; bottom: 14px; left: 14px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); background: var(--red); padding: 4px 10px; border-radius: 100px; }
+.acard-body { padding: 26px 28px; }
+.acard-meta { font-size: 12px; color: var(--grey-500); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .5px; }
+.acard-body h3 { font-family: var(--fh); font-size: 18px; font-weight: 700; color: var(--black); margin-bottom: 9px; line-height: 1.35; }
+.acard-body p { font-size: 13px; color: var(--grey-600); line-height: 1.65; margin-bottom: 16px; }
+.acard-link { font-size: 13px; font-weight: 600; color: var(--red); display: inline-flex; align-items: center; gap: 4px; transition: gap .2s; }
+.acard:hover .acard-link { gap: 8px; }
+
+/* ── Coming soon banner ── */
+.articles-coming {
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 60px 0 0;
+}
+.articles-coming h3 {
+  font-family: var(--fh);
+  font-size: 22px;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.articles-coming p {
+  font-size: 14px;
+  color: var(--grey-600);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .articles-grid { grid-template-columns: 1fr 1fr; }
+  .acard.acard-featured { grid-column: 1 / -1; grid-template-columns: 1fr; }
+  .acard.acard-featured .acard-thumb { min-height: 220px; }
+  .acard.acard-featured .acard-body { padding: 28px; }
+}
+@media (max-width: 580px) {
+  .articles-grid { grid-template-columns: 1fr; }
+  .articles-filter { gap: 8px; }
+  .articles-hero { padding: 120px 6% 60px; }
+}
+
+/* Dark mode */
+body[data-theme="dark"] .articles-filter { background: #0f0f0f; border-color: #252525; }
+body[data-theme="dark"] .filter-btn { border-color: #333; color: #888; }
+body[data-theme="dark"] .filter-btn:hover { background: #1a1a1a; border-color: #444; color: #eee; }
+body[data-theme="dark"] .articles-main { background: #0f0f0f; }
+body[data-theme="dark"] .acard { background: #141414; border-color: #252525; }
+body[data-theme="dark"] .acard-body h3 { color: #f0f0f0; }
+body[data-theme="dark"] .acard-body p { color: #777; }
+body[data-theme="dark"] .acard-thumb-ph { background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); }
+body[data-theme="dark"] .articles-coming h3 { color: #f0f0f0; }
+body[data-theme="dark"] .articles-coming p { color: #666; }
+</style>
+</head>
+<body>
+
+<!-- Global nav -->
+<div id="globalNav"></div>
+
+<!-- Hero -->
+<section class="articles-hero">
+  <span class="label">Blog &amp; Kennisbank</span>
+  <h1>Kennis die jouw bedrijf<br><em>online laat groeien</em></h1>
+  <p>Praktische artikelen over webdesign, SEO en meer klanten aantrekken — geschreven voor kleine bedrijven in Nederland.</p>
+</section>
+
+<!-- Filter bar -->
+<div class="articles-filter">
+  <span class="filter-label">Categorie:</span>
+  <button class="filter-btn active" data-cat="all">Alles</button>
+  <button class="filter-btn" data-cat="webdesign">Webdesign</button>
+  <button class="filter-btn" data-cat="seo">SEO &amp; Vindbaarheid</button>
+  <button class="filter-btn" data-cat="tips">Business Tips</button>
+  <button class="filter-btn" data-cat="beauty">Beauty &amp; Kapsalon</button>
+</div>
+
+<!-- Articles main -->
+<main class="articles-main">
+  <div class="articles-grid">
+
+    <!-- Featured article -->
+    <a class="acard acard-featured" href="waarom-jouw-kapsalon-een-website-nodig-heeft.html" data-cat="webdesign beauty">
+      <div class="acard-thumb">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80" alt="Kapper aan het werk in modern kapsalon" loading="eager">
+        <span class="acard-tag">Kapsalon &amp; Beauty</span>
+      </div>
+      <div class="acard-body">
+        <div class="acard-meta">19 april 2026 · 6 min leestijd · Webdesign</div>
+        <h3>Waarom Jouw Kapsalon Een Website Nodig Heeft</h3>
+        <p>81% van de klanten zoekt online voordat ze een kapsalon bezoeken. Zonder website ben je onzichtbaar voor de meeste potentiële klanten — en die gaan naar je concurrent. We laten zien wat het kost, wat het oplevert en hoe je er snel een krijgt.</p>
+        <span class="acard-link">Lees het volledige artikel →</span>
+      </div>
+    </a>
+
+    <!-- Coming soon #2 -->
+    <a class="acard acard-coming" href="#" data-cat="webdesign">
+      <div class="acard-thumb acard-thumb-ph">
+        <div class="acard-ph-icon">📉</div>
+      </div>
+      <div class="acard-body">
+        <div class="acard-meta">Binnenkort · Webdesign</div>
+        <h3>5 Redenen Waarom Klanten Jouw Website Verlaten</h3>
+        <p>Een trage laadtijd, slechte mobiele weergave of onduidelijke tekst — kleine fouten met grote gevolgen. We bespreken de vijf meest gemaakte fouten.</p>
+        <span class="acard-link">Binnenkort beschikbaar</span>
+      </div>
+    </a>
+
+    <!-- Coming soon #3 -->
+    <a class="acard acard-coming" href="#" data-cat="seo">
+      <div class="acard-thumb acard-thumb-ph">
+        <div class="acard-ph-icon">🔍</div>
+      </div>
+      <div class="acard-body">
+        <div class="acard-meta">Binnenkort · SEO &amp; Vindbaarheid</div>
+        <h3>Lokale SEO: Hoe Google Jou Vindt in Jouw Stad</h3>
+        <p>Google Mijn Bedrijf, lokale zoekwoorden, reviews — alles wat je nodig hebt om bovenaan te staan in zoekresultaten voor jouw stad.</p>
+        <span class="acard-link">Binnenkort beschikbaar</span>
+      </div>
+    </a>
+
+    <!-- Coming soon #4 -->
+    <a class="acard acard-coming" href="#" data-cat="tips">
+      <div class="acard-thumb acard-thumb-ph">
+        <div class="acard-ph-icon">📸</div>
+      </div>
+      <div class="acard-body">
+        <div class="acard-meta">Binnenkort · Business Tips</div>
+        <h3>Goede Foto's Maken Voor Je Website — Zonder Professionele Camera</h3>
+        <p>Jouw smartphone heeft al alles wat je nodig hebt. We laten zien hoe je met de juiste instellingen en trucjes foto's maakt die er professioneel uitzien.</p>
+        <span class="acard-link">Binnenkort beschikbaar</span>
+      </div>
+    </a>
+
+    <!-- Coming soon #5 -->
+    <a class="acard acard-coming" href="#" data-cat="seo tips">
+      <div class="acard-thumb acard-thumb-ph">
+        <div class="acard-ph-icon">⭐</div>
+      </div>
+      <div class="acard-body">
+        <div class="acard-meta">Binnenkort · SEO</div>
+        <h3>Hoe Je Meer Google Reviews Krijgt (Zonder Opdringerig te Zijn)</h3>
+        <p>Reviews zijn goud voor kleine bedrijven — ze verhogen vertrouwen én vindbaarheid. We delen een simpele strategie om er meer te verzamelen.</p>
+        <span class="acard-link">Binnenkort beschikbaar</span>
+      </div>
+    </a>
+
+    <!-- Coming soon #6 -->
+    <a class="acard acard-coming" href="#" data-cat="webdesign">
+      <div class="acard-thumb acard-thumb-ph">
+        <div class="acard-ph-icon">🎨</div>
+      </div>
+      <div class="acard-body">
+        <div class="acard-meta">Binnenkort · Webdesign</div>
+        <h3>Welke Kleur Past Bij Jouw Bedrijf? Een Gids Voor Kleine Ondernemers</h3>
+        <p>Kleur beïnvloedt hoe klanten jou ervaren. We leggen uit wat kleuren betekenen in webdesign en hoe je de juiste keuze maakt voor jouw merk.</p>
+        <span class="acard-link">Binnenkort beschikbaar</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Coming soon notice -->
+  <div class="articles-coming">
+    <h3>Meer artikelen zijn onderweg</h3>
+    <p>We publiceren regelmatig nieuwe tips en gidsen over webdesign, SEO en online groeien als klein bedrijf. Wil je op de hoogte blijven?</p>
+    <a href="../index.html#contact" class="btn btn-primary">Houd mij op de hoogte →</a>
+  </div>
+</main>
+
+<!-- Global footer -->
+<div id="globalFooter"></div>
+
+<script src="../js/global-components.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/script.js"></script>
+
+<script>
+// Category filter
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.acard');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    cards.forEach(card => {
+      const cardCats = (card.dataset.cat || '').split(' ');
+      const show = cat === 'all' || cardCats.includes(cat);
+      card.style.display = show ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>

@@ -6,6 +6,7 @@ const translations = {
     "nav.work": "Portfolio",
     "nav.pricing": "Prijzen",
     "nav.reviews": "Reviews",
+    "nav.articles": "Blog",
     "nav.cta": "Offerte Aanvragen",
 
     // Hero
@@ -192,6 +193,7 @@ const translations = {
     "footer.brand": "Branding & Identiteit",
     "footer.support": "Doorlopende Support",
     "footer.work": "Ons Werk",
+    "footer.articles": "Blog & Tips",
     "footer.why": "Waarom Wij",
     "footer.reviews": "Reviews",
     "footer.pricing": "Prijzen",
@@ -204,6 +206,7 @@ const translations = {
     "nav.work": "Work",
     "nav.pricing": "Pricing",
     "nav.reviews": "Reviews",
+    "nav.articles": "Blog",
     "nav.cta": "Get a Quote",
     "hero.badge": "Web Design Agency — Netherlands",
     "hero.h1.pre": "Websites That ",
@@ -364,6 +367,7 @@ const translations = {
     "footer.brand": "Brand & Identity",
     "footer.support": "Ongoing Support",
     "footer.work": "Our Work",
+    "footer.articles": "Blog & Tips",
     "footer.why": "Why Us",
     "footer.reviews": "Reviews",
     "footer.pricing": "Pricing",
