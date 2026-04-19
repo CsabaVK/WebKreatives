@@ -380,16 +380,21 @@ function renderArticles(lang) {
   const rest = sorted.slice(1);
 
   const renderCard = (article, featuredCard = false) => {
-    const cats = articleCategoryClasses(article.category);
+    const articleTitle = lang === 'en' ? (article.titleEn || article.title) : article.title;
+    const articleCategory = lang === 'en' ? (article.categoryEn || article.category) : article.category;
+    const articleDate = lang === 'en' ? (article.dateFormattedEn || article.dateFormatted) : article.dateFormatted;
+    const articleRead = lang === 'en' ? (article.readTimeEn || article.readTime) : article.readTime;
+    const articleExcerpt = lang === 'en' ? (article.excerptEn || article.excerpt) : article.excerpt;
+    const cats = articleCategoryClasses(articleCategory);
     return `<a class="acard ${featuredCard ? 'acard-featured' : ''}" href="${article.slug}.html" data-cat="${cats.join(' ')}">
       <div class="acard-thumb">
-        <img src="${featuredCard ? article.image.replace('w=760', 'w=1200') : article.image}" alt="${article.title}" loading="${featuredCard ? 'eager' : 'lazy'}">
-        <span class="acard-tag">${article.category}</span>
+        <img src="${featuredCard ? article.image.replace('w=760', 'w=1200') : article.image}" alt="${articleTitle}" loading="${featuredCard ? 'eager' : 'lazy'}">
+        <span class="acard-tag">${articleCategory}</span>
       </div>
       <div class="acard-body">
-        <div class="acard-meta">${featuredCard ? ui.featuredMeta(article) : ui.cardMeta(article)}</div>
-        <h3>${article.title}</h3>
-        <p>${article.excerpt}</p>
+        <div class="acard-meta">${featuredCard ? `${articleDate} · ${articleRead} · ${articleCategory}` : `${articleDate} · ${articleRead}`}</div>
+        <h3>${articleTitle}</h3>
+        <p>${articleExcerpt}</p>
         <span class="acard-link">${featuredCard ? ui.readMore : ui.readArticle}</span>
       </div>
     </a>`;
