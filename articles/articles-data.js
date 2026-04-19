@@ -26,7 +26,7 @@ const WK_ARTICLES = [
     dateFormatted: '19 april 2026',
     readTime:      '7 min lezen',
     image:         'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=760&q=80',
-    excerpt:       'Laadtijd, geen CTA, verouderd design — kleine fouten met grote gevolgen. Doe de zelfscan en ontdek wat je dagelijks misloopt.'
+    excerpt:       'Laadtijd, geen CTA, verouderd design: kleine fouten met grote gevolgen. Doe de zelfscan en ontdek wat je dagelijks misloopt.'
   },
   {
     slug:          'waarom-jouw-kapsalon-een-website-nodig-heeft',
