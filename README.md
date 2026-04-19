@@ -17,7 +17,7 @@ WebKreatives is a Dutch freelance web design agency specialising in fast, afford
 ```
 /
 ├── index.html                        ← Main homepage (NL + EN bilingual toggle)
-├── template-library.html             ← Showcase of all client templates
+├── our-websites.html             ← Showcase of all client templates
 ├── README.md                         ← This file
 ├── CLAUDE_MEMORY.md                  ← AI context file (project memory for Claude)
 │
@@ -147,3 +147,4 @@ Every push to `main` automatically deploys to [webkreatives.com](https://webkrea
 ---
 
 *Built and maintained by Csaba Garaguly · [webkreatives.com](https://webkreatives.com)*
+
