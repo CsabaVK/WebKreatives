@@ -28,15 +28,16 @@
   if (navRoot) {
     navRoot.innerHTML = `
       <nav>
-        <a class="logo" href="index.html">
+        <a class="logo" href="/">
           ${logoLight}
         </a>
         <div class="nav-links">
-          <a href="index.html#services" data-i18n="nav.services">Diensten</a>
-          <a href="template-library.html" data-i18n="nav.work">Portfolio</a>
-          <a href="index.html#pricing" data-i18n="nav.pricing">Prijzen</a>
-          <a href="index.html#testimonials" data-i18n="nav.reviews">Reviews</a>
-          <a href="index.html#contact" class="btn-nav" data-i18n="nav.cta">Offerte Aanvragen</a>
+          <a href="/#services" data-i18n="nav.services">Diensten</a>
+          <a href="/template-library.html" data-i18n="nav.work">Portfolio</a>
+          <a href="/#pricing" data-i18n="nav.pricing">Prijzen</a>
+          <a href="/#testimonials" data-i18n="nav.reviews">Reviews</a>
+          <a href="/articles/" data-i18n="nav.articles">Blog</a>
+          <a href="/#contact" class="btn-nav" data-i18n="nav.cta">Offerte Aanvragen</a>
         </div>
         <div class="nav-controls">
           <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -73,23 +74,24 @@
           </div>
           <div class="fcol">
             <h4 data-i18n="footer.services">Diensten</h4>
-            <a href="index.html#services" data-i18n="footer.design">Website Design</a>
-            <a href="index.html#services" data-i18n="footer.ecom">Webshops</a>
-            <a href="index.html#services" data-i18n="footer.seo">SEO &amp; Prestaties</a>
-            <a href="index.html#services" data-i18n="footer.brand">Branding &amp; Identiteit</a>
-            <a href="index.html#services" data-i18n="footer.support">Doorlopende Support</a>
+            <a href="/#services" data-i18n="footer.design">Website Design</a>
+            <a href="/#services" data-i18n="footer.ecom">Webshops</a>
+            <a href="/#services" data-i18n="footer.seo">SEO &amp; Prestaties</a>
+            <a href="/#services" data-i18n="footer.brand">Branding &amp; Identiteit</a>
+            <a href="/#services" data-i18n="footer.support">Doorlopende Support</a>
           </div>
           <div class="fcol">
             <h4 data-i18n="footer.company">Bedrijf</h4>
-            <a href="template-library.html" data-i18n="footer.work">Ons Werk</a>
-            <a href="index.html#why-us" data-i18n="footer.why">Waarom Wij</a>
-            <a href="index.html#testimonials" data-i18n="footer.reviews">Reviews</a>
-            <a href="index.html#pricing" data-i18n="footer.pricing">Prijzen</a>
-            <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
+            <a href="/template-library.html" data-i18n="footer.work">Ons Werk</a>
+            <a href="/articles/" data-i18n="footer.articles">Blog &amp; Tips</a>
+            <a href="/#why-us" data-i18n="footer.why">Waarom Wij</a>
+            <a href="/#testimonials" data-i18n="footer.reviews">Reviews</a>
+            <a href="/#pricing" data-i18n="footer.pricing">Prijzen</a>
+            <a href="/#contact" data-i18n="footer.contact">Contact</a>
           </div>
           <div class="fcol">
             <h4 data-i18n="footer.connect">Verbinden</h4>
-            <a href="index.html#contact" class="g" data-i18n="footer.start">Start een Project</a>
+            <a href="/#contact" class="g" data-i18n="footer.start">Start een Project</a>
             <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener" class="fsocial-link">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
               Instagram
