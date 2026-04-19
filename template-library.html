@@ -7,6 +7,7 @@
 <meta name="robots" content="index, follow">
 <meta name="description" content="Browse WebKreatives website styles. Find the look that fits your business and we will build it for you - fast, affordable and fully custom.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&display=swap" rel="stylesheet">
@@ -30,29 +31,34 @@ body{font-family:var(--fh);background:var(--grey-50);color:var(--black);-webkit-
 a{text-decoration:none;color:inherit}
 
 /* ── GLOBAL NAV / FOOTER ── */
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--grey-200)}
-.logo{display:flex;align-items:center}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:18px 6%;height:82px}
+nav::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--grey-200);z-index:-1}
+.logo{text-decoration:none;display:flex;align-items:center}
 .nav-controls{display:flex;align-items:center;gap:12px;margin-left:auto;margin-right:16px}
-.theme-toggle{background:none;border:1.5px solid var(--grey-300);border-radius:var(--r-sm);width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--grey-700);cursor:pointer;transition:all .2s}
+.theme-toggle{background:none;border:1.5px solid var(--grey-300);border-radius:var(--r-sm);width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;color:var(--grey-600)}
 .theme-toggle:hover{border-color:var(--grey-500);color:var(--black)}
 .theme-toggle svg{width:16px;height:16px}
 .icon-moon{display:none}
-.nav-links{display:flex;align-items:center;gap:28px}
-.nav-links a{font-size:13px;font-weight:600;color:var(--grey-700);transition:color .2s}
+body[data-theme="dark"] .icon-sun{display:none}
+body[data-theme="dark"] .icon-moon{display:block}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--grey-700);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--black)}
-.btn-nav{background:var(--red);color:#fff!important;padding:8px 18px;border-radius:8px;transition:background .2s!important}
-.btn-nav:hover{background:#c0301f!important}
+.btn-nav{background:var(--red)!important;color:var(--white)!important;padding:9px 20px;border-radius:var(--r-sm);font-weight:600!important;transition:background .2s,transform .15s!important}
+.btn-nav:hover{background:#c0301f!important;transform:translateY(-1px)}
 .lang-dropdown{position:relative}
-.lang-btn{display:flex;align-items:center;gap:10px;border:1px solid var(--grey-200);background:var(--white);border-radius:999px;padding:7px 12px;cursor:pointer;font:600 12px var(--fh);color:var(--grey-700)}
+.lang-btn{display:flex;align-items:center;gap:6px;padding:6px 12px;border:1.5px solid var(--grey-300);border-radius:var(--r-sm);background:transparent;cursor:pointer;font-size:13px;font-weight:600;color:var(--grey-700);transition:all .2s;height:36px}
 .lang-btn:hover{border-color:var(--grey-500)}
-.lang-flag{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;flex-shrink:0}
+.lang-flag{width:20px;height:14px;display:inline-flex;align-items:center;flex-shrink:0;overflow:hidden;border-radius:2px}
 .lang-flag svg{width:100%;height:100%;display:block}
-.lang-arrow{font-size:11px;color:var(--grey-500);transition:transform .2s}
+.lang-name{font-size:12px;letter-spacing:.5px}
+.lang-arrow{font-size:10px;transition:transform .2s}
 .lang-dropdown.open .lang-arrow{transform:rotate(180deg)}
-.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:170px;background:var(--white);border:1px solid var(--grey-200);border-radius:14px;box-shadow:var(--sh-md);padding:6px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s}
+.lang-menu{position:absolute;top:calc(100% + 6px);right:0;background:var(--white);border:1.5px solid var(--grey-200);border-radius:var(--r-sm);box-shadow:var(--sh-lg);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .2s;z-index:300;min-width:150px;padding:0}
 .lang-dropdown.open .lang-menu{opacity:1;visibility:visible;transform:translateY(0)}
-.lang-option{width:100%;display:flex;align-items:center;gap:10px;border:none;background:transparent;border-radius:10px;padding:10px 12px;cursor:pointer;font:600 12px var(--fh);color:var(--grey-700);text-align:left}
-.lang-option:hover,.lang-option.active{background:var(--grey-100);color:var(--black)}
+.lang-option{display:flex;align-items:center;gap:8px;width:100%;padding:10px 14px;border:none;background:none;cursor:pointer;font-size:13px;color:var(--grey-700);transition:background .15s}
+.lang-option:hover{background:var(--grey-100)}
+.lang-option.active{font-weight:700;color:var(--black)}
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;padding:6px;background:none;border:none;cursor:pointer}
 .hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:.25s}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -71,7 +77,42 @@ footer{background:var(--black);padding:72px 6% 36px}
 .fsocial-link:hover svg{opacity:1}
 .fbot{border-top:1px solid #161616;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:1140px;margin:0 auto}
 .fbot p{font-size:12px;color:#2e2e2e}
-@media(max-width:768px){nav{padding:0 24px}.hamburger{display:flex}.nav-controls{margin-left:auto;margin-right:12px}.nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:rgba(255,255,255,.98);border-bottom:1px solid var(--grey-200);padding:16px 24px;flex-direction:column;align-items:flex-start;gap:14px}.nav-links.open{display:flex}.lang-btn{padding:7px 10px}.fgrid{grid-template-columns:1fr 1fr}.fbot{flex-direction:column;align-items:flex-start}}
+body[data-theme="dark"] nav::before{background:rgba(13,13,13,.95);border-bottom-color:#252525}
+body[data-theme="dark"] .logo svg text{fill:#f0f0f0}
+body[data-theme="dark"] .footer-logo-text{fill:white}
+body[data-theme="dark"] .lang-btn{border-color:#444;color:#ccc}
+body[data-theme="dark"] .lang-btn:hover{border-color:#666}
+body[data-theme="dark"] .theme-toggle{border-color:#444;color:#ccc}
+body[data-theme="dark"] .theme-toggle:hover{border-color:#666;color:#fff}
+body[data-theme="dark"] .lang-menu{background:#1a1a1a;border-color:#333}
+body[data-theme="dark"] .lang-option{color:#bbb}
+body[data-theme="dark"] .lang-option:hover{background:#252525}
+body[data-theme="dark"] .lang-option.active{color:#fff}
+body[data-theme="dark"] .nav-links{background:#0d0d0d;border-top-color:#252525}
+body[data-theme="dark"] .nav-links a{color:#bbb;border-bottom-color:#1a1a1a}
+body[data-theme="dark"] .hamburger span{background:#f0f0f0}
+body[data-theme="dark"] footer{background:#0a0a0a}
+body[data-theme="dark"] .lib-header{background:linear-gradient(180deg,#111 0%,#181818 100%)}
+body[data-theme="dark"] .lib-header .label{background:#141414;border-color:#333;color:#d1d5db}
+body[data-theme="dark"] .lib-header h1{color:#f5f5f5}
+body[data-theme="dark"] .lib-header p{color:#b8b8b8}
+body[data-theme="dark"] .header-stat strong{color:#f5f5f5}
+body[data-theme="dark"] .header-stat span{color:#9ca3af}
+body[data-theme="dark"] .filters{background:transparent}
+body[data-theme="dark"] .filter-label,body[data-theme="dark"] .results-count{color:#9ca3af}
+body[data-theme="dark"] .filter-btn{background:#151515;border-color:#333;color:#cfcfcf}
+body[data-theme="dark"] .filter-btn:hover{border-color:#666;color:#fff}
+body[data-theme="dark"] .filter-btn.active{background:#f0f0f0;border-color:#f0f0f0;color:#0d0d0d}
+body[data-theme="dark"] .tpl-card{background:#141414;border-color:#252525;box-shadow:none}
+body[data-theme="dark"] .tpl-preview{background:#1a1a1a}
+body[data-theme="dark"] .tpl-meta span,body[data-theme="dark"] .tpl-business,body[data-theme="dark"] .tpl-desc,body[data-theme="dark"] .tpl-feat{color:#a9a9a9}
+body[data-theme="dark"] .tpl-name{color:#f5f5f5}
+body[data-theme="dark"] .tpl-meta strong{color:#e5e5e5}
+body[data-theme="dark"] .tpl-feat{background:#191919;border-color:#2a2a2a}
+body[data-theme="dark"] .tpl-actions{border-top-color:#262626}
+body[data-theme="dark"] .btn-preview{background:#f0f0f0;color:#0d0d0d}
+body[data-theme="dark"] .btn-preview:hover{background:#ddd}
+@media(max-width:768px){nav{padding:18px 24px;height:72px}.hamburger{display:flex}.nav-controls{margin-left:auto;margin-right:12px}.nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:rgba(255,255,255,.98);border-top:1px solid var(--grey-200);border-bottom:1px solid var(--grey-200);padding:16px 24px;flex-direction:column;align-items:flex-start;gap:14px}.nav-links.open{display:flex}.fgrid{grid-template-columns:1fr 1fr}.fbot{flex-direction:column;align-items:flex-start}}
 @media(max-width:560px){.fgrid{grid-template-columns:1fr}}
 
 /* ── HERO / HEADER ── */
@@ -142,12 +183,10 @@ footer{background:var(--black);padding:72px 6% 36px}
 .tpl-feat svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;color:var(--green)}
 
 .tpl-actions{display:flex;gap:10px;align-items:stretch;padding-top:12px;border-top:1px solid var(--grey-100)}
-.btn-preview,.btn-use{display:inline-flex;align-items:center;justify-content:center;min-height:42px;flex:1;text-align:center}
+.btn-preview{display:inline-flex;align-items:center;justify-content:center;min-height:40px;text-align:center}
 .btn-preview{gap:6px;padding:9px 18px;background:var(--black);color:var(--white);border-radius:var(--r-sm);font-family:var(--fh);font-size:13px;font-weight:700;transition:background .2s,transform .15s}
 .btn-preview:hover{background:var(--red);transform:translateY(-1px)}
 .btn-preview svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.btn-use{gap:5px;padding:9px 16px;border:1.5px solid var(--grey-300);color:var(--grey-700);border-radius:var(--r-sm);font-family:var(--fh);font-size:13px;font-weight:600;transition:all .2s}
-.btn-use:hover{border-color:var(--black);color:var(--black)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1000px){
@@ -162,7 +201,7 @@ footer{background:var(--black);padding:72px 6% 36px}
   .tpl-top{flex-direction:column}
   .tpl-meta{text-align:left}
   .tpl-actions{flex-wrap:wrap}
-  .btn-preview,.btn-use{flex:1;justify-content:center}
+  .btn-preview{justify-content:center}
 }
 </style>
 </head>
@@ -234,8 +273,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 5 days</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/leyenburger.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: Leyenburger">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/leyenburger.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -268,8 +306,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scroll animations</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/tandarts-knoll.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: Tandarts Knoll">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/tandarts-knoll.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -302,8 +339,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scroll animations</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/klussenbedrijf-edward.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: Klussenbedrijf Edward">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/klussenbedrijf-edward.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -335,8 +371,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live in 1 week</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/vanderberg-loodgieter.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: Van der Berg">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/vanderberg-loodgieter.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -368,8 +403,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100vh split hero</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/studio-lena-fotografie.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: Studio Lena">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/studio-lena-fotografie.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -401,8 +435,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Testimonials</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/luna-beauty-studio.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: Luna Beauty">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/luna-beauty-studio.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -434,8 +467,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Founder story</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/bakkerij-hartman.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: Bakkerij Hartman">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/bakkerij-hartman.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -467,8 +499,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trust/stats bar</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/nexus-it-solutions.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: Nexus IT">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/nexus-it-solutions.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -500,8 +531,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sharp-edge aesthetic</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/maison-blanc-interieur.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: Maison Blanc">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/maison-blanc-interieur.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -536,8 +566,7 @@ footer{background:var(--black);padding:72px 6% 36px}
         <span class="tpl-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Mobile responsive</span>
       </div>
       <div class="tpl-actions">
-        <a class="btn-preview" href="client-projects/de-groot-accountants/index.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Live preview</a>
-        <a class="btn-use" href="mailto:info@webkreatives.com?subject=Website stijl: De Groot & Partners">Ik wil een website zoals deze</a>
+        <a class="btn-preview" href="client-projects/de-groot-accountants/index.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View this website</a>
       </div>
     </div>
   </div>
@@ -548,7 +577,10 @@ footer{background:var(--black);padding:72px 6% 36px}
 <div id="globalFooter"></div>
 
 <script src="js/global-components.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/script.js"></script>
 <script>
+(() => {
 const flagSVGs = {
   nl: '<svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>',
   en: '<svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>'
@@ -563,7 +595,7 @@ const copy = {
     filters: { label: 'Bekijk per branche:', all: 'Alle', restaurant: 'Restaurant', health: 'Gezondheid', construction: 'Bouw', plumbing: 'Loodgieter', creative: 'Creatief', beauty: 'Beauty', bakery: 'Bakkerij', tech: 'Tech', luxury: 'Luxe', finance: 'Financieel' },
     footer: '? 2026 WebKreatives ? Zie je iets dat je aanspreekt? <a href="index.html#contact">Vraag een offerte aan</a>',
     results: (n) => `${n} ${n === 1 ? 'websitevoorbeeld' : 'websitevoorbeelden'}`,
-    buttons: { preview: 'Live preview', use: 'Ik wil een website zoals deze' },
+    buttons: { preview: 'Bekijk deze website' },
     metaLabel: 'Vanaf',
     cards: [
       { style:'Donker ? Editorial', tags:['Restaurant','Halal','One-pager'], business:'Halal grill- en burgerrestaurant ? Den Haag', desc:'Donkere, redactionele one-pager voor een halal restaurant. Sterke hero, menukaart, openingstijden, locatie en Google Maps. Gemaakt voor foodzaken die een krachtige premium uitstraling willen.', features:['Donker design','Menusectie','Openingstijden','Google Maps','Mobiel responsive'] },
@@ -586,7 +618,7 @@ const copy = {
     filters: { label: 'Browse by industry:', all: 'All', restaurant: 'Restaurant', health: 'Health', construction: 'Construction', plumbing: 'Plumbing', creative: 'Creative', beauty: 'Beauty', bakery: 'Bakery', tech: 'Tech', luxury: 'Luxury', finance: 'Finance' },
     footer: '? 2026 WebKreatives ? See something you like? <a href="index.html#contact">Request a quote</a>',
     results: (n) => `${n} ${n === 1 ? 'website example' : 'website examples'}`,
-    buttons: { preview: 'Live preview', use: 'I want a website like this' },
+    buttons: { preview: 'View this website' },
     metaLabel: 'Starting at',
     cards: [
       { style:'Dark ? Editorial', tags:['Restaurant','Halal','One-pager'], business:'Halal grill & burger restaurant ? The Hague', desc:'Dark editorial one-pager for a halal restaurant. Strong hero, menu section, opening hours, location, and Google Maps. Built for food businesses that want a bold premium look.', features:['Dark design','Menu section','Opening hours','Google Maps','Mobile responsive'] },
@@ -616,6 +648,24 @@ let currentFilter = 'all';
 function setFlag(el, lang) {
   if (!el) return;
   el.innerHTML = flagSVGs[lang] || flagSVGs.nl;
+}
+
+function cleanCopyString(value) {
+  return String(value || '')
+    .replace(/ \? /g, ' · ')
+    .replace(/\? Nederland/g, '— Nederland')
+    .replace(/\? Den Haag/g, '— Den Haag')
+    .replace(/\? Staphorst/g, '— Staphorst')
+    .replace(/\? Deventer/g, '— Deventer')
+    .replace(/\? Utrecht/g, '— Utrecht')
+    .replace(/\? Rotterdam/g, '— Rotterdam')
+    .replace(/\? Haarlem/g, '— Haarlem')
+    .replace(/\? Amsterdam/g, '— Amsterdam')
+    .replace(/\? The Hague/g, '— The Hague')
+    .replace(/cr\?me/g, 'crème')
+    .replace(/industri\?le/g, 'industriële')
+    .replace(/studio\?s/g, 'studio’s')
+    .replace(/pagina\?s/g, 'pagina’s');
 }
 
 function updateResultsCount() {
@@ -665,33 +715,27 @@ function applyLanguage(lang) {
     const desc = card.querySelector('.tpl-desc');
     const features = card.querySelectorAll('.tpl-feat');
     const previewBtn = card.querySelector('.btn-preview');
-    const useBtn = card.querySelector('.btn-use');
-    if (styleBadge) styleBadge.textContent = cardT.style;
-    tags.forEach((tag, i) => { if (cardT.tags[i]) tag.textContent = cardT.tags[i]; });
-    if (metaLabel) metaLabel.textContent = t.metaLabel;
+    if (styleBadge) styleBadge.textContent = cleanCopyString(cardT.style);
+    tags.forEach((tag, i) => { if (cardT.tags[i]) tag.textContent = cleanCopyString(cardT.tags[i]); });
+    if (metaLabel) metaLabel.textContent = cleanCopyString(t.metaLabel);
     if (business) {
       const svg = business.querySelector('svg');
       business.innerHTML = '';
       if (svg) business.appendChild(svg);
-      business.appendChild(document.createTextNode(cardT.business));
+      business.appendChild(document.createTextNode(cleanCopyString(cardT.business)));
     }
-    if (desc) desc.textContent = cardT.desc;
+    if (desc) desc.textContent = cleanCopyString(cardT.desc);
     features.forEach((feature, i) => {
       const svg = feature.querySelector('svg');
       feature.innerHTML = '';
       if (svg) feature.appendChild(svg);
-      feature.appendChild(document.createTextNode(cardT.features[i] || ''));
+      feature.appendChild(document.createTextNode(cleanCopyString(cardT.features[i] || '')));
     });
     if (previewBtn) {
       const svg = previewBtn.querySelector('svg');
       previewBtn.innerHTML = '';
       if (svg) previewBtn.appendChild(svg);
       previewBtn.appendChild(document.createTextNode(t.buttons.preview));
-    }
-    if (useBtn) {
-      useBtn.textContent = t.buttons.use;
-      const name = card.querySelector('.tpl-name')?.textContent?.trim() || 'Website';
-      useBtn.href = `mailto:info@webkreatives.com?subject=${encodeURIComponent((currentLang === 'nl' ? 'Website stijl: ' : 'Website style: ') + name)}`;
     }
   });
 
@@ -715,6 +759,7 @@ document.querySelectorAll('.lang-option').forEach(opt => opt.addEventListener('c
 }));
 document.addEventListener('click', () => langDropdown?.classList.remove('open'));
 applyLanguage(currentLang);
+})();
 </script>
 </body>
 </html>

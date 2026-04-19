@@ -203,7 +203,7 @@ if (langBtn) {
 }
 
 // Apply saved language on load
-if (currentLang !== 'nl') setLanguage(currentLang);
+setLanguage(currentLang);
 
 // 9.6 DARK MODE TOGGLE
 const themeToggle = document.getElementById('themeToggle');
