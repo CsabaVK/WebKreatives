@@ -36,7 +36,7 @@
           <a href="/our-websites.html" data-i18n="nav.work">Onze Websites</a>
           <a href="/#pricing" data-i18n="nav.pricing">Prijzen</a>
           <a href="/#testimonials" data-i18n="nav.reviews">Reviews</a>
-          <a href="/articles/" data-i18n="nav.articles">Blog</a>
+          <a href="/articles/" data-i18n="nav.articles">Articles</a>
           <a href="/#contact" class="btn-nav" data-i18n="nav.cta">Offerte Aanvragen</a>
         </div>
         <div class="nav-controls">
@@ -83,7 +83,7 @@
           <div class="fcol">
             <h4 data-i18n="footer.company">Bedrijf</h4>
             <a href="/our-websites.html" data-i18n="footer.work">Onze Websites</a>
-            <a href="/articles/" data-i18n="footer.articles">Blog &amp; Tips</a>
+            <a href="/articles/" data-i18n="footer.articles">Articles</a>
             <a href="/#why-us" data-i18n="footer.why">Waarom Wij</a>
             <a href="/#testimonials" data-i18n="footer.reviews">Reviews</a>
             <a href="/#pricing" data-i18n="footer.pricing">Prijzen</a>

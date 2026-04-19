@@ -101,7 +101,7 @@
     <div class="art-breadcrumb" role="navigation" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span>›</span>
-      <a href="/articles/">Artikelen</a>
+      <a href="/articles/" data-wk-articles-link>Artikelen</a>
       <span>›</span>
       <span class="arc-current">Kapsalon Website</span>
     </div>
@@ -237,6 +237,26 @@
 
   <!-- Share bar (rendered by article-utils.js) -->
   <div class="art-share" data-wk-share></div>
+<script>
+(function(){
+ const ARTICLE_PAGE_UI={
+  nl:{articles:'Artikelen',home:'Home',more:'Meer lezen',start:'Klaar om te starten?',contact:'Gratis Offerte Aanvragen ?',pricing:'Bekijk Pakketten'},
+  en:{articles:'Articles',home:'Home',more:'Read more',start:'Ready to get started?',contact:'Request a Free Quote ?',pricing:'View Packages'}
+ };
+ function applyArticlePageLanguage(lang){
+   const ui=ARTICLE_PAGE_UI[lang]||ARTICLE_PAGE_UI.nl;
+   document.documentElement.lang=lang;
+   document.querySelectorAll('[data-wk-articles-link]').forEach(el=>el.textContent=ui.articles);
+   const homeLink=document.querySelector('.art-breadcrumb a[href="/"]'); if(homeLink) homeLink.textContent=ui.home;
+   const moreTitle=document.querySelector('.art-related h3'); if(moreTitle) moreTitle.textContent=ui.more;
+   const startLabel=document.querySelector('.art-bottom-cta .label'); if(startLabel) startLabel.textContent=ui.start;
+   const contactBtn=document.querySelector('.art-bottom-cta .btn-red'); if(contactBtn) contactBtn.textContent=ui.contact;
+   const pricingBtn=document.querySelector('.art-bottom-cta .btn-outline-white'); if(pricingBtn) pricingBtn.textContent=ui.pricing;
+ }
+ document.addEventListener('wk:languagechange', (event)=>applyArticlePageLanguage(event?.detail?.lang||localStorage.getItem('wk-lang')||'nl'));
+ applyArticlePageLanguage(localStorage.getItem('wk-lang')||'nl');
+})();
+</script>
 
   <!-- Author bio (rendered by article-utils.js) -->
   <div class="art-author-bio" data-wk-author></div>
