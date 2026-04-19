@@ -92,8 +92,8 @@ body[data-theme="dark"] .nav-links{background:#0d0d0d;border-top-color:#252525}
 body[data-theme="dark"] .nav-links a{color:#bbb;border-bottom-color:#1a1a1a}
 body[data-theme="dark"] .hamburger span{background:#f0f0f0}
 body[data-theme="dark"] footer{background:#0a0a0a}
-body[data-theme="dark"] .lib-header{background:linear-gradient(180deg,#101010 0%,#181818 100%)}
-body[data-theme="dark"] .lib-header-glow{background:radial-gradient(circle at 50% 48%,rgba(212,225,87,.10) 0%,rgba(212,225,87,.06) 26%,rgba(91,138,197,.06) 48%,rgba(91,138,197,.03) 58%,transparent 74%)}
+body[data-theme="dark"] .lib-header{background:#141414}
+body[data-theme="dark"] .lib-header-glow{background:radial-gradient(ellipse,rgba(232,57,42,.09) 0%,transparent 68%)}
 body[data-theme="dark"] .lib-header .label{background:#141414;border-color:#333;color:#d1d5db;box-shadow:none}
 body[data-theme="dark"] .lib-header h1{color:#f5f5f5}
 body[data-theme="dark"] .lib-header p{color:#b8b8b8}
@@ -117,19 +117,12 @@ body[data-theme="dark"] .btn-preview:hover{background:#ddd}
 @media(max-width:560px){.fgrid{grid-template-columns:1fr}}
 
 /* ── HERO / HEADER ── */
-.lib-header{position:relative;isolation:isolate;overflow:visible;padding:78px 48px 54px;background:linear-gradient(180deg,#fff 0%,#f8f9fa 100%);text-align:center}
-.lib-header-glow{position:absolute;left:50%;top:118px;transform:translateX(-50%);width:min(760px,84vw);height:280px;border-radius:50%;background:radial-gradient(circle at 50% 48%,rgba(212,225,87,.18) 0%,rgba(212,225,87,.11) 26%,rgba(91,138,197,.05) 48%,rgba(91,138,197,.02) 58%,transparent 74%);pointer-events:none;z-index:0;filter:blur(2px)}
-.lib-header > *{position:relative;z-index:1}
-.lib-header .label{display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#6b7280;background:#fff;border:1px solid var(--grey-200);padding:6px 14px;border-radius:999px;margin-bottom:18px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
-.lib-header h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(38px,5vw,64px);font-weight:900;line-height:1.02;margin-bottom:14px}
-.lib-header h1 em{font-style:italic;color:var(--red)}
-.lib-header p{font-size:16px;color:var(--grey-700);max-width:760px;margin:0 auto 26px;line-height:1.7}
-.lib-hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;position:relative;z-index:1}
-.lib-hero-btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;border-radius:10px;font-size:14px;font-weight:700;transition:.2s ease;border:1px solid transparent}
-.lib-hero-btn-primary{background:var(--black);color:#fff}
-.lib-hero-btn-primary:hover{background:var(--red);transform:translateY(-1px)}
-.lib-hero-btn-secondary{background:#fff;color:var(--black);border-color:var(--grey-200)}
-.lib-hero-btn-secondary:hover{border-color:var(--black);transform:translateY(-1px)}
+.lib-header{min-height:auto;padding:80px 6% 54px;justify-content:flex-start;background:var(--white)}
+.lib-header-glow{top:-140px;left:50%;transform:translateX(-50%);width:1000px;height:600px;border-radius:50%;background:radial-gradient(ellipse,rgba(232,57,42,.06) 0%,transparent 68%);pointer-events:none;filter:none}
+.lib-header .label{margin-bottom:28px;box-shadow:none}
+.lib-header h1{font-size:clamp(52px,8vw,94px);max-width:840px;margin-bottom:22px}
+.lib-header p{font-size:clamp(16px,1.8vw,19px);max-width:500px;line-height:1.75;margin-bottom:38px}
+.lib-hero-actions{margin-bottom:34px}
 .header-stats{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;position:relative;z-index:1}
 .header-stat strong{display:block;font-size:28px;font-weight:800;color:var(--black);font-family:'Fraunces',Georgia,serif}
 .header-stat span{font-size:11px;color:var(--grey-600);text-transform:uppercase;letter-spacing:.6px}
@@ -212,21 +205,21 @@ body[data-theme="dark"] .btn-preview:hover{background:#ddd}
 <div id="globalNav"></div>
 
 <!-- HEADER -->
-<div class="lib-header">
-  <div class="lib-header-glow" aria-hidden="true"></div>
-  <span class="label">WebKreatives Showcase</span>
+<section class="hero lib-header">
+  <div class="hero-glow lib-header-glow" aria-hidden="true"></div>
+  <span class="badge label">WebKreatives Showcase</span>
   <h1><span class="lib-header-pre">Website</span> <em>Showcase</em></h1>
   <p class="lib-header-copy">Bekijk voorbeelden van websites die we hebben ontworpen voor verschillende soorten bedrijven. Zie je een stijl die bij jouw merk past? Dan bouwen we een versie die volledig op jouw bedrijf, diensten en doelen is afgestemd.</p>
-  <div class="lib-hero-actions">
-    <a href="index.html#contact" class="lib-hero-btn lib-hero-btn-primary" data-hero-cta="primary">Vraag jouw website aan →</a>
-    <a href="#libList" class="lib-hero-btn lib-hero-btn-secondary" data-hero-cta="secondary">Bekijk alle voorbeelden</a>
+  <div class="hero-btns lib-hero-actions">
+    <a href="index.html#contact" class="btn btn-primary lib-hero-btn lib-hero-btn-primary" data-hero-cta="primary">Vraag jouw website aan →</a>
+    <a href="#libList" class="btn btn-ghost lib-hero-btn lib-hero-btn-secondary" data-hero-cta="secondary">Bekijk alle voorbeelden</a>
   </div>
   <div class="header-stats">
     <div class="header-stat"><strong>10</strong><span>Website styles</span></div>
     <div class="header-stat"><strong>10</strong><span>Industries</span></div>
     <div class="header-stat"><strong>1-5</strong><span>Days to launch</span></div>
   </div>
-</div>
+</section>
 
 <!-- FILTERS -->
 <div class="filters">
