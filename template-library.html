@@ -29,10 +29,14 @@ html{scroll-behavior:smooth}
 body{font-family:var(--fh);background:var(--grey-50);color:var(--black);-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 
-/* ── NAV ── */
+/* ── GLOBAL NAV / FOOTER ── */
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--grey-200)}
 .logo{display:flex;align-items:center}
-.nav-right{display:flex;align-items:center;gap:20px}
+.nav-controls{display:flex;align-items:center;gap:12px;margin-left:auto;margin-right:16px}
+.theme-toggle{background:none;border:1.5px solid var(--grey-300);border-radius:var(--r-sm);width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--grey-700);cursor:pointer;transition:all .2s}
+.theme-toggle:hover{border-color:var(--grey-500);color:var(--black)}
+.theme-toggle svg{width:16px;height:16px}
+.icon-moon{display:none}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a{font-size:13px;font-weight:600;color:var(--grey-700);transition:color .2s}
 .nav-links a:hover{color:var(--black)}
@@ -43,12 +47,32 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .lang-btn:hover{border-color:var(--grey-500)}
 .lang-flag{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;flex-shrink:0}
 .lang-flag svg{width:100%;height:100%;display:block}
-.lang-arrow{font-size:11px;color:var(--grey-500)}
-.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:170px;background:var(--white);border:1px solid var(--grey-200);border-radius:14px;box-shadow:var(--sh-md);padding:6px;display:none}
-.lang-dropdown.open .lang-menu{display:block}
+.lang-arrow{font-size:11px;color:var(--grey-500);transition:transform .2s}
+.lang-dropdown.open .lang-arrow{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:170px;background:var(--white);border:1px solid var(--grey-200);border-radius:14px;box-shadow:var(--sh-md);padding:6px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s}
+.lang-dropdown.open .lang-menu{opacity:1;visibility:visible;transform:translateY(0)}
 .lang-option{width:100%;display:flex;align-items:center;gap:10px;border:none;background:transparent;border-radius:10px;padding:10px 12px;cursor:pointer;font:600 12px var(--fh);color:var(--grey-700);text-align:left}
 .lang-option:hover,.lang-option.active{background:var(--grey-100);color:var(--black)}
-@media(max-width:768px){.nav-links{display:none}nav{padding:0 24px}.lang-btn{padding:7px 10px}}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;padding:6px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:.25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+footer{background:var(--black);padding:72px 6% 36px}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;max-width:1140px;margin:0 auto 56px}
+.fbrand p{font-size:13px;color:#555;line-height:1.8;margin:14px 0 20px;max-width:250px}
+.fbrand a{font-size:13px;color:var(--green);font-weight:600;text-decoration:none;display:block;margin-bottom:10px}
+.fcol h4{font-size:10px;font-weight:700;letter-spacing:2px;color:#2a2a2a;text-transform:uppercase;margin-bottom:18px}
+.fcol a{font-size:13px;color:#555;text-decoration:none;display:block;margin-bottom:9px;transition:color .2s}
+.fcol a:hover{color:var(--white)}
+.fcol a.g{color:var(--green);font-weight:600}
+.fsocial-link{display:flex!important;align-items:center;gap:8px}
+.fsocial-link svg{flex-shrink:0;opacity:.6;transition:opacity .2s}
+.fsocial-link:hover svg{opacity:1}
+.fbot{border-top:1px solid #161616;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:1140px;margin:0 auto}
+.fbot p{font-size:12px;color:#2e2e2e}
+@media(max-width:768px){nav{padding:0 24px}.hamburger{display:flex}.nav-controls{margin-left:auto;margin-right:12px}.nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:rgba(255,255,255,.98);border-bottom:1px solid var(--grey-200);padding:16px 24px;flex-direction:column;align-items:flex-start;gap:14px}.nav-links.open{display:flex}.lang-btn{padding:7px 10px}.fgrid{grid-template-columns:1fr 1fr}.fbot{flex-direction:column;align-items:flex-start}}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr}}
 
 /* ── HERO / HEADER ── */
 .lib-header{position:relative;overflow:hidden;padding:78px 48px 54px;background:linear-gradient(180deg,#fff 0%,#f8f9fa 100%);text-align:center}
@@ -117,16 +141,13 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .tpl-feat{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--grey-600);background:var(--grey-50);border:1px solid var(--grey-200);padding:3px 8px;border-radius:5px}
 .tpl-feat svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;color:var(--green)}
 
-.tpl-actions{display:flex;gap:8px;align-items:center;padding-top:12px;border-top:1px solid var(--grey-100)}
-.btn-preview{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:var(--black);color:var(--white);border-radius:var(--r-sm);font-family:var(--fh);font-size:13px;font-weight:700;transition:background .2s,transform .15s}
+.tpl-actions{display:flex;gap:10px;align-items:stretch;padding-top:12px;border-top:1px solid var(--grey-100)}
+.btn-preview,.btn-use{display:inline-flex;align-items:center;justify-content:center;min-height:42px;flex:1;text-align:center}
+.btn-preview{gap:6px;padding:9px 18px;background:var(--black);color:var(--white);border-radius:var(--r-sm);font-family:var(--fh);font-size:13px;font-weight:700;transition:background .2s,transform .15s}
 .btn-preview:hover{background:var(--red);transform:translateY(-1px)}
 .btn-preview svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.btn-use{display:inline-flex;align-items:center;gap:5px;padding:9px 16px;border:1.5px solid var(--grey-300);color:var(--grey-700);border-radius:var(--r-sm);font-family:var(--fh);font-size:13px;font-weight:600;transition:all .2s}
+.btn-use{gap:5px;padding:9px 16px;border:1.5px solid var(--grey-300);color:var(--grey-700);border-radius:var(--r-sm);font-family:var(--fh);font-size:13px;font-weight:600;transition:all .2s}
 .btn-use:hover{border-color:var(--black);color:var(--black)}
-
-/* ── FOOTER ── */
-.lib-footer{text-align:center;padding:32px;border-top:1px solid var(--grey-200);color:var(--grey-500);font-size:13px}
-.lib-footer a{color:var(--red);font-weight:600}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1000px){
@@ -145,42 +166,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 }
 </style>
 </head>
-<body>
+<body data-page="library">
 
-<!-- NAV -->
-<nav>
-  <a class="logo" href="index.html">
-    <svg width="130" height="34" viewBox="0 0 158 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="2" width="7" height="36" fill="#0d0d0d"/>
-      <circle cx="13" cy="12" r="5" fill="#E8392A"/>
-      <circle cx="26" cy="5" r="3.5" fill="#5B8AC5"/>
-      <rect x="0" y="33" width="11" height="5" fill="#D4E157"/>
-      <rect x="147" y="33" width="11" height="5" fill="#8BC34A"/>
-      <text x="16" y="18" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="#0d0d0d">Web</text>
-      <text x="16" y="32" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="#0d0d0d">Kreatives</text>
-    </svg>
-  </a>
-  <div class="nav-right">
-    <div class="nav-links">
-      <a href="index.html#services" data-nav="services">Diensten</a>
-      <a href="index.html#work" data-nav="work">Portfolio</a>
-      <a href="index.html#pricing" data-nav="pricing">Prijzen</a>
-      <a href="index.html#testimonials" data-nav="reviews">Reviews</a>
-      <a href="index.html#contact" class="btn-nav" data-nav="cta">Offerte Aanvragen</a>
-    </div>
-    <div class="lang-dropdown" id="langDropdown">
-      <button class="lang-btn" id="langBtn" type="button">
-        <span class="lang-flag"></span>
-        <span class="lang-name">NL</span>
-        <span class="lang-arrow">?</span>
-      </button>
-      <div class="lang-menu" id="langMenu">
-        <button class="lang-option active" data-lang="nl" type="button"><span class="lang-flag"></span>Nederlands</button>
-        <button class="lang-option" data-lang="en" type="button"><span class="lang-flag"></span>English</button>
-      </div>
-    </div>
-  </div>
-</nav>
+<div id="globalNav"></div>
 
 <!-- HEADER -->
 <div class="lib-header">
@@ -557,10 +545,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 </div>
 
 <!-- FOOTER -->
-<div class="lib-footer">
-  <p>© 2026 WebKreatives · Zie je iets dat je aanspreekt? <a href="index.html#contact">Vraag een offerte aan</a></p>
-</div>
+<div id="globalFooter"></div>
 
+<script src="js/global-components.js"></script>
 <script>
 const flagSVGs = {
   nl: '<svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>',
@@ -655,12 +642,6 @@ function applyLanguage(lang) {
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.setAttribute('content', t.metaDescription);
 
-  document.querySelector('[data-nav="services"]').textContent = t.nav.services;
-  document.querySelector('[data-nav="work"]').textContent = t.nav.work;
-  document.querySelector('[data-nav="pricing"]').textContent = t.nav.pricing;
-  document.querySelector('[data-nav="reviews"]').textContent = t.nav.reviews;
-  document.querySelector('[data-nav="cta"]').textContent = t.nav.cta;
-
   document.querySelector('.lib-header .label').textContent = t.header.badge;
   document.querySelector('.lib-header .lib-header-pre').textContent = t.header.titlePre;
   document.querySelector('.lib-header h1 em').textContent = t.header.titleEm;
@@ -714,7 +695,6 @@ function applyLanguage(lang) {
     }
   });
 
-  document.querySelector('.lib-footer p').innerHTML = t.footer;
   setFlag(langBtn?.querySelector('.lang-flag'), currentLang);
   if (langBtn) langBtn.querySelector('.lang-name').textContent = currentLang.toUpperCase();
   document.querySelectorAll('.lang-option').forEach(opt => {
