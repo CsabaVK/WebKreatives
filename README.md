@@ -17,7 +17,8 @@ WebKreatives is a Dutch freelance web design agency specialising in fast, afford
 ```
 /
 ├── index.html                        ← Main homepage (NL + EN bilingual toggle)
-├── our-websites.html             ← Showcase of all client templates
+├── our-websites/
+│   └── index.html                    ← Showcase of all client templates
 ├── README.md                         ← This file
 ├── CLAUDE_MEMORY.md                  ← AI context file (project memory for Claude)
 │
@@ -41,22 +42,51 @@ WebKreatives is a Dutch freelance web design agency specialising in fast, afford
 │
 ├── client-projects/
 │   ├── de-groot-accountants/
-│   ├── leyenburger.html
-│   ├── tandarts-knoll.html
-│   ├── studio-lena-fotografie.html
-│   ├── luna-beauty-studio.html
-│   ├── bakkerij-hartman.html
-│   ├── nexus-it-solutions.html
-│   ├── maison-blanc-interieur.html
-│   ├── vanderberg-loodgieter.html
-│   └── klussenbedrijf-edward.html
+│   ├── leyenburger/
+│   │   └── index.html
+│   ├── tandarts-knoll/
+│   │   └── index.html
+│   ├── studio-lena-fotografie/
+│   │   └── index.html
+│   ├── luna-beauty-studio/
+│   │   └── index.html
+│   ├── bakkerij-hartman/
+│   │   └── index.html
+│   ├── nexus-it-solutions/
+│   │   └── index.html
+│   ├── maison-blanc-interieur/
+│   │   └── index.html
+│   ├── vanderberg-loodgieter/
+│   │   └── index.html
+│   └── klussenbedrijf-edward/
+│       └── index.html
+│
+├── articles/
+│   ├── index.html                    ← Articles listing
+│   ├── 5-reasons-customers-leave-your-website/
+│   │   └── index.html
+│   └── why-your-hair-salon-needs-a-website/
+│       └── index.html
 │
 ├── assets/
 │   └── csaba.jpg                     ← Profile photo used in email signatures & templates
 ├── og/
-│   └── og-image.html                 ← Open Graph preview image
+│   └── og-image/
+│       └── index.html                ← Open Graph preview image
 └── leads/                            ← Lead data & scripts (gitignored)
 ```
+
+---
+
+## Routing Rules
+
+- Public-facing URLs must **never** end in `.html`.
+- Use folder-based routes only, for example:
+  - `/our-websites/`
+  - `/articles/why-your-hair-salon-needs-a-website/`
+  - `/client-projects/leyenburger/`
+- New article slugs must always be **English**, lowercase, and hyphenated.
+- Internal links, canonicals, sitemap entries, OG URLs, and CTA links must all follow the same clean-URL format.
 
 ---
 

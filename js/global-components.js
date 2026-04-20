@@ -33,7 +33,7 @@
         </a>
         <div class="nav-links">
           <a href="/#services" data-i18n="nav.services">Diensten</a>
-          <a href="/our-websites.html" data-i18n="nav.work">Onze Websites</a>
+          <a href="/our-websites/" data-i18n="nav.work">Onze Websites</a>
           <a href="/#pricing" data-i18n="nav.pricing">Prijzen</a>
           <a href="/#testimonials" data-i18n="nav.reviews">Reviews</a>
           <a href="/articles/" data-i18n="nav.articles">Articles</a>
@@ -82,7 +82,7 @@
           </div>
           <div class="fcol">
             <h4 data-i18n="footer.company">Bedrijf</h4>
-            <a href="/our-websites.html" data-i18n="footer.work">Onze Websites</a>
+            <a href="/our-websites/" data-i18n="footer.work">Onze Websites</a>
             <a href="/articles/" data-i18n="footer.articles">Articles</a>
             <a href="/#why-us" data-i18n="footer.why">Waarom Wij</a>
             <a href="/#testimonials" data-i18n="footer.reviews">Reviews</a>
@@ -109,3 +109,4 @@
       </footer>`;
   }
 })();
+

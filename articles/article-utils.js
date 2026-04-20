@@ -132,7 +132,7 @@
       const readTime = isEnglish ? (a.readTimeEn || a.readTime) : a.readTime;
 
       return `
-      <a class="art-related-card" href="/articles/${a.slug}.html">
+      <a class="art-related-card" href="/articles/${a.slug}/">
         <span class="arc-cat">${category}</span>
         <div class="arc-title">${title}</div>
         <span class="arc-date">${dateFormatted} · ${readTime}</span>
@@ -160,3 +160,4 @@
   }
 
 })();
+

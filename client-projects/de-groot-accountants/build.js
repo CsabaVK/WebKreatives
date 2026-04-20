@@ -7,7 +7,7 @@ const base = __dirname;
 const navHTML = (activePage) => `
 <header id="site-header">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
+    <a href="/client-projects/de-groot-accountants/" class="nav-logo">
       <div class="nav-logo-mark">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
@@ -18,10 +18,10 @@ const navHTML = (activePage) => `
     </a>
     <nav>
       <ul>
-        <li><a href="index.html" ${activePage==='home'?'class="active"':''}>Home</a></li>
-        <li><a href="diensten.html" ${activePage==='diensten'?'class="active"':''}>Diensten</a></li>
-        <li><a href="over-ons.html" ${activePage==='over-ons'?'class="active"':''}>Over ons</a></li>
-        <li><a href="contact.html" class="nav-cta ${activePage==='contact'?'active':''}">Contact</a></li>
+        <li><a href="/client-projects/de-groot-accountants/" ${activePage==='home'?'class="active"':''}>Home</a></li>
+        <li><a href="/client-projects/de-groot-accountants/diensten/" ${activePage==='diensten'?'class="active"':''}>Diensten</a></li>
+        <li><a href="/client-projects/de-groot-accountants/over-ons/" ${activePage==='over-ons'?'class="active"':''}>Over ons</a></li>
+        <li><a href="/client-projects/de-groot-accountants/contact/" class="nav-cta ${activePage==='contact'?'active':''}">Contact</a></li>
       </ul>
     </nav>
     <div class="nav-toggle" id="nav-toggle" aria-label="Menu">
@@ -30,10 +30,10 @@ const navHTML = (activePage) => `
   </div>
 </header>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="index.html">Home</a>
-  <a href="diensten.html">Diensten</a>
-  <a href="over-ons.html">Over ons</a>
-  <a href="contact.html">Contact</a>
+  <a href="/client-projects/de-groot-accountants/">Home</a>
+  <a href="/client-projects/de-groot-accountants/diensten/">Diensten</a>
+  <a href="/client-projects/de-groot-accountants/over-ons/">Over ons</a>
+  <a href="/client-projects/de-groot-accountants/contact/">Contact</a>
 </div>`;
 
 const footerHTML = `
@@ -52,19 +52,19 @@ const footerHTML = `
       <div class="footer-col">
         <h4>Diensten</h4>
         <ul>
-          <li><a href="diensten.html">Jaarrekening</a></li>
-          <li><a href="diensten.html">BTW-aangifte</a></li>
-          <li><a href="diensten.html">Salarisadministratie</a></li>
-          <li><a href="diensten.html">Belastingadvies</a></li>
-          <li><a href="diensten.html">Bedrijfsadvies</a></li>
+          <li><a href="/client-projects/de-groot-accountants/diensten/">Jaarrekening</a></li>
+          <li><a href="/client-projects/de-groot-accountants/diensten/">BTW-aangifte</a></li>
+          <li><a href="/client-projects/de-groot-accountants/diensten/">Salarisadministratie</a></li>
+          <li><a href="/client-projects/de-groot-accountants/diensten/">Belastingadvies</a></li>
+          <li><a href="/client-projects/de-groot-accountants/diensten/">Bedrijfsadvies</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Bedrijf</h4>
         <ul>
-          <li><a href="over-ons.html">Over ons</a></li>
-          <li><a href="over-ons.html">Ons team</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/client-projects/de-groot-accountants/over-ons/">Over ons</a></li>
+          <li><a href="/client-projects/de-groot-accountants/over-ons/">Ons team</a></li>
+          <li><a href="/client-projects/de-groot-accountants/contact/">Contact</a></li>
           <li><a href="#">Vacatures</a></li>
         </ul>
       </div>
@@ -222,11 +222,11 @@ ${navHTML('home')}
         <h1>Uw financiën in <em>vertrouwde handen</em></h1>
         <p class="hero-desc">Van jaarrekening tot belastingadvies — wij ontzorgen u zodat u zich kunt focussen op ondernemen.</p>
         <div class="hero-actions">
-          <a href="contact.html" class="btn btn-primary">
+          <a href="/client-projects/de-groot-accountants/contact/" class="btn btn-primary">
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.72-.72a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.24 17z"/></svg>
             Gratis adviesgesprek
           </a>
-          <a href="diensten.html" class="btn btn-outline">Bekijk diensten</a>
+          <a href="/client-projects/de-groot-accountants/diensten/" class="btn btn-outline">Bekijk diensten</a>
         </div>
         <div class="hero-trust">
           <div class="trust-item"><strong>500+</strong><span>Klanten</span></div>
@@ -337,7 +337,7 @@ ${navHTML('home')}
           </div>
         </div>
         <div style="margin-top:28px">
-          <a href="over-ons.html" class="btn btn-ghost">Leer ons kennen <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="/client-projects/de-groot-accountants/over-ons/" class="btn btn-ghost">Leer ons kennen <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
     </div>
@@ -387,7 +387,7 @@ ${navHTML('home')}
     <div class="label-tag" style="background:rgba(255,255,255,.2);color:var(--white);border:1px solid rgba(255,255,255,.3);margin-bottom:20px">Gratis gesprek inplannen</div>
     <h2 style="color:var(--white);margin-bottom:12px">Klaar om uw administratie te vereenvoudigen?</h2>
     <p>Bel ons op <strong>020 123 45 67</strong> of plan direct een gratis kennismakingsgesprek in.</p>
-    <a href="contact.html" class="btn">
+    <a href="/client-projects/de-groot-accountants/contact/" class="btn">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       Neem contact op
     </a>
@@ -699,7 +699,7 @@ ${navHTML('diensten')}
       <div class="pricing-note-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
       <div>
         <h3>Vaste maandprijs, geen verrassingen</h3>
-        <p>Alle bovenstaande diensten zijn ook beschikbaar als all-in maandpakket. U betaalt één vast bedrag per maand en wij regelen de rest. Vraag een gratis offerte aan via onze <a href="contact.html" style="color:var(--teal);font-weight:600">contactpagina</a>.</p>
+        <p>Alle bovenstaande diensten zijn ook beschikbaar als all-in maandpakket. U betaalt één vast bedrag per maand en wij regelen de rest. Vraag een gratis offerte aan via onze <a href="/client-projects/de-groot-accountants/contact/" style="color:var(--teal);font-weight:600">contactpagina</a>.</p>
       </div>
     </div>
   </div>
@@ -937,9 +937,9 @@ ${scriptHTML}
 // Write all files
 const files = {
   'index.html': indexHTML,
-  'over-ons.html': overOnsHTML,
-  'diensten.html': dienstenHTML,
-  'contact.html': contactHTML,
+  'over-ons/index.html': overOnsHTML,
+  'diensten/index.html': dienstenHTML,
+  'contact/index.html': contactHTML,
 };
 
 for (const [name, content] of Object.entries(files)) {
@@ -949,3 +949,4 @@ for (const [name, content] of Object.entries(files)) {
 }
 
 console.log('\nAll done! Files in:', base);
+

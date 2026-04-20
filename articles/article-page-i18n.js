@@ -12,7 +12,7 @@
   const originalBottomText = document.querySelector('.art-bottom-cta p')?.textContent || '';
 
   const translations = {
-    '5-redenen-waarom-klanten-jouw-website-verlaten': {
+    '5-reasons-customers-leave-your-website': {
       current: 'Website Mistakes',
       category: 'Web Design Tips',
       date: '19 April 2026',
@@ -55,7 +55,7 @@
 <p>You do not need a more complicated website. You need a clearer, faster, more focused one. Fixing a handful of weak points can dramatically improve how many visitors turn into actual customers.</p>
 <p>If your website is online but not performing, that is fixable. And it usually does not take a full rebuild to start seeing better results.</p>`
     },
-    'waarom-jouw-kapsalon-een-website-nodig-heeft': {
+    'why-your-hair-salon-needs-a-website': {
       current: 'Salon Website',
       category: 'Salon & Beauty',
       date: '19 April 2026',
@@ -127,3 +127,4 @@
   document.addEventListener('wk:languagechange', (event) => applyArticleLanguage(event?.detail?.lang || localStorage.getItem('wk-lang') || 'nl'));
   applyArticleLanguage(localStorage.getItem('wk-lang') || 'nl');
 })();
+
