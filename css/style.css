@@ -283,11 +283,20 @@ footer{background:var(--black);padding:72px 6% 36px}
 .fpay-label{font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#3a3a3a;white-space:nowrap;display:flex;align-items:center;gap:6px;margin-right:4px}
 .fpay-label svg{opacity:.5}
 .fpay-icons{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.fpay-badge{opacity:.88;transition:opacity .2s,transform .2s;flex-shrink:0;border-radius:8px;background:#fff;border:1px solid rgba(15,23,42,.08);padding:6px;width:52px;height:34px;object-fit:contain;box-sizing:border-box}
-.fpay-badge:hover{opacity:1;transform:translateY(-1px)}
+.fpay-badge{opacity:.94;transition:opacity .2s,transform .2s,box-shadow .2s;flex-shrink:0;border-radius:8px;background:#fff;border:1px solid rgba(15,23,42,.08);padding:6px;width:52px;height:34px;object-fit:contain;box-sizing:border-box;box-shadow:0 6px 18px rgba(15,23,42,.06)}
+.fpay-badge:hover{opacity:1;transform:translateY(-1px);box-shadow:0 10px 24px rgba(15,23,42,.1)}
+.fpay-badge[alt="Visa"]{background:linear-gradient(180deg,#1a1f71 0%,#2736b3 100%);border-color:rgba(26,31,113,.45)}
+.fpay-badge[alt="Mastercard"]{background:linear-gradient(180deg,#171717 0%,#2a2a2a 100%);border-color:rgba(247,158,27,.35)}
+.fpay-badge[alt="iDEAL"]{background:linear-gradient(180deg,#fff 0%,#fff7fb 100%);border-color:rgba(204,0,102,.25)}
+.fpay-badge[alt="Apple Pay"]{background:linear-gradient(180deg,#111 0%,#2b2b2b 100%);border-color:rgba(255,255,255,.08)}
+.fpay-badge[alt="Google Pay"]{background:linear-gradient(180deg,#fff 0%,#f8fbff 100%);border-color:rgba(66,133,244,.22)}
+.fpay-badge[alt="Klarna"]{background:linear-gradient(180deg,#ffb3c7 0%,#ffccda 100%);border-color:rgba(255,179,199,.55)}
+.fpay-badge[alt="PayPal"]{background:linear-gradient(180deg,#ffffff 0%,#f3f9ff 100%);border-color:rgba(0,48,135,.18)}
+.fpay-badge[alt="Stripe"]{background:linear-gradient(180deg,#635bff 0%,#7a73ff 100%);border-color:rgba(99,91,255,.45)}
+.fpay-badge[alt="Amazon Pay"]{background:linear-gradient(180deg,#fff 0%,#fffaf3 100%);border-color:rgba(255,153,0,.22)}
 body[data-theme="dark"] .fpay{border-top-color:#1e1e1e}
 body[data-theme="dark"] .fpay-label{color:#555}
-body[data-theme="dark"] .fpay-badge{background:#fff;border-color:rgba(255,255,255,.08)}
+body[data-theme="dark"] .fpay-badge{border-color:rgba(255,255,255,.08)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
