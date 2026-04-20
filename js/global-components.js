@@ -100,6 +100,10 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A5 5 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12" rx=".5"/><circle cx="4" cy="4" r="2"/></svg>
               <span data-i18n="footer.linkedin">LinkedIn</span>
             </a>
+            <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener" class="fsocial-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.37 7.28a.44.44 0 0 0-.13-.4L3.2 5.63V5.4h3.2l2.47 5.42 2.17-5.42H14v.23l-.89.85a.27.27 0 0 0-.1.26v10.52a.27.27 0 0 0 .1.26l.87.85v.23h-4.39v-.23l.9-.87c.09-.09.09-.11.09-.26V8.72l-2.5 6.35h-.34L4.83 8.72v7.18c-.03.2.04.4.18.54l1.17 1.42v.23H2.86v-.23l1.17-1.42c.13-.14.19-.34.16-.54V7.28h.18zM17.74 18.6c-.48 0-.86-.38-.86-.85s.38-.86.86-.86.86.38.86.86-.39.85-.86.85zm3.4 0c-.48 0-.86-.38-.86-.85s.38-.86.86-.86.86.38.86.86-.38.85-.86.85z"/></svg>
+              <span data-i18n="footer.medium">Medium</span>
+            </a>
           </div>
         </div>
         <div class="fbot">

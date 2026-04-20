@@ -202,8 +202,28 @@ const translations = {
     "footer.whatsapp": "WhatsApp Ons",
     "footer.instagram": "Instagram",
     "footer.linkedin": "LinkedIn",
+    "footer.medium": "Medium",
     "footer.meta": "© 2026 WebKreatives · Amsterdam, Nederland · KVK: 94051097",
-    "footer.legal": "Privacybeleid · Voorwaarden"
+    "footer.legal": "Privacybeleid · Voorwaarden",
+
+    // Home articles
+    "home.articles.label": "Artikelen",
+    "home.articles.title": "Gratis Kennis Voor Jouw Bedrijf",
+    "home.articles.sub": "Praktische artikelen over webdesign, online vindbaarheid en meer klanten — geschreven voor kleine bedrijven.",
+    "home.articles.card1.tag": "Kapsalon & Beauty",
+    "home.articles.card1.meta": "19 april 2026 · 6 min leestijd",
+    "home.articles.card1.title": "Waarom Jouw Kapsalon Een Website Nodig Heeft",
+    "home.articles.card1.text": "81% van de klanten zoekt online voordat ze binnenstappen. Zonder website ben je onzichtbaar — en loop je klanten mis die nu naar de concurrent gaan.",
+    "home.articles.card2.tag": "Webdesign Tips",
+    "home.articles.card2.meta": "19 april 2026 · 7 min leestijd",
+    "home.articles.card2.title": "5 Redenen Waarom Klanten Jouw Website Verlaten",
+    "home.articles.card2.text": "Laadtijd, geen CTA, verouderd design — kleine fouten met grote gevolgen. Doe de zelfscan en ontdek wat je misloopt.",
+    "home.articles.read": "Lees artikel →",
+    "home.articles.coming.meta": "Binnenkort",
+    "home.articles.coming.title": "Lokale SEO: Hoe Google Jou Vindt in Jouw Stad",
+    "home.articles.coming.text": "Google Mijn Bedrijf, lokale zoekwoorden, reviews — alles wat je nodig hebt om bovenaan te staan in jouw eigen stad.",
+    "home.articles.coming.link": "Binnenkort beschikbaar",
+    "home.articles.cta": "Bekijk alle artikelen →"
   },
   en: {
     "nav.services": "Services",
@@ -380,7 +400,26 @@ const translations = {
     "footer.whatsapp": "WhatsApp Us",
     "footer.instagram": "Instagram",
     "footer.linkedin": "LinkedIn",
+    "footer.medium": "Medium",
     "footer.meta": "© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097",
-    "footer.legal": "Privacy Policy · Terms"
+    "footer.legal": "Privacy Policy · Terms",
+
+    "home.articles.label": "Articles",
+    "home.articles.title": "Free Knowledge For Your Business",
+    "home.articles.sub": "Practical articles about web design, online visibility, and winning more customers — written for small businesses.",
+    "home.articles.card1.tag": "Salon & Beauty",
+    "home.articles.card1.meta": "19 April 2026 · 6 min read",
+    "home.articles.card1.title": "Why Your Hair Salon Needs a Website",
+    "home.articles.card1.text": "81% of customers search online before they walk in. Without a website, you stay invisible — and lose customers who go to a competitor instead.",
+    "home.articles.card2.tag": "Web Design Tips",
+    "home.articles.card2.meta": "19 April 2026 · 7 min read",
+    "home.articles.card2.title": "5 Reasons Customers Leave Your Website",
+    "home.articles.card2.text": "Slow load time, no CTA, outdated design — small mistakes with big consequences. Use the self-check and see what you are losing.",
+    "home.articles.read": "Read article →",
+    "home.articles.coming.meta": "Coming soon",
+    "home.articles.coming.title": "Local SEO: How Google Finds You in Your City",
+    "home.articles.coming.text": "Google Business Profile, local keywords, reviews — everything you need to rank higher in your own city.",
+    "home.articles.coming.link": "Coming soon",
+    "home.articles.cta": "View all articles →"
   }
 };
