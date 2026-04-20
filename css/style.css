@@ -441,12 +441,10 @@ body[data-theme="dark"] .stats .sn{color:var(--yellow)}
 body[data-theme="dark"] .stats .sl{color:#bbb}
 /* Testimonial avatars */
 body[data-theme="dark"] .av[style*="background:#0d0d0d"]{background:#444!important}
-/* PNG logo sizing */
-.wk-logo-img { height: 36px; width: auto; display: block; }
-/* Dark mode nav: invert logo to white */
+/* PNG logo in nav */
+.wk-logo-img { height: 32px; width: auto; display: block; object-fit: contain; }
+/* Dark mode nav: invert to white */
 body[data-theme="dark"] nav .wk-logo-img { filter: brightness(0) invert(1); }
-/* Footer is always dark: always show logo in white */
-footer .wk-logo-img { filter: brightness(0) invert(1); }
 /* Lang & theme controls */
 body[data-theme="dark"] .lang-btn{border-color:#444;color:#ccc}
 body[data-theme="dark"] .lang-btn:hover{border-color:#666}
