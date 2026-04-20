@@ -2,6 +2,7 @@
 
 const WK_GA_ID = 'G-CG9705BC61';
 const WK_CONSENT_KEY = 'wk-cookie-consent';
+const WK_CONSENT_PREFS_KEY = 'wk-cookie-preferences';
 let wkGaLoaded = false;
 
 function loadGoogleAnalytics() {
@@ -23,26 +24,47 @@ function getCookieConsentState() {
   return localStorage.getItem(WK_CONSENT_KEY);
 }
 
-function setCookieConsentState(state) {
+function getCookiePreferences() {
+  try {
+    return JSON.parse(localStorage.getItem(WK_CONSENT_PREFS_KEY) || '{"essential":true,"analytics":true}');
+  } catch {
+    return { essential: true, analytics: true };
+  }
+}
+
+function applyCookiePreferences(prefs, state) {
   localStorage.setItem(WK_CONSENT_KEY, state);
-  if (state === 'accepted') loadGoogleAnalytics();
+  localStorage.setItem(WK_CONSENT_PREFS_KEY, JSON.stringify(prefs));
+  if (prefs.analytics && state !== 'declined') loadGoogleAnalytics();
 }
 
 function getCookieBannerCopy(lang) {
   return lang === 'en'
     ? {
-        title: 'Privacy choices',
-        text: 'We use functional browser storage for language and theme preferences. Analytics only starts after you accept it. Read the full details in our privacy policy.',
-        accept: 'Accept analytics',
-        decline: 'Decline',
-        manage: 'Read privacy policy'
+        title: 'Cookies on WebKreatives',
+        text: 'We use essential cookies for language and theme preferences. Analytics helps us improve the site and is enabled after your permission.',
+        accept: 'Accept cookies',
+        customize: 'Customize cookies',
+        decline: 'Decline cookies',
+        manage: 'Privacy Policy',
+        save: 'Save preferences',
+        essential: 'Essential cookies',
+        essentialText: 'Needed for basic website functionality such as language and theme preferences. Always on.',
+        analytics: 'Analytics cookies',
+        analyticsText: 'Helps us understand which pages perform best so we can improve the website.'
       }
     : {
-        title: 'Privacykeuzes',
-        text: 'We gebruiken functionele browseropslag voor taal- en themavoorkeuren. Analytics start pas nadat je dat accepteert. Lees de volledige uitleg in ons privacybeleid.',
-        accept: 'Analytics accepteren',
-        decline: 'Weigeren',
-        manage: 'Lees privacybeleid'
+        title: 'Cookies op WebKreatives',
+        text: 'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren en wordt pas actief na jouw keuze.',
+        accept: 'Cookies accepteren',
+        customize: 'Cookies aanpassen',
+        decline: 'Cookies weigeren',
+        manage: 'Privacybeleid',
+        save: 'Voorkeuren opslaan',
+        essential: 'Essentiële cookies',
+        essentialText: 'Nodig voor basisfunctionaliteit van de website, zoals taal- en themavoorkeuren. Altijd actief.',
+        analytics: 'Analytics cookies',
+        analyticsText: 'Helpt ons begrijpen welke pagina’s het beste werken zodat we de website kunnen verbeteren.'
       };
 }
 
@@ -55,6 +77,7 @@ function renderCookieBanner(lang) {
     document.body.appendChild(banner);
   }
 
+  const prefs = getCookiePreferences();
   const copy = getCookieBannerCopy(lang);
   banner.innerHTML = `
     <div class="cookie-banner-inner">
@@ -63,23 +86,54 @@ function renderCookieBanner(lang) {
         <p>${copy.text} <a href="/privacy/">${copy.manage}</a>.</p>
       </div>
       <div class="cookie-actions">
-        <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-action="decline">${copy.decline}</button>
+        <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-action="customize">${copy.customize}</button>
         <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-action="accept">${copy.accept}</button>
+      </div>
+    </div>
+    <div class="cookie-panel" hidden>
+      <div class="cookie-option cookie-option-locked">
+        <div>
+          <strong>${copy.essential}</strong>
+          <p>${copy.essentialText}</p>
+        </div>
+        <label class="cookie-switch is-disabled"><input type="checkbox" checked disabled><span></span></label>
+      </div>
+      <div class="cookie-option">
+        <div>
+          <strong>${copy.analytics}</strong>
+          <p>${copy.analyticsText}</p>
+        </div>
+        <label class="cookie-switch"><input type="checkbox" data-cookie-analytics ${prefs.analytics ? 'checked' : ''}><span></span></label>
+      </div>
+      <div class="cookie-panel-actions">
+        <button type="button" class="cookie-btn cookie-btn-ghost" data-cookie-action="decline">${copy.decline}</button>
+        <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-action="save">${copy.save}</button>
       </div>
     </div>`;
 
+  const panel = banner.querySelector('.cookie-panel');
   banner.querySelector('[data-cookie-action="accept"]').addEventListener('click', () => {
-    setCookieConsentState('accepted');
+    applyCookiePreferences({ essential: true, analytics: true }, 'accepted');
     banner.hidden = true;
     renderCookieManageButton(lang);
   });
+  banner.querySelector('[data-cookie-action="customize"]').addEventListener('click', () => {
+    panel.hidden = !panel.hidden;
+    banner.classList.toggle('cookie-banner-expanded', !panel.hidden);
+  });
   banner.querySelector('[data-cookie-action="decline"]').addEventListener('click', () => {
-    setCookieConsentState('declined');
+    applyCookiePreferences({ essential: true, analytics: false }, 'declined');
+    banner.hidden = true;
+    renderCookieManageButton(lang);
+  });
+  banner.querySelector('[data-cookie-action="save"]').addEventListener('click', () => {
+    const analytics = !!banner.querySelector('[data-cookie-analytics]')?.checked;
+    applyCookiePreferences({ essential: true, analytics }, analytics ? 'accepted' : 'customized');
     banner.hidden = true;
     renderCookieManageButton(lang);
   });
 
-  banner.hidden = getCookieConsentState() === 'accepted' || getCookieConsentState() === 'declined';
+  banner.hidden = ['accepted', 'declined', 'customized'].includes(getCookieConsentState());
 }
 
 function renderCookieManageButton(lang) {
@@ -105,7 +159,8 @@ function renderCookieManageButton(lang) {
   btn.hidden = false;
 }
 
-if (getCookieConsentState() === 'accepted') {
+const initialPrefs = getCookiePreferences();
+if (initialPrefs.analytics && ['accepted', 'customized'].includes(getCookieConsentState())) {
   loadGoogleAnalytics();
 }
 
