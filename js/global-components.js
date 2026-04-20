@@ -65,13 +65,12 @@
             <a href="/#services" data-i18n="footer.support">Doorlopende Support</a>
           </div>
           <div class="fcol">
-            <h4 data-i18n="footer.company">Bedrijf</h4>
+            <h4 data-i18n="footer.pages">Pagina's</h4>
+            <a href="/" data-i18n="footer.home">Home</a>
             <a href="/our-websites/" data-i18n="footer.work">Onze Websites</a>
-            <a href="/articles/" data-i18n="footer.articles">Articles</a>
-            <a href="/#why-us" data-i18n="footer.why">Waarom Wij</a>
-            <a href="/#testimonials" data-i18n="footer.reviews">Reviews</a>
-            <a href="/#pricing" data-i18n="footer.pricing">Prijzen</a>
-            <a href="/#contact" data-i18n="footer.contact">Contact</a>
+            <a href="/articles/" data-i18n="footer.articles">Artikelen</a>
+            <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="/terms/" data-i18n="footer.terms">Voorwaarden</a>
           </div>
           <div class="fcol">
             <h4 data-i18n="footer.connect">Verbinden</h4>
