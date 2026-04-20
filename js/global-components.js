@@ -4,7 +4,7 @@
 
   const logoLight = `<img class="wk-logo-img wk-logo-img--nav" src="/assets/Horizontallogo.png" alt="WebKreatives">`;
 
-  const logoDark  = `<img class="wk-logo-img wk-logo-img--footer" src="/assets/Horizontallogo.png" alt="WebKreatives">`;
+  const logoDark  = `<img class="wk-logo-img wk-logo-img--footer" src="/assets/darkmodehorizontallogo.png" alt="WebKreatives">`;
 
   const navRoot = document.getElementById('globalNav');
   if (navRoot) {
