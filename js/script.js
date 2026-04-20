@@ -45,7 +45,6 @@ function getCookieBannerCopy(lang) {
         text: 'We use essential cookies for language and theme preferences. Analytics helps us improve the site and is enabled after your permission.',
         accept: 'Accept cookies',
         customize: 'Customize cookies',
-        decline: 'Decline cookies',
         manage: 'Privacy Policy',
         save: 'Save preferences',
         essential: 'Essential cookies',
@@ -58,7 +57,6 @@ function getCookieBannerCopy(lang) {
         text: 'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren en wordt pas actief na jouw keuze.',
         accept: 'Cookies accepteren',
         customize: 'Cookies aanpassen',
-        decline: 'Cookies weigeren',
         manage: 'Privacybeleid',
         save: 'Voorkeuren opslaan',
         essential: 'Essentiële cookies',
@@ -106,7 +104,6 @@ function renderCookieBanner(lang) {
         <label class="cookie-switch"><input type="checkbox" data-cookie-analytics ${prefs.analytics ? 'checked' : ''}><span></span></label>
       </div>
       <div class="cookie-panel-actions">
-        <button type="button" class="cookie-btn cookie-btn-ghost" data-cookie-action="decline">${copy.decline}</button>
         <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-action="save">${copy.save}</button>
       </div>
     </div>`;
