@@ -19,6 +19,22 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'local-seo-how-google-finds-you-in-your-city',
+    title:            'Lokale SEO: Hoe Google Jou Vindt in Jouw Stad',
+    titleEn:          'Local SEO: How Google Finds You in Your City',
+    category:         'Lokale SEO',
+    categoryEn:       'Local SEO',
+    date:             '2026-04-20',
+    dateFormatted:    '20 april 2026',
+    dateFormattedEn:  '20 April 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-04-20T11:30:00+02:00',
+    image:            'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Google Bedrijfsprofiel, reviews, lokale content en consistente bedrijfsinformatie: dit zijn de onderdelen die bepalen hoe zichtbaar jij bent in jouw stad.',
+    excerptEn:        'Google Business Profile, reviews, local content, and consistent business details: these are the factors that shape how visible you are in your city.'
+  },
+  {
     slug:             '5-reasons-customers-leave-your-website',
     title:            '5 Redenen Waarom Klanten Jouw Website Verlaten',
     titleEn:          '5 Reasons Customers Leave Your Website',
