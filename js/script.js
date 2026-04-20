@@ -13,17 +13,28 @@ const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 
 // 3. MOBILE NAV TOGGLE
+const navOverlay = document.createElement('div');
+navOverlay.className = 'nav-overlay';
+document.body.appendChild(navOverlay);
+
+function closeNav() {
+  hamburger.classList.remove('open');
+  navLinks.classList.remove('open');
+  navOverlay.classList.remove('active');
+  document.body.classList.remove('nav-open');
+}
+
 if (hamburger) {
   hamburger.addEventListener('click', () => {
     const open = hamburger.classList.toggle('open');
     navLinks.classList.toggle('open', open);
+    navOverlay.classList.toggle('active', open);
+    document.body.classList.toggle('nav-open', open);
   });
   navLinks.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-    })
+    a.addEventListener('click', closeNav)
   );
+  navOverlay.addEventListener('click', closeNav);
 }
 
 // 4. SCROLL HANDLER (rAF-throttled)
