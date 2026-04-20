@@ -14,9 +14,15 @@ const path = require('path');
 const fs = require('fs');
 const ExcelJS = require('exceljs');
 
-// ── Credentials (from .env.leads) ─────────────────────────────────────────────
-const API_KEY = process.env.GOOGLE_API_KEY || 'AIzaSyC-c70HBh_dLn2HhvN_z5CRuqmyKiZMoMw';
-const CX      = process.env.GOOGLE_CSE_CX  || '41ae4ca83dc494e5c';
+// ── Credentials (from .env.leads — never hardcode here) ───────────────────────
+const API_KEY = process.env.GOOGLE_API_KEY;
+const CX      = process.env.GOOGLE_CSE_CX;
+
+if (!API_KEY || !CX) {
+  console.error('❌  Missing credentials. Create .env.leads with GOOGLE_API_KEY and GOOGLE_CSE_CX, then run:');
+  console.error('    source .env.leads && node tools/find-leads-google.js');
+  process.exit(1);
+}
 
 // ── Lead rotation config ───────────────────────────────────────────────────────
 // OpenClaw cycles through these automatically each day to stay fresh
