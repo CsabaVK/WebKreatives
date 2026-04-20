@@ -95,24 +95,15 @@
             Secure payments
           </span>
           <div class="fpay-icons">
-            <!-- Visa -->
-            <span class="fpay-badge"><svg width="46" height="30" viewBox="0 0 46 30"><rect width="46" height="30" rx="4" fill="#1a1f71"/><text x="23" y="22" font-family="Arial,sans-serif" font-size="14" font-weight="900" font-style="italic" fill="#fff" text-anchor="middle" letter-spacing="1">VISA</text></svg></span>
-            <!-- Mastercard -->
-            <span class="fpay-badge"><svg width="46" height="30" viewBox="0 0 46 30"><rect width="46" height="30" rx="4" fill="#1a1a1a"/><circle cx="18" cy="15" r="9" fill="#eb001b"/><circle cx="28" cy="15" r="9" fill="#f79e1b"/><path d="M23 7.7a9 9 0 0 1 0 14.6A9 9 0 0 1 23 7.7z" fill="#ff5f00"/></svg></span>
-            <!-- iDEAL -->
-            <span class="fpay-badge"><svg width="46" height="30" viewBox="0 0 46 30"><rect width="46" height="30" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/><text x="23" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="middle"><tspan fill="#cc0066">i</tspan><tspan fill="#000">DEAL</tspan></text></svg></span>
-            <!-- Apple Pay -->
-            <span class="fpay-badge"><svg width="46" height="30" viewBox="0 0 46 30"><rect width="46" height="30" rx="4" fill="#000"/><text x="23" y="21" font-family="Arial,sans-serif" font-size="10" font-weight="500" fill="#fff" text-anchor="middle" letter-spacing=".2">Apple Pay</text></svg></span>
-            <!-- Google Pay -->
-            <span class="fpay-badge"><svg width="46" height="30" viewBox="0 0 46 30"><rect width="46" height="30" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/><text x="23" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" text-anchor="middle"><tspan fill="#4285f4">G</tspan><tspan fill="#555"> Pay</tspan></text></svg></span>
-            <!-- Klarna -->
-            <span class="fpay-badge"><svg width="46" height="30" viewBox="0 0 46 30"><rect width="46" height="30" rx="4" fill="#ffb3c7"/><text x="23" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#17120e" text-anchor="middle">Klarna</text></svg></span>
-            <!-- PayPal -->
-            <span class="fpay-badge"><svg width="46" height="30" viewBox="0 0 46 30"><rect width="46" height="30" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/><text x="23" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#003087" text-anchor="middle">Pay<tspan fill="#009cde">Pal</tspan></text></svg></span>
-            <!-- Stripe -->
-            <span class="fpay-badge"><svg width="46" height="30" viewBox="0 0 46 30"><rect width="46" height="30" rx="4" fill="#635bff"/><text x="23" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">stripe</text></svg></span>
-            <!-- Amazon Pay -->
-            <span class="fpay-badge"><svg width="46" height="30" viewBox="0 0 46 30"><rect width="46" height="30" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/><text x="23" y="17" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#232f3e" text-anchor="middle">amazon</text><text x="23" y="27" font-family="Arial,sans-serif" font-size="8" fill="#ff9900" text-anchor="middle">pay ›</text></svg></span>
+            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/visa/1A1F71" alt="Visa" height="18" loading="lazy"></span>
+            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/mastercard/EB001B" alt="Mastercard" height="18" loading="lazy"></span>
+            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/ideal/CC0066" alt="iDEAL" height="18" loading="lazy"></span>
+            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/applepay/000000" alt="Apple Pay" height="18" loading="lazy"></span>
+            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/googlepay/4285F4" alt="Google Pay" height="18" loading="lazy"></span>
+            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/klarna/17120E" alt="Klarna" height="18" loading="lazy"></span>
+            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/paypal/003087" alt="PayPal" height="18" loading="lazy"></span>
+            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/stripe/635BFF" alt="Stripe" height="18" loading="lazy"></span>
+            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/amazonpay/FF9900" alt="Amazon Pay" height="18" loading="lazy"></span>
           </div>
         </div>
         <div class="fbot">
