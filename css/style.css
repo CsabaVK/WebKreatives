@@ -31,10 +31,10 @@ html{scroll-behavior:smooth}
 body{font-family:var(--fb);background:var(--white);color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:200;height:66px;padding:0 6%;display:flex;align-items:center;justify-content:space-between}
+nav{position:sticky;top:0;z-index:200;height:72px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;gap:24px}
 nav::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--grey-200);z-index:-1}
-.logo{text-decoration:none;display:flex;align-items:center}
-.nav-links{display:flex;align-items:center;gap:32px}
+.logo{text-decoration:none;display:flex;align-items:center;flex-shrink:0;margin-right:6px}
+.nav-links{display:flex;align-items:center;gap:26px}
 .nav-links a{font-size:14px;font-weight:500;color:var(--grey-700);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--black)}
 .btn-nav{background:var(--red)!important;color:var(--white)!important;padding:9px 20px;border-radius:var(--r-sm);font-weight:600!important;transition:background .2s,transform .15s!important}
@@ -256,7 +256,7 @@ h2.st.lt{color:var(--white)}
 /* ── FOOTER ── */
 footer{background:var(--black);padding:72px 6% 36px}
 .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;max-width:1140px;margin:0 auto 56px}
-.fbrand p{font-size:13px;color:#555;line-height:1.8;margin:14px 0 20px;max-width:250px}
+.fbrand p{font-size:13px;color:#555;line-height:1.8;margin:16px 0 20px;max-width:280px}
 .fbrand a{font-size:13px;color:var(--green);font-weight:600;text-decoration:none;display:block;margin-bottom:4px}
 .fbrand span{font-size:13px;color:#444}
 .fcol h4{font-size:10px;font-weight:700;letter-spacing:2px;color:#2a2a2a;text-transform:uppercase;margin-bottom:16px}
@@ -441,8 +441,10 @@ body[data-theme="dark"] .stats .sn{color:var(--yellow)}
 body[data-theme="dark"] .stats .sl{color:#bbb}
 /* Testimonial avatars */
 body[data-theme="dark"] .av[style*="background:#0d0d0d"]{background:#444!important}
-/* PNG logo in nav */
-.wk-logo-img { height: 32px; width: auto; display: block; object-fit: contain; }
+/* Shared horizontal logo */
+.wk-logo-img{width:auto;display:block;object-fit:contain}
+.wk-logo-img--nav{height:34px;max-width:220px}
+.wk-logo-img--footer{height:42px;max-width:260px;margin-bottom:4px;filter:brightness(0) invert(1)}
 /* Dark mode nav: invert to white */
 body[data-theme="dark"] nav .wk-logo-img { filter: brightness(0) invert(1); }
 /* Lang & theme controls */
