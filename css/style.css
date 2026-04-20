@@ -443,8 +443,8 @@ body[data-theme="dark"] .stats .sl{color:#bbb}
 body[data-theme="dark"] .av[style*="background:#0d0d0d"]{background:#444!important}
 /* Shared horizontal logo */
 .wk-logo-img{width:auto;display:block;object-fit:contain}
-.wk-logo-img--nav{height:34px;max-width:220px}
-.wk-logo-img--footer{height:42px;max-width:260px;margin-bottom:4px;filter:brightness(0) invert(1)}
+.wk-logo-img--nav{height:38px;max-width:240px}
+.wk-logo-img--footer{height:42px;max-width:260px;margin-bottom:4px}
 /* Dark mode nav: invert to white */
 body[data-theme="dark"] nav .wk-logo-img { filter: brightness(0) invert(1); }
 /* Lang & theme controls */
