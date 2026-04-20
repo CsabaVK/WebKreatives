@@ -532,6 +532,7 @@
 /* Dark mode */
 /* Hero always stays dark */
 body[data-theme="dark"] .art-hero { background: #0d0d0d; }
+body[data-theme="dark"] .art-breadcrumb a:hover { color: #f0f0f0; }
 body[data-theme="dark"] .art-title { color: #f0f0f0; }
 body[data-theme="dark"] .art-title em { color: var(--red); }
 
@@ -552,6 +553,7 @@ body[data-theme="dark"] .art-mistake strong { color: #f0f0f0; }
 
 /* Stats */
 body[data-theme="dark"] .art-stats { background: #141414; border-color: #252525; }
+body[data-theme="dark"] .art-stat { background: #1a1a1a; }
 body[data-theme="dark"] .art-stat-label { color: #888; }
 
 /* Inline CTA box */
@@ -562,6 +564,7 @@ body[data-theme="dark"] .art-cta-box p { color: #888; }
 /* Checklist */
 body[data-theme="dark"] .art-checklist li { background: #111; border-color: #222; color: #ccc; }
 body[data-theme="dark"] .art-checklist li:hover { background: #181818; }
+body[data-theme="dark"] .art-checklist li::before { background: #1a2a1e; color: #4caf50; }
 body[data-theme="dark"] .art-checklist { border-color: #252525; }
 
 /* Share bar */
@@ -573,7 +576,7 @@ body[data-theme="dark"] .share-btn.copy:hover { background: #222; border-color: 
 body[data-theme="dark"] .art-author-bio { background: #141414; border-color: #252525; }
 body[data-theme="dark"] .art-author-bio h4 { color: #f0f0f0; }
 body[data-theme="dark"] .art-author-bio p { color: #888; }
-body[data-theme="dark"] .bio-role { color: #666; }
+body[data-theme="dark"] .bio-role { color: var(--red); }
 
 /* Bottom CTA — always stays dark */
 body[data-theme="dark"] .art-bottom-cta { background: #0d0d0d; }
