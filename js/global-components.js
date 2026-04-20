@@ -95,7 +95,7 @@
           <p class="footer-legal-links">
             <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
             <span aria-hidden="true">·</span>
-            <span data-i18n="footer.terms">Terms</span>
+            <a href="/terms/" data-i18n="footer.terms">Terms</a>
           </p>
         </div>
       </footer>`;
