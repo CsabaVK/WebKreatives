@@ -8,6 +8,7 @@ const translations = {
     "nav.reviews": "Reviews",
     "nav.articles": "Artikelen",
     "nav.cta": "Offerte Aanvragen",
+    "nav.tagline": "Webdesign voor kleine bedrijven",
 
     // Hero
     "hero.badge": "Webdesign Bureau — Nederland",
@@ -232,6 +233,7 @@ const translations = {
     "nav.reviews": "Reviews",
     "nav.articles": "Articles",
     "nav.cta": "Get a Quote",
+    "nav.tagline": "Web design for small businesses",
     "hero.badge": "Web Design Agency — Netherlands",
     "hero.h1.pre": "Websites That ",
     "hero.h1.post": "Clients for You",
