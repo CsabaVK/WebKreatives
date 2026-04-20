@@ -106,7 +106,7 @@ h2.st.lt{color:var(--white)}
 .trust-row span{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--grey-300)}
 
 /* ── STATS ── */
-.stats{background:var(--black);border-top:4px solid var(--yellow);padding:52px 6%}
+.stats{background:var(--black);border-top:4px solid var(--yellow);border-bottom:4px solid var(--red);padding:52px 6%}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:900px;margin:0 auto;text-align:center}
 .sn{font-family:var(--fh);font-size:56px;font-weight:900;color:var(--yellow);letter-spacing:-2px;line-height:1;display:block}
 .sl{font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;font-weight:500}
@@ -126,7 +126,7 @@ h2.st.lt{color:var(--white)}
 .svc.dark p{color:#555}
 
 /* ── WHY US ── */
-.why{padding:100px 6%;background:var(--black)}
+.why{padding:100px 6%;background:var(--black);border-top:4px solid var(--red);border-bottom:4px solid var(--yellow)}
 .why-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .why-l>p{font-size:16px;color:#666;line-height:1.8;margin-top:20px}
 .checks{display:flex;flex-direction:column;gap:26px}
@@ -241,7 +241,7 @@ h2.st.lt{color:var(--white)}
 @media(max-width:580px){.sgrid{grid-template-columns:1fr}}
 
 /* ── CONTACT ── */
-.contact{padding:100px 6%;background:var(--grey-50)}
+.contact{padding:100px 6%;background:var(--white)}
 .cwrap{max-width:680px;margin:0 auto}
 .cform{background:var(--white);border:1px solid var(--grey-200);border-radius:var(--r-xl);padding:48px 44px;box-shadow:var(--sh-md)}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -342,7 +342,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.09)}
 }
 
 /* FAQ */
-.faq{padding:100px 6%;background:var(--grey-50)}
+.faq{padding:100px 6%;background:var(--white)}
 .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
 .faq-item{background:var(--white);border:1.5px solid var(--grey-200);border-radius:var(--r-md);overflow:hidden;transition:border-color .2s}
 .faq-item.open{border-color:var(--green)}
