@@ -148,7 +148,7 @@ const translations = {
     "sub.prem.5": "Kwartaal strategiegesprek",
     "sub.prem.6": "Snelste reactietijd",
     "sub.prem.cta": "Kies Premium",
-    "price.intl": "🌍 Buiten de EER? Wij factureren in 19 valuta's, waaronder USD, GBP en CHF — via Stripe.",
+    "price.intl": "Buiten de EER? Wij factureren in 19 valuta's, waaronder USD, GBP en CHF.",
 
     // Contact
     "contact.label": "Contact",
@@ -358,7 +358,7 @@ const translations = {
     "sub.prem.5": "Quarterly strategy call",
     "sub.prem.6": "Fastest response time",
     "sub.prem.cta": "Choose Premium",
-    "price.intl": "🌍 Outside the EEA? We invoice in 19 currencies including USD, GBP and CHF — via Stripe.",
+    "price.intl": "Outside the EEA? We invoice in 19 currencies including USD, GBP and CHF.",
     "contact.label": "Contact",
     "contact.title": "Let's Build Your Website",
     "contact.sub": "Tell us about your project and we'll get back to you within 24 hours. No obligation, no pushy sales.",
