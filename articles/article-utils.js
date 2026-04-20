@@ -116,20 +116,28 @@
       return;
     }
 
-    const slug   = getCurrentSlug();
-    const others = WK_ARTICLES.filter(a => a.slug !== slug).slice(0, 3);
+    const isEnglish = getArticleLanguage() === 'en';
+    const slug      = getCurrentSlug();
+    const others    = WK_ARTICLES.filter(a => a.slug !== slug).slice(0, 3);
 
     if (!others.length) {
       el.innerHTML = `<p style="color:var(--grey-500);font-size:14px">${t('Binnenkort meer artikelen.', 'More articles coming soon.')}</p>`;
       return;
     }
 
-    el.innerHTML = others.map(a => `
+    el.innerHTML = others.map(a => {
+      const category = isEnglish ? (a.categoryEn || a.category) : a.category;
+      const title = isEnglish ? (a.titleEn || a.title) : a.title;
+      const dateFormatted = isEnglish ? (a.dateFormattedEn || a.dateFormatted) : a.dateFormatted;
+      const readTime = isEnglish ? (a.readTimeEn || a.readTime) : a.readTime;
+
+      return `
       <a class="art-related-card" href="/articles/${a.slug}.html">
-        <span class="arc-cat">${a.category}</span>
-        <div class="arc-title">${a.title}</div>
-        <span class="arc-date">${a.dateFormatted} · ${a.readTime}</span>
-      </a>`).join('');
+        <span class="arc-cat">${category}</span>
+        <div class="arc-title">${title}</div>
+        <span class="arc-date">${dateFormatted} · ${readTime}</span>
+      </a>`;
+    }).join('');
   }
 
   /* ── Init ─────────────────────────────────────────────────────────────── */
@@ -142,6 +150,8 @@
     if (authorEl)  renderAuthorBio(authorEl);
     if (relatedEl) renderRelated(relatedEl);
   }
+
+  document.addEventListener('wk:languagechange', init);
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
