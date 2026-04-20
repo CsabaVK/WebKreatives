@@ -332,7 +332,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.09)}
 @media(max-width:900px){
   .hamburger{display:flex}
   .nav-controls{margin-left:auto;margin-right:12px}
-  .nav-links{position:fixed;top:66px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;padding:0 6%;display:flex;border-top:1px solid var(--grey-200);z-index:199;overflow:hidden;align-items:flex-start;max-height:0;opacity:0;pointer-events:none;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .25s ease,padding .3s ease}
+  .nav-links{position:fixed;top:72px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;padding:0 6%;display:flex;border-top:1px solid var(--grey-200);z-index:199;overflow:hidden;align-items:flex-start;max-height:0;opacity:0;pointer-events:none;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .25s ease,padding .3s ease}
   .nav-links.open{max-height:400px;opacity:1;pointer-events:auto;padding:12px 6% 20px}
   .nav-links a{font-size:18px;padding:14px 0;border-bottom:1px solid var(--grey-100);width:100%}
   /* Mobile: show CTA in drawer, hide from controls */
@@ -378,6 +378,19 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.09)}
   .about-photo{margin:0 auto}
 }
 
+/* ── MOBILE NAV OVERLAY ── */
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:198;backdrop-filter:blur(2px);transition:opacity .25s ease}
+.nav-overlay.active{display:block}
+body.nav-open{overflow:hidden}
+
+/* ── NAV LINK HOVER UNDERLINE (desktop) ── */
+@media(min-width:901px){
+  .nav-links a:not(.btn-nav){position:relative}
+  .nav-links a:not(.btn-nav)::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#8BC34A;border-radius:2px;transition:width .22s ease}
+  .nav-links a:not(.btn-nav):hover::after,
+  .nav-links a:not(.btn-nav).active::after{width:100%}
+}
+
 /* ── DARK MODE ── */
 body[data-theme="dark"]{
   --black:#f0f0f0;
@@ -395,6 +408,7 @@ body[data-theme="dark"]{
 }
 /* Nav */
 body[data-theme="dark"] nav::before{background:rgba(13,13,13,.95);border-bottom-color:#252525}
+body[data-theme="dark"] .nav-overlay{background:rgba(0,0,0,.65)}
 body[data-theme="dark"] .logo-tagline{color:#555;border-color:#333}
 /* Logo SVG text */
 body[data-theme="dark"] .logo svg text{fill:#f0f0f0}
