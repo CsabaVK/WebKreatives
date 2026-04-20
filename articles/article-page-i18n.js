@@ -57,7 +57,7 @@
     },
     'why-your-hair-salon-needs-a-website': {
       current: 'Salon Website',
-      category: 'Salon & Beauty',
+      category: 'Small Business',
       date: '19 April 2026',
       read: '6 min read',
       title: 'Why Your Hair Salon<br><em>Needs a Website</em>',
