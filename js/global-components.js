@@ -95,15 +95,15 @@
             Secure payments
           </span>
           <div class="fpay-icons">
-            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/visa/1A1F71" alt="Visa" height="18" loading="lazy"></span>
-            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/mastercard/EB001B" alt="Mastercard" height="18" loading="lazy"></span>
-            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/ideal/CC0066" alt="iDEAL" height="18" loading="lazy"></span>
-            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/applepay/000000" alt="Apple Pay" height="18" loading="lazy"></span>
-            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/googlepay/4285F4" alt="Google Pay" height="18" loading="lazy"></span>
-            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/klarna/17120E" alt="Klarna" height="18" loading="lazy"></span>
-            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/paypal/003087" alt="PayPal" height="18" loading="lazy"></span>
-            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/stripe/635BFF" alt="Stripe" height="18" loading="lazy"></span>
-            <span class="fpay-badge"><img src="https://cdn.simpleicons.org/amazonpay/FF9900" alt="Amazon Pay" height="18" loading="lazy"></span>
+            <img class="fpay-badge" src="/assets/payment/visa.svg" alt="Visa" width="52" height="34" loading="lazy">
+            <img class="fpay-badge" src="/assets/payment/mastercard.svg" alt="Mastercard" width="52" height="34" loading="lazy">
+            <img class="fpay-badge" src="/assets/payment/ideal.svg" alt="iDEAL" width="52" height="34" loading="lazy">
+            <img class="fpay-badge" src="/assets/payment/applepay.svg" alt="Apple Pay" width="52" height="34" loading="lazy">
+            <img class="fpay-badge" src="/assets/payment/googlepay.svg" alt="Google Pay" width="52" height="34" loading="lazy">
+            <img class="fpay-badge" src="/assets/payment/klarna.svg" alt="Klarna" width="52" height="34" loading="lazy">
+            <img class="fpay-badge" src="/assets/payment/paypal.svg" alt="PayPal" width="52" height="34" loading="lazy">
+            <img class="fpay-badge" src="/assets/payment/stripe.svg" alt="Stripe" width="52" height="34" loading="lazy">
+            <img class="fpay-badge" src="/assets/payment/amazonpay.svg" alt="Amazon Pay" width="52" height="34" loading="lazy">
           </div>
         </div>
         <div class="fbot">

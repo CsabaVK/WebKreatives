@@ -283,9 +283,8 @@ footer{background:var(--black);padding:72px 6% 36px}
 .fpay-label{font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#3a3a3a;white-space:nowrap;display:flex;align-items:center;gap:6px;margin-right:4px}
 .fpay-label svg{opacity:.5}
 .fpay-icons{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.fpay-badge{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #2a2a2a;border-radius:5px;padding:5px 10px;height:32px;opacity:.65;transition:opacity .2s;flex-shrink:0}
+.fpay-badge{opacity:.7;transition:opacity .2s;flex-shrink:0;border-radius:5px}
 .fpay-badge:hover{opacity:1}
-.fpay-badge img{height:18px;width:auto;display:block}
 body[data-theme="dark"] .fpay{border-top-color:#1e1e1e}
 body[data-theme="dark"] .fpay-label{color:#555}
 
