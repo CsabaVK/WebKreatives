@@ -186,6 +186,8 @@ const translations = {
     // Footer
     "footer.p": "Mooie, converterende websites voor kleine bedrijven. Snel, betaalbaar, op maat gemaakt. Gevestigd in Amsterdam.",
     "footer.services": "Diensten",
+    "footer.pages": "Pagina's",
+    "footer.home": "Home",
     "footer.company": "Bedrijf",
     "footer.connect": "Verbinden",
     "footer.design": "Website Design",
@@ -387,6 +389,8 @@ const translations = {
     "about.p": "I've seen too many good small businesses stay invisible because their website didn't do them justice — or they didn't have one at all. That's fixable, and it shouldn't cost a fortune. We're a small business helping other small businesses — fixed, fair pricing for everyone. No negotiations, no surprises. Our team is growing, and if you're willing to invest in your business, we'll make sure your online presence actually matches the work you put in.",
     "footer.p": "Beautiful, high-converting websites for small businesses. Fast, affordable, custom-built. Based in Amsterdam.",
     "footer.services": "Services",
+    "footer.pages": "Pages",
+    "footer.home": "Home",
     "footer.company": "Company",
     "footer.connect": "Connect",
     "footer.design": "Website Design",
