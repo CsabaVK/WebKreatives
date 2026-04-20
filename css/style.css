@@ -279,6 +279,14 @@ footer{background:var(--black);padding:72px 6% 36px}
 .footer-legal-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .footer-legal-links a,.footer-legal-links span{font-size:12px;color:#3a3a3a;text-decoration:none}
 .footer-legal-links a:hover{color:var(--red)}
+.fpay{max-width:1140px;margin:0 auto;padding:20px 0 28px;border-top:1px solid #161616;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.fpay-label{font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#3a3a3a;white-space:nowrap;display:flex;align-items:center;gap:6px;margin-right:4px}
+.fpay-label svg{opacity:.5}
+.fpay-icons{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fpay-badge{display:inline-flex;border-radius:5px;overflow:hidden;opacity:.7;transition:opacity .2s;flex-shrink:0}
+.fpay-badge:hover{opacity:1}
+body[data-theme="dark"] .fpay{border-top-color:#1e1e1e}
+body[data-theme="dark"] .fpay-label{color:#555}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
