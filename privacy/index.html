@@ -267,7 +267,7 @@
       document.querySelectorAll('[data-lang-block]').forEach(el => {
         el.classList.toggle('is-active', el.getAttribute('data-lang-block') === active);
       });
-      document.querySelectorAll('[data-lang]').forEach(el => {
+      document.querySelectorAll('.legal-hero [data-lang], .legal-side [data-lang]').forEach(el => {
         el.style.display = el.getAttribute('data-lang') === active ? '' : 'none';
       });
       document.title = active === 'en' ? 'Privacy Policy | WebKreatives' : 'Privacybeleid | WebKreatives';
