@@ -94,17 +94,17 @@
             <a href="/#contact" class="g" data-i18n="footer.start">Start een Project</a>
             <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener" class="fsocial-link">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              Instagram
+              <span data-i18n="footer.instagram">Instagram</span>
             </a>
             <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener" class="fsocial-link">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A5 5 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12" rx=".5"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
+              <span data-i18n="footer.linkedin">LinkedIn</span>
             </a>
           </div>
         </div>
         <div class="fbot">
-          <p>© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097</p>
-          <p>Privacy Policy · Terms</p>
+          <p data-i18n="footer.meta">© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097</p>
+          <p data-i18n="footer.legal">Privacy Policy · Terms</p>
         </div>
       </footer>`;
   }

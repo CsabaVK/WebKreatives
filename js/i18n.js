@@ -199,7 +199,11 @@ const translations = {
     "footer.pricing": "Prijzen",
     "footer.contact": "Contact",
     "footer.start": "Start een Project",
-    "footer.whatsapp": "WhatsApp Ons"
+    "footer.whatsapp": "WhatsApp Ons",
+    "footer.instagram": "Instagram",
+    "footer.linkedin": "LinkedIn",
+    "footer.meta": "© 2026 WebKreatives · Amsterdam, Nederland · KVK: 94051097",
+    "footer.legal": "Privacybeleid · Voorwaarden"
   },
   en: {
     "nav.services": "Services",
@@ -373,6 +377,10 @@ const translations = {
     "footer.pricing": "Pricing",
     "footer.contact": "Contact",
     "footer.start": "Start a Project",
-    "footer.whatsapp": "WhatsApp Us"
+    "footer.whatsapp": "WhatsApp Us",
+    "footer.instagram": "Instagram",
+    "footer.linkedin": "LinkedIn",
+    "footer.meta": "© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097",
+    "footer.legal": "Privacy Policy · Terms"
   }
 };
