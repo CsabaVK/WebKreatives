@@ -2,9 +2,18 @@
   const page = document.body?.dataset?.page || 'home';
   const isHome = page === 'home';
 
-  const logoImg  = `<img class="wk-logo-img" src="/assets/Horizontallogo.png" alt="WebKreatives" width="120" height="40">`;
-  const logoLight = logoImg;
-  const logoDark  = logoImg;
+  const logoLight = `<img class="wk-logo-img" src="/assets/Horizontallogo.png" alt="WebKreatives">`;
+
+  const logoDark  = `
+    <svg width="158" height="40" viewBox="0 0 158 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="2" width="7" height="36" fill="white"/>
+      <circle cx="13" cy="12" r="5" fill="#E8392A"/>
+      <circle cx="26" cy="5" r="3.5" fill="#5B8AC5"/>
+      <rect x="0" y="33" width="11" height="5" fill="#D4E157"/>
+      <rect x="147" y="33" width="11" height="5" fill="#8BC34A"/>
+      <text x="16" y="18" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="white" class="footer-logo-text">Web</text>
+      <text x="16" y="32" font-family="'Fraunces',Georgia,serif" font-size="16" font-weight="900" fill="white" class="footer-logo-text">Kreatives</text>
+    </svg>`;
 
   const navRoot = document.getElementById('globalNav');
   if (navRoot) {
