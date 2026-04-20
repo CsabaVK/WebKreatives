@@ -11,7 +11,7 @@ const translations = {
     "nav.tagline": "Webdesign voor kleine bedrijven",
 
     // Hero
-    "hero.badge": "Webdesign Bureau — Nederland",
+    "hero.badge": "Webdesign Bureau — Amsterdam",
     "hero.h1.pre": "Websites Die ",
     "hero.h1.post": "Meer Klanten",
     "hero.p": "Wij ontwerpen en bouwen mooie, converterende websites voor kleine bedrijven. Snel live, makkelijk te beheren, gebouwd om te groeien.",
@@ -20,7 +20,7 @@ const translations = {
     "hero.words": "Winnen,Groeien,Scoren",
 
     // Trust
-    "trust.p": "Vertrouwd door kleine bedrijven in heel Nederland",
+    "trust.p": "Vertrouwd door kleine bedrijven wereldwijd",
 
     // Stats
     "stat.1": "Websites Live",
@@ -148,6 +148,7 @@ const translations = {
     "sub.prem.5": "Kwartaal strategiegesprek",
     "sub.prem.6": "Snelste reactietijd",
     "sub.prem.cta": "Kies Premium",
+    "price.intl": "🌍 Buiten de EER? Wij factureren in 19 valuta's, waaronder USD, GBP en CHF — via Stripe.",
 
     // Contact
     "contact.label": "Contact",
@@ -238,14 +239,14 @@ const translations = {
     "nav.articles": "Articles",
     "nav.cta": "Get a Quote",
     "nav.tagline": "Web design for small businesses",
-    "hero.badge": "Web Design Agency — Netherlands",
+    "hero.badge": "Web Design Agency — Amsterdam",
     "hero.h1.pre": "Websites That ",
     "hero.h1.post": "Clients for You",
     "hero.p": "We design and build stunning, high-converting websites for small businesses. Fast to launch, easy to manage, built to grow.",
     "hero.cta1": "Start Your Project →",
     "hero.cta2": "View Our Work",
     "hero.words": "Win,Grow,Score",
-    "trust.p": "Trusted by small businesses across the Netherlands",
+    "trust.p": "Trusted by small businesses worldwide",
     "stat.1": "Websites Launched",
     "stat.2": "Weeks to Go Live",
     "stat.3": "Client Satisfaction",
@@ -357,6 +358,7 @@ const translations = {
     "sub.prem.5": "Quarterly strategy call",
     "sub.prem.6": "Fastest response time",
     "sub.prem.cta": "Choose Premium",
+    "price.intl": "🌍 Outside the EEA? We invoice in 19 currencies including USD, GBP and CHF — via Stripe.",
     "contact.label": "Contact",
     "contact.title": "Let's Build Your Website",
     "contact.sub": "Tell us about your project and we'll get back to you within 24 hours. No obligation, no pushy sales.",
