@@ -105,7 +105,7 @@
       <div>
         <h4>Csaba Garaguly</h4>
         <span class="bio-role">${t('Co-founder · WebKreatives', 'Co-founder · WebKreatives')}</span>
-        <p>${t('Csaba bouwt websites voor kleine bedrijven in Nederland en schrijft over alles wat te maken heeft met online groeien. WebKreatives helpt ondernemers die weten dat hun online aanwezigheid beter kan, zonder fortuin te betalen.', 'Csaba builds websites for small businesses in the Netherlands and writes about everything related to growing online. WebKreatives helps business owners who know their online presence can be better, without paying a fortune.')}</p>
+        <p>${t('WebKreatives bouwt websites voor kleine bedrijven in Nederland en deelt praktische inzichten over online groeien. Csaba schrijft vanuit WebKreatives over hoe ondernemers hun online aanwezigheid sterker kunnen maken zonder fortuin te betalen.', 'WebKreatives builds websites for small businesses in the Netherlands and shares practical insights about growing online. Csaba writes from within WebKreatives about how business owners can strengthen their online presence without paying a fortune.')}</p>
       </div>`;
   }
 
