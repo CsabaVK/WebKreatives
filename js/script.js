@@ -43,10 +43,10 @@ function getCookieBannerCopy(lang) {
     ? {
         title: 'Cookies on WebKreatives',
         text: 'We use essential cookies for language and theme preferences. Analytics helps us improve the site and is enabled after your permission.',
-        accept: 'Accept cookies',
-        customize: 'Customize cookies',
+        accept: 'Accept',
+        customize: 'Customize',
         manage: 'Privacy Policy',
-        save: 'Save preferences',
+        save: 'Save',
         essential: 'Essential cookies',
         essentialText: 'Needed for basic website functionality such as language and theme preferences. Always on.',
         analytics: 'Analytics cookies',
@@ -55,10 +55,10 @@ function getCookieBannerCopy(lang) {
     : {
         title: 'Cookies op WebKreatives',
         text: 'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren en wordt pas actief na jouw keuze.',
-        accept: 'Cookies accepteren',
-        customize: 'Cookies aanpassen',
+        accept: 'Accepteren',
+        customize: 'Aanpassen',
         manage: 'Privacybeleid',
-        save: 'Voorkeuren opslaan',
+        save: 'Opslaan',
         essential: 'Essentiële cookies',
         essentialText: 'Nodig voor basisfunctionaliteit van de website, zoals taal- en themavoorkeuren. Altijd actief.',
         analytics: 'Analytics cookies',
@@ -144,6 +144,7 @@ function renderCookieManageButton(lang) {
     document.body.appendChild(btn);
     btn.addEventListener('click', () => {
       localStorage.removeItem(WK_CONSENT_KEY);
+      localStorage.removeItem(WK_CONSENT_PREFS_KEY);
       renderCookieBanner(currentLang || localStorage.getItem('wk-lang') || 'nl');
       renderCookieManageButton(currentLang || localStorage.getItem('wk-lang') || 'nl');
     });
