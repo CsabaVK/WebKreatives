@@ -535,6 +535,7 @@ body[data-theme="dark"] .art-hero { background: #0d0d0d; }
 body[data-theme="dark"] .art-breadcrumb a:hover { color: #f0f0f0; }
 body[data-theme="dark"] .art-title { color: #f0f0f0; }
 body[data-theme="dark"] .art-title em { color: var(--red); }
+body[data-theme="dark"] .art-author-name { color: #f0f0f0; }
 
 /* Article body + content */
 body[data-theme="dark"] .art-body { background: #111; }
@@ -580,6 +581,12 @@ body[data-theme="dark"] .bio-role { color: var(--red); }
 
 /* Bottom CTA — always stays dark */
 body[data-theme="dark"] .art-bottom-cta { background: #0d0d0d; }
+body[data-theme="dark"] .art-bottom-cta h2 { color: #f0f0f0; }
+body[data-theme="dark"] .art-bottom-cta p { color: #999; }
+
+/* Buttons — force white text regardless of --white variable flip */
+body[data-theme="dark"] .btn-red { color: #fff !important; }
+body[data-theme="dark"] .btn-outline-white { color: #f0f0f0 !important; border-color: rgba(255,255,255,.35); }
 
 /* Related articles */
 body[data-theme="dark"] .art-related h3 { color: #f0f0f0; }
