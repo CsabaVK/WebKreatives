@@ -119,11 +119,6 @@ function renderCookieBanner(lang) {
     banner.classList.toggle('cookie-banner-expanded', !panel.hidden);
     banner.classList.toggle('cookie-banner-customizing', !panel.hidden);
   });
-  banner.querySelector('[data-cookie-action="decline"]').addEventListener('click', () => {
-    applyCookiePreferences({ essential: true, analytics: false }, 'declined');
-    banner.hidden = true;
-    renderCookieManageButton(lang);
-  });
   banner.querySelector('[data-cookie-action="save"]').addEventListener('click', () => {
     const analytics = !!banner.querySelector('[data-cookie-analytics]')?.checked;
     applyCookiePreferences({ essential: true, analytics }, analytics ? 'accepted' : 'customized');
