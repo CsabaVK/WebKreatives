@@ -302,7 +302,7 @@ footer{background:var(--black);padding:72px 6% 36px}
 body[data-theme="dark"] .fpay{border-top-color:#1e1e1e}
 body[data-theme="dark"] .fpay-label{color:#555}
 body[data-theme="dark"] .fpay-badge{background:linear-gradient(180deg,#fff 0%,#f5f7fa 100%);border-color:rgba(255,255,255,.08)}
-.price-intl-note{text-align:center;font-size:13px;color:var(--grey-600);margin:32px auto 0;max-width:560px;padding:0 20px;line-height:1.6}
+.price-intl-note{text-align:center;font-size:13px;font-style:italic;color:var(--grey-600);margin:32px auto 0;max-width:560px;padding:0 20px;line-height:1.6}
 body[data-theme="dark"] .price-intl-note{color:#666}
 
 /* ── RESPONSIVE ── */
