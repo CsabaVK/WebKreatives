@@ -92,7 +92,11 @@
         </div>
         <div class="fbot">
           <p data-i18n="footer.meta">© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097</p>
-          <p data-i18n="footer.legal">Privacy Policy · Terms</p>
+          <p class="footer-legal-links">
+            <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
+            <span aria-hidden="true">·</span>
+            <span data-i18n="footer.terms">Terms</span>
+          </p>
         </div>
       </footer>`;
   }

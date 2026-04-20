@@ -1,5 +1,114 @@
 /* ─── WebKreatives — interactive enhancements ─── */
 
+const WK_GA_ID = 'G-CG9705BC61';
+const WK_CONSENT_KEY = 'wk-cookie-consent';
+let wkGaLoaded = false;
+
+function loadGoogleAnalytics() {
+  if (wkGaLoaded || !WK_GA_ID) return;
+  wkGaLoaded = true;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+
+  const gaScript = document.createElement('script');
+  gaScript.async = true;
+  gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${WK_GA_ID}`;
+  document.head.appendChild(gaScript);
+
+  window.gtag('js', new Date());
+  window.gtag('config', WK_GA_ID, { anonymize_ip: true });
+}
+
+function getCookieConsentState() {
+  return localStorage.getItem(WK_CONSENT_KEY);
+}
+
+function setCookieConsentState(state) {
+  localStorage.setItem(WK_CONSENT_KEY, state);
+  if (state === 'accepted') loadGoogleAnalytics();
+}
+
+function getCookieBannerCopy(lang) {
+  return lang === 'en'
+    ? {
+        title: 'Privacy choices',
+        text: 'We use functional browser storage for language and theme preferences. Analytics only starts after you accept it. Read the full details in our privacy policy.',
+        accept: 'Accept analytics',
+        decline: 'Decline',
+        manage: 'Read privacy policy'
+      }
+    : {
+        title: 'Privacykeuzes',
+        text: 'We gebruiken functionele browseropslag voor taal- en themavoorkeuren. Analytics start pas nadat je dat accepteert. Lees de volledige uitleg in ons privacybeleid.',
+        accept: 'Analytics accepteren',
+        decline: 'Weigeren',
+        manage: 'Lees privacybeleid'
+      };
+}
+
+function renderCookieBanner(lang) {
+  let banner = document.getElementById('cookieBanner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.id = 'cookieBanner';
+    banner.className = 'cookie-banner';
+    document.body.appendChild(banner);
+  }
+
+  const copy = getCookieBannerCopy(lang);
+  banner.innerHTML = `
+    <div class="cookie-banner-inner">
+      <div class="cookie-copy">
+        <strong>${copy.title}</strong>
+        <p>${copy.text} <a href="/privacy/">${copy.manage}</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-action="decline">${copy.decline}</button>
+        <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-action="accept">${copy.accept}</button>
+      </div>
+    </div>`;
+
+  banner.querySelector('[data-cookie-action="accept"]').addEventListener('click', () => {
+    setCookieConsentState('accepted');
+    banner.hidden = true;
+    renderCookieManageButton(lang);
+  });
+  banner.querySelector('[data-cookie-action="decline"]').addEventListener('click', () => {
+    setCookieConsentState('declined');
+    banner.hidden = true;
+    renderCookieManageButton(lang);
+  });
+
+  banner.hidden = getCookieConsentState() === 'accepted' || getCookieConsentState() === 'declined';
+}
+
+function renderCookieManageButton(lang) {
+  let btn = document.getElementById('cookieManageBtn');
+  const consent = getCookieConsentState();
+  if (!consent) {
+    if (btn) btn.hidden = true;
+    return;
+  }
+  if (!btn) {
+    btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'cookieManageBtn';
+    btn.className = 'cookie-manage-btn';
+    document.body.appendChild(btn);
+    btn.addEventListener('click', () => {
+      localStorage.removeItem(WK_CONSENT_KEY);
+      renderCookieBanner(currentLang || localStorage.getItem('wk-lang') || 'nl');
+      renderCookieManageButton(currentLang || localStorage.getItem('wk-lang') || 'nl');
+    });
+  }
+  btn.textContent = lang === 'en' ? 'Cookie settings' : 'Cookie-instellingen';
+  btn.hidden = false;
+}
+
+if (getCookieConsentState() === 'accepted') {
+  loadGoogleAnalytics();
+}
+
 // 1. SCROLL PROGRESS BAR
 const progressBar = document.createElement('div');
 progressBar.id = 'progress-bar';
@@ -193,6 +302,9 @@ function setLanguage(lang) {
   document.querySelectorAll('.lang-option').forEach(opt => {
     opt.classList.toggle('active', opt.dataset.lang === lang);
   });
+
+  renderCookieBanner(lang);
+  renderCookieManageButton(lang);
 
   document.dispatchEvent(new CustomEvent('wk:languagechange', {
     detail: { lang, translations: t }

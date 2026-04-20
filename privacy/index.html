@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacybeleid | WebKreatives</title>
+<meta name="description" content="Lees hoe WebKreatives persoonsgegevens verwerkt, welke cookies en analytics worden gebruikt, en welke rechten je hebt onder de AVG/GDPR.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://webkreatives.com/privacy/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webkreatives.com/privacy/">
+<meta property="og:title" content="Privacybeleid | WebKreatives">
+<meta property="og:description" content="Privacyinformatie van WebKreatives over contactformulieren, analytics, cookies en je AVG-rechten.">
+<meta property="og:image" content="https://webkreatives.com/og-image.svg">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260420-privacy">
+<style>
+  .legal-hero{padding:92px 6% 34px;background:var(--white);border-bottom:1px solid var(--grey-200)}
+  .legal-wrap{max-width:960px;margin:0 auto}
+  .legal-kicker{display:inline-flex;align-items:center;gap:8px;background:var(--green-bg);color:var(--green-dk);border:1px solid var(--green-bd);font-size:12px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:20px}
+  .legal-kicker::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--red)}
+  .legal-hero h1{font-family:var(--fh);font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-1.6px;margin-bottom:16px}
+  .legal-hero p{font-size:17px;color:var(--grey-600);line-height:1.8;max-width:760px}
+  .legal-meta{display:flex;flex-wrap:wrap;gap:14px 20px;margin-top:24px;font-size:13px;color:var(--grey-500)}
+  .legal-main{padding:40px 6% 100px;background:var(--grey-50)}
+  .legal-grid{max-width:960px;margin:0 auto;display:grid;grid-template-columns:280px minmax(0,1fr);gap:28px;align-items:start}
+  .legal-side{position:sticky;top:96px;background:var(--white);border:1px solid var(--grey-200);border-radius:var(--r-lg);padding:20px 18px;box-shadow:var(--sh-sm)}
+  .legal-side h2{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-500);margin-bottom:14px}
+  .legal-side a{display:block;padding:8px 0;color:var(--grey-700);text-decoration:none;font-size:14px}
+  .legal-side a:hover{color:var(--red)}
+  .legal-card{background:var(--white);border:1px solid var(--grey-200);border-radius:var(--r-xl);padding:34px 34px 14px;box-shadow:var(--sh-sm)}
+  .legal-lang-block h2{font-family:var(--fh);font-size:28px;line-height:1.15;margin:0 0 14px}
+  .legal-lang-block h3{font-family:var(--fh);font-size:19px;line-height:1.25;margin:30px 0 10px}
+  .legal-lang-block p,.legal-lang-block li{font-size:15px;color:var(--grey-700);line-height:1.85}
+  .legal-lang-block ul{padding-left:20px;margin:8px 0 16px}
+  .legal-note{background:var(--green-bg);border:1px solid var(--green-bd);color:var(--green-dk);padding:14px 16px;border-radius:var(--r-md);font-size:14px;line-height:1.7;margin:18px 0 24px}
+  .legal-table{display:grid;grid-template-columns:220px 1fr;gap:10px 18px;margin:18px 0 26px}
+  .legal-table strong{font-size:14px;color:var(--black)}
+  .legal-table span{font-size:14px;color:var(--grey-700);line-height:1.7}
+  [data-lang-block]{display:none}
+  [data-lang-block].is-active{display:block}
+  body[data-theme="dark"] .legal-hero{background:#0d0d0d;border-bottom-color:#252525}
+  body[data-theme="dark"] .legal-hero p,body[data-theme="dark"] .legal-meta{color:#999}
+  body[data-theme="dark"] .legal-main{background:#101010}
+  body[data-theme="dark"] .legal-side,body[data-theme="dark"] .legal-card{background:#141414;border-color:#252525}
+  body[data-theme="dark"] .legal-side h2{color:#666}
+  body[data-theme="dark"] .legal-side a{color:#bcbcbc}
+  body[data-theme="dark"] .legal-side a:hover{color:var(--yellow)}
+  body[data-theme="dark"] .legal-lang-block p,body[data-theme="dark"] .legal-lang-block li,body[data-theme="dark"] .legal-table span{color:#b4b4b4}
+  @media(max-width:900px){.legal-grid{grid-template-columns:1fr}.legal-side{position:static}}
+  @media(max-width:580px){.legal-card{padding:26px 22px 8px}.legal-table{grid-template-columns:1fr;gap:4px 0}}
+</style>
+</head>
+<body data-page="privacy">
+<div id="globalNav"></div>
+
+<section class="legal-hero">
+  <div class="legal-wrap">
+    <span class="legal-kicker" data-lang="nl">AVG / GDPR</span>
+    <span class="legal-kicker" data-lang="en" style="display:none">GDPR / Privacy</span>
+    <div data-lang-block="nl" class="legal-lang-block is-active">
+      <h1>Privacybeleid</h1>
+      <p>Op deze pagina leggen we helder uit welke persoonsgegevens WebKreatives verwerkt, waarom we dat doen, met wie we samenwerken, hoe lang we gegevens bewaren en welke rechten je hebt onder de AVG.</p>
+    </div>
+    <div data-lang-block="en" class="legal-lang-block">
+      <h1>Privacy Policy</h1>
+      <p>This page explains in clear language which personal data WebKreatives processes, why we process it, which partners we use, how long we keep data, and which rights you have under the GDPR.</p>
+    </div>
+    <div class="legal-meta">
+      <span data-lang="nl">Laatst bijgewerkt: 20 april 2026</span>
+      <span data-lang="en" style="display:none">Last updated: 20 April 2026</span>
+      <span>WebKreatives · KVK 94051097</span>
+      <span>info@webkreatives.com</span>
+    </div>
+  </div>
+</section>
+
+<section class="legal-main">
+  <div class="legal-grid">
+    <aside class="legal-side">
+      <h2 data-lang="nl">Onderdelen</h2>
+      <h2 data-lang="en" style="display:none">Sections</h2>
+      <a href="#who" data-lang="nl">1. Wie wij zijn</a>
+      <a href="#who" data-lang="en" style="display:none">1. Who we are</a>
+      <a href="#data" data-lang="nl">2. Welke gegevens wij verwerken</a>
+      <a href="#data" data-lang="en" style="display:none">2. What data we process</a>
+      <a href="#purposes" data-lang="nl">3. Doelen en grondslagen</a>
+      <a href="#purposes" data-lang="en" style="display:none">3. Purposes and legal bases</a>
+      <a href="#sharing" data-lang="nl">4. Delen met derden</a>
+      <a href="#sharing" data-lang="en" style="display:none">4. Sharing with third parties</a>
+      <a href="#retention" data-lang="nl">5. Bewaartermijnen</a>
+      <a href="#retention" data-lang="en" style="display:none">5. Retention periods</a>
+      <a href="#cookies" data-lang="nl">6. Cookies en analytics</a>
+      <a href="#cookies" data-lang="en" style="display:none">6. Cookies and analytics</a>
+      <a href="#rights" data-lang="nl">7. Jouw rechten</a>
+      <a href="#rights" data-lang="en" style="display:none">7. Your rights</a>
+      <a href="#contact" data-lang="nl">8. Contact</a>
+      <a href="#contact" data-lang="en" style="display:none">8. Contact</a>
+    </aside>
+
+    <article class="legal-card">
+      <div data-lang-block="nl" class="legal-lang-block is-active">
+        <div class="legal-note">Dit privacybeleid is afgestemd op de huidige website-opzet van WebKreatives: een openbare marketingwebsite, een contactformulier via Web3Forms, basisvoorkeuren in localStorage voor taal/thema en Google Analytics dat alleen na toestemming wordt geladen.</div>
+
+        <h2 id="who">1. Wie wij zijn</h2>
+        <div class="legal-table">
+          <strong>Verwerkingsverantwoordelijke</strong><span>WebKreatives</span>
+          <strong>Vestigingsplaats</strong><span>Amsterdam, Nederland</span>
+          <strong>KvK</strong><span>94051097</span>
+          <strong>E-mail</strong><span><a href="mailto:info@webkreatives.com">info@webkreatives.com</a></span>
+        </div>
+        <p>WebKreatives ontwerpt en bouwt websites voor kleine bedrijven. Wanneer je onze website bezoekt, een formulier invult of contact met ons opneemt, verwerken wij mogelijk persoonsgegevens.</p>
+
+        <h3 id="data">2. Welke gegevens wij verwerken</h3>
+        <p>Afhankelijk van hoe je onze website gebruikt, kunnen wij de volgende gegevens verwerken:</p>
+        <ul>
+          <li>naam;</li>
+          <li>e-mailadres;</li>
+          <li>telefoonnummer, als je dit vrijwillig invult;</li>
+          <li>bedrijfsinformatie of projectinformatie die je zelf in het formulier of per e-mail deelt;</li>
+          <li>voorkeuren zoals gekozen taal en thema-instelling op de website;</li>
+          <li>na toestemming: analytische gegevens over het gebruik van de website via Google Analytics.</li>
+        </ul>
+
+        <h3 id="purposes">3. Doelen en grondslagen</h3>
+        <p>Wij verwerken persoonsgegevens alleen als daar een geldige grondslag voor is onder de AVG. In de praktijk gebruiken wij vooral deze grondslagen:</p>
+        <ul>
+          <li><strong>Op jouw verzoek vóór een overeenkomst</strong>: om te reageren op een offerteaanvraag, vraag of projectaanvraag.</li>
+          <li><strong>Uitvoering van een overeenkomst</strong>: als we al met je samenwerken of een dienst leveren.</li>
+          <li><strong>Gerechtvaardigd belang</strong>: voor normale zakelijke communicatie, beveiliging van de website en het afhandelen van berichten.</li>
+          <li><strong>Toestemming</strong>: voor analytics en vergelijkbare meetcookies die niet strikt noodzakelijk zijn.</li>
+        </ul>
+        <p>Wij gebruiken je gegevens niet voor geautomatiseerde besluitvorming of profiling met rechtsgevolgen.</p>
+
+        <h3 id="sharing">4. Delen met derden</h3>
+        <p>Wij verkopen jouw gegevens niet. Wel kunnen wij dienstverleners gebruiken die namens ons gegevens verwerken, voor zover dat nodig is voor de website of onze dienstverlening.</p>
+        <ul>
+          <li><strong>Web3Forms</strong> voor het verwerken en doorsturen van websiteformulierinzendingen.</li>
+          <li><strong>Google Analytics</strong> voor bezoekstatistieken, maar alleen nadat je daarvoor toestemming hebt gegeven.</li>
+          <li><strong>Hosting- en infrastructuurpartijen</strong> die nodig zijn om de website beschikbaar en veilig te houden.</li>
+        </ul>
+        <p>Als een partij persoonsgegevens buiten de Europese Economische Ruimte verwerkt, zorgen wij alleen voor passende waarborgen voor zover dat juridisch vereist is, zoals standaardcontractbepalingen of een andere geldige doorgiftegrond.</p>
+
+        <h3 id="retention">5. Bewaartermijnen</h3>
+        <ul>
+          <li>Contactaanvragen bewaren wij niet langer dan nodig is om je bericht af te handelen of de zakelijke relatie op te volgen.</li>
+          <li>Als er een klantrelatie ontstaat, kunnen relevante gegevens langer worden bewaard voor uitvoering van de overeenkomst, administratie en wettelijke verplichtingen.</li>
+          <li>Cookie- en analyticsvoorkeuren bewaren wij totdat je ze wijzigt of verwijdert in je browser.</li>
+        </ul>
+
+        <h3 id="cookies">6. Cookies, localStorage en analytics</h3>
+        <p>Onze website gebruikt een beperkt aantal technieken om goed te functioneren en om voorkeuren te onthouden.</p>
+        <ul>
+          <li><strong>Noodzakelijke of functionele voorkeuren</strong>: we slaan je taalkeuze en thema-instelling lokaal op in je browser zodat de website prettig werkt. Deze zijn bedoeld om de door jou gevraagde gebruikerservaring te leveren.</li>
+          <li><strong>Analytics</strong>: Google Analytics wordt pas geladen nadat je daar toestemming voor hebt gegeven. Zonder toestemming wordt deze tracking niet gestart.</li>
+        </ul>
+        <p>Je kunt je keuze later altijd wijzigen via de cookieknoppen op de website of door opgeslagen websitegegevens in je browser te verwijderen.</p>
+
+        <h3 id="rights">7. Jouw rechten</h3>
+        <p>Onder de AVG heb je het recht om:</p>
+        <ul>
+          <li>inzage te vragen in je persoonsgegevens;</li>
+          <li>onjuiste gegevens te laten corrigeren;</li>
+          <li>gegevens te laten verwijderen als dat wettelijk mogelijk is;</li>
+          <li>de verwerking te beperken;</li>
+          <li>bezwaar te maken tegen bepaalde verwerkingen;</li>
+          <li>je toestemming in te trekken, voor zover verwerking op toestemming is gebaseerd;</li>
+          <li>in sommige gevallen dataportabiliteit te vragen.</li>
+        </ul>
+        <p>Je kunt hiervoor mailen naar <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>. Als je vindt dat wij niet correct omgaan met persoonsgegevens, kun je ook een klacht indienen bij de <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank" rel="noopener">Autoriteit Persoonsgegevens</a>.</p>
+
+        <h3 id="contact">8. Contact</h3>
+        <p>Heb je vragen over dit privacybeleid of over hoe wij omgaan met persoonsgegevens? Mail dan naar <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>.</p>
+      </div>
+
+      <div data-lang-block="en" class="legal-lang-block">
+        <div class="legal-note">This privacy policy reflects the current WebKreatives site setup: a public marketing website, a contact form handled through Web3Forms, basic localStorage preferences for language/theme, and Google Analytics that is only loaded after consent.</div>
+
+        <h2 id="who">1. Who we are</h2>
+        <div class="legal-table">
+          <strong>Controller</strong><span>WebKreatives</span>
+          <strong>Location</strong><span>Amsterdam, the Netherlands</span>
+          <strong>Chamber of Commerce</strong><span>94051097</span>
+          <strong>Email</strong><span><a href="mailto:info@webkreatives.com">info@webkreatives.com</a></span>
+        </div>
+        <p>WebKreatives designs and builds websites for small businesses. When you visit our website, submit a form, or contact us, we may process personal data.</p>
+
+        <h3 id="data">2. What data we process</h3>
+        <p>Depending on how you use the website, we may process:</p>
+        <ul>
+          <li>your name;</li>
+          <li>your email address;</li>
+          <li>your phone number, if you choose to provide it;</li>
+          <li>business or project details you share in the contact form or by email;</li>
+          <li>preferences such as language and theme settings on the website;</li>
+          <li>after consent: analytics data about website usage through Google Analytics.</li>
+        </ul>
+
+        <h3 id="purposes">3. Purposes and legal bases</h3>
+        <p>We only process personal data when there is a valid legal basis under the GDPR. In practice, we mainly rely on:</p>
+        <ul>
+          <li><strong>At your request before entering into a contract</strong>: to respond to a quote request, project enquiry, or message.</li>
+          <li><strong>Performance of a contract</strong>: if we are already working together or delivering services.</li>
+          <li><strong>Legitimate interests</strong>: for normal business communication, basic site security, and handling incoming messages.</li>
+          <li><strong>Consent</strong>: for analytics and similar non-essential tracking technologies.</li>
+        </ul>
+        <p>We do not use your data for automated decision-making or profiling that produces legal or similarly significant effects.</p>
+
+        <h3 id="sharing">4. Sharing with third parties</h3>
+        <p>We do not sell your personal data. We may use service providers that process data on our behalf where necessary for the website or our services.</p>
+        <ul>
+          <li><strong>Web3Forms</strong> to process and forward website form submissions.</li>
+          <li><strong>Google Analytics</strong> for visitor statistics, but only after consent has been given.</li>
+          <li><strong>Hosting and infrastructure providers</strong> needed to keep the website available and secure.</li>
+        </ul>
+        <p>If a provider processes personal data outside the European Economic Area, we only rely on appropriate safeguards where legally required, such as Standard Contractual Clauses or another valid transfer mechanism.</p>
+
+        <h3 id="retention">5. Retention periods</h3>
+        <ul>
+          <li>We do not keep contact requests longer than necessary to handle your message or follow up on the business relationship.</li>
+          <li>If a client relationship starts, relevant information may be retained longer for contract performance, administration, and legal obligations.</li>
+          <li>Cookie and analytics preferences are stored until you change or remove them in your browser.</li>
+        </ul>
+
+        <h3 id="cookies">6. Cookies, localStorage, and analytics</h3>
+        <p>Our website uses a limited number of technologies so that it works correctly and remembers your preferences.</p>
+        <ul>
+          <li><strong>Necessary or functional preferences</strong>: we store your chosen language and theme locally in your browser so the website works in the way you requested.</li>
+          <li><strong>Analytics</strong>: Google Analytics is only loaded after you have given consent. Without consent, this tracking does not start.</li>
+        </ul>
+        <p>You can change your choice later through the cookie controls on the website or by clearing the website data stored in your browser.</p>
+
+        <h3 id="rights">7. Your rights</h3>
+        <p>Under the GDPR, you have the right to:</p>
+        <ul>
+          <li>request access to your personal data;</li>
+          <li>have inaccurate data corrected;</li>
+          <li>request deletion where legally possible;</li>
+          <li>restrict processing;</li>
+          <li>object to certain processing activities;</li>
+          <li>withdraw consent where processing is based on consent;</li>
+          <li>request data portability in some situations.</li>
+        </ul>
+        <p>You can contact us via <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>. If you believe we are not handling personal data correctly, you may also file a complaint with the <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank" rel="noopener">Dutch Data Protection Authority</a>.</p>
+
+        <h3 id="contact">8. Contact</h3>
+        <p>If you have questions about this privacy policy or about how we handle personal data, email <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div id="globalFooter"></div>
+
+<script src="/js/global-components.js?v=20260420-privacy"></script>
+<script src="/js/i18n.js?v=20260420-privacy"></script>
+<script src="/js/script.js?v=20260420-privacy"></script>
+<script>
+  (function(){
+    function setPrivacyLang(lang){
+      const active = lang === 'en' ? 'en' : 'nl';
+      document.documentElement.lang = active;
+      document.querySelectorAll('[data-lang-block]').forEach(el => {
+        el.classList.toggle('is-active', el.getAttribute('data-lang-block') === active);
+      });
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.getAttribute('data-lang') === active ? '' : 'none';
+      });
+      document.title = active === 'en' ? 'Privacy Policy | WebKreatives' : 'Privacybeleid | WebKreatives';
+    }
+    const initialLang = localStorage.getItem('wk-lang') || 'nl';
+    setPrivacyLang(initialLang);
+    document.addEventListener('wk:languagechange', (event) => {
+      setPrivacyLang(event?.detail?.lang || localStorage.getItem('wk-lang') || 'nl');
+    });
+  })();
+</script>
+</body>
+</html>

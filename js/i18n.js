@@ -205,6 +205,8 @@ const translations = {
     "footer.linkedin": "LinkedIn",
     "footer.medium": "Medium",
     "footer.meta": "© 2026 WebKreatives · Amsterdam, Nederland · KVK: 94051097",
+    "footer.privacy": "Privacybeleid",
+    "footer.terms": "Voorwaarden",
     "footer.legal": "Privacybeleid · Voorwaarden",
 
     // Home articles
@@ -404,6 +406,8 @@ const translations = {
     "footer.linkedin": "LinkedIn",
     "footer.medium": "Medium",
     "footer.meta": "© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097",
+    "footer.privacy": "Privacy Policy",
+    "footer.terms": "Terms",
     "footer.legal": "Privacy Policy · Terms",
 
     "home.articles.label": "Articles",
