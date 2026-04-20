@@ -308,7 +308,14 @@ document.querySelectorAll('.btn-primary, .btn-nav, .fsub').forEach(btn => {
 const langBtn = document.getElementById('langBtn');
 const langMenu = document.getElementById('langMenu');
 const langDropdown = document.getElementById('langDropdown');
-let currentLang = localStorage.getItem('wk-lang') || 'nl';
+
+// Auto-detect language: respect manual choice first, then browser preference
+function detectLang() {
+  const saved = localStorage.getItem('wk-lang');
+  if (saved) return saved;
+  return navigator.language.startsWith('nl') ? 'nl' : 'en';
+}
+let currentLang = detectLang();
 
 function setLanguage(lang) {
   currentLang = lang;
