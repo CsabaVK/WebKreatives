@@ -530,22 +530,56 @@
 }
 
 /* Dark mode */
+/* Hero always stays dark */
+body[data-theme="dark"] .art-hero { background: #0d0d0d; }
+body[data-theme="dark"] .art-title { color: #f0f0f0; }
+body[data-theme="dark"] .art-title em { color: var(--red); }
+
+/* Article body + content */
+body[data-theme="dark"] .art-body { background: #111; }
 body[data-theme="dark"] .art-content { color: #ccc; }
 body[data-theme="dark"] .art-content h2,
 body[data-theme="dark"] .art-content h3,
 body[data-theme="dark"] .art-content strong { color: #f0f0f0; }
+body[data-theme="dark"] .art-content p a { color: var(--red); }
+
+/* Quote + mistake blocks */
 body[data-theme="dark"] .art-quote { background: #141414; }
 body[data-theme="dark"] .art-quote p { color: #f0f0f0; }
 body[data-theme="dark"] .art-mistake { background: #141414; }
 body[data-theme="dark"] .art-mistake p { color: #aaa; }
-body[data-theme="dark"] .art-checklist li { background: #111; border-color: #222; }
+body[data-theme="dark"] .art-mistake strong { color: #f0f0f0; }
+
+/* Stats */
+body[data-theme="dark"] .art-stats { background: #141414; border-color: #252525; }
+body[data-theme="dark"] .art-stat-label { color: #888; }
+
+/* Inline CTA box */
+body[data-theme="dark"] .art-cta-box { background: #141414; border-color: #252525; }
+body[data-theme="dark"] .art-cta-box h3 { color: #f0f0f0; }
+body[data-theme="dark"] .art-cta-box p { color: #888; }
+
+/* Checklist */
+body[data-theme="dark"] .art-checklist li { background: #111; border-color: #222; color: #ccc; }
 body[data-theme="dark"] .art-checklist li:hover { background: #181818; }
+body[data-theme="dark"] .art-checklist { border-color: #252525; }
+
+/* Share bar */
+body[data-theme="dark"] .art-share { border-color: #252525; }
+body[data-theme="dark"] .share-btn.copy { background: #1a1a1a; border-color: #333; color: #ccc; }
+body[data-theme="dark"] .share-btn.copy:hover { background: #222; border-color: #555; }
+
+/* Author bio */
 body[data-theme="dark"] .art-author-bio { background: #141414; border-color: #252525; }
 body[data-theme="dark"] .art-author-bio h4 { color: #f0f0f0; }
 body[data-theme="dark"] .art-author-bio p { color: #888; }
+body[data-theme="dark"] .bio-role { color: #666; }
+
+/* Bottom CTA — always stays dark */
+body[data-theme="dark"] .art-bottom-cta { background: #0d0d0d; }
+
+/* Related articles */
+body[data-theme="dark"] .art-related h3 { color: #f0f0f0; }
 body[data-theme="dark"] .art-related-card { border-color: #252525; }
 body[data-theme="dark"] .art-related-card:hover { border-color: #555; background: #141414; }
 body[data-theme="dark"] .arc-title { color: #f0f0f0; }
-body[data-theme="dark"] .share-btn.copy { background: #1a1a1a; border-color: #333; color: #ccc; }
-body[data-theme="dark"] .share-btn.copy:hover { background: #222; border-color: #555; }
-body[data-theme="dark"] .art-checklist { border-color: #252525; }
