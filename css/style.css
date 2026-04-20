@@ -33,11 +33,12 @@ body{font-family:var(--fb);background:var(--white);color:var(--black);overflow-x
 /* ── NAV ── */
 nav{position:sticky;top:0;z-index:200;height:72px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;gap:24px}
 nav::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--grey-200);z-index:-1}
-.logo{text-decoration:none;display:flex;align-items:center;flex-shrink:0;margin-right:6px}
-.nav-links{display:flex;align-items:center;gap:26px}
+.logo{text-decoration:none;display:flex;align-items:center;flex-shrink:0;gap:12px}
+.logo-tagline{font-size:11.5px;font-weight:500;color:var(--grey-500);padding-left:14px;border-left:1px solid var(--grey-300);white-space:nowrap;letter-spacing:.2px;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:20px}
 .nav-links a{font-size:14px;font-weight:500;color:var(--grey-700);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--black)}
-.btn-nav{background:var(--red)!important;color:var(--white)!important;padding:9px 20px;border-radius:var(--r-sm);font-weight:600!important;transition:background .2s,transform .15s!important}
+.btn-nav{background:var(--red)!important;color:#fff!important;padding:9px 20px;border-radius:var(--r-sm);font-weight:600!important;font-family:var(--fb);font-size:14px;text-decoration:none;display:inline-flex;align-items:center;transition:background .2s,transform .15s!important;white-space:nowrap}
 .btn-nav:hover{background:var(--red-dk)!important;transform:translateY(-1px)}
 
 /* ── NAV CONTROLS ── */
@@ -325,13 +326,19 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.09)}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* Desktop: show CTA in controls, hide it from drawer */
+.btn-nav-mobile{display:none}
+.btn-nav-desktop{display:inline-flex}
 @media(max-width:900px){
   .hamburger{display:flex}
   .nav-controls{margin-left:auto;margin-right:12px}
   .nav-links{position:fixed;top:66px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;padding:0 6%;display:flex;border-top:1px solid var(--grey-200);z-index:199;overflow:hidden;align-items:flex-start;max-height:0;opacity:0;pointer-events:none;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .25s ease,padding .3s ease}
   .nav-links.open{max-height:400px;opacity:1;pointer-events:auto;padding:12px 6% 20px}
   .nav-links a{font-size:18px;padding:14px 0;border-bottom:1px solid var(--grey-100);width:100%}
-  .btn-nav{margin-top:12px;align-self:stretch;text-align:center;padding:14px 20px!important}
+  /* Mobile: show CTA in drawer, hide from controls */
+  .btn-nav-desktop{display:none}
+  .btn-nav-mobile{display:flex;margin-top:12px;align-self:stretch;justify-content:center;padding:14px 20px!important}
+  .logo-tagline{display:none}
 }
 
 /* FAQ */
@@ -388,6 +395,7 @@ body[data-theme="dark"]{
 }
 /* Nav */
 body[data-theme="dark"] nav::before{background:rgba(13,13,13,.95);border-bottom-color:#252525}
+body[data-theme="dark"] .logo-tagline{color:#555;border-color:#333}
 /* Logo SVG text */
 body[data-theme="dark"] .logo svg text{fill:#f0f0f0}
 /* Footer logo SVG text stays white */
