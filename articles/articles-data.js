@@ -7,7 +7,7 @@
  * Articles are listed newest first. The first entry = most recent.
  *
  * Fields:
- *   slug          → filename without .html (also the URL path segment)
+ *   slug          → clean English URL slug (folder name / URL path segment)
  *   title         → full article title
  *   category      → display label (shown on cards + related section)
  *   date          → ISO 8601 (YYYY-MM-DD) — used for sorting
@@ -19,7 +19,7 @@
 
 const WK_ARTICLES = [
   {
-    slug:             '5-redenen-waarom-klanten-jouw-website-verlaten',
+    slug:             '5-reasons-customers-leave-your-website',
     title:            '5 Redenen Waarom Klanten Jouw Website Verlaten',
     titleEn:          '5 Reasons Customers Leave Your Website',
     category:         'Webdesign Tips',
@@ -35,7 +35,7 @@ const WK_ARTICLES = [
     excerptEn:        'Slow load times, no CTA, outdated design: small mistakes with big consequences. Use this self-check to spot what you are losing each day.'
   },
   {
-    slug:             'waarom-jouw-kapsalon-een-website-nodig-heeft',
+    slug:             'why-your-hair-salon-needs-a-website',
     title:            'Waarom Jouw Kapsalon Een Website Nodig Heeft',
     titleEn:          'Why Your Hair Salon Needs a Website',
     category:         'Kapsalon & Beauty',
@@ -52,3 +52,5 @@ const WK_ARTICLES = [
   }
   /* ── Add new articles above this line ─────────────────────────────────── */
 ];
+
+
