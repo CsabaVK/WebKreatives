@@ -88,6 +88,44 @@
 <h2>Conclusion</h2>
 <p>Every day without a website is another day potential clients choose someone else. A professional online presence is no longer optional if you want to grow.</p>
 <p>You take care of your clients in the salon. We can take care of how your salon shows up online.</p>`
+    },
+    'local-seo-how-google-finds-you-in-your-city': {
+      current: 'Local SEO',
+      category: 'Local SEO',
+      date: '20 April 2026',
+      read: '7 min read',
+      title: 'Local SEO: How Google<br><em>Finds You in Your City</em>',
+      bottomTitle: 'Want better local visibility<br>without a messy website?',
+      bottomText: 'We build websites that communicate clearly, support local rankings, and make your business look professional in Google.',
+      content: `
+<p>Many small businesses assume SEO is something only large companies need. But for a local salon, accountant, plumber, restaurant, or studio, <strong>local SEO</strong> is often what decides whether you get found at all.</p>
+<p>When someone searches for terms like <em>dentist Haarlem</em>, <em>plumber Deventer</em>, or <em>web design agency near me</em>, Google does not show random results. It tries to surface the most relevant nearby businesses. And there are clear signals that influence that.</p>
+<div class="art-stats"><div class="art-stat"><span class="art-stat-num">46%</span><span class="art-stat-label">of Google searches have local intent</span></div><div class="art-stat"><span class="art-stat-num">76%</span><span class="art-stat-label">of people who search for something local visit a business within a day</span></div><div class="art-stat"><span class="art-stat-num">3</span><span class="art-stat-label">top local map results get most of the trust and clicks</span></div></div>
+<p>So local SEO is not just about rankings. It is about showing up when someone in your area is already close to making a decision.</p>
+<div class="art-quote"><p>"Local SEO is not about more traffic in general. It is about being found by the right people, in the right city, at the right moment."</p></div>
+<h2><span class="num">1</span> Your Google Business Profile is the foundation</h2>
+<p>If you want better local visibility, do not start with ten complicated SEO tools. Start with your <strong>Google Business Profile</strong>. That is the listing that appears in Maps and the local results with your reviews, opening hours, photos, website, and directions.</p>
+<p>A half-complete profile works against you. A complete profile gives Google more confidence that your business is real, active, and relevant in your area.</p>
+<h2><span class="num">2</span> Reviews help visibility as well as trust</h2>
+<p>Most business owners think about reviews only as social proof. But reviews also matter for local visibility. A steady flow of detailed, recent, believable reviews helps your profile look stronger.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80" alt="Business owner reviewing analytics and customer feedback" loading="lazy"><figcaption>Recent reviews influence both trust and click-through behaviour.</figcaption></figure>
+<p>It is not just about the star rating. Google also pays attention to freshness and relevance. A review that mentions your service and location can be more useful than a generic one-liner.</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>Many businesses ask for reviews once and then stop. Local SEO works better when you have a simple ongoing process for collecting them.</p></div>
+<h2><span class="num">3</span> Your website should reinforce your location</h2>
+<p>Your Google profile alone is not enough. Google also looks at your website. Does it clearly explain what you do, who you help, and where you work? If yes, you make it easier for Google to connect the dots.</p>
+<ul class="art-checklist"><li>Your city or service area on the homepage and contact page</li><li>A clear page title and heading that match your service</li><li>Contact details and opening hours where relevant</li><li>A location reference or map embed when useful</li><li>Local case studies, reviews, or examples that support trust</li></ul>
+<h2><span class="num">4</span> Consistent business details matter more than people expect</h2>
+<p>Google compares information across multiple places. If your business name, address, or phone number is written differently on your website, Google profile, and social accounts, that creates uncertainty.</p>
+<p>That is why consistency matters. Use one clear version of your business details everywhere and clean up old or outdated mentions when needed.</p>
+<h2><span class="num">5</span> Local content gives Google useful context</h2>
+<p>Not every small business needs to publish articles every week. But a few strong pages or articles tied to your service area can help Google understand where you are relevant.</p>
+<p>Examples include local case studies, city-specific service pages, or practical articles connected to the kinds of questions people in your area actually search for.</p>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want to be found more easily in your area?</h3><p>We can help structure your website and local visibility in a way that is clear, simple, and built to convert.</p></div><a href="/#contact" class="btn btn-primary">Request a quote →</a></div>
+<h2>A simple local SEO plan</h2>
+<ul class="art-checklist"><li>Complete your Google Business Profile</li><li>Add new photos and keep details current</li><li>Ask for reviews consistently</li><li>Make your city and services obvious on your website</li><li>Keep your business details identical everywhere</li><li>Add one or two useful local articles or case pages</li></ul>
+<h2>Conclusion</h2>
+<p>Local SEO is not a secret trick. It is mostly clarity, trust, and consistency. Google wants to understand who you are, where you are, and why you are relevant to someone searching nearby.</p>
+<p>If your business depends on local customers, local SEO is not optional. It is one of the most practical ways to become visible to people already looking for what you offer.</p>`
     }
   };
 
