@@ -120,6 +120,7 @@ function renderCookieBanner(lang) {
   banner.querySelector('[data-cookie-action="customize"]').addEventListener('click', () => {
     panel.hidden = !panel.hidden;
     banner.classList.toggle('cookie-banner-expanded', !panel.hidden);
+    banner.classList.toggle('cookie-banner-customizing', !panel.hidden);
   });
   banner.querySelector('[data-cookie-action="decline"]').addEventListener('click', () => {
     applyCookiePreferences({ essential: true, analytics: false }, 'declined');
@@ -155,7 +156,7 @@ function renderCookieManageButton(lang) {
       renderCookieManageButton(currentLang || localStorage.getItem('wk-lang') || 'nl');
     });
   }
-  btn.textContent = lang === 'en' ? 'Cookie settings' : 'Cookie-instellingen';
+  btn.textContent = lang === 'en' ? '🍪 Cookie settings' : '🍪 Cookie-instellingen';
   btn.hidden = false;
 }
 
