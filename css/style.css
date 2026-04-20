@@ -441,9 +441,12 @@ body[data-theme="dark"] .stats .sn{color:var(--yellow)}
 body[data-theme="dark"] .stats .sl{color:#bbb}
 /* Testimonial avatars */
 body[data-theme="dark"] .av[style*="background:#0d0d0d"]{background:#444!important}
-/* Logo SVG decorative rects */
-body[data-theme="dark"] .logo svg rect[fill="#0d0d0d"]{fill:#f0f0f0}
-body[data-theme="dark"] .logo svg rect[fill="#D4E157"]{fill:var(--yellow)}
+/* PNG logo sizing */
+.wk-logo-img { height: 36px; width: auto; display: block; }
+/* Dark mode nav: invert logo to white */
+body[data-theme="dark"] nav .wk-logo-img { filter: brightness(0) invert(1); }
+/* Footer is always dark: always show logo in white */
+footer .wk-logo-img { filter: brightness(0) invert(1); }
 /* Lang & theme controls */
 body[data-theme="dark"] .lang-btn{border-color:#444;color:#ccc}
 body[data-theme="dark"] .lang-btn:hover{border-color:#666}
