@@ -1,7 +1,8 @@
 /**
  * WebKreatives — OpenStreetMap Lead Finder
  * 100% FREE — no API key, no quota, no cost ever.
- * Finds Dutch small businesses WITHOUT a website (perfect targets for WebKreatives)
+ * Finds Dutch small businesses and appends usable email leads to the local sheet.
+ * Prefers businesses without a website, but will also use weak website-based leads when needed.
  *
  * Usage:  node tools/find-leads-osm.js
  * Usage:  node tools/find-leads-osm.js --category hairdresser --city Amsterdam --count 15
@@ -60,12 +61,12 @@ const CATEGORY_NL = getArg('--category', categories[dayIdx]);
 const CITY        = getArg('--city', CITIES[cityIdx]);
 const MAX_LEADS   = parseInt(getArg('--count', '40'));
 const LEADS_FILE  = getArg('--output', path.join(__dirname, '..', 'leads', 'Leads.xlsx'));
-const MAX_COMBOS  = parseInt(getArg('--max-combos', '12'));
+const MAX_COMBOS  = parseInt(getArg('--max-combos', '30'));
 
-console.log(`\n🗺  WebKreatives Lead Finder — OpenStreetMap (100% Free)`);
+console.log(`\n🗺  WebKreatives Lead Finder — OpenStreetMap + Website Email Extraction (Free)`);
 console.log(`   Seed category : ${CATEGORY_NL}`);
 console.log(`   Seed city     : ${CITY}`);
-console.log(`   Target        : ${MAX_LEADS} leads WITHOUT a website`);
+console.log(`   Target        : ${MAX_LEADS} usable email leads (prefer no website)`);
 console.log(`   Max combos    : ${MAX_COMBOS}`);
 console.log(`   Output        : ${LEADS_FILE}\n`);
 
@@ -112,42 +113,166 @@ function queryOverpass(query) {
 
 // ── Extract leads from OSM elements ───────────────────────────────────────────
 function normalizeEmail(raw = '') {
-  return String(raw || '').trim().toLowerCase();
+  return String(raw || '').trim().toLowerCase().replace(/^mailto:/i, '');
 }
 
 function normalizeName(raw = '') {
   return String(raw || '').trim();
 }
 
-function extractLeads(elements, city, categoryName) {
-  const leads = [];
+function normalizeWebsite(raw = '') {
+  let url = String(raw || '').trim();
+  if (!url) return '';
+  if (!/^https?:\/\//i.test(url)) url = `https://${url}`;
+  try {
+    const parsed = new URL(url);
+    parsed.hash = '';
+    return parsed.toString().replace(/\/$/, '');
+  } catch {
+    return '';
+  }
+}
 
-  for (const el of elements) {
+function buildAddress(tags = {}) {
+  const street = String(tags['addr:street'] || '').trim();
+  const housenr = String(tags['addr:housenr'] || '').trim();
+  const postcode = String(tags['addr:postcode'] || '').trim();
+  return [street, housenr, postcode].filter(Boolean).join(' ').trim();
+}
+
+function extractEmailsFromText(text = '') {
+  const matches = String(text || '').match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi) || [];
+  const blocked = ['example.com', 'email.com', 'domain.com', 'yourdomain', 'sentry.io'];
+  return [...new Set(matches.map(normalizeEmail).filter(email => email.includes('@') && !blocked.some(part => email.includes(part))))];
+}
+
+function chooseBestEmail(emails = [], website = '') {
+  if (!emails.length) return '';
+  if (!website) return emails[0];
+  try {
+    const host = new URL(website).hostname.replace(/^www\./i, '').toLowerCase();
+    const sameDomain = emails.find(email => email.endsWith(`@${host}`) || email.endsWith(`@${host.split('.').slice(-2).join('.')}`));
+    return sameDomain || emails[0];
+  } catch {
+    return emails[0];
+  }
+}
+
+async function fetchText(url, redirects = 0) {
+  if (!url || redirects > 5) throw new Error('Too many redirects');
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 12000);
+  try {
+    const res = await fetch(url, {
+      method: 'GET',
+      redirect: 'manual',
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'WebKreatives-LeadFinder/1.0',
+        'Accept': 'text/html,application/xhtml+xml'
+      }
+    });
+    if (res.status >= 300 && res.status < 400) {
+      const location = res.headers.get('location');
+      if (location) return fetchText(new URL(location, url).toString(), redirects + 1);
+    }
+    const text = await res.text();
+    return text.slice(0, 400000);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+const websiteEmailCache = new Map();
+
+async function mapLimit(items, limit, worker) {
+  const results = new Array(items.length);
+  let index = 0;
+  const runners = Array.from({ length: Math.max(1, limit) }, async () => {
+    while (index < items.length) {
+      const current = index;
+      index += 1;
+      results[current] = await worker(items[current], current);
+    }
+  });
+  await Promise.all(runners);
+  return results;
+}
+
+async function extractEmailFromWebsite(website = '') {
+  const normalized = normalizeWebsite(website);
+  if (!normalized) return { email: '', scanned: false };
+  if (websiteEmailCache.has(normalized)) return websiteEmailCache.get(normalized);
+
+  const result = { email: '', scanned: true };
+  try {
+    const homepage = await fetchText(normalized);
+    const homepageEmails = extractEmailsFromText(homepage);
+    if (homepageEmails.length) {
+      result.email = chooseBestEmail(homepageEmails, normalized);
+      websiteEmailCache.set(normalized, result);
+      return result;
+    }
+
+    const paths = ['/contact', '/contact-us', '/over-ons', '/about', '/impressum'];
+    for (const pathName of paths) {
+      try {
+        const html = await fetchText(`${normalized}${pathName}`);
+        const emails = extractEmailsFromText(html);
+        if (emails.length) {
+          result.email = chooseBestEmail(emails, normalized);
+          websiteEmailCache.set(normalized, result);
+          return result;
+        }
+      } catch {}
+    }
+  } catch {}
+
+  websiteEmailCache.set(normalized, result);
+  return result;
+}
+
+async function extractLeads(elements, city, categoryName) {
+  const mapped = await mapLimit(elements, 6, async (el) => {
     const tags = el.tags || {};
-
-    // Skip businesses that already have a website — they're not our target.
-    if (tags.website || tags['contact:website'] || tags.url) continue;
-
     const name = normalizeName(tags.name || tags['name:nl'] || '');
-    if (!name || name.length < 2) continue;
+    if (!name || name.length < 2) return null;
 
     const phone = String(tags.phone || tags['contact:phone'] || tags['phone:nl'] || '').trim();
-    const email = normalizeEmail(tags.email || tags['contact:email'] || '');
-    if (!email || !email.includes('@')) continue; // email is mandatory for production use
+    const directEmail = normalizeEmail(tags.email || tags['contact:email'] || '');
+    const website = normalizeWebsite(tags.website || tags['contact:website'] || tags.url || '');
+    const hasWebsite = !!website;
+    const websiteLookup = !directEmail && hasWebsite ? await extractEmailFromWebsite(website) : { email: '', scanned: false };
+    const email = normalizeEmail(directEmail || websiteLookup.email || '');
+    if (!email || !email.includes('@')) return null;
 
-    const street = String(tags['addr:street'] || '').trim();
-    const housenr = String(tags['addr:housenr'] || '').trim();
-    const postcode = String(tags['addr:postcode'] || '').trim();
-    const address = [street, housenr, postcode].filter(Boolean).join(' ').trim();
+    const address = buildAddress(tags);
     const town = String(tags['addr:city'] || tags['addr:town'] || city || '').trim();
-
     const type = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
-    const notes = `Geen website | OSM id:${el.id} | Source: OpenStreetMap | ${categoryName} | ${city}`;
+    const sourceParts = [
+      hasWebsite ? 'Website available' : 'Geen website',
+      directEmail ? 'Email from OSM' : (websiteLookup.email ? 'Email from website' : 'No email source'),
+      `OSM id:${el.id}`,
+      'Source: OpenStreetMap',
+      categoryName,
+      city
+    ];
+    if (website) sourceParts.push(`Website: ${website}`);
 
-    leads.push({ name, type, address, town, phone, email, notes });
-  }
+    return {
+      name,
+      type,
+      address,
+      town,
+      phone,
+      email,
+      notes: sourceParts.join(' | '),
+      hasWebsite,
+      sourceEmailType: directEmail ? 'osm' : 'website'
+    };
+  });
 
-  return leads;
+  return mapped.filter(Boolean).sort((a, b) => Number(a.hasWebsite) - Number(b.hasWebsite));
 }
 
 // ── Deduplicate ───────────────────────────────────────────────────────────────
@@ -239,7 +364,9 @@ async function appendToExcel(newLeads) {
   }
 
   if (added > 0) {
-    await workbook.xlsx.writeFile(LEADS_FILE);
+    const tempFile = `${LEADS_FILE}.tmp`;
+    await workbook.xlsx.writeFile(tempFile);
+    fs.renameSync(tempFile, LEADS_FILE);
     console.log(`\n✅ Saved ${added} new leads → ${LEADS_FILE}`);
   } else {
     console.log('\n⚠ No new leads added.');
@@ -252,10 +379,14 @@ function buildComboPlan(seedCategory, seedCity, maxCombos) {
   const seedCategoryIndex = Math.max(0, categories.indexOf(seedCategory));
   const seedCityIndex = Math.max(0, CITIES.indexOf(seedCity));
   const combos = [];
+  const seen = new Set();
 
-  for (let step = 0; step < maxCombos; step += 1) {
+  for (let step = 0; combos.length < maxCombos && step < categories.length * CITIES.length; step += 1) {
     const categoryName = categories[(seedCategoryIndex + step) % categories.length];
     const cityName = CITIES[(seedCityIndex + (step * 3)) % CITIES.length];
+    const key = `${categoryName}__${cityName}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
     combos.push({ categoryName, cityName });
   }
 
@@ -284,41 +415,59 @@ async function runCombo(categoryName, cityName) {
   const elements = Array.isArray(data.elements) ? data.elements : [];
   console.log(`   → Found ${elements.length} businesses on OpenStreetMap`);
 
-  const leads = extractLeads(elements, cityName, categoryName);
-  console.log(`   → ${leads.length} have NO website + an email (our usable target)\n`);
-  return { categoryName, cityName, elements: elements.length, leads };
+  const leads = await extractLeads(elements, cityName, categoryName);
+  const noWebsiteCount = leads.filter(lead => !lead.hasWebsite).length;
+  const websiteCount = leads.length - noWebsiteCount;
+  console.log(`   → ${leads.length} usable email leads (${noWebsiteCount} no-website preferred, ${websiteCount} website-backed)\n`);
+  return { categoryName, cityName, elements: elements.length, leads, noWebsiteCount, websiteCount };
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
   const combos = buildComboPlan(CATEGORY_NL, CITY, MAX_COMBOS);
   const gathered = [];
+  const seenInRun = new Set();
   let totalElements = 0;
   let totalUsable = 0;
+  let totalNoWebsite = 0;
+  let totalWebsiteBacked = 0;
+  let combosChecked = 0;
 
   for (const combo of combos) {
     if (gathered.length >= MAX_LEADS) break;
     const result = await runCombo(combo.categoryName, combo.cityName);
+    combosChecked += 1;
     totalElements += result.elements;
     totalUsable += result.leads.length;
+    totalNoWebsite += Number(result.noWebsiteCount || 0);
+    totalWebsiteBacked += Number(result.websiteCount || 0);
     for (const lead of result.leads) {
+      const key = `${normalizeEmail(lead.email)}__${normalizeForCompare(lead.name)}`;
+      if (seenInRun.has(key)) continue;
+      seenInRun.add(key);
       gathered.push(lead);
       if (gathered.length >= MAX_LEADS) break;
     }
   }
 
-  const addedRows = await appendToExcel(gathered.slice(0, MAX_LEADS));
+  const preferredFirst = gathered
+    .sort((a, b) => Number(a.hasWebsite) - Number(b.hasWebsite))
+    .slice(0, MAX_LEADS);
+
+  const addedRows = await appendToExcel(preferredFirst);
 
   console.log(`\n📊 Summary:`);
-  console.log(`   Combos checked      : ${combos.length}`);
+  console.log(`   Combos checked      : ${combosChecked}`);
   console.log(`   Total in OSM        : ${totalElements}`);
   console.log(`   Usable leads seen   : ${totalUsable} 🎯`);
-  console.log(`   Attempted to add    : ${Math.min(gathered.length, MAX_LEADS)}`);
+  console.log(`   No-website leads    : ${totalNoWebsite}`);
+  console.log(`   Website-backed      : ${totalWebsiteBacked}`);
+  console.log(`   Attempted to add    : ${preferredFirst.length}`);
   console.log(`   Added to Excel      : ${addedRows.length}`);
   if (addedRows.length) {
     console.log(`   Added rows          : ${addedRows.map(row => `${row.row} (#${row.leadNumber})`).join(', ')}`);
   }
-  console.log(`\n💡 Run daily — categories & cities auto-rotate, and now keep searching across multiple combos per run.\n`);
+  console.log(`\n💡 Strategy: prefer no-website leads first, then use website-backed email leads to keep the sheet growing.\n`);
 }
 
 main().catch(err => { console.error('Fatal:', err.message); process.exit(1); });
