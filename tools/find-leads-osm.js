@@ -57,7 +57,7 @@ const cityIdx   = Math.floor(today.getDate() / 2) % CITIES.length;
 
 const CATEGORY_NL = getArg('--category', Object.keys(CATEGORY_MAP)[dayIdx]);
 const CITY        = getArg('--city',     CITIES[cityIdx]);
-const MAX_LEADS   = parseInt(getArg('--count', '15'));
+const MAX_LEADS   = parseInt(getArg('--count', '40'));
 const LEADS_FILE  = getArg('--output', path.join(__dirname, '..', 'leads', 'Leads.xlsx'));
 
 const osmTag = CATEGORY_MAP[CATEGORY_NL] || { tag: 'shop', value: CATEGORY_NL };
