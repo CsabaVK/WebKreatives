@@ -52,21 +52,22 @@ const args    = process.argv.slice(2);
 const getArg  = (flag, def) => { const i = args.indexOf(flag); return i !== -1 && args[i+1] ? args[i+1] : def; };
 
 const today     = new Date();
-const dayIdx    = today.getDate()  % Object.keys(CATEGORY_MAP).length;
+const categories = Object.keys(CATEGORY_MAP);
+const dayIdx    = today.getDate() % categories.length;
 const cityIdx   = Math.floor(today.getDate() / 2) % CITIES.length;
 
-const CATEGORY_NL = getArg('--category', Object.keys(CATEGORY_MAP)[dayIdx]);
-const CITY        = getArg('--city',     CITIES[cityIdx]);
+const CATEGORY_NL = getArg('--category', categories[dayIdx]);
+const CITY        = getArg('--city', CITIES[cityIdx]);
 const MAX_LEADS   = parseInt(getArg('--count', '40'));
 const LEADS_FILE  = getArg('--output', path.join(__dirname, '..', 'leads', 'Leads.xlsx'));
-
-const osmTag = CATEGORY_MAP[CATEGORY_NL] || { tag: 'shop', value: CATEGORY_NL };
+const MAX_COMBOS  = parseInt(getArg('--max-combos', '12'));
 
 console.log(`\n🗺  WebKreatives Lead Finder — OpenStreetMap (100% Free)`);
-console.log(`   Category : ${CATEGORY_NL} (OSM: ${osmTag.tag}=${osmTag.value})`);
-console.log(`   City     : ${CITY}`);
-console.log(`   Target   : ${MAX_LEADS} leads WITHOUT a website`);
-console.log(`   Output   : ${LEADS_FILE}\n`);
+console.log(`   Seed category : ${CATEGORY_NL}`);
+console.log(`   Seed city     : ${CITY}`);
+console.log(`   Target        : ${MAX_LEADS} leads WITHOUT a website`);
+console.log(`   Max combos    : ${MAX_COMBOS}`);
+console.log(`   Output        : ${LEADS_FILE}\n`);
 
 // ── Overpass API query ─────────────────────────────────────────────────────────
 function buildQuery(city, tag, value) {
@@ -118,7 +119,7 @@ function normalizeName(raw = '') {
   return String(raw || '').trim();
 }
 
-function extractLeads(elements, city) {
+function extractLeads(elements, city, categoryName) {
   const leads = [];
 
   for (const el of elements) {
@@ -140,8 +141,8 @@ function extractLeads(elements, city) {
     const address = [street, housenr, postcode].filter(Boolean).join(' ').trim();
     const town = String(tags['addr:city'] || tags['addr:town'] || city || '').trim();
 
-    const type = CATEGORY_NL.charAt(0).toUpperCase() + CATEGORY_NL.slice(1);
-    const notes = `Geen website | OSM id:${el.id} | Source: OpenStreetMap`;
+    const type = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
+    const notes = `Geen website | OSM id:${el.id} | Source: OpenStreetMap | ${categoryName} | ${city}`;
 
     leads.push({ name, type, address, town, phone, email, notes });
   }
@@ -247,42 +248,77 @@ async function appendToExcel(newLeads) {
   return addedRows;
 }
 
-// ── Main ──────────────────────────────────────────────────────────────────────
-async function main() {
-  const query = buildQuery(CITY, osmTag.tag, osmTag.value);
+function buildComboPlan(seedCategory, seedCity, maxCombos) {
+  const seedCategoryIndex = Math.max(0, categories.indexOf(seedCategory));
+  const seedCityIndex = Math.max(0, CITIES.indexOf(seedCity));
+  const combos = [];
+
+  for (let step = 0; step < maxCombos; step += 1) {
+    const categoryName = categories[(seedCategoryIndex + step) % categories.length];
+    const cityName = CITIES[(seedCityIndex + (step * 3)) % CITIES.length];
+    combos.push({ categoryName, cityName });
+  }
+
+  return combos;
+}
+
+async function runCombo(categoryName, cityName) {
+  const tag = CATEGORY_MAP[categoryName] || { tag: 'shop', value: categoryName };
+  const query = buildQuery(cityName, tag.tag, tag.value);
   console.log(`🌐 Querying OpenStreetMap Overpass API...`);
+  console.log(`   Combo    : ${categoryName} in ${cityName} (${tag.tag}=${tag.value})`);
 
   let data;
   try {
     data = await queryOverpass(query);
-  } catch(e) {
-    // Fallback to alternative Overpass endpoint
+  } catch (e) {
     console.log(`   Primary endpoint failed, trying mirror...`);
     try {
       data = await queryOverpass(query.replace('overpass-api.de', 'overpass.kumi.systems'));
-    } catch(e2) {
-      console.error('   ✗ Overpass API unavailable:', e2.message);
-      process.exit(1);
+    } catch (e2) {
+      console.log(`   ✗ Overpass unavailable for ${categoryName}/${cityName}: ${e2.message}`);
+      return { categoryName, cityName, elements: 0, leads: [] };
     }
   }
 
-  const elements = data.elements || [];
+  const elements = Array.isArray(data.elements) ? data.elements : [];
   console.log(`   → Found ${elements.length} businesses on OpenStreetMap`);
 
-  const leads = extractLeads(elements, CITY);
+  const leads = extractLeads(elements, cityName, categoryName);
   console.log(`   → ${leads.length} have NO website + an email (our usable target)\n`);
+  return { categoryName, cityName, elements: elements.length, leads };
+}
 
-  const toAdd = leads.slice(0, MAX_LEADS);
-  const addedRows = await appendToExcel(toAdd);
+// ── Main ──────────────────────────────────────────────────────────────────────
+async function main() {
+  const combos = buildComboPlan(CATEGORY_NL, CITY, MAX_COMBOS);
+  const gathered = [];
+  let totalElements = 0;
+  let totalUsable = 0;
+
+  for (const combo of combos) {
+    if (gathered.length >= MAX_LEADS) break;
+    const result = await runCombo(combo.categoryName, combo.cityName);
+    totalElements += result.elements;
+    totalUsable += result.leads.length;
+    for (const lead of result.leads) {
+      gathered.push(lead);
+      if (gathered.length >= MAX_LEADS) break;
+    }
+  }
+
+  const addedRows = await appendToExcel(gathered.slice(0, MAX_LEADS));
 
   console.log(`\n📊 Summary:`);
-  console.log(`   Total in OSM        : ${elements.length}`);
-  console.log(`   Usable leads        : ${leads.length} 🎯`);
+  console.log(`   Combos checked      : ${combos.length}`);
+  console.log(`   Total in OSM        : ${totalElements}`);
+  console.log(`   Usable leads seen   : ${totalUsable} 🎯`);
+  console.log(`   Attempted to add    : ${Math.min(gathered.length, MAX_LEADS)}`);
   console.log(`   Added to Excel      : ${addedRows.length}`);
   if (addedRows.length) {
     console.log(`   Added rows          : ${addedRows.map(row => `${row.row} (#${row.leadNumber})`).join(', ')}`);
   }
-  console.log(`\n💡 Run daily — categories & cities auto-rotate.\n`);
+  console.log(`\n💡 Run daily — categories & cities auto-rotate, and now keep searching across multiple combos per run.\n`);
 }
 
 main().catch(err => { console.error('Fatal:', err.message); process.exit(1); });
