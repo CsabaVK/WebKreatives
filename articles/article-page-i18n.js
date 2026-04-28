@@ -126,6 +126,47 @@
 <h2>Conclusion</h2>
 <p>Local SEO is not a secret trick. It is mostly clarity, trust, and consistency. Google wants to understand who you are, where you are, and why you are relevant to someone searching nearby.</p>
 <p>If your business depends on local customers, local SEO is not optional. It is one of the most practical ways to become visible to people already looking for what you offer.</p>`
+    },
+    'what-does-a-small-business-website-cost-in-2026': {
+      current: 'Web Design Tips',
+      category: 'Web Design Tips',
+      date: '22 April 2026',
+      read: '8 min read',
+      title: 'What Does a Small Business Website<br><em>Cost in 2026?</em>',
+      bottomTitle: 'Want a website that fits your budget<br>and sells better?',
+      bottomText: 'We build compact websites for small businesses that look professional, communicate clearly, and are ready to capture leads.',
+      content: `
+<p>One of the most common questions business owners ask is simple: <strong>how much does it cost to have a website made?</strong> And honestly, that makes sense. If you run a small business, you do not want to overpay, but you also do not want to end up with a website that looks fine and produces nothing.</p>
+<p>Website pricing in 2026 still varies a lot. You will see offers for a few hundred euros, while other projects cost several thousand. That difference is not only about design. It usually comes down to strategy, structure, copy, speed, SEO, and whether the website is built to actually help turn visitors into enquiries.</p>
+<div class="art-stats"><div class="art-stat"><span class="art-stat-num">€500</span><span class="art-stat-label">can be enough for a very simple online business card</span></div><div class="art-stat"><span class="art-stat-num">€1,500–€3,500</span><span class="art-stat-label">is often more realistic for a strong small business website</span></div><div class="art-stat"><span class="art-stat-num">1 weak step</span><span class="art-stat-label">in messaging or structure can cost more than the entire price difference</span></div></div>
+<p>In this article, we break down where those price differences usually come from, what a small business website should normally include, and how to judge whether a quote is actually smart rather than just cheap.</p>
+<h2><span class="num">1</span> The real question is not just: what does it cost?</h2>
+<p>Many businesses compare websites as if they were all the same product. They are not. A €500 website and a €2,500 website are often solving different problems. One may simply put you online. The other may be designed to build trust, support search visibility, and guide visitors toward making contact.</p>
+<div class="art-quote"><p>"The cheapest website is not automatically the most affordable one. If it does not bring in customers, cheap can still be expensive."</p></div>
+<p>That is why it is smarter to think in terms of <strong>business value per euro</strong>, not just the lowest total number.</p>
+<h2><span class="num">2</span> Three pricing ranges you will usually see</h2>
+<p>Prices vary by freelancer, agency, platform, and scope, but most small business websites fit into three broad categories.</p>
+<div class="art-price-grid"><div class="art-price-card"><span class="eyebrow">Basic</span><span class="art-price">€300–€900</span><h3>Simple starter site</h3><p>Usually a template-led setup with limited strategy and limited room for custom positioning. Fine if you mainly want a basic online presence.</p></div><div class="art-price-card"><span class="eyebrow">Smart middle ground</span><span class="art-price">€1,500–€3,500</span><h3>Professional small business website</h3><p>Often the strongest balance for local companies: better design, clearer structure, mobile optimisation, solid SEO basics, and a better contact flow.</p></div><div class="art-price-card"><span class="eyebrow">Expanded</span><span class="art-price">€4,000+</span><h3>Custom site with extra functionality</h3><p>More suitable when you need bookings, integrations, deeper content structure, multiple funnels, or more tailored features.</p></div></div>
+<div class="art-table"><div class="art-table-row head"><div>Website type</div><div>Typical price</div><div>Usually fits</div></div><div class="art-table-row"><div>One-page or mini-site</div><div>€300–€900</div><div>Newer solo businesses that mainly want to be visible online quickly</div></div><div class="art-table-row"><div>Website with 4–8 pages</div><div>€1,500–€3,500</div><div>Local businesses that want to look professional and generate enquiries</div></div><div class="art-table-row"><div>Larger site with extra features</div><div>€4,000–€8,000+</div><div>Businesses that want automation, deeper service explanation, or more advanced structure</div></div></div>
+<h2><span class="num">3</span> What are you actually paying for?</h2>
+<p>If a quote is higher than expected, that does not automatically mean it is overpriced. Often, the price reflects work that is not immediately visible but has a major impact on whether the site performs well.</p>
+<ul class="art-checklist"><li>Structure and page flow that make your offer easy to understand</li><li>Copy or messaging support that builds trust</li><li>Mobile optimisation so the site works properly on phones</li><li>Speed and technical quality</li><li>SEO basics such as headings, metadata, and crawlable content</li><li>Conversion elements like CTAs, forms, and clearer navigation</li><li>Possibly photography, branding, or extra functionality</li></ul>
+<p>That combination is often what separates a site that merely looks decent from one that actually helps the business.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Business owners discussing website budget and online growth" loading="lazy"><figcaption>A website budget is usually spent more intelligently when messaging, structure, and visibility are considered from the start.</figcaption></figure>
+<h2><span class="num">4</span> Cheap gets expensive when the foundation is weak</h2>
+<p>The biggest mistake is not always paying too much. Often it is buying a site that has to be redone once you realise it brings in no enquiries, performs badly on mobile, or does not help you show up well in search.</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>Focusing only on visual mockups or page count without asking how the message, speed, SEO, and contact flow will actually work.</p></div>
+<p>If you have to rebuild after a few months, you often end up spending more than if you had built a stronger foundation from the beginning.</p>
+<h2><span class="num">5</span> What should a good small business website include?</h2>
+<p>Most local businesses do not need an enormous website. They do need one that is clear, complete, and practical. A strong baseline usually includes:</p>
+<ul class="art-checklist"><li>A homepage with a clear message and a visible call to action</li><li>Service pages or sections that explain what you actually offer</li><li>Social proof such as reviews, examples, or case snippets</li><li>A contact page or contact section that removes friction</li><li>Mobile friendliness and good loading speed</li><li>SEO basics for relevant service or local search terms</li></ul>
+<h2><span class="num">6</span> How do you judge a quote more intelligently?</h2>
+<p>Do not just ask what is included. Ask why it is structured that way. A good quote should make it clear how the project helps you look more professional, become easier to trust, and generate more enquiries.</p>
+<ol class="art-checklist"><li>Check whether structure, messaging, and calls to action are included</li><li>Ask how mobile experience, speed, and SEO will be handled</li><li>See whether the website can grow with your business later</li><li>Look at whether support, revisions, or handover help are included</li><li>Compare business impact, not only headline price</li></ol>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Curious what a smart website would cost for your business?</h3><p>We help small businesses get websites that do not just look clean, but also build trust and support enquiries.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2>Conclusion</h2>
+<p>The cost of a website for a small business depends on what the website is supposed to do. If you only need a basic online presence, the price can stay low. If you want to look professional, support SEO, and convert more visitors, a somewhat higher investment usually makes more sense.</p>
+<p>For many small businesses, the best balance is a compact but strategically strong site: not oversized, not overcomplicated, but clearly built to help the business grow.</p>`
     }
   };
 
