@@ -19,6 +19,22 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'why-your-google-business-profile-is-your-new-homepage',
+    title:            'Waarom Jouw Google Bedrijfsprofiel Je Nieuwe Homepage Is in 2026',
+    titleEn:          'Why Your Google Business Profile Is Your New Homepage in 2026',
+    category:         'Lokale SEO',
+    categoryEn:       'Local SEO',
+    date:             '2026-04-24',
+    dateFormatted:    '24 april 2026',
+    dateFormattedEn:  '24 April 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-04-24T09:30:00+02:00',
+    image:            'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Voor lokale zoekresultaten is je Google Bedrijfsprofiel vaak de echte eerste indruk. Ontdek waarom het in 2026 bijna als een tweede homepage werkt.',
+    excerptEn:        'For local search results, your Google Business Profile is often the real first impression. Here is why it functions almost like a second homepage in 2026.'
+  },
+  {
     slug:             'what-does-a-small-business-website-cost-in-2026',
     title:            'Wat Kost Een Website Voor Een Klein Bedrijf in 2026?',
     titleEn:          'What Does a Small Business Website Cost in 2026?',

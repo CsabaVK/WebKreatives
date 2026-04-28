@@ -167,6 +167,43 @@
 <h2>Conclusion</h2>
 <p>The cost of a website for a small business depends on what the website is supposed to do. If you only need a basic online presence, the price can stay low. If you want to look professional, support SEO, and convert more visitors, a somewhat higher investment usually makes more sense.</p>
 <p>For many small businesses, the best balance is a compact but strategically strong site: not oversized, not overcomplicated, but clearly built to help the business grow.</p>`
+    },
+    'why-your-google-business-profile-is-your-new-homepage': {
+      current: 'Local SEO',
+      category: 'Local SEO',
+      date: '24 April 2026',
+      read: '7 min read',
+      title: 'Why Your Google Business Profile<br><em>Is Your New Homepage in 2026</em>',
+      bottomTitle: 'Want to look stronger locally<br>from the very first Google click?',
+      bottomText: 'We build websites and local visibility systems that work together so your business feels more professional and more convincing from the start.',
+      content: `
+<p>Many business owners still assume their website is always the main first impression online. But for local searches, that is becoming less true. In 2026, the first impression often starts in <strong>Google Maps</strong>, in the local pack, or in AI-style summaries above the traditional results.</p>
+<p>In other words, for many small businesses, the <strong>Google Business Profile</strong> now behaves like a second homepage. Sometimes even the first one.</p>
+<div class="art-stats"><div class="art-stat"><span class="art-stat-num">Local first</span><span class="art-stat-label">for many service-based searches, customers see Maps, reviews, and profile details before they ever see a homepage</span></div><div class="art-stat"><span class="art-stat-num">AI signals</span><span class="art-stat-label">local search surfaces increasingly use profile data, reviews, and Q&amp;A as context</span></div><div class="art-stat"><span class="art-stat-num">Direct action</span><span class="art-stat-label">calls, directions, website visits, and messages often begin directly from the profile</span></div></div>
+<p>That does not make your website less important. It means your website and your profile need to work together much more closely.</p>
+<div class="art-quote"><p>"For local businesses, your Google Business Profile is no longer just a listing. It is often where someone decides whether you look professional, active, and trustworthy enough to click."</p></div>
+<h2><span class="num">1</span> Customers often see your profile before your website</h2>
+<p>Someone searches for <em>hair salon near me</em>, <em>electrician Zwolle</em>, or <em>web design agency Amsterdam</em>. What do they see first? Often not a homepage. They see a map, business names, reviews, opening hours, photos, and a short description.</p>
+<p>If your profile looks messy, half-filled, or outdated there, you lose trust before someone even opens your site.</p>
+<h2><span class="num">2</span> Google is using profile signals more intelligently</h2>
+<p>Recent SEO publishing and 2026 local-search updates point in the same direction: Google is blending local signals more intelligently. Not just your name and address, but also your category, services, reviews, photos, Q&amp;A, and recent updates help shape how visible and persuasive your profile is.</p>
+<p>That is why a profile you set up once and then forget is no longer a smart strategy. It needs to stay active and current.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=1200&q=80" alt="Team discussing local online visibility and customer contact" loading="lazy"><figcaption>Local visibility increasingly depends on trust, freshness, and clear signals across both your profile and your website.</figcaption></figure>
+<h2><span class="num">3</span> Your profile should feel like a mini-homepage</h2>
+<p>If you treat your Google Business Profile like a mini-homepage, you start making better decisions. You stop asking only whether it exists and start asking whether it actually persuades.</p>
+<ul class="art-checklist"><li>Is your business description clear and human?</li><li>Is your main service named properly right away?</li><li>Are your category and service choices accurate?</li><li>Are your opening hours, contact details, and website link current?</li><li>Do you have recent photos that show something real?</li><li>Do you reply to reviews and questions?</li></ul>
+<div class="art-mistake"><strong>Common mistake</strong><p>Businesses spend a lot of attention on their homepage while letting their Google Business Profile sit unchanged for months. For local visibility, that often works against them.</p></div>
+<h2><span class="num">4</span> Your website is still where you do the real convincing</h2>
+<p>Your profile is not there to replace your website. It attracts attention, creates first trust, and sends people onward. Your website should finish the story.</p>
+<p>That means both need to align. If someone clicks through from Google, the message should match. The service, the tone, the city or region, and the call to action should all feel like part of the same experience.</p>
+<ol class="art-checklist"><li>Your Google Business Profile earns the click with reviews, category, photos, and relevance</li><li>Your website deepens trust with clearer explanation, proof, pricing, or contact options</li><li>The visitor takes action because the overall experience feels consistent and professional</li></ol>
+<h2><span class="num">5</span> What small businesses should do right now</h2>
+<p>You do not need to turn this into a huge project. A few focused improvements can already make a meaningful difference.</p>
+<ul class="art-checklist"><li>Check whether your primary category is truly specific</li><li>Update your description so it clearly explains what you do</li><li>Add fresh photos regularly</li><li>Ask for reviews consistently after real jobs or appointments</li><li>Reply actively to reviews and questions</li><li>Make sure your website and your profile show identical business details</li><li>Link your website to pages that support your core service or local area</li></ul>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want better visibility in Google Maps and local search?</h3><p>We help small businesses with a stronger combination of website structure, profile clarity, and local SEO foundations.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2>Conclusion</h2>
+<p>In 2026, a Google Business Profile is no longer a side detail for most local businesses. It is often the first place where a potential customer evaluates you.</p>
+<p>If you want to grow locally, you should not choose between website or profile. You need both. But you also need to understand that your profile is often the first screen where the sale begins.</p>`
     }
   };
 
