@@ -3,6 +3,7 @@
   const contentEl = document.querySelector('.art-content');
   if (!contentEl) return;
   const originalHtml = contentEl.innerHTML;
+  const originalDocTitle = document.title;
   const originalTitle = document.querySelector('.art-title')?.innerHTML || '';
   const originalCategory = document.querySelector('.art-category')?.textContent || '';
   const originalDate = document.querySelector('.art-date')?.textContent || '';
@@ -21,6 +22,7 @@
       category: 'Web Design Tips',
       date: '19 April 2026',
       read: '7 min read',
+      docTitle: '5 Reasons Customers Leave Your Website | WebKreatives',
       title: '5 Reasons Customers Leave<br><em>Your Website</em>',
       bottomTitle: 'We can fix it.',
       bottomText: 'A website that actually works for your business: fast, mobile-friendly, and built to bring in customers. From €199, live within 5 days.',
@@ -68,6 +70,7 @@
       category: 'Small Business',
       date: '19 April 2026',
       read: '6 min read',
+      docTitle: 'Why Your Hair Salon Needs a Website | WebKreatives',
       title: 'Why Your Hair Salon<br><em>Needs a Website</em>',
       bottomTitle: 'Your salon deserves<br>a professional website',
       bottomText: 'Starter package from €199, mobile-friendly, quick to launch, and tailored to your salon.',
@@ -106,6 +109,7 @@
       category: 'Local SEO',
       date: '20 April 2026',
       read: '7 min read',
+      docTitle: 'Local SEO: How Google Finds You in Your City | WebKreatives',
       title: 'Local SEO: How Google<br><em>Finds You in Your City</em>',
       bottomTitle: 'Want better local visibility<br>without a messy website?',
       bottomText: 'We build websites that communicate clearly, support local rankings, and make your business look professional in Google.',
@@ -148,6 +152,7 @@
       category: 'Web Design Tips',
       date: '22 April 2026',
       read: '8 min read',
+      docTitle: 'What Does a Small Business Website Cost in 2026? | WebKreatives',
       title: 'What Does a Small Business Website<br><em>Cost in 2026?</em>',
       bottomTitle: 'Want a website that fits your budget<br>and sells better?',
       bottomText: 'We build compact websites for small businesses that look professional, communicate clearly, and are ready to capture leads.',
@@ -193,6 +198,7 @@
       category: 'Local SEO',
       date: '24 April 2026',
       read: '7 min read',
+      docTitle: 'Why Your Google Business Profile Is Your New Homepage in 2026 | WebKreatives',
       title: 'Why Your Google Business Profile<br><em>Is Your New Homepage in 2026</em>',
       bottomTitle: 'Want to look stronger locally<br>from the very first Google click?',
       bottomText: 'We build websites and local visibility systems that work together so your business feels more professional and more convincing from the start.',
@@ -248,6 +254,7 @@
     const bottomSecondaryBtnEl = document.querySelector('.art-bottom-cta-btns .btn.btn-outline-white');
     const relatedTitleEl = document.querySelector('.art-related h3');
     if (key === 'en') {
+      document.title = page.docTitle || originalDocTitle;
       if (titleEl) titleEl.innerHTML = page.title;
       if (categoryEl) categoryEl.textContent = page.category;
       if (dateEl) dateEl.textContent = page.date;
@@ -261,6 +268,7 @@
       if (relatedTitleEl) relatedTitleEl.textContent = page.relatedTitle || 'Read more';
       contentEl.innerHTML = page.content;
     } else {
+      document.title = originalDocTitle;
       if (titleEl) titleEl.innerHTML = originalTitle;
       if (categoryEl) categoryEl.textContent = originalCategory;
       if (dateEl) dateEl.textContent = originalDate;
