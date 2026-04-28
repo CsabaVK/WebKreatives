@@ -19,6 +19,22 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'what-does-a-small-business-website-cost-in-2026',
+    title:            'Wat Kost Een Website Voor Een Klein Bedrijf in 2026?',
+    titleEn:          'What Does a Small Business Website Cost in 2026?',
+    category:         'Webdesign Tips',
+    categoryEn:       'Web Design Tips',
+    date:             '2026-04-22',
+    dateFormatted:    '22 april 2026',
+    dateFormattedEn:  '22 April 2026',
+    readTime:         '8 min lezen',
+    readTimeEn:       '8 min read',
+    publishedAt:      '2026-04-22T10:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Wat kost een website laten maken in 2026? Een praktische gids voor kleine bedrijven die slim willen vergelijken zonder in de goedkoopste val te lopen.',
+    excerptEn:        'What does a website cost in 2026? A practical guide for small businesses that want to compare options without falling into the cheapest trap.'
+  },
+  {
     slug:             'local-seo-how-google-finds-you-in-your-city',
     title:            'Lokale SEO: Hoe Google Jou Vindt in Jouw Stad',
     titleEn:          'Local SEO: How Google Finds You in Your City',
