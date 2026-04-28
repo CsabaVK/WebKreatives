@@ -8,8 +8,12 @@
   const originalDate = document.querySelector('.art-date')?.textContent || '';
   const originalRead = document.querySelector('.art-readtime')?.textContent || '';
   const originalCurrent = document.querySelector('.arc-current')?.textContent || '';
+  const originalArticlesLink = document.querySelector('[data-wk-articles-link]')?.textContent || '';
   const originalBottomTitle = document.querySelector('.art-bottom-cta h2')?.innerHTML || '';
   const originalBottomText = document.querySelector('.art-bottom-cta p')?.textContent || '';
+  const originalBottomPrimaryBtn = document.querySelector('.art-bottom-cta-btns .btn.btn-red')?.textContent || '';
+  const originalBottomSecondaryBtn = document.querySelector('.art-bottom-cta-btns .btn.btn-outline-white')?.textContent || '';
+  const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
     '5-reasons-customers-leave-your-website': {
@@ -20,6 +24,10 @@
       title: '5 Reasons Customers Leave<br><em>Your Website</em>',
       bottomTitle: 'We can fix it.',
       bottomText: 'A website that actually works for your business: fast, mobile-friendly, and built to bring in customers. From €199, live within 5 days.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
       content: `
 <p>You already have a website. Maybe it was built for you, maybe you put it together yourself. It is online. And still, customers are not really coming in through it. No form submissions, no phone calls starting with “I saw your website”, no steady flow of new leads from Google.</p>
 <p>The problem usually is not that you <em>do not have</em> a website. It is that the website is doing things that actively push visitors away. Small mistakes with big consequences. In this article, we break down five of the most common ones and what to do about them.</p>
@@ -63,6 +71,10 @@
       title: 'Why Your Hair Salon<br><em>Needs a Website</em>',
       bottomTitle: 'Your salon deserves<br>a professional website',
       bottomText: 'Starter package from €199, mobile-friendly, quick to launch, and tailored to your salon.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
       content: `
 <p>You have built a good reputation locally. Customers come back. Word of mouth works. But when someone searches for your salon online, do they find you — or a competitor with a better online presence?</p>
 <p>For many salon businesses, a proper website is still missing. That means missed visibility, missed trust, and missed bookings. Social media alone is not enough.</p>
@@ -97,6 +109,10 @@
       title: 'Local SEO: How Google<br><em>Finds You in Your City</em>',
       bottomTitle: 'Want better local visibility<br>without a messy website?',
       bottomText: 'We build websites that communicate clearly, support local rankings, and make your business look professional in Google.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
       content: `
 <p>Many small businesses assume SEO is something only large companies need. But for a local salon, accountant, plumber, restaurant, or studio, <strong>local SEO</strong> is often what decides whether you get found at all.</p>
 <p>When someone searches for terms like <em>dentist Haarlem</em>, <em>plumber Deventer</em>, or <em>web design agency near me</em>, Google does not show random results. It tries to surface the most relevant nearby businesses. And there are clear signals that influence that.</p>
@@ -135,6 +151,10 @@
       title: 'What Does a Small Business Website<br><em>Cost in 2026?</em>',
       bottomTitle: 'Want a website that fits your budget<br>and sells better?',
       bottomText: 'We build compact websites for small businesses that look professional, communicate clearly, and are ready to capture leads.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
       content: `
 <p>One of the most common questions business owners ask is simple: <strong>how much does it cost to have a website made?</strong> And honestly, that makes sense. If you run a small business, you do not want to overpay, but you also do not want to end up with a website that looks fine and produces nothing.</p>
 <p>Website pricing in 2026 still varies a lot. You will see offers for a few hundred euros, while other projects cost several thousand. That difference is not only about design. It usually comes down to strategy, structure, copy, speed, SEO, and whether the website is built to actually help turn visitors into enquiries.</p>
@@ -176,6 +196,10 @@
       title: 'Why Your Google Business Profile<br><em>Is Your New Homepage in 2026</em>',
       bottomTitle: 'Want to look stronger locally<br>from the very first Google click?',
       bottomText: 'We build websites and local visibility systems that work together so your business feels more professional and more convincing from the start.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
       content: `
 <p>Many business owners still assume their website is always the main first impression online. But for local searches, that is becoming less true. In 2026, the first impression often starts in <strong>Google Maps</strong>, in the local pack, or in AI-style summaries above the traditional results.</p>
 <p>In other words, for many small businesses, the <strong>Google Business Profile</strong> now behaves like a second homepage. Sometimes even the first one.</p>
@@ -217,16 +241,24 @@
     const dateEl = document.querySelector('.art-date');
     const readEl = document.querySelector('.art-readtime');
     const currentEl = document.querySelector('.arc-current');
+    const articlesLinkEl = document.querySelector('[data-wk-articles-link]');
     const bottomTitleEl = document.querySelector('.art-bottom-cta h2');
     const bottomTextEl = document.querySelector('.art-bottom-cta p');
+    const bottomPrimaryBtnEl = document.querySelector('.art-bottom-cta-btns .btn.btn-red');
+    const bottomSecondaryBtnEl = document.querySelector('.art-bottom-cta-btns .btn.btn-outline-white');
+    const relatedTitleEl = document.querySelector('.art-related h3');
     if (key === 'en') {
       if (titleEl) titleEl.innerHTML = page.title;
       if (categoryEl) categoryEl.textContent = page.category;
       if (dateEl) dateEl.textContent = page.date;
       if (readEl) readEl.textContent = page.read;
       if (currentEl) currentEl.textContent = page.current;
+      if (articlesLinkEl) articlesLinkEl.textContent = page.articlesLink || 'Articles';
       if (bottomTitleEl) bottomTitleEl.innerHTML = page.bottomTitle;
       if (bottomTextEl) bottomTextEl.textContent = page.bottomText;
+      if (bottomPrimaryBtnEl) bottomPrimaryBtnEl.textContent = page.bottomPrimaryBtn || 'Start your project →';
+      if (bottomSecondaryBtnEl) bottomSecondaryBtnEl.textContent = page.bottomSecondaryBtn || 'Read more articles';
+      if (relatedTitleEl) relatedTitleEl.textContent = page.relatedTitle || 'Read more';
       contentEl.innerHTML = page.content;
     } else {
       if (titleEl) titleEl.innerHTML = originalTitle;
@@ -234,8 +266,12 @@
       if (dateEl) dateEl.textContent = originalDate;
       if (readEl) readEl.textContent = originalRead;
       if (currentEl) currentEl.textContent = originalCurrent;
+      if (articlesLinkEl) articlesLinkEl.textContent = originalArticlesLink;
       if (bottomTitleEl) bottomTitleEl.innerHTML = originalBottomTitle;
       if (bottomTextEl) bottomTextEl.textContent = originalBottomText;
+      if (bottomPrimaryBtnEl) bottomPrimaryBtnEl.textContent = originalBottomPrimaryBtn;
+      if (bottomSecondaryBtnEl) bottomSecondaryBtnEl.textContent = originalBottomSecondaryBtn;
+      if (relatedTitleEl) relatedTitleEl.textContent = originalRelatedTitle;
       contentEl.innerHTML = originalHtml;
     }
   }
