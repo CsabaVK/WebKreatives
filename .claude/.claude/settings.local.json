@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/templates/invoice-template.html)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(cmd /c \"taskkill /F /IM node.exe\")",
+      "Bash(curl -s https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen)",
+      "WebFetch(domain:www.belastingdienst.nl)",
+      "WebFetch(domain:wetten.overheid.nl)",
+      "WebSearch",
+      "WebFetch(domain:www.orangetax.com)",
+      "WebFetch(domain:business.gov.nl)",
+      "WebFetch(domain:maxius.nl)",
+      "WebFetch(domain:www.wetboek.org)",
+      "WebFetch(domain:invoicedataextraction.com)",
+      "WebFetch(domain:www.eurofiscalis.com)",
+      "WebFetch(domain:www.partnersinadministraties.nl)",
+      "WebFetch(domain:www.btwadvies.com)",
+      "Bash(del \"D:\\\\.openclaw\\\\workspace\\\\projects\\\\WebsitePrototypes\\\\webkreatives-v3\\\\.git\\\\index.lock\")",
+      "Bash(cmd /c \"del D:\\\\.openclaw\\\\workspace\\\\projects\\\\WebsitePrototypes\\\\webkreatives-v3\\\\.git\\\\index.lock\")",
+      "Bash(cmd /c \"dir /b /s D:\\\\.openclaw\\\\workspace\\\\projects\\\\WebsitePrototypes\\\\webkreatives-v3\\\\templates\"\")",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//d/.openclaw/workspace/projects/04-WebKreatives/**)",
+      "Bash(done)"
+    ]
+  }
+}
