@@ -1,4 +1,4 @@
-const { chromium } = require('playwright');
+const { chromium } = require('C:/Users/csaba/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/node_modules/playwright');
 const path = require('path');
 const fs = require('fs');
 
