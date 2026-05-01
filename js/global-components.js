@@ -1,120 +1,344 @@
 (function () {
-  const page = document.body?.dataset?.page || 'home';
-  const isHome = page === 'home';
+  'use strict';
 
-  const logoLight = `<img class="wk-logo-img wk-logo-img--nav" src="/assets/Horizontallogo.png" alt="WebKreatives">`;
+  /* ── 1. Force dark theme ──────────────────────────────── */
+  if (document.body) document.body.setAttribute('data-theme', 'dark');
 
-  const logoDark  = `<img class="wk-logo-img wk-logo-img--footer" src="/assets/darkmodehorizontallogo.png" alt="WebKreatives">`;
+  /* ── 2. Inject fonts + CSS ───────────────────────────── */
+  if (!document.getElementById('wk-gc-fonts')) {
+    const l = document.createElement('link');
+    l.id = 'wk-gc-fonts';
+    l.rel = 'stylesheet';
+    l.href = 'https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap';
+    document.head.appendChild(l);
+  }
 
+  const styleId = 'wk-gc-style';
+  if (!document.getElementById(styleId)) {
+    const s = document.createElement('style');
+    s.id = styleId;
+    s.textContent = `
+/* ── WK GLOBAL DESIGN TOKENS ────────────────────────── */
+:root{
+  --wk-ink:   oklch(8%  .010 25);
+  --wk-ink2:  oklch(18% .010 25);
+  --wk-cream: oklch(97% .008 80);
+  --wk-red:   #df3821;
+  --wk-white: oklch(99% .004 80);
+  --wk-lime:  #b9e185;
+  --wk-f1:    'Unbounded',sans-serif;
+  --wk-f2:    'Figtree',sans-serif;
+  --wk-ease:  cubic-bezier(.16,1,.3,1);
+}
+
+/* ── NAV ─────────────────────────────────────────────── */
+#pNav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 5vw;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  background:oklch(7% .010 25 / .96);
+  backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid oklch(20% .008 25);
+  font-family:var(--wk-f2);
+}
+.wk-logo{
+  font-family:var(--wk-f1);font-size:14px;font-weight:700;
+  letter-spacing:-.02em;color:var(--wk-white);
+  white-space:nowrap;text-decoration:none;
+}
+.wk-logo em{font-style:normal;color:var(--wk-red)}
+#pNav .nav-links{
+  display:flex;gap:32px;list-style:none;justify-content:center;
+}
+#pNav .nav-links a{
+  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:oklch(52% .005 25);position:relative;padding-bottom:3px;
+  transition:color .2s var(--wk-ease);text-decoration:none;
+}
+#pNav .nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:1.5px;border-radius:1px;
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform .35s var(--wk-ease);background:var(--wk-red);
+}
+#pNav .nav-links a:hover,#pNav .nav-links a.active{color:oklch(96% .005 25)}
+#pNav .nav-links a:hover::after,#pNav .nav-links a.active::after{transform:scaleX(1)}
+#pNav .nav-controls{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.wk-divider{width:1px;height:18px;background:oklch(24% .008 25);margin:0 4px}
+
+/* lang dropdown — use same IDs as script.js expects */
+#langDropdown{position:relative}
+#langBtn{
+  display:flex;align-items:center;gap:5px;height:34px;padding:0 6px;
+  font-size:11px;font-weight:700;letter-spacing:.1em;
+  color:oklch(52% .005 25);background:none;border:none;cursor:pointer;
+  font-family:var(--wk-f2);transition:color .2s;
+}
+#langBtn:hover{color:oklch(82% .005 25)}
+#langBtn .lang-flag{
+  width:15px;height:11px;display:block;border-radius:2px;overflow:hidden;flex-shrink:0;
+}
+#langBtn .lang-flag svg{width:100%;height:100%;display:block}
+#langMenu{
+  position:absolute;top:calc(100% + 6px);right:0;
+  background:oklch(10% .010 25);border:1px solid oklch(22% .010 25);
+  border-radius:8px;padding:4px;min-width:72px;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity .18s var(--wk-ease),transform .18s var(--wk-ease);z-index:200;
+}
+#langDropdown.open #langMenu{opacity:1;pointer-events:auto;transform:translateY(0)}
+.lang-option{
+  display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:5px;
+  font-size:11px;font-weight:700;letter-spacing:.1em;
+  color:oklch(50% .005 25);width:100%;text-align:left;cursor:pointer;
+  transition:background .15s,color .15s;white-space:nowrap;
+  background:none;border:none;font-family:var(--wk-f2);
+}
+.lang-option:hover,.lang-option.active{background:oklch(18% .010 25);color:var(--wk-white)}
+.wk-nav-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--wk-white);background:var(--wk-red);
+  padding:10px 22px;border-radius:8px;position:relative;overflow:hidden;
+  transition:transform .3s var(--wk-ease),box-shadow .3s;text-decoration:none;
+}
+.wk-nav-cta::before{
+  content:'';position:absolute;inset:0;background:oklch(39% .200 25);
+  transform:translateX(-100%);transition:transform .4s var(--wk-ease);
+}
+.wk-nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px oklch(39% .200 25 / .4)}
+.wk-nav-cta:hover::before{transform:translateX(0)}
+.wk-nav-cta>span{position:relative}
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  padding:8px;width:38px;height:38px;color:oklch(60% .005 25);
+  background:none;border:none;cursor:pointer;
+}
+.nav-hamburger span{
+  display:block;width:20px;height:1.5px;background:currentColor;
+  border-radius:2px;transition:.25s var(--wk-ease);
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+#mobileMenu{
+  display:none;position:fixed;top:72px;left:0;right:0;
+  background:oklch(7% .010 25 / .98);backdrop-filter:blur(20px);
+  border-bottom:1px solid oklch(20% .008 25);
+  padding:20px 5vw 24px;z-index:99;font-family:var(--wk-f2);
+}
+#mobileMenu.open{display:block}
+#mobileMenu ul{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
+#mobileMenu a{
+  display:block;padding:10px 0;font-size:13px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:oklch(60% .005 25);border-bottom:1px solid oklch(14% .010 25);
+  transition:color .2s;text-decoration:none;
+}
+#mobileMenu a:hover,#mobileMenu a.active{color:var(--wk-white)}
+@media(max-width:900px){
+  #pNav .nav-links,.wk-nav-cta{display:none}
+  .nav-hamburger{display:flex}
+}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.wk-footer{
+  background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);
+  padding:56px 5vw 32px;font-family:var(--wk-f2);
+}
+.wk-fgrid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;
+  max-width:1200px;margin:0 auto 48px;
+}
+.wk-fbrand p{
+  font-size:12.5px;color:oklch(34% .006 25);line-height:1.75;
+  margin:12px 0 14px;max-width:240px;
+}
+.wk-fbrand a{
+  font-size:12.5px;color:var(--wk-lime);font-weight:600;
+  display:block;margin-bottom:6px;transition:color .2s;text-decoration:none;
+}
+.wk-fbrand a:hover{color:oklch(86% .15 130)}
+.wk-fcol h4{
+  font-size:9.5px;font-weight:700;letter-spacing:.12em;
+  color:oklch(26% .008 25);text-transform:uppercase;margin-bottom:16px;
+}
+.wk-fcol a{
+  font-size:12.5px;color:oklch(40% .006 25);display:block;
+  margin-bottom:8px;transition:color .2s;text-decoration:none;
+}
+.wk-fcol a:hover{color:oklch(70% .006 25)}
+.wk-fcol a.wk-g{color:var(--wk-lime);font-weight:600}
+.wk-fbot{
+  border-top:1px solid oklch(11% .010 25);padding-top:22px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;max-width:1200px;margin:0 auto;flex-wrap:wrap;
+}
+.wk-fbot p{font-size:11px;color:oklch(26% .008 25)}
+.wk-fbot-links{display:flex;gap:24px}
+.wk-fbot-links a{
+  font-size:11px;color:oklch(26% .008 25);transition:color .2s;text-decoration:none;
+}
+.wk-fbot-links a:hover{color:oklch(50% .008 25)}
+@media(max-width:900px){.wk-fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){
+  .wk-fgrid{grid-template-columns:1fr}
+  .wk-fbot{flex-direction:column;align-items:flex-start;gap:12px}
+}
+
+/* ── DARK COOKIE OVERRIDE ────────────────────────────── */
+.cookie-banner{
+  background:oklch(16% .010 25) !important;
+  border-color:oklch(26% .010 25) !important;
+}
+.cookie-banner .cookie-copy strong,.cookie-banner .cookie-option strong{
+  color:oklch(96% .005 25) !important;
+}
+.cookie-banner .cookie-copy p,.cookie-banner .cookie-option p{
+  color:oklch(62% .006 25) !important;
+}
+.cookie-banner .cookie-panel{border-top-color:oklch(24% .010 25) !important}
+.cookie-btn-secondary{
+  color:oklch(78% .006 25) !important;
+  border-color:oklch(30% .010 25) !important;
+  background:oklch(14% .010 25) !important;
+}
+.cookie-switch span{background:oklch(28% .010 25) !important}
+.cookie-switch input:checked+span{background:var(--wk-red) !important}
+.cookie-manage-btn{
+  background:oklch(11% .010 25) !important;
+  border-color:oklch(24% .010 25) !important;
+  color:oklch(56% .006 25) !important;
+}
+`;
+    document.head.appendChild(s);
+  }
+
+  /* ── 3. State ─────────────────────────────────────────── */
+  const lang = localStorage.getItem('wk-lang') || 'nl';
+  const page = document.body?.dataset?.page || '';
+
+  const NL_FLAG = `<svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>`;
+  const EN_FLAG = `<svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>`;
+
+  const curFlag = lang === 'nl' ? NL_FLAG : EN_FLAG;
+  const portfolioActive = page === 'portfolio' ? ' class="active"' : '';
+  const articlesActive  = (page === 'articles' || page === 'article') ? ' class="active"' : '';
+  const nlActive = lang !== 'en' ? ' active' : '';
+  const enActive = lang === 'en' ? ' active' : '';
+
+  /* ── 4. Inject nav ───────────────────────────────────── */
   const navRoot = document.getElementById('globalNav');
   if (navRoot) {
     navRoot.innerHTML = `
-      <nav>
-        <a class="logo" href="/">
-          ${logoLight}
-          <span class="logo-tagline" data-i18n="nav.tagline">Webdesign voor kleine bedrijven</span>
-        </a>
-        <div class="nav-links">
-          <a href="/#services" data-i18n="nav.services">Diensten</a>
-          <a href="/portfolio/" data-i18n="nav.work">Onze Websites</a>
-          <a href="/#pricing" data-i18n="nav.pricing">Prijzen</a>
-          <a href="/#testimonials" data-i18n="nav.reviews">Reviews</a>
-          <a href="/articles/" data-i18n="nav.articles">Articles</a>
-          <a href="/#contact" class="btn-nav btn-nav-mobile" data-i18n="nav.cta">Offerte Aanvragen</a>
-        </div>
-        <div class="nav-controls">
-          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          </button>
-          <div class="lang-dropdown" id="langDropdown">
-            <button class="lang-btn" id="langBtn">
-              <span class="lang-flag"><svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg></span>
-              <span class="lang-name">NL</span>
-              <span class="lang-arrow">▾</span>
-            </button>
-            <div class="lang-menu" id="langMenu">
-              <button class="lang-option active" data-lang="nl"><span class="lang-flag"><svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg></span> Nederlands</button>
-              <button class="lang-option" data-lang="en"><span class="lang-flag"><svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg></span> English</button>
-            </div>
-          </div>
-          <a href="/#contact" class="btn-nav btn-nav-desktop" data-i18n="nav.cta">Offerte Aanvragen</a>
-        </div>
-        <button class="hamburger" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
+<nav id="pNav">
+  <div>
+    <a href="/" class="wk-logo">Web<em>Kreatives</em></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/#services" data-i18n="nav.services">Diensten</a></li>
+    <li><a href="/portfolio/"${portfolioActive}>Portfolio</a></li>
+    <li><a href="/#pricing" data-i18n="nav.pricing">Prijzen</a></li>
+    <li><a href="/articles/"${articlesActive} data-i18n="nav.articles">Artikelen</a></li>
+    <li><a href="/#contact" data-i18n="nav.reviews">Reviews</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div id="langDropdown">
+      <button id="langBtn" aria-label="Language">
+        <span class="lang-flag">${curFlag}</span>
+        <span class="lang-name">${lang.toUpperCase()}</span>
+        <span style="opacity:.5;font-size:9px">&#9662;</span>
+      </button>
+      <div id="langMenu">
+        <button class="lang-option${nlActive}" data-lang="nl">
+          <span class="lang-flag">${NL_FLAG}</span> NL
         </button>
-      </nav>`;
+        <button class="lang-option${enActive}" data-lang="en">
+          <span class="lang-flag">${EN_FLAG}</span> EN
+        </button>
+      </div>
+    </div>
+    <div class="wk-divider"></div>
+    <a href="/#contact" class="wk-nav-cta"><span data-i18n="nav.cta">Offerte Aanvragen</span></a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div id="mobileMenu">
+  <ul>
+    <li><a href="/#services" data-i18n="nav.services">Diensten</a></li>
+    <li><a href="/portfolio/"${portfolioActive}>Portfolio</a></li>
+    <li><a href="/#pricing" data-i18n="nav.pricing">Prijzen</a></li>
+    <li><a href="/articles/"${articlesActive} data-i18n="nav.articles">Artikelen</a></li>
+    <li><a href="/#contact" data-i18n="nav.reviews">Reviews</a></li>
+  </ul>
+  <a href="/#contact" class="wk-nav-cta" style="width:100%;justify-content:center">
+    <span data-i18n="nav.cta">Offerte Aanvragen</span>
+  </a>
+</div>`;
+
+    /* Mobile menu toggle */
+    const ham = document.getElementById('navHamburger');
+    const mob = document.getElementById('mobileMenu');
+    if (ham && mob) {
+      ham.addEventListener('click', () => {
+        ham.classList.toggle('open');
+        mob.classList.toggle('open');
+      });
+      /* Close on link click */
+      mob.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          ham.classList.remove('open');
+          mob.classList.remove('open');
+        });
+      });
+    }
   }
 
+  /* ── 5. Inject footer ────────────────────────────────── */
   const footerRoot = document.getElementById('globalFooter');
   if (footerRoot) {
     footerRoot.innerHTML = `
-      <footer>
-        <div class="fgrid">
-          <div class="fbrand">
-            ${logoDark}
-            <p data-i18n="footer.p">Mooie, converterende websites voor kleine bedrijven. Snel, betaalbaar, op maat gemaakt. Gevestigd in Amsterdam.</p>
-            <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
-          </div>
-          <div class="fcol">
-            <h4 data-i18n="footer.services">Diensten</h4>
-            <a href="/#services" data-i18n="footer.design">Website Design</a>
-            <a href="/#services" data-i18n="footer.ecom">Webshops</a>
-            <a href="/#services" data-i18n="footer.seo">SEO &amp; Prestaties</a>
-            <a href="/#services" data-i18n="footer.brand">Branding &amp; Identiteit</a>
-            <a href="/#services" data-i18n="footer.support">Doorlopende Support</a>
-          </div>
-          <div class="fcol">
-            <h4 data-i18n="footer.pages">Pagina's</h4>
-            <a href="/" data-i18n="footer.home">Home</a>
-            <a href="/portfolio/" data-i18n="footer.work">Onze Websites</a>
-            <a href="/articles/" data-i18n="footer.articles">Artikelen</a>
-            <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
-            <a href="/terms/" data-i18n="footer.terms">Voorwaarden</a>
-          </div>
-          <div class="fcol">
-            <h4 data-i18n="footer.connect">Verbinden</h4>
-            <a href="/#contact" class="g" data-i18n="footer.start">Start een Project</a>
-            <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener" class="fsocial-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              <span data-i18n="footer.instagram">Instagram</span>
-            </a>
-            <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener" class="fsocial-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A5 5 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12" rx=".5"/><circle cx="4" cy="4" r="2"/></svg>
-              <span data-i18n="footer.linkedin">LinkedIn</span>
-            </a>
-            <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener" class="fsocial-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.37 7.28a.44.44 0 0 0-.13-.4L3.2 5.63V5.4h3.2l2.47 5.42 2.17-5.42H14v.23l-.89.85a.27.27 0 0 0-.1.26v10.52a.27.27 0 0 0 .1.26l.87.85v.23h-4.39v-.23l.9-.87c.09-.09.09-.11.09-.26V8.72l-2.5 6.35h-.34L4.83 8.72v7.18c-.03.2.04.4.18.54l1.17 1.42v.23H2.86v-.23l1.17-1.42c.13-.14.19-.34.16-.54V7.28h.18zM17.74 18.6c-.48 0-.86-.38-.86-.85s.38-.86.86-.86.86.38.86.86-.39.85-.86.85zm3.4 0c-.48 0-.86-.38-.86-.85s.38-.86.86-.86.86.38.86.86-.38.85-.86.85z"/></svg>
-              <span data-i18n="footer.medium">Medium</span>
-            </a>
-          </div>
-        </div>
-        <div class="fpay">
-          <span class="fpay-label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Secure payments
-          </span>
-          <div class="fpay-icons">
-            <img class="fpay-badge" src="/assets/payment/visa.svg" alt="Visa" width="52" height="34" loading="lazy">
-            <img class="fpay-badge" src="/assets/payment/mastercard.svg" alt="Mastercard" width="52" height="34" loading="lazy">
-            <img class="fpay-badge" src="/assets/payment/ideal.svg" alt="iDEAL" width="52" height="34" loading="lazy">
-            <img class="fpay-badge" src="/assets/payment/applepay.svg" alt="Apple Pay" width="52" height="34" loading="lazy">
-            <img class="fpay-badge" src="/assets/payment/googlepay.svg" alt="Google Pay" width="52" height="34" loading="lazy">
-            <img class="fpay-badge" src="/assets/payment/klarna.svg" alt="Klarna" width="52" height="34" loading="lazy">
-            <img class="fpay-badge" src="/assets/payment/paypal.svg" alt="PayPal" width="52" height="34" loading="lazy">
-            <img class="fpay-badge" src="/assets/payment/stripe.svg" alt="Stripe" width="52" height="34" loading="lazy">
-            <img class="fpay-badge" src="/assets/payment/amazonpay.svg" alt="Amazon Pay" width="52" height="34" loading="lazy">
-          </div>
-        </div>
-        <div class="fbot">
-          <p data-i18n="footer.meta">© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097</p>
-          <p class="footer-legal-links">
-            <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
-            <span aria-hidden="true">·</span>
-            <a href="/terms/" data-i18n="footer.terms">Terms</a>
-          </p>
-        </div>
-      </footer>`;
+<footer class="wk-footer">
+  <div class="wk-fgrid">
+    <div class="wk-fbrand">
+      <img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"
+           style="height:100px;width:auto;max-width:100%;display:block;margin-bottom:8px">
+      <p data-i18n="footer.p">Mooie, converterende websites voor kleine bedrijven. Snel, betaalbaar, op maat gemaakt. Gevestigd in Amsterdam.</p>
+      <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
+    </div>
+    <div class="wk-fcol">
+      <h4 data-i18n="footer.services">Diensten</h4>
+      <a href="/#services" data-i18n="footer.design">Website Design</a>
+      <a href="/#services" data-i18n="footer.ecom">Webshops</a>
+      <a href="/#services" data-i18n="footer.seo">SEO &amp; Prestaties</a>
+      <a href="/#services" data-i18n="footer.brand">Branding &amp; Identiteit</a>
+      <a href="/#services" data-i18n="footer.support">Doorlopende Support</a>
+    </div>
+    <div class="wk-fcol">
+      <h4 data-i18n="footer.pages">Pagina's</h4>
+      <a href="/" data-i18n="footer.home">Home</a>
+      <a href="/portfolio/" data-i18n="footer.work">Portfolio</a>
+      <a href="/articles/" data-i18n="footer.articles">Artikelen</a>
+      <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
+      <a href="/terms/" data-i18n="footer.terms">Voorwaarden</a>
+    </div>
+    <div class="wk-fcol">
+      <h4 data-i18n="footer.connect">Verbinden</h4>
+      <a href="/#contact" class="wk-g" data-i18n="footer.start">Start een Project</a>
+      <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener" data-i18n="footer.instagram">Instagram</a>
+      <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
+      <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener" data-i18n="footer.medium">Medium</a>
+    </div>
+  </div>
+  <div class="wk-fbot">
+    <p data-i18n="footer.meta">&copy; 2026 WebKreatives &middot; Amsterdam, Netherlands &middot; KVK: 94051097</p>
+    <div class="wk-fbot-links">
+      <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
+      <a href="/terms/" data-i18n="footer.terms">Terms</a>
+    </div>
+  </div>
+</footer>`;
   }
 })();
-
