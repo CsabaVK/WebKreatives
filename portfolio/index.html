@@ -80,7 +80,7 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 .nav-mobile-menu a:hover,.nav-mobile-menu a.active{color:var(--white)}
 
 /* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.port-hero{padding:130px 5vw 56px;display:flex;align-items:flex-end;justify-content:space-between;gap:48px;border-bottom:1px solid oklch(15% .010 25)}
+.port-hero{padding:110px 5vw 56px;display:flex;align-items:flex-end;justify-content:space-between;gap:48px;border-bottom:1px solid oklch(15% .010 25)}
 .port-hero-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;align-items:center;gap:8px;margin-bottom:18px}
 .port-hero-crumb a{transition:color .2s}
 .port-hero-crumb a:hover{color:oklch(56% .008 25)}
@@ -93,7 +93,7 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 .port-stat-l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:oklch(38% .008 25);margin-top:5px}
 
 /* â”€â”€ FILTERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.port-filters{position:fixed;top:72px;left:0;right:0;z-index:90;background:oklch(9% .010 25 / .97);backdrop-filter:blur(16px);border-bottom:1px solid oklch(15% .010 25);padding:12px 5vw;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.port-filters{background:oklch(9% .010 25 / .97);border-bottom:1px solid oklch(15% .010 25);padding:12px 5vw;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .pf-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:oklch(32% .008 25);margin-right:4px;flex-shrink:0}
 .pf-btn{padding:5px 14px;border-radius:100px;border:1px solid oklch(22% .010 25);font-family:var(--f2);font-size:11px;font-weight:600;color:oklch(50% .006 25);transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);cursor:none}
 .pf-btn:hover{border-color:oklch(40% .010 25);color:oklch(76% .006 25)}
@@ -709,11 +709,15 @@ pfBtns.forEach(btn=>{
 /* â”€â”€ GSAP SCROLL REVEALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 rows.forEach(row=>{
   const cta=row.querySelector('.pf-cta');
-  if(!cta) return;
-  row.addEventListener('click',e=>{
-    if(e.target.closest('a,button')) return;
-    cta.click();
-  });
+  const preview=row.querySelector('.pf-preview');
+  if(!cta||!preview) return;
+  const a=document.createElement('a');
+  a.href=cta.href;
+  a.target='_blank';
+  a.rel='noopener noreferrer';
+  a.style.cssText='display:block;border-radius:9px;overflow:hidden;';
+  preview.parentNode.insertBefore(a,preview);
+  a.appendChild(preview);
 });
 
 const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
