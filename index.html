@@ -945,7 +945,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   gap:48px;padding-bottom:56px;
   border-bottom:1px solid var(--lined);margin-bottom:36px;
 }
-.fbrand-logo img{height:60px;width:auto;margin-bottom:18px}
+.fbrand-logo img{height:80px;width:auto;margin-bottom:18px}
 .fbrand p{font-size:13px;color:oklch(42% .005 25);line-height:1.7;font-weight:300;max-width:240px;margin-bottom:14px}
 .fbrand a{font-size:13px;color:oklch(52% .005 25);transition:color .2s}
 .fbrand a:hover{color:oklch(72% .005 25)}
@@ -1169,6 +1169,38 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 .art-dots{display:flex;gap:8px;align-items:center}
 .art-dot{height:6px;border-radius:3px;background:oklch(26% .008 25);transition:background .25s,width .25s;cursor:pointer;width:6px}
 .art-dot.active{background:var(--blue);width:24px}
+
+/* ── COOKIE BANNER ───────────────────────── */
+#ck{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:min(calc(100vw - 32px),860px);z-index:9990;background:var(--cream);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.18);padding:20px 22px;font-family:var(--f2)}
+#ck[hidden]{display:none!important}
+[data-theme="dark"] #ck{background:oklch(14% .010 25);border-color:oklch(24% .010 25)}
+.ck-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ck-copy strong{font-family:var(--f1);font-size:13px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.ck-copy p{font-size:12px;color:var(--ink3);margin-top:4px;line-height:1.5;max-width:520px}
+.ck-copy a{color:var(--red);text-decoration:underline;text-underline-offset:2px}
+.ck-btns{display:flex;gap:8px;flex-shrink:0}
+.ck-btn{border:none;border-radius:10px;padding:10px 16px;font-family:var(--f2);font-size:13px;font-weight:600;cursor:pointer;transition:opacity .15s,transform .15s}
+.ck-btn:hover{opacity:.85;transform:translateY(-1px)}
+.ck-btn-p{background:var(--red);color:#fff}
+.ck-btn-s{background:var(--cream2);color:var(--ink);border:1px solid var(--line)}
+[data-theme="dark"] .ck-btn-s{background:oklch(22% .010 25);border-color:oklch(30% .010 25)}
+.ck-panel{margin-top:16px;border-top:1px solid var(--line);padding-top:16px;display:none}
+.ck-panel.open{display:block}
+.ck-opt{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:10px 0}
+.ck-opt+.ck-opt{border-top:1px solid var(--line)}
+.ck-opt-text strong{font-size:13px;font-weight:600;color:var(--ink)}
+.ck-opt-text p{font-size:12px;color:var(--ink3);margin-top:3px;line-height:1.5}
+.ck-toggle{position:relative;width:44px;height:26px;flex-shrink:0;margin-top:2px}
+.ck-toggle input{position:absolute;opacity:0;pointer-events:none}
+.ck-toggle span{display:block;width:44px;height:26px;border-radius:999px;background:var(--line);transition:background .2s;cursor:pointer}
+.ck-toggle span::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2);transition:left .2s}
+.ck-toggle input:checked+span{background:var(--red)}
+.ck-toggle input:checked+span::after{left:21px}
+.ck-toggle.locked span{background:var(--grn);cursor:default}
+.ck-panel-save{margin-top:14px;display:flex;justify-content:flex-end}
+#ck-manage{position:fixed;bottom:16px;right:16px;z-index:9989;background:oklch(14% .010 25);color:oklch(72% .005 80);border:none;border-radius:10px;padding:8px 12px;font-family:var(--f2);font-size:12px;cursor:pointer;opacity:.7;transition:opacity .2s}
+#ck-manage:hover{opacity:1}
+#ck-manage[hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -1755,8 +1787,8 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <a href="/" data-nl="Home" data-en="Home">Home</a>
       <a href="our-websites/" data-nl="Onze Websites" data-en="Our Websites">Onze Websites</a>
       <a href="articles/" data-nl="Artikelen" data-en="Articles">Artikelen</a>
-      <a href="../privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
-      <a href="../terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
+      <a href="privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
+      <a href="terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
     </div>
     <div class="fcol">
       <h4 data-nl="Verbinden" data-en="Connect">Verbinden</h4>
@@ -1795,8 +1827,8 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   <div class="fbot">
     <p>© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097</p>
     <nav class="fbot-links">
-      <a href="../privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
-      <a href="../terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
+      <a href="privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
+      <a href="terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
     </nav>
   </div>
 </footer>
@@ -2127,6 +2159,122 @@ if(cycleEl&&!reduced){
     el.style.setProperty('--cx','50%');
     el.style.setProperty('--cy','40%');
   });
+})();
+
+/* ── COOKIE BANNER ───────────────────── */
+(function(){
+  const KEY='wk-cookie-consent', PKEY='wk-cookie-prefs';
+  const GA_ID='G-CG9705BC61';
+  let gaLoaded=false;
+
+  function loadGA(){
+    if(gaLoaded||!GA_ID)return; gaLoaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=window.gtag||function(){dataLayer.push(arguments);};
+    const s=document.createElement('script');
+    s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(s);
+    gtag('js',new Date()); gtag('config',GA_ID,{anonymize_ip:true});
+  }
+  function getState(){return localStorage.getItem(KEY);}
+  function getPrefs(){
+    try{return JSON.parse(localStorage.getItem(PKEY)||'{"analytics":true}');}
+    catch{return{analytics:true};}
+  }
+  function save(prefs,state){
+    localStorage.setItem(KEY,state);
+    localStorage.setItem(PKEY,JSON.stringify(prefs));
+    if(prefs.analytics&&state!=='declined')loadGA();
+  }
+
+  const copy={
+    en:{title:'Cookies on WebKreatives',text:'We use essential cookies for language and theme preferences. Analytics helps us improve the site.',accept:'Accept all',customize:'Customize',save:'Save preferences',essential:'Essential',essentialTxt:'Language, theme, and session preferences. Always on.',analytics:'Analytics',analyticsTxt:'Helps us understand which pages work best so we can keep improving.'},
+    nl:{title:'Cookies op WebKreatives',text:'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',accept:'Alles accepteren',customize:'Aanpassen',save:'Voorkeuren opslaan',essential:'Essentieel',essentialTxt:'Taal-, thema- en sessievoorkeuren. Altijd actief.',analytics:'Analytics',analyticsTxt:'Helpt ons begrijpen welke pagina\'s het beste werken zodat we de site blijven verbeteren.'}
+  };
+
+  function render(l){
+    const c=copy[l]||copy.en;
+    const prefs=getPrefs();
+    let el=document.getElementById('ck');
+    if(!el){
+      el=document.createElement('div');
+      el.id='ck';
+      document.body.appendChild(el);
+    }
+    el.innerHTML=`
+      <div class="ck-row">
+        <div class="ck-copy">
+          <strong>${c.title}</strong>
+          <p>${c.text} <a href="privacy/">${l==='nl'?'Privacybeleid':'Privacy Policy'}</a>.</p>
+        </div>
+        <div class="ck-btns">
+          <button class="ck-btn ck-btn-s" id="ck-cust">${c.customize}</button>
+          <button class="ck-btn ck-btn-p" id="ck-acc">${c.accept}</button>
+        </div>
+      </div>
+      <div class="ck-panel" id="ck-panel">
+        <div class="ck-opt">
+          <div class="ck-opt-text"><strong>${c.essential}</strong><p>${c.essentialTxt}</p></div>
+          <label class="ck-toggle locked"><input type="checkbox" checked disabled><span></span></label>
+        </div>
+        <div class="ck-opt">
+          <div class="ck-opt-text"><strong>${c.analytics}</strong><p>${c.analyticsTxt}</p></div>
+          <label class="ck-toggle"><input type="checkbox" id="ck-ana"${prefs.analytics?' checked':''}><span></span></label>
+        </div>
+        <div class="ck-panel-save">
+          <button class="ck-btn ck-btn-p" id="ck-save">${c.save}</button>
+        </div>
+      </div>`;
+
+    el.hidden=['accepted','declined','customized'].includes(getState());
+
+    document.getElementById('ck-acc').onclick=()=>{
+      save({analytics:true},'accepted'); el.hidden=true; showManage(l);
+    };
+    document.getElementById('ck-cust').onclick=()=>{
+      const p=document.getElementById('ck-panel');
+      p.classList.toggle('open');
+    };
+    document.getElementById('ck-save').onclick=()=>{
+      const ana=!!document.getElementById('ck-ana')?.checked;
+      save({analytics:ana},ana?'accepted':'customized');
+      el.hidden=true; showManage(l);
+    };
+  }
+
+  function showManage(l){
+    let btn=document.getElementById('ck-manage');
+    if(!btn){
+      btn=document.createElement('button');
+      btn.id='ck-manage';
+      document.body.appendChild(btn);
+      btn.onclick=()=>{
+        localStorage.removeItem(KEY); localStorage.removeItem(PKEY);
+        render(lang); btn.hidden=true;
+      };
+    }
+    btn.textContent=l==='nl'?'🍪 Cookie-instellingen':'🍪 Cookie settings';
+    btn.hidden=!getState();
+  }
+
+  /* init */
+  const p=getPrefs();
+  if(p.analytics&&['accepted','customized'].includes(getState()))loadGA();
+
+  /* render after lang is set, and re-render on lang change */
+  const _origApplyLang=window._wkApplyLang;
+  document.addEventListener('DOMContentLoaded',()=>{});
+  render(lang);
+  showManage(lang);
+
+  /* re-render banner text on lang switch */
+  const origApplyLang=applyLang;
+  window.applyLang=applyLang=function(l){
+    origApplyLang(l);
+    const ck=document.getElementById('ck');
+    if(ck&&!ck.hidden)render(l);
+    showManage(l);
+  };
 })();
 
 /* ── FORM ─────────────────────────────── */
