@@ -19,11 +19,9 @@
   --ink2:      oklch(18% .010 25);
   --ink3:      oklch(35% .010 25);
   --cream:     oklch(97% .008 80);
-  --cream2:    oklch(93% .012 80);
   --red:       #df3821;
   --red2:      oklch(43% .200 25);
   --white:     oklch(99% .004 80);
-  --line:      oklch(88% .006 80);
   --lined:     oklch(22% .010 25);
   --lime:      #b9e185;
   --grn:       oklch(68% .150 130);
@@ -33,476 +31,203 @@
   --f2:'Figtree',sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);
 }
-
-/* ── RESET ──────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:var(--f2);
-  background:var(--ink);
-  color:var(--cream);
-  line-height:1.6;
-  overflow-x:hidden;
-  cursor:none;
-}
+body{font-family:var(--f2);background:var(--ink);color:var(--cream);line-height:1.6;overflow-x:hidden;cursor:none}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 button{font:inherit;cursor:none;border:none;background:none}
 
 /* ── CURSOR ─────────────────────────────────────────── */
-#c-dot{
-  position:fixed;width:8px;height:8px;
-  background:var(--red);border-radius:50%;
-  pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:transform .15s var(--ease),background .2s,width .2s var(--ease),height .2s var(--ease);
-}
-#c-ring{
-  position:fixed;width:38px;height:38px;
-  border:1.5px solid var(--red);border-radius:50%;
-  pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);
-  transition:width .25s var(--ease),height .25s var(--ease),opacity .2s,border-color .2s;
-  opacity:.6;
-}
+#c-dot{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s var(--ease),width .2s var(--ease),height .2s var(--ease)}
+#c-ring{position:fixed;width:38px;height:38px;border:1.5px solid var(--red);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),opacity .2s;opacity:.6}
 body.cursor-hover #c-ring{width:52px;height:52px;opacity:.9}
 body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 
 /* ── NAV ─────────────────────────────────────────────── */
-#pNav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:18px 5vw;
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  background:oklch(7% .010 25 / .96);
-  backdrop-filter:blur(20px) saturate(1.4);
-  border-bottom:1px solid oklch(20% .008 25);
-}
-.nav-logo-text{
-  font-family:var(--f1);font-size:14px;font-weight:700;
-  letter-spacing:-.02em;color:var(--white);white-space:nowrap;
-}
+#pNav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 5vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:oklch(7% .010 25 / .96);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid oklch(20% .008 25)}
+.nav-logo-text{font-family:var(--f1);font-size:14px;font-weight:700;letter-spacing:-.02em;color:var(--white);white-space:nowrap}
 .nav-logo-text em{font-style:normal;color:var(--red)}
-.nav-links{
-  display:flex;gap:32px;list-style:none;justify-content:center;
-}
-.nav-links a{
-  font-size:11px;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:oklch(52% .005 25);
-  position:relative;padding-bottom:3px;
-  transition:color .2s var(--ease);
-}
-.nav-links a::after{
-  content:'';
-  position:absolute;bottom:0;left:0;right:0;
-  height:1.5px;border-radius:1px;
-  transform:scaleX(0);transform-origin:left center;
-  transition:transform .35s var(--ease);
-  background:var(--red);
-}
+.nav-links{display:flex;gap:32px;list-style:none;justify-content:center}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:oklch(52% .005 25);position:relative;padding-bottom:3px;transition:color .2s var(--ease)}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;border-radius:1px;transform:scaleX(0);transform-origin:left center;transition:transform .35s var(--ease);background:var(--red)}
 .nav-links a:hover,.nav-links a.active{color:oklch(96% .005 25)}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
 .nav-controls{display:flex;align-items:center;gap:6px;justify-content:flex-end}
 .nav-divider{width:1px;height:18px;background:oklch(24% .008 25);margin:0 4px}
 .lang-drop{position:relative}
-.lang-btn-nav{
-  display:flex;align-items:center;gap:5px;
-  height:34px;padding:0 6px;
-  font-size:11px;font-weight:700;letter-spacing:.1em;
-  color:oklch(52% .005 25);
-  transition:color .2s;
-}
+.lang-btn-nav{display:flex;align-items:center;gap:5px;height:34px;padding:0 6px;font-size:11px;font-weight:700;letter-spacing:.1em;color:oklch(52% .005 25);transition:color .2s}
 .lang-btn-nav:hover{color:oklch(82% .005 25)}
 .lang-flag{width:15px;height:11px;display:block;border-radius:2px;overflow:hidden;flex-shrink:0}
-.lang-menu{
-  position:absolute;top:calc(100% + 6px);right:0;
-  background:oklch(10% .010 25);
-  border:1px solid oklch(22% .010 25);
-  border-radius:8px;padding:4px;
-  min-width:72px;opacity:0;pointer-events:none;
-  transform:translateY(-6px);
-  transition:opacity .18s var(--ease),transform .18s var(--ease);
-  z-index:200;
-}
+.lang-menu{position:absolute;top:calc(100% + 6px);right:0;background:oklch(10% .010 25);border:1px solid oklch(22% .010 25);border-radius:8px;padding:4px;min-width:72px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .18s var(--ease),transform .18s var(--ease);z-index:200}
 .lang-drop.open .lang-menu{opacity:1;pointer-events:auto;transform:translateY(0)}
-.lang-opt{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 12px;border-radius:5px;
-  font-size:11px;font-weight:700;letter-spacing:.1em;
-  color:oklch(50% .005 25);width:100%;text-align:left;
-  transition:background .15s,color .15s;white-space:nowrap;
-}
+.lang-opt{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:5px;font-size:11px;font-weight:700;letter-spacing:.1em;color:oklch(50% .005 25);width:100%;text-align:left;transition:background .15s,color .15s;white-space:nowrap}
 .lang-opt:hover,.lang-opt.active{background:oklch(18% .010 25);color:var(--white)}
-.nav-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--white);background:var(--red);
-  padding:10px 22px;border-radius:8px;
-  position:relative;overflow:hidden;
-  transition:transform .3s var(--ease),box-shadow .3s;
-}
-.nav-cta::before{
-  content:'';position:absolute;inset:0;
-  background:oklch(39% .200 25);
-  transform:translateX(-100%);
-  transition:transform .4s var(--ease);
-}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--white);background:var(--red);padding:10px 22px;border-radius:8px;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
+.nav-cta::before{content:'';position:absolute;inset:0;background:oklch(39% .200 25);transform:translateX(-100%);transition:transform .4s var(--ease)}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px oklch(39% .200 25 / .4)}
 .nav-cta:hover::before{transform:translateX(0)}
 .nav-cta span{position:relative}
-
-/* mobile nav */
-.nav-hamburger{
-  display:none;flex-direction:column;justify-content:center;gap:5px;
-  padding:8px;width:38px;height:38px;
-  color:oklch(60% .005 25);
-}
-.nav-hamburger span{
-  display:block;width:20px;height:1.5px;
-  background:currentColor;border-radius:2px;
-  transition:.25s var(--ease);
-}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;padding:8px;width:38px;height:38px;color:oklch(60% .005 25)}
+.nav-hamburger span{display:block;width:20px;height:1.5px;background:currentColor;border-radius:2px;transition:.25s var(--ease)}
 .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.nav-mobile-menu{
-  display:none;position:fixed;
-  top:61px;left:0;right:0;
-  background:oklch(7% .010 25 / .98);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid oklch(20% .008 25);
-  padding:20px 5vw 24px;
-  z-index:99;
-}
+.nav-mobile-menu{display:none;position:fixed;top:61px;left:0;right:0;background:oklch(7% .010 25 / .98);backdrop-filter:blur(20px);border-bottom:1px solid oklch(20% .008 25);padding:20px 5vw 24px;z-index:99}
 .nav-mobile-menu.open{display:block}
 .nav-mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
-.nav-mobile-menu a{
-  display:block;padding:10px 0;
-  font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  color:oklch(60% .005 25);
-  border-bottom:1px solid oklch(14% .010 25);
-  transition:color .2s;
-}
+.nav-mobile-menu a{display:block;padding:10px 0;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:oklch(60% .005 25);border-bottom:1px solid oklch(14% .010 25);transition:color .2s}
 .nav-mobile-menu a:hover,.nav-mobile-menu a.active{color:var(--white)}
 
 /* ── HERO ────────────────────────────────────────────── */
-.port-hero{
-  padding:110px 5vw 60px;
-  display:flex;align-items:flex-end;justify-content:space-between;
-  gap:48px;
-  border-bottom:1px solid oklch(15% .010 25);
-  max-width:1600px;margin:0 auto;
-}
-.port-hero-crumb{
-  font-size:10px;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:oklch(32% .008 25);
-  display:flex;align-items:center;gap:8px;
-  margin-bottom:18px;
-}
+.port-hero{padding:110px 5vw 56px;display:flex;align-items:flex-end;justify-content:space-between;gap:48px;border-bottom:1px solid oklch(15% .010 25)}
+.port-hero-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;align-items:center;gap:8px;margin-bottom:18px}
 .port-hero-crumb a{transition:color .2s}
 .port-hero-crumb a:hover{color:oklch(56% .008 25)}
 .port-hero-crumb .sep{color:oklch(22% .008 25)}
-.port-h1{
-  font-family:var(--f1);
-  font-size:clamp(48px,6.5vw,88px);
-  font-weight:900;
-  letter-spacing:-.04em;
-  line-height:.92;
-  color:var(--white);
-  margin-bottom:22px;
-}
+.port-h1{font-family:var(--f1);font-size:clamp(48px,6.5vw,88px);font-weight:900;letter-spacing:-.04em;line-height:.92;color:var(--white);margin-bottom:22px}
 .port-h1 em{font-style:normal;color:var(--red)}
-.port-hero-sub{
-  font-size:clamp(14px,1.2vw,16px);
-  color:oklch(48% .008 25);
-  font-weight:300;
-  line-height:1.65;
-  max-width:420px;
-}
-.port-hero-stats{
-  display:flex;gap:44px;align-items:flex-end;
-  flex-shrink:0;padding-bottom:4px;
-}
-.port-stat{text-align:left}
-.port-stat-n{
-  font-family:var(--f1);
-  font-size:clamp(32px,3.5vw,46px);
-  font-weight:900;
-  letter-spacing:-.04em;
-  line-height:1;
-}
-.port-stat-l{
-  font-size:10px;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:oklch(38% .008 25);
-  margin-top:5px;
-}
+.port-hero-sub{font-size:clamp(14px,1.2vw,16px);color:oklch(48% .008 25);font-weight:300;line-height:1.65;max-width:420px}
+.port-hero-stats{display:flex;gap:44px;align-items:flex-end;flex-shrink:0;padding-bottom:4px}
+.port-stat-n{font-family:var(--f1);font-size:clamp(32px,3.5vw,46px);font-weight:900;letter-spacing:-.04em;line-height:1}
+.port-stat-l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:oklch(38% .008 25);margin-top:5px}
 
 /* ── FILTERS ─────────────────────────────────────────── */
-.port-filters{
-  position:sticky;top:61px;z-index:50;
-  background:oklch(9% .010 25 / .97);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid oklch(15% .010 25);
-  padding:12px 5vw;
-  display:flex;align-items:center;gap:7px;
-  flex-wrap:wrap;
-}
-.pf-label{
-  font-size:10px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:oklch(32% .008 25);
-  margin-right:4px;flex-shrink:0;
-}
-.pf-btn{
-  padding:5px 14px;
-  border-radius:100px;
-  border:1px solid oklch(22% .010 25);
-  font-family:var(--f2);
-  font-size:11px;font-weight:600;
-  color:oklch(50% .006 25);
-  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);
-  cursor:none;
-}
+.port-filters{position:sticky;top:61px;z-index:50;background:oklch(9% .010 25 / .97);backdrop-filter:blur(16px);border-bottom:1px solid oklch(15% .010 25);padding:12px 5vw;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pf-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:oklch(32% .008 25);margin-right:4px;flex-shrink:0}
+.pf-btn{padding:5px 14px;border-radius:100px;border:1px solid oklch(22% .010 25);font-family:var(--f2);font-size:11px;font-weight:600;color:oklch(50% .006 25);transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);cursor:none}
 .pf-btn:hover{border-color:oklch(40% .010 25);color:oklch(76% .006 25)}
-.pf-btn.active{
-  background:oklch(94% .008 80);
-  border-color:oklch(94% .008 80);
-  color:oklch(10% .010 25);
-}
-.pf-count{
-  margin-left:auto;font-size:11px;
-  color:oklch(34% .008 25);flex-shrink:0;
-}
+.pf-btn.active{background:oklch(94% .008 80);border-color:oklch(94% .008 80);color:oklch(10% .010 25)}
+.pf-count{margin-left:auto;font-size:11px;color:oklch(34% .008 25);flex-shrink:0}
 
-/* ── GRID ─────────────────────────────────────────────── */
-.port-grid{
-  padding:40px 5vw 80px;
+/* ── LIST LAYOUT ─────────────────────────────────────── */
+.pf-list{max-width:1280px;margin:0 auto;padding:0 5vw 80px}
+.pf-row{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  max-width:1600px;margin:0 auto;
-}
-
-/* ── CARD ─────────────────────────────────────────────── */
-.p-card{
-  position:relative;
-  border-radius:10px;
-  overflow:hidden;
-  background:oklch(12% .010 25);
-  display:block;
+  grid-template-columns:1fr 460px;
+  gap:64px;
+  align-items:center;
+  padding:52px 0;
+  border-bottom:1px solid oklch(14% .010 25);
   cursor:none;
 }
-.p-card.wide{grid-column:span 2}
-.p-card-ratio{
-  position:relative;
-  aspect-ratio:3/2;
-  overflow:hidden;
+.pf-row:first-child{border-top:1px solid oklch(14% .010 25)}
+.pf-row[hidden]{display:none}
+
+/* info side */
+.pf-info{display:flex;flex-direction:column;gap:0}
+.pf-num{
+  font-family:var(--f1);font-size:10px;font-weight:700;
+  letter-spacing:.18em;color:oklch(28% .008 25);
+  margin-bottom:16px;
 }
-.p-card.wide .p-card-ratio{aspect-ratio:16/7}
-.p-card-img{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;object-position:top center;
-  display:block;
-  transition:transform .75s var(--ease);
-}
-.p-card:hover .p-card-img{transform:scale(1.06)}
-.p-card-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(
-    to top,
-    oklch(5% .010 25 / .93) 0%,
-    oklch(5% .010 25 / .28) 44%,
-    transparent 100%
-  );
-  transition:background .45s var(--ease);
-}
-.p-card:hover .p-card-overlay{
-  background:linear-gradient(
-    to top,
-    oklch(5% .010 25 / .97) 0%,
-    oklch(5% .010 25 / .55) 55%,
-    oklch(5% .010 25 / .12) 100%
-  );
-}
-.p-card-inner{
-  position:absolute;inset:0;
-  padding:16px 20px 20px;
-  display:flex;flex-direction:column;
-  justify-content:space-between;
-}
-.p-card-tag{
-  align-self:flex-start;
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:9.5px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  padding:4px 10px;border-radius:100px;
-  background:oklch(6% .010 25 / .78);
-  backdrop-filter:blur(10px);
-  border:1px solid oklch(100% 0 0 / .10);
+.pf-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--white);
-  transition:border-color .2s;
+  margin-bottom:12px;
+  width:fit-content;
 }
-.p-card:hover .p-card-tag{border-color:oklch(100% 0 0 / .20)}
-.p-card-tag::before{
-  content:'';width:5px;height:5px;
-  border-radius:50%;background:currentColor;
-  flex-shrink:0;
-}
-.tag-restaurant .p-card-tag{color:oklch(72% .18 25)}
-.tag-health .p-card-tag{color:var(--blue)}
-.tag-construction .p-card-tag{color:var(--yellow)}
-.tag-plumbing .p-card-tag{color:var(--lime)}
-.tag-creative .p-card-tag{color:oklch(80% .12 290)}
-.tag-beauty .p-card-tag{color:oklch(82% .14 340)}
-.tag-bakery .p-card-tag{color:oklch(80% .13 65)}
-.tag-tech .p-card-tag{color:oklch(70% .14 230)}
-.tag-interior .p-card-tag{color:oklch(82% .09 68)}
-.tag-finance .p-card-tag{color:var(--lime)}
-
-.p-card-bottom{display:flex;flex-direction:column;gap:7px}
-.p-card-name{
+.pf-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.pf-row.tag-restaurant .pf-tag{color:oklch(72% .18 25)}
+.pf-row.tag-health     .pf-tag{color:var(--blue)}
+.pf-row.tag-construction .pf-tag{color:var(--yellow)}
+.pf-row.tag-plumbing   .pf-tag{color:var(--lime)}
+.pf-row.tag-creative   .pf-tag{color:oklch(80% .12 290)}
+.pf-row.tag-beauty     .pf-tag{color:oklch(82% .14 340)}
+.pf-row.tag-bakery     .pf-tag{color:oklch(80% .13 65)}
+.pf-row.tag-tech       .pf-tag{color:oklch(70% .14 230)}
+.pf-row.tag-interior   .pf-tag{color:oklch(82% .09 68)}
+.pf-row.tag-finance    .pf-tag{color:var(--lime)}
+.pf-name{
   font-family:var(--f1);
-  font-size:clamp(13px,1.3vw,17px);
-  font-weight:700;
-  letter-spacing:-.02em;
-  color:var(--white);
-  line-height:1.1;
-}
-.p-card-for{
-  font-size:12px;font-weight:300;
-  color:oklch(66% .006 25);
-  line-height:1.45;
-  opacity:0;
-  transform:translateY(7px);
-  transition:opacity .3s var(--ease),transform .3s var(--ease);
-  max-width:340px;
-}
-.p-card.wide .p-card-for{max-width:480px}
-.p-card:hover .p-card-for{opacity:1;transform:translateY(0)}
-.p-card-cta{
-  font-size:12px;font-weight:600;
-  color:oklch(92% .004 25);
-  text-decoration:underline;
-  text-underline-offset:3px;
-  text-decoration-color:oklch(100% 0 0 / .25);
-  display:inline-block;
-  opacity:0;
-  transform:translateY(8px);
-  transition:opacity .3s .06s var(--ease),transform .3s .06s var(--ease),text-decoration-color .2s;
-}
-.p-card:hover .p-card-cta{opacity:1;transform:translateY(0)}
-.p-card-cta:hover{text-decoration-color:oklch(100% 0 0 / .8)}
-.p-card[hidden]{display:none}
-
-/* reveal start state */
-.p-card{
-  opacity:0;
-  transform:translateY(22px);
-}
-
-/* on mobile — always show info */
-@media(hover:none){
-  .p-card-for,.p-card-cta{opacity:1;transform:translateY(0)}
-}
-
-/* ── CTA SECTION ─────────────────────────────────────── */
-.port-cta{
-  border-top:1px solid oklch(15% .010 25);
-  padding:80px 5vw;
-  text-align:center;
-  display:flex;flex-direction:column;align-items:center;gap:20px;
-  max-width:1600px;margin:0 auto;
-}
-.port-cta-h{
-  font-family:var(--f1);
-  font-size:clamp(28px,3.2vw,44px);
+  font-size:clamp(22px,2.6vw,34px);
   font-weight:900;
   letter-spacing:-.04em;
   color:var(--white);
   line-height:1.05;
-  max-width:520px;
+  margin-bottom:16px;
+  transition:color .25s var(--ease);
 }
-.port-cta-h em{font-style:normal;color:var(--red)}
-.port-cta-p{
-  font-size:clamp(14px,1.2vw,16px);
-  color:oklch(48% .008 25);
+.pf-row:hover .pf-name{color:oklch(100% .004 80)}
+.pf-for{
+  font-size:clamp(13px,1.15vw,15px);
+  color:oklch(50% .008 25);
   font-weight:300;
-  max-width:380px;
   line-height:1.6;
+  max-width:460px;
+  margin-bottom:28px;
 }
-.port-cta-btn{
+.pf-cta{
   display:inline-flex;align-items:center;gap:10px;
-  font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--white);background:var(--red);
-  padding:14px 30px;border-radius:8px;
-  position:relative;overflow:hidden;
-  transition:transform .3s var(--ease),box-shadow .3s;
+  font-size:12px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:oklch(56% .008 25);
+  transition:color .25s var(--ease),gap .25s var(--ease);
 }
-.port-cta-btn::before{
-  content:'';position:absolute;inset:0;
-  background:oklch(39% .200 25);
-  transform:translateX(-100%);
-  transition:transform .4s var(--ease);
+.pf-row:hover .pf-cta{color:var(--white);gap:16px}
+.pf-cta-arrow{transition:transform .25s var(--ease)}
+.pf-row:hover .pf-cta-arrow{transform:translateX(4px)}
+
+/* preview side — browser chrome frame */
+.pf-preview{
+  border-radius:9px;
+  overflow:hidden;
+  background:oklch(12% .010 25);
+  border:1px solid oklch(20% .010 25);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+  flex-shrink:0;
 }
+.pf-row:hover .pf-preview{
+  transform:translateY(-6px);
+  box-shadow:0 24px 60px oklch(0% 0 0 / .55);
+}
+.pf-chrome{
+  padding:8px 12px;
+  display:flex;align-items:center;gap:5px;
+  background:oklch(16% .010 25);
+  border-bottom:1px solid oklch(20% .010 25);
+}
+.pf-chrome-dot{width:8px;height:8px;border-radius:50%;background:oklch(24% .010 25)}
+.pf-chrome-dot:nth-child(1){background:oklch(52% .18 25)}
+.pf-chrome-dot:nth-child(2){background:oklch(62% .16 80)}
+.pf-chrome-dot:nth-child(3){background:oklch(60% .20 140)}
+.pf-chrome-bar{flex:1;height:16px;background:oklch(20% .010 25);border-radius:3px;margin:0 8px;font-size:9px;font-weight:500;color:oklch(36% .006 25);display:flex;align-items:center;padding:0 8px;overflow:hidden;white-space:nowrap}
+.pf-screenshot{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top center;display:block;transition:transform .55s var(--ease)}
+.pf-row:hover .pf-screenshot{transform:scale(1.025)}
+
+/* ── CTA SECTION ─────────────────────────────────────── */
+.port-cta{border-top:1px solid oklch(15% .010 25);padding:80px 5vw;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:1280px;margin:0 auto}
+.port-cta-h{font-family:var(--f1);font-size:clamp(28px,3.2vw,44px);font-weight:900;letter-spacing:-.04em;color:var(--white);line-height:1.05;max-width:520px}
+.port-cta-h em{font-style:normal;color:var(--red)}
+.port-cta-p{font-size:clamp(14px,1.2vw,16px);color:oklch(48% .008 25);font-weight:300;max-width:380px;line-height:1.6}
+.port-cta-btn{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--white);background:var(--red);padding:14px 30px;border-radius:8px;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
+.port-cta-btn::before{content:'';position:absolute;inset:0;background:oklch(39% .200 25);transform:translateX(-100%);transition:transform .4s var(--ease)}
 .port-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px oklch(39% .200 25 / .45)}
 .port-cta-btn:hover::before{transform:translateX(0)}
 .port-cta-btn span{position:relative}
 
 /* ── FOOTER ──────────────────────────────────────────── */
-footer{
-  background:oklch(6% .010 25);
-  border-top:1px solid oklch(13% .010 25);
-  padding:56px 5vw 32px;
-}
-.fgrid{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:44px;max-width:1200px;margin:0 auto 48px;
-}
+footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padding:56px 5vw 32px}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;max-width:1200px;margin:0 auto 48px}
 .fbrand p{font-size:12.5px;color:oklch(34% .006 25);line-height:1.75;margin:12px 0 14px;max-width:240px}
 .fbrand a{font-size:12.5px;color:var(--lime);font-weight:600;display:block;margin-bottom:6px;transition:color .2s}
 .fbrand a:hover{color:oklch(86% .15 130)}
-.fcol h4{
-  font-size:9.5px;font-weight:700;letter-spacing:.12em;
-  color:oklch(26% .008 25);text-transform:uppercase;margin-bottom:16px;
-}
-.fcol a{
-  font-size:12.5px;color:oklch(40% .006 25);
-  display:block;margin-bottom:8px;
-  transition:color .2s;
-}
+.fcol h4{font-size:9.5px;font-weight:700;letter-spacing:.12em;color:oklch(26% .008 25);text-transform:uppercase;margin-bottom:16px}
+.fcol a{font-size:12.5px;color:oklch(40% .006 25);display:block;margin-bottom:8px;transition:color .2s}
 .fcol a:hover{color:oklch(70% .006 25)}
 .fcol a.g{color:var(--lime);font-weight:600}
-.fbot{
-  border-top:1px solid oklch(11% .010 25);
-  padding-top:22px;
-  display:flex;justify-content:space-between;align-items:center;gap:16px;
-  max-width:1200px;margin:0 auto;
-  flex-wrap:wrap;
-}
+.fbot{border-top:1px solid oklch(11% .010 25);padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
 .fbot p{font-size:11px;color:oklch(26% .008 25)}
 .fbot-links{display:flex;gap:24px}
 .fbot-links a{font-size:11px;color:oklch(26% .008 25);transition:color .2s}
 .fbot-links a:hover{color:oklch(50% .008 25)}
-.f-logo{
-  font-family:var(--f1);font-size:16px;font-weight:900;
-  letter-spacing:-.03em;color:var(--white);
-}
+.f-logo{font-family:var(--f1);font-size:16px;font-weight:900;letter-spacing:-.03em;color:var(--white)}
 .f-logo em{font-style:normal;color:var(--red)}
 
-/* ── COOKIE BANNER ───────────────────────────────────── */
+/* ── COOKIE ──────────────────────────────────────────── */
 @keyframes ck-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-#ck{
-  position:fixed;bottom:24px;right:24px;
-  width:300px;background:var(--ink2);
-  border:1px solid oklch(28% .010 25);
-  border-radius:12px;padding:18px;
-  z-index:9000;
-  animation:ck-rise .4s var(--ease);
-  box-shadow:0 8px 32px oklch(0% 0 0 / .5);
-}
+#ck{position:fixed;bottom:24px;right:24px;width:300px;background:oklch(18% .010 25);border:1px solid oklch(28% .010 25);border-radius:12px;padding:18px;z-index:9000;animation:ck-rise .4s var(--ease);box-shadow:0 8px 32px oklch(0% 0 0 / .5)}
 #ck[hidden]{display:none!important}
 .ck-title{font-family:var(--f1);font-size:12px;font-weight:700;letter-spacing:-.01em;color:var(--white);margin-bottom:7px}
 .ck-body{font-size:11.5px;color:oklch(50% .005 80);line-height:1.6;margin-bottom:16px}
@@ -520,38 +245,20 @@ footer{
 .ck-opt-text p{font-size:11px;color:oklch(40% .005 80);margin-top:2px;line-height:1.5}
 .ck-toggle{position:relative;width:40px;height:24px;flex-shrink:0;margin-top:2px}
 .ck-toggle input{position:absolute;opacity:0;pointer-events:none}
-.ck-toggle span{
-  position:absolute;inset:0;border-radius:12px;
-  background:oklch(28% .010 25);
-  transition:background .2s;cursor:pointer;
-}
-.ck-toggle span::after{
-  content:'';position:absolute;
-  top:3px;left:3px;width:18px;height:18px;
-  border-radius:50%;background:oklch(55% .005 80);
-  transition:transform .2s var(--ease),background .2s;
-}
+.ck-toggle span{position:absolute;inset:0;border-radius:12px;background:oklch(28% .010 25);transition:background .2s;cursor:pointer}
+.ck-toggle span::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:oklch(55% .005 80);transition:transform .2s var(--ease),background .2s}
 .ck-toggle input:checked+span{background:var(--grn)}
 .ck-toggle input:checked+span::after{transform:translateX(16px);background:var(--white)}
 .ck-toggle.locked span{opacity:.5;cursor:not-allowed}
 .ck-panel-save{margin-top:10px;display:flex;justify-content:flex-end}
-#ck-manage{
-  position:fixed;bottom:24px;right:24px;
-  font-size:11px;font-weight:600;
-  color:oklch(36% .006 25);
-  padding:6px 12px;
-  border:1px solid oklch(22% .010 25);
-  border-radius:20px;background:oklch(10% .010 25);
-  z-index:8000;cursor:pointer;
-  transition:color .2s,border-color .2s;
-}
+#ck-manage{position:fixed;bottom:24px;right:24px;font-size:11px;font-weight:600;color:oklch(36% .006 25);padding:6px 12px;border:1px solid oklch(22% .010 25);border-radius:20px;background:oklch(10% .010 25);z-index:8000;cursor:pointer;transition:color .2s,border-color .2s}
 #ck-manage:hover{color:oklch(60% .006 25);border-color:oklch(36% .010 25)}
 #ck-manage[hidden]{display:none!important}
 
 /* ── RESPONSIVE ──────────────────────────────────────── */
-@media(max-width:1100px){
-  .port-grid{grid-template-columns:repeat(2,1fr)}
-  .p-card.wide{grid-column:span 2}
+@media(max-width:1000px){
+  .pf-row{grid-template-columns:1fr;gap:32px}
+  .pf-preview{max-width:520px}
 }
 @media(max-width:900px){
   .port-hero{flex-direction:column;gap:28px;align-items:flex-start}
@@ -561,11 +268,9 @@ footer{
   .fgrid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
-  .port-grid{grid-template-columns:1fr;gap:10px}
-  .p-card.wide{grid-column:span 1}
-  .p-card.wide .p-card-ratio{aspect-ratio:3/2}
   .port-filters{gap:6px}
   .pf-btn{padding:4px 11px;font-size:10.5px}
+  .pf-row{padding:36px 0;gap:24px}
 }
 @media(max-width:480px){
   .fgrid{grid-template-columns:1fr}
@@ -575,317 +280,348 @@ footer{
 </head>
 <body>
 
-<!-- CURSOR -->
 <div id="c-dot"></div>
 <div id="c-ring"></div>
 
 <!-- NAV -->
 <nav id="pNav">
-  <div>
-    <a href="/" class="nav-logo-text">Web<em>Kreatives</em></a>
-  </div>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="/#services"   data-nl="Diensten"  data-en="Services">Services</a></li>
-    <li><a href="/portfolio/"  class="active" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
-    <li><a href="/#pricing"    data-nl="Prijzen"   data-en="Pricing">Pricing</a></li>
-    <li><a href="/#subscriptions" data-nl="Support" data-en="Support">Support</a></li>
-    <li><a href="/#contact"    data-nl="Contact"   data-en="Contact">Contact</a></li>
+  <div><a href="/" class="nav-logo-text">Web<em>Kreatives</em></a></div>
+  <ul class="nav-links">
+    <li><a href="/#services"      data-nl="Diensten"  data-en="Services">Services</a></li>
+    <li><a href="/portfolio/" class="active" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
+    <li><a href="/#pricing"       data-nl="Prijzen"   data-en="Pricing">Pricing</a></li>
+    <li><a href="/#subscriptions" data-nl="Support"   data-en="Support">Support</a></li>
+    <li><a href="/#contact"       data-nl="Contact"   data-en="Contact">Contact</a></li>
   </ul>
   <div class="nav-controls">
     <div class="lang-drop" id="langDrop">
       <button class="lang-btn-nav" id="langBtn" aria-label="Language">
-        <span class="lang-flag" id="lang-flag-nav"><svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg></span>
+        <span class="lang-flag" id="lang-flag-nav"></span>
         <span id="lang-label-nav">EN</span>
-        <svg width="8" height="6" viewBox="0 0 8 6" fill="currentColor"><path d="M4 6L0 0h8z"/></svg>
+        <svg width="8" height="5" viewBox="0 0 8 5" fill="currentColor" style="opacity:.5"><path d="M4 5L0 0h8z"/></svg>
       </button>
       <div class="lang-menu" id="langMenu">
         <button class="lang-opt" data-lang="nl">
-          <svg viewBox="0 0 640 480" style="width:15px;height:11px;flex-shrink:0;border-radius:2px"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>
-          NL
+          <svg viewBox="0 0 640 480" style="width:15px;height:11px;flex-shrink:0;border-radius:2px"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>NL
         </button>
         <button class="lang-opt active" data-lang="en">
-          <svg viewBox="0 0 640 480" style="width:15px;height:11px;flex-shrink:0;border-radius:2px"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>
-          EN
+          <svg viewBox="0 0 640 480" style="width:15px;height:11px;flex-shrink:0;border-radius:2px"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>EN
         </button>
       </div>
     </div>
     <div class="nav-divider"></div>
     <a href="/#contact" class="nav-cta"><span data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</span></a>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="nav-mobile-menu" id="mobileMenu">
   <ul>
-    <li><a href="/#services"   data-nl="Diensten"  data-en="Services">Services</a></li>
-    <li><a href="/portfolio/"  class="active" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
-    <li><a href="/#pricing"    data-nl="Prijzen"   data-en="Pricing">Pricing</a></li>
-    <li><a href="/#subscriptions" data-nl="Support" data-en="Support">Support</a></li>
-    <li><a href="/#contact"    data-nl="Contact"   data-en="Contact">Contact</a></li>
+    <li><a href="/#services"      data-nl="Diensten"  data-en="Services">Services</a></li>
+    <li><a href="/portfolio/" class="active" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
+    <li><a href="/#pricing"       data-nl="Prijzen"   data-en="Pricing">Pricing</a></li>
+    <li><a href="/#subscriptions" data-nl="Support"   data-en="Support">Support</a></li>
+    <li><a href="/#contact"       data-nl="Contact"   data-en="Contact">Contact</a></li>
   </ul>
   <a href="/#contact" class="nav-cta" style="width:100%;justify-content:center"><span data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</span></a>
 </div>
 
 <!-- HERO -->
 <div style="border-bottom:1px solid oklch(15% .010 25)">
-  <div class="port-hero">
-    <div class="port-hero-left">
-      <div class="port-hero-crumb">
-        <a href="/" data-nl="Home" data-en="Home">Home</a>
-        <span class="sep">/</span>
-        <span data-nl="Portfolio" data-en="Portfolio">Portfolio</span>
-      </div>
-      <h1 class="port-h1" data-nl="Ons <em>Werk.</em>" data-en="Our <em>Work.</em>">Our <em>Work.</em></h1>
-      <p class="port-hero-sub"
-        data-nl="Tien stijlen, tien branches. Zie welke aanpak past bij jouw bedrijf."
-        data-en="Ten styles, ten industries. See which approach fits your business.">Ten styles, ten industries. See which approach fits your business.</p>
+<div class="port-hero">
+  <div>
+    <div class="port-hero-crumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <span class="sep">/</span>
+      <span data-nl="Portfolio" data-en="Portfolio">Portfolio</span>
     </div>
-    <div class="port-hero-stats">
-      <div class="port-stat">
-        <div class="port-stat-n" style="color:var(--red)">10</div>
-        <div class="port-stat-l" data-nl="Website stijlen" data-en="Website styles">Website styles</div>
-      </div>
-      <div class="port-stat">
-        <div class="port-stat-n" style="color:var(--lime)">10</div>
-        <div class="port-stat-l" data-nl="Branches" data-en="Industries">Industries</div>
-      </div>
-      <div class="port-stat">
-        <div class="port-stat-n" style="color:var(--blue)">48h</div>
-        <div class="port-stat-l" data-nl="Oplevering" data-en="Delivery">Delivery</div>
-      </div>
+    <h1 class="port-h1" data-nl="Ons <em>Werk.</em>" data-en="Our <em>Work.</em>">Our <em>Work.</em></h1>
+    <p class="port-hero-sub"
+      data-nl="Tien stijlen, tien branches. Zie welke aanpak past bij jouw bedrijf."
+      data-en="Ten styles, ten industries. See which approach fits your business.">Ten styles, ten industries. See which approach fits your business.</p>
+  </div>
+  <div class="port-hero-stats">
+    <div>
+      <div class="port-stat-n" style="color:var(--red)">10</div>
+      <div class="port-stat-l" data-nl="Website stijlen" data-en="Website styles">Website styles</div>
+    </div>
+    <div>
+      <div class="port-stat-n" style="color:var(--lime)">10</div>
+      <div class="port-stat-l" data-nl="Branches" data-en="Industries">Industries</div>
+    </div>
+    <div>
+      <div class="port-stat-n" style="color:var(--blue)">48h</div>
+      <div class="port-stat-l" data-nl="Oplevering" data-en="Delivery">Delivery</div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- FILTERS -->
 <div class="port-filters" id="portFilters">
   <span class="pf-label" data-nl="Branche:" data-en="Industry:">Industry:</span>
-  <button class="pf-btn active" data-filter="all"          data-nl="Alle"         data-en="All">All</button>
-  <button class="pf-btn"        data-filter="restaurant"   data-nl="Restaurant"   data-en="Restaurant">Restaurant</button>
-  <button class="pf-btn"        data-filter="health"       data-nl="Zorg"         data-en="Healthcare">Healthcare</button>
-  <button class="pf-btn"        data-filter="construction" data-nl="Bouw"         data-en="Construction">Construction</button>
-  <button class="pf-btn"        data-filter="plumbing"     data-nl="Loodgieter"   data-en="Plumbing">Plumbing</button>
-  <button class="pf-btn"        data-filter="creative"     data-nl="Creatief"     data-en="Creative">Creative</button>
-  <button class="pf-btn"        data-filter="beauty"       data-nl="Beauty"       data-en="Beauty">Beauty</button>
-  <button class="pf-btn"        data-filter="bakery"       data-nl="Bakkerij"     data-en="Bakery">Bakery</button>
-  <button class="pf-btn"        data-filter="tech"         data-nl="Tech"         data-en="Tech">Tech</button>
-  <button class="pf-btn"        data-filter="interior"     data-nl="Interieur"    data-en="Interior">Interior</button>
-  <button class="pf-btn"        data-filter="finance"      data-nl="Finance"      data-en="Finance">Finance</button>
+  <button class="pf-btn active" data-filter="all"          data-nl="Alle"       data-en="All">All</button>
+  <button class="pf-btn"        data-filter="restaurant"   data-nl="Restaurant" data-en="Restaurant">Restaurant</button>
+  <button class="pf-btn"        data-filter="health"       data-nl="Zorg"       data-en="Healthcare">Healthcare</button>
+  <button class="pf-btn"        data-filter="construction" data-nl="Bouw"       data-en="Construction">Construction</button>
+  <button class="pf-btn"        data-filter="plumbing"     data-nl="Loodgieter" data-en="Plumbing">Plumbing</button>
+  <button class="pf-btn"        data-filter="creative"     data-nl="Creatief"   data-en="Creative">Creative</button>
+  <button class="pf-btn"        data-filter="beauty"       data-nl="Beauty"     data-en="Beauty">Beauty</button>
+  <button class="pf-btn"        data-filter="bakery"       data-nl="Bakkerij"   data-en="Bakery">Bakery</button>
+  <button class="pf-btn"        data-filter="tech"         data-nl="Tech"       data-en="Tech">Tech</button>
+  <button class="pf-btn"        data-filter="interior"     data-nl="Interieur"  data-en="Interior">Interior</button>
+  <button class="pf-btn"        data-filter="finance"      data-nl="Finance"    data-en="Finance">Finance</button>
   <span class="pf-count" id="pfCount">10 websites</span>
 </div>
 
-<!-- GRID -->
-<main class="port-grid" id="portGrid">
+<!-- LIST -->
+<div class="pf-list">
 
-  <!-- 1. DE GROOT — wide, finance -->
-  <article class="p-card wide tag-finance" data-category="finance">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/de-groot-accountants.png" alt="De Groot &amp; Partners website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Finance" data-en="Finance">Finance</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">De Groot &amp; Partners</div>
-          <p class="p-card-for"
-            data-nl="Voor accountants en adviseurs die online autoriteit uitstralen."
-            data-en="For accountants and advisors who need to project authority online.">For accountants and advisors who need to project authority online.</p>
-          <a class="p-card-cta" href="../client-projects/de-groot-accountants/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 01 -->
+  <article class="pf-row tag-finance" data-category="finance">
+    <div class="pf-info">
+      <div class="pf-num">01 / 10</div>
+      <div class="pf-tag" data-nl="Finance" data-en="Finance">Finance</div>
+      <div class="pf-name">De Groot &amp; Partners</div>
+      <p class="pf-for"
+        data-nl="Voor accountants en adviseurs die online autoriteit uitstralen. Multi-page opzet met gedeelde navigatie, FAQ, prijscards en contactformulier."
+        data-en="For accountants and advisors who need to project authority online. Multi-page setup with shared nav, FAQ, pricing cards and contact form.">For accountants and advisors who need to project authority online. Multi-page setup with shared nav, FAQ, pricing cards and contact form.</p>
+      <a class="pf-cta" href="../client-projects/de-groot-accountants/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/de-groot-accountants</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/de-groot-accountants.png" alt="De Groot &amp; Partners" loading="lazy">
     </div>
   </article>
 
-  <!-- 2. TANDARTS KNOLL — health -->
-  <article class="p-card tag-health" data-category="health">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/tandarts-knoll.png" alt="Tandarts Knoll website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Zorg" data-en="Healthcare">Healthcare</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">Tandarts Knoll</div>
-          <p class="p-card-for"
-            data-nl="Voor zorgpraktijken die patiënten vertrouwen geven voor de eerste afspraak."
-            data-en="For healthcare practices that build patient trust before the first appointment.">For healthcare practices that build patient trust before the first appointment.</p>
-          <a class="p-card-cta" href="../client-projects/tandarts-knoll/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 02 -->
+  <article class="pf-row tag-health" data-category="health">
+    <div class="pf-info">
+      <div class="pf-num">02 / 10</div>
+      <div class="pf-tag" data-nl="Zorg" data-en="Healthcare">Healthcare</div>
+      <div class="pf-name">Tandarts Knoll</div>
+      <p class="pf-for"
+        data-nl="Voor zorgpraktijken die patiënten vertrouwen geven voor de eerste afspraak. Licht design met openingstijden, contactformulier en tweetalige NL/EN opzet."
+        data-en="For healthcare practices that build patient trust before the first appointment. Light design with opening hours, contact form and bilingual NL/EN setup.">For healthcare practices that build patient trust before the first appointment. Light design with opening hours, contact form and bilingual NL/EN setup.</p>
+      <a class="pf-cta" href="../client-projects/tandarts-knoll/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/tandarts-knoll</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/tandarts-knoll.png" alt="Tandarts Knoll" loading="lazy">
     </div>
   </article>
 
-  <!-- 3. LEYENBURGER — restaurant -->
-  <article class="p-card tag-restaurant" data-category="restaurant">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/leyenburger.png" alt="Leyenburger Grill website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Restaurant" data-en="Restaurant">Restaurant</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">Leyenburger Grill</div>
-          <p class="p-card-for"
-            data-nl="Voor eethuizen die sfeer, menu en locatie direct overbrengen."
-            data-en="For restaurants that put atmosphere, menu and location front and center.">For restaurants that put atmosphere, menu and location front and center.</p>
-          <a class="p-card-cta" href="../client-projects/leyenburger/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 03 -->
+  <article class="pf-row tag-restaurant" data-category="restaurant">
+    <div class="pf-info">
+      <div class="pf-num">03 / 10</div>
+      <div class="pf-tag" data-nl="Restaurant" data-en="Restaurant">Restaurant</div>
+      <div class="pf-name">Leyenburger Grill</div>
+      <p class="pf-for"
+        data-nl="Voor eethuizen die sfeer, menu en locatie direct overbrengen. Donker editorial design met menukaart, openingstijden en Google Maps."
+        data-en="For restaurants that put atmosphere, menu and location front and center. Dark editorial design with menu section, opening hours and Google Maps.">For restaurants that put atmosphere, menu and location front and center. Dark editorial design with menu section, opening hours and Google Maps.</p>
+      <a class="pf-cta" href="../client-projects/leyenburger/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/leyenburger</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/leyenburger.png" alt="Leyenburger Grill" loading="lazy">
     </div>
   </article>
 
-  <!-- 4. LUNA BEAUTY — beauty -->
-  <article class="p-card tag-beauty" data-category="beauty">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/luna-beauty-studio.png" alt="Luna Beauty Studio website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Beauty" data-en="Beauty">Beauty</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">Luna Beauty Studio</div>
-          <p class="p-card-for"
-            data-nl="Voor salons en beautybedrijven waarbij diensten directe boekingen triggeren."
-            data-en="For salons and beauty brands where services need to trigger direct bookings.">For salons and beauty brands where services need to trigger direct bookings.</p>
-          <a class="p-card-cta" href="../client-projects/luna-beauty-studio/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 04 -->
+  <article class="pf-row tag-beauty" data-category="beauty">
+    <div class="pf-info">
+      <div class="pf-num">04 / 10</div>
+      <div class="pf-tag" data-nl="Beauty" data-en="Beauty">Beauty</div>
+      <div class="pf-name">Luna Beauty Studio</div>
+      <p class="pf-for"
+        data-nl="Voor salons en beautybedrijven waarbij diensten directe boekingen triggeren. Warm design met diensten, prijzen, testimonials en WhatsApp-boeking."
+        data-en="For salons and beauty brands where services need to trigger bookings. Warm design with services, pricing, testimonials and WhatsApp booking.">For salons and beauty brands where services need to trigger bookings. Warm design with services, pricing, testimonials and WhatsApp booking.</p>
+      <a class="pf-cta" href="../client-projects/luna-beauty-studio/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/luna-beauty-studio</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/luna-beauty-studio.png" alt="Luna Beauty Studio" loading="lazy">
     </div>
   </article>
 
-  <!-- 5. STUDIO LENA — creative -->
-  <article class="p-card tag-creative" data-category="creative">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/studio-lena-fotografie.png" alt="Studio Lena Fotografie website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Creatief" data-en="Creative">Creative</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">Studio Lena</div>
-          <p class="p-card-for"
-            data-nl="Voor fotografen en creatives die het werk laten spreken."
-            data-en="For photographers and creatives who let their work do the talking.">For photographers and creatives who let their work do the talking.</p>
-          <a class="p-card-cta" href="../client-projects/studio-lena-fotografie/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 05 -->
+  <article class="pf-row tag-creative" data-category="creative">
+    <div class="pf-info">
+      <div class="pf-num">05 / 10</div>
+      <div class="pf-tag" data-nl="Creatief" data-en="Creative">Creative</div>
+      <div class="pf-name">Studio Lena</div>
+      <p class="pf-for"
+        data-nl="Voor fotografen en creatives die het werk laten spreken. Scandinavisch minimalisme met asymmetrisch fotogrid, 100vh split hero en subtiele scrollanimaties."
+        data-en="For photographers and creatives who let their work do the talking. Scandinavian minimalism with asymmetric photo grid, 100vh split hero and subtle scroll animations.">For photographers and creatives who let their work do the talking. Scandinavian minimalism with asymmetric photo grid, 100vh split hero and subtle scroll animations.</p>
+      <a class="pf-cta" href="../client-projects/studio-lena-fotografie/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/studio-lena-fotografie</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/studio-lena-fotografie.png" alt="Studio Lena" loading="lazy">
     </div>
   </article>
 
-  <!-- 6. MAISON BLANC — wide, interior -->
-  <article class="p-card wide tag-interior" data-category="interior">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/maison-blanc-interieur.png" alt="Maison Blanc Interieur website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Interieur" data-en="Interior">Interior</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">Maison Blanc Interieur</div>
-          <p class="p-card-for"
-            data-nl="Voor premium merken waarbij elke bezoeker verfijning moet voelen."
-            data-en="For premium brands where every visitor should feel the quality.">For premium brands where every visitor should feel the quality.</p>
-          <a class="p-card-cta" href="../client-projects/maison-blanc-interieur/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 06 -->
+  <article class="pf-row tag-interior" data-category="interior">
+    <div class="pf-info">
+      <div class="pf-num">06 / 10</div>
+      <div class="pf-tag" data-nl="Interieur" data-en="Interior">Interior</div>
+      <div class="pf-name">Maison Blanc Interieur</div>
+      <p class="pf-for"
+        data-nl="Voor premium merken waarbij elke bezoeker verfijning moet voelen. Ultra-luxe editorial stijl met magazine-grid en antiekgouden accenten."
+        data-en="For premium brands where every visitor should feel the quality. Ultra-luxury editorial style with magazine grid and antique gold accents.">For premium brands where every visitor should feel the quality. Ultra-luxury editorial style with magazine grid and antique gold accents.</p>
+      <a class="pf-cta" href="../client-projects/maison-blanc-interieur/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/maison-blanc-interieur</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/maison-blanc-interieur.png" alt="Maison Blanc Interieur" loading="lazy">
     </div>
   </article>
 
-  <!-- 7. KLUSSENBEDRIJF — construction -->
-  <article class="p-card tag-construction" data-category="construction">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/klussenbedrijf-edward.png" alt="Klussenbedrijf Edward website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Bouw" data-en="Construction">Construction</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">Klussenbedrijf Edward</div>
-          <p class="p-card-for"
-            data-nl="Voor aannemers en klusbedrijven die vertrouwen winnen voor de eerste bel."
-            data-en="For contractors who win trust before the first phone call.">For contractors who win trust before the first phone call.</p>
-          <a class="p-card-cta" href="../client-projects/klussenbedrijf-edward/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 07 -->
+  <article class="pf-row tag-construction" data-category="construction">
+    <div class="pf-info">
+      <div class="pf-num">07 / 10</div>
+      <div class="pf-tag" data-nl="Bouw" data-en="Construction">Construction</div>
+      <div class="pf-name">Klussenbedrijf Edward</div>
+      <p class="pf-for"
+        data-nl="Voor aannemers en klusbedrijven die vertrouwen winnen voor de eerste bel. Industrieel design met projectgalerij, dienstenoverzicht en tweetalige NL/EN opzet."
+        data-en="For contractors who win trust before the first phone call. Industrial design with project gallery, services overview and bilingual NL/EN setup.">For contractors who win trust before the first phone call. Industrial design with project gallery, services overview and bilingual NL/EN setup.</p>
+      <a class="pf-cta" href="../client-projects/klussenbedrijf-edward/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/klussenbedrijf-edward</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/klussenbedrijf-edward.png" alt="Klussenbedrijf Edward" loading="lazy">
     </div>
   </article>
 
-  <!-- 8. BAKKERIJ HARTMAN — bakery -->
-  <article class="p-card tag-bakery" data-category="bakery">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/bakkerij-hartman.png" alt="Bakkerij Hartman website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Bakkerij" data-en="Bakery">Bakery</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">Bakkerij Hartman</div>
-          <p class="p-card-for"
-            data-nl="Voor ambachtelijke merken met een verhaal en een eigen identiteit."
-            data-en="For artisan brands with a story and a distinct identity.">For artisan brands with a story and a distinct identity.</p>
-          <a class="p-card-cta" href="../client-projects/bakkerij-hartman/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 08 -->
+  <article class="pf-row tag-bakery" data-category="bakery">
+    <div class="pf-info">
+      <div class="pf-num">08 / 10</div>
+      <div class="pf-tag" data-nl="Bakkerij" data-en="Bakery">Bakery</div>
+      <div class="pf-name">Bakkerij Hartman</div>
+      <p class="pf-for"
+        data-nl="Voor ambachtelijke merken met een verhaal en een eigen identiteit. Retro vintage design met papiertextuur, sierlijke details en productkaarten."
+        data-en="For artisan brands with a story and a distinct identity. Retro vintage design with paper texture, ornamental details and product cards.">For artisan brands with a story and a distinct identity. Retro vintage design with paper texture, ornamental details and product cards.</p>
+      <a class="pf-cta" href="../client-projects/bakkerij-hartman/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/bakkerij-hartman</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/bakkerij-hartman.png" alt="Bakkerij Hartman" loading="lazy">
     </div>
   </article>
 
-  <!-- 9. NEXUS IT — tech -->
-  <article class="p-card tag-tech" data-category="tech">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/nexus-it-solutions.png" alt="Nexus IT Solutions website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Tech" data-en="Tech">Tech</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">Nexus IT Solutions</div>
-          <p class="p-card-for"
-            data-nl="Voor tech- en IT-bedrijven die professioneel overkomen en leads genereren."
-            data-en="For tech and IT companies that need to look credible and generate leads.">For tech and IT companies that need to look credible and generate leads.</p>
-          <a class="p-card-cta" href="../client-projects/nexus-it-solutions/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 09 -->
+  <article class="pf-row tag-tech" data-category="tech">
+    <div class="pf-info">
+      <div class="pf-num">09 / 10</div>
+      <div class="pf-tag" data-nl="Tech" data-en="Tech">Tech</div>
+      <div class="pf-name">Nexus IT Solutions</div>
+      <p class="pf-for"
+        data-nl="Voor tech- en IT-bedrijven die professioneel overkomen en leads genereren. Donker SaaS design met glassmorphism cards, gradient hero en trust stats."
+        data-en="For tech and IT companies that need to look credible and generate leads. Dark SaaS design with glassmorphism cards, gradient hero and trust stats.">For tech and IT companies that need to look credible and generate leads. Dark SaaS design with glassmorphism cards, gradient hero and trust stats.</p>
+      <a class="pf-cta" href="../client-projects/nexus-it-solutions/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/nexus-it-solutions</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/nexus-it-solutions.png" alt="Nexus IT Solutions" loading="lazy">
     </div>
   </article>
 
-  <!-- 10. VANDERBERG — plumbing -->
-  <article class="p-card tag-plumbing" data-category="plumbing">
-    <div class="p-card-ratio">
-      <img class="p-card-img" src="../assets/screenshots/vanderberg-loodgieter.png" alt="Van der Berg Loodgieter website">
-      <div class="p-card-overlay"></div>
-      <div class="p-card-inner">
-        <div class="p-card-tag" data-nl="Loodgieter" data-en="Plumbing">Plumbing</div>
-        <div class="p-card-bottom">
-          <div class="p-card-name">Van der Berg Loodgieter</div>
-          <p class="p-card-for"
-            data-nl="Voor vakmensen die klanten dag en nacht kunnen bereiken."
-            data-en="For tradespeople who need to be reachable around the clock.">For tradespeople who need to be reachable around the clock.</p>
-          <a class="p-card-cta" href="../client-projects/vanderberg-loodgieter/" target="_blank"
-            data-nl="Bekijk website →" data-en="View website →">View website →</a>
-        </div>
+  <!-- 10 -->
+  <article class="pf-row tag-plumbing" data-category="plumbing">
+    <div class="pf-info">
+      <div class="pf-num">10 / 10</div>
+      <div class="pf-tag" data-nl="Loodgieter" data-en="Plumbing">Plumbing</div>
+      <div class="pf-name">Van der Berg Loodgieter</div>
+      <p class="pf-for"
+        data-nl="Voor vakmensen die klanten dag en nacht kunnen bereiken. Professioneel vertrouwensdesign met spoed-CTA, diensten, reviews en contactformulier."
+        data-en="For tradespeople who need to be reachable around the clock. Professional trust-first design with emergency CTA, services, reviews and contact form.">For tradespeople who need to be reachable around the clock. Professional trust-first design with emergency CTA, services, reviews and contact form.</p>
+      <a class="pf-cta" href="../client-projects/vanderberg-loodgieter/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/vanderberg-loodgieter</div>
       </div>
+      <img class="pf-screenshot" src="../assets/screenshots/vanderberg-loodgieter.png" alt="Van der Berg Loodgieter" loading="lazy">
     </div>
   </article>
 
-</main>
+</div><!-- /pf-list -->
 
-<!-- CTA SECTION -->
+<!-- CTA -->
 <div style="padding:0 5vw">
-  <section class="port-cta">
-    <h2 class="port-cta-h"
-      data-nl="Jouw bedrijf <em>hier</em>?"
-      data-en="Your business <em>here</em>?">Your business <em>here</em>?</h2>
-    <p class="port-cta-p"
-      data-nl="We bouwen voor elke branche. Start met een gratis gesprek van 30 minuten."
-      data-en="We build for any industry. Start with a free 30-minute call.">We build for any industry. Start with a free 30-minute call.</p>
-    <a href="/#contact" class="port-cta-btn">
-      <span data-nl="Start je project" data-en="Start your project">Start your project</span>
-      <span>→</span>
-    </a>
-  </section>
+<section class="port-cta">
+  <h2 class="port-cta-h" data-nl="Jouw bedrijf <em>hier</em>?" data-en="Your business <em>here</em>?">Your business <em>here</em>?</h2>
+  <p class="port-cta-p"
+    data-nl="We bouwen voor elke branche. Start met een gratis gesprek van 30 minuten."
+    data-en="We build for any industry. Start with a free 30-minute call.">We build for any industry. Start with a free 30-minute call.</p>
+  <a href="/#contact" class="port-cta-btn">
+    <span data-nl="Start je project" data-en="Start your project">Start your project</span>
+    <span>→</span>
+  </a>
+</section>
 </div>
 
 <!-- FOOTER -->
@@ -928,116 +664,78 @@ footer{
 </footer>
 
 <script>
-/* ── CURSOR ───────────────────────────────────────────── */
-const dot=document.getElementById('c-dot');
-const ring=document.getElementById('c-ring');
+/* ── CURSOR ─────────────────────────────────────────── */
+const dot=document.getElementById('c-dot'),ring=document.getElementById('c-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
 (function loop(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button,.p-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add(el.tagName==='A'||el.tagName==='BUTTON'?'cursor-btn':'cursor-hover'));
+document.querySelectorAll('a,button,.pf-row').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add(el.classList.contains('pf-row')?'cursor-hover':'cursor-btn'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-btn','cursor-hover'));
 });
 
-/* ── LANGUAGE ─────────────────────────────────────────── */
+/* ── LANGUAGE ────────────────────────────────────────── */
 let lang=localStorage.getItem('wk-lang')||'en';
 const langDrop=document.getElementById('langDrop');
-const nlFlag='<svg viewBox="0 0 640 480" style="width:15px;height:11px;border-radius:2px"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>';
-const enFlag='<svg viewBox="0 0 640 480" style="width:15px;height:11px;border-radius:2px"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>';
+const nlSVG='<svg viewBox="0 0 640 480" style="width:15px;height:11px;border-radius:2px"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>';
+const enSVG='<svg viewBox="0 0 640 480" style="width:15px;height:11px;border-radius:2px"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>';
 
 function applyLang(l){
-  lang=l;
-  localStorage.setItem('wk-lang',l);
+  lang=l;localStorage.setItem('wk-lang',l);
   document.getElementById('lang-label-nav').textContent=l.toUpperCase();
-  document.getElementById('lang-flag-nav').innerHTML=l==='nl'?nlFlag:enFlag;
+  document.getElementById('lang-flag-nav').innerHTML=l==='nl'?nlSVG:enSVG;
   document.querySelectorAll('.lang-opt').forEach(o=>o.classList.toggle('active',o.dataset.lang===l));
-  document.querySelectorAll('[data-nl],[data-en]').forEach(el=>{
-    const txt=el.getAttribute('data-'+l);
-    if(txt)el.innerHTML=txt;
-  });
-  document.title=l==='nl'?'Portfolio — WebKreatives':'Portfolio — WebKreatives';
+  document.querySelectorAll('[data-nl],[data-en]').forEach(el=>{const t=el.getAttribute('data-'+l);if(t)el.innerHTML=t;});
   updateCount();
   langDrop.classList.remove('open');
 }
 applyLang(lang);
-
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();langDrop.classList.toggle('open');});
 document.querySelectorAll('.lang-opt').forEach(o=>o.addEventListener('click',()=>applyLang(o.dataset.lang)));
 document.addEventListener('click',()=>langDrop.classList.remove('open'));
 
-/* ── MOBILE NAV ─────────────────────────────────────────── */
-const hamburger=document.getElementById('navHamburger');
-const mobileMenu=document.getElementById('mobileMenu');
-hamburger.addEventListener('click',e=>{
-  e.stopPropagation();
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-});
+/* ── MOBILE NAV ──────────────────────────────────────── */
+const hamburger=document.getElementById('navHamburger'),mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',e=>{e.stopPropagation();hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});
 document.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');});
 
-/* ── FILTER ───────────────────────────────────────────── */
-let activeFilter='all';
-const cards=Array.from(document.querySelectorAll('.p-card'));
+/* ── FILTER ──────────────────────────────────────────── */
+const rows=Array.from(document.querySelectorAll('.pf-row'));
 const pfBtns=document.querySelectorAll('.pf-btn');
 const pfCount=document.getElementById('pfCount');
-
 function updateCount(){
-  const visible=cards.filter(c=>!c.hasAttribute('hidden'));
-  const w=visible.length;
-  pfCount.textContent=lang==='nl'
-    ?`${w} ${w===1?'website':'websites'}`
-    :`${w} ${w===1?'website':'websites'}`;
+  const n=rows.filter(r=>!r.hidden).length;
+  pfCount.textContent=lang==='nl'?`${n} ${n===1?'website':'websites'}`:`${n} ${n===1?'website':'websites'}`;
 }
-
 pfBtns.forEach(btn=>{
   btn.addEventListener('click',()=>{
-    activeFilter=btn.dataset.filter;
+    const f=btn.dataset.filter;
     pfBtns.forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    cards.forEach(c=>{
-      const match=activeFilter==='all'||c.dataset.category===activeFilter;
-      c.hidden=!match;
-    });
+    rows.forEach(r=>{r.hidden=f!=='all'&&r.dataset.category!==f;});
     updateCount();
   });
 });
 
-/* ── GSAP REVEALS ────────────────────────────────────── */
+/* ── GSAP SCROLL REVEALS ─────────────────────────────── */
 const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-gsap.registerPlugin(ScrollTrigger);
-
 if(!reduced){
-  cards.forEach((card,i)=>{
-    gsap.to(card,{
-      opacity:1,y:0,
-      duration:.65,
-      ease:'power2.out',
-      delay:(i%3)*.08,
-      scrollTrigger:{
-        trigger:card,
-        start:'top 88%',
-        once:true,
+  gsap.registerPlugin(ScrollTrigger);
+  rows.forEach((row,i)=>{
+    gsap.fromTo(row,
+      {opacity:0,y:28},
+      {opacity:1,y:0,duration:.7,ease:'power2.out',
+        scrollTrigger:{trigger:row,start:'top 88%',once:true}
       }
-    });
+    );
   });
-} else {
-  cards.forEach(c=>{c.style.opacity='1';c.style.transform='none';});
 }
 
-/* ── COOKIE BANNER ─────────────────────────────────── */
+/* ── COOKIE ──────────────────────────────────────────── */
 (function(){
-  const KEY='wk-cookie-consent',PKEY='wk-cookie-prefs';
-  const GA_ID='G-CG9705BC61';
+  const KEY='wk-cookie-consent',PKEY='wk-cookie-prefs',GA_ID='G-CG9705BC61';
   let gaLoaded=false;
-  function loadGA(){
-    if(gaLoaded||!GA_ID)return;gaLoaded=true;
-    window.dataLayer=window.dataLayer||[];
-    window.gtag=window.gtag||function(){dataLayer.push(arguments);};
-    const s=document.createElement('script');
-    s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
-    document.head.appendChild(s);
-    gtag('js',new Date());gtag('config',GA_ID,{anonymize_ip:true});
-  }
+  function loadGA(){if(gaLoaded||!GA_ID)return;gaLoaded=true;window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){dataLayer.push(arguments);};const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;document.head.appendChild(s);gtag('js',new Date());gtag('config',GA_ID,{anonymize_ip:true});}
   function getState(){return localStorage.getItem(KEY);}
   function getPrefs(){try{return JSON.parse(localStorage.getItem(PKEY)||'{"analytics":true}');}catch{return{analytics:true};}}
   function save(prefs,state){localStorage.setItem(KEY,state);localStorage.setItem(PKEY,JSON.stringify(prefs));if(prefs.analytics&&state!=='declined')loadGA();}
@@ -1046,8 +744,7 @@ if(!reduced){
     nl:{title:'Cookies op WebKreatives',text:'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',accept:'Alles accepteren',customize:'Aanpassen',save:'Voorkeuren opslaan',essential:'Essentieel',essentialTxt:'Taal-, thema- en sessievoorkeuren. Altijd actief.',analytics:'Analytics',analyticsTxt:'Helpt ons begrijpen welke pagina\'s het beste werken zodat we de site blijven verbeteren.'}
   };
   function render(l){
-    const c=copy[l]||copy.en;
-    const prefs=getPrefs();
+    const c=copy[l]||copy.en,prefs=getPrefs();
     let el=document.getElementById('ck');
     if(!el){el=document.createElement('div');el.id='ck';document.body.appendChild(el);}
     el.innerHTML=`<p class="ck-title">${c.title}</p><p class="ck-body">${c.text} <a href="../privacy/">${l==='nl'?'Privacybeleid':'Privacy Policy'}</a>.</p><div class="ck-btns"><button class="ck-btn ck-btn-s" id="ck-cust">${c.customize}</button><button class="ck-btn ck-btn-p" id="ck-acc">${c.accept}</button></div><div class="ck-panel" id="ck-panel"><div class="ck-opt"><div class="ck-opt-text"><strong>${c.essential}</strong><p>${c.essentialTxt}</p></div><label class="ck-toggle locked"><input type="checkbox" checked disabled><span></span></label></div><div class="ck-opt"><div class="ck-opt-text"><strong>${c.analytics}</strong><p>${c.analyticsTxt}</p></div><label class="ck-toggle"><input type="checkbox" id="ck-ana"${prefs.analytics?' checked':''}><span></span></label></div><div class="ck-panel-save"><button class="ck-btn ck-btn-p" id="ck-save">${c.save}</button></div></div>`;
@@ -1065,7 +762,6 @@ if(!reduced){
   const p=getPrefs();
   if(p.analytics&&['accepted','customized'].includes(getState()))loadGA();
   render(lang);showManage(lang);
-  window._wkRenderCookieBanner=render;
 })();
 </script>
 </body>
