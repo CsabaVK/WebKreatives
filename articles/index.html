@@ -3,427 +3,390 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Articles | WebKreatives</title>
-<meta name="description" content="Praktische artikelen over webdesign, online vindbaarheid en meer klanten aantrekken. Geschreven door WebKreatives voor Nederlandse kleine bedrijven.">
+<title>Artikelen &ndash; WebKreatives</title>
+<meta name="description" content="Praktische artikelen over webdesign, lokale SEO en meer klanten aantrekken. Geschreven door WebKreatives voor kleine bedrijven.">
 <meta name="author" content="WebKreatives">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://webkreatives.com/articles/">
-
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://webkreatives.com/articles/">
-<meta property="og:title" content="Articles | WebKreatives">
-<meta property="og:description" content="Praktische artikelen over webdesign, online vindbaarheid en meer klanten voor kleine bedrijven in Nederland.">
+<meta property="og:title" content="Artikelen &ndash; WebKreatives">
+<meta property="og:description" content="Praktische artikelen over webdesign, lokale SEO en meer klanten voor kleine bedrijven.">
 <meta property="og:image" content="https://webkreatives.com/og-image.svg">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:site_name" content="WebKreatives">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Articles | WebKreatives">
-<meta name="twitter:description" content="Praktische artikelen over webdesign, online vindbaarheid en meer klanten voor kleine bedrijven.">
-
-<!-- Theme -->
 <meta name="theme-color" content="#0d0d0d">
-
-<!-- Google Analytics is loaded via consent in js/script.js -->
-
-<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "WebKreatives Articles",
-  "description": "Praktische artikelen over webdesign, online vindbaarheid en meer klanten aantrekken voor kleine bedrijven.",
+  "name": "WebKreatives Artikelen",
+  "description": "Praktische artikelen over webdesign, lokale SEO en meer klanten aantrekken voor kleine bedrijven.",
   "url": "https://webkreatives.com/articles/",
   "publisher": {
     "@type": "Organization",
     "name": "WebKreatives",
     "url": "https://webkreatives.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://webkreatives.com/favicon.svg"
-    }
+    "logo": {"@type": "ImageObject", "url": "https://webkreatives.com/favicon.svg"}
   },
   "inLanguage": "nl-NL"
 }
 </script>
-
-<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Shared styles -->
-<link rel="stylesheet" href="../css/style.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
-/* ── Articles Index Page ─────────────────────────────── */
-.articles-hero {
-  background: var(--black);
-  padding: 140px 6% 80px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+/* -- TOKENS --------------------------------------------------- */
+:root{
+  --ink:    oklch(8%  .010 25);
+  --ink2:   oklch(18% .010 25);
+  --ink3:   oklch(35% .010 25);
+  --cream:  oklch(97% .008 80);
+  --red:    #df3821;
+  --red2:   oklch(43% .200 25);
+  --white:  oklch(99% .004 80);
+  --lined:  oklch(22% .010 25);
+  --lime:   #b9e185;
+  --grn:    oklch(68% .150 130);
+  --blue:   #648dcb;
+  --yellow: #fbeb78;
+  --f1:'Unbounded',sans-serif;
+  --f2:'Figtree',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
-.articles-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(232,57,42,.18) 0%, transparent 70%);
-  pointer-events: none;
-}
-.articles-hero .label {
-  color: var(--yellow);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  display: block;
-}
-.articles-hero h1 {
-  font-family: var(--fh);
-  font-size: clamp(36px, 5vw, 58px);
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1.12;
-  margin-bottom: 20px;
-}
-.articles-hero h1 em {
-  font-style: italic;
-  color: var(--red);
-}
-.articles-hero p {
-  font-size: 17px;
-  color: #999;
-  max-width: 540px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f2);background:var(--ink);color:var(--cream);line-height:1.6;overflow-x:clip;cursor:none}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:none;border:none;background:none}
 
-/* ── Filter bar ── */
-.articles-filter {
-  background: var(--white);
-  border-bottom: 1px solid var(--grey-200);
-  padding: 20px 6%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.filter-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--grey-500);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-right: 4px;
-}
-.filter-btn {
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 16px;
-  border-radius: 100px;
-  border: 1.5px solid var(--grey-200);
-  background: transparent;
-  color: var(--grey-600);
-  cursor: pointer;
-  transition: all .2s;
-  font-family: var(--fb);
-}
-.filter-btn:hover, .filter-btn.active {
-  background: var(--black);
-  border-color: var(--black);
-  color: var(--white);
-}
-.filter-btn.active {
-  background: var(--red);
-  border-color: var(--red);
-}
+/* -- CURSOR --------------------------------------------------- */
+#c-dot{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s var(--ease),width .2s var(--ease),height .2s var(--ease)}
+#c-ring{position:fixed;width:38px;height:38px;border:1.5px solid var(--red);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),opacity .2s;opacity:.6}
+body.cursor-hover #c-ring{width:52px;height:52px;opacity:.9}
+body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 
-/* ── Articles Grid ── */
-.articles-main {
-  padding: 70px 6% 100px;
-  background: var(--grey-50);
-  min-height: 60vh;
-}
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  max-width: 1140px;
-  margin: 0 auto 60px;
-}
+/* -- HERO ----------------------------------------------------- */
+.art-hero{padding:110px 5vw 64px;border-bottom:1px solid oklch(15% .010 25)}
+.art-hero-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.art-hero-crumb a{transition:color .2s}
+.art-hero-crumb a:hover{color:oklch(56% .008 25)}
+.art-hero-crumb .sep{color:oklch(22% .008 25)}
+.art-h1{font-family:var(--f1);font-size:clamp(48px,6.5vw,88px);font-weight:900;letter-spacing:-.04em;line-height:.92;color:var(--white);margin-bottom:22px}
+.art-h1 em{font-style:normal;color:var(--red)}
+.art-hero-sub{font-size:clamp(14px,1.2vw,16px);color:oklch(48% .008 25);font-weight:300;line-height:1.65;max-width:480px}
 
-/* Featured (first) article — full width */
-.acard.acard-featured {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.acard.acard-featured .acard-thumb {
-  height: 100%;
-  min-height: 280px;
-}
-.acard.acard-featured .acard-body {
-  padding: 40px 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.acard.acard-featured .acard-body h3 {
-  font-size: 24px;
-  line-height: 1.3;
-}
-.acard.acard-featured .acard-body p {
-  font-size: 15px;
-  line-height: 1.75;
-}
+/* -- FILTERS -------------------------------------------------- */
+.art-filters{background:oklch(9% .010 25 / .97);border-bottom:1px solid oklch(15% .010 25);padding:12px 5vw;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.af-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:oklch(32% .008 25);margin-right:4px;flex-shrink:0}
+.af-btn{padding:5px 14px;border-radius:100px;border:1px solid oklch(22% .010 25);font-family:var(--f2);font-size:11px;font-weight:600;color:oklch(50% .006 25);transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);cursor:none}
+.af-btn:hover{border-color:oklch(40% .010 25);color:oklch(76% .006 25)}
+.af-btn.active{background:oklch(94% .008 80);border-color:oklch(94% .008 80);color:oklch(10% .010 25)}
+.af-count{margin-left:auto;font-size:11px;color:oklch(34% .008 25);flex-shrink:0}
 
-/* Article cards (reuse from home) */
-.acard {
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  border: 1px solid var(--grey-200);
-  background: var(--white);
-  transition: transform .2s, box-shadow .2s;
-  display: block;
-  color: inherit;
-  text-decoration: none;
+/* -- ARTICLE LIST --------------------------------------------- */
+.art-list{max-width:1280px;margin:0 auto;padding:0 5vw 80px}
+.art-row{
+  display:grid;
+  grid-template-columns:380px 1fr;
+  gap:60px;
+  align-items:center;
+  padding:52px 0;
+  border-bottom:1px solid oklch(14% .010 25);
+  cursor:pointer;
+  position:relative;
+  z-index:1;
 }
-.acard:hover { transform: translateY(-6px); box-shadow: var(--sh-xl); }
-.acard-coming { opacity: .7; }
-.acard-coming:hover { transform: translateY(-3px); box-shadow: var(--sh-md); opacity: .9; }
-.acard-thumb { height: 210px; position: relative; overflow: hidden; }
-.acard-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
-.acard:hover .acard-thumb img { transform: scale(1.04); }
-.acard-thumb-ph { background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%); display: flex; align-items: center; justify-content: center; }
-.acard-ph-icon { font-size: 48px; opacity: .4; }
-.acard-tag { position: absolute; bottom: 14px; left: 14px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); background: var(--red); padding: 4px 10px; border-radius: 100px; }
-.acard-body { padding: 26px 28px; }
-.acard-meta { font-size: 12px; color: var(--grey-500); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .5px; }
-.acard-body h3 { font-family: var(--fh); font-size: 18px; font-weight: 700; color: var(--black); margin-bottom: 9px; line-height: 1.35; }
-.acard-body p { font-size: 13px; color: var(--grey-600); line-height: 1.65; margin-bottom: 16px; }
-.acard-link { font-size: 13px; font-weight: 600; color: var(--red); display: inline-flex; align-items: center; gap: 4px; transition: gap .2s; }
-.acard:hover .acard-link { gap: 8px; }
+.art-row:first-child{border-top:1px solid oklch(14% .010 25)}
+.art-row[hidden]{display:none}
 
-/* ── Coming soon banner ── */
-.articles-coming {
-  text-align: center;
-  max-width: 540px;
-  margin: 0 auto;
-  padding: 60px 0 0;
+/* image side */
+.art-thumb{
+  border-radius:10px;
+  overflow:hidden;
+  background:oklch(12% .010 25);
+  border:1px solid oklch(20% .010 25);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+  flex-shrink:0;
 }
-.articles-coming h3 {
-  font-family: var(--fh);
-  font-size: 22px;
-  color: var(--black);
-  margin-bottom: 10px;
+.art-row:hover .art-thumb{
+  transform:translateY(-6px);
+  box-shadow:0 24px 60px oklch(0% 0 0 / .55);
 }
-.articles-coming p {
-  font-size: 14px;
-  color: var(--grey-600);
-  line-height: 1.7;
-  margin-bottom: 28px;
+.art-thumb img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  transition:transform .55s var(--ease);
 }
+.art-row:hover .art-thumb img{transform:scale(1.04)}
 
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .articles-grid { grid-template-columns: 1fr 1fr; }
-  .acard.acard-featured { grid-column: 1 / -1; grid-template-columns: 1fr; }
-  .acard.acard-featured .acard-thumb { min-height: 220px; }
-  .acard.acard-featured .acard-body { padding: 28px; }
+/* info side */
+.art-info{display:flex;flex-direction:column;gap:0}
+.art-meta{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.art-cat{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--white);
+  width:fit-content;
 }
-@media (max-width: 580px) {
-  .articles-grid { grid-template-columns: 1fr; }
-  .articles-filter { gap: 8px; }
-  .articles-hero { padding: 120px 6% 60px; }
+.art-cat::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.art-row.cat-seo      .art-cat{color:var(--blue)}
+.art-row.cat-webdesign .art-cat{color:var(--lime)}
+.art-row.cat-kleine   .art-cat{color:var(--yellow)}
+.art-row.cat-tips     .art-cat{color:oklch(72% .12 60)}
+.art-date{font-size:10.5px;color:oklch(36% .006 25);font-weight:400}
+.art-read-time{font-size:10.5px;color:oklch(32% .006 25);display:flex;align-items:center;gap:5px}
+.art-read-time::before{content:'';width:2px;height:2px;border-radius:50%;background:oklch(28% .006 25)}
+.art-title{
+  font-family:var(--f1);
+  font-size:clamp(20px,2.4vw,30px);
+  font-weight:900;
+  letter-spacing:-.03em;
+  color:var(--white);
+  line-height:1.1;
+  margin-bottom:16px;
+  transition:color .25s var(--ease);
 }
+.art-row:hover .art-title{color:oklch(100% .004 80)}
+.art-excerpt{
+  font-size:clamp(13px,1.1vw,15px);
+  color:oklch(50% .008 25);
+  font-weight:300;
+  line-height:1.65;
+  max-width:520px;
+  margin-bottom:28px;
+}
+.art-link{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:oklch(56% .008 25);
+  transition:color .25s var(--ease),gap .25s var(--ease);
+}
+.art-row:hover .art-link{color:var(--white);gap:16px}
+.art-link-arrow{transition:transform .25s var(--ease)}
+.art-row:hover .art-link-arrow{transform:translateX(4px)}
 
-/* Dark mode */
-body[data-theme="dark"] .articles-hero { background: #0d0d0d; }
-body[data-theme="dark"] .articles-hero h1 { color: #f0f0f0; }
-body[data-theme="dark"] .articles-hero p { color: #888; }
-body[data-theme="dark"] .articles-filter { background: #0f0f0f; border-color: #252525; }
-body[data-theme="dark"] .filter-btn { border-color: #333; color: #888; }
-body[data-theme="dark"] .filter-btn:hover { background: #1a1a1a; border-color: #444; color: #eee; }
-body[data-theme="dark"] .articles-main { background: #0f0f0f; }
-body[data-theme="dark"] .acard { background: #141414; border-color: #252525; }
-body[data-theme="dark"] .acard-body h3 { color: #f0f0f0; }
-body[data-theme="dark"] .acard-body p { color: #777; }
-body[data-theme="dark"] .acard-thumb-ph { background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); }
-body[data-theme="dark"] .articles-coming h3 { color: #f0f0f0; }
-body[data-theme="dark"] .articles-coming p { color: #666; }
+/* -- CTA SECTION ---------------------------------------------- */
+.art-cta{border-top:1px solid oklch(15% .010 25);padding:80px 5vw;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:1280px;margin:0 auto}
+.art-cta-h{font-family:var(--f1);font-size:clamp(28px,3.2vw,44px);font-weight:900;letter-spacing:-.04em;color:var(--white);line-height:1.05;max-width:560px}
+.art-cta-h em{font-style:normal;color:var(--red)}
+.art-cta-p{font-size:clamp(14px,1.2vw,16px);color:oklch(48% .008 25);font-weight:300;max-width:380px;line-height:1.6}
+.art-cta-btn{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--white);background:var(--red);padding:14px 30px;border-radius:8px;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
+.art-cta-btn::before{content:'';position:absolute;inset:0;background:oklch(39% .200 25);transform:translateX(-100%);transition:transform .4s var(--ease)}
+.art-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px oklch(39% .200 25 / .45)}
+.art-cta-btn:hover::before{transform:translateX(0)}
+.art-cta-btn span{position:relative}
+
+/* -- RESPONSIVE ----------------------------------------------- */
+@media(max-width:960px){
+  .art-row{grid-template-columns:1fr;gap:28px}
+  .art-thumb{max-width:520px}
+}
+@media(max-width:900px){
+  .art-hero{padding-bottom:48px}
+}
+@media(max-width:640px){
+  .art-filters{gap:6px}
+  .af-btn{padding:4px 11px;font-size:10.5px}
+  .art-row{padding:36px 0;gap:20px}
+}
 </style>
 </head>
-<body>
+<body data-page="articles">
 
-<!-- Global nav -->
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+
 <div id="globalNav"></div>
 
-<!-- Hero -->
-<section class="articles-hero">
-  <span class="label" id="articlesHeroLabel">Artikelen</span>
-  <h1 id="articlesHeroTitle">Kennis die jouw bedrijf<br><em>online laat groeien</em></h1>
-  <p id="articlesHeroText">Praktische artikelen over webdesign, SEO en meer klanten aantrekken, geschreven voor kleine bedrijven in Nederland.</p>
-</section>
-
-<!-- Filter bar -->
-<div class="articles-filter">
-  <span class="filter-label">Categorie:</span>
-  <button class="filter-btn active" data-cat="all">Alles</button>
-  <button class="filter-btn" data-cat="webdesign">Webdesign</button>
-  <button class="filter-btn" data-cat="seo">SEO &amp; Vindbaarheid</button>
-  <button class="filter-btn" data-cat="tips">Business Tips</button>
-  <button class="filter-btn" data-cat="beauty">Kleine Bedrijven</button>
+<!-- HERO -->
+<div class="art-hero">
+  <div class="art-hero-crumb">
+    <a href="/" data-nl="Home" data-en="Home">Home</a>
+    <span class="sep">/</span>
+    <span data-nl="Artikelen" data-en="Articles">Artikelen</span>
+  </div>
+  <h1 class="art-h1" data-nl="Onze <em>Artikelen.</em>" data-en="Our <em>Articles.</em>">Onze <em>Artikelen.</em></h1>
+  <p class="art-hero-sub"
+    data-nl="Praktische gidsen over webdesign, lokale vindbaarheid en online groeien. Zonder vakjargon, direct toepasbaar."
+    data-en="Practical guides on web design, local visibility, and growing online. No jargon, directly applicable.">Praktische gidsen over webdesign, lokale vindbaarheid en online groeien. Zonder vakjargon, direct toepasbaar.</p>
 </div>
 
-<!-- Articles main -->
-<main class="articles-main">
-  <div class="articles-grid" id="articlesGrid"></div>
+<!-- FILTER BAR -->
+<div class="art-filters" id="artFilters">
+  <span class="af-label" data-nl="Filter:" data-en="Filter:">Filter:</span>
+  <button class="af-btn active" data-filter="all" data-nl="Alles" data-en="All">Alles</button>
+  <button class="af-btn" data-filter="seo"       data-nl="Lokale SEO"     data-en="Local SEO">Lokale SEO</button>
+  <button class="af-btn" data-filter="webdesign" data-nl="Webdesign"      data-en="Web Design">Webdesign</button>
+  <button class="af-btn" data-filter="kleine"    data-nl="Kleine Bedrijven" data-en="Small Business">Kleine Bedrijven</button>
+  <span class="af-count" id="artCount"></span>
+</div>
 
-  <!-- Coming soon notice -->
-  <div class="articles-coming">
-    <h3>Meer artikelen zijn onderweg</h3>
-    <p>We publiceren regelmatig nieuwe tips en gidsen over webdesign, SEO en online groeien als klein bedrijf. Wil je op de hoogte blijven?</p>
-    <a href="/#contact" class="btn btn-primary">Houd mij op de hoogte →</a>
-  </div>
-</main>
+<!-- ARTICLE LIST -->
+<div class="art-list" id="artList"></div>
 
-<!-- Global footer -->
+<!-- CTA -->
+<div class="art-cta">
+  <h2 class="art-cta-h"
+    data-nl="Klaar om online te groeien?"
+    data-en="Ready to grow your business <em>online</em>?">Klaar om online te groeien?</h2>
+  <p class="art-cta-p"
+    data-nl="Vertel ons over jouw bedrijf en we kijken samen wat er mogelijk is."
+    data-en="Tell us about your business and we'll explore what's possible together.">Vertel ons over jouw bedrijf en we kijken samen wat er mogelijk is.</p>
+  <a href="/#contact" class="art-cta-btn">
+    <span data-nl="Gratis Consultatie &rarr;" data-en="Free Consultation &rarr;">Gratis Consultatie &rarr;</span>
+  </a>
+</div>
+
 <div id="globalFooter"></div>
 
-<script src="../js/global-components.js?v=20260428-article3"></script>
-<script src="../js/i18n.js?v=20260428-article3"></script>
-<script src="../js/script.js?v=20260428-article3"></script>
-<script src="articles-data.js?v=20260428-article3"></script>
-
+<script src="/js/global-components.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/script.js"></script>
+<script src="articles-data.js"></script>
 <script>
-const ARTICLE_UI = {
-  nl: {
-    title: 'Artikelen | WebKreatives',
-    heroLabel: 'Artikelen',
-    heroTitle: 'Kennis die jouw bedrijf<br><em>online laat groeien</em>',
-    heroText: 'Praktische artikelen over webdesign, SEO en meer klanten aantrekken, geschreven voor kleine bedrijven in Nederland.',
-    filterLabel: 'Categorie:',
-    filters: { all: 'Alles', webdesign: 'Webdesign', seo: 'SEO & Vindbaarheid', tips: 'Business Tips', beauty: 'Kleine Bedrijven' },
-    readMore: 'Lees het volledige artikel →',
-    readArticle: 'Lees artikel →',
-    comingTitle: 'Meer artikelen zijn onderweg',
-    comingText: 'We publiceren regelmatig nieuwe tips en gidsen over webdesign, SEO en online groeien als klein bedrijf. Wil je op de hoogte blijven?',
-    comingBtn: 'Houd mij op de hoogte →',
-    featuredMeta: (a) => `${a.dateFormatted} · ${a.readTime} · ${a.category}`,
-    cardMeta: (a) => `${a.dateFormatted} · ${a.readTime}`
-  },
-  en: {
-    title: 'Articles | WebKreatives',
-    heroLabel: 'Articles',
-    heroTitle: 'Insights that help your business<br><em>grow online</em>',
-    heroText: 'Practical articles about web design, SEO, and attracting more customers, written for small businesses in the Netherlands.',
-    filterLabel: 'Category:',
-    filters: { all: 'All', webdesign: 'Web Design', seo: 'SEO & Visibility', tips: 'Business Tips', beauty: 'Small Business' },
-    readMore: 'Read the full article →',
-    readArticle: 'Read article →',
-    comingTitle: 'More articles are on the way',
-    comingText: 'We regularly publish new tips and guides about web design, SEO, and growing online as a small business. Want to stay updated?',
-    comingBtn: 'Keep me updated →',
-    featuredMeta: (a) => `${a.dateFormatted} · ${a.readTime} · ${a.category}`,
-    cardMeta: (a) => `${a.dateFormatted} · ${a.readTime}`
+(function(){
+  /* ── state ── */
+  let lang = localStorage.getItem('wk-lang') || 'nl';
+  const reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let currentFilter = 'all';
+  let gsapInited = false;
+  let filterInited = false;
+
+  /* ── helpers ── */
+  function getCatKey(cat) {
+    const c = (cat || '').toLowerCase();
+    if (c.includes('seo')) return 'seo';
+    if (c.includes('webdesign') || c.includes('web design')) return 'webdesign';
+    if (c.includes('kleine') || c.includes('small')) return 'kleine';
+    return 'tips';
   }
-};
 
-const filterBtns = document.querySelectorAll('.filter-btn');
-const grid = document.getElementById('articlesGrid');
-let currentCat = 'all';
-
-function articleSortValue(article) {
-  return new Date(article.publishedAt || article.date || 0).getTime();
-}
-
-function articleCategoryClasses(category = '') {
-  const c = category.toLowerCase();
-  const tags = [];
-  if (c.includes('webdesign')) tags.push('webdesign');
-  if (c.includes('seo')) tags.push('seo');
-  if (c.includes('beauty') || c.includes('kapsalon') || c.includes('kleine bedrijven') || c.includes('small business')) tags.push('beauty');
-  if (!tags.length) tags.push('tips');
-  return tags;
-}
-
-function renderArticles(lang) {
-  const ui = ARTICLE_UI[lang] || ARTICLE_UI.nl;
-  document.title = ui.title;
-  document.documentElement.lang = lang;
-  document.getElementById('articlesHeroLabel').textContent = ui.heroLabel;
-  document.getElementById('articlesHeroTitle').innerHTML = ui.heroTitle;
-  document.getElementById('articlesHeroText').textContent = ui.heroText;
-  document.querySelector('.filter-label').textContent = ui.filterLabel;
-  filterBtns.forEach(btn => btn.textContent = ui.filters[btn.dataset.cat] || btn.textContent);
-  document.querySelector('.articles-coming h3').textContent = ui.comingTitle;
-  document.querySelector('.articles-coming p').textContent = ui.comingText;
-  document.querySelector('.articles-coming .btn').textContent = ui.comingBtn;
-
-  const sorted = [...WK_ARTICLES].sort((a, b) => articleSortValue(b) - articleSortValue(a));
-  const featured = sorted[0];
-  const rest = sorted.slice(1);
-
-  const renderCard = (article, featuredCard = false) => {
-    const articleTitle = lang === 'en' ? (article.titleEn || article.title) : article.title;
-    const articleCategory = lang === 'en' ? (article.categoryEn || article.category) : article.category;
-    const articleDate = lang === 'en' ? (article.dateFormattedEn || article.dateFormatted) : article.dateFormatted;
-    const articleRead = lang === 'en' ? (article.readTimeEn || article.readTime) : article.readTime;
-    const articleExcerpt = lang === 'en' ? (article.excerptEn || article.excerpt) : article.excerpt;
-    const cats = articleCategoryClasses(articleCategory);
-    return `<a class="acard ${featuredCard ? 'acard-featured' : ''}" href="/articles/${article.slug}/" data-cat="${cats.join(' ')}">
-      <div class="acard-thumb">
-        <img src="${featuredCard ? article.image.replace('w=760', 'w=1200') : article.image}" alt="${articleTitle}" loading="${featuredCard ? 'eager' : 'lazy'}">
-        <span class="acard-tag">${articleCategory}</span>
+  function renderRow(art, l) {
+    const title    = l === 'en' ? (art.titleEn || art.title) : art.title;
+    const excerpt  = l === 'en' ? (art.excerptEn || art.excerpt) : art.excerpt;
+    const catLabel = l === 'en' ? (art.categoryEn || art.category) : art.category;
+    const date     = l === 'en' ? (art.dateFormattedEn || art.dateFormatted) : art.dateFormatted;
+    const rt       = l === 'en' ? (art.readTimeEn || art.readTime) : art.readTime;
+    const catKey   = getCatKey(art.category);
+    const href     = '/articles/' + art.slug + '/';
+    return `<a class="art-row cat-${catKey}" data-cat="${catKey}" href="${href}" style="text-decoration:none;color:inherit">
+      <div class="art-thumb">
+        <img src="${art.image}" alt="${title.replace(/"/g,'&quot;')}" loading="lazy">
       </div>
-      <div class="acard-body">
-        <div class="acard-meta">${featuredCard ? `${articleDate} · ${articleRead} · ${articleCategory}` : `${articleDate} · ${articleRead}`}</div>
-        <h3>${articleTitle}</h3>
-        <p>${articleExcerpt}</p>
-        <span class="acard-link">${featuredCard ? ui.readMore : ui.readArticle}</span>
+      <div class="art-info">
+        <div class="art-meta">
+          <span class="art-cat">${catLabel}</span>
+          <span class="art-date">${date}</span>
+          <span class="art-read-time">${rt}</span>
+        </div>
+        <h2 class="art-title">${title}</h2>
+        <p class="art-excerpt">${excerpt}</p>
+        <span class="art-link"><span>${l === 'en' ? 'Read article' : 'Lees artikel'}</span> <span class="art-link-arrow">&rarr;</span></span>
       </div>
     </a>`;
-  };
+  }
 
-  grid.innerHTML = [featured ? renderCard(featured, true) : '', ...rest.map(a => renderCard(a))].join('');
-  applyFilter(currentCat);
-}
+  function applyFilter(f, rows, l) {
+    let visible = 0;
+    rows.forEach(row => {
+      const show = f === 'all' || row.dataset.cat === f;
+      row.hidden = !show;
+      if (show) {
+        visible++;
+        if (!reduced && typeof gsap !== 'undefined') gsap.set(row, {opacity: 1, y: 0});
+      }
+    });
+    const countEl = document.getElementById('artCount');
+    if (countEl) {
+      countEl.textContent = l === 'en'
+        ? visible + (visible === 1 ? ' article' : ' articles')
+        : visible + (visible === 1 ? ' artikel' : ' artikelen');
+    }
+  }
 
-function applyFilter(cat) {
-  currentCat = cat;
-  filterBtns.forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-  document.querySelectorAll('.acard').forEach(card => {
-    const cardCats = (card.dataset.cat || '').split(' ');
-    const show = cat === 'all' || cardCats.includes(cat);
-    card.style.display = show ? '' : 'none';
-  });
-}
+  function renderArticles(l) {
+    const list = document.getElementById('artList');
+    if (!list || typeof WK_ARTICLES === 'undefined') return;
+    list.innerHTML = WK_ARTICLES.map(a => renderRow(a, l)).join('');
+    const rows = list.querySelectorAll('.art-row');
 
-filterBtns.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.cat)));
-document.addEventListener('wk:languagechange', (event) => renderArticles(event?.detail?.lang || localStorage.getItem('wk-lang') || 'nl'));
-renderArticles(localStorage.getItem('wk-lang') || 'nl');
+    applyFilter(currentFilter, rows, l);
+
+    if (!filterInited) {
+      filterInited = true;
+      document.querySelectorAll('.af-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentFilter = btn.dataset.filter;
+          document.querySelectorAll('.af-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          applyFilter(currentFilter, list.querySelectorAll('.art-row'), lang);
+        });
+      });
+    }
+
+    if (!gsapInited && !reduced && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsapInited = true;
+      gsap.registerPlugin(ScrollTrigger);
+      rows.forEach(row => {
+        if (!row.hidden) {
+          gsap.fromTo(row,
+            {opacity: 0, y: 28},
+            {opacity: 1, y: 0, duration: .65, ease: 'power3.out',
+             scrollTrigger: {trigger: row, start: 'top 88%', once: true}});
+        }
+      });
+    }
+  }
+
+  /* ── language ── */
+  function applyLang(l) {
+    lang = l;
+    document.querySelectorAll('[data-nl],[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + l);
+      if (val != null) el.innerHTML = val;
+    });
+    renderArticles(l);
+  }
+  applyLang(lang);
+  document.addEventListener('wk:languagechange', e => applyLang(e.detail?.lang || localStorage.getItem('wk-lang') || 'nl'));
+
+  /* ── custom cursor ── */
+  const dot  = document.getElementById('c-dot');
+  const ring = document.getElementById('c-ring');
+  if (dot && ring && !reduced) {
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    dot.style.left = '0'; dot.style.top = '0';
+    ring.style.left = '0'; ring.style.top = '0';
+    (function tick() {
+      rx += (mx - rx) * .14; ry += (my - ry) * .14;
+      dot.style.transform  = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+      requestAnimationFrame(tick);
+    })();
+    document.addEventListener('mouseover', e => {
+      const t = e.target.closest('a,button,.art-row');
+      document.body.classList.toggle('cursor-hover', !!t);
+    });
+  }
+
+  /* ── hero GSAP ── */
+  if (!reduced && typeof gsap !== 'undefined') {
+    gsap.fromTo('.art-hero-crumb', {opacity:0,y:16},{opacity:1,y:0,duration:.6,ease:'power3.out'});
+    gsap.fromTo('.art-h1',  {opacity:0,y:24},{opacity:1,y:0,duration:.7,delay:.1,ease:'power3.out'});
+    gsap.fromTo('.art-hero-sub',{opacity:0,y:18},{opacity:1,y:0,duration:.6,delay:.22,ease:'power3.out'});
+  }
+})();
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
