@@ -16,7 +16,7 @@
         </a>
         <div class="nav-links">
           <a href="/#services" data-i18n="nav.services">Diensten</a>
-          <a href="/our-websites/" data-i18n="nav.work">Onze Websites</a>
+          <a href="/portfolio/" data-i18n="nav.work">Onze Websites</a>
           <a href="/#pricing" data-i18n="nav.pricing">Prijzen</a>
           <a href="/#testimonials" data-i18n="nav.reviews">Reviews</a>
           <a href="/articles/" data-i18n="nav.articles">Articles</a>
@@ -67,7 +67,7 @@
           <div class="fcol">
             <h4 data-i18n="footer.pages">Pagina's</h4>
             <a href="/" data-i18n="footer.home">Home</a>
-            <a href="/our-websites/" data-i18n="footer.work">Onze Websites</a>
+            <a href="/portfolio/" data-i18n="footer.work">Onze Websites</a>
             <a href="/articles/" data-i18n="footer.articles">Artikelen</a>
             <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
             <a href="/terms/" data-i18n="footer.terms">Voorwaarden</a>

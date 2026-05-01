@@ -13,6 +13,9 @@ const sites = [
   'studio-lena-fotografie',
   'maison-blanc-interieur',
   'klussenbedrijf-edward',
+  'bakkerij-hartman',
+  'nexus-it-solutions',
+  'vanderberg-loodgieter',
 ];
 
 (async () => {
