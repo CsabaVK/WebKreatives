@@ -45,7 +45,7 @@
 
 /* ── RESET ──────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   font-family:var(--f2);
   background:var(--cream);
@@ -53,6 +53,7 @@ body{
   line-height:1.6;
   overflow-x:hidden;
   cursor:none;
+  max-width:100vw;
 }
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:none;border:none;background:none}
@@ -206,6 +207,43 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
 .nav-cta span{position:relative}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px oklch(51% .220 25 / .38)}
 .nav-cta:hover::before{transform:translateX(0)}
+
+.mobile-toggle{
+  display:none;
+  width:40px;height:40px;border-radius:9px;
+  align-items:center;justify-content:center;flex-direction:column;gap:5px;
+  color:oklch(76% .005 25);
+  border:1px solid oklch(24% .010 25);
+  background:oklch(10% .010 25 / .72);
+}
+.mobile-toggle span{
+  display:block;width:18px;height:1.5px;border-radius:2px;
+  background:currentColor;transition:transform .24s var(--ease),opacity .2s;
+}
+.mobile-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.mobile-toggle.open span:nth-child(2){opacity:0}
+.mobile-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{
+  display:none;position:fixed;top:74px;left:12px;right:12px;z-index:99;
+  background:oklch(8% .010 25 / .98);
+  border:1px solid oklch(20% .010 25);
+  border-radius:14px;
+  padding:12px;
+  box-shadow:0 22px 70px oklch(0% 0 0 / .45);
+}
+.mobile-menu.open{display:block}
+.mobile-menu a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 10px;
+  border-bottom:1px solid oklch(16% .010 25);
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:oklch(72% .005 25);
+}
+.mobile-menu a:last-child{border-bottom:0}
+.mobile-menu .mobile-menu-cta{
+  margin-top:8px;justify-content:center;border-radius:9px;
+  background:var(--red);color:var(--white);border-bottom:0;
+}
 
 /* ── HERO ─────────────────────────────────────────────── */
 .hero{
@@ -461,6 +499,7 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
 .ticker{
   background:var(--red);padding:13px 0;
   overflow:hidden;white-space:nowrap;
+  width:100%;max-width:100vw;contain:paint;
   border-top:2px solid oklch(88% .155 122 / .35);
   border-bottom:2px solid oklch(88% .155 122 / .35);
 }
@@ -1032,15 +1071,64 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   .fgrid{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
   .nav-divider{display:none}
+  .mobile-toggle{display:flex}
+  #mainNav{padding:12px 4vw;grid-template-columns:auto 1fr auto}
+  #mainNav.scrolled{padding-top:8px;padding-bottom:8px}
+  .nav-logo img{height:58px}
+  .nav-controls{gap:8px}
+  .nav-cta{padding:9px 14px;font-size:11px}
 }
 @media(max-width:600px){
+  .sec{padding:clamp(56px,16vw,82px) 5vw}
+  .h2{font-size:clamp(29px,11vw,44px);line-height:1.04}
+  .lbl{font-size:10px;margin-bottom:14px}
+  .hero{min-height:auto;padding:118px 5vw 54px}
+  .hero-h1{font-size:clamp(36px,13vw,52px);line-height:.99;letter-spacing:-.035em;margin-bottom:24px}
+  .hero-line2{white-space:normal}
+  .hero-sub{font-size:15px;margin-bottom:28px}
   .svc-grid,.proc-grid{grid-template-columns:1fr}
   .port-grid{grid-template-columns:1fr}
   .port-card.wide{grid-column:span 1;aspect-ratio:4/3}
   .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-card,.svc-item,.proc-step,.price-card,.sub-card{padding:28px 22px}
+  .port-header,.art-header{align-items:flex-start;gap:18px}
+  .reviews-split{gap:22px}
+  .rc-stage{height:300px;transform:none;margin-top:6px;overflow:hidden}
+  .rc{height:auto;min-height:210px;padding:18px;width:100%}
+  .currency-row{flex-direction:column;align-items:flex-start;gap:10px;margin:32px 0}
+  .contact-grid{gap:36px}
+  .about-photo-wrap{width:180px}
+  .about-ring-wrap,.about-ring{width:150px;height:150px}
+  .about-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .fgrid{grid-template-columns:1fr}
   .frow{grid-template-columns:1fr}
-  .hero-btns{flex-direction:column;max-width:260px}
+  .fpay-icons{gap:6px}
+  .fpay-badge{width:46px;height:30px}
+  .hero-btns{flex-direction:column;max-width:280px;margin-left:auto;margin-right:auto}
+  .btn-p,.btn-g,.btn-white{width:100%;justify-content:center}
+  .nav-cta{display:none}
+  .mobile-menu{top:72px}
+  .ticker{padding:10px 0}
+  .t-item{font-size:9px;padding:0 16px;gap:16px}
+  .art-scene{height:auto;margin-top:32px;overflow:hidden;cursor:auto}
+  .art-track{height:auto;display:grid;gap:14px;perspective:none}
+  .art-item{
+    position:relative!important;top:auto!important;left:auto!important;
+    margin:0!important;width:100%!important;height:auto!important;
+    transform:none!important;opacity:1!important;
+  }
+  .art-item:nth-child(n+4){display:none}
+  .art-img{height:150px}
+  .art-body{height:auto;min-height:190px}
+  .art-nav{display:none}
+  #ck{left:12px;right:12px;bottom:12px;width:auto;padding:16px}
+  .ck-btns{flex-direction:column}
+  #ck-manage{left:12px;bottom:12px}
+}
+@media(pointer:coarse), (max-width:900px){
+  body,button{cursor:auto}
+  a,button{cursor:pointer}
+  #c-dot,#c-ring{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -1276,8 +1364,19 @@ footer{background:var(--ink);padding:72px 5vw 40px}
     </div>
     <div class="nav-divider"></div>
     <a href="#contact" class="nav-cta"><span data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</span></a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" data-nl="Diensten" data-en="Services">Services</a>
+  <a href="#portfolio" data-nl="Portfolio" data-en="Portfolio">Portfolio</a>
+  <a href="#pricing" data-nl="Prijzen" data-en="Pricing">Pricing</a>
+  <a href="#articles" data-nl="Artikelen" data-en="Articles">Articles</a>
+  <a href="#contact" data-nl="Reviews" data-en="Reviews">Reviews</a>
+  <a class="mobile-menu-cta" href="#contact" data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -2053,6 +2152,28 @@ window.addEventListener('scroll',()=>{
   mainNav.classList.toggle('scrolled',window.scrollY>60);
 },{passive:true});
 
+/* ── MOBILE NAV ───────────────────────── */
+const mobileToggle=document.getElementById('mobileToggle');
+const mobileMenu=document.getElementById('mobileMenu');
+if(mobileToggle&&mobileMenu){
+  const closeMobileMenu=()=>{
+    mobileToggle.classList.remove('open');
+    mobileToggle.setAttribute('aria-expanded','false');
+    mobileMenu.classList.remove('open');
+  };
+  mobileToggle.addEventListener('click',e=>{
+    e.stopPropagation();
+    const open=!mobileMenu.classList.contains('open');
+    mobileToggle.classList.toggle('open',open);
+    mobileToggle.setAttribute('aria-expanded',String(open));
+    mobileMenu.classList.toggle('open',open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileMenu));
+  document.addEventListener('click',e=>{
+    if(!mobileMenu.contains(e.target)&&!mobileToggle.contains(e.target))closeMobileMenu();
+  });
+}
+
 /* ── FAQ ──────────────────────────────── */
 document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -2146,6 +2267,14 @@ if(cycleEl&&!reduced){
   let current=0;
   let dragStartX=0;
   let isDragging=false;
+  const mobileCards=window.matchMedia('(max-width: 600px)').matches;
+  if(mobileCards){
+    items.forEach((item,i)=>{
+      item.classList.toggle('art-center',i===0);
+      item.style.pointerEvents=i<3?'auto':'none';
+    });
+    return;
+  }
 
   /* signed distance: how many steps away from center, wrapping */
   function signedDist(i,c){
