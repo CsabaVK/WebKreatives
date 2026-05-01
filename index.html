@@ -571,11 +571,17 @@ body.cursor-text #c-ring{width:4px;height:28px;border-radius:2px;opacity:.5}
   margin-bottom:48px;gap:24px;flex-wrap:wrap;
 }
 .port-all{
-  font-size:13px;font-weight:500;color:oklch(50% .005 25);
-  border-bottom:1px solid var(--lined);padding-bottom:2px;
-  transition:color .2s,border-color .2s;
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--f2);font-size:12px;font-weight:600;
+  color:oklch(60% .005 80);
+  border:1px solid oklch(32% .010 25);border-radius:100px;
+  padding:9px 18px;position:relative;overflow:hidden;
+  transition:color .3s var(--ease),transform .2s;white-space:nowrap;
 }
-.port-all:hover{color:var(--white);border-color:var(--white)}
+.port-all::before{content:'';position:absolute;inset:0;background:oklch(22% .010 25);transform:translateX(-101%);transition:transform .35s var(--ease)}
+.port-all span{position:relative}
+.port-all:hover{color:var(--white);transform:translateY(-2px)}
+.port-all:hover::before{transform:translateX(0)}
 .port-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -1129,8 +1135,19 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 
 /* ── ARTICLES CIRCULAR GALLERY ─────────── */
 .art-header{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:0}
-.art-view-all{font-family:var(--f1);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:oklch(52% .005 80);border-bottom:1px solid oklch(28% .008 25);padding-bottom:3px;transition:color .2s,border-color .2s;white-space:nowrap;flex-shrink:0;align-self:flex-end;margin-bottom:6px}
-.art-view-all:hover{color:var(--blue);border-color:var(--blue)}
+.art-view-all{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--f2);font-size:12px;font-weight:600;
+  color:oklch(60% .005 80);
+  border:1px solid oklch(32% .010 25);border-radius:100px;
+  padding:9px 18px;position:relative;overflow:hidden;
+  transition:color .3s var(--ease),transform .2s;
+  white-space:nowrap;flex-shrink:0;align-self:center;
+}
+.art-view-all::before{content:'';position:absolute;inset:0;background:oklch(22% .010 25);transform:translateX(-101%);transition:transform .35s var(--ease)}
+.art-view-all span{position:relative}
+.art-view-all:hover{color:var(--white);transform:translateY(-2px)}
+.art-view-all:hover::before{transform:translateX(0)}
 .art-scene{
   position:relative;height:540px;margin-top:56px;
   cursor:grab;overflow:visible;
@@ -1171,35 +1188,40 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 .art-dot.active{background:var(--blue);width:24px}
 
 /* ── COOKIE BANNER ───────────────────────── */
-#ck{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:min(calc(100vw - 32px),860px);z-index:9990;background:var(--cream);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.18);padding:20px 22px;font-family:var(--f2)}
+@keyframes ck-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+#ck{
+  position:fixed;bottom:24px;right:24px;width:300px;z-index:9990;
+  background:var(--ink2);border:1px solid oklch(26% .010 25);
+  border-radius:16px;box-shadow:0 24px 56px rgba(0,0,0,.5);
+  padding:20px;font-family:var(--f2);
+  animation:ck-rise .4s cubic-bezier(.16,1,.3,1);
+}
 #ck[hidden]{display:none!important}
-[data-theme="dark"] #ck{background:oklch(14% .010 25);border-color:oklch(24% .010 25)}
-.ck-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.ck-copy strong{font-family:var(--f1);font-size:13px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
-.ck-copy p{font-size:12px;color:var(--ink3);margin-top:4px;line-height:1.5;max-width:520px}
-.ck-copy a{color:var(--red);text-decoration:underline;text-underline-offset:2px}
-.ck-btns{display:flex;gap:8px;flex-shrink:0}
-.ck-btn{border:none;border-radius:10px;padding:10px 16px;font-family:var(--f2);font-size:13px;font-weight:600;cursor:pointer;transition:opacity .15s,transform .15s}
-.ck-btn:hover{opacity:.85;transform:translateY(-1px)}
+.ck-title{font-family:var(--f1);font-size:12px;font-weight:700;letter-spacing:-.01em;color:var(--white);margin-bottom:7px}
+.ck-body{font-size:11.5px;color:oklch(50% .005 80);line-height:1.6;margin-bottom:16px}
+.ck-body a{color:var(--red);text-decoration:underline;text-underline-offset:2px}
+.ck-btns{display:flex;gap:8px}
+.ck-btn{border:none;border-radius:8px;padding:9px 13px;font-family:var(--f2);font-size:12px;font-weight:600;cursor:pointer;transition:opacity .15s,transform .15s;flex:1;text-align:center}
+.ck-btn:hover{opacity:.82;transform:translateY(-1px)}
 .ck-btn-p{background:var(--red);color:#fff}
-.ck-btn-s{background:var(--cream2);color:var(--ink);border:1px solid var(--line)}
-[data-theme="dark"] .ck-btn-s{background:oklch(22% .010 25);border-color:oklch(30% .010 25)}
-.ck-panel{margin-top:16px;border-top:1px solid var(--line);padding-top:16px;display:none}
+.ck-btn-s{background:oklch(20% .010 25);color:oklch(58% .005 80);border:1px solid oklch(28% .010 25)}
+.ck-panel{margin-top:14px;border-top:1px solid oklch(24% .010 25);padding-top:12px;display:none}
 .ck-panel.open{display:block}
-.ck-opt{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:10px 0}
-.ck-opt+.ck-opt{border-top:1px solid var(--line)}
-.ck-opt-text strong{font-size:13px;font-weight:600;color:var(--ink)}
-.ck-opt-text p{font-size:12px;color:var(--ink3);margin-top:3px;line-height:1.5}
-.ck-toggle{position:relative;width:44px;height:26px;flex-shrink:0;margin-top:2px}
+.ck-opt{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:8px 0}
+.ck-opt+.ck-opt{border-top:1px solid oklch(20% .010 25)}
+.ck-opt-text strong{font-size:11.5px;font-weight:600;color:oklch(78% .005 80)}
+.ck-opt-text p{font-size:11px;color:oklch(40% .005 80);margin-top:2px;line-height:1.5}
+.ck-toggle{position:relative;width:40px;height:24px;flex-shrink:0;margin-top:2px}
 .ck-toggle input{position:absolute;opacity:0;pointer-events:none}
-.ck-toggle span{display:block;width:44px;height:26px;border-radius:999px;background:var(--line);transition:background .2s;cursor:pointer}
-.ck-toggle span::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2);transition:left .2s}
+.ck-toggle span{display:block;width:40px;height:24px;border-radius:999px;background:oklch(28% .010 25);transition:background .2s;cursor:pointer}
+.ck-toggle span::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.35);transition:left .2s}
 .ck-toggle input:checked+span{background:var(--red)}
-.ck-toggle input:checked+span::after{left:21px}
+.ck-toggle input:checked+span::after{left:19px}
 .ck-toggle.locked span{background:var(--grn);cursor:default}
-.ck-panel-save{margin-top:14px;display:flex;justify-content:flex-end}
-#ck-manage{position:fixed;bottom:16px;right:16px;z-index:9989;background:oklch(14% .010 25);color:oklch(72% .005 80);border:none;border-radius:10px;padding:8px 12px;font-family:var(--f2);font-size:12px;cursor:pointer;opacity:.7;transition:opacity .2s}
-#ck-manage:hover{opacity:1}
+.ck-panel-save{margin-top:12px}
+.ck-panel-save .ck-btn{flex:unset;width:100%}
+#ck-manage{position:fixed;bottom:20px;right:20px;z-index:9989;background:oklch(16% .010 25);color:oklch(46% .005 80);border:1px solid oklch(24% .010 25);border-radius:8px;padding:7px 11px;font-family:var(--f2);font-size:11px;cursor:pointer;transition:color .2s,border-color .2s}
+#ck-manage:hover{color:oklch(72% .005 80);border-color:oklch(36% .010 25)}
 #ck-manage[hidden]{display:none!important}
 </style>
 </head>
@@ -1356,7 +1378,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <p class="lbl reveal" data-nl="Portfolio" data-en="Portfolio">Portfolio</p>
       <h2 class="h2 reveal" data-nl="Werk dat spreekt<br>voor zich." data-en="Work that speaks<br>for itself.">Werk dat spreekt<br>voor zich.</h2>
     </div>
-    <a href="our-websites/" class="port-all reveal" data-nl="Alle projecten →" data-en="All projects →">Alle projecten →</a>
+    <a href="our-websites/" class="port-all reveal" data-nl="<span>Alle projecten →</span>" data-en="<span>All projects →</span>"><span>All projects →</span></a>
   </div>
   <div class="port-grid">
     <div class="port-card wide reveal">
@@ -1668,7 +1690,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <p class="lbl" data-nl="Artikelen" data-en="Articles">Articles</p>
       <h2 class="h2" data-nl="Praktische<br>kennis." data-en="Practical<br>knowledge.">Practical<br>knowledge.</h2>
     </div>
-    <a href="articles/" class="art-view-all" data-nl="Alle artikelen →" data-en="All articles →">All articles →</a>
+    <a href="articles/" class="art-view-all" data-nl="<span>Alle artikelen →</span>" data-en="<span>All articles →</span>"><span>All articles →</span></a>
   </div>
 
   <div class="art-scene" id="artScene">
@@ -2202,15 +2224,11 @@ if(cycleEl&&!reduced){
       document.body.appendChild(el);
     }
     el.innerHTML=`
-      <div class="ck-row">
-        <div class="ck-copy">
-          <strong>${c.title}</strong>
-          <p>${c.text} <a href="privacy/">${l==='nl'?'Privacybeleid':'Privacy Policy'}</a>.</p>
-        </div>
-        <div class="ck-btns">
-          <button class="ck-btn ck-btn-s" id="ck-cust">${c.customize}</button>
-          <button class="ck-btn ck-btn-p" id="ck-acc">${c.accept}</button>
-        </div>
+      <p class="ck-title">${c.title}</p>
+      <p class="ck-body">${c.text} <a href="privacy/">${l==='nl'?'Privacybeleid':'Privacy Policy'}</a>.</p>
+      <div class="ck-btns">
+        <button class="ck-btn ck-btn-s" id="ck-cust">${c.customize}</button>
+        <button class="ck-btn ck-btn-p" id="ck-acc">${c.accept}</button>
       </div>
       <div class="ck-panel" id="ck-panel">
         <div class="ck-opt">
