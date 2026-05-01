@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — WebKreatives</title>
+<meta name="description" content="Ten website styles built for ten industries. Find the look that fits your business.">
+<link rel="canonical" href="https://webkreatives.com/portfolio/">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* ── TOKENS ─────────────────────────────────────────── */
+:root{
+  --ink:       oklch(8%  .010 25);
+  --ink2:      oklch(18% .010 25);
+  --ink3:      oklch(35% .010 25);
+  --cream:     oklch(97% .008 80);
+  --cream2:    oklch(93% .012 80);
+  --red:       #df3821;
+  --red2:      oklch(43% .200 25);
+  --white:     oklch(99% .004 80);
+  --line:      oklch(88% .006 80);
+  --lined:     oklch(22% .010 25);
+  --lime:      #b9e185;
+  --grn:       oklch(68% .150 130);
+  --blue:      #648dcb;
+  --yellow:    #fbeb78;
+  --f1:'Unbounded',sans-serif;
+  --f2:'Figtree',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+
+/* ── RESET ──────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f2);
+  background:var(--ink);
+  color:var(--cream);
+  line-height:1.6;
+  overflow-x:hidden;
+  cursor:none;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:none;border:none;background:none}
+
+/* ── CURSOR ─────────────────────────────────────────── */
+#c-dot{
+  position:fixed;width:8px;height:8px;
+  background:var(--red);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform .15s var(--ease),background .2s,width .2s var(--ease),height .2s var(--ease);
+}
+#c-ring{
+  position:fixed;width:38px;height:38px;
+  border:1.5px solid var(--red);border-radius:50%;
+  pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:width .25s var(--ease),height .25s var(--ease),opacity .2s,border-color .2s;
+  opacity:.6;
+}
+body.cursor-hover #c-ring{width:52px;height:52px;opacity:.9}
+body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
+
+/* ── NAV ─────────────────────────────────────────────── */
+#pNav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 5vw;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  background:oklch(7% .010 25 / .96);
+  backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid oklch(20% .008 25);
+}
+.nav-logo-text{
+  font-family:var(--f1);font-size:14px;font-weight:700;
+  letter-spacing:-.02em;color:var(--white);white-space:nowrap;
+}
+.nav-logo-text em{font-style:normal;color:var(--red)}
+.nav-links{
+  display:flex;gap:32px;list-style:none;justify-content:center;
+}
+.nav-links a{
+  font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:oklch(52% .005 25);
+  position:relative;padding-bottom:3px;
+  transition:color .2s var(--ease);
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:1.5px;border-radius:1px;
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform .35s var(--ease);
+  background:var(--red);
+}
+.nav-links a:hover,.nav-links a.active{color:oklch(96% .005 25)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-controls{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.nav-divider{width:1px;height:18px;background:oklch(24% .008 25);margin:0 4px}
+.lang-drop{position:relative}
+.lang-btn-nav{
+  display:flex;align-items:center;gap:5px;
+  height:34px;padding:0 6px;
+  font-size:11px;font-weight:700;letter-spacing:.1em;
+  color:oklch(52% .005 25);
+  transition:color .2s;
+}
+.lang-btn-nav:hover{color:oklch(82% .005 25)}
+.lang-flag{width:15px;height:11px;display:block;border-radius:2px;overflow:hidden;flex-shrink:0}
+.lang-menu{
+  position:absolute;top:calc(100% + 6px);right:0;
+  background:oklch(10% .010 25);
+  border:1px solid oklch(22% .010 25);
+  border-radius:8px;padding:4px;
+  min-width:72px;opacity:0;pointer-events:none;
+  transform:translateY(-6px);
+  transition:opacity .18s var(--ease),transform .18s var(--ease);
+  z-index:200;
+}
+.lang-drop.open .lang-menu{opacity:1;pointer-events:auto;transform:translateY(0)}
+.lang-opt{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;border-radius:5px;
+  font-size:11px;font-weight:700;letter-spacing:.1em;
+  color:oklch(50% .005 25);width:100%;text-align:left;
+  transition:background .15s,color .15s;white-space:nowrap;
+}
+.lang-opt:hover,.lang-opt.active{background:oklch(18% .010 25);color:var(--white)}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--white);background:var(--red);
+  padding:10px 22px;border-radius:8px;
+  position:relative;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s;
+}
+.nav-cta::before{
+  content:'';position:absolute;inset:0;
+  background:oklch(39% .200 25);
+  transform:translateX(-100%);
+  transition:transform .4s var(--ease);
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px oklch(39% .200 25 / .4)}
+.nav-cta:hover::before{transform:translateX(0)}
+.nav-cta span{position:relative}
+
+/* mobile nav */
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  padding:8px;width:38px;height:38px;
+  color:oklch(60% .005 25);
+}
+.nav-hamburger span{
+  display:block;width:20px;height:1.5px;
+  background:currentColor;border-radius:2px;
+  transition:.25s var(--ease);
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-mobile-menu{
+  display:none;position:fixed;
+  top:61px;left:0;right:0;
+  background:oklch(7% .010 25 / .98);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid oklch(20% .008 25);
+  padding:20px 5vw 24px;
+  z-index:99;
+}
+.nav-mobile-menu.open{display:block}
+.nav-mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
+.nav-mobile-menu a{
+  display:block;padding:10px 0;
+  font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:oklch(60% .005 25);
+  border-bottom:1px solid oklch(14% .010 25);
+  transition:color .2s;
+}
+.nav-mobile-menu a:hover,.nav-mobile-menu a.active{color:var(--white)}
+
+/* ── HERO ────────────────────────────────────────────── */
+.port-hero{
+  padding:110px 5vw 60px;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:48px;
+  border-bottom:1px solid oklch(15% .010 25);
+  max-width:1600px;margin:0 auto;
+}
+.port-hero-crumb{
+  font-size:10px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:oklch(32% .008 25);
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:18px;
+}
+.port-hero-crumb a{transition:color .2s}
+.port-hero-crumb a:hover{color:oklch(56% .008 25)}
+.port-hero-crumb .sep{color:oklch(22% .008 25)}
+.port-h1{
+  font-family:var(--f1);
+  font-size:clamp(48px,6.5vw,88px);
+  font-weight:900;
+  letter-spacing:-.04em;
+  line-height:.92;
+  color:var(--white);
+  margin-bottom:22px;
+}
+.port-h1 em{font-style:normal;color:var(--red)}
+.port-hero-sub{
+  font-size:clamp(14px,1.2vw,16px);
+  color:oklch(48% .008 25);
+  font-weight:300;
+  line-height:1.65;
+  max-width:420px;
+}
+.port-hero-stats{
+  display:flex;gap:44px;align-items:flex-end;
+  flex-shrink:0;padding-bottom:4px;
+}
+.port-stat{text-align:left}
+.port-stat-n{
+  font-family:var(--f1);
+  font-size:clamp(32px,3.5vw,46px);
+  font-weight:900;
+  letter-spacing:-.04em;
+  line-height:1;
+}
+.port-stat-l{
+  font-size:10px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:oklch(38% .008 25);
+  margin-top:5px;
+}
+
+/* ── FILTERS ─────────────────────────────────────────── */
+.port-filters{
+  position:sticky;top:61px;z-index:50;
+  background:oklch(9% .010 25 / .97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid oklch(15% .010 25);
+  padding:12px 5vw;
+  display:flex;align-items:center;gap:7px;
+  flex-wrap:wrap;
+}
+.pf-label{
+  font-size:10px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:oklch(32% .008 25);
+  margin-right:4px;flex-shrink:0;
+}
+.pf-btn{
+  padding:5px 14px;
+  border-radius:100px;
+  border:1px solid oklch(22% .010 25);
+  font-family:var(--f2);
+  font-size:11px;font-weight:600;
+  color:oklch(50% .006 25);
+  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);
+  cursor:none;
+}
+.pf-btn:hover{border-color:oklch(40% .010 25);color:oklch(76% .006 25)}
+.pf-btn.active{
+  background:oklch(94% .008 80);
+  border-color:oklch(94% .008 80);
+  color:oklch(10% .010 25);
+}
+.pf-count{
+  margin-left:auto;font-size:11px;
+  color:oklch(34% .008 25);flex-shrink:0;
+}
+
+/* ── GRID ─────────────────────────────────────────────── */
+.port-grid{
+  padding:40px 5vw 80px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  max-width:1600px;margin:0 auto;
+}
+
+/* ── CARD ─────────────────────────────────────────────── */
+.p-card{
+  position:relative;
+  border-radius:10px;
+  overflow:hidden;
+  background:oklch(12% .010 25);
+  display:block;
+  cursor:none;
+}
+.p-card.wide{grid-column:span 2}
+.p-card-ratio{
+  position:relative;
+  aspect-ratio:3/2;
+  overflow:hidden;
+}
+.p-card.wide .p-card-ratio{aspect-ratio:16/7}
+.p-card-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:top center;
+  display:block;
+  transition:transform .75s var(--ease);
+}
+.p-card:hover .p-card-img{transform:scale(1.06)}
+.p-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    oklch(5% .010 25 / .93) 0%,
+    oklch(5% .010 25 / .28) 44%,
+    transparent 100%
+  );
+  transition:background .45s var(--ease);
+}
+.p-card:hover .p-card-overlay{
+  background:linear-gradient(
+    to top,
+    oklch(5% .010 25 / .97) 0%,
+    oklch(5% .010 25 / .55) 55%,
+    oklch(5% .010 25 / .12) 100%
+  );
+}
+.p-card-inner{
+  position:absolute;inset:0;
+  padding:16px 20px 20px;
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+}
+.p-card-tag{
+  align-self:flex-start;
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:9.5px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:100px;
+  background:oklch(6% .010 25 / .78);
+  backdrop-filter:blur(10px);
+  border:1px solid oklch(100% 0 0 / .10);
+  color:var(--white);
+  transition:border-color .2s;
+}
+.p-card:hover .p-card-tag{border-color:oklch(100% 0 0 / .20)}
+.p-card-tag::before{
+  content:'';width:5px;height:5px;
+  border-radius:50%;background:currentColor;
+  flex-shrink:0;
+}
+.tag-restaurant .p-card-tag{color:oklch(72% .18 25)}
+.tag-health .p-card-tag{color:var(--blue)}
+.tag-construction .p-card-tag{color:var(--yellow)}
+.tag-plumbing .p-card-tag{color:var(--lime)}
+.tag-creative .p-card-tag{color:oklch(80% .12 290)}
+.tag-beauty .p-card-tag{color:oklch(82% .14 340)}
+.tag-bakery .p-card-tag{color:oklch(80% .13 65)}
+.tag-tech .p-card-tag{color:oklch(70% .14 230)}
+.tag-interior .p-card-tag{color:oklch(82% .09 68)}
+.tag-finance .p-card-tag{color:var(--lime)}
+
+.p-card-bottom{display:flex;flex-direction:column;gap:7px}
+.p-card-name{
+  font-family:var(--f1);
+  font-size:clamp(13px,1.3vw,17px);
+  font-weight:700;
+  letter-spacing:-.02em;
+  color:var(--white);
+  line-height:1.1;
+}
+.p-card-for{
+  font-size:12px;font-weight:300;
+  color:oklch(66% .006 25);
+  line-height:1.45;
+  opacity:0;
+  transform:translateY(7px);
+  transition:opacity .3s var(--ease),transform .3s var(--ease);
+  max-width:340px;
+}
+.p-card.wide .p-card-for{max-width:480px}
+.p-card:hover .p-card-for{opacity:1;transform:translateY(0)}
+.p-card-cta{
+  font-size:12px;font-weight:600;
+  color:oklch(92% .004 25);
+  text-decoration:underline;
+  text-underline-offset:3px;
+  text-decoration-color:oklch(100% 0 0 / .25);
+  display:inline-block;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .3s .06s var(--ease),transform .3s .06s var(--ease),text-decoration-color .2s;
+}
+.p-card:hover .p-card-cta{opacity:1;transform:translateY(0)}
+.p-card-cta:hover{text-decoration-color:oklch(100% 0 0 / .8)}
+.p-card[hidden]{display:none}
+
+/* reveal start state */
+.p-card{
+  opacity:0;
+  transform:translateY(22px);
+}
+
+/* on mobile — always show info */
+@media(hover:none){
+  .p-card-for,.p-card-cta{opacity:1;transform:translateY(0)}
+}
+
+/* ── CTA SECTION ─────────────────────────────────────── */
+.port-cta{
+  border-top:1px solid oklch(15% .010 25);
+  padding:80px 5vw;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+  max-width:1600px;margin:0 auto;
+}
+.port-cta-h{
+  font-family:var(--f1);
+  font-size:clamp(28px,3.2vw,44px);
+  font-weight:900;
+  letter-spacing:-.04em;
+  color:var(--white);
+  line-height:1.05;
+  max-width:520px;
+}
+.port-cta-h em{font-style:normal;color:var(--red)}
+.port-cta-p{
+  font-size:clamp(14px,1.2vw,16px);
+  color:oklch(48% .008 25);
+  font-weight:300;
+  max-width:380px;
+  line-height:1.6;
+}
+.port-cta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--white);background:var(--red);
+  padding:14px 30px;border-radius:8px;
+  position:relative;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s;
+}
+.port-cta-btn::before{
+  content:'';position:absolute;inset:0;
+  background:oklch(39% .200 25);
+  transform:translateX(-100%);
+  transition:transform .4s var(--ease);
+}
+.port-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px oklch(39% .200 25 / .45)}
+.port-cta-btn:hover::before{transform:translateX(0)}
+.port-cta-btn span{position:relative}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer{
+  background:oklch(6% .010 25);
+  border-top:1px solid oklch(13% .010 25);
+  padding:56px 5vw 32px;
+}
+.fgrid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:44px;max-width:1200px;margin:0 auto 48px;
+}
+.fbrand p{font-size:12.5px;color:oklch(34% .006 25);line-height:1.75;margin:12px 0 14px;max-width:240px}
+.fbrand a{font-size:12.5px;color:var(--lime);font-weight:600;display:block;margin-bottom:6px;transition:color .2s}
+.fbrand a:hover{color:oklch(86% .15 130)}
+.fcol h4{
+  font-size:9.5px;font-weight:700;letter-spacing:.12em;
+  color:oklch(26% .008 25);text-transform:uppercase;margin-bottom:16px;
+}
+.fcol a{
+  font-size:12.5px;color:oklch(40% .006 25);
+  display:block;margin-bottom:8px;
+  transition:color .2s;
+}
+.fcol a:hover{color:oklch(70% .006 25)}
+.fcol a.g{color:var(--lime);font-weight:600}
+.fbot{
+  border-top:1px solid oklch(11% .010 25);
+  padding-top:22px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  max-width:1200px;margin:0 auto;
+  flex-wrap:wrap;
+}
+.fbot p{font-size:11px;color:oklch(26% .008 25)}
+.fbot-links{display:flex;gap:24px}
+.fbot-links a{font-size:11px;color:oklch(26% .008 25);transition:color .2s}
+.fbot-links a:hover{color:oklch(50% .008 25)}
+.f-logo{
+  font-family:var(--f1);font-size:16px;font-weight:900;
+  letter-spacing:-.03em;color:var(--white);
+}
+.f-logo em{font-style:normal;color:var(--red)}
+
+/* ── COOKIE BANNER ───────────────────────────────────── */
+@keyframes ck-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+#ck{
+  position:fixed;bottom:24px;right:24px;
+  width:300px;background:var(--ink2);
+  border:1px solid oklch(28% .010 25);
+  border-radius:12px;padding:18px;
+  z-index:9000;
+  animation:ck-rise .4s var(--ease);
+  box-shadow:0 8px 32px oklch(0% 0 0 / .5);
+}
+#ck[hidden]{display:none!important}
+.ck-title{font-family:var(--f1);font-size:12px;font-weight:700;letter-spacing:-.01em;color:var(--white);margin-bottom:7px}
+.ck-body{font-size:11.5px;color:oklch(50% .005 80);line-height:1.6;margin-bottom:16px}
+.ck-body a{color:var(--red);text-decoration:underline;text-underline-offset:2px}
+.ck-btns{display:flex;gap:8px}
+.ck-btn{border:none;border-radius:8px;padding:9px 13px;font-family:var(--f2);font-size:12px;font-weight:600;cursor:pointer;transition:opacity .15s,transform .15s;flex:1;text-align:center}
+.ck-btn:hover{opacity:.82;transform:translateY(-1px)}
+.ck-btn-p{background:var(--red);color:oklch(99% .004 80)}
+.ck-btn-s{background:oklch(20% .010 25);color:oklch(58% .005 80);border:1px solid oklch(28% .010 25)}
+.ck-panel{margin-top:14px;border-top:1px solid oklch(24% .010 25);padding-top:12px;display:none}
+.ck-panel.open{display:block}
+.ck-opt{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:8px 0}
+.ck-opt+.ck-opt{border-top:1px solid oklch(20% .010 25)}
+.ck-opt-text strong{font-size:11.5px;font-weight:600;color:oklch(78% .005 80)}
+.ck-opt-text p{font-size:11px;color:oklch(40% .005 80);margin-top:2px;line-height:1.5}
+.ck-toggle{position:relative;width:40px;height:24px;flex-shrink:0;margin-top:2px}
+.ck-toggle input{position:absolute;opacity:0;pointer-events:none}
+.ck-toggle span{
+  position:absolute;inset:0;border-radius:12px;
+  background:oklch(28% .010 25);
+  transition:background .2s;cursor:pointer;
+}
+.ck-toggle span::after{
+  content:'';position:absolute;
+  top:3px;left:3px;width:18px;height:18px;
+  border-radius:50%;background:oklch(55% .005 80);
+  transition:transform .2s var(--ease),background .2s;
+}
+.ck-toggle input:checked+span{background:var(--grn)}
+.ck-toggle input:checked+span::after{transform:translateX(16px);background:var(--white)}
+.ck-toggle.locked span{opacity:.5;cursor:not-allowed}
+.ck-panel-save{margin-top:10px;display:flex;justify-content:flex-end}
+#ck-manage{
+  position:fixed;bottom:24px;right:24px;
+  font-size:11px;font-weight:600;
+  color:oklch(36% .006 25);
+  padding:6px 12px;
+  border:1px solid oklch(22% .010 25);
+  border-radius:20px;background:oklch(10% .010 25);
+  z-index:8000;cursor:pointer;
+  transition:color .2s,border-color .2s;
+}
+#ck-manage:hover{color:oklch(60% .006 25);border-color:oklch(36% .010 25)}
+#ck-manage[hidden]{display:none!important}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:1100px){
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  .p-card.wide{grid-column:span 2}
+}
+@media(max-width:900px){
+  .port-hero{flex-direction:column;gap:28px;align-items:flex-start}
+  .port-hero-stats{gap:28px}
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .port-grid{grid-template-columns:1fr;gap:10px}
+  .p-card.wide{grid-column:span 1}
+  .p-card.wide .p-card-ratio{aspect-ratio:3/2}
+  .port-filters{gap:6px}
+  .pf-btn{padding:4px 11px;font-size:10.5px}
+}
+@media(max-width:480px){
+  .fgrid{grid-template-columns:1fr}
+  .fbot{flex-direction:column;align-items:flex-start;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+
+<!-- NAV -->
+<nav id="pNav">
+  <div>
+    <a href="/" class="nav-logo-text">Web<em>Kreatives</em></a>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/#services"   data-nl="Diensten"  data-en="Services">Services</a></li>
+    <li><a href="/portfolio/"  class="active" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
+    <li><a href="/#pricing"    data-nl="Prijzen"   data-en="Pricing">Pricing</a></li>
+    <li><a href="/#subscriptions" data-nl="Support" data-en="Support">Support</a></li>
+    <li><a href="/#contact"    data-nl="Contact"   data-en="Contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div class="lang-drop" id="langDrop">
+      <button class="lang-btn-nav" id="langBtn" aria-label="Language">
+        <span class="lang-flag" id="lang-flag-nav"><svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg></span>
+        <span id="lang-label-nav">EN</span>
+        <svg width="8" height="6" viewBox="0 0 8 6" fill="currentColor"><path d="M4 6L0 0h8z"/></svg>
+      </button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-opt" data-lang="nl">
+          <svg viewBox="0 0 640 480" style="width:15px;height:11px;flex-shrink:0;border-radius:2px"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>
+          NL
+        </button>
+        <button class="lang-opt active" data-lang="en">
+          <svg viewBox="0 0 640 480" style="width:15px;height:11px;flex-shrink:0;border-radius:2px"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>
+          EN
+        </button>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <a href="/#contact" class="nav-cta"><span data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</span></a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="/#services"   data-nl="Diensten"  data-en="Services">Services</a></li>
+    <li><a href="/portfolio/"  class="active" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
+    <li><a href="/#pricing"    data-nl="Prijzen"   data-en="Pricing">Pricing</a></li>
+    <li><a href="/#subscriptions" data-nl="Support" data-en="Support">Support</a></li>
+    <li><a href="/#contact"    data-nl="Contact"   data-en="Contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta" style="width:100%;justify-content:center"><span data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</span></a>
+</div>
+
+<!-- HERO -->
+<div style="border-bottom:1px solid oklch(15% .010 25)">
+  <div class="port-hero">
+    <div class="port-hero-left">
+      <div class="port-hero-crumb">
+        <a href="/" data-nl="Home" data-en="Home">Home</a>
+        <span class="sep">/</span>
+        <span data-nl="Portfolio" data-en="Portfolio">Portfolio</span>
+      </div>
+      <h1 class="port-h1" data-nl="Ons <em>Werk.</em>" data-en="Our <em>Work.</em>">Our <em>Work.</em></h1>
+      <p class="port-hero-sub"
+        data-nl="Tien stijlen, tien branches. Zie welke aanpak past bij jouw bedrijf."
+        data-en="Ten styles, ten industries. See which approach fits your business.">Ten styles, ten industries. See which approach fits your business.</p>
+    </div>
+    <div class="port-hero-stats">
+      <div class="port-stat">
+        <div class="port-stat-n" style="color:var(--red)">10</div>
+        <div class="port-stat-l" data-nl="Website stijlen" data-en="Website styles">Website styles</div>
+      </div>
+      <div class="port-stat">
+        <div class="port-stat-n" style="color:var(--lime)">10</div>
+        <div class="port-stat-l" data-nl="Branches" data-en="Industries">Industries</div>
+      </div>
+      <div class="port-stat">
+        <div class="port-stat-n" style="color:var(--blue)">48h</div>
+        <div class="port-stat-l" data-nl="Oplevering" data-en="Delivery">Delivery</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="port-filters" id="portFilters">
+  <span class="pf-label" data-nl="Branche:" data-en="Industry:">Industry:</span>
+  <button class="pf-btn active" data-filter="all"          data-nl="Alle"         data-en="All">All</button>
+  <button class="pf-btn"        data-filter="restaurant"   data-nl="Restaurant"   data-en="Restaurant">Restaurant</button>
+  <button class="pf-btn"        data-filter="health"       data-nl="Zorg"         data-en="Healthcare">Healthcare</button>
+  <button class="pf-btn"        data-filter="construction" data-nl="Bouw"         data-en="Construction">Construction</button>
+  <button class="pf-btn"        data-filter="plumbing"     data-nl="Loodgieter"   data-en="Plumbing">Plumbing</button>
+  <button class="pf-btn"        data-filter="creative"     data-nl="Creatief"     data-en="Creative">Creative</button>
+  <button class="pf-btn"        data-filter="beauty"       data-nl="Beauty"       data-en="Beauty">Beauty</button>
+  <button class="pf-btn"        data-filter="bakery"       data-nl="Bakkerij"     data-en="Bakery">Bakery</button>
+  <button class="pf-btn"        data-filter="tech"         data-nl="Tech"         data-en="Tech">Tech</button>
+  <button class="pf-btn"        data-filter="interior"     data-nl="Interieur"    data-en="Interior">Interior</button>
+  <button class="pf-btn"        data-filter="finance"      data-nl="Finance"      data-en="Finance">Finance</button>
+  <span class="pf-count" id="pfCount">10 websites</span>
+</div>
+
+<!-- GRID -->
+<main class="port-grid" id="portGrid">
+
+  <!-- 1. DE GROOT — wide, finance -->
+  <article class="p-card wide tag-finance" data-category="finance">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/de-groot-accountants.png" alt="De Groot &amp; Partners website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Finance" data-en="Finance">Finance</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">De Groot &amp; Partners</div>
+          <p class="p-card-for"
+            data-nl="Voor accountants en adviseurs die online autoriteit uitstralen."
+            data-en="For accountants and advisors who need to project authority online.">For accountants and advisors who need to project authority online.</p>
+          <a class="p-card-cta" href="../client-projects/de-groot-accountants/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 2. TANDARTS KNOLL — health -->
+  <article class="p-card tag-health" data-category="health">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/tandarts-knoll.png" alt="Tandarts Knoll website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Zorg" data-en="Healthcare">Healthcare</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">Tandarts Knoll</div>
+          <p class="p-card-for"
+            data-nl="Voor zorgpraktijken die patiënten vertrouwen geven voor de eerste afspraak."
+            data-en="For healthcare practices that build patient trust before the first appointment.">For healthcare practices that build patient trust before the first appointment.</p>
+          <a class="p-card-cta" href="../client-projects/tandarts-knoll/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 3. LEYENBURGER — restaurant -->
+  <article class="p-card tag-restaurant" data-category="restaurant">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/leyenburger.png" alt="Leyenburger Grill website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Restaurant" data-en="Restaurant">Restaurant</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">Leyenburger Grill</div>
+          <p class="p-card-for"
+            data-nl="Voor eethuizen die sfeer, menu en locatie direct overbrengen."
+            data-en="For restaurants that put atmosphere, menu and location front and center.">For restaurants that put atmosphere, menu and location front and center.</p>
+          <a class="p-card-cta" href="../client-projects/leyenburger/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 4. LUNA BEAUTY — beauty -->
+  <article class="p-card tag-beauty" data-category="beauty">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/luna-beauty-studio.png" alt="Luna Beauty Studio website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Beauty" data-en="Beauty">Beauty</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">Luna Beauty Studio</div>
+          <p class="p-card-for"
+            data-nl="Voor salons en beautybedrijven waarbij diensten directe boekingen triggeren."
+            data-en="For salons and beauty brands where services need to trigger direct bookings.">For salons and beauty brands where services need to trigger direct bookings.</p>
+          <a class="p-card-cta" href="../client-projects/luna-beauty-studio/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 5. STUDIO LENA — creative -->
+  <article class="p-card tag-creative" data-category="creative">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/studio-lena-fotografie.png" alt="Studio Lena Fotografie website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Creatief" data-en="Creative">Creative</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">Studio Lena</div>
+          <p class="p-card-for"
+            data-nl="Voor fotografen en creatives die het werk laten spreken."
+            data-en="For photographers and creatives who let their work do the talking.">For photographers and creatives who let their work do the talking.</p>
+          <a class="p-card-cta" href="../client-projects/studio-lena-fotografie/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 6. MAISON BLANC — wide, interior -->
+  <article class="p-card wide tag-interior" data-category="interior">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/maison-blanc-interieur.png" alt="Maison Blanc Interieur website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Interieur" data-en="Interior">Interior</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">Maison Blanc Interieur</div>
+          <p class="p-card-for"
+            data-nl="Voor premium merken waarbij elke bezoeker verfijning moet voelen."
+            data-en="For premium brands where every visitor should feel the quality.">For premium brands where every visitor should feel the quality.</p>
+          <a class="p-card-cta" href="../client-projects/maison-blanc-interieur/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 7. KLUSSENBEDRIJF — construction -->
+  <article class="p-card tag-construction" data-category="construction">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/klussenbedrijf-edward.png" alt="Klussenbedrijf Edward website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Bouw" data-en="Construction">Construction</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">Klussenbedrijf Edward</div>
+          <p class="p-card-for"
+            data-nl="Voor aannemers en klusbedrijven die vertrouwen winnen voor de eerste bel."
+            data-en="For contractors who win trust before the first phone call.">For contractors who win trust before the first phone call.</p>
+          <a class="p-card-cta" href="../client-projects/klussenbedrijf-edward/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 8. BAKKERIJ HARTMAN — bakery -->
+  <article class="p-card tag-bakery" data-category="bakery">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/bakkerij-hartman.png" alt="Bakkerij Hartman website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Bakkerij" data-en="Bakery">Bakery</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">Bakkerij Hartman</div>
+          <p class="p-card-for"
+            data-nl="Voor ambachtelijke merken met een verhaal en een eigen identiteit."
+            data-en="For artisan brands with a story and a distinct identity.">For artisan brands with a story and a distinct identity.</p>
+          <a class="p-card-cta" href="../client-projects/bakkerij-hartman/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 9. NEXUS IT — tech -->
+  <article class="p-card tag-tech" data-category="tech">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/nexus-it-solutions.png" alt="Nexus IT Solutions website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Tech" data-en="Tech">Tech</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">Nexus IT Solutions</div>
+          <p class="p-card-for"
+            data-nl="Voor tech- en IT-bedrijven die professioneel overkomen en leads genereren."
+            data-en="For tech and IT companies that need to look credible and generate leads.">For tech and IT companies that need to look credible and generate leads.</p>
+          <a class="p-card-cta" href="../client-projects/nexus-it-solutions/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 10. VANDERBERG — plumbing -->
+  <article class="p-card tag-plumbing" data-category="plumbing">
+    <div class="p-card-ratio">
+      <img class="p-card-img" src="../assets/screenshots/vanderberg-loodgieter.png" alt="Van der Berg Loodgieter website">
+      <div class="p-card-overlay"></div>
+      <div class="p-card-inner">
+        <div class="p-card-tag" data-nl="Loodgieter" data-en="Plumbing">Plumbing</div>
+        <div class="p-card-bottom">
+          <div class="p-card-name">Van der Berg Loodgieter</div>
+          <p class="p-card-for"
+            data-nl="Voor vakmensen die klanten dag en nacht kunnen bereiken."
+            data-en="For tradespeople who need to be reachable around the clock.">For tradespeople who need to be reachable around the clock.</p>
+          <a class="p-card-cta" href="../client-projects/vanderberg-loodgieter/" target="_blank"
+            data-nl="Bekijk website →" data-en="View website →">View website →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<!-- CTA SECTION -->
+<div style="padding:0 5vw">
+  <section class="port-cta">
+    <h2 class="port-cta-h"
+      data-nl="Jouw bedrijf <em>hier</em>?"
+      data-en="Your business <em>here</em>?">Your business <em>here</em>?</h2>
+    <p class="port-cta-p"
+      data-nl="We bouwen voor elke branche. Start met een gratis gesprek van 30 minuten."
+      data-en="We build for any industry. Start with a free 30-minute call.">We build for any industry. Start with a free 30-minute call.</p>
+    <a href="/#contact" class="port-cta-btn">
+      <span data-nl="Start je project" data-en="Start your project">Start your project</span>
+      <span>→</span>
+    </a>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fgrid">
+    <div class="fbrand">
+      <span class="f-logo">Web<em>Kreatives</em></span>
+      <p data-nl="AI-gestuurd webdesign voor bedrijven die willen opvallen. Op maat gemaakt, snel opgeleverd, gebouwd om te converteren." data-en="AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert.">AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert.</p>
+      <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
+    </div>
+    <div class="fcol">
+      <h4 data-nl="Diensten" data-en="Services">Services</h4>
+      <a href="/#services" data-nl="Website Design" data-en="Website Design">Website Design</a>
+      <a href="/#services" data-nl="Webshops" data-en="Webshops">Webshops</a>
+      <a href="/#services" data-nl="SEO &amp; Prestaties" data-en="SEO &amp; Performance">SEO &amp; Performance</a>
+      <a href="/#services" data-nl="Branding" data-en="Branding">Branding</a>
+    </div>
+    <div class="fcol">
+      <h4 data-nl="Pagina's" data-en="Pages">Pages</h4>
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <a href="/portfolio/" data-nl="Portfolio" data-en="Portfolio">Portfolio</a>
+      <a href="/articles/" data-nl="Artikelen" data-en="Articles">Articles</a>
+      <a href="/privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacy Policy</a>
+      <a href="/terms/" data-nl="Voorwaarden" data-en="Terms">Terms</a>
+    </div>
+    <div class="fcol">
+      <h4 data-nl="Verbinden" data-en="Connect">Connect</h4>
+      <a href="/#contact" class="g" data-nl="Start een Project" data-en="Start a Project">Start a Project</a>
+      <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 WebKreatives · Amsterdam · KVK: 94051097</p>
+    <nav class="fbot-links">
+      <a href="/privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacy Policy</a>
+      <a href="/terms/" data-nl="Voorwaarden" data-en="Terms">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ───────────────────────────────────────────── */
+const dot=document.getElementById('c-dot');
+const ring=document.getElementById('c-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.p-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add(el.tagName==='A'||el.tagName==='BUTTON'?'cursor-btn':'cursor-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-btn','cursor-hover'));
+});
+
+/* ── LANGUAGE ─────────────────────────────────────────── */
+let lang=localStorage.getItem('wk-lang')||'en';
+const langDrop=document.getElementById('langDrop');
+const nlFlag='<svg viewBox="0 0 640 480" style="width:15px;height:11px;border-radius:2px"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>';
+const enFlag='<svg viewBox="0 0 640 480" style="width:15px;height:11px;border-radius:2px"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>';
+
+function applyLang(l){
+  lang=l;
+  localStorage.setItem('wk-lang',l);
+  document.getElementById('lang-label-nav').textContent=l.toUpperCase();
+  document.getElementById('lang-flag-nav').innerHTML=l==='nl'?nlFlag:enFlag;
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.toggle('active',o.dataset.lang===l));
+  document.querySelectorAll('[data-nl],[data-en]').forEach(el=>{
+    const txt=el.getAttribute('data-'+l);
+    if(txt)el.innerHTML=txt;
+  });
+  document.title=l==='nl'?'Portfolio — WebKreatives':'Portfolio — WebKreatives';
+  updateCount();
+  langDrop.classList.remove('open');
+}
+applyLang(lang);
+
+document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();langDrop.classList.toggle('open');});
+document.querySelectorAll('.lang-opt').forEach(o=>o.addEventListener('click',()=>applyLang(o.dataset.lang)));
+document.addEventListener('click',()=>langDrop.classList.remove('open'));
+
+/* ── MOBILE NAV ─────────────────────────────────────────── */
+const hamburger=document.getElementById('navHamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',e=>{
+  e.stopPropagation();
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');});
+
+/* ── FILTER ───────────────────────────────────────────── */
+let activeFilter='all';
+const cards=Array.from(document.querySelectorAll('.p-card'));
+const pfBtns=document.querySelectorAll('.pf-btn');
+const pfCount=document.getElementById('pfCount');
+
+function updateCount(){
+  const visible=cards.filter(c=>!c.hasAttribute('hidden'));
+  const w=visible.length;
+  pfCount.textContent=lang==='nl'
+    ?`${w} ${w===1?'website':'websites'}`
+    :`${w} ${w===1?'website':'websites'}`;
+}
+
+pfBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    activeFilter=btn.dataset.filter;
+    pfBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    cards.forEach(c=>{
+      const match=activeFilter==='all'||c.dataset.category===activeFilter;
+      c.hidden=!match;
+    });
+    updateCount();
+  });
+});
+
+/* ── GSAP REVEALS ────────────────────────────────────── */
+const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+gsap.registerPlugin(ScrollTrigger);
+
+if(!reduced){
+  cards.forEach((card,i)=>{
+    gsap.to(card,{
+      opacity:1,y:0,
+      duration:.65,
+      ease:'power2.out',
+      delay:(i%3)*.08,
+      scrollTrigger:{
+        trigger:card,
+        start:'top 88%',
+        once:true,
+      }
+    });
+  });
+} else {
+  cards.forEach(c=>{c.style.opacity='1';c.style.transform='none';});
+}
+
+/* ── COOKIE BANNER ─────────────────────────────────── */
+(function(){
+  const KEY='wk-cookie-consent',PKEY='wk-cookie-prefs';
+  const GA_ID='G-CG9705BC61';
+  let gaLoaded=false;
+  function loadGA(){
+    if(gaLoaded||!GA_ID)return;gaLoaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=window.gtag||function(){dataLayer.push(arguments);};
+    const s=document.createElement('script');
+    s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(s);
+    gtag('js',new Date());gtag('config',GA_ID,{anonymize_ip:true});
+  }
+  function getState(){return localStorage.getItem(KEY);}
+  function getPrefs(){try{return JSON.parse(localStorage.getItem(PKEY)||'{"analytics":true}');}catch{return{analytics:true};}}
+  function save(prefs,state){localStorage.setItem(KEY,state);localStorage.setItem(PKEY,JSON.stringify(prefs));if(prefs.analytics&&state!=='declined')loadGA();}
+  const copy={
+    en:{title:'Cookies on WebKreatives',text:'We use essential cookies for language and theme preferences. Analytics helps us improve the site.',accept:'Accept all',customize:'Customize',save:'Save preferences',essential:'Essential',essentialTxt:'Language, theme, and session preferences. Always on.',analytics:'Analytics',analyticsTxt:'Helps us understand which pages work best so we can keep improving.'},
+    nl:{title:'Cookies op WebKreatives',text:'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',accept:'Alles accepteren',customize:'Aanpassen',save:'Voorkeuren opslaan',essential:'Essentieel',essentialTxt:'Taal-, thema- en sessievoorkeuren. Altijd actief.',analytics:'Analytics',analyticsTxt:'Helpt ons begrijpen welke pagina\'s het beste werken zodat we de site blijven verbeteren.'}
+  };
+  function render(l){
+    const c=copy[l]||copy.en;
+    const prefs=getPrefs();
+    let el=document.getElementById('ck');
+    if(!el){el=document.createElement('div');el.id='ck';document.body.appendChild(el);}
+    el.innerHTML=`<p class="ck-title">${c.title}</p><p class="ck-body">${c.text} <a href="../privacy/">${l==='nl'?'Privacybeleid':'Privacy Policy'}</a>.</p><div class="ck-btns"><button class="ck-btn ck-btn-s" id="ck-cust">${c.customize}</button><button class="ck-btn ck-btn-p" id="ck-acc">${c.accept}</button></div><div class="ck-panel" id="ck-panel"><div class="ck-opt"><div class="ck-opt-text"><strong>${c.essential}</strong><p>${c.essentialTxt}</p></div><label class="ck-toggle locked"><input type="checkbox" checked disabled><span></span></label></div><div class="ck-opt"><div class="ck-opt-text"><strong>${c.analytics}</strong><p>${c.analyticsTxt}</p></div><label class="ck-toggle"><input type="checkbox" id="ck-ana"${prefs.analytics?' checked':''}><span></span></label></div><div class="ck-panel-save"><button class="ck-btn ck-btn-p" id="ck-save">${c.save}</button></div></div>`;
+    el.hidden=['accepted','declined','customized'].includes(getState());
+    document.getElementById('ck-acc').onclick=()=>{save({analytics:true},'accepted');el.hidden=true;showManage(l);};
+    document.getElementById('ck-cust').onclick=()=>{document.getElementById('ck-panel').classList.toggle('open');};
+    document.getElementById('ck-save').onclick=()=>{const ana=!!document.getElementById('ck-ana')?.checked;save({analytics:ana},ana?'accepted':'customized');el.hidden=true;showManage(l);};
+  }
+  function showManage(l){
+    let btn=document.getElementById('ck-manage');
+    if(!btn){btn=document.createElement('button');btn.id='ck-manage';document.body.appendChild(btn);btn.onclick=()=>{localStorage.removeItem(KEY);localStorage.removeItem(PKEY);render(lang);btn.hidden=true;};}
+    btn.textContent=l==='nl'?'Cookie-instellingen':'Cookie settings';
+    btn.hidden=!getState();
+  }
+  const p=getPrefs();
+  if(p.analytics&&['accepted','customized'].includes(getState()))loadGA();
+  render(lang);showManage(lang);
+  window._wkRenderCookieBanner=render;
+})();
+</script>
+</body>
+</html>
