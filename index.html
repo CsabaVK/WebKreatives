@@ -2024,11 +2024,8 @@ if(themeBtn)themeBtn.addEventListener('click',()=>applyTheme(html.getAttribute('
 function applyTheme(t){
   html.setAttribute('data-theme',t);
   localStorage.setItem('wk-theme',t);
-  if(t==='dark'){
-    sunIcon.style.display='block';moonIcon.style.display='none';
-  }else{
-    sunIcon.style.display='none';moonIcon.style.display='block';
-  }
+  if(sunIcon)sunIcon.style.display=t==='dark'?'block':'none';
+  if(moonIcon)moonIcon.style.display=t==='dark'?'none':'block';
 }
 applyTheme(localStorage.getItem('wk-theme')||'light');
 
