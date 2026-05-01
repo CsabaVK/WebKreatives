@@ -222,8 +222,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
 .fbot-links{display:flex;gap:24px}
 .fbot-links a{font-size:11px;color:oklch(26% .008 25);transition:color .2s}
 .fbot-links a:hover{color:oklch(50% .008 25)}
-.f-logo{font-family:var(--f1);font-size:16px;font-weight:900;letter-spacing:-.03em;color:var(--white)}
-.f-logo em{font-style:normal;color:var(--red)}
 
 /* ── COOKIE ──────────────────────────────────────────── */
 @keyframes ck-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -338,16 +336,16 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
     </div>
     <h1 class="port-h1" data-nl="Ons <em>Werk.</em>" data-en="Our <em>Work.</em>">Our <em>Work.</em></h1>
     <p class="port-hero-sub"
-      data-nl="Tien stijlen, tien branches. Zie welke aanpak past bij jouw bedrijf."
-      data-en="Ten styles, ten industries. See which approach fits your business.">Ten styles, ten industries. See which approach fits your business.</p>
+      data-nl="Echte websites, gebouwd voor echte bedrijven. Bekijk de stijl die past."
+      data-en="Real websites built for real businesses. Find the style that fits.">Real websites built for real businesses. Find the style that fits.</p>
   </div>
   <div class="port-hero-stats">
     <div>
-      <div class="port-stat-n" style="color:var(--red)">10</div>
-      <div class="port-stat-l" data-nl="Website stijlen" data-en="Website styles">Website styles</div>
+      <div class="port-stat-n" style="color:var(--red)">15+</div>
+      <div class="port-stat-l" data-nl="Gemaakte websites" data-en="Websites built">Websites built</div>
     </div>
     <div>
-      <div class="port-stat-n" style="color:var(--lime)">10</div>
+      <div class="port-stat-n" style="color:var(--lime)">10+</div>
       <div class="port-stat-l" data-nl="Branches" data-en="Industries">Industries</div>
     </div>
     <div>
@@ -613,12 +611,12 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
 <!-- CTA -->
 <div style="padding:0 5vw">
 <section class="port-cta">
-  <h2 class="port-cta-h" data-nl="Jouw bedrijf <em>hier</em>?" data-en="Your business <em>here</em>?">Your business <em>here</em>?</h2>
+  <h2 class="port-cta-h" data-nl="Zien wat wij voor <em>jou</em> kunnen doen?" data-en="Want a website <em>like this?</em>">Want a website <em>like this?</em></h2>
   <p class="port-cta-p"
-    data-nl="We bouwen voor elke branche. Start met een gratis gesprek van 30 minuten."
-    data-en="We build for any industry. Start with a free 30-minute call.">We build for any industry. Start with a free 30-minute call.</p>
+    data-nl="Vertel ons over je bedrijf. Wij bouwen iets dat past en converteert."
+    data-en="Tell us about your business. We'll build something that fits and converts.">Tell us about your business. We'll build something that fits and converts.</p>
   <a href="/#contact" class="port-cta-btn">
-    <span data-nl="Start je project" data-en="Start your project">Start your project</span>
+    <span data-nl="Gratis Consultatie" data-en="Free Consultation">Free Consultation</span>
     <span>→</span>
   </a>
 </section>
@@ -628,7 +626,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
 <footer>
   <div class="fgrid">
     <div class="fbrand">
-      <span class="f-logo">Web<em>Kreatives</em></span>
+      <img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives" style="height:28px;width:auto;display:block;margin-bottom:4px">
       <p data-nl="AI-gestuurd webdesign voor bedrijven die willen opvallen. Op maat gemaakt, snel opgeleverd, gebouwd om te converteren." data-en="AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert.">AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert.</p>
       <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
     </div>
@@ -712,7 +710,11 @@ pfBtns.forEach(btn=>{
     const f=btn.dataset.filter;
     pfBtns.forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    rows.forEach(r=>{r.hidden=f!=='all'&&r.dataset.category!==f;});
+    rows.forEach(r=>{
+      const show=f==='all'||r.dataset.category===f;
+      r.hidden=!show;
+      if(show&&!reduced){gsap.set(r,{opacity:1,y:0});}
+    });
     updateCount();
   });
 });
