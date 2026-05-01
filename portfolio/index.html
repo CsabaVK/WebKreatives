@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — WebKreatives</title>
+<title>Portfolio â€” WebKreatives</title>
 <meta name="description" content="Ten website styles built for ten industries. Find the look that fits your business.">
 <link rel="canonical" href="https://webkreatives.com/portfolio/">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -13,7 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
-/* ── TOKENS ─────────────────────────────────────────── */
+/* â”€â”€ TOKENS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root{
   --ink:       oklch(8%  .010 25);
   --ink2:      oklch(18% .010 25);
@@ -33,18 +33,18 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--f2);background:var(--ink);color:var(--cream);line-height:1.6;overflow-x:hidden;cursor:none}
+body{font-family:var(--f2);background:var(--ink);color:var(--cream);line-height:1.6;overflow-x:clip;cursor:none}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 button{font:inherit;cursor:none;border:none;background:none}
 
-/* ── CURSOR ─────────────────────────────────────────── */
+/* â”€â”€ CURSOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #c-dot{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s var(--ease),width .2s var(--ease),height .2s var(--ease)}
 #c-ring{position:fixed;width:38px;height:38px;border:1.5px solid var(--red);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),opacity .2s;opacity:.6}
 body.cursor-hover #c-ring{width:52px;height:52px;opacity:.9}
 body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 
-/* ── NAV ─────────────────────────────────────────────── */
+/* â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #pNav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 5vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:oklch(7% .010 25 / .96);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid oklch(20% .008 25)}
 .nav-logo-text{font-family:var(--f1);font-size:14px;font-weight:700;letter-spacing:-.02em;color:var(--white);white-space:nowrap}
 .nav-logo-text em{font-style:normal;color:var(--red)}
@@ -73,13 +73,13 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.nav-mobile-menu{display:none;position:fixed;top:61px;left:0;right:0;background:oklch(7% .010 25 / .98);backdrop-filter:blur(20px);border-bottom:1px solid oklch(20% .008 25);padding:20px 5vw 24px;z-index:99}
+.nav-mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:oklch(7% .010 25 / .98);backdrop-filter:blur(20px);border-bottom:1px solid oklch(20% .008 25);padding:20px 5vw 24px;z-index:99}
 .nav-mobile-menu.open{display:block}
 .nav-mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
 .nav-mobile-menu a{display:block;padding:10px 0;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:oklch(60% .005 25);border-bottom:1px solid oklch(14% .010 25);transition:color .2s}
 .nav-mobile-menu a:hover,.nav-mobile-menu a.active{color:var(--white)}
 
-/* ── HERO ────────────────────────────────────────────── */
+/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .port-hero{padding:110px 5vw 56px;display:flex;align-items:flex-end;justify-content:space-between;gap:48px;border-bottom:1px solid oklch(15% .010 25)}
 .port-hero-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;align-items:center;gap:8px;margin-bottom:18px}
 .port-hero-crumb a{transition:color .2s}
@@ -92,15 +92,15 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 .port-stat-n{font-family:var(--f1);font-size:clamp(32px,3.5vw,46px);font-weight:900;letter-spacing:-.04em;line-height:1}
 .port-stat-l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:oklch(38% .008 25);margin-top:5px}
 
-/* ── FILTERS ─────────────────────────────────────────── */
-.port-filters{position:sticky;top:61px;z-index:50;background:oklch(9% .010 25 / .97);backdrop-filter:blur(16px);border-bottom:1px solid oklch(15% .010 25);padding:12px 5vw;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+/* â”€â”€ FILTERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.port-filters{position:sticky;top:72px;z-index:50;background:oklch(9% .010 25 / .97);backdrop-filter:blur(16px);border-bottom:1px solid oklch(15% .010 25);padding:12px 5vw;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .pf-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:oklch(32% .008 25);margin-right:4px;flex-shrink:0}
 .pf-btn{padding:5px 14px;border-radius:100px;border:1px solid oklch(22% .010 25);font-family:var(--f2);font-size:11px;font-weight:600;color:oklch(50% .006 25);transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);cursor:none}
 .pf-btn:hover{border-color:oklch(40% .010 25);color:oklch(76% .006 25)}
 .pf-btn.active{background:oklch(94% .008 80);border-color:oklch(94% .008 80);color:oklch(10% .010 25)}
 .pf-count{margin-left:auto;font-size:11px;color:oklch(34% .008 25);flex-shrink:0}
 
-/* ── LIST LAYOUT ─────────────────────────────────────── */
+/* â”€â”€ LIST LAYOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .pf-list{max-width:1280px;margin:0 auto;padding:0 5vw 80px}
 .pf-row{
   display:grid;
@@ -109,18 +109,15 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
   align-items:center;
   padding:52px 0;
   border-bottom:1px solid oklch(14% .010 25);
-  cursor:none;
+  cursor:pointer;
+  position:relative;
+  z-index:1;
 }
 .pf-row:first-child{border-top:1px solid oklch(14% .010 25)}
 .pf-row[hidden]{display:none}
 
 /* info side */
 .pf-info{display:flex;flex-direction:column;gap:0}
-.pf-num{
-  font-family:var(--f1);font-size:10px;font-weight:700;
-  letter-spacing:.18em;color:oklch(28% .008 25);
-  margin-bottom:16px;
-}
 .pf-tag{
   display:inline-flex;align-items:center;gap:6px;
   font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -169,7 +166,7 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 .pf-cta-arrow{transition:transform .25s var(--ease)}
 .pf-row:hover .pf-cta-arrow{transform:translateX(4px)}
 
-/* preview side — browser chrome frame */
+/* preview side â€” browser chrome frame */
 .pf-preview{
   border-radius:9px;
   overflow:hidden;
@@ -196,7 +193,7 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 .pf-screenshot{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top center;display:block;transition:transform .55s var(--ease)}
 .pf-row:hover .pf-screenshot{transform:scale(1.025)}
 
-/* ── CTA SECTION ─────────────────────────────────────── */
+/* â”€â”€ CTA SECTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .port-cta{border-top:1px solid oklch(15% .010 25);padding:80px 5vw;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:1280px;margin:0 auto}
 .port-cta-h{font-family:var(--f1);font-size:clamp(28px,3.2vw,44px);font-weight:900;letter-spacing:-.04em;color:var(--white);line-height:1.05;max-width:520px}
 .port-cta-h em{font-style:normal;color:var(--red)}
@@ -207,7 +204,7 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 .port-cta-btn:hover::before{transform:translateX(0)}
 .port-cta-btn span{position:relative}
 
-/* ── FOOTER ──────────────────────────────────────────── */
+/* â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padding:56px 5vw 32px}
 .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;max-width:1200px;margin:0 auto 48px}
 .fbrand p{font-size:12.5px;color:oklch(34% .006 25);line-height:1.75;margin:12px 0 14px;max-width:240px}
@@ -223,7 +220,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
 .fbot-links a{font-size:11px;color:oklch(26% .008 25);transition:color .2s}
 .fbot-links a:hover{color:oklch(50% .008 25)}
 
-/* ── COOKIE ──────────────────────────────────────────── */
+/* â”€â”€ COOKIE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @keyframes ck-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 #ck{position:fixed;bottom:24px;right:24px;width:300px;background:oklch(18% .010 25);border:1px solid oklch(28% .010 25);border-radius:12px;padding:18px;z-index:9000;animation:ck-rise .4s var(--ease);box-shadow:0 8px 32px oklch(0% 0 0 / .5)}
 #ck[hidden]{display:none!important}
@@ -253,7 +250,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
 #ck-manage:hover{color:oklch(60% .006 25);border-color:oklch(36% .010 25)}
 #ck-manage[hidden]{display:none!important}
 
-/* ── RESPONSIVE ──────────────────────────────────────── */
+/* â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media(max-width:1000px){
   .pf-row{grid-template-columns:1fr;gap:32px}
   .pf-preview{max-width:520px}
@@ -379,7 +376,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 01 -->
   <article class="pf-row tag-finance" data-category="finance">
     <div class="pf-info">
-      <div class="pf-num">01 / 10</div>
       <div class="pf-tag" data-nl="Finance" data-en="Finance">Finance</div>
       <div class="pf-name">De Groot &amp; Partners</div>
       <p class="pf-for"
@@ -387,7 +383,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
         data-en="For accountants and advisors who need to project authority online. Multi-page setup with shared nav, FAQ, pricing cards and contact form.">For accountants and advisors who need to project authority online. Multi-page setup with shared nav, FAQ, pricing cards and contact form.</p>
       <a class="pf-cta" href="../client-projects/de-groot-accountants/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -402,15 +398,14 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 02 -->
   <article class="pf-row tag-health" data-category="health">
     <div class="pf-info">
-      <div class="pf-num">02 / 10</div>
       <div class="pf-tag" data-nl="Zorg" data-en="Healthcare">Healthcare</div>
       <div class="pf-name">Tandarts Knoll</div>
       <p class="pf-for"
-        data-nl="Voor zorgpraktijken die patiënten vertrouwen geven voor de eerste afspraak. Licht design met openingstijden, contactformulier en tweetalige NL/EN opzet."
+        data-nl="Voor zorgpraktijken die patiÃ«nten vertrouwen geven voor de eerste afspraak. Licht design met openingstijden, contactformulier en tweetalige NL/EN opzet."
         data-en="For healthcare practices that build patient trust before the first appointment. Light design with opening hours, contact form and bilingual NL/EN setup.">For healthcare practices that build patient trust before the first appointment. Light design with opening hours, contact form and bilingual NL/EN setup.</p>
       <a class="pf-cta" href="../client-projects/tandarts-knoll/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -425,7 +420,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 03 -->
   <article class="pf-row tag-restaurant" data-category="restaurant">
     <div class="pf-info">
-      <div class="pf-num">03 / 10</div>
       <div class="pf-tag" data-nl="Restaurant" data-en="Restaurant">Restaurant</div>
       <div class="pf-name">Leyenburger Grill</div>
       <p class="pf-for"
@@ -433,7 +427,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
         data-en="For restaurants that put atmosphere, menu and location front and center. Dark editorial design with menu section, opening hours and Google Maps.">For restaurants that put atmosphere, menu and location front and center. Dark editorial design with menu section, opening hours and Google Maps.</p>
       <a class="pf-cta" href="../client-projects/leyenburger/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -448,7 +442,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 04 -->
   <article class="pf-row tag-beauty" data-category="beauty">
     <div class="pf-info">
-      <div class="pf-num">04 / 10</div>
       <div class="pf-tag" data-nl="Beauty" data-en="Beauty">Beauty</div>
       <div class="pf-name">Luna Beauty Studio</div>
       <p class="pf-for"
@@ -456,7 +449,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
         data-en="For salons and beauty brands where services need to trigger bookings. Warm design with services, pricing, testimonials and WhatsApp booking.">For salons and beauty brands where services need to trigger bookings. Warm design with services, pricing, testimonials and WhatsApp booking.</p>
       <a class="pf-cta" href="../client-projects/luna-beauty-studio/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -471,7 +464,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 05 -->
   <article class="pf-row tag-creative" data-category="creative">
     <div class="pf-info">
-      <div class="pf-num">05 / 10</div>
       <div class="pf-tag" data-nl="Creatief" data-en="Creative">Creative</div>
       <div class="pf-name">Studio Lena</div>
       <p class="pf-for"
@@ -479,7 +471,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
         data-en="For photographers and creatives who let their work do the talking. Scandinavian minimalism with asymmetric photo grid, 100vh split hero and subtle scroll animations.">For photographers and creatives who let their work do the talking. Scandinavian minimalism with asymmetric photo grid, 100vh split hero and subtle scroll animations.</p>
       <a class="pf-cta" href="../client-projects/studio-lena-fotografie/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -494,7 +486,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 06 -->
   <article class="pf-row tag-interior" data-category="interior">
     <div class="pf-info">
-      <div class="pf-num">06 / 10</div>
       <div class="pf-tag" data-nl="Interieur" data-en="Interior">Interior</div>
       <div class="pf-name">Maison Blanc Interieur</div>
       <p class="pf-for"
@@ -502,7 +493,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
         data-en="For premium brands where every visitor should feel the quality. Ultra-luxury editorial style with magazine grid and antique gold accents.">For premium brands where every visitor should feel the quality. Ultra-luxury editorial style with magazine grid and antique gold accents.</p>
       <a class="pf-cta" href="../client-projects/maison-blanc-interieur/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -517,7 +508,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 07 -->
   <article class="pf-row tag-construction" data-category="construction">
     <div class="pf-info">
-      <div class="pf-num">07 / 10</div>
       <div class="pf-tag" data-nl="Bouw" data-en="Construction">Construction</div>
       <div class="pf-name">Klussenbedrijf Edward</div>
       <p class="pf-for"
@@ -525,7 +515,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
         data-en="For contractors who win trust before the first phone call. Industrial design with project gallery, services overview and bilingual NL/EN setup.">For contractors who win trust before the first phone call. Industrial design with project gallery, services overview and bilingual NL/EN setup.</p>
       <a class="pf-cta" href="../client-projects/klussenbedrijf-edward/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -540,7 +530,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 08 -->
   <article class="pf-row tag-bakery" data-category="bakery">
     <div class="pf-info">
-      <div class="pf-num">08 / 10</div>
       <div class="pf-tag" data-nl="Bakkerij" data-en="Bakery">Bakery</div>
       <div class="pf-name">Bakkerij Hartman</div>
       <p class="pf-for"
@@ -548,7 +537,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
         data-en="For artisan brands with a story and a distinct identity. Retro vintage design with paper texture, ornamental details and product cards.">For artisan brands with a story and a distinct identity. Retro vintage design with paper texture, ornamental details and product cards.</p>
       <a class="pf-cta" href="../client-projects/bakkerij-hartman/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -563,7 +552,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 09 -->
   <article class="pf-row tag-tech" data-category="tech">
     <div class="pf-info">
-      <div class="pf-num">09 / 10</div>
       <div class="pf-tag" data-nl="Tech" data-en="Tech">Tech</div>
       <div class="pf-name">Nexus IT Solutions</div>
       <p class="pf-for"
@@ -571,7 +559,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
         data-en="For tech and IT companies that need to look credible and generate leads. Dark SaaS design with glassmorphism cards, gradient hero and trust stats.">For tech and IT companies that need to look credible and generate leads. Dark SaaS design with glassmorphism cards, gradient hero and trust stats.</p>
       <a class="pf-cta" href="../client-projects/nexus-it-solutions/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -586,7 +574,6 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
   <!-- 10 -->
   <article class="pf-row tag-plumbing" data-category="plumbing">
     <div class="pf-info">
-      <div class="pf-num">10 / 10</div>
       <div class="pf-tag" data-nl="Loodgieter" data-en="Plumbing">Plumbing</div>
       <div class="pf-name">Van der Berg Loodgieter</div>
       <p class="pf-for"
@@ -594,7 +581,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
         data-en="For tradespeople who need to be reachable around the clock. Professional trust-first design with emergency CTA, services, reviews and contact form.">For tradespeople who need to be reachable around the clock. Professional trust-first design with emergency CTA, services, reviews and contact form.</p>
       <a class="pf-cta" href="../client-projects/vanderberg-loodgieter/" target="_blank">
         <span data-nl="Bekijk website" data-en="View website">View website</span>
-        <span class="pf-cta-arrow">→</span>
+        <span class="pf-cta-arrow">â†’</span>
       </a>
     </div>
     <div class="pf-preview">
@@ -617,7 +604,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
     data-en="Tell us about your business. We'll build something that fits and converts.">Tell us about your business. We'll build something that fits and converts.</p>
   <a href="/#contact" class="port-cta-btn">
     <span data-nl="Gratis Consultatie" data-en="Free Consultation">Free Consultation</span>
-    <span>→</span>
+    <span>â†’</span>
   </a>
 </section>
 </div>
@@ -626,7 +613,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
 <footer>
   <div class="fgrid">
     <div class="fbrand">
-      <img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives" style="height:28px;width:auto;display:block;margin-bottom:4px">
+      <img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives" style="height:140px;width:auto;max-width:100%;display:block;margin-bottom:8px">
       <p data-nl="AI-gestuurd webdesign voor bedrijven die willen opvallen. Op maat gemaakt, snel opgeleverd, gebouwd om te converteren." data-en="AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert.">AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert.</p>
       <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
     </div>
@@ -653,7 +640,7 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
     </div>
   </div>
   <div class="fbot">
-    <p>© 2026 WebKreatives · Amsterdam · KVK: 94051097</p>
+    <p>Â© 2026 WebKreatives Â· Amsterdam Â· KVK: 94051097</p>
     <nav class="fbot-links">
       <a href="/privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacy Policy</a>
       <a href="/terms/" data-nl="Voorwaarden" data-en="Terms">Terms</a>
@@ -662,17 +649,17 @@ footer{background:oklch(6% .010 25);border-top:1px solid oklch(13% .010 25);padd
 </footer>
 
 <script>
-/* ── CURSOR ─────────────────────────────────────────── */
+/* â”€â”€ CURSOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const dot=document.getElementById('c-dot'),ring=document.getElementById('c-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
 (function loop(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
 document.querySelectorAll('a,button,.pf-row').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add(el.classList.contains('pf-row')?'cursor-hover':'cursor-btn'));
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-btn'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-btn','cursor-hover'));
 });
 
-/* ── LANGUAGE ────────────────────────────────────────── */
+/* â”€â”€ LANGUAGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 let lang=localStorage.getItem('wk-lang')||'en';
 const langDrop=document.getElementById('langDrop');
 const nlSVG='<svg viewBox="0 0 640 480" style="width:15px;height:11px;border-radius:2px"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>';
@@ -692,12 +679,12 @@ document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagatio
 document.querySelectorAll('.lang-opt').forEach(o=>o.addEventListener('click',()=>applyLang(o.dataset.lang)));
 document.addEventListener('click',()=>langDrop.classList.remove('open'));
 
-/* ── MOBILE NAV ──────────────────────────────────────── */
+/* â”€â”€ MOBILE NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const hamburger=document.getElementById('navHamburger'),mobileMenu=document.getElementById('mobileMenu');
 hamburger.addEventListener('click',e=>{e.stopPropagation();hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');});
 document.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');});
 
-/* ── FILTER ──────────────────────────────────────────── */
+/* â”€â”€ FILTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const rows=Array.from(document.querySelectorAll('.pf-row'));
 const pfBtns=document.querySelectorAll('.pf-btn');
 const pfCount=document.getElementById('pfCount');
@@ -719,7 +706,16 @@ pfBtns.forEach(btn=>{
   });
 });
 
-/* ── GSAP SCROLL REVEALS ─────────────────────────────── */
+/* â”€â”€ GSAP SCROLL REVEALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+rows.forEach(row=>{
+  const cta=row.querySelector('.pf-cta');
+  if(!cta) return;
+  row.addEventListener('click',e=>{
+    if(e.target.closest('a,button')) return;
+    window.open(cta.href,'_blank');
+  });
+});
+
 const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 if(!reduced){
   gsap.registerPlugin(ScrollTrigger);
@@ -733,7 +729,7 @@ if(!reduced){
   });
 }
 
-/* ── COOKIE ──────────────────────────────────────────── */
+/* â”€â”€ COOKIE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function(){
   const KEY='wk-cookie-consent',PKEY='wk-cookie-prefs',GA_ID='G-CG9705BC61';
   let gaLoaded=false;
@@ -743,7 +739,7 @@ if(!reduced){
   function save(prefs,state){localStorage.setItem(KEY,state);localStorage.setItem(PKEY,JSON.stringify(prefs));if(prefs.analytics&&state!=='declined')loadGA();}
   const copy={
     en:{title:'Cookies on WebKreatives',text:'We use essential cookies for language and theme preferences. Analytics helps us improve the site.',accept:'Accept all',customize:'Customize',save:'Save preferences',essential:'Essential',essentialTxt:'Language, theme, and session preferences. Always on.',analytics:'Analytics',analyticsTxt:'Helps us understand which pages work best so we can keep improving.'},
-    nl:{title:'Cookies op WebKreatives',text:'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',accept:'Alles accepteren',customize:'Aanpassen',save:'Voorkeuren opslaan',essential:'Essentieel',essentialTxt:'Taal-, thema- en sessievoorkeuren. Altijd actief.',analytics:'Analytics',analyticsTxt:'Helpt ons begrijpen welke pagina\'s het beste werken zodat we de site blijven verbeteren.'}
+    nl:{title:'Cookies op WebKreatives',text:'We gebruiken essentiÃ«le cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',accept:'Alles accepteren',customize:'Aanpassen',save:'Voorkeuren opslaan',essential:'Essentieel',essentialTxt:'Taal-, thema- en sessievoorkeuren. Altijd actief.',analytics:'Analytics',analyticsTxt:'Helpt ons begrijpen welke pagina\'s het beste werken zodat we de site blijven verbeteren.'}
   };
   function render(l){
     const c=copy[l]||copy.en,prefs=getPrefs();
