@@ -571,17 +571,11 @@ body.cursor-text #c-ring{width:4px;height:28px;border-radius:2px;opacity:.5}
   margin-bottom:48px;gap:24px;flex-wrap:wrap;
 }
 .port-all{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:var(--f2);font-size:12px;font-weight:600;
-  color:oklch(60% .005 80);
-  border:1px solid oklch(32% .010 25);border-radius:100px;
-  padding:9px 18px;position:relative;overflow:hidden;
-  transition:color .3s var(--ease),transform .2s;white-space:nowrap;
+  font-size:14px;font-weight:500;color:oklch(56% .005 80);
+  border-bottom:1px solid oklch(36% .010 25);padding-bottom:3px;
+  transition:color .2s,border-color .2s;white-space:nowrap;align-self:center;
 }
-.port-all::before{content:'';position:absolute;inset:0;background:oklch(22% .010 25);transform:translateX(-101%);transition:transform .35s var(--ease)}
-.port-all span{position:relative}
-.port-all:hover{color:var(--white);transform:translateY(-2px)}
-.port-all:hover::before{transform:translateX(0)}
+.port-all:hover{color:var(--white);border-color:var(--white)}
 .port-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -1136,18 +1130,12 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 /* ── ARTICLES CIRCULAR GALLERY ─────────── */
 .art-header{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:0}
 .art-view-all{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:var(--f2);font-size:12px;font-weight:600;
-  color:oklch(60% .005 80);
-  border:1px solid oklch(32% .010 25);border-radius:100px;
-  padding:9px 18px;position:relative;overflow:hidden;
-  transition:color .3s var(--ease),transform .2s;
-  white-space:nowrap;flex-shrink:0;align-self:center;
+  font-size:14px;font-weight:500;color:oklch(56% .005 80);
+  border-bottom:1px solid oklch(36% .010 25);padding-bottom:3px;
+  transition:color .2s,border-color .2s;white-space:nowrap;
+  flex-shrink:0;align-self:center;
 }
-.art-view-all::before{content:'';position:absolute;inset:0;background:oklch(22% .010 25);transform:translateX(-101%);transition:transform .35s var(--ease)}
-.art-view-all span{position:relative}
-.art-view-all:hover{color:var(--white);transform:translateY(-2px)}
-.art-view-all:hover::before{transform:translateX(0)}
+.art-view-all:hover{color:var(--white);border-color:var(--white)}
 .art-scene{
   position:relative;height:540px;margin-top:56px;
   cursor:grab;overflow:visible;
@@ -1248,10 +1236,6 @@ footer{background:var(--ink);padding:72px 5vw 40px}
     <li><a href="#contact" data-nl="Contact" data-en="Contact">Contact</a></li>
   </ul>
   <div class="nav-controls">
-    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="theme-icon-sun" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="theme-icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
     <div class="lang-drop" id="langDrop">
       <button class="lang-btn-nav" id="langBtn">
         <span id="lang-label-nav">EN</span>
@@ -1378,7 +1362,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <p class="lbl reveal" data-nl="Portfolio" data-en="Portfolio">Portfolio</p>
       <h2 class="h2 reveal" data-nl="Werk dat spreekt<br>voor zich." data-en="Work that speaks<br>for itself.">Werk dat spreekt<br>voor zich.</h2>
     </div>
-    <a href="our-websites/" class="port-all reveal" data-nl="<span>Alle projecten →</span>" data-en="<span>All projects →</span>"><span>All projects →</span></a>
+    <a href="our-websites/" class="port-all reveal" data-nl="Alle projecten →" data-en="All projects →">All projects →</a>
   </div>
   <div class="port-grid">
     <div class="port-card wide reveal">
@@ -1690,7 +1674,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <p class="lbl" data-nl="Artikelen" data-en="Articles">Articles</p>
       <h2 class="h2" data-nl="Praktische<br>kennis." data-en="Practical<br>knowledge.">Practical<br>knowledge.</h2>
     </div>
-    <a href="articles/" class="art-view-all" data-nl="<span>Alle artikelen →</span>" data-en="<span>All articles →</span>"><span>All articles →</span></a>
+    <a href="articles/" class="art-view-all" data-nl="Alle artikelen →" data-en="All articles →">All articles →</a>
   </div>
 
   <div class="art-scene" id="artScene">
@@ -2035,6 +2019,7 @@ const html=document.documentElement;
 const themeBtn=document.getElementById('themeBtn');
 const sunIcon=document.getElementById('theme-icon-sun');
 const moonIcon=document.getElementById('theme-icon-moon');
+if(themeBtn)themeBtn.addEventListener('click',()=>applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark'));
 
 function applyTheme(t){
   html.setAttribute('data-theme',t);
@@ -2046,7 +2031,6 @@ function applyTheme(t){
   }
 }
 applyTheme(localStorage.getItem('wk-theme')||'light');
-themeBtn.addEventListener('click',()=>applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark'));
 
 /* ── LANGUAGE ─────────────────────────── */
 let lang=localStorage.getItem('wk-lang')||'en';
