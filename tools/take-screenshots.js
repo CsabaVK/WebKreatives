@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const BASE = 'D:/.openclaw/Openclaw/projects/04-WebKreatives/client-projects';
-const OUT  = 'D:/.openclaw/Openclaw/projects/04-WebKreatives/test/screenshots';
+const OUT  = 'D:/.openclaw/Openclaw/projects/04-WebKreatives/assets/screenshots';
 
 const sites = [
   'de-groot-accountants',
@@ -28,6 +28,7 @@ const sites = [
     try {
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 15000 });
       await page.waitForTimeout(2000);
+      await page.evaluate(() => { const b = document.getElementById('wkBanner'); if (b) b.style.display = 'none'; });
       const outPath = path.join(OUT, s + '.png');
       await page.screenshot({ path: outPath, clip: { x: 0, y: 0, width: 1280, height: 900 } });
       console.log('OK  ' + s);
