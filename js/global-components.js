@@ -37,7 +37,7 @@
 #pNav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   height:auto;
-  padding:20px 5vw;
+  padding:10px 5vw;
   display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
   background:transparent;
   backdrop-filter:none;
@@ -49,17 +49,13 @@
              padding .35s cubic-bezier(.16,1,.3,1);
 }
 #pNav.scrolled{
-  padding-top:14px;padding-bottom:14px;
+  padding-top:6px;padding-bottom:6px;
   background:oklch(7% .010 25 / .96);
   backdrop-filter:blur(20px) saturate(1.4);
   border-bottom-color:oklch(20% .008 25);
 }
-.wk-logo{
-  font-family:var(--wk-f1);font-size:14px;font-weight:700;
-  letter-spacing:-.02em;color:var(--wk-white);
-  white-space:nowrap;text-decoration:none;
-}
-.wk-logo em{font-style:normal;color:var(--wk-red)}
+.wk-logo{display:block;text-decoration:none;line-height:0}
+.wk-logo img{height:80px;width:auto;display:block;}
 #pNav .nav-links{
   display:flex;gap:32px;list-style:none;justify-content:center;
 }
@@ -248,7 +244,7 @@
     navRoot.innerHTML = `
 <nav id="pNav">
   <div>
-    <a href="/" class="wk-logo">Web<em>Kreatives</em></a>
+    <a href="/" class="wk-logo"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></a>
   </div>
   <ul class="nav-links">
     <li><a href="/#services" data-i18n="nav.services">Diensten</a></li>
