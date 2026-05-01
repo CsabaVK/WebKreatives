@@ -32,14 +32,27 @@
 }
 
 /* ── NAV ─────────────────────────────────────────────── */
+/* Kill style.css's nav::before white-glass overlay */
+#pNav::before{display:none!important}
 #pNav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:18px 5vw;
+  height:auto;
+  padding:20px 5vw;
   display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  background:transparent;
+  backdrop-filter:none;
+  border-bottom:1px solid transparent;
+  font-family:var(--wk-f2);
+  transition:background .4s cubic-bezier(.16,1,.3,1),
+             border-color .35s cubic-bezier(.16,1,.3,1),
+             backdrop-filter .4s,
+             padding .35s cubic-bezier(.16,1,.3,1);
+}
+#pNav.scrolled{
+  padding-top:14px;padding-bottom:14px;
   background:oklch(7% .010 25 / .96);
   backdrop-filter:blur(20px) saturate(1.4);
-  border-bottom:1px solid oklch(20% .008 25);
-  font-family:var(--wk-f2);
+  border-bottom-color:oklch(20% .008 25);
 }
 .wk-logo{
   font-family:var(--wk-f1);font-size:14px;font-weight:700;
@@ -52,7 +65,7 @@
 }
 #pNav .nav-links a{
   font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  color:oklch(52% .005 25);position:relative;padding-bottom:3px;
+  color:oklch(66% .005 25);position:relative;padding-bottom:3px;
   transition:color .2s var(--wk-ease);text-decoration:none;
 }
 #pNav .nav-links a::after{
@@ -188,27 +201,29 @@
 
 /* ── DARK COOKIE OVERRIDE ────────────────────────────── */
 .cookie-banner{
-  background:oklch(16% .010 25) !important;
-  border-color:oklch(26% .010 25) !important;
+  background:oklch(13% .010 25) !important;
+  border-color:oklch(24% .010 25) !important;
+  box-shadow:0 24px 70px oklch(0% 0 0 / .55) !important;
 }
 .cookie-banner .cookie-copy strong,.cookie-banner .cookie-option strong{
-  color:oklch(96% .005 25) !important;
+  color:oklch(94% .005 25) !important;
 }
 .cookie-banner .cookie-copy p,.cookie-banner .cookie-option p{
-  color:oklch(62% .006 25) !important;
+  color:oklch(60% .006 25) !important;
 }
-.cookie-banner .cookie-panel{border-top-color:oklch(24% .010 25) !important}
+.cookie-banner .cookie-panel{border-top-color:oklch(22% .010 25) !important}
 .cookie-btn-secondary{
-  color:oklch(78% .006 25) !important;
-  border-color:oklch(30% .010 25) !important;
-  background:oklch(14% .010 25) !important;
+  color:oklch(82% .006 25) !important;
+  border-color:oklch(28% .010 25) !important;
+  background:oklch(18% .010 25) !important;
 }
 .cookie-switch span{background:oklch(28% .010 25) !important}
 .cookie-switch input:checked+span{background:var(--wk-red) !important}
 .cookie-manage-btn{
-  background:oklch(11% .010 25) !important;
-  border-color:oklch(24% .010 25) !important;
-  color:oklch(56% .006 25) !important;
+  background:oklch(15% .010 25) !important;
+  border-color:oklch(28% .012 25) !important;
+  color:oklch(75% .006 25) !important;
+  box-shadow:0 4px 16px oklch(0% 0 0 / .4) !important;
 }
 `;
     document.head.appendChild(s);
@@ -293,6 +308,14 @@
           mob.classList.remove('open');
         });
       });
+    }
+
+    /* Transparent → dark on scroll (matches main page nav behavior) */
+    const pNav = document.getElementById('pNav');
+    if (pNav) {
+      const updateNav = () => pNav.classList.toggle('scrolled', window.scrollY > 50);
+      updateNav();
+      window.addEventListener('scroll', updateNav, { passive: true });
     }
   }
 

@@ -78,6 +78,8 @@ body.cursor-hover #c-ring{width:52px;height:52px;opacity:.9}
 body.cursor-btn #c-dot{width:4px;height:4px}
 body.cursor-btn #c-ring{width:64px;height:64px;border-color:var(--red);opacity:.35;background:oklch(51% .220 25 / .08)}
 body.cursor-text #c-ring{width:4px;height:28px;border-radius:2px;opacity:.5}
+body.cursor-on-red #c-dot{background:oklch(8% .010 25)}
+body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
 
 /* ── LOADER ─────────────────────────────────────────── */
 #loader{
@@ -88,11 +90,11 @@ body.cursor-text #c-ring{width:4px;height:28px;border-radius:2px;opacity:.5}
   flex-direction:column;gap:24px;
 }
 .loader-logo{
-  font-family:var(--f1);font-size:22px;font-weight:700;
-  color:var(--white);letter-spacing:-.02em;
   opacity:0;transform:translateY(12px);
 }
-.loader-logo span{color:var(--red)}
+.loader-logo img{
+  height:128px;width:auto;display:block;
+}
 .loader-bar{
   width:120px;height:1px;background:var(--lined);overflow:hidden;
 }
@@ -115,7 +117,7 @@ body.cursor-text #c-ring{width:4px;height:28px;border-radius:2px;opacity:.5}
   backdrop-filter:blur(20px) saturate(1.4);
   border-color:oklch(20% .008 25);
 }
-.nav-logo img{height:38px;width:auto;display:block;filter:brightness(0) invert(1)}
+.nav-logo img{height:80px;width:auto;display:block;}
 .nav-links{
   display:flex;gap:32px;list-style:none;justify-content:center;
 }
@@ -1208,7 +1210,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 .ck-toggle.locked span{background:var(--grn);cursor:default}
 .ck-panel-save{margin-top:12px}
 .ck-panel-save .ck-btn{flex:unset;width:100%}
-#ck-manage{position:fixed;bottom:20px;right:20px;z-index:9989;background:oklch(16% .010 25);color:oklch(46% .005 80);border:1px solid oklch(24% .010 25);border-radius:8px;padding:7px 11px;font-family:var(--f2);font-size:11px;cursor:pointer;transition:color .2s,border-color .2s}
+#ck-manage{position:fixed;bottom:20px;left:20px;z-index:9989;background:oklch(16% .010 25);color:oklch(46% .005 80);border:1px solid oklch(24% .010 25);border-radius:8px;padding:7px 11px;font-family:var(--f2);font-size:11px;cursor:pointer;transition:color .2s,border-color .2s}
 #ck-manage:hover{color:oklch(72% .005 80);border-color:oklch(36% .010 25)}
 #ck-manage[hidden]{display:none!important}
 </style>
@@ -1221,16 +1223,17 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 
 <!-- LOADER -->
 <div id="loader">
-  <div class="loader-logo" id="loader-logo">Web<span>K</span>reatives</div>
+  <div class="loader-logo" id="loader-logo"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></div>
   <div class="loader-bar"><div class="loader-bar-fill" id="loader-fill"></div></div>
 </div>
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a class="nav-logo-text" href="#">Web<em>K</em>reatives</a>
+  <a class="nav-logo" href="#"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></a>
   <ul class="nav-links">
     <li><a href="#services" data-nl="Diensten" data-en="Services">Services</a></li>
     <li><a href="#portfolio" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
+    <li><a href="/articles/" data-nl="Artikelen" data-en="Articles">Articles</a></li>
     <li><a href="#pricing" data-nl="Prijzen" data-en="Pricing">Pricing</a></li>
     <li><a href="#subscriptions" data-nl="Support" data-en="Support">Support</a></li>
     <li><a href="#contact" data-nl="Contact" data-en="Contact">Contact</a></li>
@@ -1851,6 +1854,22 @@ if(!reduced){
   document.addEventListener('mousemove',e=>{
     mx=e.clientX; my=e.clientY;
     gsap.to(dot,{x:mx,y:my,duration:.08,ease:'none'});
+    // detect red background under cursor
+    const el=document.elementFromPoint(mx,my);
+    let onRed=false;
+    if(el){
+      let node=el;
+      for(let i=0;i<6&&node&&node!==document.body;i++){
+        const bg=getComputedStyle(node).backgroundColor;
+        const m=bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if(m){
+          const r=+m[1],g=+m[2],b=+m[3];
+          if(r>150&&r>g*2.5&&r>b*2.5){onRed=true;break;}
+        }
+        node=node.parentElement;
+      }
+    }
+    document.body.classList.toggle('cursor-on-red',onRed);
   });
   (function lerp(){
     rx+=(mx-rx)*.14; ry+=(my-ry)*.14;
