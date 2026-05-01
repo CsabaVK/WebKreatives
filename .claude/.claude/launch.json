@@ -1,0 +1,1 @@
+{"version":"0.0.1","configurations":[{"name":"webkreatives","runtimeExecutable":"npx.cmd","runtimeArgs":["serve","-s",".","-l","8080"],"port":8080}]}
