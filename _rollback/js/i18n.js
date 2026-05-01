@@ -233,7 +233,7 @@ const translations = {
   },
   en: {
     "nav.services": "Services",
-    "nav.work": "Portfolio",
+    "nav.work": "Our Websites",
     "nav.pricing": "Pricing",
     "nav.reviews": "Reviews",
     "nav.articles": "Articles",

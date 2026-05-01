@@ -1,526 +1,2399 @@
-<!DOCTYPE html>
-<html lang="nl">
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WebKreatives | Webdesign voor Kleine Bedrijven in Nederland</title>
-<meta name="description" content="WebKreatives bouwt mooie, converterende websites voor kleine bedrijven. Op maat gemaakt, snel live, betaalbaar. Gevestigd in Amsterdam.">
-<meta name="keywords" content="webdesign, website laten maken, kleine bedrijven, webdesign bureau, Amsterdam, betaalbare websites, website bouwen, Nederland">
-<meta name="author" content="WebKreatives">
-<meta name="robots" content="index, follow">
-<meta name="google-site-verification" content="wDDYs4JhiIfO8xqnPK1yaigw4a6iyPl4g83UiyfSzLY">
-<link rel="canonical" href="https://webkreatives.com/">
-
-<!-- Google Analytics is loaded via consent in js/script.js -->
-
-<!-- Favicon -->
+<title>WebKreatives, Websites That Win</title>
+<meta name="description" content="AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
-<!-- Open Graph / Social Media -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://webkreatives.com/">
-<meta property="og:title" content="WebKreatives | Webdesign voor Kleine Bedrijven">
-<meta property="og:description" content="Mooie, converterende websites voor kleine bedrijven. Op maat, betaalbaar, snel live. Gevestigd in Amsterdam.">
-<meta property="og:image" content="https://webkreatives.com/og-image.svg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale" content="nl_NL">
-<meta property="og:site_name" content="WebKreatives">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WebKreatives | Webdesign voor Kleine Bedrijven">
-<meta name="twitter:description" content="Mooie, converterende websites voor kleine bedrijven. Op maat, betaalbaar, snel live.">
-
-<!-- Theme color -->
-<meta name="theme-color" content="#0d0d0d">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["Organization", "ProfessionalService"],
-  "name": "WebKreatives",
-  "legalName": "WebKreatives",
-  "alternateName": "WebKreatives",
-  "description": "WebKreatives builds beautiful, high-converting websites for small businesses. Custom-made, fast, affordable. Based in Amsterdam, Netherlands.",
-  "url": "https://webkreatives.com",
-  "logo": "https://webkreatives.com/assets/Horizontallogo.png",
-  "email": "info@webkreatives.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Amsterdam",
-    "addressCountry": "NL"
-  },
-  "areaServed": "Worldwide",
-  "priceRange": "€199 - €599",
-  "serviceType": ["Web Design", "Webshop Development", "SEO", "Branding", "Ongoing Support"],
-  "knowsLanguage": ["nl", "en"],
-  "founder": {
-    "@type": "Person",
-    "name": "Csaba G."
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "info@webkreatives.com",
-    "contactType": "customer service",
-    "availableLanguage": ["Dutch", "English"]
-  },
-  "sameAs": [
-    "https://www.instagram.com/webkreatives/",
-    "https://www.linkedin.com/company/webkreatives/",
-    "https://webkreatives.medium.com/"
-  ]
-}
-</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body data-page="home">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+  --ink:       oklch(8%  .010 25);
+  --ink2:      oklch(18% .010 25);
+  --ink3:      oklch(35% .010 25);
+  --cream:     oklch(97% .008 80);
+  --cream2:    oklch(93% .012 80);
+  --red:       #df3821;
+  --red2:      oklch(43% .200 25);
+  --white:     oklch(99% .004 80);
+  --line:      oklch(88% .006 80);
+  --lined:     oklch(22% .010 25);
+  --lime:      #b9e185;
+  --grn:       oklch(68% .150 130);
+  --blue:      #648dcb;
+  --yellow:    #fbeb78;
+  --f1: 'Unbounded', sans-serif;
+  --f2: 'Figtree', sans-serif;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+[data-theme="dark"] {
+  --ink:   oklch(96% .005 80);
+  --ink2:  oklch(82% .005 80);
+  --ink3:  oklch(62% .005 80);
+  --cream: oklch(12% .010 25);
+  --cream2:oklch(18% .010 25);
+  --white: oklch(99% .004 80);
+  --line:  oklch(28% .010 25);
+  --lined: oklch(28% .010 25);
+}
 
-<div id="globalNav"></div>
+/* ── RESET ──────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f2);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  cursor:none;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:none;border:none;background:none}
+img{display:block;max-width:100%}
+
+/* ── CURSOR ─────────────────────────────────────────── */
+#c-dot{
+  position:fixed;width:8px;height:8px;
+  background:var(--red);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform .15s var(--ease),background .2s,width .2s var(--ease),height .2s var(--ease);
+}
+#c-ring{
+  position:fixed;width:38px;height:38px;
+  border:1.5px solid var(--red);border-radius:50%;
+  pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:width .25s var(--ease),height .25s var(--ease),opacity .2s,border-color .2s,background .2s;
+  opacity:.6;
+}
+body.cursor-hover #c-ring{width:52px;height:52px;opacity:.9}
+body.cursor-btn #c-dot{width:4px;height:4px}
+body.cursor-btn #c-ring{width:64px;height:64px;border-color:var(--red);opacity:.35;background:oklch(51% .220 25 / .08)}
+body.cursor-text #c-ring{width:4px;height:28px;border-radius:2px;opacity:.5}
+body.cursor-on-red #c-dot{background:oklch(8% .010 25)}
+body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
+
+/* ── LOADER ─────────────────────────────────────────── */
+#loader{
+  position:fixed;inset:0;
+  background:var(--ink);
+  z-index:10000;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:24px;
+}
+.loader-logo{
+  opacity:0;transform:translateY(12px);
+}
+.loader-logo img{
+  height:128px;width:auto;display:block;
+}
+.loader-bar{
+  width:120px;height:1px;background:var(--lined);overflow:hidden;
+}
+.loader-bar-fill{
+  height:100%;width:0%;background:var(--red);
+}
+#loader.done{pointer-events:none}
+
+/* ── NAV ─────────────────────────────────────────────── */
+#mainNav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 5vw;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  transition:padding .35s var(--ease),background .4s var(--ease),border-color .35s;
+  border-bottom:1px solid transparent;
+}
+#mainNav.scrolled{
+  padding-top:13px;padding-bottom:13px;
+  background:oklch(7% .010 25 / .96);
+  backdrop-filter:blur(20px) saturate(1.4);
+  border-color:oklch(20% .008 25);
+}
+.nav-logo img{height:80px;width:auto;display:block;}
+.nav-links{
+  display:flex;gap:32px;list-style:none;justify-content:center;
+}
+.nav-links a{
+  font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:oklch(72% .005 25);
+  position:relative;padding-bottom:3px;
+  transition:color .2s var(--ease);
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:1.5px;border-radius:1px;
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform .35s var(--ease);
+}
+.nav-links li:nth-child(1) a::after{background:var(--red)}
+.nav-links li:nth-child(2) a::after{background:var(--lime)}
+.nav-links li:nth-child(3) a::after{background:var(--yellow)}
+.nav-links li:nth-child(4) a::after{background:var(--blue)}
+.nav-links li:nth-child(5) a::after{background:var(--red)}
+.nav-links a:hover{color:oklch(96% .005 25)}
+
+.nav-controls{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.nav-links a:hover::after{transform:scaleX(1)}
+
+.nav-controls{display:flex;align-items:center;gap:6px}
+.nav-divider{width:1px;height:18px;background:oklch(24% .008 25);margin:0 4px}
+
+.theme-btn{
+  display:flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:7px;
+  color:oklch(44% .005 25);
+  transition:color .2s,background .2s;
+}
+.theme-btn:hover{color:oklch(78% .005 25);background:oklch(14% .010 25)}
+
+.lang-btn-nav{
+  display:flex;align-items:center;gap:5px;
+  height:34px;padding:0 6px;
+  font-size:11px;font-weight:700;letter-spacing:.1em;
+  color:oklch(60% .005 25);
+  transition:color .2s;
+}
+.lang-btn-nav:hover{color:oklch(88% .005 25)}
+.lang-flag{width:15px;height:11px;display:block;border-radius:2px;overflow:hidden;flex-shrink:0}
+.lang-drop{position:relative}
+.lang-menu{
+  position:absolute;top:calc(100% + 6px);right:0;
+  background:oklch(10% .010 25);
+  border:1px solid oklch(22% .010 25);
+  border-radius:8px;padding:4px;
+  min-width:72px;opacity:0;pointer-events:none;
+  transform:translateY(-6px);
+  transition:opacity .18s var(--ease),transform .18s var(--ease);
+  z-index:200;
+}
+.lang-drop.open .lang-menu{opacity:1;pointer-events:auto;transform:translateY(0)}
+.lang-opt{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;border-radius:5px;
+  font-size:11px;font-weight:700;letter-spacing:.1em;
+  color:oklch(50% .005 25);width:100%;text-align:left;
+  transition:background .15s,color .15s;white-space:nowrap;
+}
+.lang-opt:hover,.lang-opt.active{background:oklch(18% .010 25);color:var(--white)}
+.nav-logo-text{
+  font-family:var(--f1);font-size:14px;font-weight:700;
+  letter-spacing:-.02em;color:var(--white);white-space:nowrap;
+}
+.nav-logo-text em{font-style:normal;color:var(--red)}
+
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--white);background:var(--red);
+  padding:10px 22px;border-radius:8px;
+  position:relative;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s;
+}
+.nav-cta::before{
+  content:'';position:absolute;inset:0;background:var(--red2);
+  transform:translateX(-101%);transition:transform .35s var(--ease);
+}
+.nav-cta span{position:relative}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px oklch(51% .220 25 / .38)}
+.nav-cta:hover::before{transform:translateX(0)}
+
+/* ── HERO ─────────────────────────────────────────────── */
+.hero{
+  min-height:100svh;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  padding:130px 5vw 80px;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(oklch(99% .004 80 / .025) 1px,transparent 1px),
+    linear-gradient(90deg,oklch(99% .004 80 / .025) 1px,transparent 1px);
+  background-size:64px 64px;
+  pointer-events:none;
+}
+.hero-glow{
+  position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);
+  width:70vw;height:70vw;max-width:900px;max-height:900px;
+  background:radial-gradient(ellipse,oklch(51% .220 25 / .10) 0%,transparent 65%);
+  pointer-events:none;
+}
+
+/* floating pill shapes */
+.shape{
+  position:absolute;border-radius:9999px;
+  pointer-events:none;will-change:transform;
+  opacity:0;
+}
+.shape::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.18),transparent 70%);
+}
+.sh1{
+  width:clamp(340px,42vw,620px);height:clamp(80px,9vw,148px);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--red) 24%,transparent),transparent 70%);
+  border:1.5px solid color-mix(in srgb,var(--red) 20%,transparent);
+  box-shadow:0 8px 40px color-mix(in srgb,var(--red) 12%,transparent);
+  left:-6%;top:18%;rotate:12deg;
+}
+.sh2{
+  width:clamp(280px,36vw,530px);height:clamp(70px,8vw,128px);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--lime) 18%,transparent),transparent 70%);
+  border:1.5px solid color-mix(in srgb,var(--lime) 15%,transparent);
+  box-shadow:0 8px 40px color-mix(in srgb,var(--lime) 7%,transparent);
+  right:-4%;top:66%;rotate:-15deg;
+}
+.sh3{
+  width:clamp(200px,24vw,380px);height:clamp(55px,6.5vw,100px);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--blue) 20%,transparent),transparent 70%);
+  border:1.5px solid color-mix(in srgb,var(--blue) 16%,transparent);
+  box-shadow:0 8px 40px color-mix(in srgb,var(--blue) 8%,transparent);
+  left:5%;bottom:9%;rotate:-8deg;
+}
+.sh4{
+  width:clamp(160px,18vw,280px);height:clamp(45px,5vw,78px);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--yellow) 16%,transparent),transparent 70%);
+  border:1.5px solid color-mix(in srgb,var(--yellow) 13%,transparent);
+  box-shadow:0 8px 40px color-mix(in srgb,var(--yellow) 6%,transparent);
+  right:14%;top:9%;rotate:22deg;
+}
+.sh5{
+  width:clamp(120px,14vw,220px);height:clamp(36px,4vw,62px);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--blue) 18%,transparent),transparent 70%);
+  border:1.5px solid color-mix(in srgb,var(--blue) 14%,transparent);
+  left:22%;top:5%;rotate:-24deg;
+}
+.sh6{
+  width:clamp(240px,28vw,420px);height:clamp(62px,7vw,110px);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--yellow) 14%,transparent),transparent 70%);
+  border:1.5px solid color-mix(in srgb,var(--yellow) 11%,transparent);
+  right:6%;bottom:16%;rotate:8deg;
+}
+
+.hero-center{position:relative;z-index:2;max-width:900px;width:100%}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-size:11px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blue);
+  margin-bottom:32px;opacity:0;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:24px;height:1px;background:var(--blue)}
+.hero-h1{
+  font-family:var(--f1);font-weight:900;
+  font-size:clamp(58px,10vw,136px);
+  line-height:.94;letter-spacing:-.045em;
+  color:var(--white);
+  margin-bottom:36px;
+}
+.hero-h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero-h1 .word-inner{display:inline-block;transform:translateY(110%);padding-right:.1em}
+.hero-h1 em{font-style:normal;color:var(--red)}
+.hero-line2{display:block;white-space:nowrap}
+.hero-sub{
+  font-size:clamp(16px,1.5vw,20px);
+  color:oklch(56% .005 25);
+  font-weight:300;max-width:520px;
+  line-height:1.6;margin:0 auto 40px;
+  opacity:0;transform:translateY(20px);
+}
+.hero-sub strong{color:oklch(78% .005 25);font-weight:500}
+.hero-btns{
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+  opacity:0;transform:translateY(16px);
+}
+.btn-p,.btn-g{
+  display:inline-flex;align-items:center;gap:10px;
+  font-weight:600;font-size:14px;padding:16px 32px;
+  border-radius:8px;letter-spacing:-.01em;
+  position:relative;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s;
+}
+.btn-p{background:var(--red);color:var(--white)}
+.btn-p::before{content:'';position:absolute;inset:0;background:var(--red2);transform:translateX(-101%);transition:transform .35s var(--ease)}
+.btn-p span,.btn-g span{position:relative}
+.btn-p:hover::before{transform:translateX(0)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 12px 32px oklch(51% .220 25 / .38)}
+.btn-g{color:oklch(70% .005 25);border:1px solid oklch(28% .010 25)}
+.btn-g::before{content:'';position:absolute;inset:0;background:oklch(22% .010 25);transform:translateX(-101%);transition:transform .35s var(--ease)}
+.btn-g:hover::before{transform:translateX(0)}
+.btn-g:hover{color:var(--white);transform:translateY(-3px)}
+.btn-arrow{transition:transform .25s var(--ease)}
+.btn-p:hover .btn-arrow,.btn-g:hover .btn-arrow{transform:translateX(4px)}
+.hero-trust{
+  margin-top:48px;padding-top:28px;
+  border-top:1px solid oklch(20% .010 25);
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  opacity:0;transform:translateY(12px);
+}
+.hero-trust-stars{color:var(--yellow);font-size:14px;letter-spacing:2px}
+.hero-trust-text{font-size:13px;color:oklch(48% .005 25);font-weight:300}
+.hero-trust-text strong{color:oklch(66% .005 25);font-weight:500}
+
+.hero-canvas{position:relative;width:100%;aspect-ratio:1/.95;max-width:540px;margin-left:auto}
+
+/* background layer */
+.hc-bg{
+  position:absolute;inset:0;border-radius:20px;
+  background:oklch(9% .010 25);
+  border:1px solid oklch(19% .010 25);
+  overflow:hidden;
+}
+.hc-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(oklch(99% .004 80 / .1) 1px,transparent 1px);
+  background-size:30px 30px;
+}
+.hc-bg::after{
+  content:'';position:absolute;
+  bottom:-20%;left:-10%;width:65%;height:65%;
+  background:radial-gradient(ellipse,oklch(51% .220 25 / .1) 0%,transparent 65%);
+  pointer-events:none;
+}
+
+/* giant W watermark */
+.hc-wmark{
+  position:absolute;font-family:var(--f1);font-weight:900;
+  font-size:clamp(180px,34%,260px);line-height:1;letter-spacing:-.06em;
+  color:transparent;-webkit-text-stroke:2px oklch(99% .004 80 / .045);
+  top:50%;left:52%;transform:translate(-50%,-50%);
+  pointer-events:none;user-select:none;z-index:0;
+}
+
+/* main red website wireframe block */
+.hcb-main{
+  position:absolute;top:8%;left:6%;width:59%;height:55%;
+  background:var(--red);border-radius:13px;overflow:hidden;
+  padding:18px 16px;z-index:2;
+}
+.hcb-topbar{display:flex;align-items:center;gap:6px;margin-bottom:18px}
+.hcb-logo-b{height:7px;width:42px;background:rgba(255,255,255,.45);border-radius:3px}
+.hcb-sp{flex:1}
+.hcb-nb{height:5px;width:20px;background:rgba(255,255,255,.2);border-radius:2px}
+.hcb-cta-b{height:18px;width:34px;background:rgba(255,255,255,.3);border-radius:4px}
+.hcb-h{margin-bottom:14px}
+.hcb-hl{height:10px;background:rgba(255,255,255,.85);border-radius:3px;margin-bottom:7px}
+.hcb-hl.s{width:70%;background:rgba(255,255,255,.65)}
+.hcb-body{margin-bottom:16px}
+.hcb-bl{height:5px;background:rgba(255,255,255,.28);border-radius:2px;margin-bottom:6px}
+.hcb-bl:nth-child(2){width:86%}.hcb-bl:nth-child(3){width:68%}
+.hcb-btns{display:flex;gap:8px}
+.hcb-bp{height:22px;width:52px;background:rgba(255,255,255,.28);border-radius:5px}
+.hcb-bs{height:22px;width:44px;background:transparent;border:1.5px solid rgba(255,255,255,.22);border-radius:5px}
+
+/* lime growth chart block */
+.hcb-lime{
+  position:absolute;bottom:6%;right:4%;width:37%;height:32%;
+  background:var(--lime);border-radius:13px;overflow:hidden;z-index:2;
+}
+.hcb-chart{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;align-items:flex-end;gap:5px;padding:10px 12px 0;
+  height:72%;
+}
+.hcb-bar{flex:1;border-radius:3px 3px 0 0;background:rgba(0,0,0,.15)}
+.hcb-chart-lbl{
+  position:absolute;top:10px;left:12px;
+  font-family:var(--f1);font-size:9px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.4);
+}
+
+/* glass floating cards */
+.hc-card{
+  position:absolute;
+  background:oklch(11% .010 25 / .94);
+  border:1px solid oklch(22% .010 25);
+  border-radius:10px;
+  backdrop-filter:blur(16px);
+  z-index:4;
+}
+
+/* color palette card */
+.hcc-pal{top:4%;right:3%;padding:11px 13px}
+.hcc-pal-row{display:flex;gap:5px;margin-bottom:7px}
+.hcc-sw{width:20px;height:20px;border-radius:5px}
+.sw-r{background:var(--red)}.sw-l{background:var(--lime)}.sw-g{background:var(--grn)}
+.sw-dk{background:oklch(34% .010 25)}.sw-wh{background:oklch(92% .005 80)}
+.hcc-lbl{font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(36% .005 25)}
+
+/* type specimen card */
+.hcc-type{top:42%;right:3%;padding:13px 16px}
+.hcc-type-aa{font-family:var(--f1);font-weight:900;font-size:34px;letter-spacing:-.04em;line-height:1;color:var(--white);margin-bottom:3px}
+.hcc-type-sub{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:oklch(36% .005 25)}
+
+/* performance card */
+.hcc-perf{top:70%;left:5%;right:40%;padding:10px 13px}
+.hcc-perf-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+.hcc-perf-lbl{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:oklch(36% .005 25)}
+.hcc-perf-val{font-family:var(--f1);font-size:16px;font-weight:900;color:var(--lime);letter-spacing:-.03em}
+.hcc-track{height:3px;background:oklch(22% .010 25);border-radius:2px;overflow:hidden}
+.hcc-fill{height:100%;width:0%;background:var(--lime);border-radius:2px;transition:width 1.6s var(--ease)}
+
+/* live indicator card */
+.hcc-live{bottom:5%;left:5%;padding:9px 13px;display:flex;align-items:center;gap:8px}
+.hcc-live-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--grn);flex-shrink:0;
+  animation:livepulse 2s ease-out infinite;
+}
+@keyframes livepulse{
+  0%{box-shadow:0 0 0 0 oklch(68% .150 130 / .6)}
+  70%{box-shadow:0 0 0 8px oklch(68% .150 130 / 0)}
+  100%{box-shadow:0 0 0 0 oklch(68% .150 130 / 0)}
+}
+.hcc-live-url{font-size:10px;font-weight:600;color:oklch(52% .005 25);letter-spacing:.02em}
+.hcc-live-badge{font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--grn);color:oklch(14% .010 25);padding:2px 6px;border-radius:3px}
+
+/* floating cursor */
+.hc-cursor{position:absolute;top:50%;left:52%;z-index:5;filter:drop-shadow(0 4px 14px oklch(51% .220 25 / .55))}
+
+/* ── TICKER ─────────────────────────────────────────── */
+.ticker{
+  background:var(--red);padding:13px 0;
+  overflow:hidden;white-space:nowrap;
+  border-top:2px solid oklch(88% .155 122 / .35);
+  border-bottom:2px solid oklch(88% .155 122 / .35);
+}
+.ticker-inner{
+  display:inline-flex;
+  animation:ticker 30s linear infinite;
+}
+.ticker-inner:hover{animation-play-state:paused}
+.t-item{
+  display:inline-flex;align-items:center;gap:24px;
+  padding:0 24px;
+  font-family:var(--f1);font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--white);
+}
+.t-dot{width:4px;height:4px;border-radius:50%;background:oklch(99% .004 80 / .4)}
+.t-dot.lime{background:var(--lime);opacity:.8}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTION SHELL ───────────────────────────────────── */
+.sec{padding:clamp(80px,10vw,140px) 5vw}
+.sec-dark{background:var(--ink);color:var(--white)}
+.sec-dark2{background:oklch(12% .010 25);color:var(--white)}
+.sec-mid{background:var(--cream2);color:var(--ink)}
+.sec-light{background:var(--cream);color:var(--ink)}
+.lbl{
+  font-size:11px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--red);margin-bottom:18px;
+  display:flex;align-items:center;gap:10px;
+}
+.lbl::before{content:'';width:20px;height:1px;background:var(--red)}
+.h2{
+  font-family:var(--f1);font-weight:900;
+  font-size:clamp(34px,5vw,68px);
+  line-height:1.01;letter-spacing:-.035em;
+}
+.reveal{opacity:0;transform:translateY(36px)}
+
+/* ── STATS ───────────────────────────────────────────── */
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  margin-top:60px;
+}
+[data-theme="dark"] .stats-grid{background:var(--lined)}
+.stat-card{
+  background:var(--cream);padding:44px 32px;
+  transition:background .3s;
+}
+[data-theme="dark"] .stat-card{background:var(--cream2)}
+.stat-card:hover{background:var(--white)}
+[data-theme="dark"] .stat-card:hover{background:oklch(22% .010 25)}
+.stat-n{
+  font-family:var(--f1);font-size:clamp(40px,4.5vw,60px);
+  font-weight:900;letter-spacing:-.04em;color:var(--red);
+  line-height:1;margin-bottom:10px;
+}
+.stat-l{font-size:14px;color:var(--ink3);font-weight:300;line-height:1.45}
+
+/* ── SERVICES ────────────────────────────────────────── */
+.svc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  margin-top:56px;
+}
+[data-theme="dark"] .svc-grid{background:var(--lined)}
+.svc-item{
+  background:var(--cream);padding:44px 36px;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+[data-theme="dark"] .svc-item{background:var(--cream2)}
+.svc-item::before{
+  content:'';position:absolute;inset:0;
+  background:var(--cream2);
+  transform:translateY(101%);
+  transition:transform .45s var(--ease);
+}
+[data-theme="dark"] .svc-item::before{background:oklch(22% .010 25)}
+.svc-item:hover::before{transform:translateY(0)}
+.svc-num{
+  font-family:var(--f1);font-size:11px;font-weight:700;
+  letter-spacing:.1em;margin-bottom:22px;
+  position:relative;color:var(--red);
+}
+.svc-item:nth-child(1) .svc-num{color:var(--red)}
+.svc-item:nth-child(2) .svc-num{color:var(--blue)}
+.svc-item:nth-child(3) .svc-num{color:var(--yellow)}
+.svc-item:nth-child(4) .svc-num{color:var(--lime)}
+.svc-item:nth-child(5) .svc-num{color:var(--red)}
+.svc-item:nth-child(6) .svc-num{color:var(--blue)}
+.svc-title{
+  font-family:var(--f1);font-size:clamp(16px,1.6vw,21px);
+  font-weight:700;letter-spacing:-.02em;line-height:1.15;
+  margin-bottom:14px;position:relative;
+}
+.svc-desc{font-size:14px;color:var(--ink3);line-height:1.65;font-weight:300;position:relative}
+.svc-arr{
+  position:absolute;bottom:24px;right:24px;
+  font-size:18px;color:var(--line);
+  transition:color .25s,transform .3s var(--ease);
+  z-index:1;
+}
+.svc-item:hover .svc-arr{color:var(--red);transform:translate(3px,-3px)}
+
+/* ── PORTFOLIO ───────────────────────────────────────── */
+.port-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:48px;gap:24px;flex-wrap:wrap;
+}
+.port-all{
+  font-size:14px;font-weight:500;color:oklch(56% .005 80);
+  border-bottom:1px solid oklch(36% .010 25);padding-bottom:3px;
+  transition:color .2s,border-color .2s;white-space:nowrap;align-self:center;
+}
+.port-all:hover{color:var(--white);border-color:var(--white)}
+.port-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.port-card{
+  position:relative;border-radius:10px;overflow:hidden;
+  aspect-ratio:4/3;cursor:none;
+}
+.port-card.wide{grid-column:span 2;aspect-ratio:16/9}
+.port-inner{
+  width:100%;height:100%;
+  transition:transform .6s var(--ease);
+}
+.port-card:hover .port-inner{transform:scale(1.05)}
+.port-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,oklch(6% .010 25 / .92) 0%,transparent 55%);
+  opacity:0;transition:opacity .4s;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:28px;
+}
+.port-card:hover .port-overlay{opacity:1}
+.port-ind{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
+.port-name{font-family:var(--f1);font-size:clamp(14px,1.4vw,19px);font-weight:700;color:var(--white);letter-spacing:-.02em}
+
+/* portfolio tile designs */
+.pv{width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden}
+.pv::before{content:'';position:absolute;inset:0;background:inherit}
+.pv-label{font-family:var(--f1);font-size:11px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.35);position:relative}
+.pv1{background:linear-gradient(135deg,oklch(18% .025 235) 0%,oklch(24% .035 245) 100%)}
+.pv2{background:linear-gradient(135deg,oklch(20% .020 160) 0%,oklch(28% .030 155) 100%)}
+.pv3{background:linear-gradient(135deg,oklch(12% .008 25) 0%,oklch(22% .020 30) 100%)}
+.pv4{background:linear-gradient(135deg,oklch(20% .018 320) 0%,oklch(26% .025 315) 100%)}
+.pv5{background:linear-gradient(135deg,oklch(18% .025 60) 0%,oklch(26% .030 65) 100%)}
+.pv6{background:linear-gradient(135deg,oklch(22% .020 200) 0%,oklch(28% .028 195) 100%)}
+
+/* ── PROCESS ─────────────────────────────────────────── */
+.proc-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--lined);
+  border:1px solid var(--lined);border-radius:14px;overflow:hidden;
+  margin-top:56px;
+}
+.proc-step{background:var(--ink);padding:44px 30px;transition:background .3s}
+.proc-step:hover{background:oklch(16% .010 25)}
+.proc-n{
+  font-family:var(--f1);font-size:clamp(52px,5vw,76px);
+  font-weight:900;letter-spacing:-.04em;line-height:1;
+  color:var(--lined);margin-bottom:22px;
+  transition:color .35s var(--ease);
+}
+.proc-step:nth-child(1):hover .proc-n{color:var(--red)}
+.proc-step:nth-child(2):hover .proc-n{color:var(--blue)}
+.proc-step:nth-child(3):hover .proc-n{color:var(--yellow)}
+.proc-step:nth-child(4):hover .proc-n{color:var(--lime)}
+.proc-t{font-family:var(--f1);font-size:15px;font-weight:700;letter-spacing:-.02em;color:var(--white);margin-bottom:12px}
+.proc-d{font-size:13px;color:oklch(50% .005 25);line-height:1.65;font-weight:300}
+
+/* ── TESTIMONIALS ────────────────────────────────────── */
+@property --rc-beam{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes rc-beam-spin{to{--rc-beam:360deg}}
+.reviews-split{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:64px;align-items:center;
+}
+.reviews-copy{align-self:center}
+@media(max-width:900px){
+  .reviews-split{grid-template-columns:1fr;gap:40px}
+}
+.rc-stage{
+  position:relative;height:320px;
+  display:flex;align-items:center;justify-content:center;
+  transform:translateX(-48px);
+  margin-top:24px;
+}
+.rc{
+  position:absolute;
+  width:min(100%,520px);height:240px;
+  background:oklch(11% .010 25);
+  border:1px solid oklch(24% .010 25);
+  border-radius:12px;
+  padding:22px 24px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  cursor:pointer;
+  transition:transform .35s cubic-bezier(.16,1,.3,1),
+             opacity .35s cubic-bezier(.16,1,.3,1);
+  user-select:none;
+}
+.rc.rc-front::after{
+  content:'';position:absolute;inset:-1px;border-radius:13px;padding:1px;
+  background:conic-gradient(
+    from var(--rc-beam) at 50% 50%,
+    transparent 0deg,var(--red) 45deg,
+    oklch(96% .005 80 / .65) 80deg,transparent 110deg
+  );
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:destination-out;mask-composite:exclude;
+  animation:rc-beam-spin 4s linear infinite;pointer-events:none;
+}
+.rc-head{display:flex;align-items:center;gap:12px}
+.rc-av{
+  width:36px;height:36px;border-radius:50%;overflow:hidden;
+  flex-shrink:0;background:oklch(20% .010 25);
+}
+.rc-av img{width:100%;height:100%;object-fit:cover;display:block}
+.rc-name{font-weight:600;font-size:14px;color:oklch(90% .005 25);line-height:1.2}
+.rc-role{font-size:11px;color:oklch(44% .006 25);margin-top:2px}
+.rc-text{
+  font-size:13px;line-height:1.6;
+  color:oklch(62% .006 25);font-weight:300;flex:1;margin:12px 0;
+}
+.rc-stars{color:var(--red);font-size:12px;letter-spacing:2px;flex-shrink:0}
+@media(max-width:900px){
+  .rc-stage{height:390px}
+  .rc{width:100%;height:270px}
+}
+
+/* ── PRICING ─────────────────────────────────────────── */
+.price-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;margin-top:56px;align-items:start;
+}
+.price-card{
+  border-radius:10px;padding:44px 36px;
+  border:1px solid var(--line);background:var(--white);
+  position:relative;
+  transition:transform .3s var(--ease),box-shadow .3s;
+}
+[data-theme="dark"] .price-card{background:var(--cream2);border-color:var(--lined)}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 20px 56px oklch(8% .010 25 / .10)}
+.price-card.pop{
+  background:var(--ink);color:var(--white);
+  border-color:var(--red);
+}
+.pop-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--red);color:var(--white);
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 16px;border-radius:20px;white-space:nowrap;
+}
+.price-tier{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.price-val{font-family:var(--f1);font-size:clamp(40px,4vw,54px);font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:4px}
+.price-sub{font-size:13px;color:var(--ink3);margin-bottom:24px;font-weight:300}
+.price-card.pop .price-sub{color:oklch(50% .005 25)}
+.price-hr{border:none;border-top:1px solid var(--line);margin-bottom:24px}
+.price-card.pop .price-hr{border-color:var(--lined)}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:32px}
+.price-features li{font-size:13px;display:flex;align-items:flex-start;gap:9px;line-height:1.45}
+.price-features li::before{content:'✓';color:var(--grn);font-weight:700;flex-shrink:0;margin-top:1px}
+.price-card.pop .price-features li{color:oklch(72% .005 25)}
+.price-btn{
+  display:block;text-align:center;
+  padding:14px 24px;border-radius:8px;
+  font-weight:600;font-size:13px;letter-spacing:.01em;
+  position:relative;overflow:hidden;
+  transition:transform .25s var(--ease),box-shadow .25s;
+}
+.price-btn::before{
+  content:'';position:absolute;inset:0;
+  transition:transform .35s var(--ease);
+  transform:translateX(-101%);
+}
+.price-btn-o{border:1px solid var(--line);color:var(--ink)}
+.price-btn-o::before{background:var(--cream2)}
+[data-theme="dark"] .price-btn-o{border-color:var(--lined);color:var(--white)}
+[data-theme="dark"] .price-btn-o::before{background:var(--cream)}
+.price-btn-o:hover{transform:translateY(-2px)}
+.price-btn-o:hover::before{transform:translateX(0)}
+.price-btn-s{background:var(--red);color:var(--white);border:1px solid var(--red)}
+.price-btn-s::before{background:var(--red2)}
+.price-btn-s:hover{transform:translateY(-2px);box-shadow:0 8px 24px oklch(51% .220 25 / .38)}
+.price-btn-s:hover::before{transform:translateX(0)}
+.price-btn span{position:relative}
+
+/* ── SUBSCRIPTIONS ───────────────────────────────────── */
+.currency-row{
+  display:flex;align-items:center;gap:16px;margin-top:48px;margin-bottom:48px;
+  font-size:13px;font-weight:500;color:oklch(50% .005 25);letter-spacing:.04em;
+}
+.currency-switch{display:flex;gap:4px}
+.currency-btn{
+  font-size:12px;font-weight:700;letter-spacing:.06em;
+  padding:6px 14px;border-radius:20px;
+  border:1px solid oklch(28% .010 25);color:oklch(50% .005 25);
+  transition:background .2s,color .2s,border-color .2s;cursor:none;
+}
+.currency-btn.active{
+  background:var(--lime);color:oklch(18% .010 25);border-color:var(--lime);
+}
+.currency-btn:hover:not(.active){color:var(--white);border-color:oklch(44% .005 25)}
+.subs-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--lined);
+  border:1px solid var(--lined);border-radius:14px;overflow:hidden;
+}
+.sub-card{
+  background:var(--ink2);padding:44px 36px;
+  position:relative;
+  transition:background .3s;
+}
+.sub-card:hover{background:oklch(20% .010 25)}
+.sub-card.sub-pop{background:oklch(16% .010 25)}
+.sub-pop-badge{
+  position:absolute;top:20px;right:20px;
+  background:var(--lime);color:oklch(18% .010 25);
+  font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:20px;
+}
+.sub-tier{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+.sub-price{
+  display:flex;align-items:baseline;gap:4px;margin-bottom:6px;
+}
+.sub-currency{font-family:var(--f1);font-size:22px;font-weight:700;color:oklch(60% .005 25)}
+.sub-amount{font-family:var(--f1);font-size:clamp(44px,4.5vw,58px);font-weight:900;letter-spacing:-.04em;color:var(--white);line-height:1}
+.sub-period{font-size:13px;color:oklch(45% .005 25)}
+.sub-tagline{font-size:13px;color:oklch(45% .005 25);margin-bottom:28px;font-weight:300}
+.sub-hr{border:none;border-top:1px solid oklch(28% .010 25);margin-bottom:24px}
+.sub-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.sub-features li{font-size:13px;color:oklch(65% .005 25);display:flex;align-items:flex-start;gap:9px;line-height:1.45;font-weight:300}
+.sub-features li::before{content:'✓';color:var(--grn);font-weight:700;flex-shrink:0}
+.sub-btn{
+  display:block;text-align:center;
+  padding:14px 24px;border-radius:8px;
+  font-weight:600;font-size:13px;
+  position:relative;overflow:hidden;
+  transition:transform .25s var(--ease),box-shadow .25s;
+  border:1px solid oklch(28% .010 25);color:oklch(70% .005 25);
+}
+.sub-btn::before{
+  content:'';position:absolute;inset:0;
+  background:oklch(22% .010 25);
+  transform:translateX(-101%);transition:transform .35s var(--ease);
+}
+.sub-btn span{position:relative}
+.sub-btn:hover{color:var(--white);transform:translateY(-2px)}
+.sub-btn:hover::before{transform:translateX(0)}
+.sub-btn.sub-btn-lime{
+  background:var(--lime);color:oklch(18% .010 25);
+  border-color:var(--lime);
+}
+.sub-btn.sub-btn-lime::before{background:oklch(82% .155 122)}
+.sub-btn.sub-btn-lime:hover{transform:translateY(-2px);box-shadow:0 8px 24px oklch(88% .155 122 / .22);color:oklch(18% .010 25)}
+
+/* ── CONTACT ─────────────────────────────────────────── */
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;
+  padding-top:20px;
+}
+.contact-left .h2{margin-bottom:20px}
+.contact-left p{font-size:16px;color:var(--ink3);font-weight:300;line-height:1.65;max-width:440px;margin-bottom:36px}
+.contact-trust{display:flex;flex-direction:column;gap:14px}
+.ctrust-item{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink3);font-weight:300}
+.ctrust-icon{
+  width:34px;height:34px;border-radius:50%;
+  background:oklch(51% .220 25 / .12);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--red);font-size:14px;flex-shrink:0;
+}
+.cform{display:flex;flex-direction:column;gap:18px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fg label{font-size:13px;font-weight:500;color:var(--ink3);letter-spacing:.02em}
+.fg input,.fg textarea,.fg select{
+  font:inherit;font-size:14px;
+  background:var(--white);color:var(--ink);
+  border:1px solid var(--line);border-radius:6px;
+  padding:13px 16px;outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  cursor:text;
+}
+[data-theme="dark"] .fg input,[data-theme="dark"] .fg textarea,[data-theme="dark"] .fg select{
+  background:var(--cream2);border-color:var(--lined);
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{
+  border-color:var(--red);
+  box-shadow:0 0 0 3px oklch(51% .220 25 / .12);
+}
+.fg textarea{resize:vertical;min-height:120px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fsub{
+  background:var(--red);color:var(--white);
+  font-weight:600;font-size:15px;padding:16px 28px;
+  border-radius:8px;position:relative;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s;
+}
+.fsub::before{
+  content:'';position:absolute;inset:0;background:var(--red2);
+  transform:translateX(-101%);transition:transform .35s var(--ease);
+}
+.fsub span{position:relative}
+.fsub:hover{transform:translateY(-3px);box-shadow:0 10px 28px oklch(51% .220 25 / .38)}
+.fsub:hover::before{transform:translateX(0)}
+
+/* ── ABOUT ───────────────────────────────────────────── */
+.about-grid{display:grid;grid-template-columns:auto 1fr;gap:80px;align-items:center}
+.about-photo-wrap{position:relative;width:220px}
+.about-ring-wrap{position:relative;width:180px;height:180px}
+.about-ring{
+  width:180px;height:180px;border-radius:50%;overflow:hidden;
+  border:3px solid var(--red);
+  box-shadow:0 0 0 8px oklch(51% .220 25 / .10);
+}
+.about-avatar{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.team-dot{
+  position:absolute;
+  width:52px;height:52px;border-radius:50%;overflow:hidden;
+  border:2px solid var(--cream2);
+  box-shadow:0 4px 12px oklch(8% .010 25 / .15);
+  background:var(--cream2);
+  display:flex;align-items:center;justify-content:center;
+}
+.td1{bottom:-12px;right:-16px}
+.td2{top:8px;right:-28px}
+.td3{top:-12px;left:28px;background:var(--red);border-color:var(--red)}
+.team-dot img{width:100%;height:100%;object-fit:cover}
+.td3 span{font-family:var(--f1);font-size:16px;font-weight:700;color:var(--white)}
+.about-body{font-size:clamp(16px,1.4vw,18px);color:var(--ink3);font-weight:300;line-height:1.7;max-width:560px;margin-bottom:24px}
+.about-body strong{color:var(--ink);font-weight:600}
+[data-theme="dark"] .about-body strong{color:var(--white)}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px}
+.a-tag{
+  font-size:12px;font-weight:500;padding:7px 16px;
+  background:var(--cream2);border-radius:20px;color:var(--ink3);
+  transition:background .2s;
+}
+[data-theme="dark"] .a-tag{background:oklch(22% .010 25)}
+.a-tag:hover{background:var(--line)}
+
+/* ── FAQ ─────────────────────────────────────────────── */
+.faq-list{max-width:780px;margin:56px auto 0;display:flex;flex-direction:column;gap:2px}
+.faq-item{border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+[data-theme="dark"] .faq-item{border-color:var(--lined)}
+.faq-q{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  padding:20px 26px;background:var(--white);text-align:left;
+  font-weight:500;font-size:15px;color:var(--ink);
+  cursor:none;transition:background .2s;
+}
+[data-theme="dark"] .faq-q{background:var(--cream2)}
+.faq-q:hover{background:var(--cream2)}
+[data-theme="dark"] .faq-q:hover{background:oklch(22% .010 25)}
+.faq-ico{font-size:18px;color:var(--red);transition:transform .3s var(--ease);line-height:1;flex-shrink:0}
+.faq-item.open .faq-ico{transform:rotate(45deg)}
+.faq-a{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .35s var(--ease);
+  background:var(--white);
+}
+[data-theme="dark"] .faq-a{background:var(--cream2)}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a-inner{overflow:hidden;font-size:14px;color:var(--ink3);line-height:1.7;font-weight:300;padding:0 26px}
+.faq-item.open .faq-a-inner{padding:0 26px 22px}
+
+/* ── CTA SECTION ─────────────────────────────────────── */
+.cta-sec{
+  background:var(--red);padding:clamp(80px,10vw,140px) 5vw;
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-sec::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(oklch(99% .004 80 / .06) 1px,transparent 1px),
+    linear-gradient(90deg,oklch(99% .004 80 / .06) 1px,transparent 1px);
+  background-size:56px 56px;pointer-events:none;
+}
+.cta-inner{position:relative}
+.cta-sec .lbl{color:oklch(99% .004 80 / .55);justify-content:center}
+.cta-sec .lbl::before{background:oklch(99% .004 80 / .55)}
+.cta-sec .h2{color:var(--white);margin-bottom:18px}
+.cta-sub{font-size:clamp(16px,1.5vw,20px);color:oklch(99% .004 80 / .75);font-weight:300;max-width:500px;margin:0 auto 44px;line-height:1.6}
+.btn-white{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--white);color:var(--red);
+  font-weight:700;font-size:15px;padding:18px 40px;
+  border-radius:8px;position:relative;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s;
+}
+.btn-white::before{
+  content:'';position:absolute;inset:0;
+  background:var(--cream2);
+  transform:translateX(-101%);transition:transform .35s var(--ease);
+}
+.btn-white span{position:relative}
+.btn-white:hover{transform:translateY(-4px);box-shadow:0 16px 48px oklch(8% .010 25 / .28)}
+.btn-white:hover::before{transform:translateX(0)}
+.cta-note{margin-top:18px;font-size:12px;color:oklch(99% .004 80 / .5)}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer{background:var(--ink);padding:72px 5vw 40px}
+.fgrid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:48px;padding-bottom:56px;
+  border-bottom:1px solid var(--lined);margin-bottom:36px;
+}
+.fbrand-logo img{height:80px;width:auto;margin-bottom:18px}
+.fbrand p{font-size:13px;color:oklch(42% .005 25);line-height:1.7;font-weight:300;max-width:240px;margin-bottom:14px}
+.fbrand a{font-size:13px;color:oklch(52% .005 25);transition:color .2s}
+.fbrand a:hover{color:oklch(72% .005 25)}
+.fcol h4{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:oklch(38% .005 25);margin-bottom:18px}
+.fcol a{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;color:oklch(50% .005 25);
+  font-weight:300;margin-bottom:10px;
+  transition:color .2s;
+}
+.fcol a:hover{color:oklch(75% .005 25)}
+.fcol a.g{color:var(--red)}
+.fcol a.g:hover{color:oklch(65% .220 25)}
+.fpay{
+  padding-bottom:32px;border-bottom:1px solid var(--lined);margin-bottom:28px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.fpay-label{font-size:11px;color:oklch(38% .005 25);display:flex;align-items:center;gap:6px;flex-shrink:0}
+.fpay-icons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fpay-badge{opacity:.96;transition:opacity .2s,transform .2s,box-shadow .2s,border-color .2s;flex-shrink:0;border-radius:10px;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);border:1px solid rgba(15,23,42,.08);padding:6px;width:52px;height:34px;object-fit:contain;box-sizing:border-box;box-shadow:0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge:hover{opacity:1;transform:translateY(-1px);box-shadow:0 10px 22px rgba(15,23,42,.08)}
+.fpay-badge[alt="Visa"]{border-color:rgba(26,31,113,.22);box-shadow:inset 0 2px 0 #1a1f71,0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge[alt="Mastercard"]{border-color:rgba(255,95,0,.2);box-shadow:inset 0 2px 0 #ff5f00,0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge[alt="iDEAL"]{border-color:rgba(204,0,102,.22);box-shadow:inset 0 2px 0 #cc0066,0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge[alt="Apple Pay"]{border-color:rgba(17,17,17,.18);box-shadow:inset 0 2px 0 #111,0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge[alt="Google Pay"]{border-color:rgba(66,133,244,.2);box-shadow:inset 0 2px 0 #4285f4,0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge[alt="Klarna"]{border-color:rgba(255,179,199,.55);box-shadow:inset 0 2px 0 #ffb3c7,0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge[alt="PayPal"]{border-color:rgba(0,48,135,.18);box-shadow:inset 0 2px 0 #003087,0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge[alt="Stripe"]{border-color:rgba(99,91,255,.22);box-shadow:inset 0 2px 0 #635bff,0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge[alt="Amazon Pay"]{border-color:rgba(255,153,0,.24);box-shadow:inset 0 2px 0 #ff9900,0 6px 16px rgba(15,23,42,.05)}
+.fpay-badge[alt="Visa"],.fpay-badge[alt="Mastercard"],.fpay-badge[alt="Apple Pay"],.fpay-badge[alt="Google Pay"],.fpay-badge[alt="Amazon Pay"]{padding:4px}
+.fpay-badge:hover{opacity:1}
+.fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.fbot p,.fbot a{font-size:12px;color:oklch(32% .005 25);font-weight:300}
+.fbot a:hover{color:oklch(52% .005 25)}
+.fbot-links{display:flex;gap:20px}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:1100px){
+  .hero{padding-top:110px;padding-bottom:60px}
+  .sh1{width:clamp(260px,55vw,420px)}
+  .sh2{width:clamp(220px,48vw,360px)}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr}
+  .about-ring-wrap{margin:0 auto 40px}
+}
+@media(max-width:900px){
+  .stats-grid,.svc-grid{grid-template-columns:1fr 1fr}
+  .port-grid{grid-template-columns:1fr 1fr}
+  .port-card.wide{grid-column:span 2}
+  .proc-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .t-card.big{grid-row:auto}
+  .price-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
+  .subs-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
+  .contact-grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .nav-divider{display:none}
+}
+@media(max-width:600px){
+  .svc-grid,.proc-grid{grid-template-columns:1fr}
+  .port-grid{grid-template-columns:1fr}
+  .port-card.wide{grid-column:span 1;aspect-ratio:4/3}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .fgrid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;max-width:260px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  #c-dot,#c-ring{display:none}
+}
+
+/* ── ABOUT INTERACTIVE PHOTOS ─── */
+.about-ring{transition:transform .4s var(--ease),box-shadow .4s;cursor:pointer}
+.about-ring:hover{transform:scale(1.07);box-shadow:0 0 0 10px oklch(51% .220 25 / .18),0 16px 40px oklch(51% .220 25 / .22)}
+.team-dot{transition:transform .35s var(--ease),border-color .25s,box-shadow .25s;cursor:pointer}
+.td1:hover{transform:scale(1.3);border-color:var(--lime);box-shadow:0 0 0 4px var(--lime),0 8px 24px oklch(88% .155 122 / .30)}
+.td2:hover{transform:scale(1.3);border-color:var(--blue);box-shadow:0 0 0 4px var(--blue),0 8px 24px oklch(51% .160 250 / .30)}
+.td3:hover{transform:scale(1.3);border-color:var(--yellow);box-shadow:0 0 0 4px var(--yellow),0 8px 24px oklch(88% .155 90 / .35)}
+
+/* ── ABOUT STATS ─── */
+.about-stat-row{display:flex;gap:36px;margin-top:28px;flex-wrap:wrap}
+.about-stat-n{font-family:var(--f1);font-size:clamp(30px,3vw,42px);font-weight:900;letter-spacing:-.04em;line-height:1}
+.about-stat-l{font-size:11px;font-weight:600;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-top:5px}
+
+/* ── CONTACT SECTION DARK ─── */
+.sec-contact{
+  background:oklch(10% .018 245);
+  color:var(--white);
+  position:relative;overflow:hidden;
+  --ink:oklch(96% .005 80);--ink2:oklch(82% .005 80);--ink3:oklch(62% .005 80);
+  --cream:oklch(14% .010 25);--cream2:oklch(18% .010 25);
+  --white:oklch(99% .004 80);--line:oklch(28% .010 25);--lined:oklch(28% .010 25);
+}
+.sec-contact .fg input,.sec-contact .fg textarea,.sec-contact .fg select{
+  background:oklch(15% .012 25);border-color:oklch(26% .010 25);color:var(--white);
+}
+.sec-contact .fg input::placeholder,.sec-contact .fg textarea::placeholder{color:oklch(38% .005 25)}
+.sec-contact .fg input:focus,.sec-contact .fg textarea:focus,.sec-contact .fg select:focus{
+  border-color:var(--blue);box-shadow:0 0 0 3px oklch(51% .160 250 / .18);
+}
+.sec-contact .faq-q,.sec-contact .faq-a{background:oklch(14% .010 25)}
+.sec-contact .lbl::before{background:var(--blue)}
+.sec-contact .fsub{background:var(--blue);border-color:var(--blue)}
+.sec-contact .fsub::before{background:oklch(40% .160 250)}
+.sec-contact .fsub:hover{box-shadow:0 10px 28px oklch(51% .160 250 / .38)}
+.sec-contact > *:not(.contact-glow){position:relative;z-index:1}
+
+/* ── CONTACT BG — mouse-reactive spotlight ─── */
+.sec-contact{--cx:50%;--cy:40%}
+.sec-contact::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(700px circle at var(--cx) var(--cy), oklch(42% .160 250 / .11), transparent 55%);
+}
+
+/* ── PORTFOLIO MOCKUP CARDS ─── */
+.port-mockup{width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.pm-nav-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 0;margin-bottom:18px;flex-shrink:0}
+.pm-logo-pill{width:52px;height:8px;border-radius:4px;background:rgba(255,255,255,.7)}
+.pm-nav-links{display:flex;gap:8px}
+.pm-nav-link{width:24px;height:5px;border-radius:2px;background:rgba(255,255,255,.25)}
+.pm-hero-area{flex:1;padding:0 16px 16px;display:flex;flex-direction:column;justify-content:flex-end;gap:7px}
+.pm-tag{width:60px;height:8px;border-radius:10px;background:var(--pm-ac);opacity:.9;margin-bottom:4px}
+.pm-h1{height:12px;border-radius:4px;background:rgba(255,255,255,.88)}
+.pm-h1.w65{width:65%}
+.pm-h1.w80{width:80%}
+.pm-h2{height:12px;border-radius:4px;background:rgba(255,255,255,.88)}
+.pm-h2.w55{width:55%}
+.pm-sub{height:7px;border-radius:3px;background:rgba(255,255,255,.3)}
+.pm-sub.w85{width:85%}
+.pm-sub.w70{width:70%}
+.pm-cta-row{display:flex;gap:7px;align-items:center;margin-top:4px}
+.pm-cta{height:14px;width:52px;border-radius:5px;background:var(--pm-ac)}
+.pm-cta-g{height:14px;width:40px;border-radius:5px;background:rgba(255,255,255,.15)}
+.pm-content-strip{flex-shrink:0;background:oklch(97% .008 80);padding:10px 12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;height:68px}
+.pm-block{border-radius:4px;background:rgba(0,0,0,.08)}
+/* light-hero variant */
+.port-mockup.pm-light .pm-logo-pill{background:rgba(0,0,0,.55)}
+.port-mockup.pm-light .pm-nav-link{background:rgba(0,0,0,.18)}
+.port-mockup.pm-light .pm-h1,.port-mockup.pm-light .pm-h2{background:rgba(0,0,0,.8)}
+.port-mockup.pm-light .pm-sub{background:rgba(0,0,0,.25)}
+.port-mockup.pm-light .pm-cta-g{background:rgba(0,0,0,.1)}
+.port-mockup.pm-light .pm-content-strip{background:oklch(94% .010 80)}
+
+/* ── PORTFOLIO SCREENSHOTS ─── */
+.port-screenshot{display:flex;flex-direction:column;background:#1a1a1a;overflow:hidden;width:100%;height:100%}
+.port-chrome{display:flex;align-items:center;gap:5px;padding:7px 12px;background:#252525;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.07)}
+.pc-dot{width:8px;height:8px;border-radius:50%;display:block;flex-shrink:0}
+.pc-dot:nth-child(1){background:#ff5f57}.pc-dot:nth-child(2){background:#febc2e}.pc-dot:nth-child(3){background:#28c840}
+.pc-bar{flex:1;background:rgba(255,255,255,.07);border-radius:3px;height:16px;margin-left:8px;display:flex;align-items:center;padding:0 8px;font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.01em;overflow:hidden;white-space:nowrap}
+.port-iframe-wrap{flex:1;overflow:hidden;position:relative;min-height:0}
+.port-iframe-wrap iframe{position:absolute;top:0;left:0;width:1280px;height:960px;border:none;pointer-events:none;transform-origin:top left;display:block}
+
+/* ── DARK STAT CARD ─── */
+.stat-dark{background:oklch(14% .010 25)!important}
+.stat-dark:hover{background:oklch(18% .010 25)!important}
+.stat-dark .stat-l{color:oklch(56% .005 25)}
+/* when all cards are dark, make grid separator dark too */
+#stats .stats-grid{background:oklch(20% .010 25);border-color:oklch(20% .010 25)}
+
+/* ── FAQ VISUAL ─── */
+.faq-item{--faq-c:var(--red);border-left:3px solid var(--faq-c)}
+.faq-item.open{--faq-c:var(--blue)}
+.faq-num{font-family:var(--f1);font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--faq-c);flex-shrink:0;min-width:32px;opacity:.85}
+.faq-item.open .faq-q{background:color-mix(in oklch,var(--blue) 6%,var(--white))}
+[data-theme="dark"] .faq-item.open .faq-q{background:color-mix(in oklch,var(--blue) 10%,var(--cream2))}
+.faq-ico{color:var(--faq-c)}
+
+/* ── CTA STATS STRIP ─── */
+.cta-stats{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,56px);margin-top:44px;padding-top:32px;border-top:1px solid oklch(99% .004 80 / .15);flex-wrap:wrap}
+.cta-stat{text-align:center}
+.cta-stat-n{font-family:var(--f1);font-size:clamp(22px,2.4vw,30px);font-weight:900;letter-spacing:-.04em;color:var(--white);line-height:1}
+.cta-stat-l{font-size:10px;color:oklch(99% .004 80 / .5);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+
+/* ── FOOTER LOGO TEXT ─── */
+.footer-logo-text{font-family:var(--f1);font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--white);white-space:nowrap;display:block;margin-bottom:18px;transition:opacity .2s}
+.footer-logo-text:hover{opacity:.75}
+.footer-logo-text em{font-style:normal;color:var(--red)}
+
+/* ── ARTICLES CIRCULAR GALLERY ─────────── */
+.art-header{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:0}
+.art-view-all{
+  font-size:14px;font-weight:500;color:oklch(56% .005 80);
+  border-bottom:1px solid oklch(36% .010 25);padding-bottom:3px;
+  transition:color .2s,border-color .2s;white-space:nowrap;
+  flex-shrink:0;align-self:center;
+}
+.art-view-all:hover{color:var(--white);border-color:var(--white)}
+.art-scene{
+  position:relative;height:540px;margin-top:56px;
+  cursor:grab;overflow:visible;
+}
+.art-scene:active{cursor:grabbing}
+.art-track{
+  width:100%;height:100%;
+  position:relative;
+  perspective:1300px; /* shared vanishing point — makes cards curve like a wheel */
+}
+.art-item{
+  position:absolute;width:340px;height:500px;
+  top:50%;left:50%;
+  margin:-250px 0 0 -170px;
+  border-radius:16px;overflow:hidden;
+  background:oklch(16% .010 25);
+  border:1px solid oklch(24% .008 25);
+  text-decoration:none;color:var(--white);
+  display:block;
+  transition:border-color .3s,box-shadow .3s;
+}
+.art-item.art-center{border-color:oklch(32% .010 25)}
+.art-item:hover{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),0 24px 60px oklch(51% .160 250 / .2)}
+.art-img{width:100%;height:200px;object-fit:cover;display:block}
+.art-body{padding:22px 20px 18px;display:flex;flex-direction:column;height:calc(100% - 200px)}
+.art-cat{font-family:var(--f1);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:9px}
+.art-title{font-family:var(--f1);font-size:13px;font-weight:700;line-height:1.4;letter-spacing:-.01em;color:var(--white);margin-bottom:9px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.art-excerpt{font-size:12px;color:oklch(52% .005 80);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+.art-footer{display:flex;align-items:center;justify-content:space-between;margin-top:13px;padding-top:13px;border-top:1px solid oklch(24% .008 25)}
+.art-read{font-size:11px;color:oklch(40% .005 80)}
+.art-arrow{width:26px;height:26px;border-radius:50%;background:oklch(22% .008 25);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:13px;flex-shrink:0;transition:background .2s,color .2s,transform .2s}
+.art-item:hover .art-arrow{background:var(--blue);color:#fff;transform:translateX(2px)}
+.art-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:40px}
+.art-btn{width:42px;height:42px;border-radius:50%;border:1px solid oklch(26% .008 25);background:transparent;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:18px;cursor:pointer;transition:background .2s,border-color .2s}
+.art-btn:hover{background:var(--blue);border-color:var(--blue)}
+.art-dots{display:flex;gap:8px;align-items:center}
+.art-dot{height:6px;border-radius:3px;background:oklch(26% .008 25);transition:background .25s,width .25s;cursor:pointer;width:6px}
+.art-dot.active{background:var(--blue);width:24px}
+
+/* ── COOKIE BANNER ───────────────────────── */
+@keyframes ck-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+#ck{
+  position:fixed;bottom:24px;right:24px;width:300px;z-index:9990;
+  background:var(--ink2);border:1px solid oklch(26% .010 25);
+  border-radius:16px;box-shadow:0 24px 56px rgba(0,0,0,.5);
+  padding:20px;font-family:var(--f2);
+  animation:ck-rise .4s cubic-bezier(.16,1,.3,1);
+}
+#ck[hidden]{display:none!important}
+.ck-title{font-family:var(--f1);font-size:12px;font-weight:700;letter-spacing:-.01em;color:var(--white);margin-bottom:7px}
+.ck-body{font-size:11.5px;color:oklch(50% .005 80);line-height:1.6;margin-bottom:16px}
+.ck-body a{color:var(--red);text-decoration:underline;text-underline-offset:2px}
+.ck-btns{display:flex;gap:8px}
+.ck-btn{border:none;border-radius:8px;padding:9px 13px;font-family:var(--f2);font-size:12px;font-weight:600;cursor:pointer;transition:opacity .15s,transform .15s;flex:1;text-align:center}
+.ck-btn:hover{opacity:.82;transform:translateY(-1px)}
+.ck-btn-p{background:var(--red);color:#fff}
+.ck-btn-s{background:oklch(20% .010 25);color:oklch(58% .005 80);border:1px solid oklch(28% .010 25)}
+.ck-panel{margin-top:14px;border-top:1px solid oklch(24% .010 25);padding-top:12px;display:none}
+.ck-panel.open{display:block}
+.ck-opt{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:8px 0}
+.ck-opt+.ck-opt{border-top:1px solid oklch(20% .010 25)}
+.ck-opt-text strong{font-size:11.5px;font-weight:600;color:oklch(78% .005 80)}
+.ck-opt-text p{font-size:11px;color:oklch(40% .005 80);margin-top:2px;line-height:1.5}
+.ck-toggle{position:relative;width:40px;height:24px;flex-shrink:0;margin-top:2px}
+.ck-toggle input{position:absolute;opacity:0;pointer-events:none}
+.ck-toggle span{display:block;width:40px;height:24px;border-radius:999px;background:oklch(28% .010 25);transition:background .2s;cursor:pointer}
+.ck-toggle span::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.35);transition:left .2s}
+.ck-toggle input:checked+span{background:var(--red)}
+.ck-toggle input:checked+span::after{left:19px}
+.ck-toggle.locked span{background:var(--grn);cursor:default}
+.ck-panel-save{margin-top:12px}
+.ck-panel-save .ck-btn{flex:unset;width:100%}
+#ck-manage{position:fixed;bottom:20px;left:20px;z-index:9989;background:oklch(16% .010 25);color:oklch(46% .005 80);border:1px solid oklch(24% .010 25);border-radius:8px;padding:7px 11px;font-family:var(--f2);font-size:11px;cursor:pointer;transition:color .2s,border-color .2s}
+#ck-manage:hover{color:oklch(72% .005 80);border-color:oklch(36% .010 25)}
+#ck-manage[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo" id="loader-logo"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></div>
+  <div class="loader-bar"><div class="loader-bar-fill" id="loader-fill"></div></div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></a>
+  <ul class="nav-links">
+    <li><a href="#services" data-nl="Diensten" data-en="Services">Services</a></li>
+    <li><a href="#portfolio" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
+    <li><a href="/articles/" data-nl="Artikelen" data-en="Articles">Articles</a></li>
+    <li><a href="#pricing" data-nl="Prijzen" data-en="Pricing">Pricing</a></li>
+    <li><a href="#subscriptions" data-nl="Support" data-en="Support">Support</a></li>
+    <li><a href="#contact" data-nl="Contact" data-en="Contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div class="lang-drop" id="langDrop">
+      <button class="lang-btn-nav" id="langBtn">
+        <span id="lang-label-nav">EN</span>
+        <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor" style="opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
+      </button>
+      <div class="lang-menu">
+        <button class="lang-opt active" data-lang="en">EN</button>
+        <button class="lang-opt" data-lang="nl">NL</button>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <a href="#contact" class="nav-cta"><span data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</span></a>
+  </div>
+</nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
   <div class="hero-glow"></div>
-  <span class="badge" data-i18n="hero.badge">Webdesign Bureau — Nederland</span>
-  <h1><span style="white-space:nowrap" data-i18n="hero.h1.pre">Websites Die </span><em>Winnen</em><br><span data-i18n="hero.h1.post">Meer Klanten</span></h1>
-  <p data-i18n="hero.p">Wij ontwerpen en bouwen mooie, converterende websites voor kleine bedrijven. Snel live, makkelijk te beheren, gebouwd om te groeien.</p>
-  <div class="hero-btns">
-    <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Start Je Project →</a>
-    <a href="#work" class="btn btn-ghost" data-i18n="hero.cta2">Bekijk Ons Werk</a>
-  </div>
-  <div class="mockup-wrap">
-    <div class="mockup-bar">
-      <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
-      <div class="mockup-url">webkreatives.com</div>
+
+  <!-- floating pill shapes -->
+  <div class="shape sh1"></div>
+  <div class="shape sh2"></div>
+  <div class="shape sh3"></div>
+  <div class="shape sh4"></div>
+  <div class="shape sh5"></div>
+  <div class="shape sh6"></div>
+
+  <!-- centered content -->
+  <div class="hero-center">
+    <p class="hero-eyebrow" id="hero-eyebrow">Web Design Agency, Amsterdam</p>
+    <h1 class="hero-h1" id="hero-h1">
+      <span class="word"><span class="word-inner">WEBSITES</span></span>
+      <span class="hero-line2"><span class="word"><span class="word-inner">THAT&nbsp;</span></span><span class="word"><span class="word-inner"><em id="cycling-word" style="color:var(--red)">WIN.</em></span></span></span>
+    </h1>
+    <p class="hero-sub" id="hero-sub"
+      data-nl="Wij bouwen krachtige websites met AI-technologie, gepersonaliseerd, snel opgeleverd en gemaakt om te converteren. <strong>Geen templates. Geen concessies.</strong>"
+      data-en="We build high-performance websites powered by AI, custom-crafted, delivered fast, designed to convert. <strong>No templates. No compromises.</strong>">
+      We build high-performance websites powered by AI, custom-crafted, delivered fast, designed to convert. <strong>No templates. No compromises.</strong>
+    </p>
+    <div class="hero-btns" id="hero-btns">
+      <a href="#contact" class="btn-p"><span data-nl="Start Je Project" data-en="Start Your Project">Start Je Project</span> <span class="btn-arrow">→</span></a>
+      <a href="#portfolio" class="btn-g"><span data-nl="Bekijk Ons Werk" data-en="View Our Work">Bekijk Ons Werk</span> <span class="btn-arrow">→</span></a>
     </div>
-    <div class="mockup-screen">
-      <svg viewBox="0 0 1060 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <rect width="1060" height="400" fill="#f8f9fa"/>
-        <rect width="1060" height="50" fill="white"/>
-        <rect x="40" y="16" width="95" height="18" rx="4" fill="#0d0d0d"/>
-        <rect x="680" y="18" width="55" height="14" rx="3" fill="#e9ecef"/>
-        <rect x="748" y="18" width="45" height="14" rx="3" fill="#e9ecef"/>
-        <rect x="806" y="18" width="52" height="14" rx="3" fill="#e9ecef"/>
-        <rect x="876" y="13" width="84" height="24" rx="5" fill="#E8392A"/>
-        <rect x="0" y="50" width="1060" height="195" fill="white"/>
-        <ellipse cx="530" cy="50" rx="460" ry="120" fill="#f7fce8" opacity=".7"/>
-        <rect x="355" y="76" width="350" height="11" rx="5" fill="#d4e8a0"/>
-        <rect x="190" y="101" width="680" height="30" rx="5" fill="#0d0d0d"/>
-        <rect x="240" y="141" width="580" height="18" rx="4" fill="#0d0d0d" opacity=".07"/>
-        <rect x="280" y="168" width="500" height="13" rx="4" fill="#adb5bd" opacity=".45"/>
-        <rect x="355" y="196" width="148" height="32" rx="6" fill="#0d0d0d"/>
-        <rect x="516" y="196" width="148" height="32" rx="6" fill="none" stroke="#dee2e6" stroke-width="1.5"/>
-        <rect x="0" y="245" width="1060" height="56" fill="#0d0d0d"/>
-        <rect x="0" y="245" width="1060" height="4" fill="#D4E157"/>
-        <rect x="100" y="265" width="66" height="18" rx="4" fill="rgba(212,225,87,.25)"/>
-        <rect x="328" y="265" width="66" height="18" rx="4" fill="rgba(212,225,87,.25)"/>
-        <rect x="558" y="265" width="66" height="18" rx="4" fill="rgba(212,225,87,.25)"/>
-        <rect x="786" y="265" width="66" height="18" rx="4" fill="rgba(212,225,87,.25)"/>
-        <rect x="36" y="316" width="310" height="72" rx="10" fill="white" stroke="#dee2e6" stroke-width="1"/>
-        <rect x="56" y="334" width="22" height="22" rx="5" fill="#f7fce8"/>
-        <rect x="90" y="337" width="110" height="9" rx="3" fill="#0d0d0d"/>
-        <rect x="90" y="352" width="180" height="7" rx="3" fill="#adb5bd" opacity=".55"/>
-        <rect x="375" y="316" width="310" height="72" rx="10" fill="white" stroke="#dee2e6" stroke-width="1"/>
-        <rect x="395" y="334" width="22" height="22" rx="5" fill="#f7fce8"/>
-        <rect x="429" y="337" width="110" height="9" rx="3" fill="#0d0d0d"/>
-        <rect x="429" y="352" width="180" height="7" rx="3" fill="#adb5bd" opacity=".55"/>
-        <rect x="714" y="316" width="310" height="72" rx="10" fill="#0d0d0d"/>
-        <rect x="734" y="334" width="22" height="22" rx="5" fill="#181818"/>
-        <rect x="768" y="337" width="110" height="9" rx="3" fill="white" opacity=".75"/>
-        <rect x="768" y="352" width="180" height="7" rx="3" fill="white" opacity=".28"/>
-      </svg>
+    <div class="hero-trust" id="hero-trust">
+      <div class="hero-trust-stars">★★★★★</div>
+      <p class="hero-trust-text"
+        data-nl="<strong>5.0</strong> gemiddelde beoordeling · <strong>15+</strong> websites live"
+        data-en="<strong>5.0</strong> average rating · <strong>15+</strong> websites live">
+        <strong>5.0</strong> gemiddelde beoordeling · <strong>15+</strong> websites live
+      </p>
     </div>
   </div>
 </section>
 
-<!-- TRUST -->
-<div class="trust">
-  <p data-i18n="trust.p">Vertrouwd door kleine bedrijven in heel Nederland</p>
-  <div class="trust-row">
-    <span>Bakkerij Jansen</span>
-    <span>Studio Bloom</span>
-    <span>De Groene Tuin</span>
-    <span>Koffie &amp; Co</span>
-    <span>Huis &amp; Stijl</span>
-    <span>JP Loodgieters</span>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="t-item">Tandarts Knoll<span class="t-dot lime"></span></span>
+    <span class="t-item">De Groot &amp; Partners<span class="t-dot"></span></span>
+    <span class="t-item">Studio Lena Fotografie<span class="t-dot lime"></span></span>
+    <span class="t-item">Luna Beauty Studio<span class="t-dot"></span></span>
+    <span class="t-item">Nexus IT Solutions<span class="t-dot lime"></span></span>
+    <span class="t-item">Maison Blanc Interieur<span class="t-dot"></span></span>
+    <span class="t-item">Klussenbedrijf Edward<span class="t-dot lime"></span></span>
+    <span class="t-item">Van den Berg Loodgieter<span class="t-dot"></span></span>
+    <span class="t-item">Leyenburger Grill<span class="t-dot lime"></span></span>
+    <span class="t-item">De Groot &amp; Partners<span class="t-dot"></span></span>
+    <span class="t-item">Tandarts Knoll<span class="t-dot lime"></span></span>
+    <span class="t-item">De Groot &amp; Partners<span class="t-dot"></span></span>
+    <span class="t-item">Studio Lena Fotografie<span class="t-dot lime"></span></span>
+    <span class="t-item">Luna Beauty Studio<span class="t-dot"></span></span>
+    <span class="t-item">Nexus IT Solutions<span class="t-dot lime"></span></span>
+    <span class="t-item">Maison Blanc Interieur<span class="t-dot"></span></span>
+    <span class="t-item">Klussenbedrijf Edward<span class="t-dot lime"></span></span>
+    <span class="t-item">Van den Berg Loodgieter<span class="t-dot"></span></span>
+    <span class="t-item">Leyenburger Grill<span class="t-dot lime"></span></span>
+    <span class="t-item">De Groot &amp; Partners<span class="t-dot"></span></span>
   </div>
 </div>
 
 <!-- STATS -->
-<div class="stats">
-  <div class="stats-grid">
-    <div><span class="sn">15+</span><p class="sl" data-i18n="stat.1">Websites Live</p></div>
-    <div><span class="sn">1–2</span><p class="sl" data-i18n="stat.2">Weken Online</p></div>
-    <div><span class="sn">100%</span><p class="sl" data-i18n="stat.3">Klanttevredenheid</p></div>
-    <div><span class="sn">5★</span><p class="sl" data-i18n="stat.4">Gem. Beoordeling</p></div>
+<section class="sec sec-light" id="stats">
+  <p class="lbl reveal" data-nl="Wat ons onderscheidt" data-en="What sets us apart">What sets us apart</p>
+  <h2 class="h2 reveal" data-nl="AI-gestuurd ontwerp,<br>gebouwd voor resultaat." data-en="AI-powered design,<br>built for results.">AI-powered design,<br>built for results.</h2>
+  <div class="stats-grid" style="margin-top:56px">
+    <div class="stat-card stat-dark reveal">
+      <div class="stat-n" style="color:var(--red)" data-count="15" data-suffix="+">0+</div>
+      <div class="stat-l" data-nl="Live websites voor echte bedrijven" data-en="Live websites delivered for real businesses">Live websites delivered for real businesses</div>
+    </div>
+    <div class="stat-card stat-dark reveal">
+      <div class="stat-n" style="color:var(--blue)" data-count="48" data-suffix="h">0h</div>
+      <div class="stat-l" data-nl="Van briefing naar werkend prototype" data-en="From brief to working prototype">From brief to working prototype</div>
+    </div>
+    <div class="stat-card stat-dark reveal">
+      <div class="stat-n" style="color:var(--yellow)" data-count="2" data-suffix=" wks">0 wks</div>
+      <div class="stat-l" data-nl="Gemiddelde levertijd van brief tot live" data-en="Average delivery time, brief to live">Average delivery time, brief to live</div>
+    </div>
+    <div class="stat-card stat-dark reveal">
+      <div class="stat-n" style="color:var(--lime)" data-count="100" data-suffix="%">0%</div>
+      <div class="stat-l" data-nl="Klanttevredenheid, check de reviews" data-en="Client satisfaction, check the reviews">Client satisfaction, check the reviews</div>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- SERVICES -->
-<section class="services" id="services">
-  <div class="sh">
-    <span class="label" data-i18n="svc.label">Diensten</span>
-    <h2 class="st" data-i18n-html="svc.title">Alles Wat Je Nodig Hebt<br>om Online te Slagen</h2>
-    <p class="sub" data-i18n="svc.sub">Van eerste indruk tot conversie — wij dekken het volledige plaatje.</p>
-  </div>
+<section class="sec sec-mid" id="services">
+  <p class="lbl reveal" data-nl="Wat we doen" data-en="What we do">What we do</p>
+  <h2 class="h2 reveal" data-nl="Elk onderdeel van<br>jouw online aanwezigheid." data-en="Every part of your<br>online presence.">Every part of your<br>online presence.</h2>
   <div class="svc-grid">
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3 data-i18n="svc.1.h">Website Design</h3><p data-i18n="svc.1.p">Op maat gemaakte websites gebouwd in Webflow. Mooi, snel, perfect op mobiel en makkelijk zelf aan te passen.</p></div>
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3 data-i18n="svc.2.h">Webshops</h3><p data-i18n="svc.2.p">Verkoop online met vertrouwen. Wij bouwen overzichtelijke, conversie-geoptimaliseerde shops die het kopen makkelijk maken.</p></div>
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3 data-i18n="svc.3.h">SEO &amp; Prestaties</h3><p data-i18n="svc.3.p">Word gevonden op Google. Wij optimaliseren elke site voor snelheid, toegankelijkheid en zoekresultaten.</p></div>
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1" fill="currentColor" stroke="none"/><circle cx="17.5" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="8.5" cy="7.5" r="1" fill="currentColor" stroke="none"/><circle cx="6.5" cy="12.5" r="1" fill="currentColor" stroke="none"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div><h3 data-i18n="svc.4.h">Branding &amp; Identiteit</h3><p data-i18n="svc.4.p">Logo, kleurenpalet, typografie — wij creëren een samenhangende visuele identiteit die je bedrijf professioneel maakt.</p></div>
-    <div class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div><h3 data-i18n="svc.5.h">Doorlopende Support</h3><p data-i18n="svc.5.p">Wij verdwijnen niet na de lancering. Maandelijkse zorgplannen houden je site veilig, up-to-date en op z'n best.</p></div>
-    <div class="svc dark"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3 data-i18n="svc.6.h">Snelle Oplevering</h3><p data-i18n="svc.6.p" style="color:#555">De meeste projecten binnen 1–2 weken opgeleverd. Wij werken snel zonder concessies te doen.</p></div>
+    <div class="svc-item reveal"><div class="svc-num">01</div><h3 class="svc-title" data-nl="Webdesign op maat" data-en="Custom Web Design">Custom Web Design</h3><p class="svc-desc" data-nl="AI-ondersteund design dat razendsnel beweegt. Op maat gebouwd voor jouw merk, nooit uit een sjabloonbibliotheek." data-en="AI-assisted design that moves at full speed. Built from scratch for your brand, never from a template library.">AI-assisted design that moves at full speed. Built from scratch for your brand, never from a template library.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">02</div><h3 class="svc-title" data-nl="Webshops" data-en="E-Commerce">E-Commerce</h3><p class="svc-desc" data-nl="Commerce gebouwd om te converteren. AI-gegenereerde productbeschrijvingen, slimme zoekfunctie en geautomatiseerde voorraad op Shopify of WooCommerce." data-en="Commerce built to convert. AI-powered product copy, smart search and automated inventory, Shopify or WooCommerce.">Commerce built to convert. AI-powered product copy, smart search and automated inventory, Shopify or WooCommerce.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">03</div><h3 class="svc-title" data-nl="SEO &amp; Vindbaarheid" data-en="SEO &amp; Visibility">SEO &amp; Visibility</h3><p class="svc-desc" data-nl="Rank waar het telt. AI-gestuurde zoekwoordstrategie en on-page optimalisatie die je boven de concurrentie plaatst." data-en="Rank where it matters. AI-analyzed keyword strategy and on-page optimization that puts you ahead of your competition.">Rank where it matters. AI-analyzed keyword strategy and on-page optimization that puts you ahead of your competition.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">04</div><h3 class="svc-title" data-nl="Branding &amp; Identiteit" data-en="Branding &amp; Identity">Branding &amp; Identity</h3><p class="svc-desc" data-nl="Jouw identiteit, met precisie gedefinieerd. Logo, kleuren, typografie, met vakmanschap, niet op gevoel." data-en="Your identity, defined with precision. Logo, colors, typography, crafted with expertise, not guesswork.">Your identity, defined with precision. Logo, colors, typography, crafted with expertise, not guesswork.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">05</div><h3 class="svc-title" data-nl="Onderhoud &amp; Support" data-en="Maintenance &amp; Support">Maintenance &amp; Support</h3><p class="svc-desc" data-nl="Altijd beschikbare support. Wij regelen de updates, beveiliging en hosting. Jij focust op je bedrijf." data-en="Always-on support. We handle updates, security and hosting. You focus on your business.">Always-on support. We handle updates, security and hosting. You focus on your business.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">06</div><h3 class="svc-title" data-nl="AI-Versnelde Oplevering" data-en="AI-Accelerated Delivery">AI-Accelerated Delivery</h3><p class="svc-desc" data-nl="Live in 1–2 weken. AI-versnelde workflows verkorten de productietijd zonder in te leveren op kwaliteit." data-en="Live in 1–2 weeks. AI-accelerated workflows cut production time without cutting quality.">Live in 1–2 weeks. AI-accelerated workflows cut production time without cutting quality.</p><span class="svc-arr">↗</span></div>
   </div>
 </section>
 
-<!-- WHY US -->
-<section class="why" id="why-us">
-  <div class="why-in">
-    <div class="why-l">
-      <span class="label" data-i18n="why.label">Waarom WebKreatives</span>
-      <h2 class="st lt" data-i18n-html="why.title">Gemaakt voor Kleine<br>Bedrijven,<br>Niet Grote Budgetten</h2>
-      <p data-i18n="why.p">Simpel, transparant en resultaatgericht — wij weten dat kleine bedrijven geen tijd of geld te verspillen hebben.</p>
+<!-- PORTFOLIO -->
+<section class="sec sec-dark" id="portfolio">
+  <div class="port-header">
+    <div>
+      <p class="lbl reveal" data-nl="Portfolio" data-en="Portfolio">Portfolio</p>
+      <h2 class="h2 reveal" data-nl="Werk dat spreekt<br>voor zich." data-en="Work that speaks<br>for itself.">Werk dat spreekt<br>voor zich.</h2>
     </div>
-    <div class="checks">
-      <div class="ck"><div class="ck-dot">✓</div><div><h4 data-i18n="why.1.h">Vaste Prijzen, Geen Verrassingen</h4><p data-i18n="why.1.p">Je weet precies wat je betaalt voordat we beginnen. Geen verborgen kosten, nooit.</p></div></div>
-      <div class="ck"><div class="ck-dot">✓</div><div><h4 data-i18n="why.2.h">Alles Is Van Jou</h4><p data-i18n="why.2.p">Jouw site, jouw domein, jouw content. Wij dragen alles over en leren je hoe je het beheert.</p></div></div>
-      <div class="ck"><div class="ck-dot">✓</div><div><h4 data-i18n="why.3.h">Live in 1–2 Weken</h4><p data-i18n="why.3.p">De meeste websites zijn binnen twee weken ontworpen, gebouwd en gelanceerd. Wij werken snel.</p></div></div>
-      <div class="ck"><div class="ck-dot">✓</div><div><h4 data-i18n="why.4.h">Professioneel Platform</h4><p data-i18n="why.4.p">Wij bouwen op bewezen, professionele platforms — snel, veilig en makkelijk zelf te beheren.</p></div></div>
+    <a href="portfolio/" class="port-all reveal" data-nl="Alle projecten →" data-en="All projects →">All projects →</a>
+  </div>
+  <div class="port-grid">
+    <div class="port-card wide reveal">
+      <a class="port-inner port-screenshot" href="client-projects/de-groot-accountants/" target="_blank">
+        <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/de-groot-accountants</div></div>
+        <img src="assets/screenshots/de-groot-accountants.png" alt="De Groot Accountants" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+      </a>
+      <div class="port-overlay"><div class="port-ind" data-nl="Financieel" data-en="Finance">Finance</div><div class="port-name">De Groot &amp; Partners</div></div>
+    </div>
+    <div class="port-card reveal">
+      <a class="port-inner port-screenshot" href="client-projects/tandarts-knoll/" target="_blank">
+        <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/tandarts-knoll</div></div>
+        <img src="assets/screenshots/tandarts-knoll.png" alt="Tandarts Knoll" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+      </a>
+      <div class="port-overlay"><div class="port-ind" data-nl="Zorg" data-en="Healthcare">Healthcare</div><div class="port-name">Tandarts Knoll</div></div>
+    </div>
+    <div class="port-card reveal">
+      <a class="port-inner port-screenshot" href="client-projects/leyenburger/" target="_blank">
+        <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/leyenburger</div></div>
+        <img src="assets/screenshots/leyenburger.png" alt="Leyenburger Grill" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+      </a>
+      <div class="port-overlay"><div class="port-ind" data-nl="Horeca" data-en="Restaurant">Restaurant</div><div class="port-name">Leyenburger Grill</div></div>
+    </div>
+    <div class="port-card reveal">
+      <a class="port-inner port-screenshot" href="client-projects/luna-beauty-studio/" target="_blank">
+        <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/luna-beauty-studio</div></div>
+        <img src="assets/screenshots/luna-beauty-studio.png" alt="Luna Beauty Studio" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+      </a>
+      <div class="port-overlay"><div class="port-ind" data-nl="Beauty" data-en="Beauty">Beauty</div><div class="port-name">Luna Beauty Studio</div></div>
+    </div>
+    <div class="port-card reveal">
+      <a class="port-inner port-screenshot" href="client-projects/studio-lena-fotografie/" target="_blank">
+        <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/studio-lena-fotografie</div></div>
+        <img src="assets/screenshots/studio-lena-fotografie.png" alt="Studio Lena Fotografie" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+      </a>
+      <div class="port-overlay"><div class="port-ind" data-nl="Fotografie" data-en="Photography">Photography</div><div class="port-name">Studio Lena Fotografie</div></div>
+    </div>
+    <div class="port-card reveal">
+      <a class="port-inner port-screenshot" href="client-projects/maison-blanc-interieur/" target="_blank">
+        <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/maison-blanc-interieur</div></div>
+        <img src="assets/screenshots/maison-blanc-interieur.png" alt="Maison Blanc Interieur" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+      </a>
+      <div class="port-overlay"><div class="port-ind" data-nl="Interieur" data-en="Interior">Interior</div><div class="port-name">Maison Blanc Interieur</div></div>
+    </div>
+    <div class="port-card reveal">
+      <a class="port-inner port-screenshot" href="client-projects/klussenbedrijf-edward/" target="_blank">
+        <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/klussenbedrijf-edward</div></div>
+        <img src="assets/screenshots/klussenbedrijf-edward.png" alt="Klussenbedrijf Edward" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+      </a>
+      <div class="port-overlay"><div class="port-ind" data-nl="Bouw" data-en="Construction">Construction</div><div class="port-name">Klussenbedrijf Edward</div></div>
     </div>
   </div>
 </section>
 
-<!-- WORK -->
-<section class="work" id="work">
-  <div class="sh">
-    <span class="label" data-i18n="work.label">Ons Werk</span>
-    <h2 class="st" data-i18n="work.title">Projecten Waar We Trots Op Zijn</h2>
-    <p class="sub" data-i18n="work.sub">Elke site is op maat gemaakt voor het merk, de doelen en de klanten van dat specifieke bedrijf.</p>
+<!-- PROCESS -->
+<section class="sec sec-dark2" id="process">
+  <p class="lbl reveal" data-nl="Hoe het werkt" data-en="How it works">Hoe het werkt</p>
+  <h2 class="h2 reveal" data-nl="Van idee naar live<br>in vier stappen." data-en="From idea to live<br>in four steps.">Van idee naar live<br>in vier stappen.</h2>
+  <div class="proc-grid">
+    <div class="proc-step reveal">
+      <div class="proc-n">01</div>
+      <div class="proc-t" data-nl="Intake gesprek" data-en="Intake call">Intake gesprek</div>
+      <p class="proc-d" data-nl="We bespreken jouw bedrijf, doelgroep en wensen. Gratis, vrijblijvend, max 30 minuten." data-en="We discuss your business, audience and wishes. Free, no obligation, max 30 minutes.">We bespreken jouw bedrijf, doelgroep en wensen. Gratis, vrijblijvend, max 30 minuten.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-n">02</div>
+      <div class="proc-t" data-nl="Ontwerp &amp; concept" data-en="Design &amp; concept">Ontwerp &amp; concept</div>
+      <p class="proc-d" data-nl="We ontwerpen een volledig concept, aangedreven door AI, verfijnd door ervaring, en presenteren het binnen 48 uur." data-en="We design a full concept, powered by AI, refined by experience, and present it to you within 48 hours.">We design a full concept, powered by AI, refined by experience, and present it to you within 48 hours.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-n">03</div>
+      <div class="proc-t" data-nl="Feedback verwerken" data-en="Process feedback">Feedback verwerken</div>
+      <p class="proc-d" data-nl="Aanpassingen zijn inbegrepen. We gaan door tot jij tevreden bent. Altijd." data-en="Revisions are included. We keep going until you're satisfied. Always.">Aanpassingen zijn inbegrepen. We gaan door tot jij tevreden bent. Altijd.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-n">04</div>
+      <div class="proc-t" data-nl="Live!" data-en="Live!">Live!</div>
+      <p class="proc-d" data-nl="Jouw website gaat online. We regelen domein, hosting en overdracht. Klaar om klanten te winnen." data-en="Your website goes online. We handle domain, hosting and handover. Ready to win clients.">Jouw website gaat online. We regelen domein, hosting en overdracht. Klaar om klanten te winnen.</p>
+    </div>
   </div>
-  <div class="work-grid">
-    <a class="wcard" href="client-projects/leyenburger/" target="_blank">
-      <div class="wthumb">
-        <img src="https://images.unsplash.com/photo-1596995804697-27d11d43652e?auto=format&fit=crop&w=760&q=80" alt="Eethuis Leyenburger — Halal Burgers Den Haag" loading="lazy">
-        <span class="wtag" style="background:rgba(185,28,28,.88)">Den Haag · Halal Grill</span>
-      </div>
-      <div class="wbody">
-        <h3>Eethuis Leyenburger</h3>
-        <p data-i18n="work.1.p">Donkere, redactionele one-pager voor een halal burger & grill restaurant in Den Haag. Menu, openingstijden, locatie — in 5 dagen live.</p>
-        <span class="wlink" data-i18n="work.view">Bekijk project →</span>
-      </div>
-    </a>
-    <a class="wcard" href="client-projects/tandarts-knoll/" target="_blank">
-      <div class="wthumb">
-        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=760&q=80" alt="Tandarts Knoll — Tandarts in Staphorst" loading="lazy">
-        <span class="wtag" style="background:rgba(13,124,143,.85)">Staphorst · Tandarts</span>
-      </div>
-      <div class="wbody">
-        <h3>Tandarts Knoll</h3>
-        <p data-i18n="work.2.p">Strakke, moderne one-pager voor een tandartspraktijk in Staphorst. Diensten, tijden, contact & kaart — tweetalig NL/EN.</p>
-        <span class="wlink" data-i18n="work.view">Bekijk project →</span>
-      </div>
-    </a>
-    <a class="wcard" href="client-projects/klussenbedrijf-edward/" target="_blank">
-      <div class="wthumb">
-        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=760&q=80" alt="Klussenbedrijf Edward — Klusbedrijf Deventer" loading="lazy">
-        <span class="wtag" style="background:rgba(232,116,42,.9)">Deventer · Klusbedrijf</span>
-      </div>
-      <div class="wbody">
-        <h3>Klussenbedrijf Edward</h3>
-        <p data-i18n="work.3.p">Stoere, industriële one-pager voor een klusjesman in Deventer. Diensten, projectgalerij, contact & kaart — tweetalig NL/EN.</p>
-        <span class="wlink" data-i18n="work.view">Bekijk project →</span>
-      </div>
-    </a>
-  </div>
-  <div class="work-cta"><a href="our-websites/" class="btn btn-primary" data-i18n="work.cta">Bekijk alle websitevoorbeelden →</a></div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testi" id="testimonials">
-  <div class="sh">
-    <span class="label" data-i18n="testi.label">Referenties</span>
-    <h2 class="st" data-i18n="testi.title">Wat Onze Klanten Zeggen</h2>
+<section class="sec sec-light" id="reviews" style="padding-top:clamp(56px,7vw,100px);padding-bottom:clamp(56px,7vw,100px)">
+  <div class="reviews-split">
+    <div class="reviews-copy reveal">
+      <p class="lbl" data-nl="Klanten aan het woord" data-en="Client reviews">Klanten aan het woord</p>
+      <h2 class="h2" data-nl="Wat zij zeggen." data-en="What they say.">Wat zij zeggen.</h2>
+    </div>
+  <div class="rc-stage" id="rcStage">
+
+    <div class="rc">
+      <div class="rc-head">
+        <div class="rc-av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Karim"></div>
+        <div><div class="rc-name">Karim</div><div class="rc-role" data-nl="De Groot Accountants" data-en="De Groot Accountants">De Groot Accountants</div></div>
+      </div>
+      <p class="rc-text" data-nl="Onze klanten merkten meteen het verschil. Strak, snel, geen rommel." data-en="Our clients noticed the difference immediately. Clean, fast, no clutter.">"Our clients noticed the difference immediately. Clean, fast, no clutter."</p>
+      <div class="rc-stars">★★★★★</div>
+    </div>
+
+    <div class="rc">
+      <div class="rc-head">
+        <div class="rc-av"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Sophie"></div>
+        <div><div class="rc-name">Sophie</div><div class="rc-role" data-nl="Maison Blanc Interieur" data-en="Maison Blanc Interieur">Maison Blanc Interieur</div></div>
+      </div>
+      <p class="rc-text" data-nl="Eindelijk een website die past bij het niveau van mijn werk. Precies goed." data-en="Finally a website that matches the quality of my work. Exactly right.">"Finally a website that matches the quality of my work. Exactly right."</p>
+      <div class="rc-stars">★★★★★</div>
+    </div>
+
+    <div class="rc">
+      <div class="rc-head">
+        <div class="rc-av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Edward"></div>
+        <div><div class="rc-name">Edward</div><div class="rc-role" data-nl="Klussenbedrijf Edward" data-en="Klussenbedrijf Edward">Klussenbedrijf Edward</div></div>
+      </div>
+      <p class="rc-text" data-nl="Meer leads in de eerste week. Makkelijk zelf aan te passen. Geen verborgen kosten." data-en="More leads in the first week. Easy to update myself. No surprise costs.">"More leads in the first week. Easy to update myself. No surprise costs."</p>
+      <div class="rc-stars">★★★★★</div>
+    </div>
+
+    <div class="rc">
+      <div class="rc-head">
+        <div class="rc-av"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Lena"></div>
+        <div><div class="rc-name">Lena</div><div class="rc-role" data-nl="Studio Lena Fotografie" data-en="Studio Lena Photography">Studio Lena Photography</div></div>
+      </div>
+      <p class="rc-text" data-nl="Mijn portfolio ziet er nu uit als van een grote studio. Klanten reageren serieuzer." data-en="My portfolio now looks like it's from a big studio. Clients take me more seriously.">"My portfolio now looks like it's from a big studio. Clients take me more seriously."</p>
+      <div class="rc-stars">★★★★★</div>
+    </div>
+
+    <div class="rc">
+      <div class="rc-head">
+        <div class="rc-av"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Thomas"></div>
+        <div><div class="rc-name">Thomas</div><div class="rc-role" data-nl="Tandarts Knoll" data-en="Tandarts Knoll">Tandarts Knoll</div></div>
+      </div>
+      <p class="rc-text" data-nl="Eindelijk een website die laat zien wie we zijn. Snel, op maat, precies zoals we wilden." data-en="Finally a website that shows who we are. Fast, custom, exactly as we wanted.">"Finally a website that shows who we are. Fast, custom, exactly as we wanted."</p>
+      <div class="rc-stars">★★★★★</div>
+    </div>
+
+    <div class="rc">
+      <div class="rc-head">
+        <div class="rc-av"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Marieke"></div>
+        <div><div class="rc-name">Marieke</div><div class="rc-role" data-nl="Luna Beauty Studio" data-en="Luna Beauty Studio">Luna Beauty Studio</div></div>
+      </div>
+      <p class="rc-text" data-nl="Binnen twee weken een professionele website. Ik krijg nu veel meer aanvragen — iets wat hiervoor nooit gebeurde." data-en="A professional website in two weeks. I now get far more inquiries — something that never happened before.">"A professional website in two weeks. I now get far more inquiries — something that never happened before."</p>
+      <div class="rc-stars">★★★★★</div>
+    </div>
+
   </div>
-  <div class="tgrid">
-    <div class="tcard">
-      <div class="stars">★★★★★</div>
-      <blockquote>"Binnen een week stond onze site live en we kregen meteen meer aanvragen. Hadden dit veel eerder moeten doen!"</blockquote>
-      <div class="tauth"><div class="av" style="background:#8BC34A">R</div><div><div class="an">Roos K.</div><div class="ar">Kapsalon eigenaar, Den Haag</div></div></div>
+  </div>
+</section>
+
+<!-- PRICING → QUOTE PROCESS -->
+<section class="sec sec-mid" id="pricing">
+  <p class="lbl reveal" style="justify-content:center" data-nl="Op maat gemaakt" data-en="Tailored to you">Tailored to you</p>
+  <h2 class="h2 reveal" style="text-align:center" data-nl="Elk project uniek.<br>Elke offerte ook." data-en="Every project is unique.<br>So is the quote.">Every project is unique.<br>So is the quote.</h2>
+  <p class="reveal" style="text-align:center;max-width:560px;margin:20px auto 0;font-size:clamp(15px,1.3vw,17px);color:var(--ink3);font-weight:300;line-height:1.7" data-nl="We werken niet met vaste pakketten. Na een korte intake sturen we een heldere offerte op maat, scope, tijdlijn en prijs. Transparant, zonder verborgen kosten." data-en="We don't work with fixed packages. After a short intake, we send a clear custom quote, scope, timeline and price. Transparent, no hidden costs.">We don't work with fixed packages. After a short intake, we send a clear custom quote, scope, timeline and price. Transparent, no hidden costs.</p>
+  <div class="price-grid" style="margin-top:56px">
+    <div class="price-card reveal" style="text-align:center">
+      <div class="price-tier" style="color:var(--red)">Step 01</div>
+      <h3 style="font-family:var(--f1);font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;margin:14px 0 12px" data-nl="We luisteren eerst" data-en="We listen first">We listen first</h3>
+      <p style="font-size:14px;color:var(--ink3);line-height:1.65;font-weight:300" data-nl="Vertel ons wat je nodig hebt. We stellen de juiste vragen om jouw project precies goed te begrijpen." data-en="Tell us what you need. We ask the right questions to understand your project precisely.">Tell us what you need. We ask the right questions to understand your project precisely.</p>
     </div>
-    <div class="tcard">
-      <div class="stars">★★★★★</div>
-      <blockquote>"Eindelijk iemand die gewoon duidelijke taal praat. Geen gedoe, gewoon een mooie site voor een eerlijke prijs. Super blij mee!"</blockquote>
-      <div class="tauth"><div class="av" style="background:#0d0d0d">T</div><div><div class="an">Thomas V.</div><div class="ar">Installateur, Amsterdam</div></div></div>
+    <div class="price-card pop reveal" style="text-align:center">
+      <div class="price-tier" style="color:var(--blue)">Step 02</div>
+      <h3 style="font-family:var(--f1);font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;margin:14px 0 12px;color:var(--white)" data-nl="Helder voorstel" data-en="Clear proposal">Clear proposal</h3>
+      <p style="font-size:14px;color:oklch(56% .005 25);line-height:1.65;font-weight:300" data-nl="Binnen 24 uur ontvang je een gedetailleerde offerte: scope, tijdlijn en prijs. Precies wat er staat, is wat je betaalt." data-en="Within 24 hours you receive a detailed quote: scope, timeline and price. What it says is what you pay.">Within 24 hours you receive a detailed quote: scope, timeline and price. What it says is what you pay.</p>
     </div>
-    <div class="tcard">
-      <div class="stars">★★★★★</div>
-      <blockquote>"Echt top geregeld. Mijn klanten zeggen dat de site er super professioneel uitziet. En ik kan alles zelf aanpassen, heel fijn."</blockquote>
-      <div class="tauth"><div class="av" style="background:#5B8AC5">F</div><div><div class="an">Fatima B.</div><div class="ar">Online winkel, Rotterdam</div></div></div>
+    <div class="price-card reveal" style="text-align:center">
+      <div class="price-tier" style="color:var(--lime)">Step 03</div>
+      <h3 style="font-family:var(--f1);font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;margin:14px 0 12px" data-nl="Aan de slag" data-en="We get to work">We get to work</h3>
+      <p style="font-size:14px;color:var(--ink3);line-height:1.65;font-weight:300" data-nl="Zodra je akkoord gaat, starten we direct. Resultaat zichtbaar in dagen, jouw site live in weken." data-en="Once you approve, we start immediately. Results visible in days, your site live in weeks.">Once you approve, we start immediately. Results visible in days, your site live in weeks.</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px">
+    <a href="#contact" class="btn-p reveal" style="display:inline-flex"><span data-nl="Offerte Aanvragen" data-en="Request a Quote">Request a Quote</span> <span class="btn-arrow">→</span></a>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="sec sec-dark" id="subscriptions">
+  <p class="lbl reveal" data-nl="Doorlopende support" data-en="Ongoing support">Ongoing support</p>
+  <h2 class="h2 reveal" data-nl="Wij staan voor je klaar,<br>ook na de lancering." data-en="We've got your back<br>long after launch.">We've got your back<br>long after launch.</h2>
+  <p class="reveal" style="font-size:clamp(15px,1.3vw,17px);color:oklch(56% .005 25);font-weight:300;line-height:1.7;max-width:580px;margin-top:20px" data-nl="Een website is geen eindproduct, het is een groeiend platform. We bieden doorlopende support op maat, van hosting en updates tot strategie en SEO. Vraag naar de mogelijkheden." data-en="A website isn't a finished product, it's a growing platform. We offer ongoing support tailored to your needs, from hosting and updates to strategy and SEO. Ask us about the options.">A website isn't a finished product, it's a growing platform. We offer ongoing support tailored to your needs, from hosting and updates to strategy and SEO. Ask us about the options.</p>
+  <div class="proc-grid" style="margin-top:56px">
+    <div class="proc-step reveal">
+      <div class="proc-n" style="font-size:clamp(28px,3vw,42px);color:var(--red)">Hosting</div>
+      <div class="proc-t" data-nl="Altijd online" data-en="Always online">Always online</div>
+      <p class="proc-d" data-nl="Snelle, veilige hosting met SSL. Geoptimaliseerd voor Webflow en WordPress. Uptime monitoring inbegrepen." data-en="Fast, secure hosting with SSL. Optimized for Webflow and WordPress. Uptime monitoring included.">Fast, secure hosting with SSL. Optimized for Webflow and WordPress. Uptime monitoring included.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-n" style="font-size:clamp(28px,3vw,42px);color:var(--blue)">Updates</div>
+      <div class="proc-t" data-nl="Altijd bijgewerkt" data-en="Always current">Always current</div>
+      <p class="proc-d" data-nl="Regelmatige updates, beveiligingspatches en inhoudsbeheer. Jij focust op je bedrijf." data-en="Regular updates, security patches and content management. You focus on your business.">Regular updates, security patches and content management. You focus on your business.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-n" style="font-size:clamp(28px,3vw,42px);color:var(--yellow)">SEO</div>
+      <div class="proc-t" data-nl="Altijd zichtbaar" data-en="Always visible">Always visible</div>
+      <p class="proc-d" data-nl="Maandelijkse SEO-rapportages, conversie-analyse en gepersonaliseerde groeiadviezen." data-en="Monthly SEO reports, conversion analysis and personalized growth advice.">Monthly SEO reports, conversion analysis and personalized growth advice.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-n" style="font-size:clamp(28px,3vw,42px);color:var(--lime)">Strategy</div>
+      <div class="proc-t" data-nl="Altijd vooruit" data-en="Always forward">Always forward</div>
+      <p class="proc-d" data-nl="Kwartaalstrategie-sessies, A/B-testen en conversie-optimalisatie. Jouw website groeit met je mee." data-en="Quarterly strategy sessions, A/B testing and conversion optimization. Your site grows with you.">Quarterly strategy sessions, A/B testing and conversion optimization. Your site grows with you.</p>
+    </div>
+  </div>
+  <div style="margin-top:40px">
+    <a href="#contact" class="btn-g reveal" style="display:inline-flex"><span data-nl="Vraag naar support-opties" data-en="Ask about support options">Ask about support options</span> <span class="btn-arrow">→</span></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec sec-contact" id="contact">
+  <p class="lbl reveal" style="color:var(--blue)" data-nl="Neem contact op" data-en="Get in touch">Get in touch</p>
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <h2 class="h2" data-nl="Laten we je<br>website bouwen." data-en="Let's build your<br>website.">Laten we je<br>website bouwen.</h2>
+      <p data-nl="Vertel ons over je project en we nemen binnen 24 uur contact op. Vrijblijvend, geen opdringerige verkoop." data-en="Tell us about your project and we'll get back to you within 24 hours. No pressure, no aggressive sales.">Vertel ons over je project en we nemen binnen 24 uur contact op. Vrijblijvend, geen opdringerige verkoop.</p>
+      <div class="contact-trust">
+        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(51% .220 25 / .15);color:var(--red)">✓</div><span data-nl="Reactie binnen 24 uur" data-en="Response within 24 hours">Response within 24 hours</span></div>
+        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(51% .160 250 / .15);color:var(--blue)">✓</div><span data-nl="Gratis en vrijblijvend gesprek" data-en="Free and no-obligation call">Free and no-obligation call</span></div>
+        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(88% .155 122 / .12);color:var(--lime)">✓</div><span data-nl="Transparante offerte, geen verborgen kosten" data-en="Transparent quote, no hidden costs">Transparent quote, no hidden costs</span></div>
+        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(88% .200 95 / .12);color:var(--yellow)">✓</div><span data-nl="Op maat gebouwd, geen templates" data-en="Custom built, no templates">Custom built, no templates</span></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <form class="cform" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="16fb32e8-43cd-4b8c-b6ad-904a4efd8e59">
+        <input type="hidden" name="subject" value="Nieuwe aanvraag via WebKreatives Test Page">
+        <input type="checkbox" name="botcheck" style="display:none">
+        <div class="frow">
+          <div class="fg"><label data-nl="Je naam" data-en="Your name">Je naam</label><input type="text" name="name" placeholder="Jan de Vries" required></div>
+          <div class="fg"><label data-nl="E-mailadres" data-en="Email address">E-mailadres</label><input type="email" name="email" placeholder="jan@bedrijf.nl" required></div>
+        </div>
+        <div class="fg"><label data-nl="Telefoonnummer (optioneel)" data-en="Phone number (optional)">Telefoonnummer (optioneel)</label><input type="tel" name="phone" placeholder="+31 6 00000000"></div>
+        <div class="frow">
+          <div class="fg"><label data-nl="Type bedrijf" data-en="Business type">Type bedrijf</label>
+            <select name="type">
+              <option value="" data-nl="Selecteer je branche..." data-en="Select your industry...">Selecteer je branche...</option>
+              <option data-nl="Restaurant / Café" data-en="Restaurant / Café">Restaurant / Café</option>
+              <option data-nl="Retail / Winkel" data-en="Retail / Shop">Retail / Winkel</option>
+              <option data-nl="Zakelijke Diensten" data-en="Business Services">Zakelijke Diensten</option>
+              <option data-nl="Gezondheid &amp; Beauty" data-en="Health &amp; Beauty">Gezondheid &amp; Beauty</option>
+              <option data-nl="Bouw &amp; Installatie" data-en="Construction &amp; Installation">Bouw &amp; Installatie</option>
+              <option data-nl="Anders" data-en="Other">Anders</option>
+            </select>
+          </div>
+          <div class="fg"><label data-nl="Type project" data-en="Project type">Project type</label>
+            <select name="project_type">
+              <option value="" data-nl="Wat zoek je?" data-en="What are you looking for?">What are you looking for?</option>
+              <option data-nl="Nieuwe website" data-en="New website">New website</option>
+              <option data-nl="Webshop" data-en="E-Commerce / Webshop">E-Commerce / Webshop</option>
+              <option data-nl="Redesign bestaande site" data-en="Redesign existing site">Redesign existing site</option>
+              <option data-nl="Branding &amp; Identiteit" data-en="Branding &amp; Identity">Branding &amp; Identity</option>
+              <option data-nl="Doorlopende support" data-en="Ongoing support">Ongoing support</option>
+              <option data-nl="Anders" data-en="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label data-nl="Voorkeurstaal voor communicatie" data-en="Preferred language for communication">Voorkeurstaal voor communicatie</label><input type="text" name="language" placeholder="Nederlands / English / ..."></div>
+        <div class="fg"><label data-nl="Vertel ons over je project" data-en="Tell us about your project">Vertel ons over je project</label><textarea name="message" placeholder="What kind of website do you need?"></textarea></div>
+        <button type="submit" class="fsub"><span data-nl="Bericht Versturen →" data-en="Send Message →">Bericht Versturen →</span></button>
+        <div id="formStatus" style="margin-top:12px;font-size:13px;display:none"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec sec-mid" id="about">
+  <div class="about-grid" style="gap:56px">
+    <div class="about-photo-wrap reveal">
+      <div class="about-ring-wrap">
+        <div class="about-ring">
+          <img class="about-avatar" src="assets/csaba.jpg" alt="Csaba G." onerror="this.style.background='oklch(22% .010 25)';this.removeAttribute('src')">
+        </div>
+        <div class="team-dot td1"><img src="assets/team2.png" alt="Team member"></div>
+        <div class="team-dot td2"><img src="assets/team1.png" alt="Team member"></div>
+        <div class="team-dot td3"><span>?</span></div>
+      </div>
+      <div style="margin-top:22px;text-align:center">
+        <div style="font-family:var(--f1);font-size:15px;font-weight:700;letter-spacing:-.02em;color:var(--ink)">Csaba Garaguly</div>
+        <div style="font-size:12px;color:var(--ink3);font-weight:400;margin-top:3px;letter-spacing:.04em" data-nl="Co-Founder" data-en="Co-Founder">Co-Founder</div>
+      </div>
+    </div>
+    <div class="reveal" style="max-width:560px">
+      <p class="lbl" data-nl="Het team" data-en="The team">The team</p>
+      <p class="about-body" style="font-size:clamp(16px,1.5vw,19px);color:var(--ink);font-weight:400;line-height:1.65;margin-bottom:0" data-nl="WebKreatives overbrugt de kloof tussen premium webbureau's en de snelheid die de moderne markt vraagt. Met AI als krachtmultiplier bouwen we op maat gemaakte, converterende websites, opgeleverd in een fractie van de gebruikelijke tijd." data-en="WebKreatives bridges the gap between premium web agencies and the speed the modern market demands. Using AI as a force multiplier, we build custom, conversion-focused websites delivered in a fraction of the usual time.">WebKreatives bridges the gap between premium web agencies and the speed the modern market demands. Using AI as a force multiplier, we build custom, conversion-focused websites delivered in a fraction of the usual time.</p>
+      <div class="about-stat-row">
+        <div class="about-stat">
+          <div class="about-stat-n" style="color:var(--red)">15+</div>
+          <div class="about-stat-l" data-nl="Websites gebouwd" data-en="Websites built">Websites built</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-n" style="color:var(--grn)">0</div>
+          <div class="about-stat-l" data-nl="Klachten" data-en="Complaints">Complaints</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-n" style="color:var(--blue)">48h</div>
+          <div class="about-stat-l" data-nl="Oplevering" data-en="Delivery">Delivery</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-n" style="color:var(--yellow);-webkit-text-stroke:2px oklch(52% .13 88);paint-order:stroke fill">Free</div>
+          <div class="about-stat-l" data-nl="Consultatie" data-en="Consultation">Consultation</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="sh">
-    <span class="label" data-i18n="faq.label">FAQ</span>
-    <h2 class="st" data-i18n="faq.title">Veelgestelde Vragen</h2>
-    <p class="sub" data-i18n="faq.sub">Alles wat je moet weten voordat je aan je project begint.</p>
-  </div>
+<section class="sec sec-light" id="faq">
+  <p class="lbl reveal" style="justify-content:center" data-nl="Veelgestelde vragen" data-en="Frequently asked questions">Veelgestelde vragen</p>
+  <h2 class="h2 reveal" style="text-align:center" data-nl="Heb je een vraag?" data-en="Have a question?">Heb je een vraag?</h2>
   <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-q" data-i18n="faq.1.q">Hoe lang duurt het om mijn website te bouwen?</button>
-      <div class="faq-a"><p data-i18n="faq.1.a">Het hangt af van je pakket. Het Starter-pakket (€199) is binnen 5 dagen klaar, het Business-pakket (€299) binnen 1 week, en het Growth-pakket (€599) binnen 2–3 weken. We houden je tijdens het hele proces op de hoogte.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" data-i18n="faq.2.q">Wat is het verschil tussen de drie pakketten?</button>
-      <div class="faq-a"><p data-i18n="faq.2.a">Starter (€199) is een eenvoudige one-pager zonder contactformulier — ideaal als visitekaartje. Business (€299) bevat een werkend contactformulier en volledige SEO — onze meest gekozen optie. Growth (€599) biedt tot 3 pagina's, CMS/blog, geavanceerde SEO en analytics.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" data-i18n="faq.3.q">Wat zijn de maandplannen en heb ik die nodig?</button>
-      <div class="faq-a"><p data-i18n="faq.3.a">Na de lancering kun je kiezen voor een maandplan: Basis (€19/ma) voor hosting, domein, backups en beveiliging. Groei (€39/ma) voegt content updates, formulierbeheer en SEO monitoring toe. Premium (€79/ma) biedt 2 uur designwerk, Google Bedrijfsprofiel beheer en een kwartaal strategiegesprek. Ze zijn optioneel, maar helpen je site veilig en up-to-date te houden.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" data-i18n="faq.4.q">Kan ik de site zelf aanpassen na de lancering?</button>
-      <div class="faq-a"><p data-i18n="faq.4.a">Ja — je bent eigenaar van de site en kunt tekst en afbeeldingen zelf aanpassen via een eenvoudige editor. Geen code nodig. Voor grotere wijzigingen of doorlopend onderhoud kun je een van onze maandplannen kiezen.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" data-i18n="faq.5.q">Kan ik ook een boekingssysteem of formulieren op mijn site krijgen?</button>
-      <div class="faq-a"><p data-i18n="faq.5.a">Zeker. Contactformulieren zitten standaard in het Business- en Growth-pakket. Voor online boekingen integreren we tools zoals Calendly, Cal.com of SimplyBook — afhankelijk van je branche. Dit kan als onderdeel van je pakket of als losse toevoeging.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" data-i18n="faq.6.q">Op welk platform bouwen jullie en waarom?</button>
-      <div class="faq-a"><p data-i18n="faq.6.a">Wij kiezen het platform op basis van wat het beste past bij jouw bedrijf en doelen. We werken met bewezen, professionele tools die snel, veilig en makkelijk te beheren zijn — zonder dat je hoeft te programmeren.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" data-i18n="faq.7.q">Werken jullie ook met bedrijven buiten Nederland?</button>
-      <div class="faq-a"><p data-i18n="faq.7.a">Absoluut. We werken op afstand met klanten door heel Europa. Alle communicatie gaat via videobellen, e-mail en gedeelde projecttools.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" data-i18n="faq.8.q">Wat moet ik aanleveren om te beginnen?</button>
-      <div class="faq-a"><p data-i18n="faq.8.a">Alleen je logo (als je er een hebt), merkkleuren, eventuele foto's en een globaal idee van wat je nodig hebt. Wij begeleiden je door de rest — van ontwerp tot lancering.</p></div>
-    </div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">01</span><span data-nl="Hoe lang duurt het om mijn website te bouwen?" data-en="How long does it take to build my website?">How long does it take to build my website?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Eenvoudigere sites zijn doorgaans binnen 5 dagen klaar. Grotere projecten duren 1 tot 3 weken. Dankzij AI-versnelde workflows leveren we consequent sneller dan traditionele bureaus." data-en="Simpler sites are typically ready within 5 days. Larger projects take 1 to 3 weeks. AI-accelerated workflows mean we consistently outpace traditional agencies.">Simpler sites are typically ready within 5 days. Larger projects take 1 to 3 weeks. AI-accelerated workflows mean we consistently outpace traditional agencies.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">02</span><span data-nl="Hoe werkt de prijsstelling?" data-en="How does pricing work?">How does pricing work?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="We werken niet met vaste pakketten. Na een kort intake-gesprek stellen we je project in scope en sturen een transparante schriftelijke offerte. Geen giswerk, geen verrassingen op de factuur." data-en="We don&apos;t publish fixed packages. After a short intake call we scope your project and send a clear written quote. No guessing, no surprises on the invoice.">We don&apos;t publish fixed packages. After a short intake call we scope your project and send a clear written quote. No guessing, no surprises on the invoice.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">03</span><span data-nl="Kan ik mijn website zelf aanpassen na de lancering?" data-en="Can I edit my website myself after launch?">Can I edit my website myself after launch?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Ja. We bouwen op Webflow of WordPress zodat jij teksten en afbeeldingen kunt aanpassen zonder programmeerkennis. We lopen er bij oplevering samen doorheen." data-en="Yes. We build on Webflow or WordPress so you can update text and images without any coding. We walk you through it at delivery.">Yes. We build on Webflow or WordPress so you can update text and images without any coding. We walk you through it at delivery.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">04</span><span data-nl="Kan ik een boekingssysteem of formulieren op mijn site krijgen?" data-en="Can I get a booking system or contact forms?">Can I get a booking system or contact forms?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Contactformulieren zitten standaard in de meeste projecten. Boekingsintegraties (Calendly, Cal.com, SimplyBook) zijn beschikbaar als add-on. Noem het in je brief." data-en="Contact forms are standard on most projects. Booking integrations (Calendly, Cal.com, SimplyBook) are available as add-ons. Just mention it in your brief.">Contact forms are standard on most projects. Booking integrations (Calendly, Cal.com, SimplyBook) are available as add-ons. Just mention it in your brief.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">05</span><span data-nl="Op welk platform bouwen jullie en waarom?" data-en="Which platform do you build on, and why?">Which platform do you build on, and why?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="We kiezen het platform op basis van jouw behoeften: Webflow voor design-gedreven, snelle sites; WordPress voor content-zware of e-commerce projecten. We leggen uit welk platform het beste past." data-en="We choose based on your needs: Webflow for design-driven, fast-loading sites; WordPress for content-heavy or e-commerce projects. We always explain the recommendation.">We choose based on your needs: Webflow for design-driven, fast-loading sites; WordPress for content-heavy or e-commerce projects. We always explain the recommendation.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">06</span><span data-nl="Werken jullie ook met bedrijven buiten Nederland?" data-en="Do you work with clients outside the Netherlands?">Do you work with clients outside the Netherlands?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Absoluut. We werken op afstand met klanten door heel Europa via e-mail, videogesprekken en onze eigen preview-omgeving." data-en="Absolutely. We work remotely with clients across Europe via email, video calls and our own preview environment.">Absolutely. We work remotely with clients across Europe via email, video calls and our own preview environment.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">07</span><span data-nl="Wat moet ik aanleveren om te beginnen?" data-en="What do I need to provide to get started?">What do I need to provide to get started?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Alleen je logo, merkkleuren, eventuele fotos en een globaal idee van wat je nodig hebt. Wij regelen de rest." data-en="Just your logo (if you have one), brand colors, any photos, and a rough idea of what you need. We take care of the rest.">Just your logo (if you have one), brand colors, any photos, and a rough idea of what you need. We take care of the rest.</div></div></div>
   </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="sh">
-    <span class="label" data-i18n="price.label">Prijzen</span>
-    <h2 class="st" data-i18n="price.title">Simpele, Transparante Prijzen</h2>
-    <p class="sub" data-i18n="price.sub">Geen verborgen kosten. Geen verrassingen. Kies het pakket dat bij je past.</p>
-  </div>
-  <div class="pgrid">
-    <div class="pcard">
-      <span class="ptier">Starter</span>
-      <div class="pprice">€199</div>
-      <span class="pper" data-i18n="price.once">Eenmalige betaling</span>
-      <ul class="pfs"><li data-i18n="price.s1">1 pagina landingssite</li><li data-i18n="price.s2">Mobiel responsive</li><li data-i18n="price.s3">Geen contactformulier</li><li data-i18n="price.s4">Basis SEO setup</li><li data-i18n="price.s5">2 revisierondes</li><li data-i18n="price.s6">Opgeleverd in 5 dagen</li></ul>
-      <a href="#contact" class="pbtn pb-dk" data-i18n="price.cta">Aan de Slag</a>
-    </div>
-    <div class="pcard feat">
-      <span class="popular" data-i18n="price.popular">MEEST GEKOZEN</span>
-      <span class="ptier">Business</span>
-      <div class="pprice">€299</div>
-      <span class="pper" data-i18n="price.once">Eenmalige betaling</span>
-      <ul class="pfs"><li data-i18n="price.b1">1 pagina landingssite</li><li data-i18n="price.b2">Werkend contactformulier</li><li data-i18n="price.b3">Mobiel responsive</li><li data-i18n="price.b4">Volledige SEO optimalisatie</li><li data-i18n="price.b5">3 revisierondes</li><li data-i18n="price.b6">Opgeleverd in 1 week</li></ul>
-      <a href="#contact" class="pbtn pb-rd" data-i18n="price.cta">Aan de Slag</a>
-    </div>
-    <div class="pcard">
-      <span class="ptier">Growth</span>
-      <div class="pprice">€599</div>
-      <span class="pper" data-i18n="price.once">Eenmalige betaling</span>
-      <ul class="pfs"><li data-i18n="price.g1">Tot 3 pagina's</li><li data-i18n="price.g2">Werkend contactformulier</li><li data-i18n="price.g3">CMS / blog setup</li><li data-i18n="price.g4">Geavanceerde SEO + analytics</li><li data-i18n="price.g5">5 revisierondes</li><li data-i18n="price.g6">Opgeleverd in 2–3 weken</li></ul>
-      <a href="#contact" class="pbtn pb-dk" data-i18n="price.cta">Aan de Slag</a>
-    </div>
-  </div>
-
-  <!-- SUBSCRIPTION REVEAL -->
-  <div class="sub-reveal">
-    <button class="sub-toggle" id="subToggle">
-      <span class="sub-toggle-text" data-i18n="sub.toggle">Maandplannen bekijken <span class="sub-opt" data-i18n="sub.toggle.opt">(optioneel)</span></span>
-      <span class="sub-toggle-arrow">↓</span>
-    </button>
-    <div class="sub-panel" id="subPanel">
-      <div class="sub-header">
-        <span class="label" data-i18n="sub.label">Maandplannen</span>
-        <h3 class="sub-title" data-i18n-html="sub.title">Onderhouden, Beheren &amp; Groeien</h3>
-        <p class="sub-desc" data-i18n="sub.desc">Je website is live — laat ons de rest regelen. Domein, hosting, updates en alles daartussenin.</p>
-      </div>
-      <div class="sgrid">
-        <div class="scard">
-          <span class="stier">Basis</span>
-          <div class="sprice">€19<span>/mo</span></div>
-          <ul class="sfs">
-            <li data-i18n="sub.basis.1">Managed hosting &amp; SSL</li>
-            <li data-i18n="sub.basis.2">Domeinbeheer</li>
-            <li data-i18n="sub.basis.3">Dagelijkse backups</li>
-            <li data-i18n="sub.basis.4">Beveiligingsmonitoring</li>
-            <li data-i18n="sub.basis.5">Uptime monitoring 24/7</li>
-            <li data-i18n="sub.basis.6">Bugfixes</li>
-            <li data-i18n="sub.basis.7">Maandelijks prestatierapport</li>
-          </ul>
-          <a href="#contact" class="pbtn pb-dk" data-i18n="sub.basis.cta">Kies Basis</a>
-        </div>
-        <div class="scard sfeat">
-          <span class="popular" data-i18n="sub.recommended">AANBEVOLEN</span>
-          <span class="stier">Groei</span>
-          <div class="sprice">€39<span>/mo</span></div>
-          <ul class="sfs">
-            <li data-i18n="sub.groei.1">Alles in Basis</li>
-            <li class="hi" data-i18n="sub.groei.2">30 min content updates/ma</li>
-            <li class="hi" data-i18n="sub.groei.3">Formulier setup &amp; beheer</li>
-            <li data-i18n="sub.groei.4">Basis SEO monitoring</li>
-            <li data-i18n="sub.groei.5">Google Analytics rapporten</li>
-            <li data-i18n="sub.groei.6">Prioriteit e-mail support</li>
-          </ul>
-          <a href="#contact" class="pbtn pb-rd" data-i18n="sub.groei.cta">Kies Groei</a>
-        </div>
-        <div class="scard">
-          <span class="stier">Premium</span>
-          <div class="sprice">€79<span>/mo</span></div>
-          <ul class="sfs">
-            <li data-i18n="sub.prem.1">Alles in Groei</li>
-            <li class="hi" data-i18n="sub.prem.2">2 uur design/content updates</li>
-            <li class="hi" data-i18n="sub.prem.3">Google Bedrijfsprofiel beheer</li>
-            <li data-i18n="sub.prem.4">Geavanceerde SEO optimalisatie</li>
-            <li data-i18n="sub.prem.5">Kwartaal strategiegesprek</li>
-            <li data-i18n="sub.prem.6">Snelste reactietijd</li>
-          </ul>
-          <a href="#contact" class="pbtn pb-dk" data-i18n="sub.prem.cta">Kies Premium</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p class="price-intl-note" data-i18n="price.intl">Buiten de EER? Wij factureren in 19 valuta's, waaronder USD, GBP en CHF.</p>
 </section>
 
 <!-- ARTICLES -->
-<section class="articles-home" id="articles">
-  <div class="sh">
-    <span class="label" data-i18n="home.articles.label">Artikelen</span>
-    <h2 class="st" data-i18n="home.articles.title">Gratis Kennis Voor Jouw Bedrijf</h2>
-    <p class="sub" data-i18n="home.articles.sub">Praktische artikelen over webdesign, online vindbaarheid en meer klanten - geschreven voor kleine bedrijven.</p>
+<section class="sec sec-dark2 sec-articles" id="articles">
+  <div class="art-header reveal">
+    <div>
+      <p class="lbl" data-nl="Artikelen" data-en="Articles">Articles</p>
+      <h2 class="h2" data-nl="Praktische<br>kennis." data-en="Practical<br>knowledge.">Practical<br>knowledge.</h2>
+    </div>
+    <a href="articles/" class="art-view-all" data-nl="Alle artikelen →" data-en="All articles →">All articles →</a>
   </div>
-  <div class="acard-grid">
-    <a class="acard" href="articles/why-your-hair-salon-needs-a-website/">
-      <div class="acard-thumb">
-        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=760&q=80" alt="Kapper aan het werk" loading="lazy">
-        <span class="acard-tag" data-i18n="home.articles.card1.tag">Kleine Bedrijven</span>
-      </div>
-      <div class="acard-body">
-        <div class="acard-meta" data-i18n="home.articles.card1.meta">19 april 2026 · 6 min leestijd</div>
-        <h3 data-i18n="home.articles.card1.title">Waarom Jouw Kapsalon Een Website Nodig Heeft</h3>
-        <p data-i18n="home.articles.card1.text">81% van de klanten zoekt online voordat ze binnenstappen. Zonder website ben je onzichtbaar - en loop je klanten mis die nu naar de concurrent gaan.</p>
-        <span class="acard-link" data-i18n="home.articles.read">Lees artikel →</span>
-      </div>
-    </a>
-    <a class="acard" href="articles/5-reasons-customers-leave-your-website/">
-      <div class="acard-thumb">
-        <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=760&q=80" alt="Persoon achter laptop" loading="lazy">
-        <span class="acard-tag" data-i18n="home.articles.card2.tag">Webdesign Tips</span>
-      </div>
-      <div class="acard-body">
-        <div class="acard-meta" data-i18n="home.articles.card2.meta">19 april 2026 · 7 min leestijd</div>
-        <h3 data-i18n="home.articles.card2.title">5 Redenen Waarom Klanten Jouw Website Verlaten</h3>
-        <p data-i18n="home.articles.card2.text">Laadtijd, geen CTA, verouderd design - kleine fouten met grote gevolgen. Doe de zelfscan en ontdek wat je misloopt.</p>
-        <span class="acard-link" data-i18n="home.articles.read">Lees artikel →</span>
-      </div>
-    </a>
-    <a class="acard" href="articles/local-seo-how-google-finds-you-in-your-city/">
-      <div class="acard-thumb">
-        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=760&q=80" alt="Zoekresultaten in Google Maps" loading="lazy">
-        <span class="acard-tag" data-i18n="home.articles.card3.tag">Lokale SEO</span>
-      </div>
-      <div class="acard-body">
-        <div class="acard-meta" data-i18n="home.articles.card3.meta">20 april 2026 · 7 min leestijd</div>
-        <h3 data-i18n="home.articles.card3.title">Lokale SEO: Hoe Google Jou Vindt in Jouw Stad</h3>
-        <p data-i18n="home.articles.card3.text">Google Bedrijfsprofiel, reviews, lokale content en consistente bedrijfsinformatie: dit zijn de onderdelen die bepalen hoe zichtbaar jij bent in jouw stad.</p>
-        <span class="acard-link" data-i18n="home.articles.read">Lees artikel →</span>
-      </div>
-    </a>
+
+  <div class="art-scene" id="artScene">
+    <div class="art-track" id="artTrack">
+
+      <a class="art-item" href="articles/why-your-google-business-profile-is-your-new-homepage/">
+        <img class="art-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
+        <div class="art-body">
+          <div class="art-cat" data-nl="Lokale SEO" data-en="Local SEO">Local SEO</div>
+          <div class="art-title" data-nl="Waarom Jouw Google Bedrijfsprofiel Je Nieuwe Homepage Is in 2026" data-en="Why Your Google Business Profile Is Your New Homepage in 2026">Why Your Google Business Profile Is Your New Homepage in 2026</div>
+          <div class="art-excerpt" data-nl="Voor lokale zoekresultaten is je Google Bedrijfsprofiel vaak de echte eerste indruk." data-en="For local search results, your Google Business Profile is often the real first impression.">For local search results, your Google Business Profile is often the real first impression.</div>
+          <div class="art-footer">
+            <span class="art-read" data-nl="7 min lezen" data-en="7 min read">7 min read</span>
+            <span class="art-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="art-item" href="articles/what-does-a-small-business-website-cost-in-2026/">
+        <img class="art-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
+        <div class="art-body">
+          <div class="art-cat" data-nl="Webdesign Tips" data-en="Web Design Tips">Web Design Tips</div>
+          <div class="art-title" data-nl="Wat Kost Een Website Voor Een Klein Bedrijf in 2026?" data-en="What Does a Small Business Website Cost in 2026?">What Does a Small Business Website Cost in 2026?</div>
+          <div class="art-excerpt" data-nl="Een praktische gids voor kleine bedrijven die slim willen vergelijken zonder in de goedkoopste val te lopen." data-en="A practical guide for small businesses that want to compare options without falling into the cheapest trap.">A practical guide for small businesses that want to compare options without falling into the cheapest trap.</div>
+          <div class="art-footer">
+            <span class="art-read" data-nl="8 min lezen" data-en="8 min read">8 min read</span>
+            <span class="art-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="art-item" href="articles/local-seo-how-google-finds-you-in-your-city/">
+        <img class="art-img" src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
+        <div class="art-body">
+          <div class="art-cat" data-nl="Lokale SEO" data-en="Local SEO">Local SEO</div>
+          <div class="art-title" data-nl="Lokale SEO: Hoe Google Jou Vindt in Jouw Stad" data-en="Local SEO: How Google Finds You in Your City">Local SEO: How Google Finds You in Your City</div>
+          <div class="art-excerpt" data-nl="Google Bedrijfsprofiel, reviews, lokale content en consistente bedrijfsinformatie bepalen jouw zichtbaarheid." data-en="Google Business Profile, reviews, local content, and consistent details shape how visible you are.">Google Business Profile, reviews, local content, and consistent details shape how visible you are.</div>
+          <div class="art-footer">
+            <span class="art-read" data-nl="7 min lezen" data-en="7 min read">7 min read</span>
+            <span class="art-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="art-item" href="articles/5-reasons-customers-leave-your-website/">
+        <img class="art-img" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
+        <div class="art-body">
+          <div class="art-cat" data-nl="Webdesign Tips" data-en="Web Design Tips">Web Design Tips</div>
+          <div class="art-title" data-nl="5 Redenen Waarom Klanten Jouw Website Verlaten" data-en="5 Reasons Customers Leave Your Website">5 Reasons Customers Leave Your Website</div>
+          <div class="art-excerpt" data-nl="Laadtijd, geen CTA, verouderd design: kleine fouten met grote gevolgen. Doe de zelfscan." data-en="Slow load times, no CTA, outdated design: small mistakes with big consequences. Use this self-check.">Slow load times, no CTA, outdated design: small mistakes with big consequences. Use this self-check.</div>
+          <div class="art-footer">
+            <span class="art-read" data-nl="7 min lezen" data-en="7 min read">7 min read</span>
+            <span class="art-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="art-item" href="articles/why-your-hair-salon-needs-a-website/">
+        <img class="art-img" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
+        <div class="art-body">
+          <div class="art-cat" data-nl="Kleine Bedrijven" data-en="Small Business">Small Business</div>
+          <div class="art-title" data-nl="Waarom Jouw Kapsalon Een Website Nodig Heeft" data-en="Why Your Hair Salon Needs a Website">Why Your Hair Salon Needs a Website</div>
+          <div class="art-excerpt" data-nl="81% van de klanten zoekt online voordat ze een kapsalon bezoeken. Zonder website ben je onzichtbaar." data-en="81% of customers search online before choosing a salon. Without a website, you stay invisible.">81% of customers search online before choosing a salon. Without a website, you stay invisible.</div>
+          <div class="art-footer">
+            <span class="art-read" data-nl="6 min lezen" data-en="6 min read">6 min read</span>
+            <span class="art-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
   </div>
-  <div class="work-cta"><a href="articles/" class="btn btn-primary" data-i18n="home.articles.cta">Bekijk alle artikelen →</a></div>
+
+  <div class="art-nav">
+    <button class="art-btn" id="artPrev">←</button>
+    <div class="art-dots" id="artDots">
+      <div class="art-dot active" data-i="0"></div>
+      <div class="art-dot" data-i="1"></div>
+      <div class="art-dot" data-i="2"></div>
+      <div class="art-dot" data-i="3"></div>
+      <div class="art-dot" data-i="4"></div>
+    </div>
+    <button class="art-btn" id="artNext">→</button>
+  </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="cwrap">
-    <div class="sh">
-      <span class="label" data-i18n="contact.label">Contact</span>
-      <h2 class="st" data-i18n="contact.title">Laten We Je Website Bouwen</h2>
-      <p class="sub" data-i18n="contact.sub">Vertel ons over je project en we nemen binnen 24 uur contact op. Vrijblijvend, geen opdringerige verkoop.</p>
-    </div>
-    <form class="cform" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="16fb32e8-43cd-4b8c-b6ad-904a4efd8e59">
-      <input type="hidden" name="subject" value="Nieuwe aanvraag via WebKreatives.com">
-      <input type="hidden" name="from_name" value="WebKreatives Contact">
-      <input type="checkbox" name="botcheck" style="display:none">
-      <div class="frow">
-        <div class="fg"><label data-i18n="contact.name">Je Naam</label><input type="text" name="name" placeholder="Jan de Vries" data-i18n-placeholder="contact.name" required></div>
-        <div class="fg"><label data-i18n="contact.email">E-mailadres</label><input type="email" name="email" placeholder="jan@bedrijf.nl" required></div>
-      </div>
-      <div class="fg"><label data-i18n="contact.phone">Telefoon (optioneel)</label><input type="tel" name="phone" placeholder="+31 6 12 34 56 78"></div>
-      <div class="fg"><label data-i18n="contact.type">Type Bedrijf</label>
-        <select name="type" required><option value="" data-i18n="contact.type.placeholder">Selecteer je branche...</option><option data-i18n="contact.type.1">Restaurant / Café</option><option data-i18n="contact.type.2">Retail / Winkel</option><option data-i18n="contact.type.3">Zakelijke Diensten</option><option data-i18n="contact.type.4">Gezondheid &amp; Beauty</option><option data-i18n="contact.type.5">Bouw / Vakwerk</option><option data-i18n="contact.type.6">Creatief / Studio</option><option data-i18n="contact.type.7">Anders</option></select>
-      </div>
-      <div class="frow">
-        <div class="fg"><label data-i18n="contact.package">Website Pakket</label>
-          <select name="website_package"><option value="" data-i18n="contact.package.placeholder">Selecteer een pakket...</option><option>Starter - €199</option><option>Business - €299</option><option>Growth - €599</option><option data-i18n="contact.package.4">Nog niet zeker</option></select>
-        </div>
-        <div class="fg"><label data-i18n="contact.subscription">Maandplan</label>
-          <select name="subscription"><option value="" data-i18n="contact.sub.placeholder">Selecteer een plan...</option><option>Basis - €19/ma</option><option>Groei - €39/ma</option><option>Premium - €79/ma</option><option data-i18n="contact.sub.none">Nee, ik wil geen plan</option></select>
-          <small class="fg-hint" data-i18n="contact.sub.hint">Optioneel — een maandplan is nooit verplicht.</small>
-        </div>
-      </div>
-      <div class="fg"><label data-i18n="contact.lang">Voorkeurstaal</label>
-        <input type="text" name="preferred_language" placeholder="bijv. Nederlands, English..." data-i18n-placeholder="contact.lang.placeholder">
-      </div>
-      <div class="fg"><label data-i18n="contact.message">Vertel ons over je project</label><textarea name="message" placeholder="Wat voor website heb je nodig? Specifieke wensen, ideeën of inspiratiesites?" data-i18n-placeholder="contact.message.placeholder"></textarea></div>
-      <button type="submit" class="fsub" data-i18n="contact.send">Bericht Versturen →</button>
-      <div id="formStatus" style="margin-top:12px;font-size:14px;display:none"></div>
-    </form>
-  </div>
-</section>
-
-<!-- ABOUT / FOUNDER -->
-<section class="about" id="about">
-  <div class="about-inner">
-    <div class="about-photo">
-      <div class="about-ring">
-        <img class="about-avatar" src="assets/csaba.jpg" alt="Csaba G.">
-      </div>
-      <div class="team-dot td1"><img src="assets/team1.png" alt="Team member"></div>
-      <div class="team-dot td2"><img src="assets/team2.png" alt="Team member"></div>
-      <div class="team-dot td3"><span>?</span></div>
-    </div>
-    <div class="about-text">
-      <span class="label" data-i18n="about.label">Achter WebKreatives</span>
-      <h3 class="about-name">Csaba G.</h3>
-      <p data-i18n="about.p">Ik heb te veel goede kleine bedrijven onzichtbaar zien blijven omdat hun website niet deed wat het moest doen — of omdat ze er helemaal geen hadden. Dat is op te lossen, en het hoeft geen fortuin te kosten. Wij zijn een klein bedrijf dat andere kleine bedrijven helpt — vaste, eerlijke prijzen voor iedereen. Geen onderhandelingen, geen verrassingen. Ons team groeit, en als jij bereid bent te investeren in je bedrijf, zorgen wij dat je online aanwezigheid ook echt past bij het werk dat je erin stopt.</p>
-    </div>
+<!-- CTA -->
+<section class="cta-sec" id="cta">
+  <div class="cta-inner">
+    <p class="lbl reveal" data-nl="Klaar om te starten?" data-en="Ready to start?">Klaar om te starten?</p>
+    <h2 class="h2 reveal" data-nl="Jouw website.<br>Klaar om te winnen." data-en="Your website.<br>Built to win.">Your website.<br>Built to win.</h2>
+    <p class="cta-sub reveal" data-nl="Vertel ons over jouw project. We sturen een heldere offerte op maat, gratis, zonder verplichtingen." data-en="Tell us about your project. We'll send a clear custom quote, free, no obligations.">Tell us about your project. We'll send a clear custom quote, free, no obligations.</p>
+    <a href="#contact" class="btn-white reveal"><span data-nl="Gratis offerte aanvragen" data-en="Request free quote">Gratis offerte aanvragen</span> <span class="btn-arrow">→</span></a>
+    <p class="cta-note reveal">info@webkreatives.com</p>
   </div>
 </section>
 
 <!-- FOOTER -->
-<div id="globalFooter"></div>
+<footer>
+  <div class="fgrid">
+    <div class="fbrand">
+      <div class="fbrand-logo"><img src="assets/darkmodehorizontallogo.png" alt="WebKreatives"></div>
+      <p data-nl="AI-gestuurd webdesign voor bedrijven die willen opvallen. Op maat gemaakt, snel opgeleverd, gebouwd om te converteren. Gevestigd in Amsterdam." data-en="AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert. Based in Amsterdam.">AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert. Based in Amsterdam.</p>
+      <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
+    </div>
+    <div class="fcol">
+      <h4 data-nl="Diensten" data-en="Services">Diensten</h4>
+      <a href="#services" data-nl="Website Design" data-en="Website Design">Website Design</a>
+      <a href="#services" data-nl="Webshops" data-en="Webshops">Webshops</a>
+      <a href="#services" data-nl="SEO &amp; Prestaties" data-en="SEO &amp; Performance">SEO &amp; Prestaties</a>
+      <a href="#services" data-nl="Branding &amp; Identiteit" data-en="Branding &amp; Identity">Branding &amp; Identiteit</a>
+      <a href="#services" data-nl="Support" data-en="Support">Support</a>
+    </div>
+    <div class="fcol">
+      <h4 data-nl="Pagina's" data-en="Pages">Pagina's</h4>
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <a href="portfolio/" data-nl="Onze Websites" data-en="Portfolio">Portfolio</a>
+      <a href="articles/" data-nl="Artikelen" data-en="Articles">Artikelen</a>
+      <a href="privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
+      <a href="terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
+    </div>
+    <div class="fcol">
+      <h4 data-nl="Verbinden" data-en="Connect">Verbinden</h4>
+      <a href="#contact" class="g" data-nl="Start een Project" data-en="Start a Project">Start een Project</a>
+      <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A5 5 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12" rx=".5"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        Medium
+      </a>
+    </div>
+  </div>
+  <div class="fpay">
+    <span class="fpay-label">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span data-nl="Veilig betalen" data-en="Secure payment">Secure payment</span>
+    </span>
+    <div class="fpay-icons">
+      <img class="fpay-badge" src="assets/payment/visa.svg" alt="Visa">
+      <img class="fpay-badge" src="assets/payment/mastercard.svg" alt="Mastercard">
+      <img class="fpay-badge" src="assets/payment/ideal.svg" alt="iDEAL">
+      <img class="fpay-badge" src="assets/payment/applepay.svg" alt="Apple Pay">
+      <img class="fpay-badge" src="assets/payment/googlepay.svg" alt="Google Pay">
+      <img class="fpay-badge" src="assets/payment/klarna.svg" alt="Klarna">
+      <img class="fpay-badge" src="assets/payment/paypal.svg" alt="PayPal">
+      <img class="fpay-badge" src="assets/payment/stripe.svg" alt="Stripe">
+      <img class="fpay-badge" src="assets/payment/amazonpay.svg" alt="Amazon Pay">
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097</p>
+    <nav class="fbot-links">
+      <a href="privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
+      <a href="terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
+    </nav>
+  </div>
+</footer>
 
-<script src="js/global-components.js?v=20260420-cookiefix2"></script>
-<script src="js/i18n.js?v=20260420-cookiefix2"></script>
-<script src="js/script.js?v=20260420-cookiefix2"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── CURSOR ───────────────────────────── */
+const dot = document.getElementById('c-dot');
+const ring = document.getElementById('c-ring');
+let mx=0,my=0,rx=0,ry=0;
+if(!reduced){
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    gsap.to(dot,{x:mx,y:my,duration:.08,ease:'none'});
+    // detect red background under cursor
+    const el=document.elementFromPoint(mx,my);
+    let onRed=false;
+    if(el){
+      let node=el;
+      for(let i=0;i<6&&node&&node!==document.body;i++){
+        const bg=getComputedStyle(node).backgroundColor;
+        const m=bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if(m){
+          const r=+m[1],g=+m[2],b=+m[3];
+          if(r>150&&r>g*2.5&&r>b*2.5){onRed=true;break;}
+        }
+        node=node.parentElement;
+      }
+    }
+    document.body.classList.toggle('cursor-on-red',onRed);
+  });
+  (function lerp(){
+    rx+=(mx-rx)*.14; ry+=(my-ry)*.14;
+    gsap.set(ring,{x:rx,y:ry});
+    requestAnimationFrame(lerp);
+  })();
+  document.querySelectorAll('a,button,.svc-item,.t-card,.port-card,.price-card,.faq-q').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{
+      const tag=el.tagName.toLowerCase();
+      if(tag==='button'||el.classList.contains('btn-p')||el.classList.contains('btn-g')||el.classList.contains('btn-white')||el.classList.contains('nav-cta')||el.classList.contains('fsub'))
+        document.body.classList.add('cursor-btn');
+      else if(el.classList.contains('faq-q'))
+        document.body.classList.add('cursor-hover');
+      else
+        document.body.classList.add('cursor-hover');
+    });
+    el.addEventListener('mouseleave',()=>{
+      document.body.classList.remove('cursor-btn','cursor-hover','cursor-text');
+    });
+  });
+  document.querySelectorAll('input,textarea').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-text'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-text'));
+  });
+}
+
+/* ── LOADER ───────────────────────────── */
+const loader=document.getElementById('loader');
+const loaderLogo=document.getElementById('loader-logo');
+const loaderFill=document.getElementById('loader-fill');
+const tl=gsap.timeline({onComplete:startPage});
+if(!reduced){
+  tl.to(loaderLogo,{opacity:1,y:0,duration:.5,ease:'power3.out'})
+    .to(loaderFill,{width:'100%',duration:.55,ease:'power2.inOut'},'-=.1')
+    .to(loader,{yPercent:-100,duration:.7,ease:'power3.inOut',delay:.1});
+}else{
+  loader.style.display='none';
+  startPage();
+}
+
+function startPage(){
+  loader.style.pointerEvents='none';
+  if(reduced){heroIn();return}
+  heroIn();
+}
+
+/* ── HERO ANIMATION ───────────────────── */
+function heroIn(){
+  const words=document.querySelectorAll('.hero-h1 .word-inner');
+  const eyebrow=document.getElementById('hero-eyebrow');
+  const sub=document.getElementById('hero-sub');
+  const btns=document.getElementById('hero-btns');
+  const trust=document.getElementById('hero-trust');
+  const shapes=document.querySelectorAll('.shape');
+
+  if(reduced){
+    words.forEach(w=>w.style.transform='translateY(0)');
+    [eyebrow,sub,btns,trust].forEach(el=>{if(el){el.style.opacity=1;el.style.transform='none'}});
+    shapes.forEach(s=>s.style.opacity=1);
+    return;
+  }
+
+  /* shapes: dramatic drop from above, staggered */
+  gsap.to(shapes,{
+    opacity:1,y:0,
+    duration:2.4,
+    ease:'power3.out',
+    stagger:{amount:.7,from:'random'},
+    delay:.1
+  });
+  gsap.set(shapes,{y:-180});
+
+  /* text content enters after shapes land */
+  const htl=gsap.timeline({delay:.55});
+  htl.to(eyebrow,{opacity:1,duration:.55,ease:'power2.out'})
+     .to(words,{y:0,duration:1,ease:'power3.out',stagger:.07},'-=.3')
+     .to(sub,{opacity:1,y:0,duration:.7,ease:'power3.out'},'-=.5')
+     .to(btns,{opacity:1,y:0,duration:.6,ease:'power3.out'},'-=.45')
+     .to(trust,{opacity:1,y:0,duration:.5,ease:'power3.out'},'-=.4');
+
+  /* continuous independent floats, each shape gets its own rhythm */
+  const floatCfg=[
+    {y:18,x:0,r:0,dur:11,d:0},
+    {y:-14,x:8,r:.5,dur:13,d:.8},
+    {y:12,x:-6,r:-.4,dur:9.5,d:.4},
+    {y:-10,x:0,r:.6,dur:12,d:1.2},
+    {y:16,x:5,r:-.3,dur:8.5,d:.6},
+    {y:-12,x:-4,r:.4,dur:14,d:1.0},
+  ];
+  shapes.forEach((s,i)=>{
+    const c=floatCfg[i]||floatCfg[0];
+    gsap.to(s,{y:c.y,x:c.x,rotation:c.r,duration:c.dur,ease:'sine.inOut',yoyo:true,repeat:-1,delay:c.d});
+  });
+}
+
+/* ── SCROLL REVEALS ───────────────────── */
+gsap.utils.toArray('.reveal').forEach((el,i)=>{
+  gsap.to(el,{
+    opacity:1,y:0,duration:.75,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},
+    delay: (el.dataset.delay||0)
+  });
+});
+
+/* ── STAT COUNTERS ────────────────────── */
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const target=+el.dataset.count;
+  const prefix=el.dataset.prefix||'';
+  const suffix=el.dataset.suffix||'';
+  ScrollTrigger.create({
+    trigger:el,start:'top 85%',
+    once:true,
+    onEnter:()=>{
+      gsap.to({val:0},{val:target,duration:1.6,ease:'power2.out',
+        onUpdate:function(){el.textContent=prefix+Math.round(this.targets()[0].val)+suffix}
+      });
+    }
+  });
+});
+
+/* ── STAGGER GRIDS ────────────────────── */
+['.svc-grid','.proc-grid','.testi-grid','.stats-grid'].forEach(sel=>{
+  const grid=document.querySelector(sel);
+  if(!grid)return;
+  ScrollTrigger.create({
+    trigger:grid,start:'top 80%',once:true,
+    onEnter:()=>{
+      gsap.to(grid.querySelectorAll('.reveal'),{
+        opacity:1,y:0,duration:.7,ease:'power3.out',stagger:.08
+      });
+    }
+  });
+});
+
+/* ── NAV SCROLL ───────────────────────── */
+const mainNav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  mainNav.classList.toggle('scrolled',window.scrollY>60);
+},{passive:true});
+
+/* ── FAQ ──────────────────────────────── */
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+
+/* ── MAGNETIC BTNS ────────────────────── */
+if(!reduced){
+  document.querySelectorAll('.btn-p,.btn-white,.nav-cta,.fsub').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      const r=btn.getBoundingClientRect();
+      const dx=(e.clientX-r.left-r.width/2)*.22;
+      const dy=(e.clientY-r.top-r.height/2)*.22;
+      btn.style.transform=`translate(${dx}px,${dy}px) translateY(-3px)`;
+    });
+    btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
+  });
+}
+
+/* ── DARK MODE ────────────────────────── */
+const html=document.documentElement;
+const themeBtn=document.getElementById('themeBtn');
+const sunIcon=document.getElementById('theme-icon-sun');
+const moonIcon=document.getElementById('theme-icon-moon');
+if(themeBtn)themeBtn.addEventListener('click',()=>applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark'));
+
+function applyTheme(t){
+  html.setAttribute('data-theme',t);
+  localStorage.setItem('wk-theme',t);
+  if(sunIcon)sunIcon.style.display=t==='dark'?'block':'none';
+  if(moonIcon)moonIcon.style.display=t==='dark'?'none':'block';
+}
+applyTheme(localStorage.getItem('wk-theme')||'light');
+
+/* ── LANGUAGE ─────────────────────────── */
+let lang=localStorage.getItem('wk-lang')||'en';
+const langDrop=document.getElementById('langDrop');
+
+function applyLang(l){
+  lang=l;
+  localStorage.setItem('wk-lang',l);
+  document.getElementById('lang-label-nav').textContent=l.toUpperCase();
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.toggle('active',o.dataset.lang===l));
+  document.querySelectorAll('[data-nl],[data-en]').forEach(el=>{
+    const txt=el.getAttribute('data-'+l);
+    if(txt)el.innerHTML=txt;
+  });
+  langDrop.classList.remove('open');
+}
+applyLang(lang);
+document.getElementById('langBtn').addEventListener('click',e=>{
+  e.stopPropagation();
+  langDrop.classList.toggle('open');
+});
+document.querySelectorAll('.lang-opt').forEach(o=>{
+  o.addEventListener('click',()=>applyLang(o.dataset.lang));
+});
+document.addEventListener('click',()=>langDrop.classList.remove('open'));
+
+/* ── CYCLING WORD ─────────────────────── */
+const words_nl=['WINNEN.','VERKOPEN.','GROEIEN.','RANKEN.'];
+const words_en=['WIN.','SELL.','GROW.','RANK.'];
+const wordColors=['var(--red)','var(--lime)','var(--yellow)','var(--blue)'];
+let wi=0;
+const cycleEl=document.getElementById('cycling-word');
+if(cycleEl&&!reduced){
+  setInterval(()=>{
+    wi=(wi+1)%words_nl.length;
+    gsap.to(cycleEl,{opacity:0,y:-12,duration:.25,ease:'power2.in',onComplete:()=>{
+      cycleEl.textContent=lang==='nl'?words_nl[wi]:words_en[wi];
+      cycleEl.style.color=wordColors[wi];
+      gsap.fromTo(cycleEl,{opacity:0,y:12},{opacity:1,y:0,duration:.3,ease:'power2.out'});
+    }});
+  },2200);
+}
+
+
+
+/* ── ARTICLES CAROUSEL (fan layout) ─────── */
+(function(){
+  const scene=document.getElementById('artScene');
+  const track=document.getElementById('artTrack');
+  if(!track||!scene)return;
+  const items=Array.from(track.querySelectorAll('.art-item'));
+  const dots=Array.from(document.querySelectorAll('.art-dot'));
+  const N=items.length;
+  let current=0;
+  let dragStartX=0;
+  let isDragging=false;
+
+  /* signed distance: how many steps away from center, wrapping */
+  function signedDist(i,c){
+    const d=((i-c+N)%N);
+    return d>N/2?d-N:d; /* range: -(N-1)/2 … +(N-1)/2 */
+  }
+
+  function place(){
+    current=((current%N)+N)%N;
+    items.forEach((item,i)=>{
+      const sd=signedDist(i,current);
+      const absD=Math.abs(sd);
+      /* Show 5 cards: ±2 visible, ±3+ hidden */
+      const visible=absD<=2;
+      /* Offsets: 360px per step, stronger for far cards */
+      const x=sd===0?0:sd*360;
+      /* Tilt: ±22° for ±1, ±38° for ±2 */
+      const ry=sd===0?0:-sd*(absD===1?22:38);
+      /* Scale: 1, 0.85, 0.70 */
+      const sc=absD===0?1:absD===1?0.85:0.70;
+      /* Opacity: 1, 0.65, 0.32, 0 */
+      const op=absD===0?1:absD===1?0.65:absD===2?0.32:0;
+      const zi=100-absD*25;
+      item.classList.toggle('art-center',absD===0);
+      gsap.to(item,{
+        x,rotationY:ry,scale:sc,opacity:op,zIndex:zi,
+        duration:.65,ease:'power2.out',overwrite:'auto',
+        force3D:true
+      });
+      item.style.pointerEvents=visible?'auto':'none';
+    });
+    dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+  }
+
+  function next(){current++;place();}
+  function prev(){current--;place();}
+
+  document.getElementById('artNext')?.addEventListener('click',next);
+  document.getElementById('artPrev')?.addEventListener('click',prev);
+  dots.forEach((d,i)=>d.addEventListener('click',()=>{current=i;place();}));
+
+  /* Drag / swipe */
+  scene.addEventListener('mousedown',e=>{isDragging=true;dragStartX=e.clientX;e.preventDefault();});
+  window.addEventListener('mousemove',e=>{
+    if(!isDragging)return;
+    if(Math.abs(e.clientX-dragStartX)>50){
+      e.clientX<dragStartX?next():prev();
+      isDragging=false;
+    }
+  });
+  window.addEventListener('mouseup',()=>{isDragging=false;});
+  scene.addEventListener('touchstart',e=>{dragStartX=e.touches[0].clientX;},{passive:true});
+  scene.addEventListener('touchend',e=>{
+    const d=dragStartX-e.changedTouches[0].clientX;
+    if(Math.abs(d)>40){d>0?next():prev();}
+  });
+
+  /* Auto-advance */
+  let autoTimer=setInterval(next,4500);
+  scene.addEventListener('mouseenter',()=>clearInterval(autoTimer));
+  scene.addEventListener('mouseleave',()=>{autoTimer=setInterval(next,4500);});
+
+  place();
+})();
+
+/* ── CONTACT MOUSE SPOTLIGHT ─────────── */
+(function(){
+  const el=document.querySelector('.sec-contact');
+  if(!el)return;
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    el.style.setProperty('--cx',(e.clientX-r.left)+'px');
+    el.style.setProperty('--cy',(e.clientY-r.top)+'px');
+  });
+  el.addEventListener('mouseleave',()=>{
+    el.style.setProperty('--cx','50%');
+    el.style.setProperty('--cy','40%');
+  });
+})();
+
+/* ── COOKIE BANNER ───────────────────── */
+(function(){
+  const KEY='wk-cookie-consent', PKEY='wk-cookie-prefs';
+  const GA_ID='G-CG9705BC61';
+  let gaLoaded=false;
+
+  function loadGA(){
+    if(gaLoaded||!GA_ID)return; gaLoaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=window.gtag||function(){dataLayer.push(arguments);};
+    const s=document.createElement('script');
+    s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(s);
+    gtag('js',new Date()); gtag('config',GA_ID,{anonymize_ip:true});
+  }
+  function getState(){return localStorage.getItem(KEY);}
+  function getPrefs(){
+    try{return JSON.parse(localStorage.getItem(PKEY)||'{"analytics":true}');}
+    catch{return{analytics:true};}
+  }
+  function save(prefs,state){
+    localStorage.setItem(KEY,state);
+    localStorage.setItem(PKEY,JSON.stringify(prefs));
+    if(prefs.analytics&&state!=='declined')loadGA();
+  }
+
+  const copy={
+    en:{title:'Cookies on WebKreatives',text:'We use essential cookies for language and theme preferences. Analytics helps us improve the site.',accept:'Accept all',customize:'Customize',save:'Save preferences',essential:'Essential',essentialTxt:'Language, theme, and session preferences. Always on.',analytics:'Analytics',analyticsTxt:'Helps us understand which pages work best so we can keep improving.'},
+    nl:{title:'Cookies op WebKreatives',text:'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',accept:'Alles accepteren',customize:'Aanpassen',save:'Voorkeuren opslaan',essential:'Essentieel',essentialTxt:'Taal-, thema- en sessievoorkeuren. Altijd actief.',analytics:'Analytics',analyticsTxt:'Helpt ons begrijpen welke pagina\'s het beste werken zodat we de site blijven verbeteren.'}
+  };
+
+  function render(l){
+    const c=copy[l]||copy.en;
+    const prefs=getPrefs();
+    let el=document.getElementById('ck');
+    if(!el){
+      el=document.createElement('div');
+      el.id='ck';
+      document.body.appendChild(el);
+    }
+    el.innerHTML=`
+      <p class="ck-title">${c.title}</p>
+      <p class="ck-body">${c.text} <a href="privacy/">${l==='nl'?'Privacybeleid':'Privacy Policy'}</a>.</p>
+      <div class="ck-btns">
+        <button class="ck-btn ck-btn-s" id="ck-cust">${c.customize}</button>
+        <button class="ck-btn ck-btn-p" id="ck-acc">${c.accept}</button>
+      </div>
+      <div class="ck-panel" id="ck-panel">
+        <div class="ck-opt">
+          <div class="ck-opt-text"><strong>${c.essential}</strong><p>${c.essentialTxt}</p></div>
+          <label class="ck-toggle locked"><input type="checkbox" checked disabled><span></span></label>
+        </div>
+        <div class="ck-opt">
+          <div class="ck-opt-text"><strong>${c.analytics}</strong><p>${c.analyticsTxt}</p></div>
+          <label class="ck-toggle"><input type="checkbox" id="ck-ana"${prefs.analytics?' checked':''}><span></span></label>
+        </div>
+        <div class="ck-panel-save">
+          <button class="ck-btn ck-btn-p" id="ck-save">${c.save}</button>
+        </div>
+      </div>`;
+
+    el.hidden=['accepted','declined','customized'].includes(getState());
+
+    document.getElementById('ck-acc').onclick=()=>{
+      save({analytics:true},'accepted'); el.hidden=true; showManage(l);
+    };
+    document.getElementById('ck-cust').onclick=()=>{
+      const p=document.getElementById('ck-panel');
+      p.classList.toggle('open');
+    };
+    document.getElementById('ck-save').onclick=()=>{
+      const ana=!!document.getElementById('ck-ana')?.checked;
+      save({analytics:ana},ana?'accepted':'customized');
+      el.hidden=true; showManage(l);
+    };
+  }
+
+  function showManage(l){
+    let btn=document.getElementById('ck-manage');
+    if(!btn){
+      btn=document.createElement('button');
+      btn.id='ck-manage';
+      document.body.appendChild(btn);
+      btn.onclick=()=>{
+        localStorage.removeItem(KEY); localStorage.removeItem(PKEY);
+        render(lang); btn.hidden=true;
+      };
+    }
+    btn.textContent=l==='nl'?'🍪 Cookie-instellingen':'🍪 Cookie settings';
+    btn.hidden=!getState();
+  }
+
+  /* init */
+  const p=getPrefs();
+  if(p.analytics&&['accepted','customized'].includes(getState()))loadGA();
+
+  /* render after lang is set, and re-render on lang change */
+  const _origApplyLang=window._wkApplyLang;
+  document.addEventListener('DOMContentLoaded',()=>{});
+  render(lang);
+  showManage(lang);
+
+  /* re-render banner text on lang switch */
+  const origApplyLang=applyLang;
+  window.applyLang=applyLang=function(l){
+    origApplyLang(l);
+    const ck=document.getElementById('ck');
+    if(ck&&!ck.hidden)render(l);
+    showManage(l);
+  };
+})();
+
+/* ── FORM ─────────────────────────────── */
+document.querySelector('.cform')?.addEventListener('submit',async function(e){
+  e.preventDefault();
+  const status=document.getElementById('formStatus');
+  const btn=this.querySelector('.fsub span');
+  const origText=btn.textContent;
+  btn.textContent=lang==='nl'?'Versturen...':'Sending...';
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(this)});
+    const data=await res.json();
+    status.style.display='block';
+    if(data.success){
+      status.style.color='oklch(46% .15 155)';
+      status.textContent=lang==='nl'?'Bericht verzonden! We nemen spoedig contact op.':'Message sent! We\'ll be in touch soon.';
+      this.reset();
+    }else{
+      status.style.color='var(--red)';
+      status.textContent=lang==='nl'?'Er ging iets mis. Probeer het opnieuw.':'Something went wrong. Please try again.';
+    }
+  }catch{
+    status.style.color='var(--red)';
+    status.textContent=lang==='nl'?'Verbindingsfout. Mail ons op info@webkreatives.com':'Connection error. Email us at info@webkreatives.com';
+  }
+  btn.textContent=origText;
+});
+
+/* ── REVIEW STACK ─────────────────────── */
+(function(){
+  const stage=document.getElementById('rcStage');
+  if(!stage)return;
+  const cards=Array.from(stage.querySelectorAll('.rc'));
+  const n=cards.length;
+  let order=cards.map((_,i)=>i);
+  let timer;
+
+  function render(){
+    order.forEach((ci,pos)=>{
+      const c=cards[ci];
+      c.style.transform=`translateY(${-pos*10}px) translateX(${pos*20}px) scale(${1+pos*0.05})`;
+      c.style.zIndex=n-pos;
+      c.style.opacity=pos===n-1?0.7:1;
+      c.classList.toggle('rc-front',pos===0);
+    });
+  }
+
+  function advance(){order.push(order.shift());render();}
+  const startAuto=()=>{timer=setInterval(advance,6000);};
+  const stopAuto=()=>clearInterval(timer);
+
+  cards.forEach(c=>c.addEventListener('click',()=>{stopAuto();advance();startAuto();}));
+  stage.addEventListener('mouseenter',stopAuto);
+  stage.addEventListener('mouseleave',startAuto);
+
+  render();
+  startAuto();
+})();
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

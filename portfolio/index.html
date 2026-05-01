@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio &ndash; WebKreatives</title>
+<meta name="description" content="Ten website styles built for ten industries. Find the look that fits your business.">
+<link rel="canonical" href="https://webkreatives.com/portfolio/">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* ── TOKENS ──────────────────────────────────────────────── */
+:root{
+  --ink:       oklch(8%  .010 25);
+  --ink2:      oklch(18% .010 25);
+  --ink3:      oklch(35% .010 25);
+  --cream:     oklch(97% .008 80);
+  --red:       #df3821;
+  --red2:      oklch(43% .200 25);
+  --white:     oklch(99% .004 80);
+  --lined:     oklch(22% .010 25);
+  --lime:      #b9e185;
+  --grn:       oklch(68% .150 130);
+  --blue:      #648dcb;
+  --yellow:    #fbeb78;
+  --f1:'Unbounded',sans-serif;
+  --f2:'Figtree',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f2);background:var(--ink);color:var(--cream);line-height:1.6;overflow-x:clip;cursor:none}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:none;border:none;background:none}
+
+/* ── CURSOR ──────────────────────────────────────────────── */
+#c-dot{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s var(--ease),width .2s var(--ease),height .2s var(--ease)}
+#c-ring{position:fixed;width:38px;height:38px;border:1.5px solid var(--red);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),opacity .2s;opacity:.6}
+body.cursor-hover #c-ring{width:52px;height:52px;opacity:.9}
+body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.port-hero{padding:110px 5vw 56px;display:flex;align-items:flex-end;justify-content:space-between;gap:48px;border-bottom:1px solid oklch(15% .010 25)}
+.port-hero-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.port-hero-crumb a{transition:color .2s}
+.port-hero-crumb a:hover{color:oklch(56% .008 25)}
+.port-hero-crumb .sep{color:oklch(22% .008 25)}
+.port-h1{font-family:var(--f1);font-size:clamp(48px,6.5vw,88px);font-weight:900;letter-spacing:-.04em;line-height:.92;color:var(--white);margin-bottom:22px}
+.port-h1 em{font-style:normal;color:var(--red)}
+.port-hero-sub{font-size:clamp(14px,1.2vw,16px);color:oklch(48% .008 25);font-weight:300;line-height:1.65;max-width:420px}
+.port-hero-stats{display:flex;gap:44px;align-items:flex-end;flex-shrink:0;padding-bottom:4px}
+.port-stat-n{font-family:var(--f1);font-size:clamp(32px,3.5vw,46px);font-weight:900;letter-spacing:-.04em;line-height:1}
+.port-stat-l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:oklch(38% .008 25);margin-top:5px}
+
+/* ── FILTERS ─────────────────────────────────────────────── */
+.port-filters{background:oklch(9% .010 25 / .97);border-bottom:1px solid oklch(15% .010 25);padding:12px 5vw;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pf-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:oklch(32% .008 25);margin-right:4px;flex-shrink:0}
+.pf-btn{padding:5px 14px;border-radius:100px;border:1px solid oklch(22% .010 25);font-family:var(--f2);font-size:11px;font-weight:600;color:oklch(50% .006 25);transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);cursor:none}
+.pf-btn:hover{border-color:oklch(40% .010 25);color:oklch(76% .006 25)}
+.pf-btn.active{background:oklch(94% .008 80);border-color:oklch(94% .008 80);color:oklch(10% .010 25)}
+.pf-count{margin-left:auto;font-size:11px;color:oklch(34% .008 25);flex-shrink:0}
+
+/* ── LIST LAYOUT ─────────────────────────────────────────── */
+.pf-list{max-width:1280px;margin:0 auto;padding:0 5vw 80px}
+.pf-row{
+  display:grid;
+  grid-template-columns:1fr 460px;
+  gap:64px;
+  align-items:center;
+  padding:52px 0;
+  border-bottom:1px solid oklch(14% .010 25);
+  cursor:pointer;
+  position:relative;
+  z-index:1;
+}
+.pf-row:first-child{border-top:1px solid oklch(14% .010 25)}
+.pf-row[hidden]{display:none}
+
+/* info side */
+.pf-info{display:flex;flex-direction:column;gap:0}
+.pf-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--white);
+  margin-bottom:12px;
+  width:fit-content;
+}
+.pf-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.pf-row.tag-restaurant .pf-tag{color:oklch(72% .18 25)}
+.pf-row.tag-health     .pf-tag{color:var(--blue)}
+.pf-row.tag-construction .pf-tag{color:var(--yellow)}
+.pf-row.tag-plumbing   .pf-tag{color:var(--lime)}
+.pf-row.tag-creative   .pf-tag{color:oklch(80% .12 290)}
+.pf-row.tag-beauty     .pf-tag{color:oklch(82% .14 340)}
+.pf-row.tag-bakery     .pf-tag{color:oklch(80% .13 65)}
+.pf-row.tag-tech       .pf-tag{color:oklch(70% .14 230)}
+.pf-row.tag-interior   .pf-tag{color:oklch(82% .09 68)}
+.pf-row.tag-finance    .pf-tag{color:var(--lime)}
+.pf-name{
+  font-family:var(--f1);
+  font-size:clamp(22px,2.6vw,34px);
+  font-weight:900;
+  letter-spacing:-.04em;
+  color:var(--white);
+  line-height:1.05;
+  margin-bottom:16px;
+  transition:color .25s var(--ease);
+}
+.pf-row:hover .pf-name{color:oklch(100% .004 80)}
+.pf-for{
+  font-size:clamp(13px,1.15vw,15px);
+  color:oklch(50% .008 25);
+  font-weight:300;
+  line-height:1.6;
+  max-width:460px;
+  margin-bottom:28px;
+}
+.pf-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:oklch(56% .008 25);
+  transition:color .25s var(--ease),gap .25s var(--ease);
+}
+.pf-row:hover .pf-cta{color:var(--white);gap:16px}
+.pf-cta-arrow{transition:transform .25s var(--ease)}
+.pf-row:hover .pf-cta-arrow{transform:translateX(4px)}
+
+/* preview side */
+.pf-preview{
+  border-radius:9px;
+  overflow:hidden;
+  background:oklch(12% .010 25);
+  border:1px solid oklch(20% .010 25);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+  flex-shrink:0;
+}
+.pf-row:hover .pf-preview{
+  transform:translateY(-6px);
+  box-shadow:0 24px 60px oklch(0% 0 0 / .55);
+}
+.pf-chrome{
+  padding:8px 12px;
+  display:flex;align-items:center;gap:5px;
+  background:oklch(16% .010 25);
+  border-bottom:1px solid oklch(20% .010 25);
+}
+.pf-chrome-dot{width:8px;height:8px;border-radius:50%;background:oklch(24% .010 25)}
+.pf-chrome-dot:nth-child(1){background:oklch(52% .18 25)}
+.pf-chrome-dot:nth-child(2){background:oklch(62% .16 80)}
+.pf-chrome-dot:nth-child(3){background:oklch(60% .20 140)}
+.pf-chrome-bar{flex:1;height:16px;background:oklch(20% .010 25);border-radius:3px;margin:0 8px;font-size:9px;font-weight:500;color:oklch(36% .006 25);display:flex;align-items:center;padding:0 8px;overflow:hidden;white-space:nowrap}
+.pf-screenshot{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top center;display:block;transition:transform .55s var(--ease)}
+.pf-row:hover .pf-screenshot{transform:scale(1.025)}
+
+/* ── CTA SECTION ─────────────────────────────────────────── */
+.port-cta{border-top:1px solid oklch(15% .010 25);padding:80px 5vw;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:1280px;margin:0 auto}
+.port-cta-h{font-family:var(--f1);font-size:clamp(28px,3.2vw,44px);font-weight:900;letter-spacing:-.04em;color:var(--white);line-height:1.05;max-width:520px}
+.port-cta-h em{font-style:normal;color:var(--red)}
+.port-cta-p{font-size:clamp(14px,1.2vw,16px);color:oklch(48% .008 25);font-weight:300;max-width:380px;line-height:1.6}
+.port-cta-btn{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--white);background:var(--red);padding:14px 30px;border-radius:8px;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
+.port-cta-btn::before{content:'';position:absolute;inset:0;background:oklch(39% .200 25);transform:translateX(-100%);transition:transform .4s var(--ease)}
+.port-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px oklch(39% .200 25 / .45)}
+.port-cta-btn:hover::before{transform:translateX(0)}
+.port-cta-btn span{position:relative}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media(max-width:1000px){
+  .pf-row{grid-template-columns:1fr;gap:32px}
+  .pf-preview{max-width:520px}
+}
+@media(max-width:900px){
+  .port-hero{flex-direction:column;gap:28px;align-items:flex-start}
+  .port-hero-stats{gap:28px}
+}
+@media(max-width:640px){
+  .port-filters{gap:6px}
+  .pf-btn{padding:4px 11px;font-size:10.5px}
+  .pf-row{padding:36px 0;gap:24px}
+}
+</style>
+</head>
+<body data-page="portfolio">
+
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+
+<div id="globalNav"></div>
+
+<!-- HERO -->
+<div style="border-bottom:1px solid oklch(15% .010 25)">
+<div class="port-hero">
+  <div>
+    <div class="port-hero-crumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <span class="sep">/</span>
+      <span data-nl="Portfolio" data-en="Portfolio">Portfolio</span>
+    </div>
+    <h1 class="port-h1" data-nl="Ons <em>Werk.</em>" data-en="Our <em>Work.</em>">Our <em>Work.</em></h1>
+    <p class="port-hero-sub"
+      data-nl="Echte websites, gebouwd voor echte bedrijven. Bekijk de stijl die past."
+      data-en="Real websites built for real businesses. Find the style that fits.">Real websites built for real businesses. Find the style that fits.</p>
+  </div>
+  <div class="port-hero-stats">
+    <div>
+      <div class="port-stat-n" style="color:var(--red)">15+</div>
+      <div class="port-stat-l" data-nl="Gemaakte websites" data-en="Websites built">Websites built</div>
+    </div>
+    <div>
+      <div class="port-stat-n" style="color:var(--lime)">10+</div>
+      <div class="port-stat-l" data-nl="Branches" data-en="Industries">Industries</div>
+    </div>
+    <div>
+      <div class="port-stat-n" style="color:var(--blue)">48h</div>
+      <div class="port-stat-l" data-nl="Oplevering" data-en="Delivery">Delivery</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FILTERS -->
+<div class="port-filters" id="portFilters">
+  <span class="pf-label" data-nl="Branche:" data-en="Industry:">Industry:</span>
+  <button class="pf-btn active" data-filter="all"          data-nl="Alle"       data-en="All">All</button>
+  <button class="pf-btn"        data-filter="restaurant"   data-nl="Restaurant" data-en="Restaurant">Restaurant</button>
+  <button class="pf-btn"        data-filter="health"       data-nl="Zorg"       data-en="Healthcare">Healthcare</button>
+  <button class="pf-btn"        data-filter="construction" data-nl="Bouw"       data-en="Construction">Construction</button>
+  <button class="pf-btn"        data-filter="plumbing"     data-nl="Loodgieter" data-en="Plumbing">Plumbing</button>
+  <button class="pf-btn"        data-filter="creative"     data-nl="Creatief"   data-en="Creative">Creative</button>
+  <button class="pf-btn"        data-filter="beauty"       data-nl="Beauty"     data-en="Beauty">Beauty</button>
+  <button class="pf-btn"        data-filter="bakery"       data-nl="Bakkerij"   data-en="Bakery">Bakery</button>
+  <button class="pf-btn"        data-filter="tech"         data-nl="Tech"       data-en="Tech">Tech</button>
+  <button class="pf-btn"        data-filter="interior"     data-nl="Interieur"  data-en="Interior">Interior</button>
+  <button class="pf-btn"        data-filter="finance"      data-nl="Finance"    data-en="Finance">Finance</button>
+  <span class="pf-count" id="pfCount">10 websites</span>
+</div>
+
+<!-- LIST -->
+<div class="pf-list">
+
+  <!-- 01 -->
+  <article class="pf-row tag-finance" data-category="finance">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Finance" data-en="Finance">Finance</div>
+      <div class="pf-name">De Groot &amp; Partners</div>
+      <p class="pf-for"
+        data-nl="Voor accountants en adviseurs die online autoriteit uitstralen. Multi-page opzet met gedeelde navigatie, FAQ, prijscards en contactformulier."
+        data-en="For accountants and advisors who need to project authority online. Multi-page setup with shared nav, FAQ, pricing cards and contact form.">For accountants and advisors who need to project authority online. Multi-page setup with shared nav, FAQ, pricing cards and contact form.</p>
+      <a class="pf-cta" href="../client-projects/de-groot-accountants/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/de-groot-accountants</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/de-groot-accountants.png" alt="De Groot &amp; Partners" loading="lazy">
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="pf-row tag-health" data-category="health">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Zorg" data-en="Healthcare">Healthcare</div>
+      <div class="pf-name">Tandarts Knoll</div>
+      <p class="pf-for"
+        data-nl="Voor zorgpraktijken die pati&euml;nten vertrouwen geven voor de eerste afspraak. Licht design met openingstijden, contactformulier en tweetalige NL/EN opzet."
+        data-en="For healthcare practices that build patient trust before the first appointment. Light design with opening hours, contact form and bilingual NL/EN setup.">For healthcare practices that build patient trust before the first appointment. Light design with opening hours, contact form and bilingual NL/EN setup.</p>
+      <a class="pf-cta" href="../client-projects/tandarts-knoll/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/tandarts-knoll</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/tandarts-knoll.png" alt="Tandarts Knoll" loading="lazy">
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="pf-row tag-restaurant" data-category="restaurant">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Restaurant" data-en="Restaurant">Restaurant</div>
+      <div class="pf-name">Leyenburger Grill</div>
+      <p class="pf-for"
+        data-nl="Voor eethuizen die sfeer, menu en locatie direct overbrengen. Donker editorial design met menukaart, openingstijden en Google Maps."
+        data-en="For restaurants that put atmosphere, menu and location front and center. Dark editorial design with menu section, opening hours and Google Maps.">For restaurants that put atmosphere, menu and location front and center. Dark editorial design with menu section, opening hours and Google Maps.</p>
+      <a class="pf-cta" href="../client-projects/leyenburger/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/leyenburger</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/leyenburger.png" alt="Leyenburger Grill" loading="lazy">
+    </div>
+  </article>
+
+  <!-- 04 -->
+  <article class="pf-row tag-beauty" data-category="beauty">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Beauty" data-en="Beauty">Beauty</div>
+      <div class="pf-name">Luna Beauty Studio</div>
+      <p class="pf-for"
+        data-nl="Voor salons en beautybedrijven waarbij diensten directe boekingen triggeren. Warm design met diensten, prijzen, testimonials en WhatsApp-boeking."
+        data-en="For salons and beauty brands where services need to trigger bookings. Warm design with services, pricing, testimonials and WhatsApp booking.">For salons and beauty brands where services need to trigger bookings. Warm design with services, pricing, testimonials and WhatsApp booking.</p>
+      <a class="pf-cta" href="../client-projects/luna-beauty-studio/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/luna-beauty-studio</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/luna-beauty-studio.png" alt="Luna Beauty Studio" loading="lazy">
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="pf-row tag-creative" data-category="creative">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Creatief" data-en="Creative">Creative</div>
+      <div class="pf-name">Studio Lena</div>
+      <p class="pf-for"
+        data-nl="Voor fotografen en creatives die het werk laten spreken. Scandinavisch minimalisme met asymmetrisch fotogrid, 100vh split hero en subtiele scrollanimaties."
+        data-en="For photographers and creatives who let their work do the talking. Scandinavian minimalism with asymmetric photo grid, 100vh split hero and subtle scroll animations.">For photographers and creatives who let their work do the talking. Scandinavian minimalism with asymmetric photo grid, 100vh split hero and subtle scroll animations.</p>
+      <a class="pf-cta" href="../client-projects/studio-lena-fotografie/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/studio-lena-fotografie</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/studio-lena-fotografie.png" alt="Studio Lena" loading="lazy">
+    </div>
+  </article>
+
+  <!-- 06 -->
+  <article class="pf-row tag-interior" data-category="interior">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Interieur" data-en="Interior">Interior</div>
+      <div class="pf-name">Maison Blanc Interieur</div>
+      <p class="pf-for"
+        data-nl="Voor premium merken waarbij elke bezoeker verfijning moet voelen. Ultra-luxe editorial stijl met magazine-grid en antiekgouden accenten."
+        data-en="For premium brands where every visitor should feel the quality. Ultra-luxury editorial style with magazine grid and antique gold accents.">For premium brands where every visitor should feel the quality. Ultra-luxury editorial style with magazine grid and antique gold accents.</p>
+      <a class="pf-cta" href="../client-projects/maison-blanc-interieur/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/maison-blanc-interieur</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/maison-blanc-interieur.png" alt="Maison Blanc Interieur" loading="lazy">
+    </div>
+  </article>
+
+  <!-- 07 -->
+  <article class="pf-row tag-construction" data-category="construction">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Bouw" data-en="Construction">Construction</div>
+      <div class="pf-name">Klussenbedrijf Edward</div>
+      <p class="pf-for"
+        data-nl="Voor aannemers en klusbedrijven die vertrouwen winnen voor de eerste bel. Industrieel design met projectgalerij, dienstenoverzicht en tweetalige NL/EN opzet."
+        data-en="For contractors who win trust before the first phone call. Industrial design with project gallery, services overview and bilingual NL/EN setup.">For contractors who win trust before the first phone call. Industrial design with project gallery, services overview and bilingual NL/EN setup.</p>
+      <a class="pf-cta" href="../client-projects/klussenbedrijf-edward/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/klussenbedrijf-edward</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/klussenbedrijf-edward.png" alt="Klussenbedrijf Edward" loading="lazy">
+    </div>
+  </article>
+
+  <!-- 08 -->
+  <article class="pf-row tag-bakery" data-category="bakery">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Bakkerij" data-en="Bakery">Bakery</div>
+      <div class="pf-name">Bakkerij Hartman</div>
+      <p class="pf-for"
+        data-nl="Voor ambachtelijke merken met een verhaal en een eigen identiteit. Retro vintage design met papiertextuur, sierlijke details en productkaarten."
+        data-en="For artisan brands with a story and a distinct identity. Retro vintage design with paper texture, ornamental details and product cards.">For artisan brands with a story and a distinct identity. Retro vintage design with paper texture, ornamental details and product cards.</p>
+      <a class="pf-cta" href="../client-projects/bakkerij-hartman/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/bakkerij-hartman</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/bakkerij-hartman.png" alt="Bakkerij Hartman" loading="lazy">
+    </div>
+  </article>
+
+  <!-- 09 -->
+  <article class="pf-row tag-tech" data-category="tech">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Tech" data-en="Tech">Tech</div>
+      <div class="pf-name">Nexus IT Solutions</div>
+      <p class="pf-for"
+        data-nl="Voor tech- en IT-bedrijven die professioneel overkomen en leads genereren. Donker SaaS design met glassmorphism cards, gradient hero en trust stats."
+        data-en="For tech and IT companies that need to look credible and generate leads. Dark SaaS design with glassmorphism cards, gradient hero and trust stats.">For tech and IT companies that need to look credible and generate leads. Dark SaaS design with glassmorphism cards, gradient hero and trust stats.</p>
+      <a class="pf-cta" href="../client-projects/nexus-it-solutions/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/nexus-it-solutions</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/nexus-it-solutions.png" alt="Nexus IT Solutions" loading="lazy">
+    </div>
+  </article>
+
+  <!-- 10 -->
+  <article class="pf-row tag-plumbing" data-category="plumbing">
+    <div class="pf-info">
+      <div class="pf-tag" data-nl="Loodgieter" data-en="Plumbing">Plumbing</div>
+      <div class="pf-name">Van der Berg Loodgieter</div>
+      <p class="pf-for"
+        data-nl="Voor vakmensen die klanten dag en nacht kunnen bereiken. Professioneel vertrouwensdesign met spoed-CTA, diensten, reviews en contactformulier."
+        data-en="For tradespeople who need to be reachable around the clock. Professional trust-first design with emergency CTA, services, reviews and contact form.">For tradespeople who need to be reachable around the clock. Professional trust-first design with emergency CTA, services, reviews and contact form.</p>
+      <a class="pf-cta" href="../client-projects/vanderberg-loodgieter/" target="_blank">
+        <span data-nl="Bekijk website" data-en="View website">View website</span>
+        <span class="pf-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="pf-preview">
+      <div class="pf-chrome">
+        <div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div><div class="pf-chrome-dot"></div>
+        <div class="pf-chrome-bar">webkreatives.com/vanderberg-loodgieter</div>
+      </div>
+      <img class="pf-screenshot" src="../assets/screenshots/vanderberg-loodgieter.png" alt="Van der Berg Loodgieter" loading="lazy">
+    </div>
+  </article>
+
+</div><!-- /pf-list -->
+
+<!-- CTA -->
+<div style="padding:0 5vw">
+<section class="port-cta">
+  <h2 class="port-cta-h" data-nl="Zien wat wij voor <em>jou</em> kunnen doen?" data-en="Want a website <em>like this?</em>">Want a website <em>like this?</em></h2>
+  <p class="port-cta-p"
+    data-nl="Vertel ons over je bedrijf. Wij bouwen iets dat past en converteert."
+    data-en="Tell us about your business. We'll build something that fits and converts.">Tell us about your business. We'll build something that fits and converts.</p>
+  <a href="/#contact" class="port-cta-btn">
+    <span data-nl="Gratis Consultatie" data-en="Free Consultation">Free Consultation</span>
+    <span>&rarr;</span>
+  </a>
+</section>
+</div>
+
+<div id="globalFooter"></div>
+
+<script src="/js/global-components.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/script.js"></script>
+<script>
+/* ── CURSOR ──────────────────────────────────────────────── */
+const dot=document.getElementById('c-dot'),ring=document.getElementById('c-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.pf-row').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-btn'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-btn','cursor-hover'));
+});
+
+/* ── STATE ───────────────────────────────────────────────── */
+const rows=Array.from(document.querySelectorAll('.pf-row'));
+const pfBtns=document.querySelectorAll('.pf-btn');
+const pfCount=document.getElementById('pfCount');
+const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ── COUNT ───────────────────────────────────────────────── */
+function updateCount(){
+  const n=rows.filter(r=>!r.hidden).length;
+  pfCount.textContent=`${n} ${n===1?'website':'websites'}`;
+}
+
+/* ── LANGUAGE ────────────────────────────────────────────── */
+function applyPageLang(l){
+  document.querySelectorAll('[data-nl],[data-en]').forEach(el=>{
+    const t=el.getAttribute('data-'+l);if(t!=null)el.innerHTML=t;
+  });
+  updateCount();
+}
+applyPageLang(localStorage.getItem('wk-lang')||'nl');
+document.addEventListener('wk:languagechange',e=>applyPageLang(e.detail?.lang||'nl'));
+
+/* ── FILTER ──────────────────────────────────────────────── */
+pfBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const f=btn.dataset.filter;
+    pfBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    rows.forEach(r=>{
+      const show=f==='all'||r.dataset.category===f;
+      r.hidden=!show;
+      if(show&&!reduced)gsap.set(r,{opacity:1,y:0});
+    });
+    updateCount();
+  });
+});
+
+/* ── MAKE PREVIEW CLICKABLE ──────────────────────────────── */
+rows.forEach(row=>{
+  const cta=row.querySelector('.pf-cta');
+  const preview=row.querySelector('.pf-preview');
+  if(!cta||!preview)return;
+  const a=document.createElement('a');
+  a.href=cta.href;a.target='_blank';a.rel='noopener noreferrer';
+  a.style.cssText='display:block;border-radius:9px;overflow:hidden;';
+  preview.parentNode.insertBefore(a,preview);
+  a.appendChild(preview);
+});
+
+/* ── GSAP SCROLL REVEALS ─────────────────────────────────── */
+if(!reduced){
+  gsap.registerPlugin(ScrollTrigger);
+  rows.forEach(row=>{
+    gsap.fromTo(row,
+      {opacity:0,y:28},
+      {opacity:1,y:0,duration:.7,ease:'power2.out',
+        scrollTrigger:{trigger:row,start:'top 88%',once:true}
+      }
+    );
+  });
+}
+</script>
+</body>
+</html>

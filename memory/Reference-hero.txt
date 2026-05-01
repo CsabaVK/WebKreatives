@@ -1,0 +1,13 @@
+https://21st.dev/community/components/subhadeeproy3902/hero/default
+https://21st.dev/community/components/kokonutd/shape-landing-hero/default 
+https://21st.dev/community/components/serafim/splite/default
+
+For Text element
+https://21st.dev/community/components/aceternity/hero-highlight/default
+https://21st.dev/community/components/erikx/3d-hero-section-boxes/default
+
+For Background
+https://21st.dev/community/components/magicui/meteors/default
+
+multi-object
+https://21st.dev/community/components/ravikatiyar/circular-gallery/default
