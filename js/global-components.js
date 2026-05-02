@@ -252,6 +252,7 @@
   .cookie-actions,.cookie-panel-actions{width:100%;justify-content:stretch}
   .cookie-btn{flex:1}
   .cookie-copy p{font-size:12.5px}
+  .cookie-manage-btn{left:12px;right:12px;width:auto;text-align:center}
 }
 
 /* ── DARK COOKIE OVERRIDE ────────────────────────────── */
@@ -309,6 +310,7 @@
     <li><a href="/#services" data-i18n="nav.services">Diensten</a></li>
     <li><a href="/portfolio/"${portfolioActive}>Portfolio</a></li>
     <li><a href="/#pricing" data-i18n="nav.pricing">Prijzen</a></li>
+    <li><a href="/#subscriptions" data-i18n="nav.support">Support</a></li>
     <li><a href="/articles/"${articlesActive} data-i18n="nav.articles">Artikelen</a></li>
     <li><a href="/#contact" data-i18n="nav.reviews">Reviews</a></li>
   </ul>
@@ -340,6 +342,7 @@
     <li><a href="/#services" data-i18n="nav.services">Diensten</a></li>
     <li><a href="/portfolio/"${portfolioActive}>Portfolio</a></li>
     <li><a href="/#pricing" data-i18n="nav.pricing">Prijzen</a></li>
+    <li><a href="/#subscriptions" data-i18n="nav.support">Support</a></li>
     <li><a href="/articles/"${articlesActive} data-i18n="nav.articles">Artikelen</a></li>
     <li><a href="/#contact" data-i18n="nav.reviews">Reviews</a></li>
   </ul>
