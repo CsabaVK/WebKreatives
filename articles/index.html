@@ -400,7 +400,8 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
   /* ── custom cursor ── */
   const dot  = document.getElementById('c-dot');
   const ring = document.getElementById('c-ring');
-  if (dot && ring && !reduced) {
+  const cursorOff = reduced || window.matchMedia('(pointer:coarse), (max-width:900px)').matches;
+  if (dot && ring && !cursorOff) {
     let mx = 0, my = 0, rx = 0, ry = 0;
     document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
     dot.style.left = '0'; dot.style.top = '0';

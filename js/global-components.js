@@ -146,8 +146,17 @@
 }
 #mobileMenu a:hover,#mobileMenu a.active{color:var(--wk-white)}
 @media(max-width:900px){
-  #pNav .nav-links,.wk-nav-cta{display:none}
+  #pNav{
+    padding:12px 18px 12px 28px;
+    grid-template-columns:auto 1fr auto;
+  }
+  #pNav.scrolled{padding-top:8px;padding-bottom:8px}
+  .wk-logo img{height:58px}
+  #pNav .nav-controls{gap:8px}
+  #pNav .nav-links,#pNav>.nav-controls>.wk-nav-cta,.wk-divider{display:none}
   .nav-hamburger{display:flex}
+  #mobileMenu{top:72px}
+  #mobileMenu .wk-nav-cta{display:flex}
 }
 
 /* ── FOOTER ──────────────────────────────────────────── */
@@ -243,17 +252,22 @@
 .cookie-panel-actions{display:flex;justify-content:flex-end;margin-top:12px}
 .cookie-manage-btn{
   position:fixed;left:14px;bottom:14px;z-index:1100;
-  border-radius:999px;padding:9px 12px;font-family:var(--wk-f2);
+  border-radius:999px;padding:10px 12px;font-family:var(--wk-f2);
   font-size:11px;font-weight:700;cursor:pointer;
 }
 @media(max-width:640px){
-  .cookie-banner{bottom:10px;padding:15px}
+  .cookie-banner{
+    left:12px;right:12px;bottom:12px;width:auto;
+    transform:none;padding:15px;
+    animation:wk-cookie-rise-mobile .32s var(--wk-ease);
+  }
   .cookie-banner-inner{flex-direction:column;align-items:flex-start}
   .cookie-actions,.cookie-panel-actions{width:100%;justify-content:stretch}
   .cookie-btn{flex:1}
   .cookie-copy p{font-size:12.5px}
   .cookie-manage-btn{left:12px;right:auto;width:auto;text-align:left}
 }
+@keyframes wk-cookie-rise-mobile{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── DARK COOKIE OVERRIDE ────────────────────────────── */
 .cookie-banner{
