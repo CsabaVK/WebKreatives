@@ -535,6 +535,8 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
   font-size:clamp(34px,5vw,68px);
   line-height:1.01;letter-spacing:-.035em;
 }
+.mbr{display:none}
+.dbr{display:block}
 .reveal{opacity:0;transform:translateY(36px)}
 
 /* ── STATS ───────────────────────────────────────────── */
@@ -1088,7 +1090,20 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   .hero-h1{font-size:clamp(35px,12.5vw,50px);line-height:.98;letter-spacing:-.035em;margin-bottom:30px}
   .hero-line2{display:flex;flex-direction:column;align-items:center;white-space:normal;gap:0}
   .hero-line2 .word-inner{padding-right:0}
-  .hero-sub{font-size:15px;margin-bottom:38px}
+  .hero-sub{font-size:15px;margin-bottom:40px}
+  .hero-btns{gap:16px;margin-left:auto;margin-right:auto;max-width:280px}
+  .hero-trust{
+    width:100%;max-width:350px;margin:48px auto 0;padding-top:20px;
+    border-top:1px dashed oklch(34% .010 25);
+    gap:12px;
+  }
+  .mbr{display:block}
+  .dbr{display:none}
+  #stats .h2{font-size:clamp(31px,8.8vw,34px);max-width:350px;line-height:1.06}
+  #services .h2{font-size:clamp(31px,8.5vw,33px);max-width:350px}
+  #stats .stat-card{padding:24px 16px}
+  #stats .stat-n{font-size:clamp(31px,8.8vw,36px);white-space:nowrap}
+  #stats .stat-l{font-size:12.5px}
   .svc-grid,.proc-grid{grid-template-columns:1fr}
   .port-grid{grid-template-columns:1fr}
   .port-card.wide{grid-column:span 1;aspect-ratio:4/3}
@@ -1107,7 +1122,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   .frow{grid-template-columns:1fr}
   .fpay-icons{gap:6px}
   .fpay-badge{width:46px;height:30px}
-  .hero-btns{flex-direction:column;max-width:280px;margin-left:auto;margin-right:auto}
+  .hero-btns{flex-direction:column}
   .btn-p,.btn-g,.btn-white{width:100%;justify-content:center}
   .nav-cta{display:none}
   .mobile-menu{top:72px}
@@ -1126,7 +1141,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   .art-nav{display:none}
   #ck{left:12px;right:12px;bottom:12px;width:auto;padding:16px}
   .ck-btns{flex-direction:column}
-  #ck-manage{left:12px;bottom:12px}
+  #ck-manage{left:12px;right:12px;bottom:12px;width:auto;text-align:center;padding:10px 12px}
 }
 @media(pointer:coarse), (max-width:900px){
   body,button{cursor:auto}
@@ -1329,6 +1344,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 #ck-manage{position:fixed;bottom:20px;left:20px;z-index:9989;background:oklch(16% .010 25);color:oklch(46% .005 80);border:1px solid oklch(24% .010 25);border-radius:8px;padding:7px 11px;font-family:var(--f2);font-size:11px;cursor:pointer;transition:color .2s,border-color .2s}
 #ck-manage:hover{color:oklch(72% .005 80);border-color:oklch(36% .010 25)}
 #ck-manage[hidden]{display:none!important}
+@media(max-width:600px){#ck-manage{left:12px;right:12px;bottom:12px;width:auto;text-align:center;padding:10px 12px}}
 </style>
 </head>
 <body>
@@ -1376,6 +1392,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   <a href="#services" data-nl="Diensten" data-en="Services">Services</a>
   <a href="#portfolio" data-nl="Portfolio" data-en="Portfolio">Portfolio</a>
   <a href="#pricing" data-nl="Prijzen" data-en="Pricing">Pricing</a>
+  <a href="#subscriptions" data-nl="Support" data-en="Support">Support</a>
   <a href="#articles" data-nl="Artikelen" data-en="Articles">Articles</a>
   <a href="#contact" data-nl="Reviews" data-en="Reviews">Reviews</a>
   <a class="mobile-menu-cta" href="#contact" data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</a>
@@ -1450,7 +1467,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 <!-- STATS -->
 <section class="sec sec-light" id="stats">
   <p class="lbl reveal" data-nl="Wat ons onderscheidt" data-en="What sets us apart">What sets us apart</p>
-  <h2 class="h2 reveal" data-nl="AI-gestuurd ontwerp,<br>gebouwd voor resultaat." data-en="AI-powered design,<br>built for results.">AI-powered design,<br>built for results.</h2>
+  <h2 class="h2 reveal" data-nl="AI-gestuurd<br class='mbr'> ontwerp,<br class='dbr'> gebouwd voor<br class='mbr'> resultaat." data-en="AI-powered<br class='mbr'> design,<br class='dbr'> built for<br class='mbr'> results.">AI-powered<br class="mbr"> design,<br class="dbr"> built for<br class="mbr"> results.</h2>
   <div class="stats-grid" style="margin-top:56px">
     <div class="stat-card stat-dark reveal">
       <div class="stat-n" style="color:var(--red)" data-count="15" data-suffix="+">0+</div>
