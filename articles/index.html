@@ -185,6 +185,7 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 .art-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px oklch(39% .200 25 / .45)}
 .art-cta-btn:hover::before{transform:translateX(0)}
 .art-cta-btn span{position:relative}
+.art-cta-mobile-label{display:none}
 
 /* -- RESPONSIVE ----------------------------------------------- */
 @media(max-width:960px){
@@ -195,9 +196,36 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
   .art-hero{padding-bottom:48px}
 }
 @media(max-width:640px){
-  .art-filters{gap:6px}
-  .af-btn{padding:4px 11px;font-size:10.5px}
-  .art-row{padding:36px 0;gap:20px}
+  .art-hero{padding:96px 5vw 42px}
+  .art-h1{font-size:clamp(43px,15vw,56px);line-height:.94;margin-bottom:18px}
+  .art-hero-sub{font-size:14px;max-width:340px}
+  .art-filters{display:none}
+  .art-list{padding:24px 5vw 64px}
+  .art-row{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    padding:0 0 22px;
+    margin-bottom:22px;
+    border:1px solid oklch(16% .010 25);
+    border-radius:14px;
+    background:oklch(10% .010 25);
+    overflow:hidden;
+    opacity:1!important;
+    transform:none!important;
+  }
+  .art-row:first-child{border-top:1px solid oklch(16% .010 25)}
+  .art-thumb{width:100%;max-width:none;border:0;border-radius:0}
+  .art-thumb img{aspect-ratio:16/10}
+  .art-info{padding:18px 18px 0}
+  .art-meta{gap:10px;margin-bottom:10px}
+  .art-cat{font-size:9px;letter-spacing:.09em}
+  .art-date,.art-read-time{font-size:10px}
+  .art-title{display:block;font-size:clamp(18px,5.7vw,22px);line-height:1.15;margin-bottom:10px;color:var(--white)}
+  .art-excerpt{display:block;font-size:13px;line-height:1.55;max-width:none;margin-bottom:0;color:oklch(58% .008 25)}
+  .art-link{display:none}
+  .art-cta-desktop-label{display:none}
+  .art-cta-mobile-label{display:inline}
 }
 </style>
 </head>
@@ -243,7 +271,8 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
     data-nl="Vertel ons over jouw bedrijf en we kijken samen wat er mogelijk is."
     data-en="Tell us about your business and we'll explore what's possible together.">Vertel ons over jouw bedrijf en we kijken samen wat er mogelijk is.</p>
   <a href="/#contact" class="art-cta-btn">
-    <span data-nl="Gratis Consultatie &rarr;" data-en="Free Consultation &rarr;">Gratis Consultatie &rarr;</span>
+    <span class="art-cta-desktop-label" data-nl="Gratis Consultatie &rarr;" data-en="Free Consultation &rarr;">Gratis Consultatie &rarr;</span>
+    <span class="art-cta-mobile-label" data-nl="Gratis Consultatie" data-en="Free Consultation">Gratis Consultatie</span>
   </a>
 </div>
 
@@ -332,6 +361,14 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
           applyFilter(currentFilter, list.querySelectorAll('.art-row'), lang);
         });
       });
+    }
+
+    if (window.matchMedia('(max-width: 640px)').matches) {
+      rows.forEach(row => {
+        row.style.opacity = 1;
+        row.style.transform = 'none';
+      });
+      return;
     }
 
     if (!gsapInited && !reduced && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
