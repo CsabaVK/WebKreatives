@@ -1331,6 +1331,76 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 .art-dots{display:flex;gap:8px;align-items:center}
 .art-dot{height:6px;border-radius:3px;background:oklch(26% .008 25);transition:background .25s,width .25s;cursor:pointer;width:6px}
 .art-dot.active{background:var(--blue);width:24px}
+@media(max-width:600px){
+  #articles .art-scene{
+    height:auto;
+    margin-top:30px;
+    overflow:visible;
+    cursor:auto;
+  }
+  #articles .art-track{
+    height:auto;
+    display:grid;
+    gap:18px;
+    perspective:none;
+  }
+  #articles .art-item{
+    position:relative!important;
+    top:auto!important;
+    left:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    display:block!important;
+    transform:none!important;
+    opacity:1!important;
+    border-radius:12px;
+    overflow:hidden;
+  }
+  #articles .art-item:nth-child(n+4){display:none!important}
+  #articles .art-img{
+    height:150px;
+    width:100%;
+    object-fit:cover;
+  }
+  #articles .art-body{
+    height:auto;
+    min-height:0;
+    padding:18px 18px 16px;
+    display:block;
+  }
+  #articles .art-cat{
+    display:block;
+    font-size:9px;
+    margin-bottom:8px;
+  }
+  #articles .art-title{
+    display:block;
+    overflow:visible;
+    font-size:17px;
+    line-height:1.2;
+    margin-bottom:10px;
+    -webkit-line-clamp:unset;
+    -webkit-box-orient:initial;
+  }
+  #articles .art-excerpt{
+    display:block;
+    overflow:visible;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:12px;
+    -webkit-line-clamp:unset;
+    -webkit-box-orient:initial;
+  }
+  #articles .art-footer{
+    margin-top:10px;
+    padding-top:0;
+    border-top:0;
+  }
+  #articles .art-arrow{display:none}
+  #articles .art-nav{display:none}
+}
 
 /* ── COOKIE BANNER ───────────────────────── */
 @keyframes ck-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
