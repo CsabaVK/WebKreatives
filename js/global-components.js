@@ -252,7 +252,7 @@
   .cookie-actions,.cookie-panel-actions{width:100%;justify-content:stretch}
   .cookie-btn{flex:1}
   .cookie-copy p{font-size:12.5px}
-  .cookie-manage-btn{left:12px;right:12px;width:auto;text-align:center}
+  .cookie-manage-btn{left:12px;right:auto;width:auto;text-align:left}
 }
 
 /* ── DARK COOKIE OVERRIDE ────────────────────────────── */
