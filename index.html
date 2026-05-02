@@ -639,6 +639,7 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
   background:linear-gradient(to top,oklch(6% .010 25 / .92) 0%,transparent 55%);
   opacity:0;transition:opacity .4s;
   display:flex;flex-direction:column;justify-content:flex-end;padding:28px;
+  pointer-events:none;
 }
 .port-card:hover .port-overlay{opacity:1}
 .port-ind{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
@@ -1050,6 +1051,12 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 .fbot p,.fbot a{font-size:12px;color:oklch(32% .005 25);font-weight:300}
 .fbot a:hover{color:oklch(52% .005 25)}
 .fbot-links{display:flex;gap:20px}
+@media(max-width:600px){
+  footer{padding-bottom:76px}
+  .fbot{justify-content:flex-end;text-align:right}
+  .fbot p{width:100%}
+  .fbot-links{margin-left:auto;justify-content:flex-end}
+}
 
 /* ── RESPONSIVE ──────────────────────────────────────── */
 @media(max-width:1100px){
@@ -1093,14 +1100,15 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   .hero-sub{font-size:15px;margin-bottom:40px}
   .hero-btns{gap:16px;margin-left:auto;margin-right:auto;max-width:280px}
   .hero-trust{
-    width:100%;max-width:350px;margin:48px auto 0;padding-top:20px;
-    border-top:1px dashed oklch(34% .010 25);
+    width:100%;max-width:350px;margin:64px auto 0;padding-top:18px;
+    border-top:1px solid oklch(30% .010 25);
     gap:12px;
   }
   .mbr{display:block}
   .dbr{display:none}
   #stats .h2{font-size:clamp(31px,8.8vw,34px);max-width:350px;line-height:1.06}
   #services .h2{font-size:clamp(31px,8.5vw,33px);max-width:350px}
+  #pricing .h2{font-size:clamp(34px,9vw,38px);line-height:1.05;max-width:350px;margin-left:auto;margin-right:auto}
   #stats .stat-card{padding:24px 16px}
   #stats .stat-n{font-size:clamp(31px,8.8vw,36px);white-space:nowrap}
   #stats .stat-l{font-size:12.5px}
@@ -1111,13 +1119,17 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   .stat-card,.svc-item,.proc-step,.price-card,.sub-card{padding:28px 22px}
   .port-header,.art-header{align-items:flex-start;gap:18px}
   .reviews-split{gap:22px}
-  .rc-stage{height:300px;transform:none;margin-top:6px;overflow:hidden}
-  .rc{height:auto;min-height:210px;padding:18px;width:100%}
+  .rc-stage{height:auto;transform:none;margin-top:6px;overflow:visible;display:grid;gap:14px}
+  .rc{position:relative;height:auto;min-height:0;padding:18px;width:100%;transform:none!important;opacity:1!important}
+  .rc:nth-child(n+4){display:none}
   .currency-row{flex-direction:column;align-items:flex-start;gap:10px;margin:32px 0}
   .contact-grid{gap:36px}
+  .about-grid{text-align:center;justify-items:center}
   .about-photo-wrap{width:180px}
   .about-ring-wrap,.about-ring{width:150px;height:150px}
-  .about-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .about-ring-wrap{margin:0 auto 22px}
+  .about-body{margin-left:auto;margin-right:auto}
+  .about-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;justify-items:center}
   .fgrid{grid-template-columns:1fr}
   .frow{grid-template-columns:1fr}
   .fpay-icons{gap:6px}
@@ -1141,7 +1153,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   .art-nav{display:none}
   #ck{left:12px;right:12px;bottom:12px;width:auto;padding:16px}
   .ck-btns{flex-direction:column}
-  #ck-manage{left:12px;right:12px;bottom:12px;width:auto;text-align:center;padding:10px 12px}
+  #ck-manage{left:12px;right:auto;bottom:12px;width:auto;text-align:left;padding:10px 12px}
 }
 @media(pointer:coarse), (max-width:900px){
   body,button{cursor:auto}
@@ -1165,6 +1177,18 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 .about-stat-row{display:flex;gap:36px;margin-top:28px;flex-wrap:wrap}
 .about-stat-n{font-family:var(--f1);font-size:clamp(30px,3vw,42px);font-weight:900;letter-spacing:-.04em;line-height:1}
 .about-stat-l{font-size:11px;font-weight:600;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-top:5px}
+@media(max-width:600px){
+  .about-stat-row{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px 18px;
+    justify-items:center;
+    text-align:center;
+    width:min(100%,320px);
+    margin:28px auto 0;
+  }
+  .about-stat{width:100%}
+}
 
 /* ── CONTACT SECTION DARK ─── */
 .sec-contact{
@@ -1344,7 +1368,11 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 #ck-manage{position:fixed;bottom:20px;left:20px;z-index:9989;background:oklch(16% .010 25);color:oklch(46% .005 80);border:1px solid oklch(24% .010 25);border-radius:8px;padding:7px 11px;font-family:var(--f2);font-size:11px;cursor:pointer;transition:color .2s,border-color .2s}
 #ck-manage:hover{color:oklch(72% .005 80);border-color:oklch(36% .010 25)}
 #ck-manage[hidden]{display:none!important}
-@media(max-width:600px){#ck-manage{left:12px;right:12px;bottom:12px;width:auto;text-align:center;padding:10px 12px}}
+@media(max-width:600px){
+  #ck{left:12px;right:12px;bottom:12px;width:auto;max-width:none;padding:16px}
+  .ck-btns{flex-direction:column}
+  #ck-manage{left:12px;right:auto;bottom:12px;width:auto;text-align:left;padding:10px 12px}
+}
 </style>
 </head>
 <body>
@@ -1662,7 +1690,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 <!-- PRICING → QUOTE PROCESS -->
 <section class="sec sec-mid" id="pricing">
   <p class="lbl reveal" style="justify-content:center" data-nl="Op maat gemaakt" data-en="Tailored to you">Tailored to you</p>
-  <h2 class="h2 reveal" style="text-align:center" data-nl="Elk project uniek.<br>Elke offerte ook." data-en="Every project is unique.<br>So is the quote.">Every project is unique.<br>So is the quote.</h2>
+  <h2 class="h2 reveal" style="text-align:center" data-nl="Elk project<br class='mbr'> uniek.<br>Elke offerte ook." data-en="Every project<br class='mbr'> is unique.<br>So is the quote.">Every project<br class="mbr"> is unique.<br>So is the quote.</h2>
   <p class="reveal" style="text-align:center;max-width:560px;margin:20px auto 0;font-size:clamp(15px,1.3vw,17px);color:var(--ink3);font-weight:300;line-height:1.7" data-nl="We werken niet met vaste pakketten. Na een korte intake sturen we een heldere offerte op maat, scope, tijdlijn en prijs. Transparant, zonder verborgen kosten." data-en="We don't work with fixed packages. After a short intake, we send a clear custom quote, scope, timeline and price. Transparent, no hidden costs.">We don't work with fixed packages. After a short intake, we send a clear custom quote, scope, timeline and price. Transparent, no hidden costs.</p>
   <div class="price-grid" style="margin-top:56px">
     <div class="price-card reveal" style="text-align:center">
@@ -2521,6 +2549,16 @@ document.querySelector('.cform')?.addEventListener('submit',async function(e){
   const n=cards.length;
   let order=cards.map((_,i)=>i);
   let timer;
+
+  if(window.matchMedia('(max-width: 600px)').matches){
+    cards.forEach((c,i)=>{
+      c.style.transform='none';
+      c.style.zIndex='';
+      c.style.opacity='1';
+      c.classList.toggle('rc-front',i===0);
+    });
+    return;
+  }
 
   function render(){
     order.forEach((ci,pos)=>{
