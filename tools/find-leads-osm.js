@@ -61,7 +61,7 @@ const CATEGORY_NL = getArg('--category', categories[dayIdx]);
 const CITY        = getArg('--city', CITIES[cityIdx]);
 const MAX_LEADS   = parseInt(getArg('--count', '40'));
 const LEADS_FILE  = getArg('--output', path.join(__dirname, '..', 'leads', 'Leads.xlsx'));
-const MAX_COMBOS  = parseInt(getArg('--max-combos', '30'));
+const MAX_COMBOS  = parseInt(getArg('--max-combos', String(categories.length * CITIES.length)));
 
 console.log(`\n🗺  WebKreatives Lead Finder — OpenStreetMap + Website Email Extraction (Free)`);
 console.log(`   Seed category : ${CATEGORY_NL}`);
@@ -84,11 +84,11 @@ out body;
 `.trim();
 }
 
-function queryOverpass(query) {
+function queryOverpass(query, hostname = 'overpass-api.de') {
   return new Promise((resolve, reject) => {
     const body = `data=${encodeURIComponent(query)}`;
     const options = {
-      hostname: 'overpass-api.de',
+      hostname,
       path:     '/api/interpreter',
       method:   'POST',
       headers:  {
@@ -142,7 +142,7 @@ function buildAddress(tags = {}) {
 
 function extractEmailsFromText(text = '') {
   const matches = String(text || '').match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi) || [];
-  const blocked = ['example.com', 'email.com', 'domain.com', 'yourdomain', 'sentry.io'];
+  const blocked = ['example.com', 'email.com', 'domain.com', 'yourdomain', 'sentry.io', 'sentry.', '.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg'];
   return [...new Set(matches.map(normalizeEmail).filter(email => email.includes('@') && !blocked.some(part => email.includes(part))))];
 }
 
@@ -301,6 +301,14 @@ function collectExistingLeads(sheet) {
   return existing;
 }
 
+async function loadExistingLeads() {
+  if (!fs.existsSync(LEADS_FILE)) return [];
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.readFile(LEADS_FILE);
+  const sheet = workbook.worksheets[0];
+  return collectExistingLeads(sheet);
+}
+
 function isDuplicate(existing, lead) {
   const leadName = normalizeForCompare(lead.name);
   const leadEmail = normalizeEmail(lead.email);
@@ -378,16 +386,16 @@ async function appendToExcel(newLeads) {
 function buildComboPlan(seedCategory, seedCity, maxCombos) {
   const seedCategoryIndex = Math.max(0, categories.indexOf(seedCategory));
   const seedCityIndex = Math.max(0, CITIES.indexOf(seedCity));
+  const orderedCategories = categories.map((_, i) => categories[(seedCategoryIndex + i) % categories.length]);
+  const orderedCities = CITIES.map((_, i) => CITIES[(seedCityIndex + i) % CITIES.length]);
   const combos = [];
-  const seen = new Set();
 
-  for (let step = 0; combos.length < maxCombos && step < categories.length * CITIES.length; step += 1) {
-    const categoryName = categories[(seedCategoryIndex + step) % categories.length];
-    const cityName = CITIES[(seedCityIndex + (step * 3)) % CITIES.length];
-    const key = `${categoryName}__${cityName}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    combos.push({ categoryName, cityName });
+  for (let cityOffset = 0; cityOffset < orderedCities.length && combos.length < maxCombos; cityOffset += 1) {
+    for (let categoryOffset = 0; categoryOffset < orderedCategories.length && combos.length < maxCombos; categoryOffset += 1) {
+      const categoryName = orderedCategories[(categoryOffset + cityOffset) % orderedCategories.length];
+      const cityName = orderedCities[cityOffset];
+      combos.push({ categoryName, cityName });
+    }
   }
 
   return combos;
@@ -400,15 +408,18 @@ async function runCombo(categoryName, cityName) {
   console.log(`   Combo    : ${categoryName} in ${cityName} (${tag.tag}=${tag.value})`);
 
   let data;
-  try {
-    data = await queryOverpass(query);
-  } catch (e) {
-    console.log(`   Primary endpoint failed, trying mirror...`);
+  const overpassHosts = ['overpass-api.de', 'overpass.kumi.systems', 'lz4.overpass-api.de'];
+  for (let i = 0; i < overpassHosts.length; i += 1) {
+    const host = overpassHosts[i];
     try {
-      data = await queryOverpass(query.replace('overpass-api.de', 'overpass.kumi.systems'));
-    } catch (e2) {
-      console.log(`   ✗ Overpass unavailable for ${categoryName}/${cityName}: ${e2.message}`);
-      return { categoryName, cityName, elements: 0, leads: [] };
+      if (i > 0) console.log(`   Retrying via ${host}...`);
+      data = await queryOverpass(query, host);
+      break;
+    } catch (error) {
+      if (i === overpassHosts.length - 1) {
+        console.log(`   ✗ Overpass unavailable for ${categoryName}/${cityName}: ${error.message}`);
+        return { categoryName, cityName, elements: 0, leads: [] };
+      }
     }
   }
 
@@ -427,6 +438,7 @@ async function main() {
   const combos = buildComboPlan(CATEGORY_NL, CITY, MAX_COMBOS);
   const gathered = [];
   const seenInRun = new Set();
+  const existingLeads = await loadExistingLeads();
   let totalElements = 0;
   let totalUsable = 0;
   let totalNoWebsite = 0;
@@ -444,6 +456,7 @@ async function main() {
     for (const lead of result.leads) {
       const key = `${normalizeEmail(lead.email)}__${normalizeForCompare(lead.name)}`;
       if (seenInRun.has(key)) continue;
+      if (isDuplicate(existingLeads, lead)) continue;
       seenInRun.add(key);
       gathered.push(lead);
       if (gathered.length >= MAX_LEADS) break;
