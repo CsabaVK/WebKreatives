@@ -19,6 +19,22 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'why-a-one-page-website-is-not-enough-in-2026',
+    title:            'Waarom Een One-Page Website in 2026 Vaak Niet Genoeg Is',
+    titleEn:          'Why a One-Page Website Is Not Enough in 2026',
+    category:         'Webdesign Tips',
+    categoryEn:       'Web Design Tips',
+    date:             '2026-05-14',
+    dateFormatted:    '14 mei 2026',
+    dateFormattedEn:  '14 May 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-05-14T20:10:00+02:00',
+    image:            'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Een one-page website kan strak ogen, maar is voor veel lokale bedrijven te beperkt voor vertrouwen, SEO en conversie.',
+    excerptEn:        'A one-page website can look clean, but for many local businesses it is too limited for trust, SEO, and conversion.'
+  },
+  {
     slug:             'why-your-google-business-profile-is-your-new-homepage',
     title:            'Waarom Jouw Google Bedrijfsprofiel Je Nieuwe Homepage Is in 2026',
     titleEn:          'Why Your Google Business Profile Is Your New Homepage in 2026',
