@@ -110,11 +110,17 @@ const WK_ARTICLES = [
     readTime:         '7 min lezen',
     readTimeEn:       '7 min read',
     publishedAt:      '2026-03-29T09:00:00+02:00',
-    image:            'https://images.unsplash.com/photo-1516321310766-d5a1f1f0d5e1?auto=format&fit=crop&w=760&q=80',
+    image:            'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=760&q=80',
     excerpt:          'Reviews zijn niet alleen sociale bewijskracht. Ze helpen ook bepalen hoe zichtbaar en overtuigend jouw bedrijf lokaal overkomt.',
     excerptEn:        'Reviews are not just social proof. They also help shape how visible and convincing your business appears locally.'
   }
   /* ── Add new articles above this line ─────────────────────────────────── */
 ];
+
+WK_ARTICLES.sort((a, b) => {
+  const aTime = new Date(a.publishedAt || a.date || 0).getTime();
+  const bTime = new Date(b.publishedAt || b.date || 0).getTime();
+  return bTime - aTime;
+});
 
 
