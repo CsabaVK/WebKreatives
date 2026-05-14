@@ -97,6 +97,22 @@ const WK_ARTICLES = [
     image:            'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=760&q=80',
     excerpt:          '81% van de klanten zoekt online voordat ze een kapsalon bezoeken. Zonder website ben je onzichtbaar voor nieuwe klanten.',
     excerptEn:        '81% of customers search online before choosing a salon. Without a website, you stay invisible to most new clients.'
+  },
+  {
+    slug:             'why-online-reviews-bring-you-more-local-customers',
+    title:            'Waarom Online Reviews Jou Meer Lokale Klanten Brengen',
+    titleEn:          'Why Online Reviews Bring You More Local Customers',
+    category:         'Lokale SEO',
+    categoryEn:       'Local SEO',
+    date:             '2026-03-29',
+    dateFormatted:    '29 maart 2026',
+    dateFormattedEn:  '29 March 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-03-29T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1516321310766-d5a1f1f0d5e1?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Reviews zijn niet alleen sociale bewijskracht. Ze helpen ook bepalen hoe zichtbaar en overtuigend jouw bedrijf lokaal overkomt.',
+    excerptEn:        'Reviews are not just social proof. They also help shape how visible and convincing your business appears locally.'
   }
   /* ── Add new articles above this line ─────────────────────────────────── */
 ];
