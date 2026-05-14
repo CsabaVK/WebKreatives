@@ -238,7 +238,7 @@
     'why-online-reviews-bring-you-more-local-customers': {
       current: 'Local SEO',
       category: 'Local SEO',
-      date: '29 March 2026',
+      date: '29 April 2026',
       read: '7 min read',
       docTitle: 'Why Online Reviews Bring You More Local Customers | WebKreatives',
       title: 'Why Online Reviews<br><em>Bring You More Local Customers</em>',
