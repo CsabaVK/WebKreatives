@@ -284,7 +284,7 @@
     'why-a-one-page-website-is-not-enough-in-2026': {
       current: 'Web Design Tips',
       category: 'Web Design Tips',
-      date: '14 May 2026',
+      date: '1 May 2026',
       read: '7 min read',
       docTitle: 'Why a One-Page Website Is Not Enough in 2026 | WebKreatives',
       title: 'Why a One-Page Website<br><em>Is Not Enough in 2026</em>',
