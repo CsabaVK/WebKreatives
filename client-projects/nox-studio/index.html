@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier Lune — Handcrafted Jewellery</title>
+  <meta name="description" content="Every piece made by hand, at home, with love. Fine jewellery crafted in Amsterdam." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg:     #0C0906;
+      --bg2:    #141009;
+      --bg3:    #1C1610;
+      --gold:   #C9A55A;
+      --gold2:  #E8D5A3;
+      --rose:   #D4A090;
+      --text:   #F5F0E8;
+      --muted:  #8A7A68;
+      --border: rgba(201,165,90,.18);
+      --bdr2:   rgba(255,255,255,.06);
+      --ease:   cubic-bezier(.16,1,.3,1);
+      --f:      'Jost', system-ui, sans-serif;
+      --fd:     'EB Garamond', Georgia, serif;
+    }
+
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { overflow-x: hidden; }
+    body {
+      font-family: var(--f);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── CURSOR ── */
+    #c-dot {
+      position: fixed; width: 5px; height: 5px;
+      background: var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      will-change: transform;
+    }
+    #c-ring {
+      position: fixed; width: 34px; height: 34px;
+      border: 1px solid rgba(201,165,90,.45);
+      border-radius: 50%; pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: width .3s var(--ease), height .3s var(--ease), border-color .25s;
+      will-change: transform;
+    }
+    body.c-hover #c-ring { width: 54px; height: 54px; border-color: var(--gold); }
+
+    /* ── LOADER ── */
+    #loader {
+      position: fixed; inset: 0; background: var(--bg);
+      z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 32px;
+    }
+    .ld-symbol {
+      font-family: var(--fd); font-style: italic;
+      font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 400;
+      color: var(--gold); letter-spacing: .04em;
+      overflow: hidden;
+    }
+    .ld-symbol span { display: block; transform: translateY(110%); }
+    .ld-sub {
+      font-family: var(--f); font-size: 10px; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--muted); overflow: hidden;
+    }
+    .ld-sub span { display: block; transform: translateY(110%); }
+    .ld-bar { width: 160px; height: 1px; background: var(--bdr2); overflow: hidden; }
+    .ld-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed; top: 20px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      width: min(860px, calc(100% - 32px));
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 24px;
+      background: rgba(12,9,6,.72);
+      backdrop-filter: blur(24px) saturate(1.4);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+    }
+    .nav-logo {
+      font-family: var(--fd); font-style: italic;
+      font-size: 1.15rem; font-weight: 400;
+      color: var(--gold); letter-spacing: .04em;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500; letter-spacing: .06em;
+      color: var(--muted); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      padding: 9px 20px;
+      border: 1px solid var(--border);
+      color: var(--gold); border-radius: 100px;
+      transition: all .25s var(--ease);
+    }
+    .nav-cta:hover { background: rgba(201,165,90,.08); border-color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; overflow: hidden;
+      padding: 120px 5vw 80px;
+      gap: 60px;
+    }
+    .hero-grain {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      opacity: .4;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.08'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+    .hero-orb {
+      position: absolute; border-radius: 50%;
+      pointer-events: none; filter: blur(90px);
+    }
+    .hero-orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,165,90,.14) 0%, transparent 70%);
+      top: -100px; right: -80px;
+      animation: breathe 12s ease-in-out infinite;
+    }
+    .hero-orb-2 {
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(212,160,144,.08) 0%, transparent 70%);
+      bottom: -60px; left: 15%;
+      animation: breathe 16s ease-in-out infinite reverse;
+    }
+    @keyframes breathe {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+    .hero-left { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 10px; font-weight: 500; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 36px;
+    }
+    .hero-eyebrow-line {
+      width: 32px; height: 1px; background: var(--gold); opacity: .5;
+    }
+    .hero-h1 {
+      font-family: var(--fd); font-weight: 400;
+      font-size: clamp(3rem, 5vw, 5.8rem);
+      line-height: 1.08; letter-spacing: -.01em;
+      color: var(--text); margin-bottom: 28px;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+    .hero-h1 .line { display: block; overflow: hidden; }
+    .hero-h1 .word { display: inline-block; }
+    .hero-desc {
+      font-size: 1rem; color: var(--muted); line-height: 1.8;
+      max-width: 380px; margin-bottom: 44px; font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 32px; font-family: var(--f);
+      font-size: 13px; font-weight: 600; letter-spacing: .06em;
+      background: var(--gold); color: var(--bg);
+      border-radius: 100px; cursor: none;
+      transition: all .3s var(--ease);
+    }
+    .btn-gold:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(201,165,90,.28); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; font-family: var(--f);
+      font-size: 13px; font-weight: 500; letter-spacing: .06em;
+      border: 1px solid var(--border); color: var(--muted);
+      border-radius: 100px; cursor: none;
+      transition: all .3s var(--ease);
+    }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(201,165,90,.4); }
+    .hero-right {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    .hero-img {
+      border-radius: 16px; overflow: hidden;
+      position: relative;
+    }
+    .hero-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: sepia(15%) contrast(1.08) brightness(.92);
+      transition: transform .9s var(--ease);
+    }
+    .hero-img:hover img { transform: scale(1.05); }
+    .hero-img-tall { grid-row: span 2; }
+    .hero-img-1 { aspect-ratio: 3/4; }
+    .hero-img-2 { aspect-ratio: 4/3; }
+    .hero-img-3 { aspect-ratio: 4/3; }
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 5vw;
+      display: flex; align-items: center; gap: 12px; z-index: 2;
+    }
+    .hero-scroll-line {
+      width: 48px; height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .hero-scroll-txt {
+      font-size: 10px; font-weight: 500; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    /* ── MARQUEE ── */
+    #ticker {
+      padding: 24px 0;
+      border-top: 1px solid var(--bdr2);
+      border-bottom: 1px solid var(--bdr2);
+      overflow: hidden; background: var(--bg2);
+    }
+    .m-track {
+      display: flex; white-space: nowrap;
+      animation: mLeft 30s linear infinite;
+    }
+    @keyframes mLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .mi {
+      display: inline-flex; align-items: center; gap: 16px;
+      padding: 0 24px; font-size: 11px; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    }
+    .mi .gem { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; transform: rotate(45deg); }
+    .mi.lit { color: var(--gold2); }
+
+    /* ── SHARED ── */
+    .sec { padding: 140px 5vw; max-width: 1280px; margin: 0 auto; }
+    .sec-full { padding: 140px 5vw; }
+    .lbl {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 500; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .lbl::before { content: ''; width: 20px; height: 1px; background: var(--gold); opacity: .6; }
+    .h2 {
+      font-family: var(--fd); font-weight: 400;
+      font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+      line-height: 1.15; color: var(--text);
+    }
+    .h2 em { font-style: italic; color: var(--gold); }
+    .sub { font-size: .95rem; color: var(--muted); line-height: 1.8; max-width: 440px; font-weight: 300; }
+
+    /* ── STORY SCRUB ── */
+    #story {
+      padding: 180px 5vw;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 90vh; position: relative; overflow: hidden;
+    }
+    .story-orb {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(201,165,90,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .story-inner { max-width: 900px; text-align: center; position: relative; z-index: 1; }
+    .story-pre {
+      font-size: 10px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 40px;
+    }
+    #storyTxt {
+      font-family: var(--fd); font-weight: 400;
+      font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+      line-height: 1.65; color: var(--text);
+    }
+    .sw { display: inline-block; opacity: .1; }
+
+    /* ── COLLECTION ── */
+    #collection { padding: 140px 5vw; }
+    .col-inner { max-width: 1280px; margin: 0 auto; }
+    .col-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 56px; flex-wrap: wrap; gap: 24px;
+    }
+    .col-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense; gap: 16px;
+    }
+    .piece {
+      position: relative; overflow: hidden;
+      border-radius: 18px; background: var(--bg2);
+      border: 1px solid var(--bdr2);
+      cursor: none;
+      transition: border-color .35s, transform .45s var(--ease);
+    }
+    .piece:hover { border-color: var(--border); transform: translateY(-4px); }
+    .piece-a { grid-column: span 5; aspect-ratio: 3/4; }
+    .piece-b { grid-column: span 4; aspect-ratio: 4/5; }
+    .piece-c { grid-column: span 3; aspect-ratio: 3/4; }
+    .piece-d { grid-column: span 4; aspect-ratio: 4/3; }
+    .piece-e { grid-column: span 4; aspect-ratio: 4/3; }
+    .piece-f { grid-column: span 4; aspect-ratio: 4/3; }
+    .piece img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: sepia(10%) contrast(1.05) brightness(.88);
+      transition: transform .8s var(--ease), filter .5s;
+    }
+    .piece:hover img { transform: scale(1.07); filter: sepia(5%) contrast(1.08) brightness(.96); }
+    .piece-over {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,9,6,.88) 0%, transparent 55%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 24px;
+      opacity: 0; transition: opacity .4s;
+    }
+    .piece:hover .piece-over { opacity: 1; }
+    .piece-cat {
+      font-size: 10px; font-weight: 500; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 5px;
+    }
+    .piece-name {
+      font-family: var(--fd); font-style: italic; font-size: 1.2rem;
+      color: var(--text);
+    }
+    .piece-price {
+      font-size: .8rem; font-weight: 500; color: var(--gold2); margin-top: 4px;
+    }
+    .piece-tag {
+      position: absolute; top: 18px; left: 18px;
+      font-size: 10px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; padding: 5px 12px;
+      background: rgba(201,165,90,.12); border: 1px solid var(--border);
+      border-radius: 100px; color: var(--gold); z-index: 1;
+    }
+
+    /* ── PROCESS ── */
+    #process { padding: 140px 5vw; }
+    .proc-inner { max-width: 1280px; margin: 0 auto; }
+    .proc-head { margin-bottom: 72px; }
+    .proc-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
+    .proc-step {
+      padding: 36px 28px;
+      border: 1px solid var(--bdr2); border-radius: 18px;
+      background: var(--bg2); position: relative; overflow: hidden;
+      transition: border-color .35s, transform .4s var(--ease);
+    }
+    .proc-step:hover { border-color: var(--border); transform: translateY(-4px); }
+    .proc-n {
+      font-family: var(--fd); font-weight: 400;
+      font-size: 4.5rem; line-height: 1;
+      color: transparent; -webkit-text-stroke: 1px rgba(201,165,90,.2);
+      margin-bottom: 24px;
+      transition: -webkit-text-stroke-color .35s;
+    }
+    .proc-step:hover .proc-n { -webkit-text-stroke-color: rgba(201,165,90,.6); }
+    .proc-t {
+      font-family: var(--fd); font-style: italic;
+      font-size: 1.25rem; color: var(--text); margin-bottom: 12px;
+    }
+    .proc-d { font-size: .875rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+    .proc-icon {
+      position: absolute; bottom: 28px; right: 28px;
+      opacity: .25; transition: opacity .35s;
+    }
+    .proc-step:hover .proc-icon { opacity: .6; }
+    .proc-icon svg { width: 28px; height: 28px; }
+
+    /* ── GALLERY ── */
+    #gallery { padding: 0 5vw 140px; }
+    .gal-inner { max-width: 1280px; margin: 0 auto; }
+    .gal-head { margin-bottom: 48px; }
+    .gal-grid {
+      display: grid;
+      grid-template-columns: repeat(12,1fr);
+      grid-auto-flow: dense; gap: 12px;
+    }
+    .gi {
+      border-radius: 14px; overflow: hidden;
+      background: var(--bg2);
+    }
+    .gi img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: sepia(12%) contrast(1.06) brightness(.85);
+      transition: transform .8s var(--ease), filter .5s;
+    }
+    .gi:hover img { transform: scale(1.05); filter: sepia(4%) contrast(1.1) brightness(.95); }
+    .gi-a { grid-column: span 4; aspect-ratio: 3/4; }
+    .gi-b { grid-column: span 5; aspect-ratio: 5/4; }
+    .gi-c { grid-column: span 3; grid-row: span 2; aspect-ratio: unset; min-height: 340px; }
+    .gi-d { grid-column: span 5; aspect-ratio: 4/3; }
+    .gi-e { grid-column: span 4; aspect-ratio: 4/3; }
+
+    /* ── STATS ── */
+    #stats {
+      padding: 90px 5vw;
+      border-top: 1px solid var(--bdr2);
+      border-bottom: 1px solid var(--bdr2);
+      background: var(--bg2);
+    }
+    .stats-row {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 40px;
+    }
+    .stat { text-align: center; }
+    .stat-n {
+      font-family: var(--fd); font-weight: 400;
+      font-size: clamp(2.8rem, 4vw, 4.2rem);
+      line-height: 1; letter-spacing: -.02em;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .stat-l { font-size: .85rem; color: var(--muted); font-weight: 400; letter-spacing: .04em; }
+
+    /* ── TESTIMONIALS ── */
+    #testi { padding: 160px 5vw; }
+    .testi-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .testi-stars {
+      display: flex; justify-content: center; gap: 4px; margin-bottom: 32px;
+    }
+    .testi-stars svg { width: 16px; height: 16px; fill: var(--gold); }
+    .testi-q {
+      font-family: var(--fd); font-style: italic; font-weight: 400;
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      line-height: 1.65; color: var(--text); margin-bottom: 44px;
+    }
+    .testi-auth { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .testi-ava {
+      width: 52px; height: 52px; border-radius: 50%;
+      overflow: hidden; border: 1px solid var(--border); flex-shrink: 0;
+    }
+    .testi-ava img { width: 100%; height: 100%; object-fit: cover; filter: sepia(10%); }
+    .testi-nm { font-size: .9rem; font-weight: 600; color: var(--text); }
+    .testi-rl { font-size: .78rem; color: var(--muted); }
+    .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 44px; }
+    .td {
+      width: 5px; height: 5px; background: var(--bdr2);
+      border-radius: 50%; cursor: none;
+      transition: background .25s, width .35s var(--ease);
+    }
+    .td.on { background: var(--gold); width: 22px; border-radius: 3px; }
+
+    /* ── CTA ── */
+    #cta {
+      padding: 180px 5vw; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-orb {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 55%, rgba(201,165,90,.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-line {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+    .cta-h {
+      font-family: var(--fd); font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      line-height: 1.1; color: var(--text); margin-bottom: 24px;
+    }
+    .cta-h em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: .95rem; color: var(--muted); margin-bottom: 52px; line-height: 1.8; font-weight: 300; }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-note {
+      font-size: .78rem; color: var(--muted); margin-top: 22px;
+      letter-spacing: .06em; font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--bdr2);
+      padding: 72px 5vw 36px;
+    }
+    .ft-inner { max-width: 1280px; margin: 0 auto; }
+    .ft-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 56px;
+    }
+    .ft-brand {
+      font-family: var(--fd); font-style: italic;
+      font-size: 1.4rem; color: var(--gold); margin-bottom: 14px;
+    }
+    .ft-desc { font-size: .85rem; color: var(--muted); line-height: 1.8; max-width: 260px; margin-bottom: 28px; font-weight: 300; }
+    .ft-soc { display: flex; gap: 10px; }
+    .ft-s {
+      width: 34px; height: 34px;
+      background: var(--bg2); border: 1px solid var(--bdr2);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s;
+    }
+    .ft-s:hover { border-color: var(--border); }
+    .ft-s svg { width: 14px; height: 14px; stroke: var(--muted); }
+    .ft-col-h {
+      font-size: 10px; font-weight: 600; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--text); margin-bottom: 20px;
+    }
+    .ft-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .ft-links a { font-size: .85rem; color: var(--muted); transition: color .2s; font-weight: 300; }
+    .ft-links a:hover { color: var(--text); }
+    .ft-bot {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px; border-top: 1px solid var(--bdr2);
+    }
+    .ft-copy { font-size: .78rem; color: var(--muted); }
+    .ft-top-btn {
+      font-size: .78rem; font-weight: 500; color: var(--muted);
+      display: flex; align-items: center; gap: 6px; transition: color .2s;
+    }
+    .ft-top-btn:hover { color: var(--text); }
+    .ft-top-btn svg { width: 13px; height: 13px; }
+
+    /* ── REVEAL ── */
+    .rv { opacity: 0; transform: translateY(32px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      #hero { grid-template-columns: 1fr; padding-top: 100px; }
+      .hero-right { display: none; }
+      .nav-links { display: none; }
+      .proc-grid { grid-template-columns: 1fr 1fr; }
+      .piece-a { grid-column: span 6; }
+      .piece-b { grid-column: span 6; }
+      .piece-c { grid-column: span 12; }
+      .piece-d,.piece-e,.piece-f { grid-column: span 12; }
+      .stats-row { grid-template-columns: repeat(2,1fr); }
+      .ft-top { grid-template-columns: 1fr 1fr; }
+      .gi-a { grid-column: span 6; }
+      .gi-b { grid-column: span 6; }
+      .gi-c { grid-column: span 12; min-height: 260px; }
+      .gi-d { grid-column: span 6; }
+      .gi-e { grid-column: span 6; }
+    }
+    @media (max-width: 560px) {
+      .proc-grid { grid-template-columns: 1fr; }
+      .ft-top { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="c-dot"></div>
+  <div id="c-ring"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="ld-symbol"><span>Atelier Lune</span></div>
+    <div class="ld-sub"><span>Handcrafted Jewellery</span></div>
+    <div class="ld-bar"><div class="ld-fill" id="ldFill"></div></div>
+  </div>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <span class="nav-logo">Atelier Lune</span>
+    <ul class="nav-links">
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#cta">Commission</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">Commission a piece</a>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-grain"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        Handcrafted in Amsterdam
+      </div>
+      <h1 class="hero-h1">
+        <span class="line"><span class="word">Made by hand,</span></span>
+        <span class="line"><span class="word">worn with</span></span>
+        <span class="line"><span class="word"><em>intention</em></span></span>
+      </h1>
+      <p class="hero-desc">
+        Each piece is shaped, soldered, and polished at my kitchen table.
+        No factories, no shortcuts — just silver, gold, and patience.
+      </p>
+      <div class="hero-btns">
+        <a href="#collection" class="btn-gold">Explore the collection</a>
+        <a href="#story" class="btn-ghost">My story</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-img hero-img-tall hero-img-1">
+        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=900&fit=crop&auto=format&q=80" alt="Handcrafted jewellery" loading="eager" />
+      </div>
+      <div class="hero-img hero-img-2">
+        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=500&fit=crop&auto=format&q=80" alt="Gold ring detail" loading="eager" />
+      </div>
+      <div class="hero-img hero-img-3">
+        <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=600&h=500&fit=crop&auto=format&q=80" alt="Workshop tools" loading="eager" />
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span class="hero-scroll-txt">Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- Ticker -->
+  <div id="ticker">
+    <div class="m-track">
+      <span class="mi lit"><span class="gem"></span>Sterling Silver</span>
+      <span class="mi"><span class="gem"></span>14k Gold Fill</span>
+      <span class="mi lit"><span class="gem"></span>Handmade</span>
+      <span class="mi"><span class="gem"></span>Rings</span>
+      <span class="mi lit"><span class="gem"></span>Necklaces</span>
+      <span class="mi"><span class="gem"></span>Earrings</span>
+      <span class="mi lit"><span class="gem"></span>Bracelets</span>
+      <span class="mi"><span class="gem"></span>Commission Pieces</span>
+      <span class="mi lit"><span class="gem"></span>Amsterdam</span>
+      <span class="mi"><span class="gem"></span>Sterling Silver</span>
+      <span class="mi lit"><span class="gem"></span>14k Gold Fill</span>
+      <span class="mi"><span class="gem"></span>Handmade</span>
+      <span class="mi lit"><span class="gem"></span>Rings</span>
+      <span class="mi"><span class="gem"></span>Necklaces</span>
+      <span class="mi lit"><span class="gem"></span>Earrings</span>
+      <span class="mi"><span class="gem"></span>Bracelets</span>
+      <span class="mi lit"><span class="gem"></span>Commission Pieces</span>
+      <span class="mi"><span class="gem"></span>Amsterdam</span>
+    </div>
+  </div>
+
+  <!-- Story scrub -->
+  <section id="story">
+    <div class="story-orb"></div>
+    <div class="story-inner">
+      <p class="story-pre">A little about me</p>
+      <div id="storyTxt">
+        I started making jewellery on my kitchen table with a borrowed torch and a dream.
+        That was three years ago. Today every ring, necklace, and earring still leaves
+        the same table — shaped by hand, polished with care, and sent to someone who
+        will wear it every single day. That is the part that never gets old.
+      </div>
+    </div>
+  </section>
+
+  <!-- Collection -->
+  <section id="collection">
+    <div class="col-inner">
+      <div class="col-head">
+        <div>
+          <p class="lbl">The collection</p>
+          <h2 class="h2">Pieces made to<br><em>last a lifetime</em></h2>
+        </div>
+        <a href="#cta" class="btn-ghost">Commission yours &rarr;</a>
+      </div>
+      <div class="col-grid">
+
+        <div class="piece piece-a rv">
+          <span class="piece-tag">Bestseller</span>
+          <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=700&h=960&fit=crop&auto=format&q=80" alt="Luna Ring" />
+          <div class="piece-over">
+            <p class="piece-cat">Ring</p>
+            <p class="piece-name">The Luna Ring</p>
+            <p class="piece-price">From €85</p>
+          </div>
+        </div>
+
+        <div class="piece piece-b rv">
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=780&fit=crop&auto=format&q=80" alt="Crescent Necklace" />
+          <div class="piece-over">
+            <p class="piece-cat">Necklace</p>
+            <p class="piece-name">Crescent Pendant</p>
+            <p class="piece-price">From €110</p>
+          </div>
+        </div>
+
+        <div class="piece piece-c rv">
+          <img src="https://images.unsplash.com/photo-1573408301185-9519f94c2ca7?w=500&h=700&fit=crop&auto=format&q=80" alt="Arch Earrings" />
+          <div class="piece-over">
+            <p class="piece-cat">Earrings</p>
+            <p class="piece-name">Arch Drops</p>
+            <p class="piece-price">From €65</p>
+          </div>
+        </div>
+
+        <div class="piece piece-d rv">
+          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=700&h=540&fit=crop&auto=format&q=80" alt="Soleil Band" />
+          <div class="piece-over">
+            <p class="piece-cat">Ring</p>
+            <p class="piece-name">Soleil Band</p>
+            <p class="piece-price">From €95</p>
+          </div>
+        </div>
+
+        <div class="piece piece-e rv">
+          <span class="piece-tag">New</span>
+          <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=700&h=540&fit=crop&auto=format&q=80" alt="Tide Bracelet" />
+          <div class="piece-over">
+            <p class="piece-cat">Bracelet</p>
+            <p class="piece-name">Tide Bracelet</p>
+            <p class="piece-price">From €120</p>
+          </div>
+        </div>
+
+        <div class="piece piece-f rv">
+          <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=700&h=540&fit=crop&auto=format&q=80" alt="Dew Pendant" />
+          <div class="piece-over">
+            <p class="piece-cat">Necklace</p>
+            <p class="piece-name">Dew Pendant</p>
+            <p class="piece-price">From €98</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process">
+    <div class="proc-inner">
+      <div class="proc-head">
+        <p class="lbl">How it is made</p>
+        <h2 class="h2">From raw metal<br><em>to finished piece</em></h2>
+      </div>
+      <div class="proc-grid">
+
+        <div class="proc-step rv">
+          <div class="proc-n">01</div>
+          <h3 class="proc-t">Sketch &amp; Design</h3>
+          <p class="proc-d">Every piece starts as a pencil sketch. I draw until the shape feels right — sometimes that takes an hour, sometimes a week.</p>
+          <div class="proc-icon">
+            <svg viewBox="0 0 28 28" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 24l4-1 14-14-3-3L5 20l-1 4z"/><path d="M17 7l4 4"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="proc-step rv">
+          <div class="proc-n">02</div>
+          <h3 class="proc-t">Cut &amp; Shape</h3>
+          <p class="proc-d">Sheet metal is cut with a jeweller's saw, then shaped by hand with a hammer, mandrel, and patience on my workbench at home.</p>
+          <div class="proc-icon">
+            <svg viewBox="0 0 28 28" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8" cy="20" r="3"/><circle cx="20" cy="8" r="3"/>
+              <path d="M10.5 17.5l7-7"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="proc-step rv">
+          <div class="proc-n">03</div>
+          <h3 class="proc-t">Solder &amp; Refine</h3>
+          <p class="proc-d">Joints are soldered with a butane torch, then filed smooth. The piece is pickled, rinsed, and shaped again until it is perfect.</p>
+          <div class="proc-icon">
+            <svg viewBox="0 0 28 28" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 4v6M10 8l4-4 4 4"/><path d="M6 18c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+              <path d="M9 22h10"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="proc-step rv">
+          <div class="proc-n">04</div>
+          <h3 class="proc-t">Polish &amp; Send</h3>
+          <p class="proc-d">Each piece is hand-polished to a mirror finish, wrapped with care, and sent directly from my home to yours — no middleman, ever.</p>
+          <div class="proc-icon">
+            <svg viewBox="0 0 28 28" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 14l7 7L24 7"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="gal-inner">
+      <div class="gal-head">
+        <p class="lbl">Behind the scenes</p>
+        <h2 class="h2">The studio,<br><em>up close</em></h2>
+      </div>
+      <div class="gal-grid">
+        <div class="gi gi-a rv"><img src="https://images.unsplash.com/photo-1590548784585-643d2b9f2925?w=600&h=900&fit=crop&auto=format&q=80" alt="Jewellery tools" /></div>
+        <div class="gi gi-b rv"><img src="https://images.unsplash.com/photo-1509481560077-6e7a4ecea0c8?w=800&h=640&fit=crop&auto=format&q=80" alt="Workbench" /></div>
+        <div class="gi gi-c rv"><img src="https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?w=500&h=900&fit=crop&auto=format&q=80" alt="Polishing" /></div>
+        <div class="gi gi-d rv"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=640&fit=crop&auto=format&q=80" alt="Crafting" /></div>
+        <div class="gi gi-e rv"><img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=700&h=560&fit=crop&auto=format&q=80" alt="Finished piece" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div id="stats">
+    <div class="stats-row">
+      <div class="stat rv">
+        <div class="stat-n" data-target="340" data-suffix="+">0</div>
+        <div class="stat-l">Pieces sold</div>
+      </div>
+      <div class="stat rv">
+        <div class="stat-n" data-target="3">0</div>
+        <div class="stat-l">Years making</div>
+      </div>
+      <div class="stat rv">
+        <div class="stat-n" data-target="100" data-suffix="%">0</div>
+        <div class="stat-l">Made by hand</div>
+      </div>
+      <div class="stat rv">
+        <div class="stat-n" data-target="12">0</div>
+        <div class="stat-l">Countries shipped to</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <section id="testi">
+    <div class="testi-inner">
+      <div class="testi-stars">
+        <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15,6 11,9 13,14 8,11 3,14 5,9 1,6 6,6"/></svg>
+        <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15,6 11,9 13,14 8,11 3,14 5,9 1,6 6,6"/></svg>
+        <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15,6 11,9 13,14 8,11 3,14 5,9 1,6 6,6"/></svg>
+        <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15,6 11,9 13,14 8,11 3,14 5,9 1,6 6,6"/></svg>
+        <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15,6 11,9 13,14 8,11 3,14 5,9 1,6 6,6"/></svg>
+      </div>
+      <div class="testi-q" id="testiQ">
+        I wear my Luna Ring every single day. The quality is unbelievable for the price —
+        it has not tarnished once in eight months. And knowing it was made by hand by one
+        person makes it feel so much more special.
+      </div>
+      <div class="testi-auth">
+        <div class="testi-ava">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&auto=format&q=80" alt="Customer" id="testiImg" />
+        </div>
+        <div>
+          <p class="testi-nm" id="testiNm">Emma van Dijk</p>
+          <p class="testi-rl" id="testiRl">Amsterdam</p>
+        </div>
+      </div>
+      <div class="testi-dots">
+        <div class="td on" data-i="0"></div>
+        <div class="td" data-i="1"></div>
+        <div class="td" data-i="2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="cta-orb"></div>
+    <div class="cta-line"></div>
+    <div class="cta-inner">
+      <h2 class="cta-h rv">
+        Want something<br>made <em>just for you?</em>
+      </h2>
+      <p class="cta-sub rv">
+        I take commissions. Tell me what you have in mind — a gift,
+        a symbol, a memory — and I will make it by hand, just for you.
+      </p>
+      <div class="cta-row rv">
+        <a href="mailto:hello@atelierlune.nl" class="btn-gold" style="font-size:14px; padding:17px 40px;">
+          Send me a message
+        </a>
+        <a href="https://instagram.com" class="btn-ghost" style="font-size:14px; padding:16px 40px;">
+          Follow on Instagram
+        </a>
+      </div>
+      <p class="cta-note">
+        Commission slots open each month &mdash; currently 3 spots available
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="ft-inner">
+      <div class="ft-top">
+        <div>
+          <div class="ft-brand">Atelier Lune</div>
+          <p class="ft-desc">
+            Handcrafted silver and gold jewellery, made at home in Amsterdam.
+            Every piece is one of a kind and made with love.
+          </p>
+          <div class="ft-soc">
+            <a href="#" class="ft-s" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="#" class="ft-s" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.236 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.181-.78 1.172-4.97 1.172-4.97s-.299-.598-.299-1.482c0-1.388.806-2.428 1.808-2.428.852 0 1.265.64 1.265 1.408 0 .858-.546 2.14-.828 3.33-.236.995.499 1.806 1.476 1.806 1.771 0 3.135-1.867 3.135-4.562 0-2.387-1.715-4.055-4.163-4.055-2.836 0-4.5 2.126-4.5 4.326 0 .856.33 1.775.741 2.277a.3.3 0 0 1 .069.284c-.076.313-.243.995-.276 1.134-.044.183-.145.222-.334.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.966-.527-2.292-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+              </svg>
+            </a>
+            <a href="#" class="ft-s" aria-label="Etsy">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3h18v18H3zM8 8h8M8 12h6M8 16h4"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="ft-col-h">Shop</p>
+          <ul class="ft-links">
+            <li><a href="#">Rings</a></li>
+            <li><a href="#">Necklaces</a></li>
+            <li><a href="#">Earrings</a></li>
+            <li><a href="#">Bracelets</a></li>
+            <li><a href="#">Gift sets</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="ft-col-h">Studio</p>
+          <ul class="ft-links">
+            <li><a href="#">My story</a></li>
+            <li><a href="#">The process</a></li>
+            <li><a href="#">Commissions</a></li>
+            <li><a href="#">Care guide</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="ft-col-h">Contact</p>
+          <ul class="ft-links">
+            <li><a href="mailto:hello@atelierlune.nl">hello@atelierlune.nl</a></li>
+            <li><a href="#">Amsterdam, NL</a></li>
+            <li><a href="#">Instagram DM</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ft-bot">
+        <p class="ft-copy">&copy; 2026 Atelier Lune. All rights reserved.</p>
+        <a href="#" class="ft-top-btn" onclick="lenis.scrollTo(0,{duration:1.8});return false;">
+          Back to top
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 12V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── LENIS ── */
+  const lenis = new Lenis({
+    duration: 1.4,
+    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true
+  });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(time => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  /* ── CURSOR ── */
+  const dot = document.getElementById('c-dot');
+  const ring = document.getElementById('c-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    gsap.to(dot, { x: mx, y: my, duration: .08, ease: 'none' });
+  });
+  (function tick() {
+    rx += (mx - rx) * .1; ry += (my - ry) * .1;
+    gsap.set(ring, { x: rx, y: ry });
+    requestAnimationFrame(tick);
+  })();
+  document.querySelectorAll('a, button, .piece, .td, .proc-step, .gi').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('c-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('c-hover'));
+  });
+
+  /* ── LOADER ── */
+  const ldRows = document.querySelectorAll('.ld-symbol span, .ld-sub span');
+  gsap.to(ldRows, { translateY: '0%', duration: .8, stagger: .12, ease: 'power3.out', delay: .1 });
+  gsap.to({ v: 0 }, {
+    v: 100, duration: 1.6, ease: 'power2.inOut', delay: .2,
+    onUpdate: function() {
+      document.getElementById('ldFill').style.width = Math.floor(this.targets()[0].v) + '%';
+    },
+    onComplete: () => {
+      gsap.to('#loader', {
+        yPercent: -100, duration: 1, ease: 'power3.inOut', delay: .1,
+        onComplete: () => {
+          document.getElementById('loader').style.display = 'none';
+          initPage();
+        }
+      });
+    }
+  });
+
+  function initPage() {
+
+    /* HERO */
+    gsap.fromTo('.hero-h1 .word',
+      { yPercent: 110, opacity: 0 },
+      { yPercent: 0, opacity: 1, duration: 1, stagger: .1, ease: 'power3.out' }
+    );
+    gsap.fromTo('.hero-eyebrow', { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: .9, ease: 'power3.out' });
+    gsap.fromTo('.hero-desc',    { opacity: 0, y: 14 },  { opacity: 1, y: 0, duration: .9, delay: .35, ease: 'power3.out' });
+    gsap.fromTo('.hero-btns',   { opacity: 0, y: 14 },  { opacity: 1, y: 0, duration: .9, delay: .55, ease: 'power3.out' });
+    gsap.fromTo('.hero-scroll', { opacity: 0 },           { opacity: 1, duration: 1, delay: 1.1 });
+
+    /* Hero images stagger in */
+    gsap.fromTo('.hero-img',
+      { opacity: 0, scale: .96, y: 24 },
+      { opacity: 1, scale: 1, y: 0, duration: 1.1, stagger: .15, delay: .3, ease: 'power3.out' }
+    );
+
+    /* Hero parallax */
+    gsap.to('.hero-right', {
+      yPercent: -12, ease: 'none',
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.8 }
+    });
+
+    /* Scroll reveals */
+    document.querySelectorAll('.rv').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 32 },
+        {
+          opacity: 1, y: 0, duration: .9, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    /* Story word scrub */
+    const stTxt = document.getElementById('storyTxt');
+    const words = stTxt.textContent.trim().split(/\s+/);
+    stTxt.innerHTML = words.map(w => `<span class="sw">${w}</span> `).join('');
+    gsap.to(stTxt.querySelectorAll('.sw'), {
+      opacity: 1, stagger: .04, ease: 'none',
+      scrollTrigger: { trigger: '#story', start: 'top 68%', end: 'bottom 32%', scrub: 2 }
+    });
+
+    /* Collection image scale on scroll */
+    document.querySelectorAll('.piece img').forEach(img => {
+      gsap.fromTo(img,
+        { scale: .9 },
+        { scale: 1, ease: 'none', scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: 1.8 } }
+      );
+    });
+
+    /* Gallery image scale on scroll */
+    document.querySelectorAll('.gi img').forEach(img => {
+      gsap.fromTo(img,
+        { scale: .92 },
+        { scale: 1, ease: 'none', scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: 1.5 } }
+      );
+    });
+
+    /* Stats counter */
+    document.querySelectorAll('.stat-n').forEach(el => {
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '';
+      ScrollTrigger.create({
+        trigger: el, start: 'top 86%', once: true,
+        onEnter: () => {
+          gsap.to({ v: 0 }, {
+            v: target, duration: 2.4, ease: 'power2.out',
+            onUpdate: function() { el.textContent = Math.floor(this.targets()[0].v) + suffix; }
+          });
+        }
+      });
+    });
+
+    /* Process hover line */
+    document.querySelectorAll('.proc-step').forEach((s, i) => {
+      gsap.fromTo(s,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1, y: 0, duration: .8, delay: i * .1, ease: 'power3.out',
+          scrollTrigger: { trigger: '#process', start: 'top 80%' }
+        }
+      );
+    });
+
+    /* CTA heading */
+    gsap.fromTo('.cta-h', { opacity: 0, y: 40 }, {
+      opacity: 1, y: 0, duration: 1.1, ease: 'power3.out',
+      scrollTrigger: { trigger: '#cta', start: 'top 78%' }
+    });
+  }
+
+  /* ── TESTIMONIALS ── */
+  const reviews = [
+    {
+      q: "I wear my Luna Ring every single day. The quality is unbelievable for the price — it has not tarnished once in eight months. Knowing it was made by one person makes it so much more special.",
+      nm: "Emma van Dijk", rl: "Amsterdam",
+      img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&auto=format&q=80"
+    },
+    {
+      q: "I commissioned a custom necklace as a birthday gift for my mother. The communication was warm and personal, the piece arrived beautifully wrapped, and she cried when she opened it.",
+      nm: "Lena Müller", rl: "Berlin",
+      img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&h=200&fit=crop&auto=format&q=80"
+    },
+    {
+      q: "Finally a jeweller who genuinely cares. The silver earrings I ordered are delicate, beautifully finished, and exactly as described. I have already ordered two more pairs.",
+      nm: "Sophie Laurent", rl: "Paris",
+      img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&h=200&fit=crop&auto=format&q=80"
+    }
+  ];
+  let curT = 0;
+  const tQ = document.getElementById('testiQ');
+  const tNm = document.getElementById('testiNm');
+  const tRl = document.getElementById('testiRl');
+  const tIm = document.getElementById('testiImg');
+  const tDs = document.querySelectorAll('.td');
+
+  function goTesti(i) {
+    const d = reviews[i];
+    gsap.to('.testi-inner > *', {
+      opacity: 0, y: 6, duration: .22, stagger: .04, ease: 'power2.in',
+      onComplete: () => {
+        tQ.textContent = d.q;
+        tNm.textContent = d.nm;
+        tRl.textContent = d.rl;
+        tIm.src = d.img;
+        tDs.forEach((t, j) => t.classList.toggle('on', j === i));
+        gsap.to('.testi-inner > *', { opacity: 1, y: 0, duration: .4, stagger: .04, ease: 'power2.out' });
+      }
+    });
+    curT = i;
+  }
+  tDs.forEach(d => d.addEventListener('click', () => goTesti(+d.dataset.i)));
+  setInterval(() => goTesti((curT + 1) % reviews.length), 5500);
+</script>
+</body>
+</html>
