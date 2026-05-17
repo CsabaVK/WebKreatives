@@ -135,6 +135,7 @@ For article-led posts:
 - Never link only the articles index when a specific article is being discussed.
 - The post must be useful even if the reader does not click.
 - The article link should be placed clearly near the end.
+- In user-facing drafts, prefer a clean short LinkedIn-style URL without tracking parameters unless tracking is explicitly requested for publishing.
 
 Correct:
 
