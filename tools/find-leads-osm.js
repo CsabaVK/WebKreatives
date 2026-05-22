@@ -116,6 +116,14 @@ function normalizeEmail(raw = '') {
   return String(raw || '').trim().toLowerCase().replace(/^mailto:/i, '');
 }
 
+function isValidEmail(raw = '') {
+  const email = normalizeEmail(raw);
+  if (!/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i.test(email)) return false;
+  if (/[\\/]/.test(email)) return false;
+  if (/\.(jpg|jpeg|png|webp|gif|svg|avif|bmp|ico)(\?|#|$)/i.test(email)) return false;
+  return true;
+}
+
 function normalizeName(raw = '') {
   return String(raw || '').trim();
 }
@@ -143,7 +151,7 @@ function buildAddress(tags = {}) {
 function extractEmailsFromText(text = '') {
   const matches = String(text || '').match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi) || [];
   const blocked = ['example.com', 'email.com', 'domain.com', 'yourdomain', 'sentry.io', 'sentry.', '.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg'];
-  return [...new Set(matches.map(normalizeEmail).filter(email => email.includes('@') && !blocked.some(part => email.includes(part))))];
+  return [...new Set(matches.map(normalizeEmail).filter(email => isValidEmail(email) && !blocked.some(part => email.includes(part))))];
 }
 
 function chooseBestEmail(emails = [], website = '') {
@@ -239,12 +247,13 @@ async function extractLeads(elements, city, categoryName) {
     if (!name || name.length < 2) return null;
 
     const phone = String(tags.phone || tags['contact:phone'] || tags['phone:nl'] || '').trim();
-    const directEmail = normalizeEmail(tags.email || tags['contact:email'] || '');
+    const directEmailRaw = normalizeEmail(tags.email || tags['contact:email'] || '');
+    const directEmail = isValidEmail(directEmailRaw) ? directEmailRaw : '';
     const website = normalizeWebsite(tags.website || tags['contact:website'] || tags.url || '');
     const hasWebsite = !!website;
     const websiteLookup = !directEmail && hasWebsite ? await extractEmailFromWebsite(website) : { email: '', scanned: false };
     const email = normalizeEmail(directEmail || websiteLookup.email || '');
-    if (!email || !email.includes('@')) return null;
+    if (!isValidEmail(email)) return null;
 
     const address = buildAddress(tags);
     const town = String(tags['addr:city'] || tags['addr:town'] || city || '').trim();
