@@ -2137,6 +2137,8 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   </div>
 </footer>
 
+<!-- Article registry: single source of truth for the homepage "Practical knowledge" cards -->
+<script src="articles/articles-data.js?v=20260723-home"></script>
 <script>
 gsap.registerPlugin(ScrollTrigger);
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2414,6 +2416,51 @@ if(cycleEl&&!reduced){
   const scene=document.getElementById('artScene');
   const track=document.getElementById('artTrack');
   if(!track||!scene)return;
+
+  /* Build the latest cards from the article registry (auto-updates as articles are added). */
+  if(typeof WK_ARTICLES!=='undefined' && WK_ARTICLES.length){
+    const latest=WK_ARTICLES.slice(0,5);
+    track.innerHTML='';
+    latest.forEach(a=>{
+      const card=document.createElement('a');
+      card.className='art-item';
+      card.href='articles/'+a.slug+'/';
+      const im=document.createElement('img');
+      im.className='art-img'; im.alt=''; im.loading='lazy';
+      im.src=(a.image||'').replace('w=760','w=600');
+      const body=document.createElement('div'); body.className='art-body';
+      const field=(cls,nl,en)=>{
+        const d=document.createElement('div');
+        d.className=cls;
+        d.setAttribute('data-nl',nl||''); d.setAttribute('data-en',en||'');
+        d.innerHTML=(lang==='nl'?nl:en)||nl||'';
+        return d;
+      };
+      body.appendChild(field('art-cat',a.category,a.categoryEn));
+      body.appendChild(field('art-title',a.title,a.titleEn));
+      body.appendChild(field('art-excerpt',a.excerpt,a.excerptEn));
+      const footer=document.createElement('div'); footer.className='art-footer';
+      const read=document.createElement('span'); read.className='art-read';
+      read.setAttribute('data-nl',a.readTime||''); read.setAttribute('data-en',a.readTimeEn||'');
+      read.innerHTML=(lang==='nl'?a.readTime:a.readTimeEn)||a.readTime||'';
+      const arrow=document.createElement('span'); arrow.className='art-arrow'; arrow.textContent='→';
+      footer.appendChild(read); footer.appendChild(arrow);
+      body.appendChild(footer);
+      card.appendChild(im); card.appendChild(body);
+      track.appendChild(card);
+    });
+    const dotsWrap=document.getElementById('artDots');
+    if(dotsWrap){
+      dotsWrap.innerHTML='';
+      latest.forEach((_,i)=>{
+        const d=document.createElement('div');
+        d.className='art-dot'+(i===0?' active':'');
+        d.setAttribute('data-i',i);
+        dotsWrap.appendChild(d);
+      });
+    }
+  }
+
   const items=Array.from(track.querySelectorAll('.art-item'));
   const dots=Array.from(document.querySelectorAll('.art-dot'));
   const N=items.length;
