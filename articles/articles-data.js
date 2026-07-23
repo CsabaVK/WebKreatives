@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'anatomy-of-a-homepage-that-converts',
+    title:            'De Anatomie van een Homepage Die Klanten Overtuigt',
+    titleEn:          'The Anatomy of a Homepage That Converts',
+    category:         'Conversie',
+    categoryEn:       'Conversion',
+    date:             '2026-05-07',
+    dateFormatted:    '7 mei 2026',
+    dateFormattedEn:  '7 May 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-05-07T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Een homepage die klanten overtuigt is geen mooi plaatje, maar een reeks bewuste keuzes die samenwerken. We halen de converterende homepage uit elkaar.',
+    excerptEn:        'A homepage that converts is not a pretty picture but a set of deliberate parts working together. We break the converting homepage down piece by piece.'
+  },
+
+  {
     slug:             'why-a-one-page-website-is-not-enough-in-2026',
     title:            'Waarom Een One-Page Website in 2026 Vaak Niet Genoeg Is',
     titleEn:          'Why a One-Page Website Is Not Enough in 2026',

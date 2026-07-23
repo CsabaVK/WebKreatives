@@ -17,6 +17,50 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'anatomy-of-a-homepage-that-converts': {
+      current: 'Conversion',
+      category: 'Conversion',
+      date: '7 May 2026',
+      read: '7 min read',
+      docTitle: 'The Anatomy of a Homepage That Converts | WebKreatives',
+      title: 'The Anatomy of a Homepage<br><em>That Converts</em>',
+      bottomTitle: 'Want a homepage that is not just<br>good-looking, but brings in customers?',
+      bottomText: 'We build websites for local businesses that communicate clearly, load fast, and guide visitors toward real enquiries.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>Most small-business homepages look fine. Tidy colours, a logo, some text about the services. And still, very little happens. Visitors arrive, glance around for a few seconds, and leave again. No enquiry, no phone call, no contact.</p>
+<p>That is rarely caused by one big problem. It happens because the <strong>parts of the homepage do not work together</strong>. A homepage that converts is not a pretty picture, but a series of deliberate choices that lead the visitor, step by step, toward a single action. In this article we take that homepage apart and look at what each part is actually for.</p>
+<div class="art-quote"><p>"A good homepage does not ask 'what do you think of us?' — it asks 'what is your next step?'"</p></div>
+<h2><span class="num">1</span> The hero: one promise within five seconds</h2>
+<p>The top section of your homepage, the hero, decides almost everything. Within seconds a visitor decides whether they are in the right place. If it is unclear there what you do and who it is for, the rest of the page barely matters anymore.</p>
+<p>A strong hero answers three questions almost immediately: what do you offer, who is it for, and what should the visitor do? Not a vague slogan, but a concrete promise.</p>
+<div class="art-mini-grid"><div class="art-mini-card"><span class="eyebrow">What</span><h3>A clear promise</h3><p>One line that says what you do and what result the customer gets — not just your company name.</p></div><div class="art-mini-card"><span class="eyebrow">Who for</span><h3>Recognition</h3><p>The visitor should see themselves: "this is for a business like mine".</p></div><div class="art-mini-card"><span class="eyebrow">Now</span><h3>One button</h3><p>A visible, concrete call-to-action right in view, without having to scroll first.</p></div></div>
+<h2><span class="num">2</span> Proof: why should anyone believe you?</h2>
+<p>The moment you make a promise, a quiet question forms in the visitor's mind: is this true? That is what proof is for. Without it, your homepage stays a brochure talking about itself.</p>
+<p>Proof does not have to be grand. For most local businesses, a few credible signals already work strongly:</p>
+<ul class="art-checklist"><li>Real reviews or an average rating, ideally recent</li><li>Logos, cases, or photos of completed work</li><li>A short, human story about who is behind the business</li><li>Concrete numbers: years of experience, projects done, response time</li></ul>
+<p>The point is not to show as much as possible, but to show exactly the things that remove doubt at the moment that doubt appears.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80" alt="Team reviewing a website design on a screen" loading="lazy"><figcaption>Proof works best when it sits right where the visitor has just read a promise.</figcaption></figure>
+<h2><span class="num">3</span> Structure: the visitor should never have to think</h2>
+<p>A homepage that converts has a logical order. Each section answers the question that is live in the visitor's mind at that moment. Open with prices while people still do not know whether you understand their problem, and you lose them.</p>
+<ol class="art-steps"><li><strong>Recognition</strong> — show that you understand the visitor's problem before you present yourself.</li><li><strong>Solution</strong> — explain clearly what you offer and why it works.</li><li><strong>Proof</strong> — back it up with reviews, cases, or results.</li><li><strong>Action</strong> — make the next step impossible to miss.</li></ol>
+<p>This order feels obvious, and that is exactly why it works. The visitor is not pushed, but carried along.</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>Trying to put everything on the homepage. Every service, every detail, every page in the menu. The result is a page with no focus, where the most important message drowns.</p></div>
+<h2><span class="num">4</span> The call-to-action: one clear next step</h2>
+<p>Many homepages end in nothing. The visitor is convinced, but does not know what to do next. No button, no form, no visible phone number. That is exactly the moment a potential customer drops off.</p>
+<p>A good call-to-action is visible, concrete, and repeated at logical points on the page. Not five different options, but one primary action you carry through consistently.</p>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure your homepage brings in enough?</h3><p>We are happy to look at it and show you exactly which parts could be stronger.</p></div><a href="/#contact" class="btn btn-primary">Request a free check →</a></div>
+<h2><span class="num">5</span> Speed and mobile: the invisible foundation</h2>
+<p>You can have the perfect structure and copy, but if your homepage loads slowly or does not work well on a phone, none of the rest counts. Most visitors to a local business arrive on a smartphone.</p>
+<p>Speed and mobile display are not extras, but the foundation everything else rests on. A homepage that stumbles on mobile loses customers before they have read a single word.</p>
+<h2>Conclusion</h2>
+<p>A homepage that convinces customers is not a matter of prettier pictures. It is a matter of parts working together: a clear promise, credible proof, a logical structure, and one clear next step, carried by a fast and mobile foundation.</p>
+<p>If your homepage looks good but brings in little, the answer is almost always in one of these parts. The good news: you rarely have to tear it all down to feel the difference.</p>`
+    },
+
     '5-reasons-customers-leave-your-website': {
       current: 'Website Mistakes',
       category: 'Web Design Tips',
