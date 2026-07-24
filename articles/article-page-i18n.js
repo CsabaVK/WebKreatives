@@ -17,6 +17,55 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'why-your-business-needs-a-domain-email': {
+      current: 'Brand & Trust',
+      category: 'Brand & Trust',
+      date: '15 May 2026',
+      read: '7 min read',
+      docTitle: 'Why a Domain Email Makes Your Business Look More Serious | WebKreatives',
+      title: 'Why a Domain Email Makes<br><em>Your Business Look More Serious</em>',
+      bottomTitle: 'Want to look more professional<br>with every customer you email?',
+      bottomText: 'We build websites for local businesses and set up an email address on your own domain that fits your brand and reliably lands in the inbox.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>You have a solid quote ready, a tidy website and an honest story. And still, you send all of it from <strong>yourbusiness2019@gmail.com</strong>. It looks like a detail, but it is one of the first things a new customer sees. Before they have judged your work at all, they already have a feeling about how serious you are.</p>
+<p>An email address on your own domain, like <strong>info@yourbusiness.nl</strong>, is one of the cheapest ways to look more professional. Yet many hairdressers, contractors, coaches and hospitality businesses stick with a free address for years. In this article we explain why that quietly costs you money, and how easy it is to switch.</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>Thinking a free Gmail or Hotmail address is "fine for now". For you, it does work fine. For the customer choosing between you and a competitor, it is exactly the nudge toward the other one.</p></div>
+<h2>Your email address is a business card you leave everywhere</h2>
+<p>You hand out your email address more often than you think. In your quotes, on your invoice, in your signature, on Google, on flyers and in every message you send. Each time, that address says something about your business, whether you want it to or not.</p>
+<p>An address on your own domain says: here is a real business, with its own website and a fixed place online. A free address with numbers or a nickname in it says something else unintentionally: hobby, temporary, or just starting out. Even if you have been doing quality work for ten years.</p>
+<h2>What a free address quietly signals</h2>
+<p>People judge in a few seconds. They do not read your address literally as "untrustworthy", but a feeling forms all the same. And that feeling works against you with exactly the kind of customer you want: someone willing to pay for quality.</p>
+<ul class="art-checklist"><li>A domain of your own shows you have invested in your business</li><li>It links your email directly to your website and brand name</li><li>It looks consistent on your quote, invoice and business card</li><li>It is easier to remember than a string of numbers</li></ul>
+<p>It is not about looking fancy. It is about removing doubt at the moment a customer decides whether to trust you with their money or their home.</p>
+<h2>Trust: why people drop off faster with @gmail.com</h2>
+<p>Imagine you receive two quotes for a renovation. Both are roughly equal. One comes from <strong>info@vandenbergbouw.nl</strong>, the other from <strong>vandenberg.klus.85@gmail.com</strong>. Which feels more reliable? Most people pick the first without even thinking about it.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&w=1200&q=80" alt="Business correspondence and an invoice on a desk" loading="lazy"><figcaption>Your address sits on every quote and invoice that goes out. A domain of your own makes that contact moment instantly more professional.</figcaption></figure>
+<p>This matters even more for businesses where trust is everything: someone coming to work in your home, dealing with your health, or asking for a sizeable sum up front. There, every signal that says "this is an established, serious business" counts.</p>
+<h2>Deliverability: why your emails actually arrive more often</h2>
+<p>There is also a practical side that has nothing to do with image. Sending from your own domain, set up correctly, lowers the chance your messages land in the spam folder. Especially when you send quotes or invoices, you do not want them to disappear unnoticed.</p>
+<p>With your own domain you can arrange the right settings that prove to mail servers you really are the sender. That makes your messages more trustworthy in the eyes of Gmail, Outlook and other providers, and therefore filtered out less often.</p>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want an email address that matches your brand?</h3><p>For local businesses we arrange both a website and a professional email address on your own domain, set up so your messages arrive properly.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2>Consistency with your brand and your website</h2>
+<p>A domain of your own makes everything line up. Your website is yourbusiness.nl, your email is info@yourbusiness.nl, and your invoice points to the same address. That unity makes you recognisable and trustworthy. Customers do not have to puzzle over whether they are dealing with the right business.</p>
+<p>On top of that, you can create several addresses at no extra cost: info@, quote@, or yourname@yourbusiness.nl. Handy when you hire someone later or want to separate different kinds of messages.</p>
+<h2>"But it works fine, doesn't it?" — the hidden cost</h2>
+<p>The biggest objection we hear is that the current address "just works". Technically, that is true. But working and convincing are two different things.</p>
+<div class="art-mistake"><strong>What you do not see</strong><p>The customer who saw your free address, hesitated for a moment and then called the competitor never tells you. You do not notice the missed enquiry. That is why it feels like nothing is going wrong, while revenue quietly leaks away.</p></div>
+<p>For a few euros a month you remove that doubt. Few investments in how you come across pay for themselves as easily as this one.</p>
+<h2>How to switch without the hassle</h2>
+<p>Switching sounds more technical than it is. In practice it comes down to a few steps:</p>
+<ol class="art-steps"><li><strong>Choose your domain</strong> — usually just the name of your business, the same as your website.</li><li><strong>Set up a mailbox</strong> — via your hosting package or a service like Google Workspace or Microsoft 365.</li><li><strong>Configure it properly</strong> — the right records so your mail arrives reliably.</li><li><strong>Update your address everywhere</strong> — website, quotes, invoices, Google profile and signature.</li></ol>
+<p>You can arrange this yourself, or have it done so you know for sure the settings are correct and your old messages come along.</p>
+<h2>Conclusion</h2>
+<p>An email address on your own domain is not a luxury and not a technical hobby. It is one of the cheapest ways to look more serious, more consistent and more trustworthy, while your messages also arrive better.</p>
+<p>If you do good work but send it from a free address, you are unintentionally giving off the wrong signal. A small address with your own name in it can add exactly the bit of trust that tips a hesitating customer over the line.</p>
+`
+    },
+
     'anatomy-of-a-homepage-that-converts': {
       current: 'Conversion',
       category: 'Conversion',
