@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'why-your-business-needs-a-domain-email',
+    title:            'Waarom een E-mailadres met Eigen Domein Je Serieuzer Maakt',
+    titleEn:          'Why a Domain Email Makes Your Business Look More Serious',
+    category:         'Merk & Vertrouwen',
+    categoryEn:       'Brand & Trust',
+    date:             '2026-05-15',
+    dateFormatted:    '15 mei 2026',
+    dateFormattedEn:  '15 May 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-05-15T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Je stuurt offertes en facturen nog vanaf @gmail.com? Dat kost je stiller vertrouwen dan je denkt. Waarom een adres op je eigen domein je serieuzer maakt.',
+    excerptEn:        'Still sending quotes and invoices from @gmail.com? It costs you more trust than you think. Why an address on your own domain makes you look more serious.'
+  },
+
+  {
     slug:             'anatomy-of-a-homepage-that-converts',
     title:            'De Anatomie van een Homepage Die Klanten Overtuigt',
     titleEn:          'The Anatomy of a Homepage That Converts',
