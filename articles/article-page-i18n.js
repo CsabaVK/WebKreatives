@@ -17,6 +17,53 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'how-website-speed-costs-you-customers': {
+      current: 'Performance',
+      category: 'Performance',
+      date: '21 May 2026',
+      read: '6 min read',
+      docTitle: 'How Your Website Speed Quietly Costs You Customers | WebKreatives',
+      title: 'How Your Website Speed<br><em>Quietly Costs You Customers</em>',
+      bottomTitle: 'Want a website that loads fast<br>and actually brings in customers?',
+      bottomText: 'We build light, fast websites for local businesses and speed up existing sites that have grown sluggish. Professional, clear, and focused on real enquiries.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>Your website looks good, your offer is solid and your work is genuinely fine. And yet you lose customers you never saw arrive. The reason is often invisible: <strong>your site loads too slowly</strong>. Not dramatically slow, but just slow enough that some of your visitors have already left before your page is fully on screen.</p>
+<div class="art-stats"><div class="art-stat"><span class="art-stat-num">3 sec</span><span class="art-stat-label">is the limit for many visitors; load slower than that and a good share drop off</span></div><div class="art-stat"><span class="art-stat-num">+1 sec</span><span class="art-stat-label">of extra load time can measurably lower your conversion, especially on mobile</span></div><div class="art-stat"><span class="art-stat-num">0 signal</span><span class="art-stat-label">is what you get from visitors who click away; they leave without a trace</span></div></div>
+<p>Speed feels like a technical detail that "the developer will handle". In practice it is one of the most direct levers on your revenue that you have. In this article we explain in plain language what speed really means, where the delay comes from, and which wins you can make fairly quickly.</p>
+<h2><span class="num">1</span> Why speed hits your revenue directly</h2>
+<p>A visitor who lands on your website usually has an intention: to request a price, book an appointment, check your opening hours. Every second of waiting is a second in which doubt grows. And unlike in a shop, you never see that hesitant visitor. They click back to Google and pick the next one in the list.</p>
+<div class="art-quote"><p>"A slow website doesn't lose customers with a bang, but with silence. Nobody emails you to say they clicked away."</p></div>
+<p>That is what makes speed so treacherous. You don't notice anything going wrong, because you only see the people who do stay. The missed enquiries vanish quietly. For a hairdresser, contractor or dental practice, that can easily add up to dozens of lost appointments over a year.</p>
+<h2><span class="num">2</span> What "fast" really means: Core Web Vitals in plain language</h2>
+<p>Google measures the experienced speed of your site with three values, the so-called Core Web Vitals. They sound technical, but you can understand them in plain language.</p>
+<div class="art-mini-grid"><div class="art-mini-card"><h3>LCP — how quickly the main thing appears</h3><p>The time until your largest block of content, usually your hero image or title, is on screen. This decides whether a visitor thinks: "the page is here".</p></div><div class="art-mini-card"><h3>INP — how quickly the site responds</h3><p>Does a button or menu react instantly when someone taps, or does it hang for a moment? Slowness here feels like a site that is "sticky".</p></div><div class="art-mini-card"><h3>CLS — how stable the page stays</h3><p>Does the layout still jump around while you read, so you accidentally hit the wrong button? That is exactly what CLS measures.</p></div></div>
+<p>You don't need to memorise these abbreviations. The point is: speed is not just about a number, but about how smooth the page feels from the first second. On top of that, Google uses those same values in how it ranks your site.</p>
+<h2><span class="num">3</span> Where the delay usually comes from</h2>
+<p>Most slow websites for small businesses share the same handful of causes. Rarely is it one big problem; more often it is a pile-up of small things.</p>
+<ul class="art-checklist"><li>Heavy, unoptimised photos uploaded straight from the camera</li><li>An overloaded theme or page builder with dozens of features you never use</li><li>Too many separate plugins and external scripts, each adding its own load time</li><li>Cheap, overcrowded hosting where your site shares a server with hundreds of others</li></ul>
+<div class="art-mistake"><strong>Common mistake</strong><p>Putting a beautiful 6 MB photo as a background on the homepage. On your fast wifi you don't notice it, but a customer on mobile data in the waiting room waits seconds for an image that could just as easily have been 300 KB.</p></div>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80" alt="Customer viewing a website on a smartphone" loading="lazy"><figcaption>Most visitors come via their phone and a mobile network. There, every saved kilobyte counts double.</figcaption></figure>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Curious where your site loses time?</h3><p>We build fast, light websites for local businesses and clean up existing sites that have become slow. No unnecessary ballast, just a sharp result.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2><span class="num">4</span> Quick wins you can often make today</h2>
+<p>You don't need to be a developer to spot the biggest accelerators. Often eighty percent of the win sits in a few changes.</p>
+<ol class="art-steps"><li><strong>Compress your images</strong> — resize and optimise photos before you upload them. This usually delivers the biggest jump.</li><li><strong>Clean up plugins and scripts</strong> — remove everything you don't actively use. Every tool fewer is load time gained.</li><li><strong>Choose decent hosting</strong> — a slightly more expensive hosting package that isn't overcrowded often pays for itself in speed.</li><li><strong>Load heavy elements later</strong> — videos, maps and widgets don't need to load before the page is visible.</li></ol>
+<p>Want to know what's worth it? Start with the pages that get visited most. A faster homepage and contact page weigh more than a page almost nobody opens.</p>
+<h2><span class="num">5</span> Mobile is where most speed is lost</h2>
+<p>The vast majority of your visitors come via their phone, often on a less stable network than your office wifi. A site that feels smooth on your laptop can be noticeably slower on an average smartphone.</p>
+<p>So always test your site the way your customers actually use it: on a phone, away from your own wifi. What looks fast on a big screen is only truly tested when you're standing outside waiting for your contact page to load.</p>
+<h2><span class="num">6</span> How to know if your site is too slow</h2>
+<p>You don't have to guess. There are free tools like Google PageSpeed Insights where you enter your address and within seconds see how you score, including those Core Web Vitals. More important than the exact score is the pattern: if you see red or orange values on mobile, you are almost certainly leaving customers behind.</p>
+<p>Use a test like that as a starting point, not a final verdict. One slow page is not a disaster, but consistently slow load times on your most important pages are a signal to take action.</p>
+<h2>Conclusion</h2>
+<p>Speed is not a technical detail separate from your results. It is one of the quietest, but most direct factors that decide whether a visitor becomes a customer or clicks through to the competitor.</p>
+<p>If your business does good work but your website loads slowly, you are unintentionally giving some of your visitors a reason to leave. The good news: speed is one of the most solvable problems on a website. A few targeted changes often deliver surprisingly much, every single day.</p>
+`
+    },
+
     'why-your-business-needs-a-domain-email': {
       current: 'Brand & Trust',
       category: 'Brand & Trust',
