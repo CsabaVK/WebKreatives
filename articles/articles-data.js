@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'how-website-speed-costs-you-customers',
+    title:            'Hoe de Snelheid van Je Website Stille Omzet Kost',
+    titleEn:          'How Your Website Speed Quietly Costs You Customers',
+    category:         'Techniek & Snelheid',
+    categoryEn:       'Performance',
+    date:             '2026-05-21',
+    dateFormatted:    '21 mei 2026',
+    dateFormattedEn:  '21 May 2026',
+    readTime:         '6 min lezen',
+    readTimeEn:       '6 min read',
+    publishedAt:      '2026-05-21T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Een trage website verliest klanten met stilte, niet met een knal. Wat Core Web Vitals in gewone taal betekenen, waarom snelheid omzet is en welke snelle winst je vandaag al boekt.',
+    excerptEn:        'A slow website loses customers with silence, not a bang. What Core Web Vitals mean in plain language, why speed is revenue, and the quick wins you can make today.'
+  },
+
+  {
     slug:             'why-your-business-needs-a-domain-email',
     title:            'Waarom een E-mailadres met Eigen Domein Je Serieuzer Maakt',
     titleEn:          'Why a Domain Email Makes Your Business Look More Serious',
