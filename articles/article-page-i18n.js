@@ -17,6 +17,52 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'what-makes-a-contact-page-actually-work': {
+      current: 'Conversion',
+      category: 'Conversion',
+      date: '29 May 2026',
+      read: '6 min read',
+      docTitle: 'What Makes a Contact Page Actually Work | WebKreatives',
+      title: 'What Makes a Contact Page<br><em>Actually Work</em>',
+      bottomTitle: 'Want a website where customers<br>reach out on their own?',
+      bottomText: 'We build clear, fast websites for local businesses with contact pages that remove friction and turn visitors into real enquiries.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>Someone has looked around your website, seen your work and thinks: this feels right. They click through to your contact page. That is exactly the moment where interest turns into a real enquiry — or quietly evaporates. And yet, for many small businesses, the contact page is the most neglected part of the whole site.</p>
+<p>Often it's nothing more than a bare form with ten fields, a generic email address and little else. While this is precisely the place where most doubt is either removed or unintentionally fed. A contact page that works makes it irresistibly easy to take that final step.</p>
+<h2>The contact page isn't a closing detail, it's a decision moment</h2>
+<p>We often treat the contact page as an obligatory box to tick, the last thing before the site goes live. For the visitor it's the opposite: it's the most nerve-racking moment. They're about to expose themselves, leave their details behind, and hope there's a decent person on the other side.</p>
+<div class="art-quote"><p>"The contact page isn't the end of your website. For the customer, it's the start of working together."</p></div>
+<p>Every second of doubt counts double here. Vagueness, an overly long form or the feeling of shouting into a void — these are small things that make someone drop off at the very last moment. That's exactly why this page deserves more attention than it usually gets.</p>
+<h2>Start with fewer fields, not more</h2>
+<p>The biggest brake on contact pages is friction: everything that costs the visitor extra effort or thought. And the biggest source of friction is the form. Every field you add is a reason to give up. Ask only for what you truly need to start a first conversation.</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>A form with fields for company name, job title, budget, preferred start date and "how did you find us?" — when really all you need is a name, a way to call back and a short question. The rest comes up naturally in the conversation.</p></div>
+<p>For most small businesses, three or four fields are more than enough: name, email or phone, and a message field. The shorter the form looks, the lower the threshold to fill it in. Not sure whether a field belongs? Then it probably doesn't.</p>
+<h2>Give people a choice in how they get in touch</h2>
+<p>Not everyone wants to fill in a form. One person would rather make a quick call, another prefers to send a message, and someone else likes to email at their leisure in the evening. By visibly offering several channels, you let the customer choose what feels most natural to them.</p>
+<div class="art-mini-grid"><div class="art-mini-card"><h3>Phone</h3><p>For those who want clarity fast. Make the number clickable so it starts a call straight away on mobile. Mention when you're reachable.</p></div><div class="art-mini-card"><h3>WhatsApp</h3><p>Low-threshold and familiar. Many people prefer messaging to calling. One tap and they can ask a quick question without any hassle.</p></div><div class="art-mini-card"><h3>Form or email</h3><p>For those who prefer to type a longer message at their own pace. Ideal outside office hours, when calling isn't an option.</p></div></div>
+<p>You don't have to offer every channel — pick what suits you and what you actually keep up with. A WhatsApp button nobody reads is worse than no button at all. But one extra low-threshold option alongside the form often noticeably lowers the barrier.</p>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want your contact page to bring in more enquiries?</h3><p>We build websites for small businesses where getting in touch feels effortless — with clear forms, clickable channels and flows that actually get customers moving.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2>Be honest about what happens next</h2>
+<p>One of the biggest invisible barriers is uncertainty. When will I get a reply? From whom? Will I be called or emailed? If you don't answer those questions, the visitor fills them in themselves — usually more negatively than reality. A few reassuring lines take that doubt away.</p>
+<ul class="art-checklist"><li>State how quickly you respond, for example "usually within one working day"</li><li>Say who will get in touch, ideally with a name and a face</li><li>Make clear whether the conversation is free and without obligation</li><li>Show a short confirmation after the form is sent, not an empty page</li></ul>
+<p>These small additions cost nothing, but they completely change the feeling. Instead of sending an enquiry off into the void, the customer knows exactly what to expect. That trust is often the final nudge that's needed.</p>
+<h2>How to build a contact page that works</h2>
+<p>You don't have to make a science of it. Work through these steps and you'll already have a page that outperforms most of your competitors':</p>
+<ol class="art-steps"><li><strong>Trim your form</strong> — cut every field that isn't strictly needed for a first contact. Name, a way to reach them and a question usually suffice.</li><li><strong>Offer a second channel</strong> — place a clickable phone number or WhatsApp button next to the form, so people can choose.</li><li><strong>Set expectations</strong> — mention your response time and that a first conversation is without obligation.</li><li><strong>Add a trust signal</strong> — a photo, a review or your location makes the page human and real.</li><li><strong>Confirm the submission</strong> — show a clear thank-you message and, if possible, an automatic confirmation email.</li></ol>
+<p>Then test your own page the way a customer would: on your phone, reading from the top. Does the call button work? Does the form send smoothly? Do you get a decent confirmation? What's obvious to you isn't always obvious to a new visitor.</p>
+<h2>Small trust signals make a big difference</h2>
+<p>A contact page quickly feels clinical: a form and nothing more. This is exactly where a little humanity helps. A photo of yourself or the team, a short review, your logo, your location or a business registration — these are small signals that say: there's a real business with real people behind this.</p>
+<p>For a local business, that works especially well. Someone looking for a hairdresser, contractor or dentist nearby wants to feel they're talking to someone from their own area. Those little confirmations make the difference between "I'll think about it" and "I'll just send a message now".</p>
+<h2>Conclusion</h2>
+<p>The contact page isn't a side issue, but the place where all your earlier work is rewarded or lost. Someone who has made it this far is warm — all you have to do now is make that last step as easy and reassuring as possible.</p>
+<p>Fewer fields, more choice of channels, honest expectations and a few human details: that's all a contact page needs to work. For most small businesses, this is one of the fastest ways to get more out of the same visitors.</p>
+`
+    },
+
     'how-website-speed-costs-you-customers': {
       current: 'Performance',
       category: 'Performance',

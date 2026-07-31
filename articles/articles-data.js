@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'what-makes-a-contact-page-actually-work',
+    title:            'Wat een Contactpagina Écht Laat Werken',
+    titleEn:          'What Makes a Contact Page Actually Work',
+    category:         'Conversie',
+    categoryEn:       'Conversion',
+    date:             '2026-05-29',
+    dateFormatted:    '29 mei 2026',
+    dateFormattedEn:  '29 May 2026',
+    readTime:         '6 min lezen',
+    readTimeEn:       '6 min read',
+    publishedAt:      '2026-05-29T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Je contactpagina is de plek waar interesse verandert in een aanvraag. Met minder wrijving, keuze in kanalen en eerlijke verwachtingen laat je merkbaar meer bezoekers contact opnemen.',
+    excerptEn:        'Your contact page is where interest turns into an enquiry. Less friction, a choice of channels and honest expectations noticeably get more visitors to reach out.'
+  },
+
+  {
     slug:             'how-website-speed-costs-you-customers',
     title:            'Hoe de Snelheid van Je Website Stille Omzet Kost',
     titleEn:          'How Your Website Speed Quietly Costs You Customers',
