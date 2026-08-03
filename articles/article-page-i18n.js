@@ -17,6 +17,48 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'stock-photos-vs-real-photos-on-your-website': {
+      current: 'Brand & Trust',
+      category: 'Brand & Trust',
+      date: '5 June 2026',
+      read: '6 min read',
+      docTitle: 'Stock Photos vs Real Photos: What Builds More Trust | WebKreatives',
+      title: 'Stock Photos vs Real Photos:<br><em>What Builds More Trust</em>',
+      bottomTitle: 'Want a website that feels<br>real and trustworthy?',
+      bottomText: 'We build websites for small businesses with imagery and branding that earn trust, look professional and bring in more genuine enquiries.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>Picture two hairdressers on the same street. Both have a tidy website, similar prices and roughly the same services. On one site, flawless models smile at you with a haircut clearly shot in a studio on the other side of the world. On the other, you see the actual salon: the chairs, the team and a few customers who are visibly happy with the result. Which one feels more trustworthy?</p>
+<p>For most visitors the answer is immediate. Yet many small businesses reach for stock photos by default, because it's fast, cheap and easy. Sometimes that's perfectly fine. But in the wrong place, stock photos can undermine the very trust your website is supposed to build.</p>
+<h2>Why photos do more than fill space</h2>
+<p>Visitors rarely read a website word for word. They scan. And images are the first thing they process, often before they've read a single sentence. In a fraction of a second, a photo tells them whether a business feels real, professional and human.</p>
+<p>That makes photos one of your strongest trust signals. They help decide whether someone thinks "this looks serious" or "this feels like a template". And especially for local businesses, where people want to know who they'll be dealing with, that weighs heavily.</p>
+<div class="art-mini-grid"><div class="art-mini-card"><h3>What stock does well</h3><p>Fast, tidy and cheap. Ideal for illustrating abstract topics or giving a page atmosphere when you don't have your own material yet.</p></div><div class="art-mini-card"><h3>Where stock trips you up</h3><p>The moment it's meant to represent your business, team or work. Visitors sense the difference and start doubting the rest of the site.</p></div><div class="art-mini-card"><h3>What real photos add</h3><p>Recognition and trust. A face, your premises and real work show there are actual people of flesh and blood behind the business.</p></div></div>
+<h2>When stock photos work just fine</h2>
+<p>Stock photos aren't the problem. It's about where and how you use them. There are plenty of situations where a good stock photo is genuinely handy:</p>
+<ul class="art-checklist"><li>As a mood image or background for an abstract topic</li><li>For icons, patterns or neutral textures</li><li>When you're just starting out and have no imagery of your own yet</li><li>On blog articles about general, non-business-specific themes</li></ul>
+<p>The key is that the photo stays supporting. It must not pretend to show your business, your team or your work when it doesn't. As long as that line stays clear, there's nothing wrong with a clean stock image.</p>
+<h2>When stock undermines your credibility</h2>
+<div class="art-mistake"><strong>Common mistake</strong><p>A smiling "team" on the about page that obviously came from a stock library. Visitors spot this more often than you'd think, and at that moment they start doubting everything else on the site.</p></div>
+<p>The damage is worst in the places where people expect authenticity: your team, your premises, your products, your finished work and real customer situations. There, a generic model doesn't feel like a detail — it feels like a small lie. And one visibly fake image can make the rest of your hard work look suspect.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80" alt="Business owner taking their own photos of the work with a phone" loading="lazy"><figcaption>You don't need an expensive studio. One good session with natural light often gives you more than dozens of polished stock images.</figcaption></figure>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure which photos make your website stronger?</h3><p>We help small businesses with websites that come across as real and trustworthy, with an image choice that fits who you are and what you do.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2>Real photos don't have to be expensive</h2>
+<p>Many owners assume authentic imagery requires an expensive photographer and a full production. That certainly helps, but it isn't required. With a modern phone and a bit of attention, you'll get surprisingly far:</p>
+<ul class="art-checklist"><li>Shoot in daylight, ideally close to a window</li><li>Keep the background calm and tidy</li><li>Take lots of photos and pick the best ones afterwards</li><li>Show real people and real work, not stiff poses</li><li>Keep one style in colour and mood for consistency</li></ul>
+<p>One quiet hour of shooting usually gives you enough for your homepage, your about page and a few services. And the best part: it's yours. Recognisable, honest and impossible for the competitor down the street to copy.</p>
+<h2>The practical middle ground</h2>
+<p>You don't have to choose between shooting everything yourself or pulling everything from a stock library. The strongest websites combine both in a smart way:</p>
+<ol class="art-checklist"><li>Use real photos in the places that determine trust: team, work and premises</li><li>Top up with clean stock for atmosphere and abstract topics</li><li>Make sure the styles match, so it stays one coherent whole</li><li>Replace generic images as soon as your own material becomes available</li></ol>
+<p>That way you keep the ease and speed of stock without giving up the authenticity that ultimately gets customers over the line.</p>
+<h2>Conclusion</h2>
+<p>Stock photos are a handy tool, not a sin. But they're an addition, not a replacement for who you really are. In the places where visitors expect authenticity, an honest photo of your own almost always beats the prettiest model.</p>
+<p>Take a critical look at your own website. Are you showing who you are, or hiding behind images that could belong to anyone? Often, adding a handful of real photos is one of the fastest ways to win more trust online.</p>`
+    },
+
     'what-makes-a-contact-page-actually-work': {
       current: 'Conversion',
       category: 'Conversion',

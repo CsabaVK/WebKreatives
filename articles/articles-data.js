@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'stock-photos-vs-real-photos-on-your-website',
+    title:            'Stockfoto\'s of Echte Foto\'s? Wat Werkt Beter voor Vertrouwen',
+    titleEn:          'Stock Photos vs Real Photos: What Builds More Trust',
+    category:         'Merk & Vertrouwen',
+    categoryEn:       'Brand & Trust',
+    date:             '2026-06-05',
+    dateFormatted:    '5 juni 2026',
+    dateFormattedEn:  '5 June 2026',
+    readTime:         '6 min lezen',
+    readTimeEn:       '6 min read',
+    publishedAt:      '2026-06-05T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Stockfoto\'s zijn snel en goedkoop, maar op de verkeerde plek kosten ze je vertrouwen. Ontdek wanneer stock prima werkt en wanneer echte foto\'s meer klanten overtuigen.',
+    excerptEn:        'Stock photos are fast and cheap, but on the wrong page they cost you trust. Learn when stock works and when real photos win more customers.'
+  },
+
+  {
     slug:             'what-makes-a-contact-page-actually-work',
     title:            'Wat een Contactpagina Écht Laat Werken',
     titleEn:          'What Makes a Contact Page Actually Work',
