@@ -17,6 +17,50 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'how-often-should-you-update-your-website': {
+      current: 'Web Design Tips',
+      category: 'Web Design Tips',
+      date: '11 June 2026',
+      read: '6 min read',
+      docTitle: 'How Often Should You Refresh Your Website? | WebKreatives',
+      title: 'How Often Should You<br><em>Refresh Your Website?</em>',
+      bottomTitle: 'Want a website that stays<br>current without the hassle?',
+      bottomText: 'We build and maintain websites for small businesses that stay tidy, up to date and ready to win over new customers.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<div class="art-quote"><p>"A website isn't a flyer you print once. It's more like a shop window: if you never change anything, people assume no one's working there anymore."</p></div>
+<p>It's a question almost every business owner asks sooner or later: <strong>how often should you actually refresh your website?</strong> One person says every year, another has had the same site for seven years and thinks it's fine. The honest answer sits somewhere in between, and it mostly depends on what you mean by "refresh".</p>
+<p>Because that's where the confusion starts. Keeping a website up to date is a very different thing from having it rebuilt. Mix the two up and you either spend too much on the wrong thing, or you quietly let your site grow old. In this article we'll split it apart for small businesses like hairdressers, tradespeople, dentists and hospitality.</p>
+<h2>Maintenance and a redesign are two different things</h2>
+<p>When people ask how often they should refresh their website, they're usually asking about two things at once. It helps to pull them apart.</p>
+<p><strong>Maintenance</strong> is the small, regular upkeep: copy is correct, prices are current, photos are recent, links work, and the technology behind the scenes stays secure and fast. This should happen continuously, not once a year in one big sprint.</p>
+<p><strong>A redesign</strong> is something else: the structure, the design and sometimes the whole setup get reworked. You don't do that every year. For most small businesses a thorough overhaul every three to four years is plenty, as long as the maintenance in between has been kept up.</p>
+<div class="art-mini-grid"><div class="art-mini-card"><h3>Ongoing</h3><p>Small updates: copy, prices, opening hours, new photos and reviews. This keeps your site alive without a big investment.</p></div><div class="art-mini-card"><h3>Each quarter</h3><p>A quick check: does everything still work, are your services shown well, and does your offer still match what you actually do now?</p></div><div class="art-mini-card"><h3>Every 3–4 years</h3><p>A real refresh of design and structure, when the site starts to fall behind technically or visually.</p></div></div>
+<h2>Signs your website is aging</h2>
+<p>You don't have to wait for the calendar. Your site tells you itself when it's time for some attention. Watch for these signs:</p>
+<ul class="art-checklist"><li>The site clearly looks different from modern sites in your industry</li><li>On a phone you have to zoom or scroll sideways to read anything</li><li>Pages load slowly or photos are blurry and too heavy</li><li>The information is out of date: old prices, dropped services or a wrong phone number</li><li>You'd honestly hesitate to send the link to a new customer</li></ul>
+<p>That last point is perhaps the most honest test of all. If you yourself hesitate to share your own website, visitors know exactly why too.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80" alt="Business owner working on their own website content on a laptop" loading="lazy"><figcaption>A website doesn't need constant major surgery, but it does need regular small attention to stay fresh and trustworthy.</figcaption></figure>
+<h2>What to update first</h2>
+<p>When you notice your site is due for a refresh, don't jump straight to "rebuild it all". Often a targeted update solves the biggest part of the problem. A handy order:</p>
+<ol class="art-steps"><li>Check your facts: opening hours, prices, services, contact details</li><li>Replace dated or stock-like photos with real, recent images</li><li>Update your most important copy so it matches what you offer now</li><li>Test everything on your phone and fix whatever looks messy there</li><li>Add recent reviews or new projects as proof that you're active</li></ol>
+<p>In the vast majority of cases this gives your site a tidy, current feel again, without any need for a full redesign.</p>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure whether your site needs an update or a redesign?</h3><p>We're happy to take a quick look. Often a targeted refresh is enough, and sometimes a new foundation is the smarter choice. We'll tell you honestly what fits.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2>The two extremes you want to avoid</h2>
+<p>Around refreshing a website you often see two kinds of mistakes, and they sit at opposite ends.</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>Leaving the site completely untouched for years, until everything is outdated and a redesign becomes unavoidable and expensive. Or the opposite: throwing everything out every year out of restlessness, when the old version worked fine and customers had just got used to it.</p></div>
+<p>The healthy middle ground is almost always best: keep your site topped up in small ways continuously, and only plan a real overhaul when there's a clear reason for it. That way your website stays current without becoming a recurring expense.</p>
+<h2>A simple rhythm that works for small businesses</h2>
+<p>You don't have to turn this into a complicated schedule. For most owners this rhythm works fine:</p>
+<ul class="art-checklist"><li>Change small things the moment they change, don't put it off</li><li>Run through your most important pages briefly each quarter</li><li>Refresh your photos and copy whenever your business visibly changes</li><li>Consider a redesign after three to four years, or sooner on clear signals</li><li>When in doubt, choose targeted updates over throwing it all out</li></ul>
+<h2>Conclusion</h2>
+<p>How often you should refresh your website depends on what you mean. Maintenance is ongoing and small, a redesign is occasional and bigger. Take the small upkeep seriously and you'll need an expensive overhaul far less often.</p>
+<p>Take a critical look at your own site. Do you still share it with pride, or do you secretly hesitate? That answer usually tells you exactly whether it's time for a refresh, or simply for some regular attention.</p>`
+    },
+
     'stock-photos-vs-real-photos-on-your-website': {
       current: 'Brand & Trust',
       category: 'Brand & Trust',

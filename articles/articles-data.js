@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'how-often-should-you-update-your-website',
+    title:            'Hoe Vaak Moet Je Je Website Vernieuwen?',
+    titleEn:          'How Often Should You Refresh Your Website?',
+    category:         'Webdesign Tips',
+    categoryEn:       'Web Design Tips',
+    date:             '2026-06-11',
+    dateFormatted:    '11 juni 2026',
+    dateFormattedEn:  '11 June 2026',
+    readTime:         '6 min lezen',
+    readTimeEn:       '6 min read',
+    publishedAt:      '2026-06-11T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Elk jaar alles omgooien hoeft niet. Ontdek het verschil tussen onderhoud en een redesign, de signalen dat je site veroudert en wat je als eerste moet updaten.',
+    excerptEn:        'You don\'t need a yearly overhaul. Learn the difference between maintenance and a redesign, the signs your site is aging, and what to update first.'
+  },
+
+  {
     slug:             'stock-photos-vs-real-photos-on-your-website',
     title:            'Stockfoto\'s of Echte Foto\'s? Wat Werkt Beter voor Vertrouwen',
     titleEn:          'Stock Photos vs Real Photos: What Builds More Trust',
