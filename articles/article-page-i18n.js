@@ -17,6 +17,49 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'why-mobile-first-design-is-non-negotiable-in-2026': {
+      current: 'Performance',
+      category: 'Performance',
+      date: '22 June 2026',
+      read: '7 min read',
+      docTitle: 'Why Mobile-First Design Is Non-Negotiable in 2026 | WebKreatives',
+      title: 'Why Mobile-First Design<br><em>Is Non-Negotiable in 2026</em>',
+      bottomTitle: 'Want a website that wins trust<br>and customers on every screen?',
+      bottomText: 'We build mobile-first websites for small businesses: fast, clear and designed for how your customers actually visit you.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>Think back to the last time you looked up an address, an opening time or a price. Chances are you did it on your phone: standing in a shop, on the move, or quickly from the couch. That is how most people search today. And yet many websites are still designed as if the visitor is sitting calmly behind a large screen.</p>
+<p>For local businesses, that is an expensive assumption. <strong>Mobile isn't one of the ways people view your site. For many businesses, it's the main one.</strong> That is why in 2026 mobile-first design is no longer an extra, but the starting point.</p>
+<div class="art-stats"><div class="art-stat"><span class="art-stat-num">60%+</span><span class="art-stat-label">of web traffic worldwide now comes from mobile devices</span></div><div class="art-stat"><span class="art-stat-num">Mobile-first</span><span class="art-stat-label">Google evaluates and indexes your site through the mobile version by default</span></div><div class="art-stat"><span class="art-stat-num">Seconds</span><span class="art-stat-label">that's how long it takes a visitor on a phone to decide whether to stay or leave</span></div></div>
+<p>"Mobile-first" doesn't mean shrinking the desktop version until it fits on a phone. It means starting from the smallest screen, with the most critical choices first, and building out from there.</p>
+<h2>Mobile isn't "also important" — it's the default</h2>
+<p>For years, mobile was an add-on. You built the website for desktop and then made sure it "also worked on the phone". In 2026 that order no longer holds. For most local businesses — from hairdressers to handymen and hospitality — the majority of visitors arrive on a phone.</p>
+<p>That changes what "good enough" means. A menu that looks elegant on desktop can be awkward on mobile. A form that's tidy on a large screen can feel frustrating on a small one. If the mobile experience is an afterthought, then the experience of your most important visitors is an afterthought.</p>
+<h2>Google looks at your mobile site first</h2>
+<p>There's also a technical reason you can't ignore. Google has used mobile-first indexing for some time now. Put simply: the mobile version of your website is the version Google evaluates to determine your rankings — not the desktop version.</p>
+<p>If your mobile site is slower, hides elements, or shows different content than the desktop version, that can directly affect your local visibility. So you're not just competing on how your site looks on a phone, but also on how well Google understands that mobile version.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1200&q=80" alt="Person viewing a website on a smartphone" loading="lazy"><figcaption>For most visitors and for Google, the mobile version of your website is the real version. That's where the design starts — not where it ends.</figcaption></figure>
+<h2>Designing for thumbs, not for mice</h2>
+<p>A phone is operated with your thumb, often one-handed, sometimes on the move. That calls for different choices than a mouse and a large screen. Buttons need to be big enough, important actions within reach, and text readable without zooming.</p>
+<ul class="art-checklist"><li>Buttons and links large enough to tap without mis-hits</li><li>The main action — call or contact — visible right at the top</li><li>Text that's readable without pinching or zooming</li><li>Enough space between clickable elements so nothing gets tapped by accident</li></ul>
+<p>These details seem small, but they decide whether someone reaches your contact details smoothly or drops off halfway. On a small screen there's little margin for confusion.</p>
+<h2>On mobile, speed matters even more</h2>
+<p>Mobile visitors are more often on a variable connection and have less patience. A site that loads fine on fibre can feel slow on 4G in the checkout queue. And every extra second of load time costs you visitors before they've seen anything about your business at all.</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>Loading heavy desktop images unchanged on mobile. The visitor then downloads a huge file on a slow connection, when a smaller size would look exactly the same on their screen.</p></div>
+<p>That's why mobile-first thinking and speed go together. Lighter images, fewer unnecessary elements and a clear structure make your site not only faster, but also calmer to use.</p>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Does your website really work well on a phone?</h3><p>We build websites designed mobile-first: fast, clear and made for how your customers actually view you.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2>What mobile-first means in practice</h2>
+<p>You don't need to be a technical expert for this. It's mostly about a different order and a few deliberate choices. Take a look at your own site on your phone and watch for these points:</p>
+<ol class="art-checklist"><li>Can you see at a glance what your business does and where you are?</li><li>Is the main action — call or contact — immediately reachable?</li><li>Does the page load quickly, even without wifi?</li><li>Can you read and tap everything without zooming?</li><li>Does scrolling feel logical, or do you have to hunt for what you need?</li></ol>
+<p>If you get stuck on any of these points, your visitors probably do too. And on mobile, the route to the back button is short.</p>
+<h2>Conclusion</h2>
+<p>Mobile-first design isn't a trend or a luxury in 2026. It's simply designing for the way most people actually find and view your business. For local businesses, the phone has become the first point of contact.</p>
+<p>A site that's clear, fast and easy to use on that small screen wins trust and customers every day. A site that isn't loses them just as quietly. So the question isn't whether you should work mobile-first, but how quickly you take that step.</p>`
+    },
+
     'how-often-should-you-update-your-website': {
       current: 'Web Design Tips',
       category: 'Web Design Tips',
