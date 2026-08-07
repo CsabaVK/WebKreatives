@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'why-mobile-first-design-is-non-negotiable-in-2026',
+    title:            'Waarom Mobiel-First Ontwerp in 2026 Geen Keuze Meer Is',
+    titleEn:          'Why Mobile-First Design Is Non-Negotiable in 2026',
+    category:         'Techniek & Snelheid',
+    categoryEn:       'Performance',
+    date:             '2026-06-22',
+    dateFormatted:    '22 juni 2026',
+    dateFormattedEn:  '22 June 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-06-22T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'De meeste bezoekers komen via hun telefoon en Google indexeert je site mobiel-first. Ontdek waarom mobiel ontwerp in 2026 het uitgangspunt is, niet het sluitstuk.',
+    excerptEn:        'Most visitors arrive on a phone and Google indexes mobile-first. Here is why mobile design is the starting point in 2026, not an afterthought.'
+  },
+
+  {
     slug:             'how-often-should-you-update-your-website',
     title:            'Hoe Vaak Moet Je Je Website Vernieuwen?',
     titleEn:          'How Often Should You Refresh Your Website?',
