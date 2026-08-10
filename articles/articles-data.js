@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'the-real-cost-of-a-diy-website',
+    title:            'De Verborgen Kosten van een Zelfgemaakte Website',
+    titleEn:          'The Hidden Cost of a DIY Website',
+    category:         'Small Business',
+    categoryEn:       'Small Business',
+    date:             '2026-06-29',
+    dateFormatted:    '29 juni 2026',
+    dateFormattedEn:  '29 June 2026',
+    readTime:         '8 min lezen',
+    readTimeEn:       '8 min read',
+    publishedAt:      '2026-06-29T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Een zelfgemaakte website lijkt gratis, maar de echte prijs zit in je tijd, gemiste aanvragen en verloren vertrouwen. Zo tel je op wat DIY je werkelijk kost.',
+    excerptEn:        'A DIY website looks free, but the real price is your time, lost enquiries and trust you never win. Here is what doing it yourself actually adds up to.'
+  },
+
+  {
     slug:             'why-mobile-first-design-is-non-negotiable-in-2026',
     title:            'Waarom Mobiel-First Ontwerp in 2026 Geen Keuze Meer Is',
     titleEn:          'Why Mobile-First Design Is Non-Negotiable in 2026',

@@ -17,6 +17,51 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'the-real-cost-of-a-diy-website': {
+      current: 'Small Business',
+      category: 'Small Business',
+      date: '29 June 2026',
+      read: '8 min read',
+      docTitle: 'The Hidden Cost of a DIY Website | WebKreatives',
+      title: 'The Hidden Cost<br><em>of a DIY Website</em>',
+      bottomTitle: 'Want a website that never<br>leaves local customers behind?',
+      bottomText: 'We build professional websites for small businesses: clear, fast and made to bring in real enquiries — without costing you your evenings.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>"I'll just build the website myself, it'll save money." It sounds reasonable, especially when you're starting out. Plenty of builders promise you'll be online within an afternoon, for free or a few euros a month. On paper, that looks like the cheapest route.</p>
+<p>But a website has two kinds of cost. One shows up on the invoice. The other shows up nowhere — and with a do-it-yourself site, that second one is usually the most expensive. <strong>A DIY website is rarely truly free. You just pay for it in a different way.</strong></p>
+<div class="art-mistake"><strong>The false assumption</strong><p>Many owners only compare the monthly price of a website builder with a quote from an agency. What that comparison leaves out: the hours of your own time, and the customers who walk away from a site that felt "good enough" but wasn't.</p></div>
+<p>This isn't an argument against doing it yourself. For some businesses, a simple DIY page is perfectly fine. The point is to know the real cost before you choose, so you don't discover months later that "free" turned out to be expensive.</p>
+<h2><span class="num">1</span> Your time is the biggest invisible bill</h2>
+<p>The most underestimated cost of a self-built website is time. Not the afternoon the builder promises, but the evenings that follow. Writing copy, hunting for photos, working out why the menu behaves strangely on mobile, tweaking colours, starting over because it still doesn't feel right.</p>
+<p>For a hairdresser, a handyman or a coach, that's time not spent on customers. Do the maths: if you put twenty to forty hours into a site, what is that worth in billable hours, or in the rest you could have taken instead? That figure quietly overtakes a professional quote more often than you'd think.</p>
+<div class="art-stats"><div class="art-stat"><span class="art-stat-num">20–40 hrs</span><span class="art-stat-label">is what a first self-built site easily costs an owner, spread across evenings and weekends</span></div><div class="art-stat"><span class="art-stat-num">Every month</span><span class="art-stat-label">a DIY site keeps asking for maintenance: updates, copy, small fixes you handle yourself</span></div><div class="art-stat"><span class="art-stat-num">€0?</span><span class="art-stat-label">doesn't exist — "free" builders earn from ads, upgrades and your time</span></div></div>
+<h2><span class="num">2</span> Missed enquiries cost more than you think</h2>
+<p>This is the most painful cost, because you never see it. A visitor who leaves a slow or confusing site doesn't come back to tell you why. They're simply gone — usually to the competitor who looked a little more professional.</p>
+<div class="art-quote"><p>"A website that looks amateurish doesn't cost you a euro at the till. It costs you the customer who never got in touch."</p></div>
+<p>Say an average missed customer is worth 150 euros to you. One lost enquiry a month is 1,800 euros a year. A website that holds back two or three extra enquiries a month isn't a saving anymore — it's the most expensive decision of your year.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Business owner discussing a website with a professional" loading="lazy"><figcaption>The gap between "good enough" and "trustworthy" is often exactly the gap between a visitor who clicks away and a customer who calls.</figcaption></figure>
+<h2><span class="num">3</span> Where the hidden costs hide</h2>
+<p>The real price of a DIY site rarely sits in one place. It's spread across small things that look harmless on their own but add up together.</p>
+<div class="art-mini-grid"><div class="art-mini-card"><span class="eyebrow">Technical</span><h3>Slowness and errors</h3><p>Heavy templates, unused code and wrong-sized photos make your site slow. Every second of delay costs you visitors.</p></div><div class="art-mini-card"><span class="eyebrow">Trust</span><h3>An amateur look</h3><p>Stock templates everyone recognises, mismatched fonts and soulless stock photos make you less credible.</p></div><div class="art-mini-card"><span class="eyebrow">Visibility</span><h3>Invisible in Google</h3><p>Without solid structure, speed and copy, Google barely finds you. A pretty site nobody sees earns nothing.</p></div></div>
+<p>Each of these is fixable on its own. But doing it yourself means "fixing" is something you work out — and that's more time again. This is how the bill that appears nowhere keeps growing.</p>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Torn between doing it yourself and outsourcing?</h3><p>We'll think it through with you, no strings attached — sometimes that means a few smart tweaks, sometimes a full site that actually brings in enquiries.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2><span class="num">4</span> When doing it yourself does make sense</h2>
+<p>Staying honest works better than scaremongering. There are situations where a DIY solution is perfectly fine, and it would be a waste to overspend then.</p>
+<ul class="art-checklist"><li>You're testing an idea and want to see if there's demand first</li><li>You need one simple page with just contact details and opening hours</li><li>You genuinely enjoy building and have the time for it</li><li>You don't (yet) expect meaningful revenue through the website</li></ul>
+<p>The moment your website becomes — or needs to become — a serious source of customers, the balance shifts. Then every missed enquiry weighs more heavily than the saving on the build.</p>
+<h2><span class="num">5</span> The real comparison you should make</h2>
+<p>The question isn't "free versus expensive". The honest comparison is: what does doing it myself really cost me, all in, against what a professional site earns me?</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>Struggling for months with a site that never quite works, only to hire an agency in the end anyway. You then pay twice: first with your time, then with the quote you could have taken from the start.</p></div>
+<p>Line them up: the hours you pour in, the enquiries you may lose, and the maintenance that keeps coming back. Against: a site that's right, loads faster, earns trust and is maintained for you. That sum often lands differently than the monthly price suggests.</p>
+<h2>Conclusion</h2>
+<p>A self-built website is almost never truly free. The price just isn't on the invoice — it's in your calendar and in the customers you narrowly missed. For a small test project or a simple page, that's fine. For a business that seriously wants to win customers, "cheap" is often the most expensive choice.</p>
+<p>So don't only count in euros, but also in hours and missed chances. Once you include those honestly, the choice between doing it yourself and outsourcing suddenly gets a lot clearer — and usually a lot more logical.</p>`
+    },
+
     'why-mobile-first-design-is-non-negotiable-in-2026': {
       current: 'Performance',
       category: 'Performance',
