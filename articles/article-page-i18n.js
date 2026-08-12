@@ -17,6 +17,55 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'how-to-write-website-copy-that-sells': {
+      current: 'Conversion',
+      category: 'Conversion',
+      date: '6 July 2026',
+      read: '7 min read',
+      docTitle: 'How to Write Website Copy That Sells | WebKreatives',
+      title: 'How to Write Website Copy<br><em>That Actually Sells</em>',
+      bottomTitle: 'Want copy that actually<br>moves customers to act?',
+      bottomText: 'We build websites with copy that communicates clearly, earns trust and creates more real enquiries — without sounding slick or salesy.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>You've got a good-looking website. Clean photos, fresh colours, everything in its place. And still, hardly any enquiries come in. Often the problem isn't the design — it's the words. <strong>Copy sells, not just visuals.</strong></p>
+<p>Great website copy doesn't have to sound slick or overly salesy. Mostly it just needs to make clear what you do, who it's for, and why someone should choose you. That sounds simple, but it's exactly where most small businesses go wrong. And the good news: you don't need to be a copywriter to do it better.</p>
+<h2>Write for the customer, not about yourself</h2>
+<p>The most common mistake on small-business websites: everything is about the business itself. "Founded in 2012", "We deliver quality", "Our team is here for you." All true, but the visitor is really thinking one thing: what's in it for me?</p>
+<p>People don't read your website to get to know you. They read to work out whether you solve their problem. So flip your copy around. Start with what the customer wants to achieve, and only then show how you fit in.</p>
+<div class="art-quote"><p>"Customers don't buy a service. They buy the result your service gives them."</p></div>
+<p>A hairdresser doesn't sell a haircut, but the feeling of looking well cared for again. A handyman doesn't sell hours, but a home where everything works again. Write about that result and you hit the right note straight away.</p>
+<h2>Start with a headline that promises something</h2>
+<p>The first line decides whether someone keeps reading. Yet many homepages open with something vague like "Welcome to our website" or just the company name. That's wasted space, right where you have the most attention.</p>
+<p>A strong headline makes clear in one line what you do and what it delivers. Not clever or funny, just clear. Compare these two:</p>
+<ul class="art-checklist"><li><strong>Weak:</strong> "Welcome to Anna's Hair Salon"</li><li><strong>Strong:</strong> "A fresh cut without the long wait, in the heart of Utrecht"</li></ul>
+<p>The second version tells you straight away what you get, where it is, and which benefit stands out. That's the job your headline should do: make a visitor think "this is for me" within two seconds.</p>
+<h2>Turn features into benefits</h2>
+<p>Features describe what something is. Benefits describe what the customer gets out of it. You almost always persuade visitors with the second one, not with a list of specifications.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80" alt="Someone writing and rewriting copy at a desk with a laptop and notebook" loading="lazy"><figcaption>Strong copy rarely happens in one go. You write down what you do, then translate it into what the customer gains.</figcaption></figure>
+<p>A simple exercise: put the words "so that" after every feature and write down what it gives the customer.</p>
+<ul class="art-checklist"><li>"Book online 24/7" <em>so that</em> you never have to wait in a queue</li><li>"Fixed price up front" <em>so that</em> you're never hit with surprises</li><li>"Reply within 24 hours" <em>so that</em> you're not waiting days for an answer</li></ul>
+<p>The feature can stay, but it's the part after "so that" that convinces the visitor. That's the line that sticks.</p>
+<h2>A framework that makes your copy persuasive</h2>
+<p>You don't need to be a professional copywriter to write strong pages. Follow these four steps and your copy gets more convincing almost by itself.</p>
+<ol class="art-steps"><li><strong>Start with the problem</strong>Briefly name the situation your customer is in. That makes them feel understood straight away and keeps them reading instead of clicking away.</li><li><strong>Show the solution</strong>Explain clearly what you offer and how it removes their problem. No jargon, just plain language anyone understands.</li><li><strong>Give a reason to trust you</strong>Add proof: a review, a concrete result, years of experience or a real-world example.</li><li><strong>End with one clear action</strong>Tell the visitor exactly what to do now: call, book an appointment, or request a quote.</li></ol>
+<p>This order works on almost any page, from your homepage to a single service page. Problem, solution, proof, action. Remember those four words and you already have a structure most websites go without.</p>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Is your copy falling flat?</h3><p>We help small businesses with websites and copy that genuinely persuade customers to get in touch — clear, human and focused on results.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2>Give every page one clear choice</h2>
+<p>A common mistake is trying to do too much. A page that asks you to call, sign up for the newsletter, follow on social media and request a quote all at once paralyses the visitor. Too much choice often leads to no choice at all.</p>
+<p>Decide per page what the most important action is and make that one the most visible. The rest can exist, but should never compete with that single main goal. One clear direction works better than five half-hearted ones.</p>
+<h2>Write the way you talk, and keep it short</h2>
+<p>Professional doesn't mean stiff. The copy that works best reads as if you were telling a customer at the counter. Short sentences. Everyday words. No "hereby", "notwithstanding" or "we continuously strive to".</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>Stuffing your copy with jargon to sound expert. The effect is usually the opposite: the visitor drops off because it takes too much effort to work out what you actually offer.</p></div>
+<p>A simple test: read your copy out loud. If you stumble over a sentence, so will your visitor. Cut it, simplify it, and say it the way you really would to someone in front of you.</p>
+<h2>Conclusion</h2>
+<p>Good website copy isn't about pretty words, but about clarity. Write for your customer, open with a clear promise, turn features into benefits, and end every page with one clear action.</p>
+<p>You don't need to be a professional copywriter to get this right. With a little attention and the simple framework from this article, you turn vague text into pages that genuinely move visitors to get in touch. And that, in the end, is what your website is for.</p>`
+    },
+
     'the-real-cost-of-a-diy-website': {
       current: 'Small Business',
       category: 'Small Business',

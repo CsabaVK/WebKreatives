@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'how-to-write-website-copy-that-sells',
+    title:            'Hoe Je Websiteteksten Schrijft Die Klanten Overtuigen',
+    titleEn:          'How to Write Website Copy That Sells',
+    category:         'Conversie',
+    categoryEn:       'Conversion',
+    date:             '2026-07-06',
+    dateFormatted:    '6 juli 2026',
+    dateFormattedEn:  '6 July 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-07-06T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Woorden verkopen, niet alleen vormgeving. Zo schrijf je voor je klant, vertaal je kenmerken naar voordelen en laat je elke pagina overtuigen met een simpel raamwerk.',
+    excerptEn:        'Copy sells, not just visuals. Here is how to write for your customer, turn features into benefits and make every page persuade with a simple framework.'
+  },
+
+  {
     slug:             'the-real-cost-of-a-diy-website',
     title:            'De Verborgen Kosten van een Zelfgemaakte Website',
     titleEn:          'The Hidden Cost of a DIY Website',
