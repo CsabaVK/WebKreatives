@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'why-your-website-needs-clear-calls-to-action',
+    title:            'Waarom Duidelijke Call-to-Actions het Verschil Maken',
+    titleEn:          'Why Clear Calls-to-Action Make All the Difference',
+    category:         'Conversie',
+    categoryEn:       'Conversion',
+    date:             '2026-07-13',
+    dateFormatted:    '13 juli 2026',
+    dateFormattedEn:  '13 July 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-07-13T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Een mooie website zonder duidelijke call-to-actions laat klanten afhaken. Zo maken heldere knoppen, slimme plaatsing en de juiste woorden van bezoekers echte aanvragen.',
+    excerptEn:        'A polished website with no clear calls-to-action quietly loses customers. Here is how sharp buttons, smart placement and the right words turn visitors into enquiries.'
+  },
+
+  {
     slug:             'how-to-write-website-copy-that-sells',
     title:            'Hoe Je Websiteteksten Schrijft Die Klanten Overtuigen',
     titleEn:          'How to Write Website Copy That Sells',
