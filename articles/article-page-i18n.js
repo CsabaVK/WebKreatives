@@ -17,6 +17,82 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'why-your-website-needs-clear-calls-to-action': {
+      current: 'Conversion',
+      category: 'Conversion',
+      date: '13 July 2026',
+      read: '7 min read',
+      docTitle: 'Why Clear Calls-to-Action Make All the Difference | WebKreatives',
+      title: 'Why Clear Calls-to-Action<br><em>Make All the Difference</em>',
+      bottomTitle: 'Want a website that actually<br>guides visitors to get in touch?',
+      bottomText: 'We build websites for small businesses with clear calls-to-action and conversion flows that look professional and generate more real enquiries.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>Picture this: someone finds your website, reads your copy, looks at your work and thinks "this looks good". And then? If it isn't crystal clear at that moment what the next step is, usually nothing happens. The visitor clicks away and you never even know you almost had a customer.</p>
+<p>That's exactly what a <strong>call-to-action</strong> prevents. It's the button or line that tells the visitor what they can do right now: call, request a quote, book an appointment. It sounds simple, but this is precisely where many small businesses quietly lose customers. A strong call-to-action isn't a detail. It's the bridge between "interested" and "in touch".</p>
+<div class="art-mini-grid">
+  <div class="art-mini-card">
+    <span class="eyebrow">Clear</span>
+    <h3>One obvious action</h3>
+    <p>The visitor doesn't have to think about what to do. The next step is written out, in plain language.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Visible</span>
+    <h3>In view straight away</h3>
+    <p>A good button stands out through colour and position, without the visitor having to hunt for it.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Concrete</span>
+    <h3>A real promise</h3>
+    <p>Not a vague "submit", but text that says what happens: "Book a free intro call".</p>
+  </div>
+</div>
+<p>In this article we look at why clear calls-to-action make such a difference, where it often goes wrong and how to make yours stronger — whether you're a hairdresser, a handyman or a coach.</p>
+<h2><span class="num">1</span> What a call-to-action actually does</h2>
+<p>A call-to-action, often shortened to CTA, is any spot where you ask the visitor to do something. It can be a button, a link or a short line that leads to an action. Think "Request a quote", "Call us today" or "See our prices".</p>
+<p>The thing is, people on your website don't take the right step on their own. They're busy, they scan quickly and they wait for a clear signal. Without that signal they stay passive. A good CTA removes that hesitation by spelling out exactly what the logical next step is.</p>
+<h2><span class="num">2</span> Why vague buttons make visitors leave</h2>
+<p>Plenty of websites have a button, but no real call-to-action. The difference is clarity. A button that says "More information" or just "Submit" tells the visitor nothing about what will happen or why they should click.</p>
+<div class="art-mistake"><strong>Common mistake</strong><p>Assuming visitors will just work out what to do. They often do understand — but they hesitate. And when in doubt, most people simply click away instead of taking action.</p></div>
+<p>Doubt is the biggest enemy of conversion. Every second someone has to spend thinking "where do I click?" is a second in which they might drop off. A clear CTA removes that barrier by making the choice easy and obvious.</p>
+<figure class="art-img"><img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80" alt="Person tapping a button on a smartphone" loading="lazy"><figcaption>On mobile, clarity counts double: a visible, well-placed button often decides whether someone gets in touch or keeps scrolling.</figcaption></figure>
+<h2><span class="num">3</span> The rule of one main action per page</h2>
+<p>One of the most powerful principles is also the simplest: give every page one clear main action. If your visitor is asked to call, sign up for the newsletter, follow you on social media and request a quote all at once, you create decision paralysis. And too much choice often leads to no choice at all.</p>
+<p>Decide per page what you really want someone to do. On your homepage that might be "Request a quote". On a service page, "Book an appointment". Make that one action the most visible and let the rest stay secondary. One clear direction works better than five half-hearted ones.</p>
+<h2><span class="num">4</span> Where to place your calls-to-action</h2>
+<p>A strong CTA in the wrong place is a missed opportunity. Visitors make their decision at different moments, so your button can appear in more than one spot. Not pushy, but logical.</p>
+<ul class="art-checklist">
+  <li>Right in view on arrival, so the quick decider can act straight away</li>
+  <li>After a block of proof or explanation, once the doubt has just been removed</li>
+  <li>At the bottom of the page, for those who want to read everything first</li>
+  <li>Fixed in the menu or as a standout button, so contact is always within reach</li>
+</ul>
+<p>The idea isn't to scatter buttons everywhere, but to give the visitor a clear route to contact at every natural decision point.</p>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Are your visitors actually taking the step to get in touch?</h3><p>We build websites for small businesses with clear calls-to-action and conversion flows that generate enquiries, instead of visitors who disappear again.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<h2><span class="num">5</span> The words on your button matter a lot</h2>
+<p>The text on a button looks like a small detail, but it does a lot of work. A good CTA line is concrete, active and tells the visitor what they get. Compare these two:</p>
+<ul class="art-checklist">
+  <li><strong>Weak:</strong> "Submit" — cold and meaningless</li>
+  <li><strong>Strong:</strong> "Book a free intro call" — concrete and inviting</li>
+</ul>
+<p>Where you can, start with a verb and make clear what happens after the click. Words like "free", "no obligation" or "today" lower the barrier, because they make the risk feel smaller for the visitor.</p>
+<h2><span class="num">6</span> Small details that make your CTA stronger</h2>
+<p>Once the basics are in place, a few details make the difference between a button that gets ignored and one that gets clicked. You don't need to be an expert for this, just aware of a handful of things.</p>
+<ol class="art-checklist">
+  <li>Use contrast: the button should visually separate from the rest</li>
+  <li>Make it large enough to tap easily on mobile</li>
+  <li>Give it space, so it doesn't get lost among other elements</li>
+  <li>Add a small reassuring line, like "reply within 24 hours"</li>
+</ol>
+<p>These details take little effort, but they lower the barrier at exactly the moment the visitor is about to decide. And that moment is where conversion really happens.</p>
+<h2>Conclusion</h2>
+<p>A nice-looking website is only valuable when visitors actually take action. Clear calls-to-action are the bridge between interest and contact: they tell the visitor what they can do, remove doubt and make the next step obvious.</p>
+<p>Take a critical look at your own website. Is it immediately clear on every page what the visitor should do? If not, you're probably leaving enquiries on the table that could have been there with little effort. Often a clearer button, in the right place, with the right words, is all it takes to make the difference.</p>`
+    },
+
     'how-to-write-website-copy-that-sells': {
       current: 'Conversion',
       category: 'Conversion',
