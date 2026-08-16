@@ -638,7 +638,7 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
   position:relative;border-radius:10px;overflow:hidden;
   aspect-ratio:4/3;cursor:none;
 }
-.port-card.wide{grid-column:span 2;aspect-ratio:16/9}
+.port-card.wide{grid-column:span 2;aspect-ratio:auto;align-self:stretch}
 .port-inner{
   width:100%;height:100%;
   transition:transform .6s var(--ease);
@@ -1080,7 +1080,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 @media(max-width:900px){
   .stats-grid,.svc-grid{grid-template-columns:1fr 1fr}
   .port-grid{grid-template-columns:1fr 1fr}
-  .port-card.wide{grid-column:span 2}
+  .port-card.wide{grid-column:span 1;aspect-ratio:4/3;align-self:auto}
   .proc-grid{grid-template-columns:1fr 1fr}
   .testi-grid{grid-template-columns:1fr}
   .t-card.big{grid-row:auto}
@@ -1333,6 +1333,9 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 .art-excerpt{font-size:12px;color:oklch(52% .005 80);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
 .art-footer{display:flex;align-items:center;justify-content:space-between;margin-top:13px;padding-top:13px;border-top:1px solid oklch(24% .008 25)}
 .art-read{font-size:11px;color:oklch(40% .005 80)}
+.art-meta-line{display:flex;align-items:center;gap:9px;min-width:0}
+.art-date{font-size:11px;font-weight:600;color:var(--blue);white-space:nowrap}
+.art-date::after{content:"\00B7";margin-left:9px;color:oklch(40% .005 80);font-weight:400}
 .art-arrow{width:26px;height:26px;border-radius:50%;background:oklch(22% .008 25);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:13px;flex-shrink:0;transition:background .2s,color .2s,transform .2s}
 .art-item:hover .art-arrow{background:var(--blue);color:#fff;transform:translateX(2px)}
 .art-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:40px}
@@ -1693,6 +1696,13 @@ footer{background:var(--ink);padding:72px 5vw 40px}
           <div style="font-family:var(--f2);font-size:13px;color:rgba(249,115,22,.5);margin-top:8px;font-weight:400;letter-spacing:.01em;">HIIT &middot; Strength &middot; Boxing &middot; Expert Trainers &middot; Amsterdam</div>
         </div>
       </a>
+    </div>
+    <div class="port-card reveal">
+      <a class="port-inner port-screenshot" href="client-projects/bakkerij-hartman/" target="_blank">
+        <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/bakkerij-hartman</div></div>
+        <img src="assets/screenshots/bakkerij-hartman.png" alt="Bakkerij Hartman" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+      </a>
+      <div class="port-overlay"><div class="port-ind" data-nl="Bakkerij" data-en="Bakery">Bakery</div><div class="port-name">Bakkerij Hartman</div></div>
     </div>
   </div>
 </section>
@@ -2440,11 +2450,16 @@ if(cycleEl&&!reduced){
       body.appendChild(field('art-title',a.title,a.titleEn));
       body.appendChild(field('art-excerpt',a.excerpt,a.excerptEn));
       const footer=document.createElement('div'); footer.className='art-footer';
+      const meta=document.createElement('div'); meta.className='art-meta-line';
+      const date=document.createElement('span'); date.className='art-date';
+      date.setAttribute('data-nl',a.dateFormatted||''); date.setAttribute('data-en',a.dateFormattedEn||'');
+      date.innerHTML=(lang==='nl'?a.dateFormatted:a.dateFormattedEn)||a.dateFormatted||'';
       const read=document.createElement('span'); read.className='art-read';
       read.setAttribute('data-nl',a.readTime||''); read.setAttribute('data-en',a.readTimeEn||'');
       read.innerHTML=(lang==='nl'?a.readTime:a.readTimeEn)||a.readTime||'';
+      meta.appendChild(date); meta.appendChild(read);
       const arrow=document.createElement('span'); arrow.className='art-arrow'; arrow.textContent='→';
-      footer.appendChild(read); footer.appendChild(arrow);
+      footer.appendChild(meta); footer.appendChild(arrow);
       body.appendChild(footer);
       card.appendChild(im); card.appendChild(body);
       track.appendChild(card);
