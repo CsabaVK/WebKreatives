@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'does-your-small-business-need-a-blog',
+    title:            'Heeft Jouw Kleine Bedrijf een Blog Nodig?',
+    titleEn:          'Does Your Small Business Actually Need a Blog?',
+    category:         'Lokale SEO',
+    categoryEn:       'Local SEO',
+    date:             '2026-07-20',
+    dateFormatted:    '20 juli 2026',
+    dateFormattedEn:  '20 July 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-07-20T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Een blog is voor kleine bedrijven geen verplichting, maar wel een kans. Zo kies je de juiste onderwerpen, houd je het haalbaar en weet je wanneer je je tijd beter ergens anders in stopt.',
+    excerptEn:        'A blog is not an obligation for a small business, but it is an opportunity. How to pick the right topics, keep it realistic, and know when your time is better spent elsewhere.'
+  },
+
+  {
     slug:             'why-your-website-needs-clear-calls-to-action',
     title:            'Waarom Duidelijke Call-to-Actions het Verschil Maken',
     titleEn:          'Why Clear Calls-to-Action Make All the Difference',

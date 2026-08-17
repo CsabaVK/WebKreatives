@@ -17,6 +17,80 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'does-your-small-business-need-a-blog': {
+      current: 'Local SEO',
+      category: 'Local SEO',
+      date: '20 July 2026',
+      read: '7 min read',
+      docTitle: 'Does Your Small Business Actually Need a Blog? | WebKreatives',
+      title: 'Does Your Small Business<br><em>Actually Need a Blog?</em>',
+      bottomTitle: 'Want to be found for the questions<br>your customers are already asking?',
+      bottomText: 'We build websites for small businesses where local visibility, clear copy and obvious conversion steps work together.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<div class="art-quote">
+  <p>"Do I really have to start blogging? I run a building firm, not a newspaper."</p>
+</div>
+<p>We hear that reaction regularly, and it's entirely fair. For a hairdresser, a dental practice or an installation company, blogging feels like something for marketing agencies: a lot of work, very little visible return. And often that's exactly what it turns into.</p>
+<p>Still, "no, forget it" isn't the right answer either. A blog isn't an obligation, but it is one of the few ways to get found for the questions your customers ask <em>before</em> they pick a business. The difference isn't how often you publish — it's what you choose to answer.</p>
+<h2>What a blog does that your service pages can't</h2>
+<p>Your service pages cover the searches where the decision is nearly made: "hairdresser Amersfoort", "emergency plumber Utrecht", "dentist near me". That's valuable traffic, but it's also the traffic everyone is fighting over.</p>
+<p>Sitting in front of that is a much broader layer of searches nobody in your region has published anything for: "what does a bathroom renovation cost", "how often should a crown be checked", "can I put solar panels on a listed building". Those aren't searches for your homepage. They need one page per question — and that's exactly what an article is.</p>
+<p>There's a second reason, one that has less to do with Google. A good article is something you can <strong>send</strong>. A customer torn between two options, an enquiry over WhatsApp, an email asking a question you've answered nine times before: one link saves you ten minutes every time and makes you look like the expert you are.</p>
+<h2>Why "posting something every week" almost never works</h2>
+<p>Most business blogs die the same death. It starts with a plan to publish weekly, the first two articles come out fine, the third is a struggle, and then it goes quiet. What's left is worse than no blog at all: a page with three short pieces from two years ago.</p>
+<div class="art-mistake">
+  <strong>The classic mistake</strong>
+  <p>Putting volume ahead of relevance. Twelve rushed 300-word articles about generic topics do nothing. Six good articles a year that fully answer a real customer question keep pulling in visitors for years.</p>
+</div>
+<p>A realistic rhythm for a small business is one article every six to eight weeks. That's manageable alongside the actual work, and it's enough. An article that answers a concrete question properly barely ages: it's still there next summer when you're flat out.</p>
+<h2>Which topics actually pay off</h2>
+<p>You don't need to invent topics. They come past every week in your phone calls and your inbox. The questions you can answer without thinking are precisely the questions people type into Google.</p>
+<ul class="art-checklist">
+  <li>The question you get weekly on the phone, written out the way you explain it</li>
+  <li>What something costs, and why it's more expensive for one customer than another</li>
+  <li>How customers choose between two options you offer</li>
+  <li>Something specific to your town or region: rules, seasons, types of housing</li>
+  <li>A project you genuinely delivered, with photos, decisions and the result</li>
+</ul>
+<p>That last one is often the strongest for local businesses. An article about a bathroom you renovated in a 1930s house in the neighbourhood does two things at once: it shows what you're capable of, and it naturally contains the words people nearby are searching for.</p>
+<figure class="art-img">
+  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="Business owners discussing content and planning together" loading="lazy">
+  <figcaption>You don't have to dream up the best topics — they're the questions your customers are already asking you.</figcaption>
+</figure>
+<h2>How to write one article that keeps working</h2>
+<p>Writing an article doesn't have to be a week-long project. Follow this route and you're usually done in two to three hours.</p>
+<ol class="art-steps">
+  <li><strong>Pick one question.</strong> Not "everything about bathrooms", but "what does renovating a small bathroom cost". One question, one article.</li>
+  <li><strong>Write 600 to 900 words in plain language.</strong> The way you'd explain it at the kitchen table. No jargon, no three-paragraph run-up.</li>
+  <li><strong>Be concrete about prices, timescales and examples.</strong> "Budget €6,000 to €9,000" is a hundred times more useful than "the price varies per situation".</li>
+  <li><strong>Mention your town or region where it fits naturally.</strong> Once or twice in the text is plenty; forcing it works against you.</li>
+  <li><strong>Link to the matching service page.</strong> The article informs, the service page sells. Without that link the visit hits a dead end.</li>
+  <li><strong>Close with one clear next step.</strong> Call, request a quote or book an appointment. Pick one.</li>
+</ol>
+<p>Finally, add a date and your name. An article with a face and a date reads as more credible than an anonymous text, and it helps visitors see that your business is active.</p>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Want a website where content actually does something?</h3>
+    <p>We build sites for small businesses where articles, service pages and enquiry forms connect properly, so visits don't hit a dead end.</p>
+  </div>
+  <a href="/#contact" class="btn btn-red">Request a quote →</a>
+</div>
+<h2>When a blog isn't the priority yet</h2>
+<p>Sometimes the honest advice is: not yet. Content only works once the basics are in place. If a visitor lands on your article and then meets a confusing homepage, a slow load or a phone number they can't find, all you've done is buy traffic that leaves again.</p>
+<p>The order we almost always recommend: a clear homepage and service pages first, then a complete Google Business Profile, then speed and mobile, then reviews. A blog after that. Flip the order and you rarely see results — and then wrongly conclude that blogging doesn't work.</p>
+<h2>How to tell whether it's working</h2>
+<p>Don't expect results after three weeks. An article usually needs three to six months before it pulls serious traffic, and that traffic keeps growing slowly afterwards.</p>
+<p>Check Google Search Console for which searches your articles are bringing in, not just how many visitors you have. When you suddenly see impressions for questions you'd never have thought of, you know the mechanism is working. And simply ask new customers how they found you: "I read that piece about your bathrooms" is a clearer signal than any dashboard.</p>
+<h2>Conclusion</h2>
+<p>Does your small business need a blog? Not in the sense of a mandatory content calendar. But yes, in the sense of a handful of good articles that answer the questions customers ask before they call.</p>
+<p>Start small: take the question you get most often and write it out properly, once. If that single article turns out to bring in visitors and enquiries six months later, you'll know exactly whether it's worth adding five more.</p>
+`
+    },
+
     'why-your-website-needs-clear-calls-to-action': {
       current: 'Conversion',
       category: 'Conversion',
