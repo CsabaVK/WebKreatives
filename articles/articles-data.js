@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'website-security-basics-for-small-businesses',
+    title:            'Websitebeveiliging: De Basis voor Kleine Bedrijven',
+    titleEn:          'Website Security Basics Every Small Business Needs',
+    category:         'Techniek & Snelheid',
+    categoryEn:       'Performance',
+    date:             '2026-07-27',
+    dateFormatted:    '27 juli 2026',
+    dateFormattedEn:  '27 July 2026',
+    readTime:         '8 min lezen',
+    readTimeEn:       '8 min read',
+    publishedAt:      '2026-07-27T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1614064548237-096f735f344f?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Beveiliging hoeft geen technisch project te zijn. Dit zijn de vijf basiszaken die elk klein bedrijf op orde moet hebben: SSL, updates, back-ups, hosting en toegang.',
+    excerptEn:        'Security does not have to be a technical project. These are the five basics every small business should have in order: SSL, updates, backups, hosting and access.'
+  },
+
+  {
     slug:             'does-your-small-business-need-a-blog',
     title:            'Heeft Jouw Kleine Bedrijf een Blog Nodig?',
     titleEn:          'Does Your Small Business Actually Need a Blog?',
