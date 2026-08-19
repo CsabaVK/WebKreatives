@@ -17,6 +17,90 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'website-security-basics-for-small-businesses': {
+      current: 'Performance',
+      category: 'Performance',
+      date: '27 July 2026',
+      read: '8 min read',
+      docTitle: 'Website Security Basics Every Small Business Needs | WebKreatives',
+      title: 'Website Security Basics<br><em>Every Small Business Needs</em>',
+      bottomTitle: 'Want a website that stays safe<br>without you thinking about it?',
+      bottomText: 'We build and maintain websites for small businesses: fast, properly secured, with backups and updates simply taken care of.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>An installation company called us on a Tuesday morning last year. Their website had suddenly started showing an ad for a gambling site, somewhere at the bottom of the contact page. No movie-style hack, no ransom demand, no drama. Just a plugin that hadn't been updated in two years.</p>
+<p>Stories like that are the rule rather than the exception. Small businesses are rarely targeted deliberately. They get found by automated scripts that comb the entire internet looking for outdated software. <strong>Your website usually isn't a target — it's an open door that something happened to walk past.</strong></p>
+<p>The good news: you don't need an IT department for this. Website security for a hair salon, a dental practice or a restaurant comes down to five things you keep in order. Here they are, in the order they usually go wrong.</p>
+<h2><span class="num">1</span> What security actually means for your site</h2>
+<p>When business owners hear "security", they think of hackers and stolen data. For a local website the risk is far more practical. The damage almost always shows up in these four ways:</p>
+<ul class="art-checklist">
+  <li>Your site is down at the exact moment a customer looks for you</li>
+  <li>Google flags your site as unsafe, so visitors see a warning first</li>
+  <li>You lose copy, photos or form submissions with no recent copy to fall back on</li>
+  <li>Your reputation takes a hit because there's junk sitting on your domain</li>
+</ul>
+<p>That's not an abstract cyber risk. That's a week without enquiries, plus an invoice from a developer who has to clean up the mess. Prevention here is literally ten times cheaper than repair.</p>
+<h2><span class="num">2</span> SSL is the minimum, not an achievement</h2>
+<p>The padlock in the address bar (the https certificate) is standard by now. Every serious host provides it for free. Without it, browsers show an explicit warning on a contact form — which is precisely the moment you lose an enquiry.</p>
+<div class="art-mistake">
+  <strong>Common mistake</strong>
+  <p>Assuming you're done the moment the padlock appears. SSL only encrypts the traffic between visitor and server. It says nothing about outdated plugins, weak passwords or missing backups — the things that actually cause trouble.</p>
+</div>
+<p>Also check that your site genuinely <em>redirects</em> to https. We regularly see websites where both versions exist side by side. That confuses visitors and splits your SEO value across two addresses.</p>
+<h2><span class="num">3</span> Overdue maintenance is the real hole</h2>
+<p>Almost every hacked small-business website we come across was entered through outdated software. A theme, a plugin, a form module. Someone publishes a vulnerability, scripts scan for it worldwide, and a site that hasn't been updated in three months floats to the surface.</p>
+<p>The fix isn't a big project — it's a rhythm. Here's what a realistic maintenance schedule looks like for a small business:</p>
+<ol class="art-steps">
+  <li><strong>Monthly:</strong> apply updates to your CMS, theme and plugins — back up first, then update.</li>
+  <li><strong>After every update:</strong> check the homepage, the contact form and one service page on your phone.</li>
+  <li><strong>Every quarter:</strong> delete plugins you don't use entirely, not just deactivate them.</li>
+  <li><strong>Twice a year:</strong> check whether everything you rely on is still actively maintained by its maker.</li>
+  <li><strong>Ongoing:</strong> send update notifications to an email address you actually read.</li>
+</ol>
+<p>Fifteen minutes a month covers this for most small sites. If you don't have the time or the appetite, make it part of a maintenance agreement with your agency. What you shouldn't do is skip it because the site "works fine".</p>
+<figure class="art-img">
+  <img src="https://images.unsplash.com/photo-1768839722988-91767bb82b10?auto=format&fit=crop&w=1200&q=80" alt="Padlock and keys on a keyboard, representing access and security" loading="lazy">
+  <figcaption>Most incidents at small businesses don't start with an attack — they start with software left un-updated for too long.</figcaption>
+</figure>
+<h2><span class="num">4</span> Backups: your only real safety net</h2>
+<p>Of everything on this list, this matters most. Every other measure reduces the chance that something happens. A backup decides how bad it is when something does: half a day of inconvenience, or weeks of work gone.</p>
+<p>A usable backup meets four conditions:</p>
+<ol class="art-steps">
+  <li><strong>Automatic.</strong> Manual backups get forgotten precisely during your busiest weeks.</li>
+  <li><strong>Stored off your own server.</strong> A copy on the same server disappears along with the problem.</li>
+  <li><strong>Recent enough.</strong> Ask yourself how many days of work you could lose without real pain. That's your frequency.</li>
+  <li><strong>Tested.</strong> Restore a backup once to a staging environment. A backup you've never restored is an assumption.</li>
+</ol>
+<p>Almost every business skips that last point. And that's exactly where it gets painful, because you normally discover a corrupted backup at the worst possible moment.</p>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Not sure whether your site is set up properly?</h3>
+    <p>We check the SSL, updates, backups and hosting of your website and tell you in plain language what is and isn't in order.</p>
+  </div>
+  <a href="/#contact" class="btn btn-red">Request a check →</a>
+</div>
+<h2><span class="num">5</span> Your hosting decides more than you'd think</h2>
+<p>Cheap hosting at two euros a month is rarely a bargain. You're sharing a server with hundreds of other sites, server software updates lag behind, and support consists of a form you wait days on.</p>
+<p>What to look for in good hosting isn't complicated: recent PHP versions, automatic daily backups, free SSL, a firewall at server level and reachable support in your own language. For a small business site that usually costs between ten and thirty euros a month — the difference between "one phone call" and days offline.</p>
+<h2><span class="num">6</span> The human side: access and passwords</h2>
+<p>Technology is rarely the weakest point. People are. The intern who left three years ago and still has admin rights. The password <em>Salon2023!</em> that's also used on five other services. The login details sitting in a WhatsApp group.</p>
+<ul class="art-checklist">
+  <li>Give everyone only the rights their role needs — administrator is for administrators</li>
+  <li>Remove accounts for people who no longer work with you, that same week</li>
+  <li>Turn on two-factor authentication for your CMS, your hosting and your domain registrar</li>
+  <li>Keep passwords in a password manager, not in your inbox</li>
+  <li>Make sure you own your domain and hosting yourself, not your previous builder</li>
+</ul>
+<p>That last one isn't a security detail, it's a business risk. If you can't get into your own domain, you can't act when something goes wrong — no matter how well the rest is arranged.</p>
+<h2>Conclusion</h2>
+<p>Website security for a small business isn't a technical specialism. It's maintenance: a valid certificate, monthly updates, a tested backup stored off your server, hosting that does its job, and access that's kept tidy.</p>
+<p>Block out half an hour once and you'll have covered most of it. Do nothing, and it isn't a question of whether but when you find out — usually at the moment a customer actually needs your website.</p>
+`
+    },
+
     'does-your-small-business-need-a-blog': {
       current: 'Local SEO',
       category: 'Local SEO',
