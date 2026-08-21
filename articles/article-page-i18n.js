@@ -17,6 +17,93 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'how-to-choose-the-right-colors-for-your-brand': {
+      current: 'Brand & Trust',
+      category: 'Brand & Trust',
+      date: '5 August 2026',
+      read: '7 min read',
+      docTitle: 'How to Choose the Right Colors for Your Brand | WebKreatives',
+      title: 'How to Choose the Right Colors<br><em>for Your Brand</em>',
+      bottomTitle: 'Want a brand identity that works<br>as well online as it does offline?',
+      bottomText: 'We design websites for local businesses: recognisable, readable on every screen and built to bring in enquiries.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>The same sentence comes up in almost every new project: "I'd like something with blue, I think it looks nice." Understandable, but it's the wrong question. Colour on a website is rarely about taste. It's about <strong>how quickly someone recognises your business, how easily they read your text, and whether they spot the button you want them to press</strong>.</p>
+<p>For a hair salon, a dental practice or an installation company, this doesn't have to be a complicated exercise. You don't need a forty-page brand book. You need a handful of clear decisions that you then apply consistently, everywhere.</p>
+<p>In practice, a working brand palette comes down to three roles. Not three nice colours side by side, but three jobs that need to be divided up.</p>
+<div class="art-mini-grid">
+  <div class="art-mini-card">
+    <span class="eyebrow">Base</span>
+    <h3>Your quiet colour</h3>
+    <p>The background everything sits in: white, off-white, deep charcoal. This is 60 to 70 percent of your site and it's allowed to be boring.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Brand</span>
+    <h3>Your main colour</h3>
+    <p>The colour people associate with you. Found in your logo, headings and blocks. One colour, not three variations of it.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Action</span>
+    <h3>Your accent colour</h3>
+    <p>Reserved for buttons and links. Use it for decoration as well and it loses exactly the function you need it for.</p>
+  </div>
+</div>
+<p>This split — often summarised as 60/30/10 — isn't a law of design, but it does prevent the problem we see most often: a site where everything shouts equally loudly, so the visitor sees nothing at all.</p>
+<h2>Colour is recognition, not decoration</h2>
+<p>Think of the businesses you can identify without seeing their logo. That's almost never down to an unusual colour, but to an ordinary colour used in exactly the same way for years. Repetition does the work, not originality.</p>
+<p>For a local business that means something very practical. Your van, your shop sign, your Instagram posts, your quotes and your website should all carry the same colour. A customer who sees your van parked on their street and lands on your site a week later should make that connection without thinking about it.</p>
+<div class="art-quote">
+  <p>"A colour only becomes a brand colour at the point where you start finding it boring. That's usually the exact moment customers finally recognise it."</p>
+</div>
+<p>It's also why we're cautious about "refreshing" colours every year. Every change resets the recognition counter to zero.</p>
+<h2>What colour psychology does and doesn't promise</h2>
+<p>There are plenty of lists online where blue means trust, green means sustainability and red means urgency. There's a kernel of truth in that, but it's blunter than it looks. Context decides almost everything.</p>
+<p>Red is intrusive in a yoga studio and perfectly logical for a pizzeria or a gym. Green feels obvious for a landscaper and vague for a law firm. So the question isn't what a colour "means", but whether it fits what you sell and who your customers are.</p>
+<ul class="art-checklist">
+  <li>Look at your five nearest local competitors — if they're all blue, that's an opportunity, not a rule</li>
+  <li>Consider whether your customers choose on feeling (hospitality, wellness) or on reassurance (healthcare, finance, technical trades)</li>
+  <li>Test your colour against a photo of your own work or your own premises, not against an empty white square</li>
+  <li>Ask yourself whether the colour will still suit you in five years</li>
+</ul>
+<figure class="art-img">
+  <img src="https://images.unsplash.com/photo-1605858299258-36375bd7132c?auto=format&fit=crop&w=1200&q=80" alt="Coloured paper swatches in red, yellow and green side by side" loading="lazy">
+  <figcaption>You never judge a palette in isolation. Colours only take on meaning next to each other, in the context where they'll actually be used.</figcaption>
+</figure>
+<h2>Contrast matters more than the colour itself</h2>
+<p>This is where most self-built websites come unstuck. The colour choice is fine, but the text sitting in it is barely legible. Light grey letters on white. Yellow on white. White text on a pale blue button.</p>
+<p>The rule of thumb we work with comes from the accessibility guidelines: body text needs a contrast ratio of at least 4.5 to 1 against its background, large headings 3 to 1. You can check that in thirty seconds with a free contrast checker.</p>
+<p>That isn't a theoretical detail. Some of your visitors read your site on a phone in bright sunlight, or are over fifty, or have some form of colour blindness — that last one applies to roughly one in twelve men. Poor contrast costs you those people without ever showing up in your analytics.</p>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Not sure how your colours hold up online?</h3>
+    <p>We're happy to review your identity, contrast and readability — and translate it into a website that looks professional and actually works.</p>
+  </div>
+  <a href="/#contact" class="btn btn-red">Request a quote →</a>
+</div>
+<h2>One accent colour, strictly guarded</h2>
+<p>If there's one piece of advice that makes an immediate difference, it's this: reserve your brightest colour exclusively for the action you want visitors to take. Calling, requesting a quote, booking an appointment.</p>
+<p>The moment that same colour also appears in your icons, your pull quotes and your footer, it stops being a signal and becomes wallpaper. Visitors scan a page in a few seconds; they unconsciously look for the thing that stands out. Give them exactly one per screen.</p>
+<p>A practical example: contact pages often have a green "Send" button next to an equally green WhatsApp button and a green phone icon. All three useful, but together they produce a page with no clear preference. Pick the most important action, give it the accent colour, and calm the rest down.</p>
+<h2>Building a palette in an afternoon</h2>
+<p>You don't need to hire a design studio to get started. This order works for most small businesses:</p>
+<ol class="art-steps">
+  <li><strong>Start with what you already have</strong> — your logo, your van, your shopfront or your packaging. The colour customers already know you by is usually your main colour.</li>
+  <li><strong>Pick a neutral base</strong> — white or a very dark grey. Black on white is almost never a mistake.</li>
+  <li><strong>Choose one accent colour</strong> — something that clearly contrasts with both your base and your main colour, for buttons only.</li>
+  <li><strong>Add two greys</strong> — one for body text, one for captions and borders. This is what makes a palette feel calm.</li>
+  <li><strong>Check the contrast</strong> — every text colour against every background it appears on.</li>
+  <li><strong>Write it down</strong> — put the hex codes in one document and use them everywhere, offline included.</li>
+</ol>
+<p>Six colours in total, greys included. That sounds sparse, but almost every website that looks well put together uses fewer colours than you'd expect.</p>
+<h2>Conclusion</h2>
+<p>Choosing the right brand colours isn't a creative quest. It's a series of small, practical decisions: one colour to be recognised by, one to steer action with, and a quiet base that keeps your text readable.</p>
+<p>What counts after that is discipline. An average palette used consistently for years builds more trust than a perfect palette that changes every season. Choose clearly, check your contrast, and then stick with it.</p>
+`
+    },
+
     'website-security-basics-for-small-businesses': {
       current: 'Performance',
       category: 'Performance',
