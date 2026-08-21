@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'how-to-choose-the-right-colors-for-your-brand',
+    title:            'Hoe Je de Juiste Kleuren Kiest voor Je Merk',
+    titleEn:          'How to Choose the Right Colors for Your Brand',
+    category:         'Merk & Vertrouwen',
+    categoryEn:       'Brand & Trust',
+    date:             '2026-08-05',
+    dateFormatted:    '5 augustus 2026',
+    dateFormattedEn:  '5 August 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-08-05T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1716471330475-f0669db8947a?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Kleur gaat online zelden over smaak. Met één herkenbare hoofdkleur, één accentkleur voor acties en genoeg contrast kom je verder dan met een heel palet.',
+    excerptEn:        'Colour online is rarely about taste. One recognisable main colour, one accent colour for actions and enough contrast will take you further than a full palette.'
+  },
+
+  {
     slug:             'website-security-basics-for-small-businesses',
     title:            'Websitebeveiliging: De Basis voor Kleine Bedrijven',
     titleEn:          'Website Security Basics Every Small Business Needs',
