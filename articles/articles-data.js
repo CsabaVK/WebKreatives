@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'what-a-good-about-page-should-say',
+    title:            'Wat een Goede Over-Ons Pagina Moet Vertellen',
+    titleEn:          'What a Great About Page Should Actually Say',
+    category:         'Webdesign Tips',
+    categoryEn:       'Web Design Tips',
+    date:             '2026-08-11',
+    dateFormatted:    '11 augustus 2026',
+    dateFormattedEn:  '11 August 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-08-11T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'De over-ons pagina is geen autobiografie maar de plek waar bijna-klanten hun laatste twijfel kwijtraken. Dit hoort erop, en dit mag eruit.',
+    excerptEn:        'Your about page is not an autobiography but the place where near-customers shed their last doubt. Here is what belongs on it, and what can go.'
+  },
+
+  {
     slug:             'how-to-choose-the-right-colors-for-your-brand',
     title:            'Hoe Je de Juiste Kleuren Kiest voor Je Merk',
     titleEn:          'How to Choose the Right Colors for Your Brand',

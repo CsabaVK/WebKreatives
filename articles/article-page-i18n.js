@@ -17,6 +17,85 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'what-a-good-about-page-should-say': {
+      current: 'Web Design Tips',
+      category: 'Web Design Tips',
+      date: '11 August 2026',
+      read: '7 min read',
+      docTitle: 'What a Great About Page Should Actually Say | WebKreatives',
+      title: 'What a Great About Page<br><em>Should Actually Say</em>',
+      bottomTitle: 'Want a website where every page<br>has a clear job to do?',
+      bottomText: 'We build websites for local businesses that earn trust, communicate clearly and give visitors a logical next step.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>Look at the analytics of almost any small business website and the about page sits in the top three. Usually right after the homepage and the services page. People don't click it out of curiosity. They click it at the moment they've nearly decided and want to know one last thing: <strong>can I trust these people with my money, my house or my teeth?</strong></p>
+<p>That's a very different question from the one most about pages answer. The difference between a page that works and a page that does nothing sits almost entirely in that distinction.</p>
+<h2><span class="num">1</span> The autobiography versus the trust page</h2>
+<p>Broadly speaking, you find two kinds of about pages in the wild. The first is a timeline: founded in 2011, grew to six employees, moved to bigger premises, passionate about quality. The second answers the questions the visitor actually has in mind.</p>
+<ul class="art-checklist">
+  <li><strong>Autobiography:</strong> "Since 2011 we have specialised in complete installations."</li>
+  <li><strong>Trust page:</strong> "We do about forty bathrooms a year, nearly all of them in Eindhoven and the surrounding area."</li>
+  <li><strong>Autobiography:</strong> "Quality and customer focus come first for us."</li>
+  <li><strong>Trust page:</strong> "You get one regular engineer, and the same person calls you back if something goes wrong."</li>
+</ul>
+<p>Both columns contain true information. Only the right-hand one reduces uncertainty. That is this page's single job: to make the risk a visitor feels smaller than the effort of simply getting in touch.</p>
+<h2><span class="num">2</span> What visitors are really there to check</h2>
+<p>Ask customers afterwards why they clicked "About us" and the answers are surprisingly practical. Is this business actually nearby? How big are they? Who will I get on the phone? Have they been doing this longer than a year? Do these people look like they've handled my kind of job before?</p>
+<div class="art-quote">
+  <p>"Nobody picks a dentist because of their mission statement. People choose because they get the feeling it's calm, competent and tidy in there."</p>
+</div>
+<p>An about page that dodges those questions and talks about passion and vision instead leaves the visitor with exactly the doubt they arrived with. And doubt rarely leads to an enquiry. Doubt leads back to Google.</p>
+<h2><span class="num">3</span> Real faces do work that text cannot</h2>
+<p>For small businesses, the most powerful reassurance is usually visual. One good photo of the people who actually turn up does more than three paragraphs about reliability. It doesn't need an expensive shoot: a decent photo in daylight, in your own shop or van, is fine.</p>
+<figure class="art-img">
+  <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80" alt="Small team talking together in an office" loading="lazy">
+  <figcaption>Visitors don't need to know how big you are. They want to know who they'll be dealing with.</figcaption>
+</figure>
+<p>Add names, and roles in plain language. "Mark — he comes out to measure up" says more than "Mark, Senior Consultant". If you're small, you don't need to look big. For a local customer a team of three is often a plus: shorter lines, one point of contact, no call centre.</p>
+<h2><span class="num">4</span> Specific beats vague, every time</h2>
+<p>Vague superlatives are free. Anyone can write that they're skilled, reliable and competitively priced, which is precisely why it no longer means anything. Numbers and details aren't free, because you can't invent them without it showing.</p>
+<ol class="art-checklist">
+  <li>How many years you've been doing this, and roughly how many projects or clients that is</li>
+  <li>The area you work in: city, region, radius in kilometres</li>
+  <li>What you do and don't specialise in</li>
+  <li>What the process looks like from first contact onwards</li>
+  <li>Certifications, accreditations or guarantees, if you have them</li>
+</ol>
+<p>Note that the last two points are really about expectations. A visitor who finishes your about page knowing what happens after they hit send takes that step far more easily.</p>
+<div class="art-mistake">
+  <strong>Common mistake</strong>
+  <p>Ending the about page without a next step. The visitor reads the whole story, becomes convinced, and then reaches an empty bottom of the page. At the exact moment trust peaks, nothing happens.</p>
+</div>
+<h2><span class="num">5</span> Why your story belongs there, but briefly</h2>
+<p>None of this means your founding story has to go. A good story can be very effective, as long as it explains something that concerns the customer. "I went out on my own because I was tired of clients waiting two weeks for a quote" is a story with a promise hidden inside it.</p>
+<p>The rule of thumb: if your story explains <em>why</em> you work the way you work, it belongs on the page. If it's pure chronology, it can be reduced to one sentence. Two or three paragraphs of personal context is enough for almost any local business.</p>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Not sure what belongs on your about page?</h3>
+    <p>We write and design websites for local businesses where every page has a clear job — including the page where people shed their last bit of doubt.</p>
+  </div>
+  <a href="/#contact" class="btn btn-red">Request a quote →</a>
+</div>
+<h2><span class="num">6</span> A structure that nearly always works</h2>
+<p>You don't need to reinvent anything. This order suits most small businesses and can be written in an afternoon:</p>
+<ol class="art-steps">
+  <li><strong>One clear opening line</strong> — what you do, for whom and where. No warm-up, just straight to it.</li>
+  <li><strong>The people</strong> — photo, names, roles in normal language, who the point of contact is.</li>
+  <li><strong>How you work</strong> — three to five sentences on the process from first contact to completion.</li>
+  <li><strong>Proof</strong> — a review, an accreditation, a project count or a recognisable local client name.</li>
+  <li><strong>A short story</strong> — why you do this, but only if it explains something.</li>
+  <li><strong>A clear next step</strong> — the same button as on your homepage, at the bottom of the page.</li>
+</ol>
+<p>Six blocks, usually between three hundred and six hundred words in total. Short is not a problem here. Visitors scan this page; they rarely read it word for word.</p>
+<h2>Conclusion</h2>
+<p>An about page isn't a place to talk about yourself. It's the place where someone who is already nearly a customer loses their last bit of doubt. Anything that doesn't contribute to that can go.</p>
+<p>Put the people on it, be specific about what you do and where, explain what happens after first contact, and finish with the same clear button as the rest of your site. That's less work than a beautifully phrased mission statement — and it demonstrably brings in more.</p>
+`
+    },
+
     'how-to-choose-the-right-colors-for-your-brand': {
       current: 'Brand & Trust',
       category: 'Brand & Trust',
