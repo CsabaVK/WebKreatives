@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'why-page-speed-and-seo-go-together',
+    title:            'Waarom Snelheid en SEO Onlosmakelijk Verbonden Zijn',
+    titleEn:          'Why Page Speed and SEO Go Hand in Hand',
+    category:         'Lokale SEO',
+    categoryEn:       'Local SEO',
+    date:             '2026-08-20',
+    dateFormatted:    '20 augustus 2026',
+    dateFormattedEn:  '20 August 2026',
+    readTime:         '6 min lezen',
+    readTimeEn:       '6 min read',
+    publishedAt:      '2026-08-20T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Snelheid is geen los klusje naast je SEO. Dit meet Google echt, dit kost lokale sites hun positie, en in deze volgorde pak je het aan.',
+    excerptEn:        'Speed is not a side job next to your SEO. Here is what Google really measures, what costs local sites their position, and the order to fix it in.'
+  },
+
+  {
     slug:             'what-a-good-about-page-should-say',
     title:            'Wat een Goede Over-Ons Pagina Moet Vertellen',
     titleEn:          'What a Great About Page Should Actually Say',

@@ -17,6 +17,103 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'why-page-speed-and-seo-go-together': {
+      current: 'Local SEO',
+      category: 'Local SEO',
+      date: '20 August 2026',
+      read: '6 min read',
+      docTitle: 'Why Page Speed and SEO Go Hand in Hand | WebKreatives',
+      title: 'Why Page Speed and SEO<br><em>Go Hand in Hand</em>',
+      bottomTitle: 'Want a website that loads fast<br>and gets found?',
+      bottomText: 'We build light, fast websites for local businesses — professional in look, clear in message and built to bring in enquiries.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<div class="art-stats">
+  <div class="art-stat">
+    <span class="art-stat-num">2.5 s</span>
+    <span class="art-stat-label">is Google's threshold for loading the largest element on screen</span>
+  </div>
+  <div class="art-stat">
+    <span class="art-stat-num">200 ms</span>
+    <span class="art-stat-label">is the threshold for how fast your site responds to a tap or click</span>
+  </div>
+  <div class="art-stat">
+    <span class="art-stat-num">4G ≠ 4G</span>
+    <span class="art-stat-label">Google measures real visitors on real connections, not your office wifi</span>
+  </div>
+</div>
+<p>Small businesses almost always treat speed as a separate chore. First the website, then the copy, then SEO, and somewhere near the bottom of the list sits "make the site faster" as if it were an afterthought. In practice it works the other way round: <strong>speed is one of the few things that affects your visibility and your conversion at the same time</strong>, and it can be measured objectively on top of that.</p>
+<p>That is exactly why Google has been increasingly explicit about it for years. Not because fast sites belong to better businesses, but because a slow page measurably gets abandoned more often. And Google doesn't want to put abandoned pages at the top.</p>
+<h2>What Google actually measures when it talks about speed</h2>
+<p>"Fast" isn't a feeling, it's a set of numbers. Google uses three core values, the Core Web Vitals, and each measures something different. Once you know which three, a speed report suddenly becomes readable instead of intimidating.</p>
+<div class="art-mini-grid">
+  <div class="art-mini-card">
+    <span class="eyebrow">Loading</span>
+    <h3>LCP</h3>
+    <p>How long before the biggest thing on screen — usually your header image or heading — is actually there? Aim for under 2.5 seconds.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Responding</span>
+    <h3>INP</h3>
+    <p>How quickly does the page react when someone taps a menu or a button? Anything over half a second feels like a stuttering site.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Stability</span>
+    <h3>CLS</h3>
+    <p>Is the layout still jumping while you read? That shifting button you just tapped next to counts here.</p>
+  </div>
+</div>
+<p>An important detail: Google doesn't base this on a quick test from your laptop, but on what real visitors experience in Chrome. Someone looking up your hair salon from a three-year-old phone in a car park counts every bit as much as your fibre connection at the office.</p>
+<h2>Speed isn't a ranking button, but it is a tiebreaker</h2>
+<p>This is where a lot of advice goes wrong. Making your site faster won't catapult you from position 14 to position 1. Relevance, content and local signals weigh more heavily. What speed does do is decide between parties who are otherwise roughly level.</p>
+<p>And for a local business that is precisely the relevant situation. If three dental practices in the same town all have a tidy site with the same services and comparable reviews, the small differences decide who ends up on top. Speed is one of the few of those differences you have full control over.</p>
+<figure class="art-img">
+  <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=1200&q=80" alt="Business owner reviewing website statistics on a laptop" loading="lazy">
+  <figcaption>Speed rarely changes your position overnight, but it often decides who wins when everything else is equal.</figcaption>
+</figure>
+<h2>Why slow sites lose twice</h2>
+<p>The sting is in the double hit. A slow page not only scores worse on the metrics Google uses, it also sends visitors back to the search results to click the next link. That behaviour is exactly the signal you don't want to send.</p>
+<p>For local businesses that weighs even heavier, because local searches are nearly always mobile and nearly always hurried. Someone searches "emergency plumber" or "sushi delivery near me" and has no patience whatsoever. Waiting three seconds feels like a minute in that moment.</p>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Curious how your site really performs?</h3>
+    <p>We build websites for local businesses that are fast by nature — no heavy themes, no plugin stacks, just a site that ranks and converts.</p>
+  </div>
+  <a href="/#contact" class="btn btn-red">Request a quote →</a>
+</div>
+<h2>Where the time usually leaks away</h2>
+<p>Almost every slow small business website has the same four leaks. It's rarely one big technical disaster; it's usually the sum of things that were once added "just quickly".</p>
+<ul class="art-checklist">
+  <li><strong>Unprocessed photos</strong> — a 4 MB product shot straight from the camera, scaled with CSS instead of actually resized</li>
+  <li><strong>Plugins nobody removed</strong> — sliders, popups and trackers still loading while no one uses them any more</li>
+  <li><strong>Too many external scripts</strong> — chat widgets, cookie banners, three analytics tools and a review badge all opening their own connection</li>
+  <li><strong>Fonts arriving late</strong> — text that is invisible at first and then suddenly shifts once the font lands</li>
+</ul>
+<div class="art-mistake">
+  <strong>Common mistake</strong>
+  <p>Installing a caching plugin and leaving it at that. Caching certainly helps, but mostly it hides the problem: a page with eight uncompressed photos stays heavy, even when it's served neatly from cache.</p>
+</div>
+<h2>A practical order for making your site faster</h2>
+<p>You don't need to be a developer to make progress here. What does help is keeping the right order — the first two steps usually deliver the bulk of the gain.</p>
+<ol class="art-steps">
+  <li><strong>Compress your images</strong> — resize them to the dimensions they're displayed at and export as WebP. This is nearly always the biggest win.</li>
+  <li><strong>Clear out scripts and plugins</strong> — remove everything you haven't actively used in the past year.</li>
+  <li><strong>Load what isn't immediately visible later</strong> — lazy loading for images below the fold, and load your chat widget only after interaction.</li>
+  <li><strong>Reserve space for images and ads</strong> — fixed dimensions stop the layout jumping while things load.</li>
+  <li><strong>Test again on mobile</strong> — with a simulated slower connection, not on your own wifi.</li>
+</ol>
+<h2>Measuring without drowning in tools</h2>
+<p>You don't need a dashboard full of graphs for this. Google's PageSpeed Insights is enough: paste your URL in and look at the mobile result. At the top you'll see data from real visitors if there is any, below it a lab test with concrete recommendations.</p>
+<p>Focus on the mobile score and ignore the temptation to chase a perfect 100. Going from 45 to 80 is something your visitors notice immediately. Going from 92 to 100 usually costs disproportionate effort for something nobody feels.</p>
+<h2>Conclusion</h2>
+<p>Speed and SEO aren't two projects you plan separately. They measure the same underlying thing: whether your website gives visitors what they came for, quickly. Google rewards that, and customers reward it too.</p>
+<p>For most local businesses the answer isn't complicated engineering but a handful of practical choices: lighter photos, less ballast and a site that was built light from the start. That's an afternoon's work — and it keeps paying for itself as long as your site is online.</p>
+`
+    },
+
     'what-a-good-about-page-should-say': {
       current: 'Web Design Tips',
       category: 'Web Design Tips',
