@@ -3,3 +3,7 @@ nul
 .env.leads
 *.env
 
+# Internal handover / onboarding docs — never publish to the public repo
+HANDOVER.md
+START-HERE.md
+
