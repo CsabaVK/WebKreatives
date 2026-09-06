@@ -1,150 +1,5 @@
 /* ─── WebKreatives — interactive enhancements ─── */
 
-const WK_GA_ID = 'G-CG9705BC61';
-const WK_CONSENT_KEY = 'wk-cookie-consent';
-const WK_CONSENT_PREFS_KEY = 'wk-cookie-preferences';
-let wkGaLoaded = false;
-
-function loadGoogleAnalytics() {
-  if (wkGaLoaded || !WK_GA_ID) return;
-  wkGaLoaded = true;
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
-
-  const gaScript = document.createElement('script');
-  gaScript.async = true;
-  gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${WK_GA_ID}`;
-  document.head.appendChild(gaScript);
-
-  window.gtag('js', new Date());
-  window.gtag('config', WK_GA_ID, { anonymize_ip: true });
-}
-
-function getCookieConsentState() {
-  return localStorage.getItem(WK_CONSENT_KEY);
-}
-
-function getCookiePreferences() {
-  try {
-    return JSON.parse(localStorage.getItem(WK_CONSENT_PREFS_KEY) || '{"essential":true,"analytics":true}');
-  } catch {
-    return { essential: true, analytics: true };
-  }
-}
-
-function applyCookiePreferences(prefs, state) {
-  localStorage.setItem(WK_CONSENT_KEY, state);
-  localStorage.setItem(WK_CONSENT_PREFS_KEY, JSON.stringify(prefs));
-  if (prefs.analytics && state !== 'declined') loadGoogleAnalytics();
-}
-
-function getCookieBannerCopy() {
-  return {
-    title: 'Cookies on WebKreatives',
-    text: 'We use essential cookies for theme preferences. Analytics helps us improve the site and is enabled after your permission.',
-    accept: 'Accept',
-    customize: 'Customize',
-    manage: 'Privacy Policy',
-    save: 'Save',
-    essential: 'Essential cookies',
-    essentialText: 'Needed for basic website functionality such as theme preferences. Always on.',
-    analytics: 'Analytics cookies',
-    analyticsText: 'Helps us understand which pages perform best so we can improve the website.'
-  };
-}
-
-function renderCookieBanner() {
-  let banner = document.getElementById('cookieBanner');
-  if (!banner) {
-    banner = document.createElement('div');
-    banner.id = 'cookieBanner';
-    banner.className = 'cookie-banner';
-    document.body.appendChild(banner);
-  }
-
-  const prefs = getCookiePreferences();
-  const copy = getCookieBannerCopy();
-  banner.innerHTML = `
-    <div class="cookie-banner-inner">
-      <div class="cookie-copy">
-        <strong>${copy.title}</strong>
-        <p>${copy.text} <a href="/privacy/">${copy.manage}</a>.</p>
-      </div>
-      <div class="cookie-actions">
-        <button type="button" class="cookie-btn cookie-btn-secondary" data-cookie-action="customize">${copy.customize}</button>
-        <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-action="accept">${copy.accept}</button>
-      </div>
-    </div>
-    <div class="cookie-panel" hidden>
-      <div class="cookie-option cookie-option-locked">
-        <div>
-          <strong>${copy.essential}</strong>
-          <p>${copy.essentialText}</p>
-        </div>
-        <label class="cookie-switch is-disabled"><input type="checkbox" checked disabled><span></span></label>
-      </div>
-      <div class="cookie-option">
-        <div>
-          <strong>${copy.analytics}</strong>
-          <p>${copy.analyticsText}</p>
-        </div>
-        <label class="cookie-switch"><input type="checkbox" data-cookie-analytics ${prefs.analytics ? 'checked' : ''}><span></span></label>
-      </div>
-      <div class="cookie-panel-actions">
-        <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-action="save">${copy.save}</button>
-      </div>
-    </div>`;
-
-  const panel = banner.querySelector('.cookie-panel');
-  banner.querySelector('[data-cookie-action="accept"]').addEventListener('click', () => {
-    applyCookiePreferences({ essential: true, analytics: true }, 'accepted');
-    banner.hidden = true;
-    renderCookieManageButton();
-  });
-  banner.querySelector('[data-cookie-action="customize"]').addEventListener('click', () => {
-    panel.hidden = !panel.hidden;
-    banner.classList.toggle('cookie-banner-expanded', !panel.hidden);
-    banner.classList.toggle('cookie-banner-customizing', !panel.hidden);
-  });
-  banner.querySelector('[data-cookie-action="save"]').addEventListener('click', () => {
-    const analytics = !!banner.querySelector('[data-cookie-analytics]')?.checked;
-    applyCookiePreferences({ essential: true, analytics }, analytics ? 'accepted' : 'customized');
-    banner.hidden = true;
-    renderCookieManageButton();
-  });
-
-  banner.hidden = ['accepted', 'declined', 'customized'].includes(getCookieConsentState());
-}
-
-function renderCookieManageButton() {
-  let btn = document.getElementById('cookieManageBtn');
-  const consent = getCookieConsentState();
-  if (!consent) {
-    if (btn) btn.hidden = true;
-    return;
-  }
-  if (!btn) {
-    btn = document.createElement('button');
-    btn.type = 'button';
-    btn.id = 'cookieManageBtn';
-    btn.className = 'cookie-manage-btn';
-    document.body.appendChild(btn);
-    btn.addEventListener('click', () => {
-      localStorage.removeItem(WK_CONSENT_KEY);
-      localStorage.removeItem(WK_CONSENT_PREFS_KEY);
-      renderCookieBanner();
-      renderCookieManageButton();
-    });
-  }
-  btn.textContent = '🍪 Cookie settings';
-  btn.hidden = false;
-}
-
-const initialPrefs = getCookiePreferences();
-if (initialPrefs.analytics && ['accepted', 'customized'].includes(getCookieConsentState())) {
-  loadGoogleAnalytics();
-}
-
 // 1. SCROLL PROGRESS BAR
 const progressBar = document.createElement('div');
 progressBar.id = 'progress-bar';
@@ -291,10 +146,7 @@ document.querySelectorAll('.btn-primary, .btn-nav, .fsub').forEach(btn => {
   btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
 });
 
-// 9.5 COOKIE BANNER INIT (English-only site)
 document.documentElement.lang = 'en';
-renderCookieBanner();
-renderCookieManageButton();
 
 // 9.6 DARK MODE TOGGLE
 const themeToggle = document.getElementById('themeToggle');
@@ -355,29 +207,29 @@ if (form) {
     if (!valid) return;
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Verzenden...';
+    submitBtn.textContent = 'Sending...';
 
     var data = new FormData(form);
     fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
       .then(function(r) { return r.json(); })
       .then(function(res) {
         if (res.success) {
-          submitBtn.textContent = '✓ Verzonden!';
+          submitBtn.textContent = '✓ Sent!';
           submitBtn.style.background = 'var(--green)';
           statusDiv.style.display = 'block';
           statusDiv.style.color = 'var(--green)';
-          statusDiv.textContent = 'Bedankt! We nemen binnen 24 uur contact op.';
+          statusDiv.textContent = 'Thanks! We will get back to you within 24 hours.';
           form.reset();
         } else {
-          throw new Error(res.message || 'Fout');
+          throw new Error(res.message || 'Error');
         }
       })
       .catch(function(err) {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Bericht Versturen \u2192';
+        submitBtn.textContent = 'Send Message \u2192';
         statusDiv.style.display = 'block';
         statusDiv.style.color = 'var(--red)';
-        statusDiv.textContent = err.message || 'Er ging iets mis. Probeer het opnieuw.';
+        statusDiv.textContent = err.message || 'Something went wrong. Please try again.';
       });
   });
 }
