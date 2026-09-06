@@ -75,35 +75,6 @@
 #pNav .nav-controls{display:flex;align-items:center;gap:6px;justify-content:flex-end}
 .wk-divider{width:1px;height:18px;background:oklch(24% .008 25);margin:0 4px}
 
-/* lang dropdown — use same IDs as script.js expects */
-#langDropdown{position:relative}
-#langBtn{
-  display:flex;align-items:center;gap:5px;height:34px;padding:0 6px;
-  font-size:11px;font-weight:700;letter-spacing:.1em;
-  color:oklch(52% .005 25);background:none;border:none;cursor:pointer;
-  font-family:var(--wk-f2);transition:color .2s;
-}
-#langBtn:hover{color:oklch(82% .005 25)}
-#langBtn .lang-flag{
-  width:15px;height:11px;display:block;border-radius:2px;overflow:hidden;flex-shrink:0;
-}
-#langBtn .lang-flag svg{width:100%;height:100%;display:block}
-#langMenu{
-  position:absolute;top:calc(100% + 6px);right:0;
-  background:oklch(10% .010 25);border:1px solid oklch(22% .010 25);
-  border-radius:8px;padding:4px;min-width:72px;
-  opacity:0;pointer-events:none;transform:translateY(-6px);
-  transition:opacity .18s var(--wk-ease),transform .18s var(--wk-ease);z-index:200;
-}
-#langDropdown.open #langMenu{opacity:1;pointer-events:auto;transform:translateY(0)}
-.lang-option{
-  display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:5px;
-  font-size:11px;font-weight:700;letter-spacing:.1em;
-  color:oklch(50% .005 25);width:100%;text-align:left;cursor:pointer;
-  transition:background .15s,color .15s;white-space:nowrap;
-  background:none;border:none;font-family:var(--wk-f2);
-}
-.lang-option:hover,.lang-option.active{background:oklch(18% .010 25);color:var(--wk-white)}
 .wk-nav-cta{
   display:inline-flex;align-items:center;gap:8px;
   font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
@@ -300,17 +271,10 @@
   }
 
   /* ── 3. State ─────────────────────────────────────────── */
-  const lang = localStorage.getItem('wk-lang') || 'nl';
   const page = document.body?.dataset?.page || '';
 
-  const NL_FLAG = `<svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>`;
-  const EN_FLAG = `<svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>`;
-
-  const curFlag = lang === 'nl' ? NL_FLAG : EN_FLAG;
   const portfolioActive = page === 'portfolio' ? ' class="active"' : '';
   const articlesActive  = (page === 'articles' || page === 'article') ? ' class="active"' : '';
-  const nlActive = lang !== 'en' ? ' active' : '';
-  const enActive = lang === 'en' ? ' active' : '';
 
   /* ── 4. Inject nav ───────────────────────────────────── */
   const navRoot = document.getElementById('globalNav');
@@ -321,31 +285,15 @@
     <a href="/" class="wk-logo"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></a>
   </div>
   <ul class="nav-links">
-    <li><a href="/#services" data-i18n="nav.services">Diensten</a></li>
+    <li><a href="/#services">Services</a></li>
     <li><a href="/portfolio/"${portfolioActive}>Portfolio</a></li>
-    <li><a href="/#pricing" data-i18n="nav.pricing">Prijzen</a></li>
-    <li><a href="/#subscriptions" data-i18n="nav.support">Support</a></li>
-    <li><a href="/articles/"${articlesActive} data-i18n="nav.articles">Artikelen</a></li>
-    <li><a href="/#contact" data-i18n="nav.reviews">Reviews</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/#subscriptions">Support</a></li>
+    <li><a href="/articles/"${articlesActive}>Articles</a></li>
+    <li><a href="/#contact">Reviews</a></li>
   </ul>
   <div class="nav-controls">
-    <div id="langDropdown">
-      <button id="langBtn" aria-label="Language">
-        <span class="lang-flag">${curFlag}</span>
-        <span class="lang-name">${lang.toUpperCase()}</span>
-        <span style="opacity:.5;font-size:9px">&#9662;</span>
-      </button>
-      <div id="langMenu">
-        <button class="lang-option${nlActive}" data-lang="nl">
-          <span class="lang-flag">${NL_FLAG}</span> NL
-        </button>
-        <button class="lang-option${enActive}" data-lang="en">
-          <span class="lang-flag">${EN_FLAG}</span> EN
-        </button>
-      </div>
-    </div>
-    <div class="wk-divider"></div>
-    <a href="/#contact" class="wk-nav-cta"><span data-i18n="nav.cta">Offerte Aanvragen</span></a>
+    <a href="/#contact" class="wk-nav-cta"><span>Get a Quote</span></a>
     <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -353,15 +301,15 @@
 </nav>
 <div id="mobileMenu">
   <ul>
-    <li><a href="/#services" data-i18n="nav.services">Diensten</a></li>
+    <li><a href="/#services">Services</a></li>
     <li><a href="/portfolio/"${portfolioActive}>Portfolio</a></li>
-    <li><a href="/#pricing" data-i18n="nav.pricing">Prijzen</a></li>
-    <li><a href="/#subscriptions" data-i18n="nav.support">Support</a></li>
-    <li><a href="/articles/"${articlesActive} data-i18n="nav.articles">Artikelen</a></li>
-    <li><a href="/#contact" data-i18n="nav.reviews">Reviews</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/#subscriptions">Support</a></li>
+    <li><a href="/articles/"${articlesActive}>Articles</a></li>
+    <li><a href="/#contact">Reviews</a></li>
   </ul>
   <a href="/#contact" class="wk-nav-cta" style="width:100%;justify-content:center">
-    <span data-i18n="nav.cta">Offerte Aanvragen</span>
+    <span>Get a Quote</span>
   </a>
 </div>`;
 
@@ -400,38 +348,38 @@
     <div class="wk-fbrand">
       <img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"
            style="height:100px;width:auto;max-width:100%;display:block;margin-bottom:8px">
-      <p data-i18n="footer.p">Mooie, converterende websites voor kleine bedrijven. Snel, betaalbaar, op maat gemaakt. Gevestigd in Amsterdam.</p>
+      <p>Beautiful, high-converting websites for growing businesses. Fast, affordable, custom-built. Based in Amsterdam, working worldwide.</p>
       <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
     </div>
     <div class="wk-fcol">
-      <h4 data-i18n="footer.services">Diensten</h4>
-      <a href="/#services" data-i18n="footer.design">Website Design</a>
-      <a href="/#services" data-i18n="footer.ecom">Webshops</a>
-      <a href="/#services" data-i18n="footer.seo">SEO &amp; Prestaties</a>
-      <a href="/#services" data-i18n="footer.brand">Branding &amp; Identiteit</a>
-      <a href="/#services" data-i18n="footer.support">Doorlopende Support</a>
+      <h4>Services</h4>
+      <a href="/#services">Website Design</a>
+      <a href="/#services">Online Stores</a>
+      <a href="/#services">SEO &amp; Performance</a>
+      <a href="/#services">Branding &amp; Identity</a>
+      <a href="/#services">Ongoing Support</a>
     </div>
     <div class="wk-fcol">
-      <h4 data-i18n="footer.pages">Pagina's</h4>
-      <a href="/" data-i18n="footer.home">Home</a>
-      <a href="/portfolio/" data-i18n="footer.work">Portfolio</a>
-      <a href="/articles/" data-i18n="footer.articles">Artikelen</a>
-      <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
-      <a href="/terms/" data-i18n="footer.terms">Voorwaarden</a>
+      <h4>Pages</h4>
+      <a href="/">Home</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/articles/">Articles</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
     </div>
     <div class="wk-fcol">
-      <h4 data-i18n="footer.connect">Verbinden</h4>
-      <a href="/#contact" class="wk-g" data-i18n="footer.start">Start een Project</a>
-      <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener" data-i18n="footer.instagram">Instagram</a>
-      <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
-      <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener" data-i18n="footer.medium">Medium</a>
+      <h4>Connect</h4>
+      <a href="/#contact" class="wk-g">Start a Project</a>
+      <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener">Medium</a>
     </div>
   </div>
   <div class="wk-fbot">
-    <p data-i18n="footer.meta">&copy; 2026 WebKreatives &middot; Amsterdam, Netherlands &middot; KVK: 94051097</p>
+    <p>&copy; 2026 WebKreatives &middot; Amsterdam, Netherlands &middot; KVK: 94051097</p>
     <div class="wk-fbot-links">
-      <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
-      <a href="/terms/" data-i18n="footer.terms">Terms</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
     </div>
   </div>
 </footer>`;

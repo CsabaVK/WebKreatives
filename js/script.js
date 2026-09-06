@@ -38,35 +38,22 @@ function applyCookiePreferences(prefs, state) {
   if (prefs.analytics && state !== 'declined') loadGoogleAnalytics();
 }
 
-function getCookieBannerCopy(lang) {
-  return lang === 'en'
-    ? {
-        title: 'Cookies on WebKreatives',
-        text: 'We use essential cookies for language and theme preferences. Analytics helps us improve the site and is enabled after your permission.',
-        accept: 'Accept',
-        customize: 'Customize',
-        manage: 'Privacy Policy',
-        save: 'Save',
-        essential: 'Essential cookies',
-        essentialText: 'Needed for basic website functionality such as language and theme preferences. Always on.',
-        analytics: 'Analytics cookies',
-        analyticsText: 'Helps us understand which pages perform best so we can improve the website.'
-      }
-    : {
-        title: 'Cookies op WebKreatives',
-        text: 'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren en wordt pas actief na jouw keuze.',
-        accept: 'Accepteren',
-        customize: 'Aanpassen',
-        manage: 'Privacybeleid',
-        save: 'Opslaan',
-        essential: 'Essentiële cookies',
-        essentialText: 'Nodig voor basisfunctionaliteit van de website, zoals taal- en themavoorkeuren. Altijd actief.',
-        analytics: 'Analytics cookies',
-        analyticsText: 'Helpt ons begrijpen welke pagina’s het beste werken zodat we de website kunnen verbeteren.'
-      };
+function getCookieBannerCopy() {
+  return {
+    title: 'Cookies on WebKreatives',
+    text: 'We use essential cookies for theme preferences. Analytics helps us improve the site and is enabled after your permission.',
+    accept: 'Accept',
+    customize: 'Customize',
+    manage: 'Privacy Policy',
+    save: 'Save',
+    essential: 'Essential cookies',
+    essentialText: 'Needed for basic website functionality such as theme preferences. Always on.',
+    analytics: 'Analytics cookies',
+    analyticsText: 'Helps us understand which pages perform best so we can improve the website.'
+  };
 }
 
-function renderCookieBanner(lang) {
+function renderCookieBanner() {
   let banner = document.getElementById('cookieBanner');
   if (!banner) {
     banner = document.createElement('div');
@@ -76,7 +63,7 @@ function renderCookieBanner(lang) {
   }
 
   const prefs = getCookiePreferences();
-  const copy = getCookieBannerCopy(lang);
+  const copy = getCookieBannerCopy();
   banner.innerHTML = `
     <div class="cookie-banner-inner">
       <div class="cookie-copy">
@@ -112,7 +99,7 @@ function renderCookieBanner(lang) {
   banner.querySelector('[data-cookie-action="accept"]').addEventListener('click', () => {
     applyCookiePreferences({ essential: true, analytics: true }, 'accepted');
     banner.hidden = true;
-    renderCookieManageButton(lang);
+    renderCookieManageButton();
   });
   banner.querySelector('[data-cookie-action="customize"]').addEventListener('click', () => {
     panel.hidden = !panel.hidden;
@@ -123,13 +110,13 @@ function renderCookieBanner(lang) {
     const analytics = !!banner.querySelector('[data-cookie-analytics]')?.checked;
     applyCookiePreferences({ essential: true, analytics }, analytics ? 'accepted' : 'customized');
     banner.hidden = true;
-    renderCookieManageButton(lang);
+    renderCookieManageButton();
   });
 
   banner.hidden = ['accepted', 'declined', 'customized'].includes(getCookieConsentState());
 }
 
-function renderCookieManageButton(lang) {
+function renderCookieManageButton() {
   let btn = document.getElementById('cookieManageBtn');
   const consent = getCookieConsentState();
   if (!consent) {
@@ -145,11 +132,11 @@ function renderCookieManageButton(lang) {
     btn.addEventListener('click', () => {
       localStorage.removeItem(WK_CONSENT_KEY);
       localStorage.removeItem(WK_CONSENT_PREFS_KEY);
-      renderCookieBanner(currentLang || localStorage.getItem('wk-lang') || 'nl');
-      renderCookieManageButton(currentLang || localStorage.getItem('wk-lang') || 'nl');
+      renderCookieBanner();
+      renderCookieManageButton();
     });
   }
-  btn.textContent = lang === 'en' ? '🍪 Cookie settings' : '🍪 Cookie-instellingen';
+  btn.textContent = '🍪 Cookie settings';
   btn.hidden = false;
 }
 
@@ -267,7 +254,7 @@ if (statsEl) {
 
 // 7. TYPING EFFECT in hero h1
 const typingEl = document.querySelector('.hero h1 em');
-let words = (typeof translations !== 'undefined' && translations[localStorage.getItem('wk-lang') || 'nl']) ? (translations[localStorage.getItem('wk-lang') || 'nl']['hero.words'] || 'Winnen,Groeien,Converteren').split(',') : ['Winnen','Groeien','Converteren'];
+let words = ['Win', 'Grow', 'Convert'];
 if (typingEl) {
   let wi = 0, ci = 0, deleting = false;
   function type() {
@@ -304,89 +291,10 @@ document.querySelectorAll('.btn-primary, .btn-nav, .fsub').forEach(btn => {
   btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
 });
 
-// 9.5 LANGUAGE SWITCHER
-const langBtn = document.getElementById('langBtn');
-const langMenu = document.getElementById('langMenu');
-const langDropdown = document.getElementById('langDropdown');
-
-// Auto-detect language: respect manual choice first, then browser preference
-function detectLang() {
-  const saved = localStorage.getItem('wk-lang');
-  if (saved) return saved;
-  return navigator.language.startsWith('nl') ? 'nl' : 'en';
-}
-let currentLang = detectLang();
-
-function setLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem('wk-lang', lang);
-  document.documentElement.lang = lang;
-
-  const t = translations[lang];
-  if (!t) return;
-
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key]) el.textContent = t[key];
-  });
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.getAttribute('data-i18n-html');
-    if (t[key]) el.innerHTML = t[key];
-  });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (t[key]) el.placeholder = t[key];
-  });
-
-  // Update typing words
-  if (t['hero.words'] && typeof words !== 'undefined') {
-    words = t['hero.words'].split(',');
-  }
-
-  // Update lang button display
-  const flagSVGs = {
-    nl: '<svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>',
-    en: '<svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>'
-  };
-  const names = {nl: 'NL', en: 'EN'};
-  if (langBtn) {
-    langBtn.querySelector('.lang-flag').innerHTML = flagSVGs[lang] || flagSVGs.nl;
-    langBtn.querySelector('.lang-name').textContent = names[lang] || names.nl;
-  }
-
-  // Update active state
-  document.querySelectorAll('.lang-option').forEach(opt => {
-    opt.classList.toggle('active', opt.dataset.lang === lang);
-  });
-
-  renderCookieBanner(lang);
-  renderCookieManageButton(lang);
-
-  document.dispatchEvent(new CustomEvent('wk:languagechange', {
-    detail: { lang, translations: t }
-  }));
-}
-
-if (langBtn) {
-  langBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    langDropdown.classList.toggle('open');
-  });
-
-  document.querySelectorAll('.lang-option').forEach(opt => {
-    opt.addEventListener('click', () => {
-      setLanguage(opt.dataset.lang);
-      langDropdown.classList.remove('open');
-    });
-  });
-
-  document.addEventListener('click', () => {
-    langDropdown.classList.remove('open');
-  });
-}
-
-// Apply saved language on load
-setLanguage(currentLang);
+// 9.5 COOKIE BANNER INIT (English-only site)
+document.documentElement.lang = 'en';
+renderCookieBanner();
+renderCookieManageButton();
 
 // 9.6 DARK MODE TOGGLE
 const themeToggle = document.getElementById('themeToggle');

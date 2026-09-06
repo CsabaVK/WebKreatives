@@ -167,35 +167,6 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
 }
 .theme-btn:hover{color:oklch(78% .005 25);background:oklch(14% .010 25)}
 
-.lang-btn-nav{
-  display:flex;align-items:center;gap:5px;
-  height:34px;padding:0 6px;
-  font-size:11px;font-weight:700;letter-spacing:.1em;
-  color:oklch(60% .005 25);
-  transition:color .2s;
-}
-.lang-btn-nav:hover{color:oklch(88% .005 25)}
-.lang-flag{width:15px;height:11px;display:block;border-radius:2px;overflow:hidden;flex-shrink:0}
-.lang-drop{position:relative}
-.lang-menu{
-  position:absolute;top:calc(100% + 6px);right:0;
-  background:oklch(10% .010 25);
-  border:1px solid oklch(22% .010 25);
-  border-radius:8px;padding:4px;
-  min-width:72px;opacity:0;pointer-events:none;
-  transform:translateY(-6px);
-  transition:opacity .18s var(--ease),transform .18s var(--ease);
-  z-index:200;
-}
-.lang-drop.open .lang-menu{opacity:1;pointer-events:auto;transform:translateY(0)}
-.lang-opt{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 12px;border-radius:5px;
-  font-size:11px;font-weight:700;letter-spacing:.1em;
-  color:oklch(50% .005 25);width:100%;text-align:left;
-  transition:background .15s,color .15s;white-space:nowrap;
-}
-.lang-opt:hover,.lang-opt.active{background:oklch(18% .010 25);color:var(--white)}
 .nav-logo-text{
   font-family:var(--f1);font-size:14px;font-weight:700;
   letter-spacing:-.02em;color:var(--white);white-space:nowrap;
@@ -1474,39 +1445,28 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 <nav id="mainNav">
   <a class="nav-logo" href="#"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></a>
   <ul class="nav-links">
-    <li><a href="#services" data-nl="Diensten" data-en="Services">Services</a></li>
-    <li><a href="#portfolio" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
-    <li><a href="/articles/" data-nl="Artikelen" data-en="Articles">Articles</a></li>
-    <li><a href="#pricing" data-nl="Prijzen" data-en="Pricing">Pricing</a></li>
-    <li><a href="#subscriptions" data-nl="Support" data-en="Support">Support</a></li>
-    <li><a href="#contact" data-nl="Contact" data-en="Contact">Contact</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="/articles/">Articles</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#subscriptions">Support</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-controls">
-    <div class="lang-drop" id="langDrop">
-      <button class="lang-btn-nav" id="langBtn">
-        <span id="lang-label-nav">EN</span>
-        <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor" style="opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
-      </button>
-      <div class="lang-menu">
-        <button class="lang-opt active" data-lang="en">EN</button>
-        <button class="lang-opt" data-lang="nl">NL</button>
-      </div>
-    </div>
-    <div class="nav-divider"></div>
-    <a href="#contact" class="nav-cta"><span data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</span></a>
+    <a href="#contact" class="nav-cta"><span>Get a Quote</span></a>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#services" data-nl="Diensten" data-en="Services">Services</a>
-  <a href="#portfolio" data-nl="Portfolio" data-en="Portfolio">Portfolio</a>
-  <a href="#pricing" data-nl="Prijzen" data-en="Pricing">Pricing</a>
-  <a href="#subscriptions" data-nl="Support" data-en="Support">Support</a>
-  <a href="#articles" data-nl="Artikelen" data-en="Articles">Articles</a>
-  <a href="#contact" data-nl="Reviews" data-en="Reviews">Reviews</a>
-  <a class="mobile-menu-cta" href="#contact" data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#subscriptions">Support</a>
+  <a href="#articles">Articles</a>
+  <a href="#contact">Reviews</a>
+  <a class="mobile-menu-cta" href="#contact">Get a Quote</a>
 </div>
 
 <!-- HERO -->
@@ -1529,22 +1489,14 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <span class="word"><span class="word-inner">WEBSITES</span></span>
       <span class="hero-line2"><span class="word"><span class="word-inner">THAT&nbsp;</span></span><span class="word"><span class="word-inner"><em id="cycling-word" style="color:var(--red)">WIN.</em></span></span></span>
     </h1>
-    <p class="hero-sub" id="hero-sub"
-      data-nl="Wij bouwen krachtige websites met AI-technologie, gepersonaliseerd, snel opgeleverd en gemaakt om te converteren. <strong>Geen templates. Geen concessies.</strong>"
-      data-en="We build high-performance websites powered by AI, custom-crafted, delivered fast, designed to convert. <strong>No templates. No compromises.</strong>">
-      We build high-performance websites powered by AI, custom-crafted, delivered fast, designed to convert. <strong>No templates. No compromises.</strong>
-    </p>
+    <p class="hero-sub" id="hero-sub">We build high-performance websites powered by AI, custom-crafted, delivered fast, designed to convert. <strong>No templates. No compromises.</strong></p>
     <div class="hero-btns" id="hero-btns">
-      <a href="#contact" class="btn-p"><span data-nl="Start Je Project" data-en="Start Your Project">Start Je Project</span> <span class="btn-arrow">→</span></a>
-      <a href="#portfolio" class="btn-g"><span data-nl="Bekijk Ons Werk" data-en="View Our Work">Bekijk Ons Werk</span> <span class="btn-arrow">→</span></a>
+      <a href="#contact" class="btn-p"><span>Start Your Project</span> <span class="btn-arrow">→</span></a>
+      <a href="#portfolio" class="btn-g"><span>View Our Work</span> <span class="btn-arrow">→</span></a>
     </div>
     <div class="hero-trust" id="hero-trust">
       <div class="hero-trust-stars">★★★★★</div>
-      <p class="hero-trust-text"
-        data-nl="<strong>5.0</strong> gemiddelde beoordeling · <strong>15+</strong> websites live"
-        data-en="<strong>5.0</strong> average rating · <strong>15+</strong> websites live">
-        <strong>5.0</strong> gemiddelde beoordeling · <strong>15+</strong> websites live
-      </p>
+      <p class="hero-trust-text"><strong>5.0</strong> average rating · <strong>15+</strong> websites live</p>
     </div>
   </div>
 </section>
@@ -1577,39 +1529,39 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 
 <!-- STATS -->
 <section class="sec sec-light" id="stats">
-  <p class="lbl reveal" data-nl="Wat ons onderscheidt" data-en="What sets us apart">What sets us apart</p>
-  <h2 class="h2 reveal" data-nl="AI-gestuurd <br class='mbr'>ontwerp, gebouwd voor <br class='mbr'>resultaat." data-en="AI-powered <br class='mbr'>design, built for <br class='mbr'>results.">AI-powered <br class="mbr">design, built for <br class="mbr">results.</h2>
+  <p class="lbl reveal">What sets us apart</p>
+  <h2 class="h2 reveal">AI-powered <br class='mbr'>design, built for <br class='mbr'>results.</h2>
   <div class="stats-grid" style="margin-top:56px">
     <div class="stat-card stat-dark reveal">
       <div class="stat-n" style="color:var(--red)" data-count="15" data-suffix="+">0+</div>
-      <div class="stat-l" data-nl="Live websites voor echte bedrijven" data-en="Live websites delivered for real businesses">Live websites delivered for real businesses</div>
+      <div class="stat-l">Live websites delivered for real businesses</div>
     </div>
     <div class="stat-card stat-dark reveal">
       <div class="stat-n" style="color:var(--blue)" data-count="48" data-suffix="h">0h</div>
-      <div class="stat-l" data-nl="Van briefing naar werkend prototype" data-en="From brief to working prototype">From brief to working prototype</div>
+      <div class="stat-l">From brief to working prototype</div>
     </div>
     <div class="stat-card stat-dark reveal">
       <div class="stat-n" style="color:var(--yellow)" data-count="2" data-suffix=" wks">0 wks</div>
-      <div class="stat-l" data-nl="Gemiddelde levertijd van brief tot live" data-en="Average delivery time, brief to live">Average delivery time, brief to live</div>
+      <div class="stat-l">Average delivery time, brief to live</div>
     </div>
     <div class="stat-card stat-dark reveal">
       <div class="stat-n" style="color:var(--lime)" data-count="100" data-suffix="%">0%</div>
-      <div class="stat-l" data-nl="Klanttevredenheid, check de reviews" data-en="Client satisfaction, check the reviews">Client satisfaction, check the reviews</div>
+      <div class="stat-l">Client satisfaction, check the reviews</div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section class="sec sec-mid" id="services">
-  <p class="lbl reveal" data-nl="Wat we doen" data-en="What we do">What we do</p>
-  <h2 class="h2 reveal" data-nl="Elk onderdeel van <br class='mbr'>jouw online <br class='mbr'>aanwezigheid." data-en="Every part of your <br class='mbr'>online <br class='mbr'>presence.">Every part of your <br class="mbr">online <br class="mbr">presence.</h2>
+  <p class="lbl reveal">What we do</p>
+  <h2 class="h2 reveal">Every part of your <br class='mbr'>online <br class='mbr'>presence.</h2>
   <div class="svc-grid">
-    <div class="svc-item reveal"><div class="svc-num">01</div><h3 class="svc-title" data-nl="Webdesign op maat" data-en="Custom Web Design">Custom Web Design</h3><p class="svc-desc" data-nl="AI-ondersteund design dat razendsnel beweegt. Op maat gebouwd voor jouw merk, nooit uit een sjabloonbibliotheek." data-en="AI-assisted design that moves at full speed. Built from scratch for your brand, never from a template library.">AI-assisted design that moves at full speed. Built from scratch for your brand, never from a template library.</p><span class="svc-arr">↗</span></div>
-    <div class="svc-item reveal"><div class="svc-num">02</div><h3 class="svc-title" data-nl="Webshops" data-en="E-Commerce">E-Commerce</h3><p class="svc-desc" data-nl="Commerce gebouwd om te converteren. AI-gegenereerde productbeschrijvingen, slimme zoekfunctie en geautomatiseerde voorraad op Shopify of WooCommerce." data-en="Commerce built to convert. AI-powered product copy, smart search and automated inventory, Shopify or WooCommerce.">Commerce built to convert. AI-powered product copy, smart search and automated inventory, Shopify or WooCommerce.</p><span class="svc-arr">↗</span></div>
-    <div class="svc-item reveal"><div class="svc-num">03</div><h3 class="svc-title" data-nl="SEO &amp; Vindbaarheid" data-en="SEO &amp; Visibility">SEO &amp; Visibility</h3><p class="svc-desc" data-nl="Rank waar het telt. AI-gestuurde zoekwoordstrategie en on-page optimalisatie die je boven de concurrentie plaatst." data-en="Rank where it matters. AI-analyzed keyword strategy and on-page optimization that puts you ahead of your competition.">Rank where it matters. AI-analyzed keyword strategy and on-page optimization that puts you ahead of your competition.</p><span class="svc-arr">↗</span></div>
-    <div class="svc-item reveal"><div class="svc-num">04</div><h3 class="svc-title" data-nl="Branding &amp; Identiteit" data-en="Branding &amp; Identity">Branding &amp; Identity</h3><p class="svc-desc" data-nl="Jouw identiteit, met precisie gedefinieerd. Logo, kleuren, typografie, met vakmanschap, niet op gevoel." data-en="Your identity, defined with precision. Logo, colors, typography, crafted with expertise, not guesswork.">Your identity, defined with precision. Logo, colors, typography, crafted with expertise, not guesswork.</p><span class="svc-arr">↗</span></div>
-    <div class="svc-item reveal"><div class="svc-num">05</div><h3 class="svc-title" data-nl="Onderhoud &amp; Support" data-en="Maintenance &amp; Support">Maintenance &amp; Support</h3><p class="svc-desc" data-nl="Altijd beschikbare support. Wij regelen de updates, beveiliging en hosting. Jij focust op je bedrijf." data-en="Always-on support. We handle updates, security and hosting. You focus on your business.">Always-on support. We handle updates, security and hosting. You focus on your business.</p><span class="svc-arr">↗</span></div>
-    <div class="svc-item reveal"><div class="svc-num">06</div><h3 class="svc-title" data-nl="AI-Versnelde Oplevering" data-en="AI-Accelerated Delivery">AI-Accelerated Delivery</h3><p class="svc-desc" data-nl="Live in 1–2 weken. AI-versnelde workflows verkorten de productietijd zonder in te leveren op kwaliteit." data-en="Live in 1–2 weeks. AI-accelerated workflows cut production time without cutting quality.">Live in 1–2 weeks. AI-accelerated workflows cut production time without cutting quality.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">01</div><h3 class="svc-title">Custom Web Design</h3><p class="svc-desc">AI-assisted design that moves at full speed. Built from scratch for your brand, never from a template library.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">02</div><h3 class="svc-title">E-Commerce</h3><p class="svc-desc">Commerce built to convert. AI-powered product copy, smart search and automated inventory, Shopify or WooCommerce.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">03</div><h3 class="svc-title">SEO &amp; Visibility</h3><p class="svc-desc">Rank where it matters. AI-analyzed keyword strategy and on-page optimization that puts you ahead of your competition.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">04</div><h3 class="svc-title">Branding &amp; Identity</h3><p class="svc-desc">Your identity, defined with precision. Logo, colors, typography, crafted with expertise, not guesswork.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">05</div><h3 class="svc-title">Maintenance &amp; Support</h3><p class="svc-desc">Always-on support. We handle updates, security and hosting. You focus on your business.</p><span class="svc-arr">↗</span></div>
+    <div class="svc-item reveal"><div class="svc-num">06</div><h3 class="svc-title">AI-Accelerated Delivery</h3><p class="svc-desc">Live in 1–2 weeks. AI-accelerated workflows cut production time without cutting quality.</p><span class="svc-arr">↗</span></div>
   </div>
 </section>
 
@@ -1617,10 +1569,10 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 <section class="sec sec-dark" id="portfolio">
   <div class="port-header">
     <div>
-      <p class="lbl reveal" data-nl="Portfolio" data-en="Portfolio">Portfolio</p>
-      <h2 class="h2 reveal" data-nl="Werk dat spreekt<br>voor zich." data-en="Work that speaks<br>for itself.">Werk dat spreekt<br>voor zich.</h2>
+      <p class="lbl reveal">Portfolio</p>
+      <h2 class="h2 reveal">Work that speaks<br>for itself.</h2>
     </div>
-    <a href="portfolio/" class="port-all reveal" data-nl="Alle projecten →" data-en="All projects →">All projects →</a>
+    <a href="portfolio/" class="port-all reveal">All projects →</a>
   </div>
   <div class="port-grid">
     <div class="port-card wide reveal">
@@ -1632,7 +1584,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
         <div style="position:absolute;width:350px;height:350px;background:radial-gradient(circle,rgba(212,160,144,.08) 0%,transparent 65%);bottom:-100px;left:10%;border-radius:50%;filter:blur(70px);pointer-events:none;"></div>
         <div style="position:absolute;top:28px;right:28px;font-family:var(--f2);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,165,90,.75);border:1px solid rgba(201,165,90,.2);padding:6px 16px;border-radius:100px;backdrop-filter:blur(8px);">Premium Showcase</div>
         <div style="position:relative;z-index:1;">
-          <div class="port-ind" style="color:#C9A55A;letter-spacing:.14em;" data-nl="Handgemaakte Sieraden" data-en="Handmade Jewellery">Handmade Jewellery</div>
+          <div class="port-ind" style="color:#C9A55A;letter-spacing:.14em;">Handmade Jewellery</div>
           <div class="port-name" style="font-size:clamp(22px,2.5vw,32px);letter-spacing:-.03em;">Atelier Lune</div>
           <div style="font-family:var(--f2);font-size:13px;color:rgba(201,165,90,.5);margin-top:8px;font-weight:400;letter-spacing:.01em;">Rings &middot; Necklaces &middot; Earrings &middot; Made by hand in Amsterdam</div>
         </div>
@@ -1643,49 +1595,49 @@ footer{background:var(--ink);padding:72px 5vw 40px}
         <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/de-groot-accountants</div></div>
         <img src="assets/screenshots/de-groot-accountants.png" alt="De Groot Accountants" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
       </a>
-      <div class="port-overlay"><div class="port-ind" data-nl="Financieel" data-en="Finance">Finance</div><div class="port-name">De Groot &amp; Partners</div></div>
+      <div class="port-overlay"><div class="port-ind">Finance</div><div class="port-name">De Groot &amp; Partners</div></div>
     </div>
     <div class="port-card reveal">
       <a class="port-inner port-screenshot" href="client-projects/tandarts-knoll/" target="_blank">
         <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/tandarts-knoll</div></div>
         <img src="assets/screenshots/tandarts-knoll.png" alt="Tandarts Knoll" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
       </a>
-      <div class="port-overlay"><div class="port-ind" data-nl="Zorg" data-en="Healthcare">Healthcare</div><div class="port-name">Tandarts Knoll</div></div>
+      <div class="port-overlay"><div class="port-ind">Healthcare</div><div class="port-name">Tandarts Knoll</div></div>
     </div>
     <div class="port-card reveal">
       <a class="port-inner port-screenshot" href="client-projects/leyenburger/" target="_blank">
         <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/leyenburger</div></div>
         <img src="assets/screenshots/leyenburger.png" alt="Leyenburger Grill" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
       </a>
-      <div class="port-overlay"><div class="port-ind" data-nl="Horeca" data-en="Restaurant">Restaurant</div><div class="port-name">Leyenburger Grill</div></div>
+      <div class="port-overlay"><div class="port-ind">Restaurant</div><div class="port-name">Leyenburger Grill</div></div>
     </div>
     <div class="port-card reveal">
       <a class="port-inner port-screenshot" href="client-projects/luna-beauty-studio/" target="_blank">
         <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/luna-beauty-studio</div></div>
         <img src="assets/screenshots/luna-beauty-studio.png" alt="Luna Beauty Studio" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
       </a>
-      <div class="port-overlay"><div class="port-ind" data-nl="Beauty" data-en="Beauty">Beauty</div><div class="port-name">Luna Beauty Studio</div></div>
+      <div class="port-overlay"><div class="port-ind">Beauty</div><div class="port-name">Luna Beauty Studio</div></div>
     </div>
     <div class="port-card reveal">
       <a class="port-inner port-screenshot" href="client-projects/studio-lena-fotografie/" target="_blank">
         <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/studio-lena-fotografie</div></div>
         <img src="assets/screenshots/studio-lena-fotografie.png" alt="Studio Lena Fotografie" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
       </a>
-      <div class="port-overlay"><div class="port-ind" data-nl="Fotografie" data-en="Photography">Photography</div><div class="port-name">Studio Lena Fotografie</div></div>
+      <div class="port-overlay"><div class="port-ind">Photography</div><div class="port-name">Studio Lena Fotografie</div></div>
     </div>
     <div class="port-card reveal">
       <a class="port-inner port-screenshot" href="client-projects/maison-blanc-interieur/" target="_blank">
         <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/maison-blanc-interieur</div></div>
         <img src="assets/screenshots/maison-blanc-interieur.png" alt="Maison Blanc Interieur" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
       </a>
-      <div class="port-overlay"><div class="port-ind" data-nl="Interieur" data-en="Interior">Interior</div><div class="port-name">Maison Blanc Interieur</div></div>
+      <div class="port-overlay"><div class="port-ind">Interior</div><div class="port-name">Maison Blanc Interieur</div></div>
     </div>
     <div class="port-card reveal">
       <a class="port-inner port-screenshot" href="client-projects/klussenbedrijf-edward/" target="_blank">
         <div class="port-chrome"><span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span><div class="pc-bar">webkreatives.com/klussenbedrijf-edward</div></div>
         <img src="assets/screenshots/klussenbedrijf-edward.png" alt="Klussenbedrijf Edward" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
       </a>
-      <div class="port-overlay"><div class="port-ind" data-nl="Bouw" data-en="Construction">Construction</div><div class="port-name">Klussenbedrijf Edward</div></div>
+      <div class="port-overlay"><div class="port-ind">Construction</div><div class="port-name">Klussenbedrijf Edward</div></div>
     </div>
     <div class="port-card wide reveal">
       <a class="port-inner" href="client-projects/ironforge-gym/" target="_blank" style="display:flex;flex-direction:column;justify-content:flex-end;padding:36px;position:relative;overflow:hidden;">
@@ -1693,7 +1645,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
         <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(15,17,20,.92) 0%, rgba(15,17,20,.35) 60%, transparent 100%);pointer-events:none;"></div>
         <div style="position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,.18) 0%,transparent 65%);bottom:-120px;right:80px;border-radius:50%;filter:blur(60px);pointer-events:none;"></div>
         <div style="position:relative;z-index:1;">
-          <div class="port-ind" style="color:#F97316;letter-spacing:.14em;" data-nl="Fitness" data-en="Fitness">Fitness</div>
+          <div class="port-ind" style="color:#F97316;letter-spacing:.14em;">Fitness</div>
           <div class="port-name" style="font-size:clamp(22px,2.5vw,32px);letter-spacing:-.03em;">IronForge Gym</div>
           <div style="font-family:var(--f2);font-size:13px;color:rgba(249,115,22,.5);margin-top:8px;font-weight:400;letter-spacing:.01em;">HIIT &middot; Strength &middot; Boxing &middot; Expert Trainers &middot; Amsterdam</div>
         </div>
@@ -1704,28 +1656,28 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 
 <!-- PROCESS -->
 <section class="sec sec-dark2" id="process">
-  <p class="lbl reveal" data-nl="Hoe het werkt" data-en="How it works">Hoe het werkt</p>
-  <h2 class="h2 reveal" data-nl="Van idee naar live<br>in vier stappen." data-en="From idea to live<br>in four steps.">Van idee naar live<br>in vier stappen.</h2>
+  <p class="lbl reveal">How it works</p>
+  <h2 class="h2 reveal">From idea to live<br>in four steps.</h2>
   <div class="proc-grid">
     <div class="proc-step reveal">
       <div class="proc-n">01</div>
-      <div class="proc-t" data-nl="Intake gesprek" data-en="Intake call">Intake gesprek</div>
-      <p class="proc-d" data-nl="We bespreken jouw bedrijf, doelgroep en wensen. Gratis, vrijblijvend, max 30 minuten." data-en="We discuss your business, audience and wishes. Free, no obligation, max 30 minutes.">We bespreken jouw bedrijf, doelgroep en wensen. Gratis, vrijblijvend, max 30 minuten.</p>
+      <div class="proc-t">Intake call</div>
+      <p class="proc-d">We discuss your business, audience and wishes. Free, no obligation, max 30 minutes.</p>
     </div>
     <div class="proc-step reveal">
       <div class="proc-n">02</div>
-      <div class="proc-t" data-nl="Ontwerp &amp; concept" data-en="Design &amp; concept">Ontwerp &amp; concept</div>
-      <p class="proc-d" data-nl="We ontwerpen een volledig concept, aangedreven door AI, verfijnd door ervaring, en presenteren het binnen 48 uur." data-en="We design a full concept, powered by AI, refined by experience, and present it to you within 48 hours.">We design a full concept, powered by AI, refined by experience, and present it to you within 48 hours.</p>
+      <div class="proc-t">Design &amp; concept</div>
+      <p class="proc-d">We design a full concept, powered by AI, refined by experience, and present it to you within 48 hours.</p>
     </div>
     <div class="proc-step reveal">
       <div class="proc-n">03</div>
-      <div class="proc-t" data-nl="Feedback verwerken" data-en="Process feedback">Feedback verwerken</div>
-      <p class="proc-d" data-nl="Aanpassingen zijn inbegrepen. We gaan door tot jij tevreden bent. Altijd." data-en="Revisions are included. We keep going until you're satisfied. Always.">Aanpassingen zijn inbegrepen. We gaan door tot jij tevreden bent. Altijd.</p>
+      <div class="proc-t">Process feedback</div>
+      <p class="proc-d">Revisions are included. We keep going until you're satisfied. Always.</p>
     </div>
     <div class="proc-step reveal">
       <div class="proc-n">04</div>
-      <div class="proc-t" data-nl="Live!" data-en="Live!">Live!</div>
-      <p class="proc-d" data-nl="Jouw website gaat online. We regelen domein, hosting en overdracht. Klaar om klanten te winnen." data-en="Your website goes online. We handle domain, hosting and handover. Ready to win clients.">Jouw website gaat online. We regelen domein, hosting en overdracht. Klaar om klanten te winnen.</p>
+      <div class="proc-t">Live!</div>
+      <p class="proc-d">Your website goes online. We handle domain, hosting and handover. Ready to win clients.</p>
     </div>
   </div>
 </section>
@@ -1734,62 +1686,62 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 <section class="sec sec-light" id="reviews" style="padding-top:clamp(56px,7vw,100px);padding-bottom:clamp(56px,7vw,100px)">
   <div class="reviews-split">
     <div class="reviews-copy reveal">
-      <p class="lbl" data-nl="Klanten aan het woord" data-en="Client reviews">Klanten aan het woord</p>
-      <h2 class="h2" data-nl="Wat zij zeggen." data-en="What they say.">Wat zij zeggen.</h2>
+      <p class="lbl">Client reviews</p>
+      <h2 class="h2">What they say.</h2>
     </div>
   <div class="rc-stage" id="rcStage">
 
     <div class="rc">
       <div class="rc-head">
         <div class="rc-av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Karim"></div>
-        <div><div class="rc-name">Karim</div><div class="rc-role" data-nl="De Groot Accountants" data-en="De Groot Accountants">De Groot Accountants</div></div>
+        <div><div class="rc-name">Karim</div><div class="rc-role">De Groot Accountants</div></div>
       </div>
-      <p class="rc-text" data-nl="Onze klanten merkten meteen het verschil. Strak, snel, geen rommel." data-en="Our clients noticed the difference immediately. Clean, fast, no clutter.">"Our clients noticed the difference immediately. Clean, fast, no clutter."</p>
+      <p class="rc-text">Our clients noticed the difference immediately. Clean, fast, no clutter.</p>
       <div class="rc-stars">★★★★★</div>
     </div>
 
     <div class="rc">
       <div class="rc-head">
         <div class="rc-av"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Sophie"></div>
-        <div><div class="rc-name">Sophie</div><div class="rc-role" data-nl="Maison Blanc Interieur" data-en="Maison Blanc Interieur">Maison Blanc Interieur</div></div>
+        <div><div class="rc-name">Sophie</div><div class="rc-role">Maison Blanc Interieur</div></div>
       </div>
-      <p class="rc-text" data-nl="Eindelijk een website die past bij het niveau van mijn werk. Precies goed." data-en="Finally a website that matches the quality of my work. Exactly right.">"Finally a website that matches the quality of my work. Exactly right."</p>
+      <p class="rc-text">Finally a website that matches the quality of my work. Exactly right.</p>
       <div class="rc-stars">★★★★★</div>
     </div>
 
     <div class="rc">
       <div class="rc-head">
         <div class="rc-av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Edward"></div>
-        <div><div class="rc-name">Edward</div><div class="rc-role" data-nl="Klussenbedrijf Edward" data-en="Klussenbedrijf Edward">Klussenbedrijf Edward</div></div>
+        <div><div class="rc-name">Edward</div><div class="rc-role">Klussenbedrijf Edward</div></div>
       </div>
-      <p class="rc-text" data-nl="Meer leads in de eerste week. Makkelijk zelf aan te passen. Geen verborgen kosten." data-en="More leads in the first week. Easy to update myself. No surprise costs.">"More leads in the first week. Easy to update myself. No surprise costs."</p>
+      <p class="rc-text">More leads in the first week. Easy to update myself. No surprise costs.</p>
       <div class="rc-stars">★★★★★</div>
     </div>
 
     <div class="rc">
       <div class="rc-head">
         <div class="rc-av"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Lena"></div>
-        <div><div class="rc-name">Lena</div><div class="rc-role" data-nl="Studio Lena Fotografie" data-en="Studio Lena Photography">Studio Lena Photography</div></div>
+        <div><div class="rc-name">Lena</div><div class="rc-role">Studio Lena Photography</div></div>
       </div>
-      <p class="rc-text" data-nl="Mijn portfolio ziet er nu uit als van een grote studio. Klanten reageren serieuzer." data-en="My portfolio now looks like it's from a big studio. Clients take me more seriously.">"My portfolio now looks like it's from a big studio. Clients take me more seriously."</p>
+      <p class="rc-text">My portfolio now looks like it's from a big studio. Clients take me more seriously.</p>
       <div class="rc-stars">★★★★★</div>
     </div>
 
     <div class="rc">
       <div class="rc-head">
         <div class="rc-av"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Thomas"></div>
-        <div><div class="rc-name">Thomas</div><div class="rc-role" data-nl="Tandarts Knoll" data-en="Tandarts Knoll">Tandarts Knoll</div></div>
+        <div><div class="rc-name">Thomas</div><div class="rc-role">Tandarts Knoll</div></div>
       </div>
-      <p class="rc-text" data-nl="Eindelijk een website die laat zien wie we zijn. Snel, op maat, precies zoals we wilden." data-en="Finally a website that shows who we are. Fast, custom, exactly as we wanted.">"Finally a website that shows who we are. Fast, custom, exactly as we wanted."</p>
+      <p class="rc-text">Finally a website that shows who we are. Fast, custom, exactly as we wanted.</p>
       <div class="rc-stars">★★★★★</div>
     </div>
 
     <div class="rc">
       <div class="rc-head">
         <div class="rc-av"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Marieke"></div>
-        <div><div class="rc-name">Marieke</div><div class="rc-role" data-nl="Luna Beauty Studio" data-en="Luna Beauty Studio">Luna Beauty Studio</div></div>
+        <div><div class="rc-name">Marieke</div><div class="rc-role">Luna Beauty Studio</div></div>
       </div>
-      <p class="rc-text" data-nl="Binnen twee weken een professionele website. Ik krijg nu veel meer aanvragen — iets wat hiervoor nooit gebeurde." data-en="A professional website in two weeks. I now get far more inquiries — something that never happened before.">"A professional website in two weeks. I now get far more inquiries — something that never happened before."</p>
+      <p class="rc-text">A professional website in two weeks. I now get far more inquiries — something that never happened before.</p>
       <div class="rc-stars">★★★★★</div>
     </div>
 
@@ -1799,75 +1751,75 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 
 <!-- PRICING → QUOTE PROCESS -->
 <section class="sec sec-mid" id="pricing">
-  <p class="lbl reveal" style="justify-content:center" data-nl="Op maat gemaakt" data-en="Tailored to you">Tailored to you</p>
-  <h2 class="h2 reveal" style="text-align:center" data-nl="Elk project <br class='mbr'>is uniek. <br class='mbr'>Elke offerte ook." data-en="Every project <br class='mbr'>is unique. <br class='mbr'>So is the quote.">Every project <br class="mbr">is unique. <br class="mbr">So is the quote.</h2>
-  <p class="reveal" style="text-align:center;max-width:560px;margin:20px auto 0;font-size:clamp(15px,1.3vw,17px);color:var(--ink3);font-weight:300;line-height:1.7" data-nl="We werken niet met vaste pakketten. Na een korte intake sturen we een heldere offerte op maat, scope, tijdlijn en prijs. Transparant, zonder verborgen kosten." data-en="We don't work with fixed packages. After a short intake, we send a clear custom quote, scope, timeline and price. Transparent, no hidden costs.">We don't work with fixed packages. After a short intake, we send a clear custom quote, scope, timeline and price. Transparent, no hidden costs.</p>
+  <p class="lbl reveal" style="justify-content:center">Tailored to you</p>
+  <h2 class="h2 reveal" style="text-align:center">Every project <br class='mbr'>is unique. <br class='mbr'>So is the quote.</h2>
+  <p class="reveal" style="text-align:center;max-width:560px;margin:20px auto 0;font-size:clamp(15px,1.3vw,17px);color:var(--ink3);font-weight:300;line-height:1.7">We don't work with fixed packages. After a short intake, we send a clear custom quote, scope, timeline and price. Transparent, no hidden costs.</p>
   <div class="price-grid" style="margin-top:56px">
     <div class="price-card reveal" style="text-align:center">
       <div class="price-tier" style="color:var(--red)">Step 01</div>
-      <h3 style="font-family:var(--f1);font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;margin:14px 0 12px" data-nl="We luisteren eerst" data-en="We listen first">We listen first</h3>
-      <p style="font-size:14px;color:var(--ink3);line-height:1.65;font-weight:300" data-nl="Vertel ons wat je nodig hebt. We stellen de juiste vragen om jouw project precies goed te begrijpen." data-en="Tell us what you need. We ask the right questions to understand your project precisely.">Tell us what you need. We ask the right questions to understand your project precisely.</p>
+      <h3 style="font-family:var(--f1);font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;margin:14px 0 12px">We listen first</h3>
+      <p style="font-size:14px;color:var(--ink3);line-height:1.65;font-weight:300">Tell us what you need. We ask the right questions to understand your project precisely.</p>
     </div>
     <div class="price-card pop reveal" style="text-align:center">
       <div class="price-tier" style="color:var(--blue)">Step 02</div>
-      <h3 style="font-family:var(--f1);font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;margin:14px 0 12px;color:var(--white)" data-nl="Helder voorstel" data-en="Clear proposal">Clear proposal</h3>
-      <p style="font-size:14px;color:oklch(56% .005 25);line-height:1.65;font-weight:300" data-nl="Binnen 24 uur ontvang je een gedetailleerde offerte: scope, tijdlijn en prijs. Precies wat er staat, is wat je betaalt." data-en="Within 24 hours you receive a detailed quote: scope, timeline and price. What it says is what you pay.">Within 24 hours you receive a detailed quote: scope, timeline and price. What it says is what you pay.</p>
+      <h3 style="font-family:var(--f1);font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;margin:14px 0 12px;color:var(--white)">Clear proposal</h3>
+      <p style="font-size:14px;color:oklch(56% .005 25);line-height:1.65;font-weight:300">Within 24 hours you receive a detailed quote: scope, timeline and price. What it says is what you pay.</p>
     </div>
     <div class="price-card reveal" style="text-align:center">
       <div class="price-tier" style="color:var(--lime)">Step 03</div>
-      <h3 style="font-family:var(--f1);font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;margin:14px 0 12px" data-nl="Aan de slag" data-en="We get to work">We get to work</h3>
-      <p style="font-size:14px;color:var(--ink3);line-height:1.65;font-weight:300" data-nl="Zodra je akkoord gaat, starten we direct. Resultaat zichtbaar in dagen, jouw site live in weken." data-en="Once you approve, we start immediately. Results visible in days, your site live in weeks.">Once you approve, we start immediately. Results visible in days, your site live in weeks.</p>
+      <h3 style="font-family:var(--f1);font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;margin:14px 0 12px">We get to work</h3>
+      <p style="font-size:14px;color:var(--ink3);line-height:1.65;font-weight:300">Once you approve, we start immediately. Results visible in days, your site live in weeks.</p>
     </div>
   </div>
   <div style="text-align:center;margin-top:40px" class="reveal">
-    <a href="#contact" class="btn-p" style="display:inline-flex"><span data-nl="Offerte Aanvragen" data-en="Request a Quote">Request a Quote</span> <span class="btn-arrow">→</span></a>
+    <a href="#contact" class="btn-p" style="display:inline-flex"><span>Request a Quote</span> <span class="btn-arrow">→</span></a>
   </div>
 </section>
 
 <!-- SUPPORT -->
 <section class="sec sec-dark" id="subscriptions">
-  <p class="lbl reveal" data-nl="Doorlopende support" data-en="Ongoing support">Ongoing support</p>
-  <h2 class="h2 reveal" data-nl="Wij staan voor je klaar,<br>ook na de lancering." data-en="We've got your back<br>long after launch.">We've got your back<br>long after launch.</h2>
-  <p class="reveal" style="font-size:clamp(15px,1.3vw,17px);color:oklch(56% .005 25);font-weight:300;line-height:1.7;max-width:580px;margin-top:20px" data-nl="Een website is geen eindproduct, het is een groeiend platform. We bieden doorlopende support op maat, van hosting en updates tot strategie en SEO. Vraag naar de mogelijkheden." data-en="A website isn't a finished product, it's a growing platform. We offer ongoing support tailored to your needs, from hosting and updates to strategy and SEO. Ask us about the options.">A website isn't a finished product, it's a growing platform. We offer ongoing support tailored to your needs, from hosting and updates to strategy and SEO. Ask us about the options.</p>
+  <p class="lbl reveal">Ongoing support</p>
+  <h2 class="h2 reveal">We've got your back<br>long after launch.</h2>
+  <p class="reveal" style="font-size:clamp(15px,1.3vw,17px);color:oklch(56% .005 25);font-weight:300;line-height:1.7;max-width:580px;margin-top:20px">A website isn't a finished product, it's a growing platform. We offer ongoing support tailored to your needs, from hosting and updates to strategy and SEO. Ask us about the options.</p>
   <div class="proc-grid" style="margin-top:56px">
     <div class="proc-step reveal">
       <div class="proc-n" style="font-size:clamp(28px,3vw,42px);color:var(--red)">Hosting</div>
-      <div class="proc-t" data-nl="Altijd online" data-en="Always online">Always online</div>
-      <p class="proc-d" data-nl="Snelle, veilige hosting met SSL. Geoptimaliseerd voor Webflow en WordPress. Uptime monitoring inbegrepen." data-en="Fast, secure hosting with SSL. Optimized for Webflow and WordPress. Uptime monitoring included.">Fast, secure hosting with SSL. Optimized for Webflow and WordPress. Uptime monitoring included.</p>
+      <div class="proc-t">Always online</div>
+      <p class="proc-d">Fast, secure hosting with SSL. Optimized for Webflow and WordPress. Uptime monitoring included.</p>
     </div>
     <div class="proc-step reveal">
       <div class="proc-n" style="font-size:clamp(28px,3vw,42px);color:var(--blue)">Updates</div>
-      <div class="proc-t" data-nl="Altijd bijgewerkt" data-en="Always current">Always current</div>
-      <p class="proc-d" data-nl="Regelmatige updates, beveiligingspatches en inhoudsbeheer. Jij focust op je bedrijf." data-en="Regular updates, security patches and content management. You focus on your business.">Regular updates, security patches and content management. You focus on your business.</p>
+      <div class="proc-t">Always current</div>
+      <p class="proc-d">Regular updates, security patches and content management. You focus on your business.</p>
     </div>
     <div class="proc-step reveal">
       <div class="proc-n" style="font-size:clamp(28px,3vw,42px);color:var(--yellow)">SEO</div>
-      <div class="proc-t" data-nl="Altijd zichtbaar" data-en="Always visible">Always visible</div>
-      <p class="proc-d" data-nl="Maandelijkse SEO-rapportages, conversie-analyse en gepersonaliseerde groeiadviezen." data-en="Monthly SEO reports, conversion analysis and personalized growth advice.">Monthly SEO reports, conversion analysis and personalized growth advice.</p>
+      <div class="proc-t">Always visible</div>
+      <p class="proc-d">Monthly SEO reports, conversion analysis and personalized growth advice.</p>
     </div>
     <div class="proc-step reveal">
       <div class="proc-n" style="font-size:clamp(28px,3vw,42px);color:var(--lime)">Strategy</div>
-      <div class="proc-t" data-nl="Altijd vooruit" data-en="Always forward">Always forward</div>
-      <p class="proc-d" data-nl="Kwartaalstrategie-sessies, A/B-testen en conversie-optimalisatie. Jouw website groeit met je mee." data-en="Quarterly strategy sessions, A/B testing and conversion optimization. Your site grows with you.">Quarterly strategy sessions, A/B testing and conversion optimization. Your site grows with you.</p>
+      <div class="proc-t">Always forward</div>
+      <p class="proc-d">Quarterly strategy sessions, A/B testing and conversion optimization. Your site grows with you.</p>
     </div>
   </div>
   <div style="margin-top:40px" class="reveal">
-    <a href="#contact" class="btn-g" style="display:inline-flex"><span data-nl="Vraag naar support-opties" data-en="Ask about support options">Ask about support options</span> <span class="btn-arrow">→</span></a>
+    <a href="#contact" class="btn-g" style="display:inline-flex"><span>Ask about support options</span> <span class="btn-arrow">→</span></a>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="sec sec-contact" id="contact">
-  <p class="lbl reveal" style="color:var(--blue)" data-nl="Neem contact op" data-en="Get in touch">Get in touch</p>
+  <p class="lbl reveal" style="color:var(--blue)">Get in touch</p>
   <div class="contact-grid">
     <div class="contact-left reveal">
-      <h2 class="h2" data-nl="Laten we je<br>website bouwen." data-en="Let's build your<br>website.">Laten we je<br>website bouwen.</h2>
-      <p data-nl="Vertel ons over je project en we nemen binnen 24 uur contact op. Vrijblijvend, geen opdringerige verkoop." data-en="Tell us about your project and we'll get back to you within 24 hours. No pressure, no aggressive sales.">Vertel ons over je project en we nemen binnen 24 uur contact op. Vrijblijvend, geen opdringerige verkoop.</p>
+      <h2 class="h2">Let's build your<br>website.</h2>
+      <p>Tell us about your project and we'll get back to you within 24 hours. No pressure, no aggressive sales.</p>
       <div class="contact-trust">
-        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(51% .220 25 / .15);color:var(--red)">✓</div><span data-nl="Reactie binnen 24 uur" data-en="Response within 24 hours">Response within 24 hours</span></div>
-        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(51% .160 250 / .15);color:var(--blue)">✓</div><span data-nl="Gratis en vrijblijvend gesprek" data-en="Free and no-obligation call">Free and no-obligation call</span></div>
-        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(88% .155 122 / .12);color:var(--lime)">✓</div><span data-nl="Transparante offerte, geen verborgen kosten" data-en="Transparent quote, no hidden costs">Transparent quote, no hidden costs</span></div>
-        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(88% .200 95 / .12);color:var(--yellow)">✓</div><span data-nl="Op maat gebouwd, geen templates" data-en="Custom built, no templates">Custom built, no templates</span></div>
+        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(51% .220 25 / .15);color:var(--red)">✓</div><span>Response within 24 hours</span></div>
+        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(51% .160 250 / .15);color:var(--blue)">✓</div><span>Free and no-obligation call</span></div>
+        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(88% .155 122 / .12);color:var(--lime)">✓</div><span>Transparent quote, no hidden costs</span></div>
+        <div class="ctrust-item"><div class="ctrust-icon" style="background:oklch(88% .200 95 / .12);color:var(--yellow)">✓</div><span>Custom built, no templates</span></div>
       </div>
     </div>
     <div class="reveal">
@@ -1876,37 +1828,37 @@ footer{background:var(--ink);padding:72px 5vw 40px}
         <input type="hidden" name="subject" value="Nieuwe aanvraag via WebKreatives">
         <input type="checkbox" name="botcheck" style="display:none">
         <div class="frow">
-          <div class="fg"><label data-nl="Je naam" data-en="Your name">Je naam</label><input type="text" name="name" placeholder="Jan de Vries" required></div>
-          <div class="fg"><label data-nl="E-mailadres" data-en="Email address">E-mailadres</label><input type="email" name="email" placeholder="jan@bedrijf.nl" required></div>
+          <div class="fg"><label>Your name</label><input type="text" name="name" placeholder="Jan de Vries" required></div>
+          <div class="fg"><label>Email address</label><input type="email" name="email" placeholder="jan@bedrijf.nl" required></div>
         </div>
-        <div class="fg"><label data-nl="Telefoonnummer (optioneel)" data-en="Phone number (optional)">Telefoonnummer (optioneel)</label><input type="tel" name="phone" placeholder="+31 6 00000000"></div>
+        <div class="fg"><label>Phone number (optional)</label><input type="tel" name="phone" placeholder="+31 6 00000000"></div>
         <div class="frow">
-          <div class="fg"><label data-nl="Type bedrijf" data-en="Business type">Type bedrijf</label>
+          <div class="fg"><label>Business type</label>
             <select name="type">
-              <option value="" data-nl="Selecteer je branche..." data-en="Select your industry...">Selecteer je branche...</option>
-              <option data-nl="Restaurant / Café" data-en="Restaurant / Café">Restaurant / Café</option>
-              <option data-nl="Retail / Winkel" data-en="Retail / Shop">Retail / Winkel</option>
-              <option data-nl="Zakelijke Diensten" data-en="Business Services">Zakelijke Diensten</option>
-              <option data-nl="Gezondheid &amp; Beauty" data-en="Health &amp; Beauty">Gezondheid &amp; Beauty</option>
-              <option data-nl="Bouw &amp; Installatie" data-en="Construction &amp; Installation">Bouw &amp; Installatie</option>
-              <option data-nl="Anders" data-en="Other">Anders</option>
+              <option value="">Select your industry...</option>
+              <option>Restaurant / Café</option>
+              <option>Retail / Shop</option>
+              <option>Business Services</option>
+              <option>Health &amp; Beauty</option>
+              <option>Construction &amp; Installation</option>
+              <option>Other</option>
             </select>
           </div>
-          <div class="fg"><label data-nl="Type project" data-en="Project type">Project type</label>
+          <div class="fg"><label>Project type</label>
             <select name="project_type">
-              <option value="" data-nl="Wat zoek je?" data-en="What are you looking for?">What are you looking for?</option>
-              <option data-nl="Nieuwe website" data-en="New website">New website</option>
-              <option data-nl="Webshop" data-en="E-Commerce / Webshop">E-Commerce / Webshop</option>
-              <option data-nl="Redesign bestaande site" data-en="Redesign existing site">Redesign existing site</option>
-              <option data-nl="Branding &amp; Identiteit" data-en="Branding &amp; Identity">Branding &amp; Identity</option>
-              <option data-nl="Doorlopende support" data-en="Ongoing support">Ongoing support</option>
-              <option data-nl="Anders" data-en="Other">Other</option>
+              <option value="">What are you looking for?</option>
+              <option>New website</option>
+              <option>E-Commerce / Webshop</option>
+              <option>Redesign existing site</option>
+              <option>Branding &amp; Identity</option>
+              <option>Ongoing support</option>
+              <option>Other</option>
             </select>
           </div>
         </div>
-        <div class="fg"><label data-nl="Voorkeurstaal voor communicatie" data-en="Preferred language for communication">Voorkeurstaal voor communicatie</label><input type="text" name="language" placeholder="Nederlands / English / ..."></div>
-        <div class="fg"><label data-nl="Vertel ons over je project" data-en="Tell us about your project">Vertel ons over je project</label><textarea name="message" placeholder="What kind of website do you need?"></textarea></div>
-        <button type="submit" class="fsub"><span data-nl="Bericht Versturen →" data-en="Send Message →">Bericht Versturen →</span></button>
+        <div class="fg"><label>Preferred language for communication</label><input type="text" name="language" placeholder="Nederlands / English / ..."></div>
+        <div class="fg"><label>Tell us about your project</label><textarea name="message" placeholder="What kind of website do you need?"></textarea></div>
+        <button type="submit" class="fsub"><span>Send Message →</span></button>
         <div id="formStatus" style="margin-top:12px;font-size:13px;display:none"></div>
       </form>
     </div>
@@ -1927,28 +1879,28 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       </div>
       <div style="margin-top:22px;text-align:center">
         <div style="font-family:var(--f1);font-size:15px;font-weight:700;letter-spacing:-.02em;color:var(--ink)">Csaba Garaguly</div>
-        <div style="font-size:12px;color:var(--ink3);font-weight:400;margin-top:3px;letter-spacing:.04em" data-nl="Co-Founder" data-en="Co-Founder">Co-Founder</div>
+        <div style="font-size:12px;color:var(--ink3);font-weight:400;margin-top:3px;letter-spacing:.04em">Co-Founder</div>
       </div>
     </div>
     <div class="reveal" style="max-width:560px">
-      <p class="lbl" data-nl="Het team" data-en="The team">The team</p>
-      <p class="about-body" style="font-size:clamp(16px,1.5vw,19px);color:var(--ink);font-weight:400;line-height:1.65;margin-bottom:0" data-nl="WebKreatives overbrugt de kloof tussen premium webbureau's en de snelheid die de moderne markt vraagt. Met AI als krachtmultiplier bouwen we op maat gemaakte, converterende websites, opgeleverd in een fractie van de gebruikelijke tijd." data-en="WebKreatives bridges the gap between premium web agencies and the speed the modern market demands. Using AI as a force multiplier, we build custom, conversion-focused websites delivered in a fraction of the usual time.">WebKreatives bridges the gap between premium web agencies and the speed the modern market demands. Using AI as a force multiplier, we build custom, conversion-focused websites delivered in a fraction of the usual time.</p>
+      <p class="lbl">The team</p>
+      <p class="about-body" style="font-size:clamp(16px,1.5vw,19px);color:var(--ink);font-weight:400;line-height:1.65;margin-bottom:0">WebKreatives bridges the gap between premium web agencies and the speed the modern market demands. Using AI as a force multiplier, we build custom, conversion-focused websites delivered in a fraction of the usual time.</p>
       <div class="about-stat-row">
         <div class="about-stat">
           <div class="about-stat-n" style="color:var(--red)">15+</div>
-          <div class="about-stat-l" data-nl="Websites gebouwd" data-en="Websites built">Websites built</div>
+          <div class="about-stat-l">Websites built</div>
         </div>
         <div class="about-stat">
           <div class="about-stat-n" style="color:var(--grn)">0</div>
-          <div class="about-stat-l" data-nl="Klachten" data-en="Complaints">Complaints</div>
+          <div class="about-stat-l">Complaints</div>
         </div>
         <div class="about-stat">
           <div class="about-stat-n" style="color:var(--blue)">48h</div>
-          <div class="about-stat-l" data-nl="Oplevering" data-en="Delivery">Delivery</div>
+          <div class="about-stat-l">Delivery</div>
         </div>
         <div class="about-stat">
           <div class="about-stat-n" style="color:var(--yellow);-webkit-text-stroke:2px oklch(52% .13 88);paint-order:stroke fill">Free</div>
-          <div class="about-stat-l" data-nl="Consultatie" data-en="Consultation">Consultation</div>
+          <div class="about-stat-l">Consultation</div>
         </div>
       </div>
     </div>
@@ -1957,16 +1909,16 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 
 <!-- FAQ -->
 <section class="sec sec-light" id="faq">
-  <p class="lbl reveal" style="justify-content:center" data-nl="Veelgestelde vragen" data-en="Frequently asked questions">Veelgestelde vragen</p>
-  <h2 class="h2 reveal" style="text-align:center" data-nl="Heb je een vraag?" data-en="Have a question?">Heb je een vraag?</h2>
+  <p class="lbl reveal" style="justify-content:center">Frequently asked questions</p>
+  <h2 class="h2 reveal" style="text-align:center">Have a question?</h2>
   <div class="faq-list">
-    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">01</span><span data-nl="Hoe lang duurt het om mijn website te bouwen?" data-en="How long does it take to build my website?">How long does it take to build my website?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Eenvoudigere sites zijn doorgaans binnen 5 dagen klaar. Grotere projecten duren 1 tot 3 weken. Dankzij AI-versnelde workflows leveren we consequent sneller dan traditionele bureaus." data-en="Simpler sites are typically ready within 5 days. Larger projects take 1 to 3 weeks. AI-accelerated workflows mean we consistently outpace traditional agencies.">Simpler sites are typically ready within 5 days. Larger projects take 1 to 3 weeks. AI-accelerated workflows mean we consistently outpace traditional agencies.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">02</span><span data-nl="Hoe werkt de prijsstelling?" data-en="How does pricing work?">How does pricing work?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="We werken niet met vaste pakketten. Na een kort intake-gesprek stellen we je project in scope en sturen een transparante schriftelijke offerte. Geen giswerk, geen verrassingen op de factuur." data-en="We don&apos;t publish fixed packages. After a short intake call we scope your project and send a clear written quote. No guessing, no surprises on the invoice.">We don&apos;t publish fixed packages. After a short intake call we scope your project and send a clear written quote. No guessing, no surprises on the invoice.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">03</span><span data-nl="Kan ik mijn website zelf aanpassen na de lancering?" data-en="Can I edit my website myself after launch?">Can I edit my website myself after launch?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Ja. We bouwen op Webflow of WordPress zodat jij teksten en afbeeldingen kunt aanpassen zonder programmeerkennis. We lopen er bij oplevering samen doorheen." data-en="Yes. We build on Webflow or WordPress so you can update text and images without any coding. We walk you through it at delivery.">Yes. We build on Webflow or WordPress so you can update text and images without any coding. We walk you through it at delivery.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">04</span><span data-nl="Kan ik een boekingssysteem of formulieren op mijn site krijgen?" data-en="Can I get a booking system or contact forms?">Can I get a booking system or contact forms?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Contactformulieren zitten standaard in de meeste projecten. Boekingsintegraties (Calendly, Cal.com, SimplyBook) zijn beschikbaar als add-on. Noem het in je brief." data-en="Contact forms are standard on most projects. Booking integrations (Calendly, Cal.com, SimplyBook) are available as add-ons. Just mention it in your brief.">Contact forms are standard on most projects. Booking integrations (Calendly, Cal.com, SimplyBook) are available as add-ons. Just mention it in your brief.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">05</span><span data-nl="Op welk platform bouwen jullie en waarom?" data-en="Which platform do you build on, and why?">Which platform do you build on, and why?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="We kiezen het platform op basis van jouw behoeften: Webflow voor design-gedreven, snelle sites; WordPress voor content-zware of e-commerce projecten. We leggen uit welk platform het beste past." data-en="We choose based on your needs: Webflow for design-driven, fast-loading sites; WordPress for content-heavy or e-commerce projects. We always explain the recommendation.">We choose based on your needs: Webflow for design-driven, fast-loading sites; WordPress for content-heavy or e-commerce projects. We always explain the recommendation.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">06</span><span data-nl="Werken jullie ook met bedrijven buiten Nederland?" data-en="Do you work with clients outside the Netherlands?">Do you work with clients outside the Netherlands?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Absoluut. We werken op afstand met klanten door heel Europa via e-mail, videogesprekken en onze eigen preview-omgeving." data-en="Absolutely. We work remotely with clients across Europe via email, video calls and our own preview environment.">Absolutely. We work remotely with clients across Europe via email, video calls and our own preview environment.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">07</span><span data-nl="Wat moet ik aanleveren om te beginnen?" data-en="What do I need to provide to get started?">What do I need to provide to get started?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner" data-nl="Alleen je logo, merkkleuren, eventuele fotos en een globaal idee van wat je nodig hebt. Wij regelen de rest." data-en="Just your logo (if you have one), brand colors, any photos, and a rough idea of what you need. We take care of the rest.">Just your logo (if you have one), brand colors, any photos, and a rough idea of what you need. We take care of the rest.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">01</span><span>How long does it take to build my website?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Simpler sites are typically ready within 5 days. Larger projects take 1 to 3 weeks. AI-accelerated workflows mean we consistently outpace traditional agencies.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">02</span><span>How does pricing work?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">We don&apos;t publish fixed packages. After a short intake call we scope your project and send a clear written quote. No guessing, no surprises on the invoice.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">03</span><span>Can I edit my website myself after launch?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes. We build on Webflow or WordPress so you can update text and images without any coding. We walk you through it at delivery.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">04</span><span>Can I get a booking system or contact forms?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Contact forms are standard on most projects. Booking integrations (Calendly, Cal.com, SimplyBook) are available as add-ons. Just mention it in your brief.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">05</span><span>Which platform do you build on, and why?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">We choose based on your needs: Webflow for design-driven, fast-loading sites; WordPress for content-heavy or e-commerce projects. We always explain the recommendation.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">06</span><span>Do you work with clients outside the Netherlands?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Absolutely. We work remotely with clients across Europe via email, video calls and our own preview environment.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-q"><span class="faq-num">07</span><span>What do I need to provide to get started?</span><span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Just your logo (if you have one), brand colors, any photos, and a rough idea of what you need. We take care of the rest.</div></div></div>
   </div>
 </section>
 
@@ -1974,10 +1926,10 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 <section class="sec sec-dark2 sec-articles" id="articles">
   <div class="art-header reveal">
     <div>
-      <p class="lbl" data-nl="Artikelen" data-en="Articles">Articles</p>
-      <h2 class="h2" data-nl="Praktische<br>kennis." data-en="Practical<br>knowledge.">Practical<br>knowledge.</h2>
+      <p class="lbl">Articles</p>
+      <h2 class="h2">Practical<br>knowledge.</h2>
     </div>
-    <a href="articles/" class="art-view-all" data-nl="Alle artikelen →" data-en="All articles →">All articles →</a>
+    <a href="articles/" class="art-view-all">All articles →</a>
   </div>
 
   <div class="art-scene" id="artScene">
@@ -1986,11 +1938,11 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <a class="art-item" href="articles/why-your-google-business-profile-is-your-new-homepage/">
         <img class="art-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
         <div class="art-body">
-          <div class="art-cat" data-nl="Lokale SEO" data-en="Local SEO">Local SEO</div>
-          <div class="art-title" data-nl="Waarom Jouw Google Bedrijfsprofiel Je Nieuwe Homepage Is in 2026" data-en="Why Your Google Business Profile Is Your New Homepage in 2026">Why Your Google Business Profile Is Your New Homepage in 2026</div>
-          <div class="art-excerpt" data-nl="Voor lokale zoekresultaten is je Google Bedrijfsprofiel vaak de echte eerste indruk." data-en="For local search results, your Google Business Profile is often the real first impression.">For local search results, your Google Business Profile is often the real first impression.</div>
+          <div class="art-cat">Local SEO</div>
+          <div class="art-title">Why Your Google Business Profile Is Your New Homepage in 2026</div>
+          <div class="art-excerpt">For local search results, your Google Business Profile is often the real first impression.</div>
           <div class="art-footer">
-            <span class="art-read" data-nl="7 min lezen" data-en="7 min read">7 min read</span>
+            <span class="art-read">7 min read</span>
             <span class="art-arrow">→</span>
           </div>
         </div>
@@ -1999,11 +1951,11 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <a class="art-item" href="articles/what-does-a-small-business-website-cost-in-2026/">
         <img class="art-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
         <div class="art-body">
-          <div class="art-cat" data-nl="Webdesign Tips" data-en="Web Design Tips">Web Design Tips</div>
-          <div class="art-title" data-nl="Wat Kost Een Website Voor Een Klein Bedrijf in 2026?" data-en="What Does a Small Business Website Cost in 2026?">What Does a Small Business Website Cost in 2026?</div>
-          <div class="art-excerpt" data-nl="Een praktische gids voor kleine bedrijven die slim willen vergelijken zonder in de goedkoopste val te lopen." data-en="A practical guide for small businesses that want to compare options without falling into the cheapest trap.">A practical guide for small businesses that want to compare options without falling into the cheapest trap.</div>
+          <div class="art-cat">Web Design Tips</div>
+          <div class="art-title">What Does a Small Business Website Cost in 2026?</div>
+          <div class="art-excerpt">A practical guide for small businesses that want to compare options without falling into the cheapest trap.</div>
           <div class="art-footer">
-            <span class="art-read" data-nl="8 min lezen" data-en="8 min read">8 min read</span>
+            <span class="art-read">8 min read</span>
             <span class="art-arrow">→</span>
           </div>
         </div>
@@ -2012,11 +1964,11 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <a class="art-item" href="articles/local-seo-how-google-finds-you-in-your-city/">
         <img class="art-img" src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
         <div class="art-body">
-          <div class="art-cat" data-nl="Lokale SEO" data-en="Local SEO">Local SEO</div>
-          <div class="art-title" data-nl="Lokale SEO: Hoe Google Jou Vindt in Jouw Stad" data-en="Local SEO: How Google Finds You in Your City">Local SEO: How Google Finds You in Your City</div>
-          <div class="art-excerpt" data-nl="Google Bedrijfsprofiel, reviews, lokale content en consistente bedrijfsinformatie bepalen jouw zichtbaarheid." data-en="Google Business Profile, reviews, local content, and consistent details shape how visible you are.">Google Business Profile, reviews, local content, and consistent details shape how visible you are.</div>
+          <div class="art-cat">Local SEO</div>
+          <div class="art-title">Local SEO: How Google Finds You in Your City</div>
+          <div class="art-excerpt">Google Business Profile, reviews, local content, and consistent details shape how visible you are.</div>
           <div class="art-footer">
-            <span class="art-read" data-nl="7 min lezen" data-en="7 min read">7 min read</span>
+            <span class="art-read">7 min read</span>
             <span class="art-arrow">→</span>
           </div>
         </div>
@@ -2025,11 +1977,11 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <a class="art-item" href="articles/5-reasons-customers-leave-your-website/">
         <img class="art-img" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
         <div class="art-body">
-          <div class="art-cat" data-nl="Webdesign Tips" data-en="Web Design Tips">Web Design Tips</div>
-          <div class="art-title" data-nl="5 Redenen Waarom Klanten Jouw Website Verlaten" data-en="5 Reasons Customers Leave Your Website">5 Reasons Customers Leave Your Website</div>
-          <div class="art-excerpt" data-nl="Laadtijd, geen CTA, verouderd design: kleine fouten met grote gevolgen. Doe de zelfscan." data-en="Slow load times, no CTA, outdated design: small mistakes with big consequences. Use this self-check.">Slow load times, no CTA, outdated design: small mistakes with big consequences. Use this self-check.</div>
+          <div class="art-cat">Web Design Tips</div>
+          <div class="art-title">5 Reasons Customers Leave Your Website</div>
+          <div class="art-excerpt">Slow load times, no CTA, outdated design: small mistakes with big consequences. Use this self-check.</div>
           <div class="art-footer">
-            <span class="art-read" data-nl="7 min lezen" data-en="7 min read">7 min read</span>
+            <span class="art-read">7 min read</span>
             <span class="art-arrow">→</span>
           </div>
         </div>
@@ -2038,11 +1990,11 @@ footer{background:var(--ink);padding:72px 5vw 40px}
       <a class="art-item" href="articles/why-your-hair-salon-needs-a-website/">
         <img class="art-img" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
         <div class="art-body">
-          <div class="art-cat" data-nl="Kleine Bedrijven" data-en="Small Business">Small Business</div>
-          <div class="art-title" data-nl="Waarom Jouw Kapsalon Een Website Nodig Heeft" data-en="Why Your Hair Salon Needs a Website">Why Your Hair Salon Needs a Website</div>
-          <div class="art-excerpt" data-nl="81% van de klanten zoekt online voordat ze een kapsalon bezoeken. Zonder website ben je onzichtbaar." data-en="81% of customers search online before choosing a salon. Without a website, you stay invisible.">81% of customers search online before choosing a salon. Without a website, you stay invisible.</div>
+          <div class="art-cat">Small Business</div>
+          <div class="art-title">Why Your Hair Salon Needs a Website</div>
+          <div class="art-excerpt">81% of customers search online before choosing a salon. Without a website, you stay invisible.</div>
           <div class="art-footer">
-            <span class="art-read" data-nl="6 min lezen" data-en="6 min read">6 min read</span>
+            <span class="art-read">6 min read</span>
             <span class="art-arrow">→</span>
           </div>
         </div>
@@ -2067,10 +2019,10 @@ footer{background:var(--ink);padding:72px 5vw 40px}
 <!-- CTA -->
 <section class="cta-sec" id="cta">
   <div class="cta-inner">
-    <p class="lbl reveal" data-nl="Klaar om te starten?" data-en="Ready to start?">Klaar om te starten?</p>
-    <h2 class="h2 reveal" data-nl="Jouw website.<br>Klaar om te winnen." data-en="Your website.<br>Built to win.">Your website.<br>Built to win.</h2>
-    <p class="cta-sub reveal" data-nl="Vertel ons over jouw project. We sturen een heldere offerte op maat, gratis, zonder verplichtingen." data-en="Tell us about your project. We'll send a clear custom quote, free, no obligations.">Tell us about your project. We'll send a clear custom quote, free, no obligations.</p>
-    <a href="#contact" class="btn-white reveal"><span data-nl="Gratis offerte aanvragen" data-en="Request free quote">Gratis offerte aanvragen</span> <span class="btn-arrow">→</span></a>
+    <p class="lbl reveal">Ready to start?</p>
+    <h2 class="h2 reveal">Your website.<br>Built to win.</h2>
+    <p class="cta-sub reveal">Tell us about your project. We'll send a clear custom quote, free, no obligations.</p>
+    <a href="#contact" class="btn-white reveal"><span>Request free quote</span> <span class="btn-arrow">→</span></a>
     <p class="cta-note reveal">info@webkreatives.com</p>
   </div>
 </section>
@@ -2080,28 +2032,28 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   <div class="fgrid">
     <div class="fbrand">
       <div class="fbrand-logo"><img src="assets/darkmodehorizontallogo.png" alt="WebKreatives"></div>
-      <p data-nl="AI-gestuurd webdesign voor bedrijven die willen opvallen. Op maat gemaakt, snel opgeleverd, gebouwd om te converteren. Gevestigd in Amsterdam." data-en="AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert. Based in Amsterdam.">AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert. Based in Amsterdam.</p>
+      <p>AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert. Based in Amsterdam.</p>
       <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
     </div>
     <div class="fcol">
-      <h4 data-nl="Diensten" data-en="Services">Diensten</h4>
-      <a href="#services" data-nl="Website Design" data-en="Website Design">Website Design</a>
-      <a href="#services" data-nl="Webshops" data-en="Webshops">Webshops</a>
-      <a href="#services" data-nl="SEO &amp; Prestaties" data-en="SEO &amp; Performance">SEO &amp; Prestaties</a>
-      <a href="#services" data-nl="Branding &amp; Identiteit" data-en="Branding &amp; Identity">Branding &amp; Identiteit</a>
-      <a href="#services" data-nl="Support" data-en="Support">Support</a>
+      <h4>Services</h4>
+      <a href="#services">Website Design</a>
+      <a href="#services">Webshops</a>
+      <a href="#services">SEO &amp; Performance</a>
+      <a href="#services">Branding &amp; Identity</a>
+      <a href="#services">Support</a>
     </div>
     <div class="fcol">
-      <h4 data-nl="Pagina's" data-en="Pages">Pagina's</h4>
-      <a href="/" data-nl="Home" data-en="Home">Home</a>
-      <a href="portfolio/" data-nl="Onze Websites" data-en="Portfolio">Portfolio</a>
-      <a href="articles/" data-nl="Artikelen" data-en="Articles">Artikelen</a>
-      <a href="privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
-      <a href="terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
+      <h4>Pages</h4>
+      <a href="/">Home</a>
+      <a href="portfolio/">Portfolio</a>
+      <a href="articles/">Articles</a>
+      <a href="privacy/">Privacy Policy</a>
+      <a href="terms/">Terms</a>
     </div>
     <div class="fcol">
-      <h4 data-nl="Verbinden" data-en="Connect">Verbinden</h4>
-      <a href="#contact" class="g" data-nl="Start een Project" data-en="Start a Project">Start een Project</a>
+      <h4>Connect</h4>
+      <a href="#contact" class="g">Start a Project</a>
       <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         Instagram
@@ -2119,7 +2071,7 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   <div class="fpay">
     <span class="fpay-label">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <span data-nl="Veilig betalen" data-en="Secure payment">Secure payment</span>
+      <span>Secure payment</span>
     </span>
     <div class="fpay-icons">
       <img class="fpay-badge" src="assets/payment/visa.svg" alt="Visa">
@@ -2136,8 +2088,8 @@ footer{background:var(--ink);padding:72px 5vw 40px}
   <div class="fbot">
     <p>© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097</p>
     <nav class="fbot-links">
-      <a href="privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
-      <a href="terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
+      <a href="privacy/">Privacy Policy</a>
+      <a href="terms/">Terms</a>
     </nav>
   </div>
 </footer>
@@ -2372,31 +2324,6 @@ function applyTheme(t){
 }
 applyTheme(localStorage.getItem('wk-theme')||'light');
 
-/* ── LANGUAGE ─────────────────────────── */
-let lang=localStorage.getItem('wk-lang')||'en';
-const langDrop=document.getElementById('langDrop');
-
-function applyLang(l){
-  lang=l;
-  localStorage.setItem('wk-lang',l);
-  document.getElementById('lang-label-nav').textContent=l.toUpperCase();
-  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.toggle('active',o.dataset.lang===l));
-  document.querySelectorAll('[data-nl],[data-en]').forEach(el=>{
-    const txt=el.getAttribute('data-'+l);
-    if(txt)el.innerHTML=txt;
-  });
-  langDrop.classList.remove('open');
-}
-applyLang(lang);
-document.getElementById('langBtn').addEventListener('click',e=>{
-  e.stopPropagation();
-  langDrop.classList.toggle('open');
-});
-document.querySelectorAll('.lang-opt').forEach(o=>{
-  o.addEventListener('click',()=>applyLang(o.dataset.lang));
-});
-document.addEventListener('click',()=>langDrop.classList.remove('open'));
-
 /* ── CYCLING WORD ─────────────────────── */
 const words_nl=['WINNEN.','VERKOPEN.','GROEIEN.','RANKEN.'];
 const words_en=['WIN.','SELL.','GROW.','RANK.'];
@@ -2405,9 +2332,9 @@ let wi=0;
 const cycleEl=document.getElementById('cycling-word');
 if(cycleEl&&!reduced){
   setInterval(()=>{
-    wi=(wi+1)%words_nl.length;
+    wi=(wi+1)%words_en.length;
     gsap.to(cycleEl,{opacity:0,y:-12,duration:.25,ease:'power2.in',onComplete:()=>{
-      cycleEl.textContent=lang==='nl'?words_nl[wi]:words_en[wi];
+      cycleEl.textContent=words_en[wi];
       cycleEl.style.color=wordColors[wi];
       gsap.fromTo(cycleEl,{opacity:0,y:12},{opacity:1,y:0,duration:.3,ease:'power2.out'});
     }});
@@ -2437,8 +2364,7 @@ if(cycleEl&&!reduced){
       const field=(cls,nl,en)=>{
         const d=document.createElement('div');
         d.className=cls;
-        d.setAttribute('data-nl',nl||''); d.setAttribute('data-en',en||'');
-        d.innerHTML=(lang==='nl'?nl:en)||nl||'';
+        d.innerHTML=en||nl||'';
         return d;
       };
       body.appendChild(field('art-cat',a.category,a.categoryEn));
@@ -2447,11 +2373,9 @@ if(cycleEl&&!reduced){
       const footer=document.createElement('div'); footer.className='art-footer';
       const meta=document.createElement('div'); meta.className='art-meta-line';
       const date=document.createElement('span'); date.className='art-date';
-      date.setAttribute('data-nl',a.dateFormatted||''); date.setAttribute('data-en',a.dateFormattedEn||'');
-      date.innerHTML=(lang==='nl'?a.dateFormatted:a.dateFormattedEn)||a.dateFormatted||'';
+      date.innerHTML=a.dateFormattedEn||a.dateFormatted||'';
       const read=document.createElement('span'); read.className='art-read';
-      read.setAttribute('data-nl',a.readTime||''); read.setAttribute('data-en',a.readTimeEn||'');
-      read.innerHTML=(lang==='nl'?a.readTime:a.readTimeEn)||a.readTime||'';
+      read.innerHTML=a.readTimeEn||a.readTime||'';
       meta.appendChild(date); meta.appendChild(read);
       const arrow=document.createElement('span'); arrow.className='art-arrow'; arrow.textContent='→';
       footer.appendChild(meta); footer.appendChild(arrow);
@@ -2592,12 +2516,11 @@ if(cycleEl&&!reduced){
   }
 
   const copy={
-    en:{title:'Cookies on WebKreatives',text:'We use essential cookies for language and theme preferences. Analytics helps us improve the site.',accept:'Accept all',customize:'Customize',save:'Save preferences',essential:'Essential',essentialTxt:'Language, theme, and session preferences. Always on.',analytics:'Analytics',analyticsTxt:'Helps us understand which pages work best so we can keep improving.'},
-    nl:{title:'Cookies op WebKreatives',text:'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',accept:'Alles accepteren',customize:'Aanpassen',save:'Voorkeuren opslaan',essential:'Essentieel',essentialTxt:'Taal-, thema- en sessievoorkeuren. Altijd actief.',analytics:'Analytics',analyticsTxt:'Helpt ons begrijpen welke pagina\'s het beste werken zodat we de site blijven verbeteren.'}
+    en:{title:'Cookies on WebKreatives',text:'We use essential cookies for theme preferences. Analytics helps us improve the site.',accept:'Accept all',customize:'Customize',save:'Save preferences',essential:'Essential',essentialTxt:'Theme and session preferences. Always on.',analytics:'Analytics',analyticsTxt:'Helps us understand which pages work best so we can keep improving.'}
   };
 
   function render(l){
-    const c=copy[l]||copy.en;
+    const c=copy.en;
     const prefs=getPrefs();
     let el=document.getElementById('ck');
     if(!el){
@@ -2607,7 +2530,7 @@ if(cycleEl&&!reduced){
     }
     el.innerHTML=`
       <p class="ck-title">${c.title}</p>
-      <p class="ck-body">${c.text} <a href="privacy/">${l==='nl'?'Privacybeleid':'Privacy Policy'}</a>.</p>
+      <p class="ck-body">${c.text} <a href="privacy/">Privacy Policy</a>.</p>
       <div class="ck-btns">
         <button class="ck-btn ck-btn-s" id="ck-cust">${c.customize}</button>
         <button class="ck-btn ck-btn-p" id="ck-acc">${c.accept}</button>
@@ -2650,10 +2573,10 @@ if(cycleEl&&!reduced){
       document.body.appendChild(btn);
       btn.onclick=()=>{
         localStorage.removeItem(KEY); localStorage.removeItem(PKEY);
-        render(lang); btn.hidden=true;
+        render(); btn.hidden=true;
       };
     }
-    btn.textContent=l==='nl'?'🍪 Cookie-instellingen':'🍪 Cookie settings';
+    btn.textContent='🍪 Cookie settings';
     btn.hidden=!getState();
   }
 
@@ -2661,20 +2584,8 @@ if(cycleEl&&!reduced){
   const p=getPrefs();
   if(p.analytics&&['accepted','customized'].includes(getState()))loadGA();
 
-  /* render after lang is set, and re-render on lang change */
-  const _origApplyLang=window._wkApplyLang;
-  document.addEventListener('DOMContentLoaded',()=>{});
-  render(lang);
-  showManage(lang);
-
-  /* re-render banner text on lang switch */
-  const origApplyLang=applyLang;
-  window.applyLang=applyLang=function(l){
-    origApplyLang(l);
-    const ck=document.getElementById('ck');
-    if(ck&&!ck.hidden)render(l);
-    showManage(l);
-  };
+  render();
+  showManage();
 })();
 
 /* ── FORM ─────────────────────────────── */
@@ -2683,22 +2594,22 @@ document.querySelector('.cform')?.addEventListener('submit',async function(e){
   const status=document.getElementById('formStatus');
   const btn=this.querySelector('.fsub span');
   const origText=btn.textContent;
-  btn.textContent=lang==='nl'?'Versturen...':'Sending...';
+  btn.textContent='Sending...';
   try{
     const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(this)});
     const data=await res.json();
     status.style.display='block';
     if(data.success){
       status.style.color='oklch(46% .15 155)';
-      status.textContent=lang==='nl'?'Bericht verzonden! We nemen spoedig contact op.':'Message sent! We\'ll be in touch soon.';
+      status.textContent='Message sent! We\'ll be in touch soon.';
       this.reset();
     }else{
       status.style.color='var(--red)';
-      status.textContent=lang==='nl'?'Er ging iets mis. Probeer het opnieuw.':'Something went wrong. Please try again.';
+      status.textContent='Something went wrong. Please try again.';
     }
   }catch{
     status.style.color='var(--red)';
-    status.textContent=lang==='nl'?'Verbindingsfout. Mail ons op info@webkreatives.com':'Connection error. Email us at info@webkreatives.com';
+    status.textContent='Connection error. Email us at info@webkreatives.com';
   }
   btn.textContent=origText;
 });
