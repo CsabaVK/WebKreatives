@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
 <meta property="og:title" content="Articles – WebKreatives">
 <meta property="og:description" content="Practical articles on web design, local SEO, and getting more customers for small businesses.">
 <meta property="og:image" content="https://webkreatives.com/og/og-image.png">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="nl_NL">
 <meta property="og:site_name" content="WebKreatives">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d0d0d">
@@ -21,8 +21,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "WebKreatives Articles",
-  "description": "Practical articles on web design, local SEO and attracting more customers for your business.",
+  "name": "WebKreatives Artikelen",
+  "description": "Praktische artikelen over webdesign, lokale SEO en meer klanten aantrekken voor kleine bedrijven.",
   "url": "https://webkreatives.com/articles/",
   "publisher": {
     "@type": "Organization",
@@ -30,7 +30,7 @@
     "url": "https://webkreatives.com",
     "logo": {"@type": "ImageObject", "url": "https://webkreatives.com/favicon.svg"}
   },
-  "inLanguage": "en"
+  "inLanguage": "nl-NL"
 }
 </script>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -239,21 +239,23 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 <!-- HERO -->
 <div class="art-hero">
   <div class="art-hero-crumb">
-    <a href="/">Home</a>
+    <a href="/" data-nl="Home" data-en="Home">Home</a>
     <span class="sep">/</span>
-    <span>Articles</span>
+    <span data-nl="Artikelen" data-en="Articles">Artikelen</span>
   </div>
-  <h1 class="art-h1">Our <em>Articles.</em></h1>
-  <p class="art-hero-sub">Practical guides on web design, local visibility, and growing online. No jargon, directly applicable.</p>
+  <h1 class="art-h1" data-nl="Onze <em>Artikelen.</em>" data-en="Our <em>Articles.</em>">Onze <em>Artikelen.</em></h1>
+  <p class="art-hero-sub"
+    data-nl="Praktische gidsen over webdesign, lokale vindbaarheid en online groeien. Zonder vakjargon, direct toepasbaar."
+    data-en="Practical guides on web design, local visibility, and growing online. No jargon, directly applicable.">Praktische gidsen over webdesign, lokale vindbaarheid en online groeien. Zonder vakjargon, direct toepasbaar.</p>
 </div>
 
 <!-- FILTER BAR -->
 <div class="art-filters" id="artFilters">
-  <span class="af-label">Filter:</span>
-  <button class="af-btn active" data-filter="all">All</button>
-  <button class="af-btn" data-filter="seo">Local SEO</button>
-  <button class="af-btn" data-filter="webdesign">Web Design</button>
-  <button class="af-btn" data-filter="kleine">Small Business</button>
+  <span class="af-label" data-nl="Filter:" data-en="Filter:">Filter:</span>
+  <button class="af-btn active" data-filter="all" data-nl="Alles" data-en="All">Alles</button>
+  <button class="af-btn" data-filter="seo"       data-nl="Lokale SEO"     data-en="Local SEO">Lokale SEO</button>
+  <button class="af-btn" data-filter="webdesign" data-nl="Webdesign"      data-en="Web Design">Webdesign</button>
+  <button class="af-btn" data-filter="kleine"    data-nl="Kleine Bedrijven" data-en="Small Business">Kleine Bedrijven</button>
   <span class="af-count" id="artCount"></span>
 </div>
 
@@ -262,23 +264,28 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 
 <!-- CTA -->
 <div class="art-cta">
-  <h2 class="art-cta-h">Ready to grow your business <em>online</em>?</h2>
-  <p class="art-cta-p">Tell us about your business and we'll explore what's possible together.</p>
+  <h2 class="art-cta-h"
+    data-nl="Klaar om online te groeien?"
+    data-en="Ready to grow your business <em>online</em>?">Klaar om online te groeien?</h2>
+  <p class="art-cta-p"
+    data-nl="Vertel ons over jouw bedrijf en we kijken samen wat er mogelijk is."
+    data-en="Tell us about your business and we'll explore what's possible together.">Vertel ons over jouw bedrijf en we kijken samen wat er mogelijk is.</p>
   <a href="/#contact" class="art-cta-btn">
-    <span class="art-cta-desktop-label">Free Consultation &rarr;</span>
-    <span class="art-cta-mobile-label">Free Consultation</span>
+    <span class="art-cta-desktop-label" data-nl="Gratis Consultatie &rarr;" data-en="Free Consultation &rarr;">Gratis Consultatie &rarr;</span>
+    <span class="art-cta-mobile-label" data-nl="Gratis Consultatie" data-en="Free Consultation">Gratis Consultatie</span>
   </a>
 </div>
 
 <div id="globalFooter"></div>
 
 <script src="/js/global-components.js"></script>
+<script src="/js/i18n.js?v=20260514-articles3"></script>
 <script src="/js/script.js?v=20260514-articles3"></script>
-<script src="/js/cookie-consent.js?v=20260906"></script>
 <script src="articles-data.js?v=20260514-articles3"></script>
 <script>
 (function(){
   /* ── state ── */
+  let lang = localStorage.getItem('wk-lang') || 'nl';
   const reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   let currentFilter = 'all';
   let gsapInited = false;
@@ -294,11 +301,11 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
   }
 
   function renderRow(art, l) {
-    const title    = art.title;
-    const excerpt  = art.excerpt;
-    const catLabel = art.category;
-    const date     = art.dateFormatted;
-    const rt       = art.readTime;
+    const title    = l === 'en' ? (art.titleEn || art.title) : art.title;
+    const excerpt  = l === 'en' ? (art.excerptEn || art.excerpt) : art.excerpt;
+    const catLabel = l === 'en' ? (art.categoryEn || art.category) : art.category;
+    const date     = l === 'en' ? (art.dateFormattedEn || art.dateFormatted) : art.dateFormatted;
+    const rt       = l === 'en' ? (art.readTimeEn || art.readTime) : art.readTime;
     const catKey   = getCatKey(art.category);
     const href     = '/articles/' + art.slug + '/';
     return `<a class="art-row cat-${catKey}" data-cat="${catKey}" href="${href}" style="text-decoration:none;color:inherit">
@@ -332,7 +339,7 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
     if (countEl) {
       countEl.textContent = l === 'en'
         ? visible + (visible === 1 ? ' article' : ' articles')
-        : visible + (visible === 1 ? ' article' : ' articles');
+        : visible + (visible === 1 ? ' artikel' : ' artikelen');
     }
   }
 
@@ -351,7 +358,7 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
           currentFilter = btn.dataset.filter;
           document.querySelectorAll('.af-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          applyFilter(currentFilter, list.querySelectorAll('.art-row'));
+          applyFilter(currentFilter, list.querySelectorAll('.art-row'), lang);
         });
       });
     }
@@ -378,7 +385,17 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
     }
   }
 
-  renderArticles();
+  /* ── language ── */
+  function applyLang(l) {
+    lang = l;
+    document.querySelectorAll('[data-nl],[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + l);
+      if (val != null) el.innerHTML = val;
+    });
+    renderArticles(l);
+  }
+  applyLang(lang);
+  document.addEventListener('wk:languagechange', e => applyLang(e.detail?.lang || localStorage.getItem('wk-lang') || 'nl'));
 
   /* ── custom cursor ── */
   const dot  = document.getElementById('c-dot');

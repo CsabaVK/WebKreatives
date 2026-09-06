@@ -26,7 +26,7 @@
   }
 
   function getArticleLanguage() {
-    return 'en';
+    return localStorage.getItem('wk-lang') || document.documentElement.lang || 'nl';
   }
 
   function t(nl, en) {
@@ -39,8 +39,8 @@
     const liUrl     = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
 
     el.innerHTML = `
-      <span class="art-share-label">${'Share this article:'}</span>
-      <a class="share-btn linkedin" href="${liUrl}" target="_blank" rel="noopener" aria-label="${'Share on LinkedIn'}">
+      <span class="art-share-label">${t('Deel dit artikel:', 'Share this article:')}</span>
+      <a class="share-btn linkedin" href="${liUrl}" target="_blank" rel="noopener" aria-label="${t('Deel op LinkedIn', 'Share on LinkedIn')}">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A5 5 0 0 1 16 8z"/>
           <rect x="2" y="9" width="4" height="12" rx=".5"/>
@@ -48,7 +48,7 @@
         </svg>
         LinkedIn
       </a>
-      <a class="share-btn instagram" href="${INSTAGRAM_PAGE}" target="_blank" rel="noopener" aria-label="${'Follow us on Instagram'}">
+      <a class="share-btn instagram" href="${INSTAGRAM_PAGE}" target="_blank" rel="noopener" aria-label="${t('Volg ons op Instagram', 'Follow us on Instagram')}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5"/>
           <circle cx="12" cy="12" r="4"/>
@@ -56,12 +56,12 @@
         </svg>
         Instagram
       </a>
-      <button class="share-btn copy" id="wkCopyBtn" aria-label="${'Copy page link'}">
+      <button class="share-btn copy" id="wkCopyBtn" aria-label="${t('Kopieer paginalink', 'Copy page link')}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="9" y="9" width="13" height="13" rx="2"/>
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
         </svg>
-        ${'Copy link'}
+        ${t('Kopieer link', 'Copy link')}
       </button>`;
 
     const copyBtn = document.getElementById('wkCopyBtn');
@@ -73,7 +73,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
-            ${'Copied!'}`;
+            ${t('Gekopieerd!', 'Copied!')}`;
           setTimeout(() => {
             copyBtn.classList.remove('copied');
             copyBtn.innerHTML = `
@@ -81,7 +81,7 @@
                 <rect x="9" y="9" width="13" height="13" rx="2"/>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
               </svg>
-              ${'Copy link'}`;
+              ${t('Kopieer link', 'Copy link')}`;
           }, 2800);
         }).catch(() => {
           /* Fallback for older browsers */
@@ -91,8 +91,8 @@
           ta.select();
           document.execCommand('copy');
           document.body.removeChild(ta);
-          copyBtn.textContent = `✓ ${'Copied!'}`;
-          setTimeout(() => { copyBtn.textContent = 'Copy link'; }, 2800);
+          copyBtn.textContent = `✓ ${t('Gekopieerd!', 'Copied!')}`;
+          setTimeout(() => { copyBtn.textContent = t('Kopieer link', 'Copy link'); }, 2800);
         });
       });
     }
@@ -104,15 +104,15 @@
       <img src="${AUTHOR_IMG}" alt="Csaba Garaguly, Co-founder WebKreatives" loading="lazy">
       <div>
         <h4>Csaba Garaguly</h4>
-        <span class="bio-role">${'Co-founder · WebKreatives'}</span>
-        <p>${'WebKreatives builds websites for small businesses in the Netherlands and shares practical insights about growing online. Csaba writes from within WebKreatives about how business owners can strengthen their online presence without paying a fortune.'}</p>
+        <span class="bio-role">${t('Co-founder · WebKreatives', 'Co-founder · WebKreatives')}</span>
+        <p>${t('WebKreatives bouwt websites voor kleine bedrijven in Nederland en deelt praktische inzichten over online groeien. Csaba schrijft vanuit WebKreatives over hoe ondernemers hun online aanwezigheid sterker kunnen maken zonder fortuin te betalen.', 'WebKreatives builds websites for small businesses in the Netherlands and shares practical insights about growing online. Csaba writes from within WebKreatives about how business owners can strengthen their online presence without paying a fortune.')}</p>
       </div>`;
   }
 
   /* ── Related Articles ─────────────────────────────────────────────────── */
   function renderRelated(el) {
     if (typeof WK_ARTICLES === 'undefined' || !WK_ARTICLES.length) {
-      el.innerHTML = `<p style="color:var(--grey-500);font-size:14px">${'More articles coming soon.'}</p>`;
+      el.innerHTML = `<p style="color:var(--grey-500);font-size:14px">${t('Binnenkort meer artikelen.', 'More articles coming soon.')}</p>`;
       return;
     }
 
@@ -121,7 +121,7 @@
     const others    = WK_ARTICLES.filter(a => a.slug !== slug).slice(0, 3);
 
     if (!others.length) {
-      el.innerHTML = `<p style="color:var(--grey-500);font-size:14px">${'More articles coming soon.'}</p>`;
+      el.innerHTML = `<p style="color:var(--grey-500);font-size:14px">${t('Binnenkort meer artikelen.', 'More articles coming soon.')}</p>`;
       return;
     }
 
@@ -151,6 +151,7 @@
     if (relatedEl) renderRelated(relatedEl);
   }
 
+  document.addEventListener('wk:languagechange', init);
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

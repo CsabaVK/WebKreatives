@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms & Conditions | WebKreatives</title>
-<meta name="description" content="Read the WebKreatives terms and conditions: payment, ownership, liability, cancellation and more.">
+<title>Algemene Voorwaarden | WebKreatives</title>
+<meta name="description" content="Lees de algemene voorwaarden van WebKreatives: betaling, eigendom, aansprakelijkheid, annulering en meer.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://webkreatives.com/terms/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://webkreatives.com/terms/">
-<meta property="og:title" content="Terms &amp; Conditions | WebKreatives">
-<meta property="og:description" content="WebKreatives terms and conditions for web design and related services.">
+<meta property="og:title" content="Algemene Voorwaarden | WebKreatives">
+<meta property="og:description" content="Algemene voorwaarden van WebKreatives voor webdesign en aanverwante diensten.">
 <meta property="og:image" content="https://webkreatives.com/og-image.svg">
 <meta name="theme-color" content="#0d0d0d">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -147,6 +147,9 @@
   .legal-table strong:last-of-type,.legal-table span:last-of-type{border-bottom:none}
 
   /* lang block visibility */
+  [data-lang-block]{display:none}
+  [data-lang-block].is-active{display:block}
+
   /* responsive */
   @media(max-width:900px){
     .legal-grid{grid-template-columns:1fr}
@@ -164,16 +167,19 @@
 
 <section class="legal-hero">
   <div class="legal-wrap">
-    
-    <span class="legal-kicker">Terms &amp; Conditions</span>
-    
-    <div>
+    <span class="legal-kicker" data-lang="nl">Algemene Voorwaarden</span>
+    <span class="legal-kicker" data-lang="en" style="display:none">Terms &amp; Conditions</span>
+    <div data-lang-block="nl" class="legal-lang-block is-active">
+      <h1>Algemene Voorwaarden</h1>
+      <p>Deze voorwaarden zijn van toepassing op alle diensten die WebKreatives levert. Door een project te starten of een offerte te aanvaarden, ga je akkoord met deze voorwaarden.</p>
+    </div>
+    <div data-lang-block="en" class="legal-lang-block">
       <h1>Terms &amp; Conditions</h1>
       <p>These terms apply to all services provided by WebKreatives. By starting a project or accepting a quote, you agree to these terms.</p>
     </div>
     <div class="legal-meta">
-      
-      <span>Last updated: 20 April 2026</span>
+      <span data-lang="nl">Laatst bijgewerkt: 20 april 2026</span>
+      <span data-lang="en" style="display:none">Last updated: 20 April 2026</span>
       <span>WebKreatives · KVK 94051097</span>
       <span>info@webkreatives.com</span>
     </div>
@@ -183,38 +189,113 @@
 <section class="legal-main">
   <div class="legal-grid">
     <aside class="legal-side">
-      
-      <h2>Sections</h2>
-      
-      <a href="#parties">1. Parties</a>
-      
-      <a href="#services">2. Services</a>
-      
-      <a href="#payment">3. Payment</a>
-      
-      <a href="#ip">4. Ownership &amp; IP</a>
-      
-      <a href="#revisions">5. Revisions &amp; Scope</a>
-      
-      <a href="#client">6. Client responsibilities</a>
-      
-      <a href="#cancellation">7. Cancellation</a>
-      
-      <a href="#liability">8. Liability</a>
-      
-      <a href="#law">9. Governing law</a>
-      
-      <a href="#contact">10. Contact</a>
+      <h2 data-lang="nl">Onderdelen</h2>
+      <h2 data-lang="en" style="display:none">Sections</h2>
+      <a href="#parties" data-lang="nl">1. Partijen</a>
+      <a href="#parties" data-lang="en" style="display:none">1. Parties</a>
+      <a href="#services" data-lang="nl">2. Diensten</a>
+      <a href="#services" data-lang="en" style="display:none">2. Services</a>
+      <a href="#payment" data-lang="nl">3. Betaling</a>
+      <a href="#payment" data-lang="en" style="display:none">3. Payment</a>
+      <a href="#ip" data-lang="nl">4. Eigendom &amp; IP</a>
+      <a href="#ip" data-lang="en" style="display:none">4. Ownership &amp; IP</a>
+      <a href="#revisions" data-lang="nl">5. Revisies &amp; Scope</a>
+      <a href="#revisions" data-lang="en" style="display:none">5. Revisions &amp; Scope</a>
+      <a href="#client" data-lang="nl">6. Verplichtingen klant</a>
+      <a href="#client" data-lang="en" style="display:none">6. Client responsibilities</a>
+      <a href="#cancellation" data-lang="nl">7. Annulering</a>
+      <a href="#cancellation" data-lang="en" style="display:none">7. Cancellation</a>
+      <a href="#liability" data-lang="nl">8. Aansprakelijkheid</a>
+      <a href="#liability" data-lang="en" style="display:none">8. Liability</a>
+      <a href="#law" data-lang="nl">9. Toepasselijk recht</a>
+      <a href="#law" data-lang="en" style="display:none">9. Governing law</a>
+      <a href="#contact" data-lang="nl">10. Contact</a>
+      <a href="#contact" data-lang="en" style="display:none">10. Contact</a>
     </aside>
 
     <article class="legal-card">
 
       <!-- ===== DUTCH ===== -->
-      
+      <div data-lang-block="nl" class="legal-lang-block is-active">
+        <div class="legal-note">Deze voorwaarden zijn beschikbaar in het Nederlands en het Engels. Beide versies hebben dezelfde inhoud. Heb je een vraag over een bepaling? Neem gerust contact op via <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>.</div>
+
+        <h2 id="parties">1. Partijen</h2>
+        <div class="legal-table">
+          <strong>Opdrachtnemer</strong><span>WebKreatives</span>
+          <strong>Vestigingsplaats</strong><span>Amsterdam, Nederland</span>
+          <strong>KvK</strong><span>94051097</span>
+          <strong>E-mail</strong><span><a href="mailto:info@webkreatives.com">info@webkreatives.com</a></span>
+        </div>
+        <p>WebKreatives treedt op als opdrachtnemer. De partij die een dienst aanvraagt of een offerte aanvaardt, wordt aangeduid als <strong>opdrachtgever</strong> of <strong>klant</strong>. Samen worden zij aangeduid als <strong>partijen</strong>.</p>
+
+        <h3 id="services">2. Diensten</h3>
+        <p>WebKreatives levert onder meer de volgende diensten:</p>
+        <ul>
+          <li>Webdesign en webdevelopment (op maat of op basis van templates);</li>
+          <li>Webshop-ontwikkeling;</li>
+          <li>SEO en prestatieoptimalisatie;</li>
+          <li>Branding en visuele identiteit;</li>
+          <li>Doorlopende support en onderhoud.</li>
+        </ul>
+        <p>De exacte omvang, planning en prijs van elk project worden vastgelegd in een offerte of projectvoorstel. Bij aanvaarding van de offerte — schriftelijk of per e-mail — komt de overeenkomst tot stand.</p>
+
+        <h3 id="payment">3. Betaling</h3>
+        <p>Tenzij schriftelijk anders overeengekomen, hanteert WebKreatives de volgende betalingsstructuur:</p>
+        <ul>
+          <li><strong>50% aanbetaling</strong> bij aanvang van het project. Het project start pas nadat de aanbetaling is ontvangen.</li>
+          <li><strong>50% eindfactuur</strong> bij oplevering van het project, voordat de live-zetting of overdracht van bestanden plaatsvindt.</li>
+        </ul>
+        <p>Facturen zijn betaalbaar binnen <strong>14 dagen</strong> na factuurdatum. Bij overschrijding van de betalingstermijn is WebKreatives gerechtigd de werkzaamheden op te schorten totdat betaling is ontvangen, en kan wettelijke rente in rekening worden gebracht.</p>
+        <p>Alle prijzen zijn exclusief btw, tenzij anders vermeld.</p>
+
+        <h3 id="ip">4. Eigendom &amp; Intellectueel eigendom</h3>
+        <p><strong>Rechten van de klant:</strong> Na volledige betaling draagt WebKreatives alle rechten op de specifiek voor de klant ontwikkelde ontwerpen, code en content over aan de opdrachtgever. De klant wordt dan volledig eigenaar van de opgeleverde website en bijbehorende bestanden.</p>
+        <p><strong>Rechten van WebKreatives:</strong> WebKreatives behoudt het recht om:</p>
+        <ul>
+          <li>het afgeleverde werk te tonen in eigen portfolio, op de website, op sociale media en in marketingmateriaal;</li>
+          <li>gebruik te maken van tools, frameworks, open-source bibliotheken en eigen herbruikbare code-onderdelen — eigendom hiervan berust bij de respectievelijke partijen.</li>
+        </ul>
+        <p>Wil je liever niet dat jouw website in ons portfolio wordt opgenomen? Dan kun je dit schriftelijk kenbaar maken. WebKreatives respecteert dit verzoek.</p>
+        <p><strong>Content van de klant:</strong> De klant staat in voor alle rechten op door hem of haar aangeleverde afbeeldingen, teksten, logo's en andere content, en vrijwaart WebKreatives voor aanspraken van derden in verband met die content.</p>
+
+        <h3 id="revisions">5. Revisies &amp; Scopewijzigingen</h3>
+        <p>Iedere offerte omvat standaard <strong>twee rondes feedback</strong> na oplevering van de initiële versie. Elke revisieronde betreft gezamenlijke aanpassingen van redelijke omvang, in lijn met de oorspronkelijke briefing.</p>
+        <ul>
+          <li>Extra revisierondes of wijzigingen die buiten de oorspronkelijke scope vallen, worden afzonderlijk gefactureerd tegen het geldende uurtarief.</li>
+          <li>Substantiële scopewijzigingen — zoals het toevoegen van extra pagina's, nieuwe functies of een gewijzigde richting — worden schriftelijk vastgelegd in een gewijzigde offerte.</li>
+        </ul>
+
+        <h3 id="client">6. Verplichtingen van de klant</h3>
+        <p>Een soepel project vereist actieve medewerking van de klant. De klant is verantwoordelijk voor:</p>
+        <ul>
+          <li>het tijdig aanleveren van content, afbeeldingen, logo's en andere benodigde materialen;</li>
+          <li>het verstrekken van tijdige en duidelijke feedback;</li>
+          <li>de juistheid en volledigheid van aangeleverde informatie;</li>
+          <li>toegangsgegevens die nodig zijn voor hosting, domein of andere diensten, indien van toepassing.</li>
+        </ul>
+        <p>Vertragingen veroorzaakt door het uitblijven van content of feedback vallen buiten de verantwoordelijkheid van WebKreatives. De geplande opleverdatum wordt in dergelijke gevallen dienovereenkomstig verschoven.</p>
+
+        <h3 id="cancellation">7. Annulering &amp; Opschorting</h3>
+        <p><strong>Annulering door de klant:</strong> De klant kan het project annuleren met schriftelijke kennisgeving. Reeds betaalde aanbetaling wordt niet teruggestort zodra de werkzaamheden zijn gestart. Eventueel afgerond werk dat nog niet was gefactureerd, wordt alsnog in rekening gebracht naar rato van de gemaakte uren.</p>
+        <p><strong>Annulering door WebKreatives:</strong> Als WebKreatives het project annuleert zonder gegronde reden, wordt de aanbetaling volledig teruggestort. WebKreatives is echter niet aansprakelijk voor verdere schade of gederfde winst.</p>
+        <p><strong>Inactiviteit van de klant:</strong> Als de klant gedurende <strong>30 kalenderdagen</strong> niet reageert op berichten of geen benodigde materialen aanlevert, heeft WebKreatives het recht het project op te schorten. Na 60 dagen inactiviteit kan de overeenkomst worden ontbonden, waarbij de aanbetaling vervalt ter dekking van de reeds gemaakte kosten.</p>
+
+        <h3 id="liability">8. Aansprakelijkheid</h3>
+        <p>WebKreatives spant zich in om kwalitatief hoogwaardig werk te leveren, maar kan geen garantie geven op specifieke zakelijke resultaten, zoals omzetgroei, leadgeneratie of zoekmachineposities.</p>
+        <p>De totale aansprakelijkheid van WebKreatives is in alle gevallen beperkt tot het bedrag dat de klant voor het betreffende project heeft betaald. WebKreatives is niet aansprakelijk voor indirecte schade, gederfde winst, reputatieschade of gevolgschade.</p>
+        <p>WebKreatives is niet verantwoordelijk voor storingen, uitval of inbreuken bij derden, zoals hosting-, betaal- of e-maildiensten.</p>
+
+        <h3 id="law">9. Toepasselijk recht &amp; Geschillen</h3>
+        <p>Op deze overeenkomst is Nederlands recht van toepassing. Geschillen die niet in onderling overleg kunnen worden opgelost, worden bij uitsluiting voorgelegd aan de bevoegde rechter in Amsterdam, Nederland.</p>
+        <p>Voordat een juridische procedure wordt gestart, verwachten partijen van elkaar dat zij in goed overleg proberen het geschil op te lossen. Wij zijn altijd bereikbaar via <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>.</p>
+
+        <h3 id="contact">10. Contact</h3>
+        <p>Vragen over deze voorwaarden? Neem contact op via <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>. WebKreatives behoudt het recht deze voorwaarden te wijzigen. Wijzigingen worden gepubliceerd op deze pagina met een bijgewerkte datum.</p>
+      </div>
 
       <!-- ===== ENGLISH ===== -->
-      <div>
-        <div class="legal-note">If you have any questions about a specific provision, feel free to reach out at <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>.</div>
+      <div data-lang-block="en" class="legal-lang-block">
+        <div class="legal-note">These terms are available in Dutch and English. Both versions reflect the same content. If you have any questions about a specific provision, feel free to reach out at <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>.</div>
 
         <h2 id="parties">1. Parties</h2>
         <div class="legal-table">
@@ -297,7 +378,27 @@
 <div id="globalFooter"></div>
 
 <script src="/js/global-components.js?v=20260420-terms1"></script>
+<script src="/js/i18n.js?v=20260420-terms1"></script>
 <script src="/js/script.js?v=20260420-terms1"></script>
-<script src="/js/cookie-consent.js?v=20260906"></script>
+<script>
+  (function(){
+    function setTermsLang(lang){
+      const active = lang === 'en' ? 'en' : 'nl';
+      document.documentElement.lang = active;
+      document.querySelectorAll('[data-lang-block]').forEach(el => {
+        el.classList.toggle('is-active', el.getAttribute('data-lang-block') === active);
+      });
+      document.querySelectorAll('.legal-hero [data-lang], .legal-side [data-lang]').forEach(el => {
+        el.style.display = el.getAttribute('data-lang') === active ? '' : 'none';
+      });
+      document.title = active === 'en' ? 'Terms & Conditions | WebKreatives' : 'Algemene Voorwaarden | WebKreatives';
+    }
+    const initialLang = localStorage.getItem('wk-lang') || 'nl';
+    setTermsLang(initialLang);
+    document.addEventListener('wk:languagechange', (event) => {
+      setTermsLang(event?.detail?.lang || localStorage.getItem('wk-lang') || 'nl');
+    });
+  })();
+</script>
 </body>
 </html>
