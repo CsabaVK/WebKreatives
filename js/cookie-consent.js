@@ -1,7 +1,7 @@
 /* ─── WebKreatives — Cookie consent (single shared implementation) ───────────
- * Used by every page: homepage and all sub-pages.
+ * Used by EVERY page: homepage and all sub-pages.
  * Edit the copy or behaviour HERE and it changes site-wide.
- * Self-contained: injects its own CSS, no dependency on page stylesheets.
+ * Bilingual (NL/EN), self-contained CSS, no dependency on page stylesheets.
  * ─────────────────────────────────────────────────────────────────────────── */
 (function () {
   'use strict';
@@ -15,17 +15,35 @@
   const GA_ID = 'G-CG9705BC61';
 
   const COPY = {
-    title:        'Cookies on WebKreatives',
-    text:         'We use essential cookies for theme preferences. Analytics helps us improve the site.',
-    accept:       'Accept all',
-    customize:    'Customize',
-    save:         'Save preferences',
-    privacy:      'Privacy Policy',
-    essential:    'Essential',
-    essentialTxt: 'Theme and session preferences. Always on.',
-    analytics:    'Analytics',
-    analyticsTxt: 'Helps us understand which pages work best so we can keep improving.'
+    nl: {
+      title:        'Cookies op WebKreatives',
+      text:         'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',
+      accept:       'Alles accepteren',
+      customize:    'Aanpassen',
+      save:         'Voorkeuren opslaan',
+      privacy:      'Privacybeleid',
+      essential:    'Essentieel',
+      essentialTxt: 'Taal-, thema- en sessievoorkeuren. Altijd actief.',
+      analytics:    'Analytics',
+      analyticsTxt: 'Helpt ons begrijpen welke pagina’s het beste werken zodat we de site blijven verbeteren.',
+      manage:       '🍪 Cookie-instellingen'
+    },
+    en: {
+      title:        'Cookies on WebKreatives',
+      text:         'We use essential cookies for language and theme preferences. Analytics helps us improve the site.',
+      accept:       'Accept all',
+      customize:    'Customize',
+      save:         'Save preferences',
+      privacy:      'Privacy Policy',
+      essential:    'Essential',
+      essentialTxt: 'Language, theme, and session preferences. Always on.',
+      analytics:    'Analytics',
+      analyticsTxt: 'Helps us understand which pages work best so we can keep improving.',
+      manage:       '🍪 Cookie settings'
+    }
   };
+
+  const getLang = () => (localStorage.getItem('wk-lang') === 'en' ? 'en' : 'nl');
 
   /* ── Storage ────────────────────────────────────────────────────────── */
   const getState = () => localStorage.getItem(KEY);
@@ -101,6 +119,7 @@
 
   /* ── Render ─────────────────────────────────────────────────────────── */
   function render() {
+    const c = COPY[getLang()];
     const prefs = getPrefs();
     let el = document.getElementById('ck');
     if (!el) {
@@ -109,23 +128,23 @@
       document.body.appendChild(el);
     }
     el.innerHTML = `
-      <p class="ck-title">${COPY.title}</p>
-      <p class="ck-body">${COPY.text} <a href="/privacy/">${COPY.privacy}</a>.</p>
+      <p class="ck-title">${c.title}</p>
+      <p class="ck-body">${c.text} <a href="/privacy/">${c.privacy}</a>.</p>
       <div class="ck-btns">
-        <button class="ck-btn ck-btn-s" id="ck-cust">${COPY.customize}</button>
-        <button class="ck-btn ck-btn-p" id="ck-acc">${COPY.accept}</button>
+        <button class="ck-btn ck-btn-s" id="ck-cust">${c.customize}</button>
+        <button class="ck-btn ck-btn-p" id="ck-acc">${c.accept}</button>
       </div>
       <div class="ck-panel" id="ck-panel">
         <div class="ck-opt">
-          <div class="ck-opt-text"><strong>${COPY.essential}</strong><p>${COPY.essentialTxt}</p></div>
+          <div class="ck-opt-text"><strong>${c.essential}</strong><p>${c.essentialTxt}</p></div>
           <label class="ck-toggle locked"><input type="checkbox" checked disabled><span></span></label>
         </div>
         <div class="ck-opt">
-          <div class="ck-opt-text"><strong>${COPY.analytics}</strong><p>${COPY.analyticsTxt}</p></div>
+          <div class="ck-opt-text"><strong>${c.analytics}</strong><p>${c.analyticsTxt}</p></div>
           <label class="ck-toggle"><input type="checkbox" id="ck-ana"${prefs.analytics ? ' checked' : ''}><span></span></label>
         </div>
         <div class="ck-panel-save">
-          <button class="ck-btn ck-btn-p" id="ck-save">${COPY.save}</button>
+          <button class="ck-btn ck-btn-p" id="ck-save">${c.save}</button>
         </div>
       </div>`;
 
@@ -158,17 +177,21 @@
         btn.hidden = true;
       };
     }
-    btn.textContent = '🍪 Cookie settings';
+    btn.textContent = COPY[getLang()].manage;
     btn.hidden = !getState();
   }
 
-  /* ── Init ───────────────────────────────────────────────────────────── */
+  /* ── Init + react to language changes ───────────────────────────────── */
   function init() {
     const p = getPrefs();
     if (p.analytics && ['accepted', 'customized'].includes(getState())) loadGA();
     render();
     showManage();
   }
+
+  // Re-render when the visitor switches language (both switcher styles).
+  document.addEventListener('wk:languagechange', () => { render(); showManage(); });
+  window.wkCookieRefresh = () => { render(); showManage(); };
 
   if (document.body) init();
   else document.addEventListener('DOMContentLoaded', init);
