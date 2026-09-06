@@ -391,49 +391,4 @@
     }
   }
 
-  /* ── 5. Inject footer ────────────────────────────────── */
-  const footerRoot = document.getElementById('globalFooter');
-  if (footerRoot) {
-    footerRoot.innerHTML = `
-<footer class="wk-footer">
-  <div class="wk-fgrid">
-    <div class="wk-fbrand">
-      <img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"
-           style="height:100px;width:auto;max-width:100%;display:block;margin-bottom:8px">
-      <p data-i18n="footer.p">Mooie, converterende websites voor kleine bedrijven. Snel, betaalbaar, op maat gemaakt. Gevestigd in Amsterdam.</p>
-      <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
-    </div>
-    <div class="wk-fcol">
-      <h4 data-i18n="footer.services">Diensten</h4>
-      <a href="/#services" data-i18n="footer.design">Website Design</a>
-      <a href="/#services" data-i18n="footer.ecom">Webshops</a>
-      <a href="/#services" data-i18n="footer.seo">SEO &amp; Prestaties</a>
-      <a href="/#services" data-i18n="footer.brand">Branding &amp; Identiteit</a>
-      <a href="/#services" data-i18n="footer.support">Doorlopende Support</a>
-    </div>
-    <div class="wk-fcol">
-      <h4 data-i18n="footer.pages">Pagina's</h4>
-      <a href="/" data-i18n="footer.home">Home</a>
-      <a href="/portfolio/" data-i18n="footer.work">Portfolio</a>
-      <a href="/articles/" data-i18n="footer.articles">Artikelen</a>
-      <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
-      <a href="/terms/" data-i18n="footer.terms">Voorwaarden</a>
-    </div>
-    <div class="wk-fcol">
-      <h4 data-i18n="footer.connect">Verbinden</h4>
-      <a href="/#contact" class="wk-g" data-i18n="footer.start">Start een Project</a>
-      <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener" data-i18n="footer.instagram">Instagram</a>
-      <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
-      <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener" data-i18n="footer.medium">Medium</a>
-    </div>
-  </div>
-  <div class="wk-fbot">
-    <p data-i18n="footer.meta">&copy; 2026 WebKreatives &middot; Amsterdam, Netherlands &middot; KVK: 94051097</p>
-    <div class="wk-fbot-links">
-      <a href="/privacy/" data-i18n="footer.privacy">Privacy Policy</a>
-      <a href="/terms/" data-i18n="footer.terms">Terms</a>
-    </div>
-  </div>
-</footer>`;
-  }
 })();
