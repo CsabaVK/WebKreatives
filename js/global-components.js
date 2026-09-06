@@ -202,10 +202,10 @@
   <ul class="nav-links">
     <li><a href="/#services">Services</a></li>
     <li><a href="/portfolio/"${portfolioActive}>Portfolio</a></li>
+    <li><a href="/articles/"${articlesActive}>Articles</a></li>
     <li><a href="/#pricing">Pricing</a></li>
     <li><a href="/#subscriptions">Support</a></li>
-    <li><a href="/articles/"${articlesActive}>Articles</a></li>
-    <li><a href="/#contact">Reviews</a></li>
+    <li><a href="/#contact">Contact</a></li>
   </ul>
   <div class="nav-controls">
     <a href="/#contact" class="wk-nav-cta"><span>Get a Quote</span></a>
@@ -218,10 +218,10 @@
   <ul>
     <li><a href="/#services">Services</a></li>
     <li><a href="/portfolio/"${portfolioActive}>Portfolio</a></li>
+    <li><a href="/articles/"${articlesActive}>Articles</a></li>
     <li><a href="/#pricing">Pricing</a></li>
     <li><a href="/#subscriptions">Support</a></li>
-    <li><a href="/articles/"${articlesActive}>Articles</a></li>
-    <li><a href="/#contact">Reviews</a></li>
+    <li><a href="/#contact">Contact</a></li>
   </ul>
   <a href="/#contact" class="wk-nav-cta" style="width:100%;justify-content:center">
     <span>Get a Quote</span>
