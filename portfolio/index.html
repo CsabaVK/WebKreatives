@@ -73,6 +73,14 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
 .port-stat-l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:oklch(38% .008 25);margin-top:5px}
 
 /* ── FILTERS ─────────────────────────────────────────────── */
+.port-note{
+  display:flex;align-items:flex-start;gap:10px;
+  max-width:1280px;margin:0 auto;padding:14px 5vw 0;
+  font-size:13px;line-height:1.6;font-weight:300;
+  color:oklch(52% .008 25);
+}
+.port-note svg{color:var(--yellow);margin-top:2px}
+.port-note strong{color:oklch(76% .008 25);font-weight:600}
 .port-filters{background:oklch(9% .010 25 / .97);border-bottom:1px solid oklch(15% .010 25);padding:12px 5vw;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .pf-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:oklch(32% .008 25);margin-right:4px;flex-shrink:0}
 .pf-btn{padding:5px 14px;border-radius:100px;border:1px solid oklch(22% .010 25);font-family:var(--f2);font-size:11px;font-weight:600;color:oklch(50% .006 25);transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);cursor:none}
@@ -220,13 +228,13 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
     </div>
     <h1 class="port-h1" data-nl="Ons <em>Werk.</em>" data-en="Our <em>Work.</em>">Our <em>Work.</em></h1>
     <p class="port-hero-sub"
-      data-nl="Echte websites, gebouwd voor echte bedrijven. Bekijk de stijl die past."
-      data-en="Real websites built for real businesses. Find the style that fits.">Real websites built for real businesses. Find the style that fits.</p>
+      data-nl="Conceptontwerpen die laten zien wat we voor jou zouden bouwen. Elk concept is volledig uitgewerkt en klikbaar. Vind de stijl die past."
+      data-en="Concept designs that show what we would build for you. Every concept is fully designed and clickable. Find the style that fits.">Concept designs that show what we would build for you. Every concept is fully designed and clickable. Find the style that fits.</p>
   </div>
   <div class="port-hero-stats">
     <div>
       <div class="port-stat-n" style="color:var(--red)">15+</div>
-      <div class="port-stat-l" data-nl="Gemaakte websites" data-en="Websites built">Websites built</div>
+      <div class="port-stat-l" data-nl="Uitgewerkte concepten" data-en="Concepts designed">Concepts designed</div>
     </div>
     <div>
       <div class="port-stat-n" style="color:var(--lime)">10+</div>
@@ -234,10 +242,16 @@ body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
     </div>
     <div>
       <div class="port-stat-n" style="color:var(--blue)">48h</div>
-      <div class="port-stat-l" data-nl="Oplevering" data-en="Delivery">Delivery</div>
+      <div class="port-stat-l" data-nl="Tot eerste concept" data-en="To first concept">To first concept</div>
     </div>
   </div>
 </div>
+</div>
+
+<div class="port-note">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <span data-nl="Dit zijn <strong>conceptontwerpen</strong> van WebKreatives, gemaakt om onze stijl en aanpak te laten zien. Het zijn geen officiële websites van de genoemde bedrijven en er is geen samenwerking met hen."
+        data-en="These are <strong>concept designs</strong> by WebKreatives, made to show our style and approach. They are not the official websites of the businesses shown, and no affiliation with them is implied."><strong>Concept designs</strong> by WebKreatives, made to show our style and approach. They are not the official websites of the businesses shown, and no affiliation with them is implied.</span>
 </div>
 
 <!-- FILTERS -->
