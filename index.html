@@ -602,6 +602,8 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
   font-size:13px;line-height:1.6;
   color:oklch(62% .006 25);font-weight:300;flex:1;margin:12px 0;
 }
+.rc-num{display:flex;align-items:center;justify-content:center;font-family:var(--f1);font-size:12px;font-weight:700;color:var(--red);background:oklch(20% .010 25);letter-spacing:.02em}
+.reviews-sub{font-size:14px;line-height:1.65;color:oklch(46% .006 25);font-weight:300;margin-top:14px;max-width:330px}
 .rc-stars{color:var(--red);font-size:12px;letter-spacing:2px;flex-shrink:0}
 @media(max-width:900px){
   .rc-stage{height:390px}
@@ -1280,11 +1282,10 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
       <a href="#portfolio" class="btn-g"><span data-nl="Bekijk Ons Werk" data-en="View Our Work">Bekijk Ons Werk</span> <span class="btn-arrow">→</span></a>
     </div>
     <div class="hero-trust" id="hero-trust">
-      <div class="hero-trust-stars">★★★★★</div>
       <p class="hero-trust-text"
-        data-nl="<strong>5.0</strong> gemiddelde beoordeling · <strong>15+</strong> websites live"
-        data-en="<strong>5.0</strong> average rating · <strong>15+</strong> websites live">
-        <strong>5.0</strong> gemiddelde beoordeling · <strong>15+</strong> websites live
+        data-nl="<strong>Vaste prijs</strong> vooraf · <strong>Live in 1–2 weken</strong> · Alles is van jou"
+        data-en="<strong>Fixed price</strong> upfront · <strong>Live in 1–2 weeks</strong> · You own everything">
+        <strong>Vaste prijs</strong> vooraf · <strong>Live in 1–2 weken</strong> · Alles is van jou
       </p>
     </div>
   </div>
@@ -1323,7 +1324,7 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
   <div class="stats-grid" style="margin-top:56px">
     <div class="stat-card stat-dark reveal">
       <div class="stat-n" style="color:var(--red)" data-count="15" data-suffix="+">0+</div>
-      <div class="stat-l" data-nl="Live websites voor echte bedrijven" data-en="Live websites delivered for real businesses">Live websites delivered for real businesses</div>
+      <div class="stat-l" data-nl="Websites en concepten opgeleverd" data-en="Websites and concepts delivered">Websites and concepts delivered</div>
     </div>
     <div class="stat-card stat-dark reveal">
       <div class="stat-n" style="color:var(--blue)" data-count="48" data-suffix="h">0h</div>
@@ -1335,7 +1336,7 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
     </div>
     <div class="stat-card stat-dark reveal">
       <div class="stat-n" style="color:var(--lime)" data-count="100" data-suffix="%">0%</div>
-      <div class="stat-l" data-nl="Klanttevredenheid, check de reviews" data-en="Client satisfaction, check the reviews">Client satisfaction, check the reviews</div>
+      <div class="stat-l" data-nl="Eigendom van code, domein en content" data-en="Ownership of code, domain and content">Ownership of code, domain and content</div>
     </div>
   </div>
 </section>
@@ -1475,65 +1476,77 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
 <section class="sec sec-light" id="reviews" style="padding-top:clamp(56px,7vw,100px);padding-bottom:clamp(56px,7vw,100px)">
   <div class="reviews-split">
     <div class="reviews-copy reveal">
-      <p class="lbl" data-nl="Klanten aan het woord" data-en="Client reviews">Klanten aan het woord</p>
-      <h2 class="h2" data-nl="Wat zij zeggen." data-en="What they say.">Wat zij zeggen.</h2>
+      <p class="lbl" data-nl="Onze belofte" data-en="Our commitments">Onze belofte</p>
+      <h2 class="h2" data-nl="Wat je van ons <br class='mbr'>kunt verwachten." data-en="What you can <br class='mbr'>count on.">Wat je van ons <br class="mbr">kunt verwachten.</h2>
+      <p class="reviews-sub" data-nl="WebKreatives is een jong bureau. In plaats van grote woorden leggen we vast waar je ons op mag afrekenen." data-en="WebKreatives is a young studio. Instead of big claims, here is exactly what you can hold us to.">WebKreatives is een jong bureau. In plaats van grote woorden leggen we vast waar je ons op mag afrekenen.</p>
     </div>
   <div class="rc-stage" id="rcStage">
 
     <div class="rc">
       <div class="rc-head">
-        <div class="rc-av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Karim"></div>
-        <div><div class="rc-name">Karim</div><div class="rc-role" data-nl="De Groot Accountants" data-en="De Groot Accountants">De Groot Accountants</div></div>
+        <div class="rc-av rc-num">01</div>
+        <div>
+          <div class="rc-name" data-nl="Vaste prijs" data-en="Fixed price">Vaste prijs</div>
+          <div class="rc-role" data-nl="vooraf afgesproken" data-en="agreed upfront">vooraf afgesproken</div>
+        </div>
       </div>
-      <p class="rc-text" data-nl="Onze klanten merkten meteen het verschil. Strak, snel, geen rommel." data-en="Our clients noticed the difference immediately. Clean, fast, no clutter.">"Our clients noticed the difference immediately. Clean, fast, no clutter."</p>
-      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text" data-nl="Je weet de volledige prijs voordat we beginnen. Geen uurtjes achteraf, geen onverwachte facturen." data-en="You know the full price before we start. No hourly surprises, no scope-creep invoices.">Je weet de volledige prijs voordat we beginnen. Geen uurtjes achteraf, geen onverwachte facturen.</p>
     </div>
 
     <div class="rc">
       <div class="rc-head">
-        <div class="rc-av"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Sophie"></div>
-        <div><div class="rc-name">Sophie</div><div class="rc-role" data-nl="Maison Blanc Interieur" data-en="Maison Blanc Interieur">Maison Blanc Interieur</div></div>
+        <div class="rc-av rc-num">02</div>
+        <div>
+          <div class="rc-name" data-nl="Alles is van jou" data-en="You own everything">Alles is van jou</div>
+          <div class="rc-role" data-nl="geen lock-in" data-en="no lock-in">geen lock-in</div>
+        </div>
       </div>
-      <p class="rc-text" data-nl="Eindelijk een website die past bij het niveau van mijn werk. Precies goed." data-en="Finally a website that matches the quality of my work. Exactly right.">"Finally a website that matches the quality of my work. Exactly right."</p>
-      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text" data-nl="Domein, code, content en accounts staan op jouw naam en worden bij oplevering overgedragen." data-en="Domain, code, content and accounts are yours and get transferred to you at handover.">Domein, code, content en accounts staan op jouw naam en worden bij oplevering overgedragen.</p>
     </div>
 
     <div class="rc">
       <div class="rc-head">
-        <div class="rc-av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Edward"></div>
-        <div><div class="rc-name">Edward</div><div class="rc-role" data-nl="Klussenbedrijf Edward" data-en="Klussenbedrijf Edward">Klussenbedrijf Edward</div></div>
+        <div class="rc-av rc-num">03</div>
+        <div>
+          <div class="rc-name" data-nl="Live in 1–2 weken" data-en="Live in 1–2 weeks">Live in 1–2 weken</div>
+          <div class="rc-role" data-nl="een datum, geen schatting" data-en="a date, not an estimate">een datum, geen schatting</div>
+        </div>
       </div>
-      <p class="rc-text" data-nl="Meer leads in de eerste week. Makkelijk zelf aan te passen. Geen verborgen kosten." data-en="More leads in the first week. Easy to update myself. No surprise costs.">"More leads in the first week. Easy to update myself. No surprise costs."</p>
-      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text" data-nl="De meeste sites staan binnen twee weken na akkoord live. Je krijgt een concrete opleverdatum." data-en="Most sites go live within two weeks of the go-ahead. You get a real delivery date.">De meeste sites staan binnen twee weken na akkoord live. Je krijgt een concrete opleverdatum.</p>
     </div>
 
     <div class="rc">
       <div class="rc-head">
-        <div class="rc-av"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Lena"></div>
-        <div><div class="rc-name">Lena</div><div class="rc-role" data-nl="Studio Lena Fotografie" data-en="Studio Lena Photography">Studio Lena Photography</div></div>
+        <div class="rc-av rc-num">04</div>
+        <div>
+          <div class="rc-name" data-nl="Revisies inbegrepen" data-en="Revisions included">Revisies inbegrepen</div>
+          <div class="rc-role" data-nl="geen meerwerk" data-en="not an upsell">geen meerwerk</div>
+        </div>
       </div>
-      <p class="rc-text" data-nl="Mijn portfolio ziet er nu uit als van een grote studio. Klanten reageren serieuzer." data-en="My portfolio now looks like it's from a big studio. Clients take me more seriously.">"My portfolio now looks like it's from a big studio. Clients take me more seriously."</p>
-      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text" data-nl="Feedback hoort bij het proces. Aanpassingsrondes zitten in de prijs, niet in een extra factuur." data-en="Feedback is part of the process. Revision rounds are in the price, not on a separate invoice.">Feedback hoort bij het proces. Aanpassingsrondes zitten in de prijs, niet in een extra factuur.</p>
     </div>
 
     <div class="rc">
       <div class="rc-head">
-        <div class="rc-av"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Thomas"></div>
-        <div><div class="rc-name">Thomas</div><div class="rc-role" data-nl="Tandarts Knoll" data-en="Tandarts Knoll">Tandarts Knoll</div></div>
+        <div class="rc-av rc-num">05</div>
+        <div>
+          <div class="rc-name" data-nl="Direct contact" data-en="Direct line">Direct contact</div>
+          <div class="rc-role" data-nl="geen accountmanager" data-en="no account managers">geen accountmanager</div>
+        </div>
       </div>
-      <p class="rc-text" data-nl="Eindelijk een website die laat zien wie we zijn. Snel, op maat, precies zoals we wilden." data-en="Finally a website that shows who we are. Fast, custom, exactly as we wanted.">"Finally a website that shows who we are. Fast, custom, exactly as we wanted."</p>
-      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text" data-nl="Je praat met de persoon die je site ontwerpt en bouwt. Korte lijnen, snelle antwoorden." data-en="You talk to the person who designs and builds your site. Short lines, fast answers.">Je praat met de persoon die je site ontwerpt en bouwt. Korte lijnen, snelle antwoorden.</p>
     </div>
 
     <div class="rc">
       <div class="rc-head">
-        <div class="rc-av"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=72&h=72&fit=crop&crop=faces&auto=format&q=80" alt="Marieke"></div>
-        <div><div class="rc-name">Marieke</div><div class="rc-role" data-nl="Luna Beauty Studio" data-en="Luna Beauty Studio">Luna Beauty Studio</div></div>
+        <div class="rc-av rc-num">06</div>
+        <div>
+          <div class="rc-name" data-nl="Maandelijks opzegbaar" data-en="Cancel any month">Maandelijks opzegbaar</div>
+          <div class="rc-role" data-nl="support zonder contract" data-en="support without a contract">support zonder contract</div>
+        </div>
       </div>
-      <p class="rc-text" data-nl="Binnen twee weken een professionele website. Ik krijg nu veel meer aanvragen — iets wat hiervoor nooit gebeurde." data-en="A professional website in two weeks. I now get far more inquiries — something that never happened before.">"A professional website in two weeks. I now get far more inquiries — something that never happened before."</p>
-      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text" data-nl="Onderhoudsplannen zijn per maand opzegbaar. Je zit nergens aan vast." data-en="Support plans are month-to-month. You are never locked into a contract.">Onderhoudsplannen zijn per maand opzegbaar. Je zit nergens aan vast.</p>
     </div>
-
   </div>
   </div>
 </section>
