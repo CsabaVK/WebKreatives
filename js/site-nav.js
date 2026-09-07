@@ -212,7 +212,14 @@
   }
   window.wkApplyLanguage = applyLanguage;
 
-  applyLanguage(localStorage.getItem('wk-lang') || 'nl');
+  /* Default is English (also what search engines see). Dutch visitors get
+     Dutch automatically; a manual choice always wins and is remembered. */
+  function initialLanguage() {
+    const saved = localStorage.getItem('wk-lang');
+    if (saved === 'nl' || saved === 'en') return saved;
+    return (navigator.language || '').toLowerCase().startsWith('nl') ? 'nl' : 'en';
+  }
+  applyLanguage(initialLanguage());
 
   const btn = document.getElementById('langBtn');
   if (btn) {
