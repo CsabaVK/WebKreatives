@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case studies | WebKreatives</title>
+<meta name="description" content="How we approach a website: the brief, what usually goes wrong, the decisions we made and what we cut.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://webkreatives.com/case-studies/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://webkreatives.com/case-studies/">
+<meta property="og:title" content="Case studies | WebKreatives">
+<meta property="og:description" content="How we approach a website: the brief, what usually goes wrong, the decisions we made and what we cut.">
+<meta property="og:image" content="https://webkreatives.com/og/og-image.png">
+<meta property="og:site_name" content="WebKreatives">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:oklch(8% .010 25);--ink2:oklch(18% .010 25);--cream:oklch(97% .008 80);
+  --red:#df3821;--red2:oklch(43% .200 25);--white:oklch(99% .004 80);
+  --lined:oklch(22% .010 25);--lime:#b9e185;--blue:#648dcb;--yellow:#fbeb78;
+  --f1:'Unbounded',sans-serif;--f2:'Figtree',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f2);background:var(--ink);color:oklch(62% .006 25);line-height:1.7;overflow-x:clip}
+a{color:inherit}
+img{display:block;max-width:100%}
+.cs-wrap{max-width:760px;margin:0 auto;padding:0 5vw}
+.cs-hero{padding:150px 0 44px;border-bottom:1px solid oklch(15% .010 25)}
+.cs-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;gap:8px;margin-bottom:20px}
+.cs-crumb a{text-decoration:none;transition:color .2s}
+.cs-crumb a:hover{color:oklch(60% .008 25)}
+.cs-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid oklch(24% .010 25);margin-bottom:20px}
+.cs-h1{font-family:var(--f1);font-size:clamp(30px,4.4vw,52px);font-weight:900;letter-spacing:-.035em;line-height:1.06;color:var(--white);margin-bottom:20px}
+.cs-lede{font-size:clamp(15px,1.4vw,18px);font-weight:300;line-height:1.7;color:oklch(58% .008 25)}
+.cs-body{padding:52px 0 90px}
+.cs-block{margin-bottom:44px}
+.cs-k{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:oklch(34% .008 25);margin-bottom:12px}
+.cs-block p{font-size:16px;margin-bottom:14px}
+.cs-list{list-style:none;counter-reset:d}
+.cs-list li{
+  counter-increment:d;position:relative;padding-left:44px;margin-bottom:20px;font-size:16px;
+}
+.cs-list li::before{
+  content:counter(d,decimal-leading-zero);position:absolute;left:0;top:1px;
+  font-family:var(--f1);font-size:12px;font-weight:700;color:var(--accent,var(--red));
+}
+.cs-list strong,.cs-block strong{color:oklch(88% .006 25);font-weight:600}
+.cs-note{
+  border-left:2px solid var(--accent,var(--red));padding:2px 0 2px 18px;
+  font-size:15.5px;color:oklch(56% .008 25);
+}
+.cs-cta{
+  margin-top:56px;padding:30px;border:1px solid oklch(18% .010 25);border-radius:16px;
+  background:oklch(11% .010 25);
+}
+.cs-cta h2{font-family:var(--f1);font-size:20px;font-weight:800;color:var(--white);margin-bottom:8px;letter-spacing:-.02em}
+.cs-cta p{font-size:15px;margin-bottom:18px}
+.cs-btns{display:flex;gap:10px;flex-wrap:wrap}
+.cs-btn{
+  display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border-radius:9px;
+  font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;
+  transition:transform .25s var(--ease),opacity .2s;
+}
+.cs-btn:hover{transform:translateY(-2px)}
+.cs-btn-p{background:var(--red);color:#fff}
+.cs-btn-s{border:1px solid oklch(26% .010 25);color:oklch(74% .006 25)}
+.cs-disc{
+  display:flex;gap:9px;align-items:flex-start;margin-top:34px;
+  font-size:12.5px;line-height:1.6;color:oklch(42% .008 25);
+}
+.cs-disc svg{color:var(--yellow);flex-shrink:0;margin-top:2px}
+@media(max-width:640px){.cs-hero{padding-top:120px}}
+</style>
+</head>
+<body data-page="case-study">
+<div id="globalNav"></div>
+<style>
+.csi-grid{display:grid;gap:18px;padding:52px 0 90px}
+.csi-card{
+  display:block;text-decoration:none;padding:28px;border-radius:16px;
+  border:1px solid oklch(17% .010 25);background:oklch(10% .010 25);
+  transition:border-color .3s var(--ease),transform .3s var(--ease);
+}
+.csi-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.csi-sector{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.csi-title{font-family:var(--f1);font-size:clamp(19px,2.1vw,25px);font-weight:800;letter-spacing:-.025em;line-height:1.2;color:var(--white);margin:10px 0 10px}
+.csi-lede{font-size:15px;font-weight:300;line-height:1.65;color:oklch(52% .008 25)}
+.csi-more{display:inline-block;margin-top:16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+</style>
+
+<section class="cs-hero">
+  <div class="cs-wrap">
+    <div class="cs-crumb"><a href="/">Home</a><span>/</span><span>Case studies</span></div>
+    <h1 class="cs-h1" data-nl="Hoe we een site aanpakken" data-en="How we approach a site">How we approach a site</h1>
+    <p class="cs-lede" data-nl="Geen mooie plaatjes zonder uitleg. Per concept: de opdracht, wat er normaal misgaat, welke keuzes we maakten en wat we bewust hebben geschrapt." data-en="Not just screenshots. For each concept: the brief, what usually goes wrong, the decisions we made and what we deliberately cut.">Not just screenshots. For each concept: the brief, what usually goes wrong, the decisions we made and what we deliberately cut.</p>
+  </div>
+</section>
+
+<section class="cs-wrap">
+  <div class="csi-grid">
+
+      <a class="csi-card" href="/case-studies/leyenburger-grill/" style="--accent:#c9772e">
+        <span class="csi-sector">Food &amp; drink</span>
+        <h2 class="csi-title" data-nl="Een menukaart die je niet hoeft te downloaden" data-en="A menu you do not have to download">A menu you do not have to download</h2>
+        <p class="csi-lede" data-nl="Leyenburger verkoopt döner, Turkse pizza en kapsalon. De meeste concurrenten sturen je naar een PDF of naar Thuisbezorgd. Wij hebben de kaart de site zelf gemaakt." data-en="Leyenburger sells döner, Turkish pizza and kapsalon. Most competitors send you to a PDF or to a delivery platform. We made the menu the site itself.">Leyenburger sells döner, Turkish pizza and kapsalon. Most competitors send you to a PDF or to a delivery platform. We made the menu the site itself.</p>
+        <span class="csi-more"><span data-nl="Lees de case" data-en="Read the case">Read the case</span> &rarr;</span>
+      </a>
+
+      <a class="csi-card" href="/case-studies/tandarts-knoll/" style="--accent:#0d7c8f">
+        <span class="csi-sector">Healthcare</span>
+        <h2 class="csi-title" data-nl="Een tandartssite voor mensen die liever niet gaan" data-en="A dental site for people who would rather not go">A dental site for people who would rather not go</h2>
+        <p class="csi-lede" data-nl="Tandartspraktijken schrijven hun site meestal voor collega’s. Deze is geschreven voor iemand die om elf uur ’s avonds met kiespijn ligt te zoeken." data-en="Dental practices usually write their site for other dentists. This one is written for someone lying awake at eleven at night with toothache.">Dental practices usually write their site for other dentists. This one is written for someone lying awake at eleven at night with toothache.</p>
+        <span class="csi-more"><span data-nl="Lees de case" data-en="Read the case">Read the case</span> &rarr;</span>
+      </a>
+
+      <a class="csi-card" href="/case-studies/de-groot-partners/" style="--accent:#c8a45c">
+        <span class="csi-sector">Professional services</span>
+        <h2 class="csi-title" data-nl="Een accountantskantoor dat niet klinkt als elk ander accountantskantoor" data-en="An accountancy firm that does not sound like every other accountancy firm">An accountancy firm that does not sound like every other accountancy firm</h2>
+        <p class="csi-lede" data-nl="Betrouwbaar, persoonlijk, deskundig. Dat staat op vrijwel elke accountantssite in Nederland, en daarom zegt het niets meer." data-en="Reliable, personal, expert. That sits on nearly every accountancy site in the country, which is exactly why it no longer means anything.">Reliable, personal, expert. That sits on nearly every accountancy site in the country, which is exactly why it no longer means anything.</p>
+        <span class="csi-more"><span data-nl="Lees de case" data-en="Read the case">Read the case</span> &rarr;</span>
+      </a>
+  </div>
+</section>
+
+<div id="globalFooter"></div>
+<script src="/js/site-nav.js?v=20260906"></script>
+<script src="/js/site-footer.js?v=20260906"></script>
+<script src="/js/cookie-consent.js?v=20260906b"></script>
+</body>
+</html>

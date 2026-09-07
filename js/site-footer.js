@@ -92,6 +92,7 @@
       <h4 data-nl="Pagina's" data-en="Pages">Pagina's</h4>
       <a href="/" data-nl="Home" data-en="Home">Home</a>
       <a href="/portfolio/" data-nl="Portfolio" data-en="Portfolio">Portfolio</a>
+      <a href="/case-studies/" data-nl="Case studies" data-en="Case studies">Case studies</a>
       <a href="/articles/" data-nl="Artikelen" data-en="Articles">Artikelen</a>
       <a href="/privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
       <a href="/terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
