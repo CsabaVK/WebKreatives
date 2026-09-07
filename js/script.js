@@ -146,25 +146,14 @@ document.querySelectorAll('.btn-primary, .btn-nav, .fsub').forEach(btn => {
   btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
 });
 
-// 9.5 LANGUAGE SWITCHER
-const langBtn = document.getElementById('langBtn');
-const langMenu = document.getElementById('langMenu');
-const langDropdown = document.getElementById('langDropdown');
+// 9.5 CONTENT TRANSLATION
+// The language switcher itself lives in js/site-nav.js (one dropdown, site-wide).
+// Here we only translate this page's [data-i18n] content when the language changes.
+let currentLang = localStorage.getItem('wk-lang') || 'nl';
 
-// Auto-detect language: respect manual choice first, then browser preference
-function detectLang() {
-  const saved = localStorage.getItem('wk-lang');
-  if (saved) return saved;
-  return navigator.language.startsWith('nl') ? 'nl' : 'en';
-}
-let currentLang = detectLang();
-
-function setLanguage(lang) {
+function applyContentTranslations(lang) {
   currentLang = lang;
-  localStorage.setItem('wk-lang', lang);
-  document.documentElement.lang = lang;
-
-  const t = translations[lang];
+  const t = (typeof translations !== 'undefined') ? translations[lang] : null;
   if (!t) return;
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -180,52 +169,15 @@ function setLanguage(lang) {
     if (t[key]) el.placeholder = t[key];
   });
 
-  // Update typing words
   if (t['hero.words'] && typeof words !== 'undefined') {
     words = t['hero.words'].split(',');
   }
-
-  // Update lang button display
-  const flagSVGs = {
-    nl: '<svg viewBox="0 0 640 480"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></svg>',
-    en: '<svg viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"/><path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"/><path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z"/><path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z"/></svg>'
-  };
-  const names = {nl: 'NL', en: 'EN'};
-  if (langBtn) {
-    langBtn.querySelector('.lang-flag').innerHTML = flagSVGs[lang] || flagSVGs.nl;
-    langBtn.querySelector('.lang-name').textContent = names[lang] || names.nl;
-  }
-
-  // Update active state
-  document.querySelectorAll('.lang-option').forEach(opt => {
-    opt.classList.toggle('active', opt.dataset.lang === lang);
-  });
-
-  document.dispatchEvent(new CustomEvent('wk:languagechange', {
-    detail: { lang, translations: t }
-  }));
 }
 
-if (langBtn) {
-  langBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    langDropdown.classList.toggle('open');
-  });
-
-  document.querySelectorAll('.lang-option').forEach(opt => {
-    opt.addEventListener('click', () => {
-      setLanguage(opt.dataset.lang);
-      langDropdown.classList.remove('open');
-    });
-  });
-
-  document.addEventListener('click', () => {
-    langDropdown.classList.remove('open');
-  });
-}
-
-// Apply saved language on load
-setLanguage(currentLang);
+applyContentTranslations(currentLang);
+document.addEventListener('wk:languagechange', e =>
+  applyContentTranslations((e.detail && e.detail.lang) || localStorage.getItem('wk-lang') || 'nl')
+);
 
 // 9.6 DARK MODE TOGGLE
 const themeToggle = document.getElementById('themeToggle');

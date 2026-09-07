@@ -114,147 +114,6 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
 }
 #loader.done{pointer-events:none}
 
-/* ── NAV ─────────────────────────────────────────────── */
-#mainNav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:20px 5vw;
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  transition:padding .35s var(--ease),background .4s var(--ease),border-color .35s;
-  border-bottom:1px solid transparent;
-}
-#mainNav.scrolled{
-  padding-top:13px;padding-bottom:13px;
-  background:oklch(7% .010 25 / .96);
-  backdrop-filter:blur(20px) saturate(1.4);
-  border-color:oklch(20% .008 25);
-}
-.nav-logo img{height:80px;width:auto;display:block;}
-.nav-links{
-  display:flex;gap:32px;list-style:none;justify-content:center;
-}
-.nav-links a{
-  font-size:11px;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:oklch(72% .005 25);
-  position:relative;padding-bottom:3px;
-  transition:color .2s var(--ease);
-}
-.nav-links a::after{
-  content:'';
-  position:absolute;bottom:0;left:0;right:0;
-  height:1.5px;border-radius:1px;
-  transform:scaleX(0);transform-origin:left center;
-  transition:transform .35s var(--ease);
-}
-.nav-links li:nth-child(1) a::after{background:var(--red)}
-.nav-links li:nth-child(2) a::after{background:var(--lime)}
-.nav-links li:nth-child(3) a::after{background:var(--yellow)}
-.nav-links li:nth-child(4) a::after{background:var(--blue)}
-.nav-links li:nth-child(5) a::after{background:var(--red)}
-.nav-links a:hover{color:oklch(96% .005 25)}
-
-.nav-controls{display:flex;align-items:center;gap:6px;justify-content:flex-end}
-.nav-links a:hover::after{transform:scaleX(1)}
-
-.nav-controls{display:flex;align-items:center;gap:6px}
-.nav-divider{width:1px;height:18px;background:oklch(24% .008 25);margin:0 4px}
-
-.theme-btn{
-  display:flex;align-items:center;justify-content:center;
-  width:34px;height:34px;border-radius:7px;
-  color:oklch(44% .005 25);
-  transition:color .2s,background .2s;
-}
-.theme-btn:hover{color:oklch(78% .005 25);background:oklch(14% .010 25)}
-
-.lang-btn-nav{
-  display:flex;align-items:center;gap:5px;
-  height:34px;padding:0 6px;
-  font-size:11px;font-weight:700;letter-spacing:.1em;
-  color:oklch(60% .005 25);
-  transition:color .2s;
-}
-.lang-btn-nav:hover{color:oklch(88% .005 25)}
-.lang-flag{width:15px;height:11px;display:block;border-radius:2px;overflow:hidden;flex-shrink:0}
-.lang-drop{position:relative}
-.lang-menu{
-  position:absolute;top:calc(100% + 6px);right:0;
-  background:oklch(10% .010 25);
-  border:1px solid oklch(22% .010 25);
-  border-radius:8px;padding:4px;
-  min-width:72px;opacity:0;pointer-events:none;
-  transform:translateY(-6px);
-  transition:opacity .18s var(--ease),transform .18s var(--ease);
-  z-index:200;
-}
-.lang-drop.open .lang-menu{opacity:1;pointer-events:auto;transform:translateY(0)}
-.lang-opt{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 12px;border-radius:5px;
-  font-size:11px;font-weight:700;letter-spacing:.1em;
-  color:oklch(50% .005 25);width:100%;text-align:left;
-  transition:background .15s,color .15s;white-space:nowrap;
-}
-.lang-opt:hover,.lang-opt.active{background:oklch(18% .010 25);color:var(--white)}
-.nav-logo-text{
-  font-family:var(--f1);font-size:14px;font-weight:700;
-  letter-spacing:-.02em;color:var(--white);white-space:nowrap;
-}
-.nav-logo-text em{font-style:normal;color:var(--red)}
-
-.nav-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--white);background:var(--red);
-  padding:10px 22px;border-radius:8px;
-  position:relative;overflow:hidden;
-  transition:transform .3s var(--ease),box-shadow .3s;
-}
-.nav-cta::before{
-  content:'';position:absolute;inset:0;background:var(--red2);
-  transform:translateX(-101%);transition:transform .35s var(--ease);
-}
-.nav-cta span{position:relative}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px oklch(51% .220 25 / .38)}
-.nav-cta:hover::before{transform:translateX(0)}
-
-.mobile-toggle{
-  display:none;
-  width:40px;height:40px;border-radius:9px;
-  align-items:center;justify-content:center;flex-direction:column;gap:5px;
-  color:oklch(76% .005 25);
-  border:1px solid oklch(24% .010 25);
-  background:oklch(10% .010 25 / .72);
-}
-.mobile-toggle span{
-  display:block;width:18px;height:1.5px;border-radius:2px;
-  background:currentColor;transition:transform .24s var(--ease),opacity .2s;
-}
-.mobile-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.mobile-toggle.open span:nth-child(2){opacity:0}
-.mobile-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{
-  display:none;position:fixed;top:74px;left:12px;right:12px;z-index:99;
-  background:oklch(8% .010 25 / .98);
-  border:1px solid oklch(20% .010 25);
-  border-radius:14px;
-  padding:12px;
-  box-shadow:0 22px 70px oklch(0% 0 0 / .45);
-}
-.mobile-menu.open{display:block}
-.mobile-menu a{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:13px 10px;
-  border-bottom:1px solid oklch(16% .010 25);
-  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:oklch(72% .005 25);
-}
-.mobile-menu a:last-child{border-bottom:0}
-.mobile-menu .mobile-menu-cta{
-  margin-top:8px;justify-content:center;border-radius:9px;
-  background:var(--red);color:var(--white);border-bottom:0;
-}
-
 /* ── HERO ─────────────────────────────────────────────── */
 .hero{
   min-height:100svh;
@@ -1048,8 +907,6 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
   .nav-links{display:none}
   .nav-divider{display:none}
   .mobile-toggle{display:flex}
-  #mainNav{padding:12px 18px 12px 28px;grid-template-columns:auto 1fr auto}
-  #mainNav.scrolled{padding-top:8px;padding-bottom:8px}
   .nav-logo img{height:58px}
   .nav-controls{gap:8px}
   .nav-cta{padding:9px 14px;font-size:11px}
@@ -1388,43 +1245,8 @@ body.cursor-on-red #c-ring{border-color:oklch(8% .010 25);opacity:.8}
 </div>
 
 <!-- NAV -->
-<nav id="mainNav">
-  <a class="nav-logo" href="#"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></a>
-  <ul class="nav-links">
-    <li><a href="#services" data-nl="Diensten" data-en="Services">Services</a></li>
-    <li><a href="#portfolio" data-nl="Portfolio" data-en="Portfolio">Portfolio</a></li>
-    <li><a href="/articles/" data-nl="Artikelen" data-en="Articles">Articles</a></li>
-    <li><a href="#pricing" data-nl="Prijzen" data-en="Pricing">Pricing</a></li>
-    <li><a href="#subscriptions" data-nl="Support" data-en="Support">Support</a></li>
-    <li><a href="#contact" data-nl="Contact" data-en="Contact">Contact</a></li>
-  </ul>
-  <div class="nav-controls">
-    <div class="lang-drop" id="langDrop">
-      <button class="lang-btn-nav" id="langBtn">
-        <span id="lang-label-nav">EN</span>
-        <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor" style="opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
-      </button>
-      <div class="lang-menu">
-        <button class="lang-opt active" data-lang="en">EN</button>
-        <button class="lang-opt" data-lang="nl">NL</button>
-      </div>
-    </div>
-    <div class="nav-divider"></div>
-    <a href="#contact" class="nav-cta"><span data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</span></a>
-    <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#services" data-nl="Diensten" data-en="Services">Services</a>
-  <a href="#portfolio" data-nl="Portfolio" data-en="Portfolio">Portfolio</a>
-  <a href="#pricing" data-nl="Prijzen" data-en="Pricing">Pricing</a>
-  <a href="#subscriptions" data-nl="Support" data-en="Support">Support</a>
-  <a href="#articles" data-nl="Artikelen" data-en="Articles">Articles</a>
-  <a href="#contact" data-nl="Reviews" data-en="Reviews">Reviews</a>
-  <a class="mobile-menu-cta" href="#contact" data-nl="Offerte Aanvragen" data-en="Get a Quote">Get a Quote</a>
-</div>
+<div id="globalNav"></div>
+
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -2159,34 +1981,6 @@ document.querySelectorAll('[data-count]').forEach(el=>{
   });
 });
 
-/* ── NAV SCROLL ───────────────────────── */
-const mainNav=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>{
-  mainNav.classList.toggle('scrolled',window.scrollY>60);
-},{passive:true});
-
-/* ── MOBILE NAV ───────────────────────── */
-const mobileToggle=document.getElementById('mobileToggle');
-const mobileMenu=document.getElementById('mobileMenu');
-if(mobileToggle&&mobileMenu){
-  const closeMobileMenu=()=>{
-    mobileToggle.classList.remove('open');
-    mobileToggle.setAttribute('aria-expanded','false');
-    mobileMenu.classList.remove('open');
-  };
-  mobileToggle.addEventListener('click',e=>{
-    e.stopPropagation();
-    const open=!mobileMenu.classList.contains('open');
-    mobileToggle.classList.toggle('open',open);
-    mobileToggle.setAttribute('aria-expanded',String(open));
-    mobileMenu.classList.toggle('open',open);
-  });
-  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileMenu));
-  document.addEventListener('click',e=>{
-    if(!mobileMenu.contains(e.target)&&!mobileToggle.contains(e.target))closeMobileMenu();
-  });
-}
-
 /* ── FAQ ──────────────────────────────── */
 document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -2226,31 +2020,9 @@ function applyTheme(t){
 applyTheme(localStorage.getItem('wk-theme')||'light');
 
 /* ── LANGUAGE ─────────────────────────── */
-let lang=localStorage.getItem('wk-lang')||'en';
-const langDrop=document.getElementById('langDrop');
-
-function applyLang(l){
-  lang=l;
-  localStorage.setItem('wk-lang',l);
-  document.getElementById('lang-label-nav').textContent=l.toUpperCase();
-  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.toggle('active',o.dataset.lang===l));
-  document.querySelectorAll('[data-nl],[data-en]').forEach(el=>{
-    const txt=el.getAttribute('data-'+l);
-    if(txt)el.innerHTML=txt;
-  });
-  langDrop.classList.remove('open');
-  document.documentElement.lang=l;
-  document.dispatchEvent(new CustomEvent('wk:languagechange',{detail:{lang:l}}));
-}
-applyLang(lang);
-document.getElementById('langBtn').addEventListener('click',e=>{
-  e.stopPropagation();
-  langDrop.classList.toggle('open');
-});
-document.querySelectorAll('.lang-opt').forEach(o=>{
-  o.addEventListener('click',()=>applyLang(o.dataset.lang));
-});
-document.addEventListener('click',()=>langDrop.classList.remove('open'));
+/* The switcher lives in js/site-nav.js; keep 'lang' in sync here. */
+let lang=localStorage.getItem('wk-lang')||'nl';
+document.addEventListener('wk:languagechange',e=>{lang=(e.detail&&e.detail.lang)||lang;});
 
 /* ── CYCLING WORD ─────────────────────── */
 const words_nl=['WINNEN.','VERKOPEN.','GROEIEN.','RANKEN.'];
@@ -2487,6 +2259,7 @@ document.querySelector('.cform')?.addEventListener('submit',async function(e){
   startAuto();
 })();
 </script>
+<script src="/js/site-nav.js?v=20260906"></script>
 <script src="/js/site-footer.js?v=20260906"></script>
 <script src="/js/cookie-consent.js?v=20260906b"></script>
 </body>
