@@ -77,7 +77,7 @@
   <div class="fgrid">
     <div class="fbrand">
       <div class="fbrand-logo"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></div>
-      <p data-nl="AI-gestuurd webdesign voor bedrijven die willen opvallen. Op maat gemaakt, snel opgeleverd, gebouwd om te converteren. Gevestigd in Amsterdam." data-en="AI-powered web design for businesses that want to stand out. Custom-built, delivered fast, designed to convert. Based in Amsterdam.">AI-gestuurd webdesign voor bedrijven die willen opvallen. Op maat gemaakt, snel opgeleverd, gebouwd om te converteren. Gevestigd in Amsterdam.</p>
+      <p data-nl="Webdesign op maat voor bedrijven die willen opvallen. Vanaf nul gebouwd, snel opgeleverd, gemaakt om te converteren. Gevestigd in Amsterdam." data-en="Custom web design for businesses that want to stand out. Built from scratch, delivered fast, designed to convert. Based in Amsterdam.">Webdesign op maat voor bedrijven die willen opvallen. Vanaf nul gebouwd, snel opgeleverd, gemaakt om te converteren. Gevestigd in Amsterdam.</p>
       <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
     </div>
     <div class="fcol">
