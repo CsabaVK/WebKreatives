@@ -176,11 +176,14 @@ button{font:inherit}
 
 
 /* ── hero field canvas (js/motion.js initField) ───────────────────────── */
-.wk-field{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.wk-field__canvas{
-  position:absolute;inset:0;width:100%;height:100%;
-  opacity:.62;mix-blend-mode:screen;
+.wk-field{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  overflow:hidden;contain:paint;
 }
+/* no mix-blend-mode: the canvas already composites additively with
+   globalCompositeOperation='lighter', and blending a full-viewport layer
+   is the expensive part on a mid-range laptop. */
+.wk-field__canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.72}
 /* a slow paper drift over the wash, so the field never reads as flat CSS */
 /* scrim: the wash is decoration, the words still have to read */
 .wk-field::before{
