@@ -146,12 +146,11 @@
 
   /* ── Markup ─────────────────────────────────────────────────────────── */
   const ITEMS = [
-    { href: H('#services'),                        nl: 'Diensten',  en: 'Services'  },
-    { href: onHome ? '#portfolio' : '/portfolio/', nl: 'Portfolio', en: 'Portfolio' },
-    { href: '/articles/',                          nl: 'Artikelen', en: 'Articles'  },
-    { href: H('#pricing'),                         nl: 'Prijzen',   en: 'Pricing'   },
-    { href: H('#subscriptions'),                   nl: 'Support',   en: 'Support'   },
-    { href: H('#contact'),                         nl: 'Contact',   en: 'Contact'   }
+    { href: H('#work'),      nl: 'Werk',      en: 'Work'      },
+    { href: H('#services'),  nl: 'Diensten',  en: 'Services'  },
+    { href: '/portfolio/',   nl: 'Portfolio', en: 'Portfolio' },
+    { href: '/articles/',    nl: 'Artikelen', en: 'Articles'  },
+    { href: H('#contact'),   nl: 'Contact',   en: 'Contact'   }
   ];
   const listItems = ITEMS.map(i =>
     `<li><a href="${i.href}" data-nl="${i.nl}" data-en="${i.en}">${i.nl}</a></li>`).join('\n      ');

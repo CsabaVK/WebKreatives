@@ -86,7 +86,7 @@
       <a href="/#services" data-nl="Webshops" data-en="Webshops">Webshops</a>
       <a href="/#services" data-nl="SEO &amp; Prestaties" data-en="SEO &amp; Performance">SEO &amp; Prestaties</a>
       <a href="/#services" data-nl="Branding &amp; Identiteit" data-en="Branding &amp; Identity">Branding &amp; Identiteit</a>
-      <a href="/#subscriptions" data-nl="Support" data-en="Support">Support</a>
+      <a href="/#services" data-nl="Support" data-en="Support">Support</a>
     </div>
     <div class="fcol">
       <h4 data-nl="Pagina's" data-en="Pages">Pagina's</h4>

@@ -13,7 +13,7 @@
   function initSmoothScroll() {
     if (reduced || window.__wkLenis) return;
     const s = document.createElement('script');
-    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js';
+    s.src = 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js';
     s.onload = () => {
       const L = window.Lenis || (window.lenis && window.lenis.Lenis);
       if (!L) return;
