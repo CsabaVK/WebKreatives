@@ -16,31 +16,31 @@
     const st = document.createElement('style');
     st.id = 'wk-footer-style';
     st.textContent = `
-.wk-site-footer{background:var(--ink,oklch(8% .010 25));padding:72px 5vw 40px;font-family:var(--f2,'Figtree',sans-serif)}
+.wk-site-footer{background:var(--ink,#1b1a15);padding:72px 5vw 40px;font-family:var(--f2,'Figtree',sans-serif)}
 .wk-site-footer a{text-decoration:none;color:inherit}
 .wk-site-footer .fgrid{
   display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;
   gap:48px;padding-bottom:56px;
-  border-bottom:1px solid var(--lined,oklch(22% .010 25));margin-bottom:36px;
+  border-bottom:1px solid var(--lined,rgba(239,230,210,.14));margin-bottom:36px;
 }
 .wk-site-footer .fbrand-logo img{height:80px;width:auto;margin-bottom:18px}
-.wk-site-footer .fbrand p{font-size:13px;color:oklch(42% .005 25);line-height:1.7;font-weight:300;max-width:240px;margin-bottom:14px}
-.wk-site-footer .fbrand a{font-size:13px;color:oklch(52% .005 25);transition:color .2s}
-.wk-site-footer .fbrand a:hover{color:oklch(72% .005 25)}
-.wk-site-footer .fcol h4{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:oklch(38% .005 25);margin-bottom:18px}
+.wk-site-footer .fbrand p{font-size:13px;color:#7a7263;line-height:1.7;font-weight:300;max-width:240px;margin-bottom:14px}
+.wk-site-footer .fbrand a{font-size:13px;color:#8a8272;transition:color .2s}
+.wk-site-footer .fbrand a:hover{color:#b8ae99}
+.wk-site-footer .fcol h4{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6d6657;margin-bottom:18px}
 .wk-site-footer .fcol a{
   display:flex;align-items:center;gap:8px;
-  font-size:13px;color:oklch(50% .005 25);
+  font-size:13px;color:#8a8272;
   font-weight:300;margin-bottom:10px;transition:color .2s;
 }
 .wk-site-footer .fcol a:hover{color:oklch(75% .005 25)}
 .wk-site-footer .fcol a.g{color:var(--red,#df3821)}
 .wk-site-footer .fcol a.g:hover{color:oklch(65% .220 25)}
 .wk-site-footer .fpay{
-  padding-bottom:32px;border-bottom:1px solid var(--lined,oklch(22% .010 25));margin-bottom:28px;
+  padding-bottom:32px;border-bottom:1px solid var(--lined,rgba(239,230,210,.14));margin-bottom:28px;
   display:flex;align-items:center;gap:16px;flex-wrap:wrap;
 }
-.wk-site-footer .fpay-label{font-size:11px;color:oklch(38% .005 25);display:flex;align-items:center;gap:6px;flex-shrink:0}
+.wk-site-footer .fpay-label{font-size:11px;color:#6d6657;display:flex;align-items:center;gap:6px;flex-shrink:0}
 .wk-site-footer .fpay-icons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .wk-site-footer .fpay-badge{opacity:.96;transition:opacity .2s,transform .2s,box-shadow .2s,border-color .2s;flex-shrink:0;border-radius:10px;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);border:1px solid rgba(15,23,42,.08);padding:6px;width:52px;height:34px;object-fit:contain;box-sizing:border-box;box-shadow:0 6px 16px rgba(15,23,42,.05)}
 .wk-site-footer .fpay-badge:hover{opacity:1;transform:translateY(-1px);box-shadow:0 10px 22px rgba(15,23,42,.08)}
@@ -55,8 +55,8 @@
 .wk-site-footer .fpay-badge[alt="Amazon Pay"]{border-color:rgba(255,153,0,.24);box-shadow:inset 0 2px 0 #ff9900,0 6px 16px rgba(15,23,42,.05)}
 .wk-site-footer .fpay-badge[alt="Visa"],.wk-site-footer .fpay-badge[alt="Mastercard"],.wk-site-footer .fpay-badge[alt="Apple Pay"],.wk-site-footer .fpay-badge[alt="Google Pay"],.wk-site-footer .fpay-badge[alt="Amazon Pay"]{padding:4px}
 .wk-site-footer .fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.wk-site-footer .fbot p,.wk-site-footer .fbot a{font-size:12px;color:oklch(32% .005 25);font-weight:300}
-.wk-site-footer .fbot a:hover{color:oklch(52% .005 25)}
+.wk-site-footer .fbot p,.wk-site-footer .fbot a{font-size:12px;color:#5d574c;font-weight:300}
+.wk-site-footer .fbot a:hover{color:#8a8272}
 .wk-site-footer .fbot-links{display:flex;gap:20px}
 @media(max-width:900px){.wk-site-footer .fgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){

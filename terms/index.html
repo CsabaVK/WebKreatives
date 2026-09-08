@@ -18,18 +18,19 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Poiret+One&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css?v=v4">
 <link rel="stylesheet" href="/css/style.css?v=20260420-terms1">
 <style>
   /* ── dark-native legal design ─────────────────────────────────── */
   *{box-sizing:border-box}
-  body{background:oklch(9% .010 25);color:oklch(68% .006 25);font-family:'Figtree',system-ui,sans-serif}
+  body{background:#1b1a15;color:oklch(68% .006 25);font-family:'Figtree',system-ui,sans-serif}
 
   /* hero */
   .legal-hero{
     padding:100px 6% 40px;
-    background:oklch(7% .010 25);
-    border-bottom:1px solid oklch(16% .010 25);
+    background:#141310;
+    border-bottom:1px solid rgba(239,230,210,.08);
   }
   .legal-wrap{max-width:960px;margin:0 auto}
   .legal-kicker{
@@ -42,7 +43,7 @@
   }
   .legal-kicker::before{content:'';width:6px;height:6px;border-radius:50%;background:#df3821;flex-shrink:0}
   .legal-hero h1{
-    font-family:'Unbounded',sans-serif;
+    font-family:var(--fd,'Poiret One',serif);
     font-size:clamp(34px,5.5vw,62px);
     line-height:1.05;letter-spacing:-.03em;
     color:oklch(94% .005 25);
@@ -57,7 +58,7 @@
   .legal-meta span{display:flex;align-items:center;gap:6px}
 
   /* main layout */
-  .legal-main{padding:44px 6% 100px;background:oklch(9% .010 25)}
+  .legal-main{padding:44px 6% 100px;background:#1b1a15}
   .legal-grid{
     max-width:960px;margin:0 auto;
     display:grid;grid-template-columns:260px minmax(0,1fr);
@@ -67,8 +68,8 @@
   /* sidebar */
   .legal-side{
     position:sticky;top:88px;
-    background:oklch(11% .010 25);
-    border:1.5px solid oklch(18% .010 25);
+    background:#211f1a;
+    border:1.5px solid rgba(239,230,210,.10);
     border-radius:16px;
     padding:22px 18px;
   }
@@ -80,7 +81,7 @@
     display:block;padding:8px 0;
     color:oklch(52% .006 25);
     text-decoration:none;font-size:13.5px;
-    border-bottom:1px solid oklch(15% .010 25);
+    border-bottom:1px solid rgba(239,230,210,.07);
     transition:color .2s;
   }
   .legal-side a:last-of-type{border-bottom:none}
@@ -88,8 +89,8 @@
 
   /* card */
   .legal-card{
-    background:oklch(11% .010 25);
-    border:1.5px solid oklch(18% .010 25);
+    background:#211f1a;
+    border:1.5px solid rgba(239,230,210,.10);
     border-radius:20px;
     padding:36px 36px 18px;
   }
@@ -116,14 +117,14 @@
   .legal-lang-block a{color:#df3821;text-decoration:underline;text-decoration-color:rgba(223,56,33,.35);text-underline-offset:3px}
   .legal-lang-block a:hover{text-decoration-color:#df3821}
   .legal-lang-block code{
-    background:oklch(16% .010 25);border:1px solid oklch(24% .010 25);
+    background:rgba(239,230,210,.08);border:1px solid rgba(239,230,210,.16);
     border-radius:5px;padding:2px 7px;font-size:13px;color:oklch(74% .006 25);
     font-family:ui-monospace,monospace;
   }
 
   /* info note */
   .legal-note{
-    background:oklch(14% .014 25);
+    background:#2a2721;
     border:1.5px solid oklch(22% .014 25);
     border-top:2px solid oklch(32% .030 25);
     color:oklch(60% .006 25);
@@ -135,14 +136,14 @@
   .legal-table{
     display:grid;grid-template-columns:200px 1fr;
     gap:0;margin:18px 0 28px;
-    border:1.5px solid oklch(18% .010 25);border-radius:10px;overflow:hidden;
+    border:1.5px solid rgba(239,230,210,.10);border-radius:10px;overflow:hidden;
   }
   .legal-table strong,.legal-table span{
     padding:12px 16px;font-size:14px;line-height:1.6;
-    border-bottom:1px solid oklch(16% .010 25);
+    border-bottom:1px solid rgba(239,230,210,.08);
   }
   .legal-table strong{
-    background:oklch(13% .010 25);
+    background:#26241d;
     color:oklch(78% .006 25);font-weight:600;
   }
   .legal-table span{color:oklch(58% .006 25)}
@@ -380,11 +381,12 @@
 <div id="globalFooter"></div>
 
 <script src="/js/global-components.js?v=20260420-terms1"></script>
-<script src="/js/site-nav.js?v=20260906"></script>
-<script src="/js/site-footer.js?v=20260906"></script>
+<script src="/js/motion.js?v=v4"></script>
+<script src="/js/site-nav.js?v=v4"></script>
+<script src="/js/site-footer.js?v=v4"></script>
 <script src="/js/i18n.js?v=20260420-terms1"></script>
 <script src="/js/script.js?v=20260420-terms1"></script>
-<script src="/js/cookie-consent.js?v=20260906b"></script>
+<script src="/js/cookie-consent.js?v=v4"></script>
 <script>
   (function(){
     function setTermsLang(lang){

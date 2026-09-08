@@ -20,14 +20,15 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Poiret+One&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css?v=v4">
 <style>
 :root{
-  --ink:oklch(8% .010 25);--ink2:oklch(18% .010 25);--cream:oklch(97% .008 80);
+  --ink:oklch(8% .010 25);--ink2:rgba(239,230,210,.10);--cream:oklch(97% .008 80);
   --red:#df3821;--red2:oklch(43% .200 25);--white:oklch(99% .004 80);
-  --lined:oklch(22% .010 25);--lime:#b9e185;--blue:#648dcb;--yellow:#fbeb78;
+  --lined:rgba(239,230,210,.14);--lime:#b9e185;--blue:#648dcb;--yellow:#fbeb78;
   --f1:'Unbounded',sans-serif;--f2:'Figtree',sans-serif;
-  --ease:cubic-bezier(.16,1,.3,1);
+  --ease:cubic-bezier(.22,.9,.18,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -35,12 +36,12 @@ body{font-family:var(--f2);background:var(--ink);color:oklch(62% .006 25);line-h
 a{color:inherit}
 img{display:block;max-width:100%}
 .cs-wrap{max-width:760px;margin:0 auto;padding:0 5vw}
-.cs-hero{padding:150px 0 44px;border-bottom:1px solid oklch(15% .010 25)}
+.cs-hero{padding:150px 0 44px;border-bottom:1px solid rgba(239,230,210,.07)}
 .cs-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;gap:8px;margin-bottom:20px}
 .cs-crumb a{text-decoration:none;transition:color .2s}
 .cs-crumb a:hover{color:oklch(60% .008 25)}
-.cs-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid oklch(24% .010 25);margin-bottom:20px}
-.cs-h1{font-family:var(--f1);font-size:clamp(30px,4.4vw,52px);font-weight:900;letter-spacing:-.035em;line-height:1.06;color:var(--white);margin-bottom:20px}
+.cs-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid rgba(239,230,210,.16);margin-bottom:20px}
+.cs-h1{font-family:var(--fd,'Poiret One',serif);font-size:clamp(30px,4.4vw,52px);font-weight:900;letter-spacing:-.035em;line-height:1.06;color:var(--white);margin-bottom:20px}
 .cs-lede{font-size:clamp(15px,1.4vw,18px);font-weight:300;line-height:1.7;color:oklch(58% .008 25)}
 .cs-body{padding:52px 0 90px}
 .cs-block{margin-bottom:44px}
@@ -60,8 +61,8 @@ img{display:block;max-width:100%}
   font-size:15.5px;color:oklch(56% .008 25);
 }
 .cs-cta{
-  margin-top:56px;padding:30px;border:1px solid oklch(18% .010 25);border-radius:16px;
-  background:oklch(11% .010 25);
+  margin-top:56px;padding:30px;border:1px solid rgba(239,230,210,.10);border-radius:16px;
+  background:#211f1a;
 }
 .cs-cta h2{font-family:var(--f1);font-size:20px;font-weight:800;color:var(--white);margin-bottom:8px;letter-spacing:-.02em}
 .cs-cta p{font-size:15px;margin-bottom:18px}
@@ -88,7 +89,7 @@ img{display:block;max-width:100%}
 .csi-grid{display:grid;gap:18px;padding:52px 0 90px}
 .csi-card{
   display:block;text-decoration:none;padding:28px;border-radius:16px;
-  border:1px solid oklch(17% .010 25);background:oklch(10% .010 25);
+  border:1px solid oklch(17% .010 25);background:#1f1d18;
   transition:border-color .3s var(--ease),transform .3s var(--ease);
 }
 .csi-card:hover{border-color:var(--accent);transform:translateY(-3px)}
@@ -133,8 +134,9 @@ img{display:block;max-width:100%}
 </section>
 
 <div id="globalFooter"></div>
-<script src="/js/site-nav.js?v=20260906"></script>
-<script src="/js/site-footer.js?v=20260906"></script>
-<script src="/js/cookie-consent.js?v=20260906b"></script>
+<script src="/js/motion.js?v=v4"></script>
+<script src="/js/site-nav.js?v=v4"></script>
+<script src="/js/site-footer.js?v=v4"></script>
+<script src="/js/cookie-consent.js?v=v4"></script>
 </body>
 </html>
