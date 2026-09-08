@@ -1,8 +1,6 @@
 /* ─── WebKreatives — Site footer (single shared implementation) ──────────────
- * Used by EVERY page: homepage and all sub-pages.
- * Edit the footer HERE and it changes site-wide.
- * Renders into <div id="globalFooter"></div>.
- * Bilingual via data-nl / data-en (both language switchers apply these).
+ * Used by EVERY page. Edit here and it changes site-wide.
+ * Renders into <div id="globalFooter"></div>. Bilingual via data-nl/data-en.
  * ─────────────────────────────────────────────────────────────────────────── */
 (function () {
   'use strict';
@@ -11,137 +9,216 @@
   if (!root || root.dataset.wkRendered) return;
   root.dataset.wkRendered = '1';
 
-  /* ── Styles (token fallbacks so it renders on every page) ───────────── */
+  /* ── Styles ─────────────────────────────────────────────────────────── */
   if (!document.getElementById('wk-footer-style')) {
     const st = document.createElement('style');
     st.id = 'wk-footer-style';
     st.textContent = `
-.wk-site-footer{background:var(--ink,#1b1a15);padding:72px 5vw 40px;font-family:var(--f2,'Figtree',sans-serif)}
-.wk-site-footer a{text-decoration:none;color:inherit}
-.wk-site-footer .fgrid{
-  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;
-  gap:48px;padding-bottom:56px;
-  border-bottom:1px solid var(--lined,rgba(239,230,210,.14));margin-bottom:36px;
+.wk-ft{
+  border-top:1px solid var(--rule,rgba(239,230,210,.09));
+  background:var(--ink,#1b1a15);font-family:var(--f-body,'Figtree',sans-serif);
 }
-.wk-site-footer .fbrand-logo img{height:80px;width:auto;margin-bottom:18px}
-.wk-site-footer .fbrand p{font-size:13px;color:#7a7263;line-height:1.7;font-weight:300;max-width:240px;margin-bottom:14px}
-.wk-site-footer .fbrand a{font-size:13px;color:#8a8272;transition:color .2s}
-.wk-site-footer .fbrand a:hover{color:#b8ae99}
-.wk-site-footer .fcol h4{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6d6657;margin-bottom:18px}
-.wk-site-footer .fcol a{
-  display:flex;align-items:center;gap:8px;
-  font-size:13px;color:#8a8272;
-  font-weight:300;margin-bottom:10px;transition:color .2s;
+.wk-ft a{text-decoration:none;color:inherit}
+.wk-ft-top{
+  max-width:var(--maxw,1280px);margin:0 auto;
+  padding:clamp(48px,6vw,74px) var(--gutter,5vw) clamp(34px,4vw,50px);
+  display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1.1fr;
+  gap:clamp(24px,3vw,48px);
 }
-.wk-site-footer .fcol a:hover{color:oklch(75% .005 25)}
-.wk-site-footer .fcol a.g{color:var(--red,#df3821)}
-.wk-site-footer .fcol a.g:hover{color:oklch(65% .220 25)}
-.wk-site-footer .fpay{
-  padding-bottom:32px;border-bottom:1px solid var(--lined,rgba(239,230,210,.14));margin-bottom:28px;
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+.wk-ft-brand{display:flex;flex-direction:column;gap:16px}
+.wk-ft-kicker{
+  font-family:var(--f-mono,monospace);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-faint,#5d574c);
 }
-.wk-site-footer .fpay-label{font-size:11px;color:#6d6657;display:flex;align-items:center;gap:6px;flex-shrink:0}
-.wk-site-footer .fpay-icons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.wk-site-footer .fpay-badge{opacity:.96;transition:opacity .2s,transform .2s,box-shadow .2s,border-color .2s;flex-shrink:0;border-radius:10px;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);border:1px solid rgba(15,23,42,.08);padding:6px;width:52px;height:34px;object-fit:contain;box-sizing:border-box;box-shadow:0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge:hover{opacity:1;transform:translateY(-1px);box-shadow:0 10px 22px rgba(15,23,42,.08)}
-.wk-site-footer .fpay-badge[alt="Visa"]{border-color:rgba(26,31,113,.22);box-shadow:inset 0 2px 0 #1a1f71,0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge[alt="Mastercard"]{border-color:rgba(255,95,0,.2);box-shadow:inset 0 2px 0 #ff5f00,0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge[alt="iDEAL"]{border-color:rgba(204,0,102,.22);box-shadow:inset 0 2px 0 #cc0066,0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge[alt="Apple Pay"]{border-color:rgba(17,17,17,.18);box-shadow:inset 0 2px 0 #111,0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge[alt="Google Pay"]{border-color:rgba(66,133,244,.2);box-shadow:inset 0 2px 0 #4285f4,0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge[alt="Klarna"]{border-color:rgba(255,179,199,.55);box-shadow:inset 0 2px 0 #ffb3c7,0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge[alt="PayPal"]{border-color:rgba(0,48,135,.18);box-shadow:inset 0 2px 0 #003087,0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge[alt="Stripe"]{border-color:rgba(99,91,255,.22);box-shadow:inset 0 2px 0 #635bff,0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge[alt="Amazon Pay"]{border-color:rgba(255,153,0,.24);box-shadow:inset 0 2px 0 #ff9900,0 6px 16px rgba(15,23,42,.05)}
-.wk-site-footer .fpay-badge[alt="Visa"],.wk-site-footer .fpay-badge[alt="Mastercard"],.wk-site-footer .fpay-badge[alt="Apple Pay"],.wk-site-footer .fpay-badge[alt="Google Pay"],.wk-site-footer .fpay-badge[alt="Amazon Pay"]{padding:4px}
-.wk-site-footer .fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.wk-site-footer .fbot p,.wk-site-footer .fbot a{font-size:12px;color:#5d574c;font-weight:300}
-.wk-site-footer .fbot a:hover{color:#8a8272}
-.wk-site-footer .fbot-links{display:flex;gap:20px}
-@media(max-width:900px){.wk-site-footer .fgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){
-  .wk-site-footer .fgrid{grid-template-columns:1fr;gap:32px}
-  .wk-site-footer .fbot{flex-direction:column;align-items:flex-start}
-}`;
+.wk-ft-line{
+  font-family:var(--f-display,'Poiret One',serif);font-weight:400;
+  font-size:clamp(24px,2.8vw,36px);line-height:1.08;letter-spacing:-.02em;
+  color:var(--cream,#efe6d2);margin:0;max-width:14ch;
+}
+.wk-ft-line .mark{font-style:normal;color:var(--bronze,#d9a748)}
+.wk-ft-col{display:flex;flex-direction:column;gap:2px}
+.wk-ft-col h4{
+  font-family:var(--f-mono,monospace);font-size:10px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cream-faint,#5d574c);margin:0 0 8px;
+}
+.wk-ft-col a{
+  display:flex;align-items:center;min-height:32px;
+  font-size:14px;font-weight:300;color:var(--cream-mute,#8a8272);
+  transition:color .2s var(--ease-premium,ease);
+}
+.wk-ft-col a:hover{color:var(--bronze,#d9a748)}
+.wk-ft-globe{position:relative;height:200px;display:none}
+@media(min-width:1100px){.wk-ft-globe{display:block}}
+.wk-ft-globe canvas{position:absolute;inset:0;width:100%;height:100%}
+
+.wk-ft-pay{
+  max-width:var(--maxw,1280px);margin:0 auto;
+  padding:0 var(--gutter,5vw) clamp(26px,3vw,34px);
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.wk-ft-pay-l{
+  font-family:var(--f-mono,monospace);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--cream-faint,#5d574c);
+  display:flex;align-items:center;gap:7px;flex-shrink:0;
+}
+.wk-ft-pay-icons{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.wk-ft-badge{
+  width:44px;height:29px;object-fit:contain;padding:5px;flex-shrink:0;
+  border-radius:var(--radius,3px);background:rgba(239,230,210,.92);
+  opacity:.5;transition:opacity .25s;
+}
+.wk-ft-badge:hover{opacity:1}
+
+.wk-ft-bot{
+  max-width:var(--maxw,1280px);margin:0 auto;
+  border-top:1px solid var(--rule,rgba(239,230,210,.09));
+  padding:20px var(--gutter,5vw);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;
+}
+.wk-ft-bot p,.wk-ft-bot a,.wk-ft-bot span{
+  font-family:var(--f-mono,monospace);font-size:10.5px;line-height:1.6;
+  letter-spacing:.05em;color:var(--cream-faint,#5d574c);margin:0;
+}
+.wk-ft-bot a{transition:color .2s}
+.wk-ft-bot a:hover{color:var(--bronze,#d9a748)}
+.wk-ft-legal{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+@media(max-width:1099px){.wk-ft-top{grid-template-columns:1.6fr 1fr 1fr 1fr}}
+@media(max-width:860px){
+  .wk-ft-top{grid-template-columns:1fr 1fr;gap:30px}
+  .wk-ft-brand{grid-column:1/-1}
+}
+@media(max-width:520px){
+  .wk-ft-top{grid-template-columns:1fr}
+  .wk-ft-bot{flex-direction:column;align-items:flex-start}
+}
+`;
     document.head.appendChild(st);
   }
 
   const PAY = [
-    ['visa', 'Visa'], ['mastercard', 'Mastercard'], ['ideal', 'iDEAL'],
-    ['applepay', 'Apple Pay'], ['googlepay', 'Google Pay'], ['klarna', 'Klarna'],
-    ['paypal', 'PayPal'], ['stripe', 'Stripe'], ['amazonpay', 'Amazon Pay']
-  ].map(([f, a]) => `<img class="fpay-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="52" height="34">`).join('\n        ');
+    ['visa','Visa'],['mastercard','Mastercard'],['ideal','iDEAL'],['applepay','Apple Pay'],
+    ['googlepay','Google Pay'],['klarna','Klarna'],['paypal','PayPal'],['stripe','Stripe'],['amazonpay','Amazon Pay']
+  ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="44" height="29">`).join('');
+
+  const L = (href, nl, en) => `<a href="${href}" data-nl="${nl}" data-en="${en}">${nl}</a>`;
 
   root.innerHTML = `
-<footer class="wk-site-footer">
-  <div class="fgrid">
-    <div class="fbrand">
-      <div class="fbrand-logo"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></div>
-      <p data-nl="Webdesign op maat voor bedrijven die willen opvallen. Vanaf nul gebouwd, snel opgeleverd, gemaakt om te converteren. Gevestigd in Amsterdam." data-en="Custom web design for businesses that want to stand out. Built from scratch, delivered fast, designed to convert. Based in Amsterdam.">Webdesign op maat voor bedrijven die willen opvallen. Vanaf nul gebouwd, snel opgeleverd, gemaakt om te converteren. Gevestigd in Amsterdam.</p>
+<footer class="wk-ft">
+  <div class="wk-ft-top">
+    <div class="wk-ft-brand">
+      <div class="wk-ft-kicker">WebKreatives</div>
+      <p class="wk-ft-line"
+         data-nl="Websites die <em class='mark'>hun werk doen.</em>"
+         data-en="Websites that <em class='mark'>earn their keep.</em>">Websites that <em class="mark">earn their keep.</em></p>
+    </div>
+
+    <div class="wk-ft-col">
+      <h4 data-nl="Wat we doen" data-en="Capabilities">Capabilities</h4>
+      ${L('/#services','Ontwerp &amp; bouw','Design &amp; build')}
+      ${L('/#services','Hosting &amp; support','Hosting &amp; support')}
+      ${L('/#services','Gevonden worden','Getting found')}
+    </div>
+
+    <div class="wk-ft-col">
+      <h4 data-nl="Werk" data-en="Work">Work</h4>
+      ${L('/portfolio/','Portfolio','Portfolio')}
+      ${L('/case-studies/','Case studies','Case studies')}
+      ${L('/articles/','Artikelen','Articles')}
+    </div>
+
+    <div class="wk-ft-col">
+      <h4 data-nl="Begin hier" data-en="Start here">Start here</h4>
+      ${L('/contact/','Start een project','Start a project')}
+      ${L('/#help','Wat werkt er niet?','What is not working?')}
       <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
     </div>
-    <div class="fcol">
-      <h4 data-nl="Diensten" data-en="Services">Diensten</h4>
-      <a href="/#services" data-nl="Website Design" data-en="Website Design">Website Design</a>
-      <a href="/#services" data-nl="Webshops" data-en="Webshops">Webshops</a>
-      <a href="/#services" data-nl="SEO &amp; Prestaties" data-en="SEO &amp; Performance">SEO &amp; Prestaties</a>
-      <a href="/#services" data-nl="Branding &amp; Identiteit" data-en="Branding &amp; Identity">Branding &amp; Identiteit</a>
-      <a href="/#services" data-nl="Support" data-en="Support">Support</a>
-    </div>
-    <div class="fcol">
-      <h4 data-nl="Pagina's" data-en="Pages">Pagina's</h4>
-      <a href="/" data-nl="Home" data-en="Home">Home</a>
-      <a href="/portfolio/" data-nl="Portfolio" data-en="Portfolio">Portfolio</a>
-      <a href="/case-studies/" data-nl="Case studies" data-en="Case studies">Case studies</a>
-      <a href="/articles/" data-nl="Artikelen" data-en="Articles">Artikelen</a>
-      <a href="/privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
-      <a href="/terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
-    </div>
-    <div class="fcol">
-      <h4 data-nl="Verbinden" data-en="Connect">Verbinden</h4>
-      <a href="/#contact" class="g" data-nl="Start een Project" data-en="Start a Project">Start een Project</a>
-      <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        Instagram
-      </a>
-      <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A5 5 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12" rx=".5"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a>
-      <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-        Medium
-      </a>
-    </div>
+
+    <div class="wk-ft-globe" data-topo-globe></div>
   </div>
-  <div class="fpay">
-    <span class="fpay-label">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <span data-nl="Veilig betalen" data-en="Secure payment">Veilig betalen</span>
+
+  <div class="wk-ft-pay">
+    <span class="wk-ft-pay-l">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span data-nl="Veilig betalen" data-en="Secure payment">Secure payment</span>
     </span>
-    <div class="fpay-icons">
-        ${PAY}
-    </div>
+    <div class="wk-ft-pay-icons">${PAY}</div>
   </div>
-  <div class="fbot">
-    <p>© 2026 WebKreatives · Amsterdam, Netherlands · KVK: 94051097</p>
-    <nav class="fbot-links">
-      <a href="/privacy/" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
-      <a href="/terms/" data-nl="Voorwaarden" data-en="Terms">Voorwaarden</a>
-    </nav>
+
+  <div class="wk-ft-bot">
+    <p data-nl="Minder klanten, dichterbij werken." data-en="Fewer clients, closer work.">Fewer clients, closer work.</p>
+    <div class="wk-ft-legal">
+      ${L('/privacy/','Privacy','Privacy')}
+      ${L('/terms/','Voorwaarden','Terms')}
+      <span>© 2026 WebKreatives · Amsterdam, NL · KVK 94051097</span>
+    </div>
   </div>
 </footer>`;
 
-  /* Apply the current language to the freshly injected markup. */
+  /* ── Language ───────────────────────────────────────────────────────── */
   function applyFooterLang(l) {
     const lang = l === 'en' ? 'en' : 'nl';
     root.querySelectorAll('[data-nl],[data-en]').forEach(el => {
-      const txt = el.getAttribute('data-' + lang);
-      if (txt) el.innerHTML = txt;
+      const t = el.getAttribute('data-' + lang);
+      if (t) el.innerHTML = t;
     });
   }
   applyFooterLang(localStorage.getItem('wk-lang') || 'nl');
   document.addEventListener('wk:languagechange', e =>
-    applyFooterLang(e?.detail?.lang || localStorage.getItem('wk-lang') || 'nl')
-  );
+    applyFooterLang(e?.detail?.lang || localStorage.getItem('wk-lang') || 'nl'));
+
+  /* ── Rotating wire globe (constant, paused when off screen) ─────────── */
+  (function globe() {
+    const host = root.querySelector('[data-topo-globe]');
+    if (!host) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cv = document.createElement('canvas');
+    host.appendChild(cv);
+    const ctx = cv.getContext('2d');
+    let w = 0, h = 0, dpr = 1, t = 0, raf = 0, live = false;
+
+    function size() {
+      const r = host.getBoundingClientRect();
+      if (!r.width) return;
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      w = r.width; h = r.height;
+      cv.width = w * dpr; cv.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      const cx = w / 2, cy = h / 2, R = Math.min(w, h) * 0.40;
+
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(217,167,72,.28)';
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.2832); ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(239,230,210,.13)';
+      for (let i = 1; i < 6; i++) {
+        const y = cy - R + (2 * R / 6) * i;
+        const rx = Math.sqrt(Math.max(R * R - (y - cy) * (y - cy), 0));
+        ctx.beginPath(); ctx.ellipse(cx, y, rx, rx * 0.20, 0, 0, 6.2832); ctx.stroke();
+      }
+
+      ctx.strokeStyle = 'rgba(217,167,72,.20)';
+      for (let i = 0; i < 7; i++) {
+        const p = (t / 300 + i / 7) % 1;
+        const rx = Math.abs(Math.cos(p * Math.PI)) * R;
+        ctx.beginPath(); ctx.ellipse(cx, cy, rx, R, 0, 0, 6.2832); ctx.stroke();
+      }
+      t++;
+      raf = live ? requestAnimationFrame(draw) : 0;
+    }
+
+    new IntersectionObserver(es => es.forEach(e => {
+      live = e.isIntersecting;
+      if (live && !raf) { size(); raf = requestAnimationFrame(draw); }
+    }), { threshold: 0.01 }).observe(host);
+
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
+    size();
+  })();
 })();

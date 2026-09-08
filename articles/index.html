@@ -3,433 +3,285 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Articles – WebKreatives</title>
-<meta name="description" content="Practical articles on web design, local SEO, and getting more customers for small businesses. Written by WebKreatives.">
-<meta name="author" content="WebKreatives">
-<meta name="robots" content="index, follow">
+<title>Articles &mdash; WebKreatives</title>
+<meta name="description" content="Practical writing on web design, local visibility and running a small business online. No jargon, nothing you cannot act on this week.">
 <link rel="canonical" href="https://webkreatives.com/articles/">
+<meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://webkreatives.com/articles/">
-<meta property="og:title" content="Articles – WebKreatives">
-<meta property="og:description" content="Practical articles on web design, local SEO, and getting more customers for small businesses.">
+<meta property="og:title" content="Articles — WebKreatives">
+<meta property="og:description" content="Practical writing on web design, local visibility and running a small business online.">
 <meta property="og:image" content="https://webkreatives.com/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="WebKreatives">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="nl_NL">
-<meta property="og:site_name" content="WebKreatives">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0d0d0d">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "WebKreatives Articles",
-  "description": "Practical articles on web design, local SEO and attracting more customers for your business.",
-  "url": "https://webkreatives.com/articles/",
-  "publisher": {
-    "@type": "Organization",
-    "name": "WebKreatives",
-    "url": "https://webkreatives.com",
-    "logo": {"@type": "ImageObject", "url": "https://webkreatives.com/favicon.svg"}
-  },
-  "inLanguage": "en"
-}
-</script>
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#1b1a15">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Poiret+One&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Poiret+One&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/theme.css?v=v4">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
-/* -- TOKENS --------------------------------------------------- */
-:root{
-  --ink:    #1b1a15;
-  --ink2:   #211f1a;
-  --ink3:   #2a2721;
-  --cream:  #efe6d2;
-  --red:    #df3821;
-  --red2:   #a82716;
-  --white:  #efe6d2;
-  --lined:  rgba(239,230,210,.09);
-  --lime:   #b9e185;
-  --grn:    #6a8f5d;
-  --blue:   #648dcb;
-  --yellow: #fbeb78;
-  --f1:'Unbounded',sans-serif;
-  --f2:'Figtree',sans-serif;
-  --ease:cubic-bezier(.22,.9,.18,1);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--f2);background:var(--ink);color:var(--cream);line-height:1.6;overflow-x:clip;cursor:none}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-button{font:inherit;cursor:none;border:none;background:none}
+/* ═══ ARTICLES INDEX v4 ═════════════════════════════════════════════ */
 
-/* -- CURSOR --------------------------------------------------- */
-#c-dot{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s var(--ease),width .2s var(--ease),height .2s var(--ease)}
-#c-ring{position:fixed;width:38px;height:38px;border:1.5px solid var(--red);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),opacity .2s;opacity:.6}
-body.cursor-hover #c-ring{width:52px;height:52px;opacity:.9}
-body.cursor-btn #c-ring{width:64px;height:64px;opacity:.35}
+/* ── filter rail ──────────────────────────────────────────────────── */
+.al-filters{
+  position:sticky;top:0;z-index:40;
+  border-bottom:1px solid var(--rule);
+  background:rgba(27,26,21,.86);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+.al-filters-in{
+  display:flex;gap:6px;align-items:center;overflow-x:auto;
+  padding:14px var(--gutter);max-width:var(--maxw);margin:0 auto;scrollbar-width:none;
+}
+.al-filters-in::-webkit-scrollbar{display:none}
+.af-btn{
+  flex-shrink:0;cursor:pointer;background:none;
+  border:1px solid transparent;border-radius:var(--radius);
+  padding:7px 13px;font-family:var(--f-mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);
+  transition:color var(--dur-fast),border-color var(--dur-fast),background var(--dur-fast);
+}
+.af-btn:hover{color:var(--cream-dim);border-color:var(--rule)}
+.af-btn.active{color:#1b1a15;background:var(--bronze);border-color:var(--bronze);font-weight:600}
+.af-count{
+  margin-left:auto;flex-shrink:0;padding-left:16px;
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-faint);white-space:nowrap;
+}
 
-/* -- HERO ----------------------------------------------------- */
-.art-hero{padding:110px 5vw 64px;border-bottom:1px solid rgba(239,230,210,.07)}
-.art-hero-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;align-items:center;gap:8px;margin-bottom:18px}
-.art-hero-crumb a{transition:color .2s}
-.art-hero-crumb a:hover{color:oklch(56% .008 25)}
-.art-hero-crumb .sep{color:oklch(22% .008 25)}
-.art-h1{font-family:var(--fd,'Poiret One',serif);font-size:clamp(48px,6.5vw,88px);font-weight:900;letter-spacing:-.04em;line-height:.92;color:var(--white);margin-bottom:22px}
-.art-h1 em{font-style:normal;color:var(--red)}
-.art-hero-sub{font-size:clamp(14px,1.2vw,16px);color:oklch(48% .008 25);font-weight:300;line-height:1.65;max-width:480px}
-
-/* -- FILTERS -------------------------------------------------- */
-.art-filters{background:oklch(9% .010 25 / .97);border-bottom:1px solid rgba(239,230,210,.07);padding:12px 5vw;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.af-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:oklch(32% .008 25);margin-right:4px;flex-shrink:0}
-.af-btn{padding:5px 14px;border-radius:100px;border:1px solid rgba(239,230,210,.14);font-family:var(--f2);font-size:11px;font-weight:600;color:oklch(50% .006 25);transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);cursor:none}
-.af-btn:hover{border-color:oklch(40% .010 25);color:oklch(76% .006 25)}
-.af-btn.active{background:oklch(94% .008 80);border-color:oklch(94% .008 80);color:#1f1d18}
-.af-count{margin-left:auto;font-size:11px;color:oklch(34% .008 25);flex-shrink:0}
-
-/* -- ARTICLE LIST --------------------------------------------- */
-.art-list{max-width:1280px;margin:0 auto;padding:0 5vw 80px}
-.art-row{
-  display:grid;
-  grid-template-columns:380px 1fr;
-  gap:60px;
-  align-items:center;
-  padding:52px 0;
-  border-bottom:1px solid oklch(14% .010 25);
-  cursor:pointer;
-  position:relative;
-  z-index:1;
+/* ── list ─────────────────────────────────────────────────────────── */
+.al-list{border-top:1px solid var(--rule)}
+.al-row{
+  display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);
+  gap:clamp(18px,3vw,44px);align-items:center;
+  padding:clamp(20px,2.8vw,32px) 0;border-bottom:1px solid var(--rule);
+  position:relative;isolation:isolate;color:inherit;text-decoration:none;
 }
-.art-row:first-child{border-top:1px solid oklch(14% .010 25)}
-.art-row[hidden]{display:none}
-
-/* image side */
-.art-thumb{
-  border-radius:10px;
-  overflow:hidden;
-  background:#242219;
-  border:1px solid rgba(239,230,210,.12);
-  transition:transform .45s var(--ease),box-shadow .45s var(--ease);
-  flex-shrink:0;
+.al-row::after{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(217,167,72,.055),transparent 60%);
+  opacity:0;transition:opacity var(--dur) var(--ease-premium);
 }
-.art-row:hover .art-thumb{
-  transform:translateY(-6px);
-  box-shadow:0 24px 60px oklch(0% 0 0 / .55);
+.al-row:hover::after{opacity:1}
+.al-row[hidden]{display:none}
+.al-thumb{
+  border:1px solid var(--rule);border-radius:var(--radius);
+  overflow:hidden;background:var(--ink-deep);
+  transition:border-color var(--dur) var(--ease-premium);
 }
-.art-thumb img{
-  width:100%;
-  aspect-ratio:16/9;
-  object-fit:cover;
-  object-position:center;
-  display:block;
-  transition:transform .55s var(--ease);
+.al-row:hover .al-thumb{border-color:var(--bronze-rule)}
+.al-thumb img{
+  width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;
+  filter:saturate(.85) brightness(.9);
+  transition:transform 1.1s var(--ease-premium),filter var(--dur) var(--ease-premium);
 }
-.art-row:hover .art-thumb img{transform:scale(1.04)}
-
-/* info side */
-.art-info{display:flex;flex-direction:column;gap:0}
-.art-meta{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
-.art-cat{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--white);
-  width:fit-content;
+.al-row:hover .al-thumb img{transform:scale(1.04);filter:none}
+.al-info{min-width:0}
+.al-meta{
+  display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:11px;
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--cream-faint);
 }
-.art-cat::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
-.art-row.cat-seo      .art-cat{color:var(--blue)}
-.art-row.cat-webdesign .art-cat{color:var(--lime)}
-.art-row.cat-kleine   .art-cat{color:var(--yellow)}
-.art-row.cat-tips     .art-cat{color:oklch(72% .12 60)}
-.art-date{font-size:10.5px;color:oklch(36% .006 25);font-weight:400}
-.art-read-time{font-size:10.5px;color:oklch(32% .006 25);display:flex;align-items:center;gap:5px}
-.art-read-time::before{content:'';width:2px;height:2px;border-radius:50%;background:oklch(28% .006 25)}
-.art-title{
-  font-family:var(--fd,'Poiret One',serif);
-  font-size:clamp(20px,2.4vw,30px);
-  font-weight:900;
-  letter-spacing:-.03em;
-  color:var(--white);
-  line-height:1.1;
-  margin-bottom:16px;
-  transition:color .25s var(--ease);
+.al-cat{color:var(--bronze)}
+.al-sep{opacity:.45}
+.al-row h2{
+  font-family:var(--f-display);font-weight:400;
+  font-size:clamp(20px,2.5vw,31px);line-height:1.12;letter-spacing:-.018em;
+  color:var(--cream);margin:0 0 10px;transition:color var(--dur-fast);
 }
-.art-row:hover .art-title{color:oklch(100% .004 80)}
-.art-excerpt{
-  font-size:clamp(13px,1.1vw,15px);
-  color:oklch(50% .008 25);
-  font-weight:300;
-  line-height:1.65;
-  max-width:520px;
-  margin-bottom:28px;
+.al-row:hover h2{color:#fff}
+.al-excerpt{font-size:14.5px;line-height:1.68;color:var(--cream-mute);margin:0 0 14px;max-width:62ch}
+.al-go{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--bronze);
 }
-.art-link{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:12px;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;
-  color:oklch(56% .008 25);
-  transition:color .25s var(--ease),gap .25s var(--ease);
+.al-go span:last-child{transition:transform var(--dur-fast) var(--ease-premium)}
+.al-row:hover .al-go span:last-child{transform:translateX(5px)}
+@media(max-width:700px){
+  .al-row{grid-template-columns:1fr;gap:16px}
 }
-.art-row:hover .art-link{color:var(--white);gap:16px}
-.art-link-arrow{transition:transform .25s var(--ease)}
-.art-row:hover .art-link-arrow{transform:translateX(4px)}
-
-/* -- CTA SECTION ---------------------------------------------- */
-.art-cta{border-top:1px solid rgba(239,230,210,.07);padding:80px 5vw;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:1280px;margin:0 auto}
-.art-cta-h{font-family:var(--f1);font-size:clamp(28px,3.2vw,44px);font-weight:900;letter-spacing:-.04em;color:var(--white);line-height:1.05;max-width:560px}
-.art-cta-h em{font-style:normal;color:var(--red)}
-.art-cta-p{font-size:clamp(14px,1.2vw,16px);color:oklch(48% .008 25);font-weight:300;max-width:380px;line-height:1.6}
-.art-cta-btn{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--white);background:var(--red);padding:14px 30px;border-radius:8px;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
-.art-cta-btn::before{content:'';position:absolute;inset:0;background:oklch(39% .200 25);transform:translateX(-100%);transition:transform .4s var(--ease)}
-.art-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px oklch(39% .200 25 / .45)}
-.art-cta-btn:hover::before{transform:translateX(0)}
-.art-cta-btn span{position:relative}
-.art-cta-mobile-label{display:none}
-
-/* -- RESPONSIVE ----------------------------------------------- */
-@media(max-width:960px){
-  .art-row{grid-template-columns:1fr;gap:28px}
-  .art-thumb{max-width:520px}
+.al-empty{
+  display:none;padding:70px 0;text-align:center;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-faint);
 }
-@media(max-width:900px){
-  .art-hero{padding-bottom:48px}
-}
-@media(max-width:640px){
-  .art-hero{padding:96px 5vw 42px}
-  .art-h1{font-size:clamp(43px,15vw,56px);line-height:.94;margin-bottom:18px}
-  .art-hero-sub{font-size:14px;max-width:340px}
-  .art-filters{display:none}
-  .art-list{padding:24px 5vw 64px}
-  .art-row{
-    display:flex;
-    flex-direction:column;
-    gap:0;
-    padding:0 0 22px;
-    margin-bottom:22px;
-    border:1px solid rgba(239,230,210,.08);
-    border-radius:14px;
-    background:#1f1d18;
-    overflow:hidden;
-    opacity:1!important;
-    transform:none!important;
-  }
-  .art-row:first-child{border-top:1px solid rgba(239,230,210,.08)}
-  .art-thumb{width:100%;max-width:none;border:0;border-radius:0}
-  .art-thumb img{aspect-ratio:16/10}
-  .art-info{padding:18px 18px 0}
-  .art-meta{gap:10px;margin-bottom:10px}
-  .art-cat{font-size:9px;letter-spacing:.09em}
-  .art-date,.art-read-time{font-size:10px}
-  .art-title{display:block;font-size:clamp(18px,5.7vw,22px);line-height:1.15;margin-bottom:10px;color:var(--white)}
-  .art-excerpt{display:block;font-size:13px;line-height:1.55;max-width:none;margin-bottom:0;color:oklch(58% .008 25)}
-  .art-link{display:none}
-  .art-cta-desktop-label{display:none}
-  .art-cta-mobile-label{display:inline}
-}
+.al-empty.is-on{display:block}
 </style>
 </head>
 <body data-page="articles">
-
-<div id="c-dot"></div>
-<div id="c-ring"></div>
-
+<div id="wkProgress"></div>
 <div id="globalNav"></div>
 
-<!-- HERO -->
-<div class="art-hero">
-  <div class="art-hero-crumb">
-    <a href="/" data-nl="Home" data-en="Home">Home</a>
-    <span class="sep">/</span>
-    <span data-nl="Artikelen" data-en="Articles">Artikelen</span>
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="wk-phero wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb" aria-label="Breadcrumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <span class="sep">/</span>
+      <span data-nl="Artikelen" data-en="Articles">Articles</span>
+    </nav>
+    <div class="wk-phero-split">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Het schrijven" data-en="The writing">The writing</span>
+        <h1 class="wk-display wk-h1" data-split
+          data-nl="Wat we leren, <em class='mark'>opgeschreven</em>."
+          data-en="What we learn, <em class='mark'>written down</em>.">What we learn, <em class="mark">written down</em>.</h1>
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+          data-nl="Praktische stukken over webdesign, lokale vindbaarheid en online ondernemen. Geen vakjargon, niets waar je deze week niets mee kunt."
+          data-en="Practical pieces on web design, local visibility and running a business online. No jargon, nothing you cannot act on this week.">Practical pieces on web design, local visibility and running a business online. No jargon, nothing you cannot act on this week.</p>
+      </div>
+      <div class="wk-stats" data-reveal data-reveal-delay=".25">
+        <div><span class="wk-stat-n" id="alTotal">22</span><span class="wk-stat-l" data-nl="Artikelen" data-en="Articles">Articles</span></div>
+        <div><span class="wk-stat-n">4</span><span class="wk-stat-l" data-nl="Onderwerpen" data-en="Topics">Topics</span></div>
+      </div>
+    </div>
   </div>
-  <h1 class="art-h1" data-nl="Onze <em>Artikelen.</em>" data-en="Our <em>Articles.</em>">Onze <em>Artikelen.</em></h1>
-  <p class="art-hero-sub"
-    data-nl="Praktische gidsen over webdesign, lokale vindbaarheid en online groeien. Zonder vakjargon, direct toepasbaar."
-    data-en="Practical guides on web design, local visibility, and growing online. No jargon, directly applicable.">Praktische gidsen over webdesign, lokale vindbaarheid en online groeien. Zonder vakjargon, direct toepasbaar.</p>
+</section>
+
+<!-- ══ FILTERS ═══════════════════════════════════════════════════ -->
+<div class="al-filters">
+  <div class="al-filters-in" id="artFilters">
+    <button class="af-btn active" data-filter="all"       data-nl="Alles"            data-en="All">All</button>
+    <button class="af-btn"        data-filter="seo"       data-nl="Lokale SEO"       data-en="Local SEO">Local SEO</button>
+    <button class="af-btn"        data-filter="webdesign" data-nl="Webdesign"        data-en="Web design">Web design</button>
+    <button class="af-btn"        data-filter="kleine"    data-nl="Kleine bedrijven" data-en="Small business">Small business</button>
+    <button class="af-btn"        data-filter="tips"      data-nl="Tips"             data-en="Tips">Tips</button>
+    <span class="af-count" id="artCount"></span>
+  </div>
 </div>
 
-<!-- FILTER BAR -->
-<div class="art-filters" id="artFilters">
-  <span class="af-label" data-nl="Filter:" data-en="Filter:">Filter:</span>
-  <button class="af-btn active" data-filter="all" data-nl="Alles" data-en="All">Alles</button>
-  <button class="af-btn" data-filter="seo"       data-nl="Lokale SEO"     data-en="Local SEO">Lokale SEO</button>
-  <button class="af-btn" data-filter="webdesign" data-nl="Webdesign"      data-en="Web Design">Webdesign</button>
-  <button class="af-btn" data-filter="kleine"    data-nl="Kleine Bedrijven" data-en="Small Business">Kleine Bedrijven</button>
-  <span class="af-count" id="artCount"></span>
-</div>
+<!-- ══ LIST ══════════════════════════════════════════════════════ -->
+<section class="wk-section" style="padding-top:clamp(30px,4vw,50px)">
+  <div class="wk-wrap">
+    <div class="al-list" id="artList"></div>
+    <p class="al-empty" id="artEmpty" data-nl="Niets in dit onderwerp" data-en="Nothing under this topic">Nothing under this topic</p>
+  </div>
+</section>
 
-<!-- ARTICLE LIST -->
-<div class="art-list" id="artList"></div>
-
-<!-- CTA -->
-<div class="art-cta">
-  <h2 class="art-cta-h"
-    data-nl="Klaar om online te groeien?"
-    data-en="Ready to grow your business <em>online</em>?">Klaar om online te groeien?</h2>
-  <p class="art-cta-p"
-    data-nl="Vertel ons over jouw bedrijf en we kijken samen wat er mogelijk is."
-    data-en="Tell us about your business and we'll explore what's possible together.">Vertel ons over jouw bedrijf en we kijken samen wat er mogelijk is.</p>
-  <a href="/#contact" class="art-cta-btn">
-    <span class="art-cta-desktop-label" data-nl="Gratis Consultatie &rarr;" data-en="Free Consultation &rarr;">Gratis Consultatie &rarr;</span>
-    <span class="art-cta-mobile-label" data-nl="Gratis Consultatie" data-en="Free Consultation">Gratis Consultatie</span>
-  </a>
+<!-- ══ CLOSING CTA ═══════════════════════════════════════════════ -->
+<div class="wk-cta-wrap">
+  <div class="wk-wrap">
+    <section class="wk-cta-card wk-grain" data-cursor-grid>
+      <h2 class="wk-display wk-h2" data-split
+        data-nl="Liever iets laten bouwen dan <em class='mark'>erover lezen</em>?"
+        data-en="Rather have it built than <em class='mark'>read about it</em>?">Rather have it built than <em class="mark">read about it</em>?</h2>
+      <p class="wk-lede" data-reveal
+        data-nl="Stuur een korte briefing over wat het bedrijf doet en wat de site nu niet doet. Je krijgt binnen één werkdag antwoord."
+        data-en="Send a short brief on what the business does and what the site is not doing. You get a reply within one business day.">Send a short brief on what the business does and what the site is not doing. You get a reply within one business day.</p>
+      <div class="wk-cta-row" data-reveal data-reveal-delay=".1">
+        <a href="/contact/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Stuur een briefing" data-en="Send a short brief">Send a short brief</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+        <a href="/portfolio/" class="wk-btn wk-btn--ghost">
+          <span data-nl="Bekijk het werk" data-en="See the work">See the work</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+  </div>
 </div>
 
 <div id="globalFooter"></div>
 
-<script src="/js/global-components.js"></script>
 <script src="/js/motion.js?v=v4"></script>
 <script src="/js/site-nav.js?v=v4"></script>
 <script src="/js/site-footer.js?v=v4"></script>
-<script src="/js/i18n.js?v=20260514-articles3"></script>
-<script src="/js/script.js?v=20260514-articles3"></script>
 <script src="/js/cookie-consent.js?v=v4"></script>
-<script src="articles-data.js?v=20260514-articles3"></script>
+<script src="/articles/articles-data.js?v=v4"></script>
 <script>
-(function(){
-  /* ── state ── */
-  let lang = localStorage.getItem('wk-lang') || 'nl';
-  const reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  let currentFilter = 'all';
-  let gsapInited = false;
-  let filterInited = false;
+(function () {
+  'use strict';
+  let lang = localStorage.getItem('wk-lang') === 'en' ? 'en' : 'nl';
+  let filter = 'all';
+  let wired = false;
 
-  /* ── helpers ── */
-  function getCatKey(cat) {
-    const c = (cat || '').toLowerCase();
-    if (c.includes('seo')) return 'seo';
-    if (c.includes('webdesign') || c.includes('web design')) return 'webdesign';
-    if (c.includes('kleine') || c.includes('small')) return 'kleine';
+  const catKey = c => {
+    const s = (c || '').toLowerCase();
+    if (s.includes('seo')) return 'seo';
+    if (s.includes('webdesign') || s.includes('web design') || s.includes('design')) return 'webdesign';
+    if (s.includes('kleine') || s.includes('small')) return 'kleine';
     return 'tips';
+  };
+  const esc = t => String(t).replace(/"/g, '&quot;');
+
+  function row(a, l) {
+    const title   = l === 'en' ? (a.titleEn   || a.title)   : a.title;
+    const excerpt = l === 'en' ? (a.excerptEn || a.excerpt) : a.excerpt;
+    const cat     = l === 'en' ? (a.categoryEn|| a.category): a.category;
+    const date    = l === 'en' ? (a.dateFormattedEn || a.dateFormatted) : a.dateFormatted;
+    const rt      = l === 'en' ? (a.readTimeEn || a.readTime) : a.readTime;
+    return '<a class="al-row" data-cat="' + catKey(a.category) + '" href="/articles/' + a.slug + '/">'
+      + '<div class="al-thumb"><img src="' + a.image + '" alt="' + esc(title) + '" loading="lazy"></div>'
+      + '<div class="al-info">'
+      +   '<div class="al-meta"><span class="al-cat">' + cat + '</span>'
+      +     '<span class="al-sep">·</span><span>' + date + '</span>'
+      +     '<span class="al-sep">·</span><span>' + rt + '</span></div>'
+      +   '<h2>' + title + '</h2>'
+      +   '<p class="al-excerpt">' + excerpt + '</p>'
+      +   '<span class="al-go"><span>' + (l === 'en' ? 'Read the article' : 'Lees het artikel') + '</span><span>&rarr;</span></span>'
+      + '</div></a>';
   }
 
-  function renderRow(art, l) {
-    const title    = l === 'en' ? (art.titleEn || art.title) : art.title;
-    const excerpt  = l === 'en' ? (art.excerptEn || art.excerpt) : art.excerpt;
-    const catLabel = l === 'en' ? (art.categoryEn || art.category) : art.category;
-    const date     = l === 'en' ? (art.dateFormattedEn || art.dateFormatted) : art.dateFormatted;
-    const rt       = l === 'en' ? (art.readTimeEn || art.readTime) : art.readTime;
-    const catKey   = getCatKey(art.category);
-    const href     = '/articles/' + art.slug + '/';
-    return `<a class="art-row cat-${catKey}" data-cat="${catKey}" href="${href}" style="text-decoration:none;color:inherit">
-      <div class="art-thumb">
-        <img src="${art.image}" alt="${title.replace(/"/g,'&quot;')}" loading="lazy">
-      </div>
-      <div class="art-info">
-        <div class="art-meta">
-          <span class="art-cat">${catLabel}</span>
-          <span class="art-date">${date}</span>
-          <span class="art-read-time">${rt}</span>
-        </div>
-        <h2 class="art-title">${title}</h2>
-        <p class="art-excerpt">${excerpt}</p>
-        <span class="art-link"><span>${l === 'en' ? 'Read article' : 'Lees artikel'}</span> <span class="art-link-arrow">&rarr;</span></span>
-      </div>
-    </a>`;
-  }
-
-  function applyFilter(f, rows, l) {
-    let visible = 0;
-    rows.forEach(row => {
-      const show = f === 'all' || row.dataset.cat === f;
-      row.hidden = !show;
-      if (show) {
-        visible++;
-        if (!reduced && typeof gsap !== 'undefined') gsap.set(row, {opacity: 1, y: 0});
-      }
+  function apply(l) {
+    const rows = document.querySelectorAll('.al-row');
+    let n = 0;
+    rows.forEach(r => {
+      const show = filter === 'all' || r.dataset.cat === filter;
+      r.hidden = !show;
+      if (show) n++;
     });
-    const countEl = document.getElementById('artCount');
-    if (countEl) {
-      countEl.textContent = l === 'en'
-        ? visible + (visible === 1 ? ' article' : ' articles')
-        : visible + (visible === 1 ? ' artikel' : ' artikelen');
-    }
+    const c = document.getElementById('artCount');
+    if (c) c.textContent = l === 'en'
+      ? n + (n === 1 ? ' article' : ' articles')
+      : n + (n === 1 ? ' artikel' : ' artikelen');
+    document.getElementById('artEmpty').classList.toggle('is-on', n === 0);
   }
 
-  function renderArticles(l) {
+  function draw(l) {
     const list = document.getElementById('artList');
     if (!list || typeof WK_ARTICLES === 'undefined') return;
-    list.innerHTML = WK_ARTICLES.map(a => renderRow(a, l)).join('');
-    const rows = list.querySelectorAll('.art-row');
+    list.innerHTML = WK_ARTICLES.map(a => row(a, l)).join('');
+    const total = document.getElementById('alTotal');
+    if (total) total.textContent = WK_ARTICLES.length;
+    apply(l);
 
-    applyFilter(currentFilter, rows, l);
-
-    if (!filterInited) {
-      filterInited = true;
-      document.querySelectorAll('.af-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          currentFilter = btn.dataset.filter;
-          document.querySelectorAll('.af-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          applyFilter(currentFilter, list.querySelectorAll('.art-row'), lang);
-        });
-      });
-    }
-
-    if (window.matchMedia('(max-width: 640px)').matches) {
-      rows.forEach(row => {
-        row.style.opacity = 1;
-        row.style.transform = 'none';
-      });
-      return;
-    }
-
-    if (!gsapInited && !reduced && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-      gsapInited = true;
-      gsap.registerPlugin(ScrollTrigger);
-      rows.forEach(row => {
-        if (!row.hidden) {
-          gsap.fromTo(row,
-            {opacity: 0, y: 28},
-            {opacity: 1, y: 0, duration: .65, ease: 'power3.out',
-             scrollTrigger: {trigger: row, start: 'top 88%', once: true}});
-        }
-      });
+    if (!wired) {
+      wired = true;
+      document.querySelectorAll('.af-btn').forEach(b => b.addEventListener('click', () => {
+        filter = b.dataset.filter;
+        document.querySelectorAll('.af-btn').forEach(x => x.classList.toggle('active', x === b));
+        apply(lang);
+      }));
     }
   }
 
-  /* ── language ── */
   function applyLang(l) {
-    lang = l;
+    lang = l === 'en' ? 'en' : 'nl';
     document.querySelectorAll('[data-nl],[data-en]').forEach(el => {
-      const val = el.getAttribute('data-' + l);
-      if (val != null) el.innerHTML = val;
+      const v = el.getAttribute('data-' + lang);
+      if (v != null) el.innerHTML = v;
     });
-    renderArticles(l);
+    draw(lang);
   }
   applyLang(lang);
-  document.addEventListener('wk:languagechange', e => applyLang(e.detail?.lang || localStorage.getItem('wk-lang') || 'nl'));
+  document.addEventListener('wk:languagechange', e =>
+    applyLang(e?.detail?.lang || localStorage.getItem('wk-lang') || 'nl'));
 
-  /* ── custom cursor ── */
-  const dot  = document.getElementById('c-dot');
-  const ring = document.getElementById('c-ring');
-  const cursorOff = reduced || window.matchMedia('(pointer:coarse), (max-width:900px)').matches;
-  if (dot && ring && !cursorOff) {
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    dot.style.left = '0'; dot.style.top = '0';
-    ring.style.left = '0'; ring.style.top = '0';
-    (function tick() {
-      rx += (mx - rx) * .14; ry += (my - ry) * .14;
-      dot.style.transform  = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
-      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
-      requestAnimationFrame(tick);
-    })();
-    document.addEventListener('mouseover', e => {
-      const t = e.target.closest('a,button,.art-row');
-      document.body.classList.toggle('cursor-hover', !!t);
-    });
-  }
-
-  /* ── hero GSAP ── */
-  if (!reduced && typeof gsap !== 'undefined') {
-    gsap.fromTo('.art-hero-crumb', {opacity:0,y:16},{opacity:1,y:0,duration:.6,ease:'power3.out'});
-    gsap.fromTo('.art-h1',  {opacity:0,y:24},{opacity:1,y:0,duration:.7,delay:.1,ease:'power3.out'});
-    gsap.fromTo('.art-hero-sub',{opacity:0,y:18},{opacity:1,y:0,duration:.6,delay:.22,ease:'power3.out'});
-  }
+  /* light the closing card */
+  const card = document.querySelector('.wk-cta-card');
+  if (card) new IntersectionObserver((e, o) => e.forEach(x => {
+    if (x.isIntersecting) { card.classList.add('is-lit'); o.disconnect(); }
+  }), { threshold: .3 }).observe(card);
 })();
 </script>
 </body>

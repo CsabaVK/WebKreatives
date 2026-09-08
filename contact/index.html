@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start a project &mdash; WebKreatives</title>
+<meta name="description" content="Tell us what the business does and what the site is not doing. You get a reply within one business day, with an honest read on what the site actually needs.">
+<link rel="canonical" href="https://webkreatives.com/contact/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webkreatives.com/contact/">
+<meta property="og:title" content="Start a project — WebKreatives">
+<meta property="og:description" content="Tell us what the business does and what the site is not doing. You get a reply within one business day.">
+<meta property="og:image" content="https://webkreatives.com/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="WebKreatives">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1b1a15">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Poiret+One&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css?v=v4">
+<style>
+/* ═══ CONTACT v4 ════════════════════════════════════════════════════ */
+.ct-body{padding:clamp(46px,6vw,86px) 0 clamp(70px,9vw,130px)}
+.ct-grid{
+  display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(34px,6vw,96px);align-items:start;
+}
+@media(max-width:900px){.ct-grid{grid-template-columns:1fr;gap:44px}}
+
+/* ── left rail ────────────────────────────────────────────────────── */
+.ct-side{position:sticky;top:104px}
+@media(max-width:900px){.ct-side{position:static}}
+.ct-side h2{margin:16px 0 18px;max-width:16ch}
+.ct-side .wk-lede{margin:0 0 34px;max-width:44ch}
+.ct-points{border-top:1px solid var(--rule)}
+.ct-point{
+  display:flex;align-items:flex-start;gap:13px;
+  padding:15px 0;border-bottom:1px solid var(--rule);
+  font-size:14.5px;line-height:1.6;color:var(--cream-dim);
+}
+.ct-tick{
+  width:19px;height:19px;border-radius:50%;flex-shrink:0;margin-top:2px;
+  background:var(--bronze-mist);border:1px solid var(--bronze-rule);
+  display:flex;align-items:center;justify-content:center;color:var(--bronze);
+}
+.ct-tick svg{width:10px;height:10px}
+.ct-direct{
+  margin-top:30px;display:flex;flex-direction:column;gap:10px;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--cream-mute);
+}
+.ct-direct a{color:var(--bronze);transition:opacity var(--dur-fast)}
+.ct-direct a:hover{opacity:.75}
+.ct-direct span{color:var(--cream-faint);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase}
+
+/* ── form ─────────────────────────────────────────────────────────── */
+.ct-form-card{
+  border:1px solid var(--rule);border-radius:var(--radius);
+  background:var(--ink-2);padding:clamp(24px,3.4vw,44px);
+  position:relative;overflow:hidden;
+}
+.ct-form-card::before{
+  content:'';position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--bronze-rule) 30%,var(--bronze-rule) 70%,transparent);
+}
+.cform{display:flex;flex-direction:column;gap:18px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:600px){.frow{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:8px;min-width:0}
+.fg label{
+  font-family:var(--f-mono);font-size:9.5px;font-weight:500;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--cream-faint);
+}
+.fg input,.fg textarea,.fg select{
+  font-family:var(--f-body);font-size:14.5px;font-weight:300;
+  background:var(--ink);color:var(--cream);
+  border:1px solid var(--rule-hard);border-radius:var(--radius);
+  padding:13px 15px;outline:none;width:100%;
+  transition:border-color var(--dur-fast),box-shadow var(--dur-fast),background var(--dur-fast);
+}
+.fg select{
+  appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%238a8272' stroke-width='1.6'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:34px;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--cream-faint)}
+.fg input:focus,.fg textarea:focus,.fg select:focus{
+  border-color:var(--bronze);background:var(--ink-3);
+  box-shadow:0 0 0 3px rgba(217,167,72,.12);
+}
+.fg textarea{resize:vertical;min-height:130px;line-height:1.65}
+.ct-submit{margin-top:6px;align-self:flex-start;border:0;cursor:pointer}
+.ct-status{
+  margin-top:6px;font-family:var(--f-mono);font-size:11px;line-height:1.7;
+  letter-spacing:.04em;display:none;padding:12px 14px;border-radius:var(--radius);
+}
+.ct-status.ok{display:block;color:var(--sage);background:rgba(106,143,93,.10);border:1px solid rgba(106,143,93,.28)}
+.ct-status.err{display:block;color:var(--bronze);background:var(--bronze-mist);border:1px solid var(--bronze-rule)}
+.ct-small{
+  font-family:var(--f-mono);font-size:10px;line-height:1.7;letter-spacing:.05em;
+  color:var(--cream-faint);margin:14px 0 0;
+}
+.ct-small a{color:var(--bronze)}
+</style>
+</head>
+<body data-page="contact">
+<div id="wkProgress"></div>
+<div id="globalNav"></div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="wk-phero wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb" aria-label="Breadcrumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <span class="sep">/</span>
+      <span data-nl="Contact" data-en="Contact">Contact</span>
+    </nav>
+    <div class="wk-phero-split">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Begin hier" data-en="Start here">Start here</span>
+        <h1 class="wk-display wk-h1" data-split
+          data-nl="Vertel wat de site nu <em class='mark'>niet doet</em>."
+          data-en="Tell us what the site is <em class='mark'>not doing</em>.">Tell us what the site is <em class="mark">not doing</em>.</h1>
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+          data-nl="Een paar regels is genoeg. Je krijgt terug wat we zouden bouwen, wat we zouden weglaten en wat dat kost, voordat er iets vastligt."
+          data-en="A few lines is enough. You get back what we would build, what we would leave out and what it costs, before anything is committed.">A few lines is enough. You get back what we would build, what we would leave out and what it costs, before anything is committed.</p>
+      </div>
+      <div class="wk-stats" data-reveal data-reveal-delay=".25">
+        <div><span class="wk-stat-n">1</span><span class="wk-stat-l" data-nl="Werkdag reactietijd" data-en="Business day to reply">Business day to reply</span></div>
+        <div><span class="wk-stat-n">0</span><span class="wk-stat-l" data-nl="Verplichtingen" data-en="Obligations">Obligations</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BODY ══════════════════════════════════════════════════════ -->
+<section class="ct-body">
+  <div class="wk-wrap ct-grid">
+
+    <aside class="ct-side">
+      <span class="wk-eyebrow" data-reveal data-nl="Wat er daarna gebeurt" data-en="What happens next">What happens next</span>
+      <h2 class="wk-display wk-h3" data-reveal
+        data-nl="Eerst kijken, dan pas bouwen."
+        data-en="We look first, then build.">We look first, then build.</h2>
+      <p class="wk-lede" data-reveal
+        data-nl="We lezen je briefing, kijken naar wat je nu hebt en komen terug met een eerlijke inschatting. Als een nieuwe site niet het antwoord is, zeggen we dat ook."
+        data-en="We read your brief, look at what you have now and come back with an honest assessment. If a new site is not the answer, we will say so.">We read your brief, look at what you have now and come back with an honest assessment. If a new site is not the answer, we will say so.</p>
+
+      <div class="ct-points" data-reveal data-reveal-delay=".1">
+        <div class="ct-point">
+          <span class="ct-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <span data-nl="Antwoord binnen één werkdag" data-en="A reply within one business day">A reply within one business day</span>
+        </div>
+        <div class="ct-point">
+          <span class="ct-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <span data-nl="Een vaste prijs voordat we beginnen" data-en="A fixed price before we start">A fixed price before we start</span>
+        </div>
+        <div class="ct-point">
+          <span class="ct-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <span data-nl="Domein, code en accounts op jouw naam" data-en="Domain, code and accounts in your name">Domain, code and accounts in your name</span>
+        </div>
+        <div class="ct-point">
+          <span class="ct-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <span data-nl="Op maat gebouwd, geen template" data-en="Built to fit, not from a template">Built to fit, not from a template</span>
+        </div>
+      </div>
+
+      <div class="ct-direct" data-reveal data-reveal-delay=".15">
+        <span data-nl="Liever direct mailen" data-en="Prefer email">Prefer email</span>
+        <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
+      </div>
+    </aside>
+
+    <div data-reveal data-reveal-delay=".1">
+      <div class="ct-form-card">
+        <form class="cform" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="96c3a987-04bf-4ae0-9cdf-ddbe098611cd">
+          <input type="hidden" name="subject" value="New enquiry via WebKreatives">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="frow">
+            <div class="fg">
+              <label for="ct-name" data-nl="Je naam" data-en="Your name">Your name</label>
+              <input id="ct-name" type="text" name="name" placeholder="Jan de Vries" required>
+            </div>
+            <div class="fg">
+              <label for="ct-email" data-nl="E-mailadres" data-en="Email address">Email address</label>
+              <input id="ct-email" type="email" name="email" placeholder="jan@bedrijf.nl" required>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label for="ct-phone" data-nl="Telefoonnummer (optioneel)" data-en="Phone number (optional)">Phone number (optional)</label>
+            <input id="ct-phone" type="tel" name="phone" placeholder="+31 6 00000000">
+          </div>
+
+          <div class="frow">
+            <div class="fg">
+              <label for="ct-type" data-nl="Type bedrijf" data-en="Business type">Business type</label>
+              <select id="ct-type" name="type">
+                <option value="" data-nl="Selecteer je branche" data-en="Select your sector">Select your sector</option>
+                <option data-nl="Horeca" data-en="Food &amp; drink">Food &amp; drink</option>
+                <option data-nl="Retail / Winkel" data-en="Retail / Shop">Retail / Shop</option>
+                <option data-nl="Zakelijke dienstverlening" data-en="Professional services">Professional services</option>
+                <option data-nl="Zorg &amp; Beauty" data-en="Health &amp; Beauty">Health &amp; Beauty</option>
+                <option data-nl="Bouw &amp; Installatie" data-en="Construction &amp; Trades">Construction &amp; Trades</option>
+                <option data-nl="Anders" data-en="Other">Other</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="ct-project" data-nl="Type project" data-en="Project type">Project type</label>
+              <select id="ct-project" name="project_type">
+                <option value="" data-nl="Wat zoek je?" data-en="What are you after?">What are you after?</option>
+                <option data-nl="Nieuwe website" data-en="New website">New website</option>
+                <option data-nl="Webshop" data-en="Online shop">Online shop</option>
+                <option data-nl="Redesign bestaande site" data-en="Redesign of an existing site">Redesign of an existing site</option>
+                <option data-nl="Branding &amp; identiteit" data-en="Branding &amp; identity">Branding &amp; identity</option>
+                <option data-nl="Hosting &amp; support" data-en="Hosting &amp; support">Hosting &amp; support</option>
+                <option data-nl="Anders" data-en="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label for="ct-lang" data-nl="Voorkeurstaal" data-en="Preferred language">Preferred language</label>
+            <input id="ct-lang" type="text" name="language" placeholder="Nederlands / English">
+          </div>
+
+          <div class="fg">
+            <label for="ct-msg" data-nl="Vertel over het project" data-en="Tell us about the project">Tell us about the project</label>
+            <textarea id="ct-msg" name="message" data-nl-ph="Wat doet het bedrijf, en wat doet de site nu niet?" data-en-ph="What does the business do, and what is the site not doing?" placeholder="What does the business do, and what is the site not doing?"></textarea>
+          </div>
+
+          <button type="submit" class="wk-btn wk-btn--primary wk-shimmer ct-submit" data-magnetic>
+            <span data-nl="Stuur de briefing" data-en="Send the brief">Send the brief</span>
+            <span class="wk-arrow">&rarr;</span>
+          </button>
+
+          <p class="ct-status" id="formStatus" role="status" aria-live="polite"></p>
+
+          <p class="ct-small"
+            data-nl="We gebruiken je gegevens alleen om te reageren op deze aanvraag. Lees de <a href='/privacy/'>privacyverklaring</a>."
+            data-en="We use your details only to answer this enquiry. Read the <a href='/privacy/'>privacy statement</a>.">We use your details only to answer this enquiry. Read the <a href="/privacy/">privacy statement</a>.</p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="globalFooter"></div>
+
+<script src="/js/motion.js?v=v4"></script>
+<script src="/js/site-nav.js?v=v4"></script>
+<script src="/js/site-footer.js?v=v4"></script>
+<script src="/js/cookie-consent.js?v=v4"></script>
+<script>
+/* placeholder follows the language switch */
+(function(){
+  const ta = document.getElementById('ct-msg');
+  function ph(){
+    const en = localStorage.getItem('wk-lang') === 'en';
+    ta.placeholder = ta.dataset[en ? 'enPh' : 'nlPh'] || ta.placeholder;
+  }
+  if (ta) { ph(); document.addEventListener('wk:languagechange', ph); }
+})();
+
+/* Web3Forms submit */
+document.querySelector('.cform')?.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const status = document.getElementById('formStatus');
+  const label  = this.querySelector('.ct-submit span');
+  const orig   = label.textContent;
+  label.textContent = 'Sending…';
+  status.className = 'ct-status';
+  try {
+    const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) });
+    const data = await res.json();
+    status.className = 'ct-status ' + (data.success ? 'ok' : 'err');
+    status.textContent = data.success
+      ? 'Sent. You get a reply within one business day.'
+      : 'Something went wrong. Please try again, or email info@webkreatives.com';
+    if (data.success) this.reset();
+  } catch (err) {
+    status.className = 'ct-status err';
+    status.textContent = 'Connection error. Email us at info@webkreatives.com';
+  }
+  label.textContent = orig;
+});
+</script>
+</body>
+</html>

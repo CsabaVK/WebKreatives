@@ -16,127 +16,173 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="nl_NL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0d0d0d">
+<meta name="theme-color" content="#1b1a15">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Poiret+One&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Poiret+One&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/theme.css?v=v4">
 <style>
-:root{
-  --ink:oklch(8% .010 25);--ink2:rgba(239,230,210,.10);--cream:oklch(97% .008 80);
-  --red:#df3821;--red2:oklch(43% .200 25);--white:oklch(99% .004 80);
-  --lined:rgba(239,230,210,.14);--lime:#b9e185;--blue:#648dcb;--yellow:#fbeb78;
-  --f1:'Unbounded',sans-serif;--f2:'Figtree',sans-serif;
-  --ease:cubic-bezier(.22,.9,.18,1);
+.csi-grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+.csi-card{
+  display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);
+  gap:clamp(20px,3vw,44px);align-items:center;
+  background:var(--ink);padding:clamp(22px,3vw,34px);
+  transition:background var(--dur) var(--ease-premium);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--f2);background:var(--ink);color:oklch(62% .006 25);line-height:1.7;overflow-x:clip}
-a{color:inherit}
-img{display:block;max-width:100%}
-.cs-wrap{max-width:760px;margin:0 auto;padding:0 5vw}
-.cs-hero{padding:150px 0 44px;border-bottom:1px solid rgba(239,230,210,.07)}
-.cs-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;gap:8px;margin-bottom:20px}
-.cs-crumb a{text-decoration:none;transition:color .2s}
-.cs-crumb a:hover{color:oklch(60% .008 25)}
-.cs-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid rgba(239,230,210,.16);margin-bottom:20px}
-.cs-h1{font-family:var(--fd,'Poiret One',serif);font-size:clamp(30px,4.4vw,52px);font-weight:900;letter-spacing:-.035em;line-height:1.06;color:var(--white);margin-bottom:20px}
-.cs-lede{font-size:clamp(15px,1.4vw,18px);font-weight:300;line-height:1.7;color:oklch(58% .008 25)}
-.cs-body{padding:52px 0 90px}
-.cs-block{margin-bottom:44px}
-.cs-k{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:oklch(34% .008 25);margin-bottom:12px}
-.cs-block p{font-size:16px;margin-bottom:14px}
-.cs-list{list-style:none;counter-reset:d}
-.cs-list li{
-  counter-increment:d;position:relative;padding-left:44px;margin-bottom:20px;font-size:16px;
+.csi-card:hover{background:var(--ink-2)}
+@media(max-width:780px){.csi-card{grid-template-columns:1fr}}
+.csi-shot img{aspect-ratio:1200/720;object-fit:cover;object-position:top center}
+.csi-meta{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:12px}
+.csi-card h2{
+  font-family:var(--f-display);font-weight:400;
+  font-size:clamp(21px,2.5vw,32px);line-height:1.1;letter-spacing:-.018em;
+  color:var(--cream);margin:0 0 11px;transition:color var(--dur-fast);
 }
-.cs-list li::before{
-  content:counter(d,decimal-leading-zero);position:absolute;left:0;top:1px;
-  font-family:var(--f1);font-size:12px;font-weight:700;color:var(--accent,var(--red));
-}
-.cs-list strong,.cs-block strong{color:oklch(88% .006 25);font-weight:600}
-.cs-note{
-  border-left:2px solid var(--accent,var(--red));padding:2px 0 2px 18px;
-  font-size:15.5px;color:oklch(56% .008 25);
-}
-.cs-cta{
-  margin-top:56px;padding:30px;border:1px solid rgba(239,230,210,.10);border-radius:16px;
-  background:#211f1a;
-}
-.cs-cta h2{font-family:var(--f1);font-size:20px;font-weight:800;color:var(--white);margin-bottom:8px;letter-spacing:-.02em}
-.cs-cta p{font-size:15px;margin-bottom:18px}
-.cs-btns{display:flex;gap:10px;flex-wrap:wrap}
-.cs-btn{
-  display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border-radius:9px;
-  font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;
-  transition:transform .25s var(--ease),opacity .2s;
-}
-.cs-btn:hover{transform:translateY(-2px)}
-.cs-btn-p{background:var(--red);color:#fff}
-.cs-btn-s{border:1px solid oklch(26% .010 25);color:oklch(74% .006 25)}
-.cs-disc{
-  display:flex;gap:9px;align-items:flex-start;margin-top:34px;
-  font-size:12.5px;line-height:1.6;color:oklch(42% .008 25);
-}
-.cs-disc svg{color:var(--yellow);flex-shrink:0;margin-top:2px}
-@media(max-width:640px){.cs-hero{padding-top:120px}}
+.csi-card:hover h2{color:#fff}
+.csi-lede{font-size:15px;line-height:1.68;color:var(--cream-mute);margin:0 0 18px;max-width:58ch}
 </style>
 </head>
 <body data-page="case-study">
+<div id="wkProgress"></div>
 <div id="globalNav"></div>
-<style>
-.csi-grid{display:grid;gap:18px;padding:52px 0 90px}
-.csi-card{
-  display:block;text-decoration:none;padding:28px;border-radius:16px;
-  border:1px solid oklch(17% .010 25);background:#1f1d18;
-  transition:border-color .3s var(--ease),transform .3s var(--ease);
-}
-.csi-card:hover{border-color:var(--accent);transform:translateY(-3px)}
-.csi-sector{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-.csi-title{font-family:var(--f1);font-size:clamp(19px,2.1vw,25px);font-weight:800;letter-spacing:-.025em;line-height:1.2;color:var(--white);margin:10px 0 10px}
-.csi-lede{font-size:15px;font-weight:300;line-height:1.65;color:oklch(52% .008 25)}
-.csi-more{display:inline-block;margin-top:16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-</style>
 
-<section class="cs-hero">
-  <div class="cs-wrap">
-    <div class="cs-crumb"><a href="/">Home</a><span>/</span><span>Case studies</span></div>
-    <h1 class="cs-h1" data-nl="Hoe we een site aanpakken" data-en="How we approach a site">How we approach a site</h1>
-    <p class="cs-lede" data-nl="Geen mooie plaatjes zonder uitleg. Per concept: de opdracht, wat er normaal misgaat, welke keuzes we maakten en wat we bewust hebben geschrapt." data-en="Not just screenshots. For each concept: the brief, what usually goes wrong, the decisions we made and what we deliberately cut.">Not just screenshots. For each concept: the brief, what usually goes wrong, the decisions we made and what we deliberately cut.</p>
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="wk-phero wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb" aria-label="Breadcrumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a><span class="sep">/</span>
+      <span data-nl="Case studies" data-en="Case studies">Case studies</span>
+    </nav>
+    <div class="wk-phero-split">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Achter het werk" data-en="Behind the work">Behind the work</span>
+        <h1 class="wk-display wk-h1" data-split
+          data-nl="Niet alleen het resultaat, ook de <em class='mark'>keuzes</em>."
+          data-en="Not just the result, the <em class='mark'>decisions</em> too.">Not just the result, the <em class="mark">decisions</em> too.</h1>
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+          data-nl="Per concept: de opdracht, wat er normaal misgaat, welke keuzes we maakten, wat we bewust hebben geschrapt en waar we op zouden sturen."
+          data-en="For each concept: the brief, what usually goes wrong, the decisions we made, what we deliberately cut and what we would measure.">For each concept: the brief, what usually goes wrong, the decisions we made, what we deliberately cut and what we would measure.</p>
+      </div>
+      <div class="wk-stats" data-reveal data-reveal-delay=".25">
+        <div><span class="wk-stat-n" data-count="3">3</span><span class="wk-stat-l" data-nl="Case studies" data-en="Case studies">Case studies</span></div>
+        <div><span class="wk-stat-n" data-count="5">5</span><span class="wk-stat-l" data-nl="Vragen per case" data-en="Questions each">Questions each</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="cs-wrap">
-  <div class="csi-grid">
-
-      <a class="csi-card" href="/case-studies/leyenburger-grill/" style="--accent:#c9772e">
-        <span class="csi-sector">Food &amp; drink</span>
-        <h2 class="csi-title" data-nl="Een menukaart die je niet hoeft te downloaden" data-en="A menu you do not have to download">A menu you do not have to download</h2>
+<!-- ══ LIST ══════════════════════════════════════════════════════ -->
+<section class="wk-section" style="padding-top:clamp(38px,5vw,64px)">
+  <div class="wk-wrap">
+    <div class="csi-grid">
+    <a class="csi-card" href="/case-studies/leyenburger-grill/" data-reveal data-reveal-delay=".0">
+      <div class="wk-frame csi-shot">
+        <div class="wk-frame-bar">
+          <span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span>
+          <span class="wk-frame-url">webkreatives.com/leyenburger</span>
+        </div>
+        <img src="/assets/screenshots/leyenburger.png" alt="" loading="lazy" width="1200" height="720">
+      </div>
+      <div>
+        <div class="csi-meta">
+          <span class="wk-row-n" style="font-size:19px">01</span>
+          <span class="wk-badge" data-nl="Concept" data-en="Concept">Concept</span>
+          <span class="wk-meta" data-nl="Horeca" data-en="Food & drink">Food &amp; drink</span>
+        </div>
+        <h2 data-nl="Een menukaart die je niet hoeft te downloaden" data-en="A menu you do not have to download">A menu you do not have to download</h2>
         <p class="csi-lede" data-nl="Leyenburger verkoopt döner, Turkse pizza en kapsalon. De meeste concurrenten sturen je naar een PDF of naar Thuisbezorgd. Wij hebben de kaart de site zelf gemaakt." data-en="Leyenburger sells döner, Turkish pizza and kapsalon. Most competitors send you to a PDF or to a delivery platform. We made the menu the site itself.">Leyenburger sells döner, Turkish pizza and kapsalon. Most competitors send you to a PDF or to a delivery platform. We made the menu the site itself.</p>
-        <span class="csi-more"><span data-nl="Lees de case" data-en="Read the case">Read the case</span> &rarr;</span>
-      </a>
+        <span class="wk-row-go"><span data-nl="Lees de case study" data-en="Read the case study">Read the case study</span><span>&rarr;</span></span>
+      </div>
+    </a>
 
-      <a class="csi-card" href="/case-studies/tandarts-knoll/" style="--accent:#0d7c8f">
-        <span class="csi-sector">Healthcare</span>
-        <h2 class="csi-title" data-nl="Een tandartssite voor mensen die liever niet gaan" data-en="A dental site for people who would rather not go">A dental site for people who would rather not go</h2>
+    <a class="csi-card" href="/case-studies/tandarts-knoll/" data-reveal data-reveal-delay=".1">
+      <div class="wk-frame csi-shot">
+        <div class="wk-frame-bar">
+          <span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span>
+          <span class="wk-frame-url">webkreatives.com/tandarts-knoll</span>
+        </div>
+        <img src="/assets/screenshots/tandarts-knoll.png" alt="" loading="lazy" width="1200" height="720">
+      </div>
+      <div>
+        <div class="csi-meta">
+          <span class="wk-row-n" style="font-size:19px">02</span>
+          <span class="wk-badge" data-nl="Concept" data-en="Concept">Concept</span>
+          <span class="wk-meta" data-nl="Zorg" data-en="Healthcare">Healthcare</span>
+        </div>
+        <h2 data-nl="Een tandartssite voor mensen die liever niet gaan" data-en="A dental site for people who would rather not go">A dental site for people who would rather not go</h2>
         <p class="csi-lede" data-nl="Tandartspraktijken schrijven hun site meestal voor collega’s. Deze is geschreven voor iemand die om elf uur ’s avonds met kiespijn ligt te zoeken." data-en="Dental practices usually write their site for other dentists. This one is written for someone lying awake at eleven at night with toothache.">Dental practices usually write their site for other dentists. This one is written for someone lying awake at eleven at night with toothache.</p>
-        <span class="csi-more"><span data-nl="Lees de case" data-en="Read the case">Read the case</span> &rarr;</span>
-      </a>
+        <span class="wk-row-go"><span data-nl="Lees de case study" data-en="Read the case study">Read the case study</span><span>&rarr;</span></span>
+      </div>
+    </a>
 
-      <a class="csi-card" href="/case-studies/de-groot-partners/" style="--accent:#c8a45c">
-        <span class="csi-sector">Professional services</span>
-        <h2 class="csi-title" data-nl="Een accountantskantoor dat niet klinkt als elk ander accountantskantoor" data-en="An accountancy firm that does not sound like every other accountancy firm">An accountancy firm that does not sound like every other accountancy firm</h2>
+    <a class="csi-card" href="/case-studies/de-groot-partners/" data-reveal data-reveal-delay=".2">
+      <div class="wk-frame csi-shot">
+        <div class="wk-frame-bar">
+          <span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span>
+          <span class="wk-frame-url">webkreatives.com/de-groot-accountants</span>
+        </div>
+        <img src="/assets/screenshots/de-groot-accountants.png" alt="" loading="lazy" width="1200" height="720">
+      </div>
+      <div>
+        <div class="csi-meta">
+          <span class="wk-row-n" style="font-size:19px">03</span>
+          <span class="wk-badge" data-nl="Concept" data-en="Concept">Concept</span>
+          <span class="wk-meta" data-nl="Zakelijke dienstverlening" data-en="Professional services">Professional services</span>
+        </div>
+        <h2 data-nl="Een accountantskantoor dat niet klinkt als elk ander accountantskantoor" data-en="An accountancy firm that does not sound like every other accountancy firm">An accountancy firm that does not sound like every other accountancy firm</h2>
         <p class="csi-lede" data-nl="Betrouwbaar, persoonlijk, deskundig. Dat staat op vrijwel elke accountantssite in Nederland, en daarom zegt het niets meer." data-en="Reliable, personal, expert. That sits on nearly every accountancy site in the country, which is exactly why it no longer means anything.">Reliable, personal, expert. That sits on nearly every accountancy site in the country, which is exactly why it no longer means anything.</p>
-        <span class="csi-more"><span data-nl="Lees de case" data-en="Read the case">Read the case</span> &rarr;</span>
-      </a>
+        <span class="wk-row-go"><span data-nl="Lees de case study" data-en="Read the case study">Read the case study</span><span>&rarr;</span></span>
+      </div>
+    </a>
+    </div>
+
+    <p class="wk-note wk-note--boxed" style="margin-top:clamp(28px,3.5vw,44px)" data-reveal>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <span data-nl="Dit zijn conceptontwerpen van WebKreatives, gemaakt om onze aanpak te laten zien. Het zijn geen officiële websites van de genoemde bedrijven en er is geen samenwerking mee."
+            data-en="These are concept designs by WebKreatives, made to show our approach. They are not the official websites of the businesses shown and no affiliation is implied.">These are concept designs by WebKreatives, made to show our approach. They are not the official websites of the businesses shown and no affiliation is implied.</span>
+    </p>
   </div>
 </section>
+
+<!-- ══ CLOSING CTA ═══════════════════════════════════════════════ -->
+<div class="wk-cta-wrap">
+  <div class="wk-wrap">
+    <section class="wk-cta-card wk-grain" data-cursor-grid>
+      <h2 class="wk-display wk-h2" data-split
+        data-nl="Wat zou er op <em class='mark'>jouw pagina</em> moeten staan?"
+        data-en="What should sit on <em class='mark'>your page</em>?">What should sit on <em class="mark">your page</em>?</h2>
+      <p class="wk-lede" data-reveal
+        data-nl="Stuur een korte briefing. Je krijgt dezelfde behandeling terug: wat we zouden bouwen, en net zo belangrijk, wat we zouden weglaten."
+        data-en="Send a short brief. You get the same treatment back: what we would build and, just as importantly, what we would leave out.">Send a short brief. You get the same treatment back: what we would build and, just as importantly, what we would leave out.</p>
+      <div class="wk-cta-row" data-reveal data-reveal-delay=".1">
+        <a href="/contact/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Stuur een briefing" data-en="Send a short brief">Send a short brief</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+        <a href="/portfolio/" class="wk-btn wk-btn--ghost">
+          <span data-nl="Bekijk alle concepten" data-en="See all concepts">See all concepts</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
 
 <div id="globalFooter"></div>
 <script src="/js/motion.js?v=v4"></script>
 <script src="/js/site-nav.js?v=v4"></script>
 <script src="/js/site-footer.js?v=v4"></script>
 <script src="/js/cookie-consent.js?v=v4"></script>
+<script>
+(function(){
+  var c=document.querySelector('.wk-cta-card');
+  if(!c)return;
+  new IntersectionObserver(function(e,o){e.forEach(function(x){if(x.isIntersecting){c.classList.add('is-lit');o.disconnect();}})},{threshold:.3}).observe(c);
+})();
+</script>
 </body>
 </html>

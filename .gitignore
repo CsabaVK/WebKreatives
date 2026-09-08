@@ -7,3 +7,8 @@ nul
 HANDOVER.md
 START-HERE.md
 
+
+# Internal tooling, notes and lead data — never publish to the public repo
+tools/
+leads/
+memory/

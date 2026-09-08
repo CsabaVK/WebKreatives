@@ -16,137 +16,249 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="nl_NL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0d0d0d">
+<meta name="theme-color" content="#1b1a15">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Poiret+One&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Poiret+One&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/theme.css?v=v4">
 <style>
-:root{
-  --ink:oklch(8% .010 25);--ink2:rgba(239,230,210,.10);--cream:oklch(97% .008 80);
-  --red:#df3821;--red2:oklch(43% .200 25);--white:oklch(99% .004 80);
-  --lined:rgba(239,230,210,.14);--lime:#b9e185;--blue:#648dcb;--yellow:#fbeb78;
-  --f1:'Unbounded',sans-serif;--f2:'Figtree',sans-serif;
-  --ease:cubic-bezier(.22,.9,.18,1);
+/* ═══ CASE STUDY v4 ═════════════════════════════════════════════════ */
+.cs-shot-wrap{padding:clamp(30px,4vw,54px) 0 0}
+.cs-shot img{aspect-ratio:1200/620;object-fit:cover;object-position:top center}
+
+.cs-body{padding:clamp(46px,6vw,86px) 0 clamp(20px,3vw,40px)}
+.cs-layout{
+  display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);
+  gap:clamp(28px,5vw,84px);align-items:start;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--f2);background:var(--ink);color:oklch(62% .006 25);line-height:1.7;overflow-x:clip}
-a{color:inherit}
-img{display:block;max-width:100%}
-.cs-wrap{max-width:760px;margin:0 auto;padding:0 5vw}
-.cs-hero{padding:150px 0 44px;border-bottom:1px solid rgba(239,230,210,.07)}
-.cs-crumb{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:oklch(32% .008 25);display:flex;gap:8px;margin-bottom:20px}
-.cs-crumb a{text-decoration:none;transition:color .2s}
-.cs-crumb a:hover{color:oklch(60% .008 25)}
-.cs-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid rgba(239,230,210,.16);margin-bottom:20px}
-.cs-h1{font-family:var(--fd,'Poiret One',serif);font-size:clamp(30px,4.4vw,52px);font-weight:900;letter-spacing:-.035em;line-height:1.06;color:var(--white);margin-bottom:20px}
-.cs-lede{font-size:clamp(15px,1.4vw,18px);font-weight:300;line-height:1.7;color:oklch(58% .008 25)}
-.cs-body{padding:52px 0 90px}
-.cs-block{margin-bottom:44px}
-.cs-k{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:oklch(34% .008 25);margin-bottom:12px}
-.cs-block p{font-size:16px;margin-bottom:14px}
-.cs-list{list-style:none;counter-reset:d}
+@media(max-width:900px){.cs-layout{grid-template-columns:1fr;gap:34px}}
+
+/* ── sticky fact rail ─────────────────────────────────────────────── */
+.cs-facts{position:sticky;top:104px}
+@media(max-width:900px){.cs-facts{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:0 22px}}
+.cs-fact{padding:13px 0;border-top:1px solid var(--rule)}
+.cs-fact:last-of-type{border-bottom:1px solid var(--rule)}
+.cs-fact-k{
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--cream-faint);display:block;margin-bottom:5px;
+}
+.cs-fact-v{font-size:14.5px;color:var(--cream);font-weight:400;display:block;line-height:1.4}
+.cs-facts .wk-btn{margin-top:22px;width:100%;justify-content:center}
+
+/* ── numbered narrative sections ──────────────────────────────────── */
+.cs-sec{padding-bottom:clamp(30px,4vw,50px);position:relative}
+.cs-sec + .cs-sec{padding-top:clamp(30px,4vw,50px);border-top:1px solid var(--rule)}
+.cs-sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+.cs-sec-n{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
+  color:var(--bronze);opacity:.75;flex-shrink:0;
+}
+.cs-sec-k{
+  font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--bronze);
+}
+.cs-sec p{font-size:16.5px;line-height:1.82;color:var(--cream-dim);margin:0 0 1.1em}
+.cs-sec p:last-child{margin-bottom:0}
+.cs-sec strong{color:var(--cream);font-weight:500}
+
+/* ── decision list ────────────────────────────────────────────────── */
+.cs-list{list-style:none;counter-reset:d;margin:0;padding:0}
 .cs-list li{
-  counter-increment:d;position:relative;padding-left:44px;margin-bottom:20px;font-size:16px;
+  counter-increment:d;position:relative;padding:18px 0 18px 46px;
+  font-size:16px;line-height:1.78;color:var(--cream-dim);
+  border-top:1px solid var(--rule-soft);
 }
+.cs-list li:first-child{border-top:0;padding-top:4px}
 .cs-list li::before{
-  content:counter(d,decimal-leading-zero);position:absolute;left:0;top:1px;
-  font-family:var(--f1);font-size:12px;font-weight:700;color:var(--accent,var(--red));
+  content:counter(d,decimal-leading-zero);position:absolute;left:0;top:20px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--bronze);opacity:.8;
 }
-.cs-list strong,.cs-block strong{color:oklch(88% .006 25);font-weight:600}
+.cs-list li:first-child::before{top:6px}
+.cs-list strong{color:var(--cream);font-weight:500}
+
+/* ── pulled-out note ──────────────────────────────────────────────── */
 .cs-note{
-  border-left:2px solid var(--accent,var(--red));padding:2px 0 2px 18px;
-  font-size:15.5px;color:oklch(56% .008 25);
+  border-left:2px solid var(--bronze-rule);padding:4px 0 4px 20px;margin:0;
+  font-family:var(--f-display);font-size:clamp(19px,2vw,25px);line-height:1.38;
+  color:var(--cream);letter-spacing:-.01em;
 }
-.cs-cta{
-  margin-top:56px;padding:30px;border:1px solid rgba(239,230,210,.10);border-radius:16px;
-  background:#211f1a;
+
+/* ── next study ───────────────────────────────────────────────────── */
+.cs-next{border-top:1px solid var(--rule);padding:clamp(30px,4vw,48px) 0}
+.cs-next-in{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.cs-next h3{
+  font-family:var(--f-display);font-weight:400;font-size:clamp(21px,2.4vw,30px);
+  color:var(--cream);margin:8px 0 0;letter-spacing:-.015em;transition:color var(--dur-fast);
 }
-.cs-cta h2{font-family:var(--f1);font-size:20px;font-weight:800;color:var(--white);margin-bottom:8px;letter-spacing:-.02em}
-.cs-cta p{font-size:15px;margin-bottom:18px}
-.cs-btns{display:flex;gap:10px;flex-wrap:wrap}
-.cs-btn{
-  display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border-radius:9px;
-  font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;
-  transition:transform .25s var(--ease),opacity .2s;
-}
-.cs-btn:hover{transform:translateY(-2px)}
-.cs-btn-p{background:var(--red);color:#fff}
-.cs-btn-s{border:1px solid oklch(26% .010 25);color:oklch(74% .006 25)}
-.cs-disc{
-  display:flex;gap:9px;align-items:flex-start;margin-top:34px;
-  font-size:12.5px;line-height:1.6;color:oklch(42% .008 25);
-}
-.cs-disc svg{color:var(--yellow);flex-shrink:0;margin-top:2px}
-@media(max-width:640px){.cs-hero{padding-top:120px}}
+.cs-next a:hover h3{color:var(--bronze)}
 </style>
 </head>
 <body data-page="case-study">
+<div id="wkProgress"></div>
 <div id="globalNav"></div>
 
-<section class="cs-hero" style="--accent:#0d7c8f">
-  <div class="cs-wrap">
-    <div class="cs-crumb">
-      <a href="/">Home</a><span>/</span>
-      <a href="/case-studies/">Case studies</a><span>/</span>
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="wk-phero wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb" aria-label="Breadcrumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a><span class="sep">/</span>
+      <a href="/case-studies/" data-nl="Case studies" data-en="Case studies">Case studies</a><span class="sep">/</span>
       <span data-nl="Zorg" data-en="Healthcare">Healthcare</span>
+    </nav>
+    <div class="wk-row-top" style="margin-bottom:18px">
+      <span class="wk-badge" data-nl="Concept" data-en="Concept">Concept</span>
+      <span class="wk-meta" data-nl="Zorg" data-en="Healthcare">Healthcare</span>
     </div>
-    <span class="cs-tag" style="color:#0d7c8f;border-color:#0d7c8f44">Healthcare</span>
-    <h1 class="cs-h1" data-nl="Een tandartssite voor mensen die liever niet gaan" data-en="A dental site for people who would rather not go">A dental site for people who would rather not go</h1>
-    <p class="cs-lede" data-nl="Tandartspraktijken schrijven hun site meestal voor collega’s. Deze is geschreven voor iemand die om elf uur ’s avonds met kiespijn ligt te zoeken." data-en="Dental practices usually write their site for other dentists. This one is written for someone lying awake at eleven at night with toothache.">Dental practices usually write their site for other dentists. This one is written for someone lying awake at eleven at night with toothache.</p>
+    <h1 class="wk-display wk-h1" data-split data-nl="Een tandartssite voor mensen die liever niet gaan" data-en="A dental site for people who would rather not go">A dental site for people who would rather not go</h1>
+    <p class="wk-lede" data-reveal data-reveal-delay=".15" data-nl="Tandartspraktijken schrijven hun site meestal voor collega’s. Deze is geschreven voor iemand die om elf uur ’s avonds met kiespijn ligt te zoeken." data-en="Dental practices usually write their site for other dentists. This one is written for someone lying awake at eleven at night with toothache.">Dental practices usually write their site for other dentists. This one is written for someone lying awake at eleven at night with toothache.</p>
   </div>
 </section>
 
-<section class="cs-body" style="--accent:#0d7c8f">
-  <div class="cs-wrap">
-    <div class="cs-block">
-      <div class="cs-k" data-nl="De opdracht" data-en="The brief">The brief</div>
-      <p data-nl="Een praktijk in Staphorst die nieuwe patiënten wil, en minder telefoontjes over dezelfde drie vragen: zijn jullie open, nemen jullie nieuwe patiënten aan, en wat kost het." data-en="A practice in Staphorst that wants new patients, and fewer phone calls about the same three questions: are you open, are you taking new patients, and what does it cost.">A practice in Staphorst that wants new patients, and fewer phone calls about the same three questions: are you open, are you taking new patients, and what does it cost.</p>
-    </div>
-    <div class="cs-block">
-      <div class="cs-k" data-nl="Wat er misgaat" data-en="What goes wrong">What goes wrong</div>
-      <p data-nl="Zorgsites zijn of klinisch en koud, of juist overdreven vrolijk met stockfoto’s van lachende mensen. Allebei verhogen de spanning. En de openingstijden staan meestal drie klikken diep, terwijl dat het meest gezochte stuk informatie is." data-en="Healthcare sites are either clinical and cold, or relentlessly cheerful with stock photos of smiling strangers. Both raise anxiety. And opening hours usually sit three clicks deep, even though they are the most searched thing on the site.">Healthcare sites are either clinical and cold, or relentlessly cheerful with stock photos of smiling strangers. Both raise anxiety. And opening hours usually sit three clicks deep, even though they are the most searched thing on the site.</p>
-    </div>
-    <div class="cs-block">
-      <div class="cs-k" data-nl="Keuzes die we maakten" data-en="Decisions we made">Decisions we made</div>
-      <ul class="cs-list">
+<!-- ══ SCREENSHOT ════════════════════════════════════════════════ -->
+<div class="cs-shot-wrap">
+  <div class="wk-wrap">
+    <a class="wk-frame cs-shot" href="/client-projects/tandarts-knoll/" target="_blank" rel="noopener" data-reveal>
+      <div class="wk-frame-bar">
+        <span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span>
+        <span class="wk-frame-url">webkreatives.com/tandarts-knoll</span>
+      </div>
+      <img src="/assets/screenshots/tandarts-knoll.png" alt="" loading="lazy" width="1200" height="620">
+    </a>
+  </div>
+</div>
+
+<!-- ══ BODY ══════════════════════════════════════════════════════ -->
+<section class="cs-body">
+  <div class="wk-wrap cs-layout">
+    <aside class="cs-facts">
+        <div class="cs-fact">
+          <span class="cs-fact-k" data-nl="Type" data-en="One-page">One-page</span>
+          <span class="cs-fact-v" data-nl="One-page" data-en="One-page">One-page</span>
+        </div>
+        <div class="cs-fact">
+          <span class="cs-fact-k" data-nl="Secties" data-en="Sections">Sections</span>
+          <span class="cs-fact-v" data-nl="6" data-en="6">6</span>
+        </div>
+        <div class="cs-fact">
+          <span class="cs-fact-k" data-nl="Talen" data-en="Languages">Languages</span>
+          <span class="cs-fact-v" data-nl="NL + EN" data-en="NL + EN">NL + EN</span>
+        </div>
+        <div class="cs-fact">
+          <span class="cs-fact-k" data-nl="Bouwjaar" data-en="Built">Built</span>
+          <span class="cs-fact-v" data-nl="2026" data-en="2026">2026</span>
+        </div>
+      <a href="/client-projects/tandarts-knoll/" class="wk-btn wk-btn--ghost" target="_blank" rel="noopener">
+        <span data-nl="Bekijk live" data-en="View live">View live</span>
+        <span class="wk-arrow">&rarr;</span>
+      </a>
+    </aside>
+
+    <div class="cs-main">
+      <section class="cs-sec" data-reveal>
+        <div class="cs-sec-h">
+          <span class="cs-sec-n">01</span>
+          <span class="cs-sec-k" data-nl="De opdracht" data-en="The brief">The brief</span>
+        </div>
+        <p data-nl="Een praktijk in Staphorst die nieuwe patiënten wil, en minder telefoontjes over dezelfde drie vragen: zijn jullie open, nemen jullie nieuwe patiënten aan, en wat kost het." data-en="A practice in Staphorst that wants new patients, and fewer phone calls about the same three questions: are you open, are you taking new patients, and what does it cost.">A practice in Staphorst that wants new patients, and fewer phone calls about the same three questions: are you open, are you taking new patients, and what does it cost.</p>
+      </section>
+
+      <section class="cs-sec" data-reveal>
+        <div class="cs-sec-h">
+          <span class="cs-sec-n">02</span>
+          <span class="cs-sec-k" data-nl="Wat er misgaat" data-en="What goes wrong">What goes wrong</span>
+        </div>
+        <p data-nl="Zorgsites zijn of klinisch en koud, of juist overdreven vrolijk met stockfoto’s van lachende mensen. Allebei verhogen de spanning. En de openingstijden staan meestal drie klikken diep, terwijl dat het meest gezochte stuk informatie is." data-en="Healthcare sites are either clinical and cold, or relentlessly cheerful with stock photos of smiling strangers. Both raise anxiety. And opening hours usually sit three clicks deep, even though they are the most searched thing on the site.">Healthcare sites are either clinical and cold, or relentlessly cheerful with stock photos of smiling strangers. Both raise anxiety. And opening hours usually sit three clicks deep, even though they are the most searched thing on the site.</p>
+      </section>
+
+      <section class="cs-sec" data-reveal>
+        <div class="cs-sec-h">
+          <span class="cs-sec-n">03</span>
+          <span class="cs-sec-k" data-nl="Keuzes die we maakten" data-en="Decisions we made">Decisions we made</span>
+        </div>
+        <ul class="cs-list">
         <li data-nl="<strong>Teal en mint (#0d7c8f, #f0faf7) in plaats van medisch blauw-wit.</strong> Rustiger, minder ziekenhuis. Het scheelt niet veel, maar je voelt het verschil binnen een seconde." data-en="<strong>Teal and mint (#0d7c8f, #f0faf7) instead of medical blue and white.</strong> Calmer, less hospital. It is a small shift, but you feel it within a second."><strong>Teal and mint (#0d7c8f, #f0faf7) instead of medical blue and white.</strong> Calmer, less hospital. It is a small shift, but you feel it within a second.</li>
         <li data-nl="<strong>Openingstijden krijgen een eigen blok.</strong> Niet een regel in de footer. Voor een lokale praktijk is dit de belangrijkste informatie op de hele site." data-en="<strong>Opening hours get their own section.</strong> Not a line in the footer. For a local practice this is the single most important piece of information on the site."><strong>Opening hours get their own section.</strong> Not a line in the footer. For a local practice this is the single most important piece of information on the site.</li>
         <li data-nl="<strong>Behandelingen in gewone taal.</strong> Bij “wortelkanaalbehandeling” staat een zin die uitlegt wat het is. Wie daarop zoekt is meestal ongerust, en vakjargon maakt dat erger." data-en="<strong>Treatments in plain language.</strong> “Root canal treatment” gets a sentence explaining what it involves. People searching for that term are usually worried, and jargon makes it worse."><strong>Treatments in plain language.</strong> “Root canal treatment” gets a sentence explaining what it involves. People searching for that term are usually worried, and jargon makes it worse.</li>
         <li data-nl="<strong>Adres en telefoonnummer herhaald in het contactblok.</strong> Niemand scrolt terug naar de footer als hij eenmaal besloten heeft te bellen." data-en="<strong>Address and phone repeated in the contact block.</strong> Nobody scrolls back to the footer once they have decided to call."><strong>Address and phone repeated in the contact block.</strong> Nobody scrolls back to the footer once they have decided to call.</li>
-      </ul>
-    </div>
-    <div class="cs-block">
-      <div class="cs-k" data-nl="Wat we hebben geschrapt" data-en="What we cut">What we cut</div>
-      <p class="cs-note" data-nl="De teamcarousel. Leuk voor de praktijk, nutteloos voor een ongeruste patiënt om elf uur ’s avonds." data-en="The team carousel. Nice for the practice, useless to an anxious patient at eleven at night.">The team carousel. Nice for the practice, useless to an anxious patient at eleven at night.</p>
-    </div>
-    <div class="cs-block">
-      <div class="cs-k" data-nl="Waar we op zouden sturen" data-en="What we would measure">What we would measure</div>
-      <p data-nl="Kliks op de openingstijden en op het telefoonnummer. Dat zijn de twee handelingen die een bezoeker in een patiënt veranderen." data-en="Clicks on the opening hours and on the phone number. Those are the two actions that turn a visitor into a patient.">Clicks on the opening hours and on the phone number. Those are the two actions that turn a visitor into a patient.</p>
-    </div>
+        </ul>
+      </section>
 
-    <div class="cs-cta">
-      <h2 data-nl="Zoiets voor jouw bedrijf?" data-en="Something like this for your business?">Something like this for your business?</h2>
-      <p data-nl="Vertel wat je nodig hebt. Je krijgt binnen 48 uur een eerste concept te zien, met een vaste prijs erbij." data-en="Tell us what you need. You get a first concept within 48 hours, with a fixed price attached.">Tell us what you need. You get a first concept within 48 hours, with a fixed price attached.</p>
-      <div class="cs-btns">
-        <a href="/#contact" class="cs-btn cs-btn-p"><span data-nl="Start een project" data-en="Start a project">Start a project</span></a>
-        <a href="/client-projects/tandarts-knoll/" class="cs-btn cs-btn-s" target="_blank" rel="noopener"><span data-nl="Bekijk het concept" data-en="View the concept">View the concept</span></a>
-      </div>
-    </div>
+      <section class="cs-sec" data-reveal>
+        <div class="cs-sec-h">
+          <span class="cs-sec-n">04</span>
+          <span class="cs-sec-k" data-nl="Wat we hebben geschrapt" data-en="What we cut">What we cut</span>
+        </div>
+        <p class="cs-note" data-nl="De teamcarousel. Leuk voor de praktijk, nutteloos voor een ongeruste patiënt om elf uur ’s avonds." data-en="The team carousel. Nice for the practice, useless to an anxious patient at eleven at night.">The team carousel. Nice for the practice, useless to an anxious patient at eleven at night.</p>
+      </section>
 
-    <div class="cs-disc">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <span data-nl="Dit is een conceptontwerp van WebKreatives, gemaakt om onze aanpak te laten zien. Het is geen officiële website van dit bedrijf en er is geen samenwerking mee." data-en="This is a concept design by WebKreatives, made to show our approach. It is not the official website of this business and no affiliation is implied.">This is a concept design by WebKreatives, made to show our approach. It is not the official website of this business and no affiliation is implied.</span>
+      <section class="cs-sec" data-reveal>
+        <div class="cs-sec-h">
+          <span class="cs-sec-n">05</span>
+          <span class="cs-sec-k" data-nl="Waar we op zouden sturen" data-en="What we would measure">What we would measure</span>
+        </div>
+        <p data-nl="Kliks op de openingstijden en op het telefoonnummer. Dat zijn de twee handelingen die een bezoeker in een patiënt veranderen." data-en="Clicks on the opening hours and on the phone number. Those are the two actions that turn a visitor into a patient.">Clicks on the opening hours and on the phone number. Those are the two actions that turn a visitor into a patient.</p>
+      </section>
     </div>
   </div>
 </section>
+
+<!-- ══ NEXT ══════════════════════════════════════════════════════ -->
+<section class="cs-next">
+  <div class="wk-wrap cs-next-in">
+    <a href="/case-studies/de-groot-partners/" style="min-width:0">
+      <span class="wk-eyebrow" data-nl="Volgende case study" data-en="Next case study">Next case study</span>
+      <h3 data-split data-nl="Een accountantskantoor dat niet klinkt als elk ander accountantskantoor" data-en="An accountancy firm that does not sound like every other accountancy firm">An accountancy firm that does not sound like every other accountancy firm</h3>
+    </a>
+    <a href="/case-studies/" class="wk-btn wk-btn--ghost">
+      <span data-nl="Alle case studies" data-en="All case studies">All case studies</span>
+      <span class="wk-arrow">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══ CLOSING CTA ═══════════════════════════════════════════════ -->
+<div class="wk-cta-wrap">
+  <div class="wk-wrap">
+    <section class="wk-cta-card wk-grain" data-cursor-grid>
+      <h2 class="wk-display wk-h2" data-split
+        data-nl="Zoiets voor <em class='mark'>jouw bedrijf</em>?"
+        data-en="Something like this for <em class='mark'>your business</em>?">Something like this for <em class="mark">your business</em>?</h2>
+      <p class="wk-lede" data-reveal
+        data-nl="Vertel kort wat het bedrijf doet en wat de site nu niet doet. Je krijgt terug welke keuzes we zouden maken en waarom."
+        data-en="Tell us briefly what the business does and what the site is not doing. You get back which decisions we would make and why.">Tell us briefly what the business does and what the site is not doing. You get back which decisions we would make and why.</p>
+      <div class="wk-cta-row" data-reveal data-reveal-delay=".1">
+        <a href="/contact/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Stuur een briefing" data-en="Send a short brief">Send a short brief</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+        <a href="/client-projects/tandarts-knoll/" class="wk-btn wk-btn--ghost" target="_blank" rel="noopener">
+          <span data-nl="Bekijk het concept" data-en="View the concept">View the concept</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+      <p class="wk-cta-note" data-reveal
+        data-nl="Dit is een conceptontwerp van WebKreatives, gemaakt om onze aanpak te laten zien. Het is geen officiële website van dit bedrijf en er is geen samenwerking mee."
+        data-en="This is a concept design by WebKreatives, made to show our approach. It is not the official website of this business and no affiliation is implied.">This is a concept design by WebKreatives, made to show our approach. It is not the official website of this business and no affiliation is implied.</p>
+    </section>
+  </div>
+</div>
 
 <div id="globalFooter"></div>
 <script src="/js/motion.js?v=v4"></script>
 <script src="/js/site-nav.js?v=v4"></script>
 <script src="/js/site-footer.js?v=v4"></script>
 <script src="/js/cookie-consent.js?v=v4"></script>
+<script>
+(function(){
+  var c=document.querySelector('.wk-cta-card');
+  if(!c)return;
+  new IntersectionObserver(function(e,o){e.forEach(function(x){if(x.isIntersecting){c.classList.add('is-lit');o.disconnect();}})},{threshold:.3}).observe(c);
+})();
+</script>
 </body>
 </html>
