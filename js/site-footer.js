@@ -21,11 +21,17 @@
 .wk-ft a{text-decoration:none;color:inherit}
 .wk-ft-top{
   max-width:var(--maxw,1280px);margin:0 auto;
-  padding:clamp(48px,6vw,74px) var(--gutter,5vw) clamp(34px,4vw,50px);
-  display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr 1.7fr;
-  gap:clamp(24px,3vw,48px);
+  padding:clamp(64px,8vw,104px) var(--gutter,5vw) clamp(48px,6vw,72px);
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1.05fr 1.5fr;
+  gap:clamp(30px,3.4vw,56px);
 }
-.wk-ft-brand{display:flex;flex-direction:column;gap:16px}
+.wk-ft-brand{display:flex;flex-direction:column;gap:18px;max-width:34ch}
+.wk-ft-mail{
+  display:inline-flex;align-items:center;gap:8px;margin-top:6px;
+  font-size:13.5px;font-weight:500;color:var(--cream-dim,#c8c3bc);
+  transition:color .2s;
+}
+.wk-ft-mail:hover{color:var(--red,#df3821)}
 .wk-ft-kicker{
   font-family:var(--f-mono,'Unbounded',sans-serif);font-size:10px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--cream-faint,#635f5a);
@@ -36,14 +42,14 @@
   color:var(--cream,#f7f3ec);margin:0;max-width:14ch;
 }
 .wk-ft-line .mark{font-style:normal;color:var(--bronze,#df3821)}
-.wk-ft-col{display:flex;flex-direction:column;gap:2px}
+.wk-ft-col{display:flex;flex-direction:column;gap:3px}
 .wk-ft-col h4{
   font-family:var(--f-mono,'Unbounded',sans-serif);font-size:10px;font-weight:900;
   letter-spacing:.14em;text-transform:uppercase;
-  color:var(--cream-faint,#635f5a);margin:0 0 8px;
+  color:var(--cream-faint,#635f5a);margin:0 0 14px;
 }
 .wk-ft-col a{
-  display:flex;align-items:center;min-height:32px;
+  display:flex;align-items:center;min-height:34px;
   font-size:14px;font-weight:300;color:var(--cream-mute,#918d87);
   transition:color .2s var(--ease-premium,ease);
 }
@@ -62,13 +68,12 @@
 }
 .wk-ft-col a.go:hover{color:var(--red,#df3821)}
 .wk-ft-col a.go:hover::after{transform:translateX(4px);opacity:1}
-.wk-ft-globe{position:relative;height:210px;min-width:230px;display:none}
-@media(min-width:1200px){.wk-ft-globe{display:block}}
+.wk-ft-globe{position:relative;height:230px;min-width:236px;display:none;align-self:center}
 .wk-ft-globe canvas{position:absolute;inset:0;width:100%;height:100%}
 
 .wk-ft-pay{
   max-width:var(--maxw,1280px);margin:0 auto;
-  padding:0 var(--gutter,5vw) clamp(26px,3vw,34px);
+  padding:0 var(--gutter,5vw) clamp(34px,4vw,46px);
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
 }
 .wk-ft-pay-l{
@@ -103,7 +108,7 @@
 .wk-ft-bot{
   max-width:var(--maxw,1280px);margin:0 auto;
   border-top:1px solid var(--rule,rgba(239,230,210,.09));
-  padding:22px var(--gutter,5vw) 26px;
+  padding:28px var(--gutter,5vw) 34px;
 }
 .wk-ft-bot-top{
   display:flex;align-items:center;justify-content:space-between;
@@ -135,14 +140,25 @@
   .wk-ft-legal a + a{margin-left:20px}
   .wk-ft-legal a + a::before{left:-11px}
 }
-@media(max-width:1199px){.wk-ft-top{grid-template-columns:1.5fr 1fr 1fr 1.1fr}}
-@media(max-width:860px){
-  .wk-ft-top{grid-template-columns:1fr 1fr;gap:30px}
-  .wk-ft-brand{grid-column:1/-1}
+/* ── the ladder ───────────────────────────────────────────────────────
+   The globe needs real width beside four link columns, so it is the first
+   thing to go. Below that the brand takes its own row rather than being
+   squeezed into a column too narrow for the sentence.                    */
+@media(min-width:1240px){.wk-ft-globe{display:block}}
+@media(max-width:1239px){
+  .wk-ft-top{grid-template-columns:1.6fr 1fr 1fr 1.05fr}
 }
-@media(max-width:520px){
-  .wk-ft-top{grid-template-columns:1fr}
-  .wk-ft-bot{flex-direction:column;align-items:flex-start}
+@media(max-width:1020px){
+  .wk-ft-top{grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 30px}
+  .wk-ft-brand{grid-column:1/-1;max-width:52ch}
+}
+@media(max-width:660px){
+  .wk-ft-top{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:430px){
+  .wk-ft-top{grid-template-columns:1fr;gap:30px}
+  .wk-ft-pay{gap:12px}
+  .wk-ft-bot-top{flex-direction:column;align-items:flex-start;gap:8px}
 }
 `;
     document.head.appendChild(st);
@@ -163,6 +179,7 @@
       <p class="wk-ft-line"
          data-nl="Websites die <em class='mark'>hun werk doen.</em>"
          data-en="Websites that <em class='mark'>earn their keep.</em>">Websites that <em class="mark">earn their keep.</em></p>
+      <a class="wk-ft-mail" href="mailto:info@webkreatives.com">info@webkreatives.com</a>
     </div>
 
     <div class="wk-ft-col">
@@ -187,7 +204,6 @@
       <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
       <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A5 5 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12" rx=".5"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
       <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>Medium</a>
-      <a href="mailto:info@webkreatives.com">info@webkreatives.com</a>
     </div>
 
     <div class="wk-ft-globe" data-topo-globe></div>

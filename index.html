@@ -493,6 +493,53 @@
 }
 @media(prefers-reduced-motion:reduce){.art-item{transition:none}}
 
+
+/* ── articles: header, chips, counter rail ────────────────────────── */
+.art-head-r{display:flex;align-items:center;gap:18px;flex-shrink:0}
+.art-count{
+  font-family:var(--f-body);font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-faint);white-space:nowrap;
+}
+.art-count b{color:var(--blue);font-weight:700}
+.art-chips{
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+  margin-top:28px;padding-top:22px;border-top:1px solid var(--rule);
+}
+.art-chip{
+  cursor:pointer;background:none;border:1px solid var(--rule-hard);
+  border-radius:99px;padding:8px 15px;
+  font-family:var(--f-body);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--cream-mute);
+  transition:color .2s,border-color .2s,background .2s;
+}
+.art-chip:hover{color:var(--cream);border-color:var(--cream-faint)}
+.art-chip.on{color:#fff;background:var(--red);border-color:var(--red)}
+.art-chip-n{opacity:.55;margin-left:7px;font-weight:600}
+
+.art-rail{
+  flex:1;max-width:260px;height:3px;border-radius:2px;
+  background:oklch(26% .008 25);overflow:hidden;
+}
+.art-rail i{
+  display:block;height:100%;width:0;border-radius:2px;
+  background:var(--blue);transition:width .45s var(--ease-premium);
+}
+.art-pos{
+  font-family:var(--f-display);font-weight:900;font-size:13px;letter-spacing:-.02em;
+  color:var(--cream);white-space:nowrap;min-width:62px;text-align:center;
+}
+.art-pos span{color:var(--cream-faint);font-weight:700}
+.art-empty{
+  display:none;padding:60px 0;text-align:center;
+  font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-faint);
+}
+.art-empty.on{display:block}
+@media(max-width:700px){
+  .art-chips{margin-top:22px}
+  .art-head-r{display:none}
+}
+
 /* ── capability visuals, driven by scroll not hover ───────────────── */
 .hm-cap .viz-bars i{transform:scaleX(0);transform-origin:left}
 .hm-cap.is-in .viz-bars i{animation:viz-grow .9s var(--ease-premium) forwards}
@@ -1187,16 +1234,23 @@
           data-nl="Praktische<br>kennis."
           data-en="Practical<br>knowledge.">Practical<br>knowledge.</h2>
       </div>
-      <a href="/articles/" class="art-view-all" data-nl="Alle artikelen &rarr;" data-en="All articles &rarr;">All articles &rarr;</a>
+      <div class="art-head-r">
+        <span class="art-count" id="artTotal"></span>
+        <a href="/articles/" class="art-view-all" data-nl="Alle artikelen &rarr;" data-en="All articles &rarr;">All articles &rarr;</a>
+      </div>
     </div>
+
+    <div class="art-chips" id="artChips" data-reveal></div>
 
     <div class="art-scene" id="artScene">
       <div class="art-track" id="artTrack"></div>
     </div>
+    <p class="art-empty" id="artEmpty" data-nl="Niets onder dit onderwerp" data-en="Nothing under this topic">Nothing under this topic</p>
 
     <div class="art-nav">
       <button class="art-btn" id="artPrev" aria-label="Previous">&larr;</button>
-      <div class="art-dots" id="artDots"></div>
+      <div class="art-rail"><i id="artRail"></i></div>
+      <span class="art-pos" id="artPos"></span>
       <button class="art-btn" id="artNext" aria-label="Next">&rarr;</button>
     </div>
   </div>
@@ -1250,90 +1304,121 @@ document.querySelectorAll('.hm-q-btn').forEach(btn=>{
 });
 </script>
 <script>
-/* ── ARTICLES CAROUSEL (fan layout) ────────────────────────────────────
-   The original ran this on GSAP. GSAP is not loaded any more, so the
-   transforms are written straight onto the elements and CSS eases them.
-   The layout maths is the original's, unchanged.                        */
+/* ── ARTICLES CAROUSEL ────────────────────────────────────────────────
+   Every published article is in the fan, not a fixed five, and it picks
+   up new ones automatically because it reads the article registry. With
+   twenty-plus in there a dot row is useless, so the position shows as a
+   counter and a rail, and the topic chips narrow the set in place.      */
 (function () {
   const scene = document.getElementById('artScene');
   const track = document.getElementById('artTrack');
   if (!scene || !track || typeof WK_ARTICLES === 'undefined') return;
 
   const lang = () => localStorage.getItem('wk-lang') === 'en' ? 'en' : 'nl';
-  const esc = t => String(t == null ? '' : t).replace(/"/g, '&quot;');
+  const t = (nl, en) => lang() === 'en' ? (en || nl) : nl;
+  const esc = v => String(v == null ? '' : v).replace(/"/g, '&quot;');
 
-  function build() {
-    const L = lang();
-    const latest = WK_ARTICLES.slice(0, 5);
-    const pick = (nl, en) => (L === 'en' ? (en || nl) : nl) || '';
-    const f = (cls, nl, en) =>
-      '<div class="' + cls + '" data-nl="' + esc(nl) + '" data-en="' + esc(en) + '">' + pick(nl, en) + '</div>';
+  const TOPICS = [
+    { key: 'all',       nl: 'Alles',            en: 'All' },
+    { key: 'seo',       nl: 'Lokale SEO',       en: 'Local SEO' },
+    { key: 'webdesign', nl: 'Webdesign',        en: 'Web design' },
+    { key: 'kleine',    nl: 'Kleine bedrijven', en: 'Small business' },
+    { key: 'tips',      nl: 'Tips',             en: 'Tips' }
+  ];
+  const topicOf = c => {
+    const v = (c || '').toLowerCase();
+    if (v.includes('seo')) return 'seo';
+    if (v.includes('webdesign') || v.includes('web design') || v.includes('design')) return 'webdesign';
+    if (v.includes('kleine') || v.includes('small')) return 'kleine';
+    return 'tips';
+  };
 
-    track.innerHTML = latest.map(a =>
+  let filter = 'all';
+  let items = [], N = 0, current = 0;
+
+  const railEl  = document.getElementById('artRail');
+  const posEl   = document.getElementById('artPos');
+  const totalEl = document.getElementById('artTotal');
+  const emptyEl = document.getElementById('artEmpty');
+  const chipsEl = document.getElementById('artChips');
+  const fan = matchMedia('(min-width: 701px)');
+
+  const pool = () => WK_ARTICLES.filter(a => filter === 'all' || topicOf(a.category) === filter);
+
+  function chips() {
+    chipsEl.innerHTML = TOPICS.map(o => {
+      const n = o.key === 'all'
+        ? WK_ARTICLES.length
+        : WK_ARTICLES.filter(a => topicOf(a.category) === o.key).length;
+      if (!n) return '';
+      return '<button class="art-chip' + (o.key === filter ? ' on' : '') + '" data-k="' + o.key + '">' +
+             t(o.nl, o.en) + '<span class="art-chip-n">' + n + '</span></button>';
+    }).join('');
+    chipsEl.querySelectorAll('.art-chip').forEach(b =>
+      b.addEventListener('click', () => { filter = b.dataset.k; current = 0; render(); }));
+  }
+
+  function cards() {
+    const list = pool();
+    track.innerHTML = list.map(a =>
       '<a class="art-item" href="/articles/' + a.slug + '/">' +
         '<img class="art-img" src="' + (a.image || '').replace('w=760', 'w=600') + '" alt="" loading="lazy">' +
         '<div class="art-body">' +
-          f('art-cat', a.category, a.categoryEn) +
-          f('art-title', a.title, a.titleEn) +
-          f('art-excerpt', a.excerpt, a.excerptEn) +
+          '<div class="art-cat">' + t(a.category, a.categoryEn) + '</div>' +
+          '<div class="art-title">' + t(a.title, a.titleEn) + '</div>' +
+          '<div class="art-excerpt">' + t(a.excerpt, a.excerptEn) + '</div>' +
           '<div class="art-footer"><div class="art-meta-line">' +
-            '<span class="art-date" data-nl="' + esc(a.dateFormatted) + '" data-en="' + esc(a.dateFormattedEn) + '">' + pick(a.dateFormatted, a.dateFormattedEn) + '</span>' +
-            '<span class="art-read" data-nl="' + esc(a.readTime) + '" data-en="' + esc(a.readTimeEn) + '">' + pick(a.readTime, a.readTimeEn) + '</span>' +
+            '<span class="art-date">' + t(a.dateFormatted, a.dateFormattedEn) + '</span>' +
+            '<span class="art-read">' + t(a.readTime, a.readTimeEn) + '</span>' +
           '</div><span class="art-arrow">&rarr;</span></div>' +
         '</div>' +
       '</a>').join('');
-
-    const dotsWrap = document.getElementById('artDots');
-    if (dotsWrap) dotsWrap.innerHTML = latest
-      .map((_, i) => '<div class="art-dot' + (i === 0 ? ' active' : '') + '" data-i="' + i + '"></div>').join('');
-    return latest.length;
+    items = [...track.querySelectorAll('.art-item')];
+    N = items.length;
+    emptyEl.classList.toggle('on', N === 0);
+    scene.style.display = N ? '' : 'none';
+    totalEl.innerHTML = '<b>' + WK_ARTICLES.length + '</b> ' + t('artikelen', 'articles');
   }
 
-  let N = build();
-  let items = [...track.querySelectorAll('.art-item')];
-  let dots = [...document.querySelectorAll('.art-dot')];
-  let current = 0;
-
-  const fan = matchMedia('(min-width: 701px)');
-
-  /* how many steps away from centre, wrapping both ways */
   const signedDist = (i, c) => { const d = (i - c + N) % N; return d > N / 2 ? d - N : d; };
 
   function place() {
-    if (!fan.matches) {                    /* stacked on small screens */
+    if (!N) return;
+    current = ((current % N) + N) % N;
+    if (!fan.matches) {
       items.forEach((it, i) => {
         it.style.transform = ''; it.style.opacity = ''; it.style.zIndex = '';
         it.style.pointerEvents = i < 3 ? 'auto' : 'none';
         it.classList.toggle('art-center', i === 0);
       });
-      return;
+    } else {
+      items.forEach((it, i) => {
+        const sd = signedDist(i, current), abs = Math.abs(sd);
+        const x  = sd === 0 ? 0 : sd * 360;
+        const ry = sd === 0 ? 0 : -sd * (abs === 1 ? 22 : 38);
+        const sc = abs === 0 ? 1 : abs === 1 ? .85 : .70;
+        const op = abs === 0 ? 1 : abs === 1 ? .65 : abs === 2 ? .32 : 0;
+        it.style.transform = 'translate3d(' + x + 'px,0,0) rotateY(' + ry + 'deg) scale(' + sc + ')';
+        it.style.opacity = op;
+        it.style.zIndex = 100 - abs * 25;
+        it.style.pointerEvents = abs <= 2 ? 'auto' : 'none';
+        /* only the five in play are worth compositing */
+        it.style.willChange = abs <= 2 ? 'transform,opacity' : 'auto';
+        it.classList.toggle('art-center', abs === 0);
+      });
     }
-    current = ((current % N) + N) % N;
-    items.forEach((it, i) => {
-      const sd = signedDist(i, current), abs = Math.abs(sd);
-      const x  = sd === 0 ? 0 : sd * 360;
-      const ry = sd === 0 ? 0 : -sd * (abs === 1 ? 22 : 38);
-      const sc = abs === 0 ? 1 : abs === 1 ? .85 : .70;
-      const op = abs === 0 ? 1 : abs === 1 ? .65 : abs === 2 ? .32 : 0;
-      it.style.transform = 'translate3d(' + x + 'px,0,0) rotateY(' + ry + 'deg) scale(' + sc + ')';
-      it.style.opacity = op;
-      it.style.zIndex = 100 - abs * 25;
-      it.style.pointerEvents = abs <= 2 ? 'auto' : 'none';
-      it.classList.toggle('art-center', abs === 0);
-    });
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    const pad = n => String(n).padStart(2, '0');
+    posEl.innerHTML = pad(current + 1) + ' <span>/ ' + pad(N) + '</span>';
+    railEl.style.width = (((current + 1) / N) * 100).toFixed(1) + '%';
   }
+
+  function render() { cards(); chips(); place(); }
 
   const next = () => { current++; place(); };
   const prev = () => { current--; place(); };
-
   document.getElementById('artNext')?.addEventListener('click', next);
   document.getElementById('artPrev')?.addEventListener('click', prev);
-  const wireDots = () => dots.forEach((d, i) =>
-    d.addEventListener('click', () => { current = i; place(); }));
-  wireDots();
 
-  /* drag and swipe */
   let dragX = 0, dragging = false;
   scene.addEventListener('mousedown', e => { dragging = true; dragX = e.clientX; e.preventDefault(); });
   addEventListener('mousemove', e => {
@@ -1347,27 +1432,22 @@ document.querySelectorAll('.hm-q-btn').forEach(btn=>{
     if (Math.abs(d) > 40) d > 0 ? next() : prev();
   });
 
-  /* auto-advance, paused on hover and while the section is off screen */
+  /* auto-advance, paused on hover and while off screen */
   let timer = 0;
-  const start = () => { if (!timer && fan.matches) timer = setInterval(next, 4500); };
+  const start = () => { if (!timer && fan.matches && N > 1) timer = setInterval(next, 4500); };
   const stop  = () => { clearInterval(timer); timer = 0; };
   scene.addEventListener('mouseenter', stop);
   scene.addEventListener('mouseleave', start);
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop()),
     { threshold: .2 }).observe(scene);
-
   fan.addEventListener('change', () => { stop(); place(); start(); });
 
   document.addEventListener('wk:languagechange', () => {
-    N = build();
-    items = [...track.querySelectorAll('.art-item')];
-    dots = [...document.querySelectorAll('.art-dot')];
-    wireDots();
-    place();
+    render();
     if (window.wkRescanMotion) window.wkRescanMotion();
   });
 
-  place();
+  render();
 })();
 </script>
 <script>
