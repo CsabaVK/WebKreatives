@@ -204,7 +204,7 @@
         { href: '/services/websites/', nl: 'Websites', en: 'Websites',
           dnl: 'Ontwerp, bouw en oplevering',
           den: 'Design, build and launch' },
-        { href: '/services/hosting/', nl: 'Hosting &amp; support', en: 'Hosting &amp; support',
+        { href: '/services/hosting/', nl: 'Hosting', en: 'Hosting',
           dnl: 'Online houden, snel en bijgewerkt',
           den: 'Kept online, fast and up to date' }
       ]

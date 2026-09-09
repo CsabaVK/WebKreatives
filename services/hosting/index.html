@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hosting and support &mdash; WebKreatives</title>
-<meta name="description" content="Domain, hosting, security, backups and updates on one monthly fee. We keep the site online, fast and current. Cancel any month, take everything with you.">
+<title>Hosting &mdash; WebKreatives</title>
+<meta name="description" content="Domain, hosting, security, backups, updates and support on one monthly fee. Maintenance is included, not an extra. Cancel any month, take everything with you.">
 <link rel="canonical" href="https://webkreatives.com/services/hosting/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://webkreatives.com/services/hosting/">
-<meta property="og:title" content="Hosting and support — WebKreatives">
+<meta property="og:title" content="Hosting — WebKreatives">
 <meta property="og:description" content="Domain, hosting, security, backups and updates on one monthly fee. Cancel any month, take everything with you.">
 <meta property="og:image" content="https://webkreatives.com/og/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -70,6 +70,30 @@
 
 @media(prefers-reduced-motion:reduce){
   .hs-i-ic svg *{stroke-dashoffset:0!important;animation:none!important}
+}
+
+
+/* ── what support covers ──────────────────────────────────────────── */
+.hs-sup{
+  display:flex;align-items:center;gap:clamp(18px,3vw,40px);
+  flex-wrap:wrap;padding:22px 0;
+}
+.hs-sup-k{
+  font-family:var(--f-body);font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--red);flex-shrink:0;
+  display:inline-flex;align-items:center;gap:9px;
+}
+.hs-sup-k::before{content:'';width:18px;height:1px;background:currentColor;opacity:.6}
+.hs-sup-l{
+  display:flex;flex-wrap:wrap;gap:10px 26px;list-style:none;margin:0;padding:0;
+}
+.hs-sup-l li{
+  position:relative;padding-left:18px;
+  font-size:13.5px;font-weight:500;color:var(--cream-dim);white-space:nowrap;
+}
+.hs-sup-l li::before{
+  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:9px;height:2px;border-radius:1px;background:var(--red);opacity:.8;
 }
 
 /* ── plans ────────────────────────────────────────────────────────── */
@@ -187,17 +211,17 @@
       <span class="sep">/</span>
       <a href="/services/websites/" data-nl="Diensten" data-en="Services">Services</a>
       <span class="sep">/</span>
-      <span data-nl="Hosting &amp; support" data-en="Hosting &amp; support">Hosting &amp; support</span>
+      <span data-nl="Hosting" data-en="Hosting">Hosting</span>
     </nav>
     <div class="wk-phero-split">
       <div>
-        <span class="wk-eyebrow" data-reveal data-decode data-nl="Hosting &amp; support" data-en="Hosting &amp; support">Hosting &amp; support</span>
+        <span class="wk-eyebrow" data-reveal data-decode data-nl="Hosting" data-en="Hosting">Hosting</span>
         <h1 class="wk-display wk-h1" data-split
           data-nl="De site blijft online, snel en bij. <em class='mark'>Zonder jou</em>."
           data-en="The site stays online, fast and current. <em class='mark'>Without you</em>.">The site stays online, fast and current. <em class="mark">Without you</em>.</h1>
         <p class="wk-lede" data-reveal data-reveal-delay=".15"
-          data-nl="Domein, hosting, beveiliging, back-ups en updates op één maandbedrag. Geen losse facturen van vier partijen, geen certificaat dat 's nachts verloopt."
-          data-en="Domain, hosting, security, backups and updates on one monthly fee. No separate invoices from four suppliers, no certificate quietly expiring overnight.">Domain, hosting, security, backups and updates on one monthly fee. No separate invoices from four suppliers, no certificate quietly expiring overnight.</p>
+          data-nl="Eén maandbedrag voor domein, hosting, beveiliging, back-ups, updates én support. Onderhoud zit erin, het is geen aparte post. Geen vier facturen, geen certificaat dat 's nachts verloopt."
+          data-en="One monthly fee covering domain, hosting, security, backups, updates and support. Maintenance is part of it, not a separate line. No four invoices, no certificate quietly expiring overnight.">One monthly fee covering domain, hosting, security, backups, updates and support. Maintenance is part of it, not a separate line. No four invoices, no certificate quietly expiring overnight.</p>
         <div class="wk-cta-row" data-reveal data-reveal-delay=".25" style="margin-top:32px">
           <a href="#plans" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
             <span data-nl="Bekijk de plannen" data-en="See the plans">See the plans</span>
@@ -214,6 +238,22 @@
         <div><span class="wk-stat-n" data-count="0">0</span><span class="wk-stat-l" data-nl="Opzegtermijn" data-en="Notice period">Notice period</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ══ WHAT SUPPORT COVERS ═══════════════════════════════════════ -->
+<section style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--ink-2)">
+  <div class="wk-wrap hs-sup" data-reveal>
+    <span class="hs-sup-k" data-nl="Inbegrepen, geen meerprijs" data-en="Included, at no extra cost">Included, at no extra cost</span>
+    <ul class="hs-sup-l">
+      <li data-nl="Onderhoud &amp; updates" data-en="Maintenance &amp; updates">Maintenance &amp; updates</li>
+      <li data-nl="Support per e-mail" data-en="Email support">Email support</li>
+      <li data-nl="Beveiliging &amp; SSL" data-en="Security &amp; SSL">Security &amp; SSL</li>
+      <li data-nl="Back-ups &amp; herstel" data-en="Backups &amp; restore">Backups &amp; restore</li>
+      <li data-nl="Uptime-bewaking" data-en="Uptime monitoring">Uptime monitoring</li>
+      <li data-nl="Snelheidscontrole" data-en="Speed checks">Speed checks</li>
+    </ul>
   </div>
 </section>
 

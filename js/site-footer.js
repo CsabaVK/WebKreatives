@@ -112,17 +112,16 @@
 }
 .wk-ft-bot-top{
   display:flex;align-items:center;justify-content:space-between;
-  gap:14px;flex-wrap:wrap;
+  gap:18px;flex-wrap:wrap;
 }
 .wk-ft-bot p,.wk-ft-bot a,.wk-ft-bot span{
   font-family:var(--f-body,'Figtree',sans-serif);font-size:11.5px;line-height:1.6;
   letter-spacing:.03em;color:var(--cream-faint,#635f5a);margin:0;
 }
-/* the legal links sit on their own line under the copyright */
+/* the legal links sit between the tagline and the copyright, centred */
 .wk-ft-legal{
-  display:flex;align-items:center;flex-wrap:wrap;
-  margin-top:14px;padding-top:14px;
-  border-top:1px solid var(--rule-soft,rgba(239,230,210,.06));
+  display:flex;align-items:center;flex-wrap:wrap;justify-content:center;
+  flex:1 1 auto;
 }
 .wk-ft-legal a{
   font-weight:500;color:var(--cream-mute,#918d87);
@@ -155,10 +154,13 @@
 @media(max-width:660px){
   .wk-ft-top{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+@media(max-width:880px){
+  .wk-ft-bot-top{flex-direction:column;align-items:flex-start;gap:12px}
+  .wk-ft-legal{justify-content:flex-start}
+}
 @media(max-width:430px){
   .wk-ft-top{grid-template-columns:1fr;gap:30px}
   .wk-ft-pay{gap:12px}
-  .wk-ft-bot-top{flex-direction:column;align-items:flex-start;gap:8px}
 }
 `;
     document.head.appendChild(st);
@@ -185,7 +187,7 @@
     <div class="wk-ft-col">
       <h4 data-nl="Diensten" data-en="Services">Services</h4>
       ${L('/services/websites/','Websites','Websites')}
-      ${L('/services/hosting/','Hosting &amp; support','Hosting &amp; support')}
+      ${L('/services/hosting/','Hosting','Hosting')}
       ${L('/pricing/','Wat kost het?','What it costs')}
     </div>
 
@@ -220,12 +222,12 @@
   <div class="wk-ft-bot">
     <div class="wk-ft-bot-top">
       <p data-nl="Minder klanten, dichterbij werken." data-en="Fewer clients, closer work.">Fewer clients, closer work.</p>
+      <div class="wk-ft-legal">
+        ${L('/privacy/','Privacy','Privacy')}
+        ${L('/terms/','Voorwaarden','Terms')}
+        ${L('/refund-policy/','Herroeping &amp; restitutie','Refund Policy')}
+      </div>
       <span>© 2026 WebKreatives · Amsterdam, NL · KVK 94051097</span>
-    </div>
-    <div class="wk-ft-legal">
-      ${L('/privacy/','Privacy','Privacy')}
-      ${L('/terms/','Voorwaarden','Terms')}
-      ${L('/refund-policy/','Herroeping &amp; restitutie','Refund Policy')}
     </div>
   </div>
 </footer>`;
