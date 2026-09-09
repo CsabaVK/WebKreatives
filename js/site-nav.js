@@ -197,24 +197,41 @@
   const CARET = '<svg class="nav-caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 3l4 4 4-4"/></svg>';
 
   const ITEMS = [
-    { href: '/portfolio/', nl: 'Werk', en: 'Work' },
+    {
+      href: '/portfolio/', nl: 'Werk', en: 'Work',
+      sub: [
+        { href: '/portfolio/', nl: 'Portfolio', en: 'Portfolio',
+          dnl: 'Twaalf builds, live en aanklikbaar',
+          den: 'Twelve builds, live and clickable' },
+        { href: '/case-studies/', nl: 'Case studies', en: 'Case studies',
+          dnl: 'De keuzes achter drie ervan',
+          den: 'The decisions behind three of them' }
+      ]
+    },
     {
       href: '/services/websites/', nl: 'Diensten', en: 'Services',
       sub: [
-        { href: '/services/websites/', nl: 'Websites',
-          en: 'Websites', dnl: 'Ontwerp, bouw en oplevering',
+        { href: '/services/websites/', nl: 'Websites', en: 'Websites',
+          dnl: 'Ontwerp, bouw en oplevering',
           den: 'Design, build and launch' },
-        { href: '/services/hosting/', nl: 'Hosting &amp; support',
-          en: 'Hosting &amp; support', dnl: 'Online houden, snel en bijgewerkt',
-          den: 'Kept online, fast and up to date' },
-        { href: '/pricing/', nl: 'Kostencalculator',
-          en: 'Cost calculator', dnl: 'Een indicatie in twee minuten',
-          den: 'A rough estimate in two minutes' }
+        { href: '/services/hosting/', nl: 'Hosting &amp; support', en: 'Hosting &amp; support',
+          dnl: 'Online houden, snel en bijgewerkt',
+          den: 'Kept online, fast and up to date' }
       ]
     },
-    { href: '/case-studies/', nl: 'Case studies', en: 'Case studies' },
-    { href: '/articles/',     nl: 'Artikelen',    en: 'Articles'     },
-    { href: '/contact/',      nl: 'Contact',      en: 'Contact'      }
+    {
+      href: '/pricing/', nl: 'Prijzen', en: 'Pricing',
+      sub: [
+        { href: '/pricing/', nl: 'Kostencalculator', en: 'Cost calculator',
+          dnl: 'Een indicatie in twee minuten',
+          den: 'A rough estimate in two minutes' },
+        { href: '/services/hosting/#plans', nl: 'Maandplannen', en: 'Monthly plans',
+          dnl: 'Vanaf &euro;19,99 per maand',
+          den: 'From &euro;19.99 a month' }
+      ]
+    },
+    { href: '/articles/', nl: 'Artikelen', en: 'Articles' },
+    { href: '/contact/',  nl: 'Contact',   en: 'Contact'  }
   ];
 
   const listItems = ITEMS.map(i => {
