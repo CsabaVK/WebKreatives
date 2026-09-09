@@ -116,9 +116,9 @@
 
     <div class="wk-ft-col">
       <h4 data-nl="Wat we doen" data-en="Capabilities">Capabilities</h4>
-      ${L('/#services','Ontwerp &amp; bouw','Design &amp; build')}
-      ${L('/#services','Hosting &amp; support','Hosting &amp; support')}
-      ${L('/#services','Gevonden worden','Getting found')}
+      ${L('/services/websites/','Websites','Websites')}
+      ${L('/services/hosting/','Hosting &amp; support','Hosting &amp; support')}
+      ${L('/pricing/','Wat kost het?','What it costs')}
     </div>
 
     <div class="wk-ft-col">

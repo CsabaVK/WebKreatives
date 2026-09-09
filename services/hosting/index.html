@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hosting and support &mdash; WebKreatives</title>
+<meta name="description" content="Domain, hosting, security, backups and updates on one monthly fee. We keep the site online, fast and current. Cancel any month, take everything with you.">
+<link rel="canonical" href="https://webkreatives.com/services/hosting/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webkreatives.com/services/hosting/">
+<meta property="og:title" content="Hosting and support — WebKreatives">
+<meta property="og:description" content="Domain, hosting, security, backups and updates on one monthly fee. Cancel any month, take everything with you.">
+<meta property="og:image" content="https://webkreatives.com/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="WebKreatives">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c0a09">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css?v=v5">
+<style>
+/* ═══ HOSTING PAGE ══════════════════════════════════════════════════ */
+/* ── what's included ──────────────────────────────────────────────── */
+.hs-inc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+.hs-i{background:var(--ink);padding:clamp(20px,2.4vw,28px);transition:background var(--dur)}
+.hs-i:hover{background:var(--ink-2)}
+@media(max-width:900px){.hs-inc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.hs-inc{grid-template-columns:1fr}}
+.hs-i-ic{
+  width:38px;height:38px;border-radius:var(--radius);margin-bottom:16px;
+  border:1px solid var(--rule);background:var(--ink-deep);
+  display:flex;align-items:center;justify-content:center;color:var(--red);
+}
+.hs-i-ic svg{width:18px;height:18px}
+.hs-i h3{
+  font-family:var(--f-display);font-weight:900;font-size:17px;letter-spacing:-.035em;
+  color:var(--cream);margin:0 0 9px;
+}
+.hs-i p{font-size:13.5px;line-height:1.65;color:var(--cream-mute);margin:0}
+
+/* ── plans ────────────────────────────────────────────────────────── */
+.hs-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+@media(max-width:900px){.hs-plans{grid-template-columns:1fr}}
+.hs-p{
+  border:1px solid var(--rule);border-radius:14px;background:var(--ink-2);
+  padding:clamp(24px,2.8vw,32px);display:flex;flex-direction:column;position:relative;
+  transition:border-color var(--dur) var(--ease-premium);
+}
+.hs-p:hover{border-color:var(--rule-hard)}
+.hs-p--pick{border-color:rgba(223,56,33,.45)}
+.hs-p-tag{
+  position:absolute;top:-9px;left:24px;
+  font-family:var(--f-body);font-size:9.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;background:var(--red);
+  padding:4px 10px;border-radius:99px;
+}
+.hs-p-n{
+  font-family:var(--f-display);font-weight:900;font-size:20px;letter-spacing:-.035em;
+  color:var(--cream);margin:0 0 6px;
+}
+.hs-p-w{font-size:13.5px;line-height:1.6;color:var(--cream-mute);margin:0 0 20px;min-height:2.6em}
+.hs-p-price{
+  font-family:var(--f-display);font-weight:900;letter-spacing:-.045em;
+  font-size:clamp(30px,3.4vw,42px);line-height:1;color:var(--cream);
+}
+.hs-p-price small{font-size:.34em;letter-spacing:0;color:var(--cream-mute);font-weight:700;font-family:var(--f-body)}
+.hs-p-vat{
+  font-family:var(--f-body);font-size:11px;color:var(--cream-faint);
+  margin:9px 0 20px;letter-spacing:.03em;
+}
+.hs-p ul{list-style:none;margin:0 0 24px;padding:0;flex:1;border-top:1px solid var(--rule)}
+.hs-p li{
+  position:relative;padding:11px 0 11px 24px;font-size:13.5px;line-height:1.55;
+  color:var(--cream-dim);border-bottom:1px solid var(--rule-soft);
+}
+.hs-p li:last-child{border-bottom:0}
+.hs-p li::before{
+  content:'';position:absolute;left:2px;top:18px;width:9px;height:2px;
+  border-radius:1px;background:var(--red);opacity:.85;
+}
+.hs-p li.off{color:var(--cream-faint)}
+.hs-p li.off::before{background:var(--cream-faint);opacity:.5}
+.hs-p .wk-btn{width:100%;justify-content:center}
+
+/* ── monthly rhythm ───────────────────────────────────────────────── */
+.hs-mo{border-top:1px solid var(--rule)}
+.hs-m{
+  display:grid;grid-template-columns:130px minmax(0,1fr);
+  gap:clamp(14px,3vw,40px);align-items:baseline;
+  padding:20px 0;border-bottom:1px solid var(--rule);
+}
+@media(max-width:640px){.hs-m{grid-template-columns:1fr;gap:6px}}
+.hs-m-k{
+  font-family:var(--f-body);font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--red);
+}
+.hs-m p{font-size:15px;line-height:1.7;color:var(--cream-mute);margin:0;max-width:64ch}
+.hs-m strong{color:var(--cream);font-weight:600}
+
+/* ── expectations reused from the service page ────────────────────── */
+.sv-exp{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media(max-width:760px){.sv-exp{grid-template-columns:1fr}}
+.sv-e{padding:26px 26px 26px 0;border-right:1px solid var(--rule)}
+.sv-e:not(:first-child){padding-left:26px}
+.sv-e:last-child{border-right:0;padding-right:0}
+@media(max-width:760px){
+  .sv-e{border-right:0;border-bottom:1px solid var(--rule);padding:22px 0!important}
+  .sv-e:last-child{border-bottom:0}
+}
+.sv-e-n{
+  font-family:var(--f-display);font-weight:900;font-size:clamp(24px,2.8vw,34px);
+  letter-spacing:-.04em;line-height:1.05;color:var(--cream);display:block;margin-bottom:10px;
+}
+.sv-e-l{
+  font-family:var(--f-body);font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-faint);display:block;margin-bottom:10px;
+}
+.sv-e p{font-size:13.5px;line-height:1.65;color:var(--cream-mute);margin:0}
+
+/* ── faq ──────────────────────────────────────────────────────────── */
+.sv-faq{border-top:1px solid var(--rule)}
+.sv-q{border-bottom:1px solid var(--rule)}
+.sv-q-btn{
+  width:100%;display:flex;align-items:center;gap:16px;text-align:left;
+  padding:22px 0;background:none;border:0;cursor:pointer;color:inherit;
+}
+.sv-q-n{font-family:var(--f-body);font-size:10.5px;font-weight:700;letter-spacing:.13em;color:var(--red);flex-shrink:0}
+.sv-q-t{
+  flex:1;font-family:var(--f-body);font-weight:600;font-size:clamp(15px,1.5vw,17.5px);
+  color:var(--cream);letter-spacing:-.01em;
+}
+.sv-q-ic{width:15px;height:15px;flex-shrink:0;color:var(--cream-faint);transition:transform .35s var(--ease-premium),color .2s}
+.sv-q.open .sv-q-ic{transform:rotate(45deg);color:var(--red)}
+.sv-q-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease-premium)}
+.sv-q.open .sv-q-a{grid-template-rows:1fr}
+.sv-q-a-in{overflow:hidden}
+.sv-q-a p{font-size:15px;line-height:1.75;color:var(--cream-mute);margin:0 0 22px;padding-left:40px;max-width:70ch}
+@media(max-width:600px){.sv-q-a p{padding-left:0}}
+</style>
+</head>
+<body data-page="service">
+<div id="wkProgress"></div>
+<div id="globalNav"></div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="wk-phero wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb" aria-label="Breadcrumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <span class="sep">/</span>
+      <a href="/services/websites/" data-nl="Diensten" data-en="Services">Services</a>
+      <span class="sep">/</span>
+      <span data-nl="Hosting &amp; support" data-en="Hosting &amp; support">Hosting &amp; support</span>
+    </nav>
+    <div class="wk-phero-split">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Hosting &amp; support" data-en="Hosting &amp; support">Hosting &amp; support</span>
+        <h1 class="wk-display wk-h1" data-split
+          data-nl="De site blijft online, snel en bij. <em class='mark'>Zonder jou</em>."
+          data-en="The site stays online, fast and current. <em class='mark'>Without you</em>.">The site stays online, fast and current. <em class="mark">Without you</em>.</h1>
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+          data-nl="Domein, hosting, beveiliging, back-ups en updates op één maandbedrag. Geen losse facturen van vier partijen, geen certificaat dat 's nachts verloopt."
+          data-en="Domain, hosting, security, backups and updates on one monthly fee. No separate invoices from four suppliers, no certificate quietly expiring overnight.">Domain, hosting, security, backups and updates on one monthly fee. No separate invoices from four suppliers, no certificate quietly expiring overnight.</p>
+        <div class="wk-cta-row" data-reveal data-reveal-delay=".25" style="margin-top:32px">
+          <a href="#plans" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+            <span data-nl="Bekijk de plannen" data-en="See the plans">See the plans</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+          <a href="/services/websites/" class="wk-btn wk-btn--ghost">
+            <span data-nl="Eerst een site laten bouwen" data-en="Get a site built first">Get a site built first</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+      <div class="wk-stats" data-reveal data-reveal-delay=".35">
+        <div><span class="wk-stat-n" data-count="1">1</span><span class="wk-stat-l" data-nl="Factuur, niet vier" data-en="Invoice, not four">Invoice, not four</span></div>
+        <div><span class="wk-stat-n" data-count="0">0</span><span class="wk-stat-l" data-nl="Opzegtermijn" data-en="Notice period">Notice period</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INCLUDED ══════════════════════════════════════════════════ -->
+<section class="wk-section">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Wat erin zit" data-en="What is in it">What is in it</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Zes dingen die stilletjes misgaan."
+          data-en="Six things that quietly go wrong.">Six things that quietly go wrong.</h2>
+      </div>
+      <p class="wk-lede" data-reveal
+        data-nl="Een website is geen meubelstuk. Certificaten verlopen, hosts worden traag, back-ups blijken leeg. Dit zijn de dingen waar niemand aan denkt tot het misgaat."
+        data-en="A website is not a piece of furniture. Certificates expire, hosts get slow, backups turn out to be empty. These are the things nobody thinks about until they go wrong.">A website is not a piece of furniture. Certificates expire, hosts get slow, backups turn out to be empty. These are the things nobody thinks about until they go wrong.</p>
+    </div>
+
+    <div class="hs-inc" data-reveal>
+      <div class="hs-i">
+        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3 data-nl="SSL en beveiliging" data-en="SSL and security">SSL and security</h3>
+        <p data-nl="Het slotje in de adresbalk blijft geldig, automatisch verlengd. Verloopt dat, dan krijgt elke bezoeker een rode waarschuwing te zien in plaats van je site."
+           data-en="The padlock in the address bar stays valid, renewed automatically. Let it expire and every visitor sees a red warning instead of your site.">The padlock in the address bar stays valid, renewed automatically. Let it expire and every visitor sees a red warning instead of your site.</p>
+      </div>
+      <div class="hs-i">
+        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+        <h3 data-nl="Dagelijkse back-ups" data-en="Daily backups">Daily backups</h3>
+        <p data-nl="Elke dag een kopie, dertig dagen bewaard, en getest of hij ook echt terug te zetten is. Een back-up die je nooit hebt geprobeerd is geen back-up."
+           data-en="A copy every day, kept for thirty days, and tested to make sure it actually restores. A backup you have never tried is not a backup.">A copy every day, kept for thirty days, and tested to make sure it actually restores. A backup you have never tried is not a backup.</p>
+      </div>
+      <div class="hs-i">
+        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+        <h3 data-nl="Snelheid bewaakt" data-en="Speed watched">Speed watched</h3>
+        <p data-nl="Sites worden langzaam sluipenderwijs, meestal door een te zware foto die iemand snel toevoegde. We meten het en grijpen in voordat het je bezoekers kost."
+           data-en="Sites get slow by drift, usually one oversized photo somebody added in a hurry. We measure it and fix it before it starts costing you visitors.">Sites get slow by drift, usually one oversized photo somebody added in a hurry. We measure it and fix it before it starts costing you visitors.</p>
+      </div>
+      <div class="hs-i">
+        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <h3 data-nl="Uptime-controle" data-en="Uptime checks">Uptime checks</h3>
+        <p data-nl="De site wordt elke paar minuten gecontroleerd. Gaat hij eruit, dan weten wij het voordat jij het hoort van een klant die niet kon bestellen."
+           data-en="The site is checked every few minutes. If it goes down we know before you hear it from a customer who could not place an order.">The site is checked every few minutes. If it goes down we know before you hear it from a customer who could not place an order.</p>
+      </div>
+      <div class="hs-i">
+        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></span>
+        <h3 data-nl="Updates en kleine wijzigingen" data-en="Updates and small changes">Updates and small changes</h3>
+        <p data-nl="Nieuwe openingstijden, een prijs die verandert, een medewerker erbij. Kleine tekstwijzigingen zitten in het plan, je hoeft er geen offerte voor te vragen."
+           data-en="New opening hours, a price that changed, a member of staff added. Small text changes are in the plan; you do not have to ask for a quote.">New opening hours, a price that changed, a member of staff added. Small text changes are in the plan; you do not have to ask for a quote.</p>
+      </div>
+      <div class="hs-i">
+        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.5L4 18z"/><path d="M8 9h8M8 12.5h5"/></svg></span>
+        <h3 data-nl="Eén aanspreekpunt" data-en="One person to call">One person to call</h3>
+        <p data-nl="Geen ticketsysteem en geen accountmanager. Je mailt de persoon die je site heeft gebouwd, en die weet meteen waar het over gaat."
+           data-en="No ticket system and no account manager. You email the person who built your site, and they already know what you are talking about.">No ticket system and no account manager. You email the person who built your site, and they already know what you are talking about.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLANS ═════════════════════════════════════════════════════ -->
+<section class="wk-section" id="plans" style="background:var(--ink-2);border-top:1px solid var(--rule)">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="De plannen" data-en="The plans">The plans</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Drie plannen. Maandelijks opzegbaar."
+          data-en="Three plans. Cancel any month.">Three plans. Cancel any month.</h2>
+      </div>
+      <p class="wk-lede" data-reveal
+        data-nl="Geen jaarcontract en geen opzegtermijn. Stop je, dan krijg je alles mee: het domein staat al op jouw naam en de bestanden zijn van jou."
+        data-en="No annual contract and no notice period. If you stop, everything comes with you: the domain is already in your name and the files are yours.">No annual contract and no notice period. If you stop, everything comes with you: the domain is already in your name and the files are yours.</p>
+    </div>
+
+    <div class="hs-plans">
+      <div class="hs-p" data-reveal>
+        <h3 class="hs-p-n" data-nl="Basis" data-en="Basic">Basic</h3>
+        <p class="hs-p-w" data-nl="Voor een site die zelden verandert. Een eenpager of een klein bedrijfsprofiel."
+           data-en="For a site that rarely changes. A one-pager or a small business profile.">For a site that rarely changes. A one-pager or a small business profile.</p>
+        <p class="hs-p-price">&euro;19,99 <small data-nl="/ maand" data-en="/ month">/ month</small></p>
+        <p class="hs-p-vat" data-nl="Excl. btw &middot; maandelijks opzegbaar" data-en="Excl. VAT &middot; cancel any month">Excl. VAT &middot; cancel any month</p>
+        <ul>
+          <li data-nl="Domein en hosting inbegrepen" data-en="Domain and hosting included">Domain and hosting included</li>
+          <li data-nl="SSL, altijd geldig" data-en="SSL, always valid">SSL, always valid</li>
+          <li data-nl="Dagelijkse back-up, 30 dagen" data-en="Daily backup, 30 days">Daily backup, 30 days</li>
+          <li data-nl="Uptime-controle" data-en="Uptime monitoring">Uptime monitoring</li>
+          <li data-nl="Twee tekstwijzigingen per jaar" data-en="Two text changes a year">Two text changes a year</li>
+          <li class="off" data-nl="Geen maandelijkse rapportage" data-en="No monthly report">No monthly report</li>
+        </ul>
+        <a href="/contact/" class="wk-btn wk-btn--ghost">
+          <span data-nl="Kies Basis" data-en="Choose Basic">Choose Basic</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="hs-p hs-p--pick" data-reveal data-reveal-delay=".08">
+        <span class="hs-p-tag" data-nl="Meest gekozen" data-en="Most chosen">Most chosen</span>
+        <h3 class="hs-p-n" data-nl="Plus" data-en="Plus">Plus</h3>
+        <p class="hs-p-w" data-nl="Voor een site die meedraait met het bedrijf. Prijzen, kaart of aanbod veranderen regelmatig."
+           data-en="For a site that moves with the business. Prices, menu or offer change regularly.">For a site that moves with the business. Prices, menu or offer change regularly.</p>
+        <p class="hs-p-price">&euro;39 <small data-nl="/ maand" data-en="/ month">/ month</small></p>
+        <p class="hs-p-vat" data-nl="Excl. btw &middot; maandelijks opzegbaar" data-en="Excl. VAT &middot; cancel any month">Excl. VAT &middot; cancel any month</p>
+        <ul>
+          <li data-nl="Alles uit Basis" data-en="Everything in Basic">Everything in Basic</li>
+          <li data-nl="Onbeperkt kleine tekstwijzigingen" data-en="Unlimited small text changes">Unlimited small text changes</li>
+          <li data-nl="Eén uur wijzigingen per maand" data-en="One hour of changes a month">One hour of changes a month</li>
+          <li data-nl="Snelheidscontrole per kwartaal" data-en="Quarterly speed check">Quarterly speed check</li>
+          <li data-nl="Maandelijkse rapportage in gewone taal" data-en="Monthly report in plain language">Monthly report in plain language</li>
+          <li data-nl="Reactie binnen één werkdag" data-en="Reply within one business day">Reply within one business day</li>
+        </ul>
+        <a href="/contact/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Kies Plus" data-en="Choose Plus">Choose Plus</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="hs-p" data-reveal data-reveal-delay=".16">
+        <h3 class="hs-p-n" data-nl="Groei" data-en="Growth">Growth</h3>
+        <p class="hs-p-w" data-nl="Voor wie de site actief gebruikt om klanten te halen, niet alleen om gevonden te worden."
+           data-en="For businesses actively using the site to win work, not just to be findable.">For businesses actively using the site to win work, not just to be findable.</p>
+        <p class="hs-p-price">&euro;89 <small data-nl="/ maand" data-en="/ month">/ month</small></p>
+        <p class="hs-p-vat" data-nl="Excl. btw &middot; maandelijks opzegbaar" data-en="Excl. VAT &middot; cancel any month">Excl. VAT &middot; cancel any month</p>
+        <ul>
+          <li data-nl="Alles uit Plus" data-en="Everything in Plus">Everything in Plus</li>
+          <li data-nl="Drie uur wijzigingen per maand" data-en="Three hours of changes a month">Three hours of changes a month</li>
+          <li data-nl="Lokale SEO bijhouden" data-en="Local SEO upkeep">Local SEO upkeep</li>
+          <li data-nl="Google Bedrijfsprofiel onderhouden" data-en="Google Business Profile upkeep">Google Business Profile upkeep</li>
+          <li data-nl="Elk kwartaal een gesprek over wat werkt" data-en="A quarterly call on what is working">A quarterly call on what is working</li>
+          <li data-nl="Voorrang bij nieuwe aanvragen" data-en="Priority on new requests">Priority on new requests</li>
+        </ul>
+        <a href="/contact/" class="wk-btn wk-btn--ghost">
+          <span data-nl="Kies Groei" data-en="Choose Growth">Choose Growth</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE MONTH ═════════════════════════════════════════════════ -->
+<section class="wk-section" style="border-top:1px solid var(--rule)">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Wat we doen" data-en="What we do">What we do</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Wat er in een maand gebeurt."
+          data-en="What actually happens in a month.">What actually happens in a month.</h2>
+      </div>
+      <p class="wk-lede" data-reveal
+        data-nl="Een maandbedrag waar niets tegenover lijkt te staan voelt als geld weggooien. Dus hier staat wat er gebeurt, ook in een maand waarin je niets van ons hoort."
+        data-en="A monthly fee with nothing visible against it feels like money thrown away. So here is what happens, including in a month when you hear nothing from us.">A monthly fee with nothing visible against it feels like money thrown away. So here is what happens, including in a month when you hear nothing from us.</p>
+    </div>
+
+    <div class="hs-mo">
+      <div class="hs-m" data-reveal>
+        <span class="hs-m-k" data-nl="Elke dag" data-en="Every day">Every day</span>
+        <p data-nl="Een volledige back-up wordt gemaakt en weggeschreven op een andere plek dan de site zelf. <strong>Een back-up naast de server is geen back-up.</strong>"
+           data-en="A full backup is taken and stored somewhere other than the site itself. <strong>A backup next to the server is not a backup.</strong>">A full backup is taken and stored somewhere other than the site itself. <strong>A backup next to the server is not a backup.</strong></p>
+      </div>
+      <div class="hs-m" data-reveal>
+        <span class="hs-m-k" data-nl="Elke paar minuten" data-en="Every few minutes">Every few minutes</span>
+        <p data-nl="De site wordt van buitenaf opgevraagd. Reageert hij niet, dan krijgen wij een melding, geen jij een telefoontje van een klant."
+           data-en="The site is requested from the outside. If it does not answer, we get the alert, rather than you getting the phone call from a customer.">The site is requested from the outside. If it does not answer, we get the alert, rather than you getting the phone call from a customer.</p>
+      </div>
+      <div class="hs-m" data-reveal>
+        <span class="hs-m-k" data-nl="Elke maand" data-en="Every month">Every month</span>
+        <p data-nl="Updates worden nagelopen en toegepast, en het SSL-certificaat gecontroleerd. Op Plus en Groei krijg je een korte rapportage: bezoekers, aanvragen, en wat opviel."
+           data-en="Updates are reviewed and applied, and the SSL certificate checked. On Plus and Growth you get a short report: visitors, enquiries, and anything that stood out.">Updates are reviewed and applied, and the SSL certificate checked. On Plus and Growth you get a short report: visitors, enquiries, and anything that stood out.</p>
+      </div>
+      <div class="hs-m" data-reveal>
+        <span class="hs-m-k" data-nl="Elk kwartaal" data-en="Every quarter">Every quarter</span>
+        <p data-nl="Laadtijd wordt opnieuw gemeten en vergeleken met de oplevering. Is de site trager geworden, dan zoeken we uit waardoor en lossen het op. <strong>Dat kost je niets extra.</strong>"
+           data-en="Load time is measured again and compared against launch. If the site has slowed down, we find out why and fix it. <strong>That costs you nothing extra.</strong>">Load time is measured again and compared against launch. If the site has slowed down, we find out why and fix it. <strong>That costs you nothing extra.</strong></p>
+      </div>
+      <div class="hs-m" data-reveal>
+        <span class="hs-m-k" data-nl="Elk jaar" data-en="Every year">Every year</span>
+        <p data-nl="Het domein wordt verlengd, op jouw naam. Je krijgt bericht voordat het gebeurt, niet erna."
+           data-en="The domain is renewed, in your name. You are told before it happens, not after.">The domain is renewed, in your name. You are told before it happens, not after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPECTATIONS ══════════════════════════════════════════════ -->
+<section class="wk-section" style="padding-top:0">
+  <div class="wk-wrap">
+    <div class="sv-exp" data-reveal>
+      <div class="sv-e">
+        <span class="sv-e-l" data-nl="Opzeggen" data-en="Cancelling">Cancelling</span>
+        <span class="sv-e-n" data-nl="Elke maand" data-en="Any month">Any month</span>
+        <p data-nl="Eén e-mail is genoeg. Geen opzegtermijn, geen boete, geen gesprek waarin we je proberen te houden."
+           data-en="One email is enough. No notice period, no penalty, no call where we try to keep you.">One email is enough. No notice period, no penalty, no call where we try to keep you.</p>
+      </div>
+      <div class="sv-e">
+        <span class="sv-e-l" data-nl="Eigendom" data-en="Ownership">Ownership</span>
+        <span class="sv-e-n" data-nl="Van jou" data-en="Yours">Yours</span>
+        <p data-nl="Het domein staat vanaf de registratie op jouw naam als houder, niet op die van ons. Dat is het verschil tussen verhuizen en opnieuw beginnen."
+           data-en="The domain is registered with you as the holder from day one, not us. That is the difference between moving house and starting over.">The domain is registered with you as the holder from day one, not us. That is the difference between moving house and starting over.</p>
+      </div>
+      <div class="sv-e">
+        <span class="sv-e-l" data-nl="Bij vertrek" data-en="If you leave">If you leave</span>
+        <span class="sv-e-n" data-nl="Alles mee" data-en="All of it">All of it</span>
+        <p data-nl="Je krijgt de code, de bestanden en elke login. We helpen je verhuizen naar je nieuwe partij, ook als dat een concurrent is."
+           data-en="You get the code, the files and every login. We help you move to your new provider, even when that is a competitor.">You get the code, the files and every login. We help you move to your new provider, even when that is a competitor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ═══════════════════════════════════════════════════════ -->
+<section class="wk-section" style="border-top:1px solid var(--rule)">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Vragen" data-en="Questions">Questions</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Wat mensen hier meestal vragen."
+          data-en="What people usually ask here.">What people usually ask here.</h2>
+      </div>
+    </div>
+
+    <div class="sv-faq">
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">01</span><span class="sv-q-t" data-nl="Kan ik dit afnemen voor een site die jullie niet gebouwd hebben?" data-en="Can I take this for a site you did not build?">Can I take this for a site you did not build?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Meestal wel. We kijken eerst waar de site nu op draait en hoe hij gebouwd is. Bij een normale site is dat zo geregeld. Zit er een berg verouderde plugins in, dan zeggen we dat eerlijk en rekenen we uit of onderhouden of opnieuw bouwen goedkoper is." data-en="Usually yes. We look first at what the site runs on and how it was built. For a normal site that is straightforward. If it is carrying a pile of outdated plugins we will say so, and work out whether maintaining or rebuilding it is cheaper.">Usually yes. We look first at what the site runs on and how it was built. For a normal site that is straightforward. If it is carrying a pile of outdated plugins we will say so, and work out whether maintaining or rebuilding it is cheaper.</p></div></div>
+      </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">02</span><span class="sv-q-t" data-nl="Wat telt als een kleine wijziging?" data-en="What counts as a small change?">What counts as a small change?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Tekst, prijzen, openingstijden, een foto vervangen, een medewerker toevoegen of weghalen. Een nieuwe pagina of een nieuwe functie is een project, en daar krijg je vooraf een prijs voor. We houden geen minuten bij om je op een klein verzoek af te rekenen." data-en="Text, prices, opening hours, swapping a photo, adding or removing a member of staff. A new page or a new feature is a project, and you get a price for it up front. We do not run a stopwatch to charge you for a small request.">Text, prices, opening hours, swapping a photo, adding or removing a member of staff. A new page or a new feature is a project, and you get a price for it up front. We do not run a stopwatch to charge you for a small request.</p></div></div>
+      </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">03</span><span class="sv-q-t" data-nl="Waarom is dit goedkoper dan losse hosting plus een bureau?" data-en="Why is this cheaper than hosting plus an agency?">Why is this cheaper than hosting plus an agency?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Omdat de sites die we bouwen licht zijn. Geen zware plugins betekent goedkopere hosting en minder dat kapot kan, en dat verschil geven we door. We verdienen niets aan het domein, dat gaat tegen kostprijs." data-en="Because the sites we build are light. No heavy plugins means cheaper hosting and less that can break, and we pass that difference on. We make nothing on the domain; that goes through at cost.">Because the sites we build are light. No heavy plugins means cheaper hosting and less that can break, and we pass that difference on. We make nothing on the domain; that goes through at cost.</p></div></div>
+      </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">04</span><span class="sv-q-t" data-nl="Wat gebeurt er als de site eruit ligt?" data-en="What happens if the site goes down?">What happens if the site goes down?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Wij krijgen de melding, niet jij. In de meeste gevallen ligt het aan de host en is het binnen een paar minuten voorbij. Duurt het langer, dan hoor je van ons wat er aan de hand is en wat we eraan doen, in gewone taal." data-en="We get the alert, not you. In most cases it is the host and it is over within a few minutes. If it takes longer, you hear from us what is going on and what we are doing about it, in plain language.">We get the alert, not you. In most cases it is the host and it is over within a few minutes. If it takes longer, you hear from us what is going on and what we are doing about it, in plain language.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING CTA ═══════════════════════════════════════════════ -->
+<div class="wk-cta-wrap">
+  <div class="wk-wrap">
+    <section class="wk-cta-card wk-grain" data-cursor-grid>
+      <h2 class="wk-display wk-h2" data-split
+        data-nl="Nooit meer <em class='mark'>aan denken</em>."
+        data-en="Never <em class='mark'>think about it</em> again.">Never <em class="mark">think about it</em> again.</h2>
+      <p class="wk-lede" data-reveal
+        data-nl="Vertel welke site het is en wat er nu misgaat. We kijken ernaar en zeggen eerlijk welk plan past, of dat je er geen nodig hebt."
+        data-en="Tell us which site it is and what is going wrong now. We will look and say honestly which plan fits, or that you do not need one.">Tell us which site it is and what is going wrong now. We will look and say honestly which plan fits, or that you do not need one.</p>
+      <div class="wk-cta-row" data-reveal data-reveal-delay=".1">
+        <a href="/contact/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Neem contact op" data-en="Get in touch">Get in touch</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+        <a href="/services/websites/" class="wk-btn wk-btn--ghost">
+          <span data-nl="Een site laten bouwen" data-en="Have a site built">Have a site built</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="globalFooter"></div>
+
+<script src="/js/motion.js?v=v5"></script>
+<script src="/js/site-nav.js?v=v5"></script>
+<script src="/js/site-footer.js?v=v5"></script>
+<script src="/js/cookie-consent.js?v=v5"></script>
+<script>
+document.querySelectorAll('.sv-q-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const q = btn.parentElement, open = q.classList.contains('open');
+    document.querySelectorAll('.sv-q').forEach(x => x.classList.remove('open'));
+    if (!open) q.classList.add('open');
+  });
+});
+(function () {
+  const c = document.querySelector('.wk-cta-card');
+  if (!c) return;
+  new IntersectionObserver((e, o) => e.forEach(x => {
+    if (x.isIntersecting) { c.classList.add('is-lit'); o.disconnect(); }
+  }), { threshold: .3 }).observe(c);
+})();
+</script>
+</body>
+</html>

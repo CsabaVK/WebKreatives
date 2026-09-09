@@ -43,7 +43,7 @@
 .nav-logo{display:block;line-height:0}
 .nav-logo img{height:80px;width:auto;display:block}
 #mainNav .nav-links{
-  display:flex;gap:34px;list-style:none;justify-content:center;
+  display:flex;gap:46px;list-style:none;justify-content:center;align-items:center;
   margin:0;padding:0;
 }
 #mainNav .nav-links a{
@@ -138,6 +138,50 @@
   margin-top:8px;justify-content:center;border-radius:9px;
   background:var(--red,#df3821);color:var(--white,oklch(99% .004 80));border-bottom:0;
 }
+
+/* ── Services dropdown ────────────────────────────────────────────── */
+#mainNav .nav-links li{position:relative}
+#mainNav .nav-links .has-sub > a{display:inline-flex;align-items:center;gap:6px}
+.nav-caret{
+  width:8px;height:8px;flex-shrink:0;opacity:.55;
+  transition:transform .25s var(--ease,cubic-bezier(.16,1,.3,1)),opacity .2s;
+}
+#mainNav .nav-links .has-sub.open > a .nav-caret{transform:rotate(180deg);opacity:1}
+.nav-sub{
+  position:absolute;top:100%;left:50%;margin-top:14px;
+  transform:translate(-50%,-6px);
+  min-width:236px;padding:6px;list-style:none;
+  background:oklch(12% .010 25);border:1px solid oklch(22% .010 25);
+  border-radius:12px;box-shadow:0 22px 60px rgba(0,0,0,.5);
+  opacity:0;pointer-events:none;z-index:210;
+  transition:opacity .2s var(--ease,cubic-bezier(.16,1,.3,1)),
+             transform .2s var(--ease,cubic-bezier(.16,1,.3,1));
+}
+/* an invisible bridge so the pointer can cross the gap without closing it */
+.nav-sub::before{content:'';position:absolute;left:0;right:0;top:-14px;height:14px}
+#mainNav .nav-links .has-sub.open .nav-sub{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.nav-sub li{width:100%}
+#mainNav .nav-sub a{
+  display:block;padding:11px 13px;border-radius:8px;
+  font-family:var(--f-body,'Figtree',sans-serif);
+  font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:none;
+  color:oklch(72% .005 25);
+  transition:background .18s,color .18s;
+}
+#mainNav .nav-sub a::after{display:none}
+#mainNav .nav-sub a:hover{background:oklch(20% .010 25);color:var(--white,oklch(99% .004 80))}
+.nav-sub-d{
+  display:block;margin-top:3px;font-size:11px;font-weight:400;
+  letter-spacing:0;text-transform:none;color:oklch(50% .005 25);
+}
+
+/* mobile: the children sit under the parent, no flyout */
+.mobile-menu .mobile-sub{
+  display:block;padding:11px 10px 11px 26px;
+  font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:none;
+  color:oklch(60% .005 25);
+}
+
 @media(max-width:1000px){
   #mainNav{grid-template-columns:auto 1fr auto;padding:14px 18px}
   #mainNav.scrolled{padding:10px 18px}
@@ -150,17 +194,51 @@
   }
 
   /* ── Markup ─────────────────────────────────────────────────────────── */
+  const CARET = '<svg class="nav-caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 3l4 4 4-4"/></svg>';
+
   const ITEMS = [
-    { href: H('#work'),      nl: 'Werk',      en: 'Work'      },
-    { href: H('#services'),  nl: 'Diensten',  en: 'Services'  },
-    { href: '/portfolio/',   nl: 'Portfolio', en: 'Portfolio' },
-    { href: '/articles/',    nl: 'Artikelen', en: 'Articles'  },
-    { href: '/contact/',   nl: 'Contact',   en: 'Contact'   }
+    { href: '/portfolio/', nl: 'Werk', en: 'Work' },
+    {
+      href: '/services/websites/', nl: 'Diensten', en: 'Services',
+      sub: [
+        { href: '/services/websites/', nl: 'Websites',
+          en: 'Websites', dnl: 'Ontwerp, bouw en oplevering',
+          den: 'Design, build and launch' },
+        { href: '/services/hosting/', nl: 'Hosting &amp; support',
+          en: 'Hosting &amp; support', dnl: 'Online houden, snel en bijgewerkt',
+          den: 'Kept online, fast and up to date' },
+        { href: '/pricing/', nl: 'Kostencalculator',
+          en: 'Cost calculator', dnl: 'Een indicatie in twee minuten',
+          den: 'A rough estimate in two minutes' }
+      ]
+    },
+    { href: '/case-studies/', nl: 'Case studies', en: 'Case studies' },
+    { href: '/articles/',     nl: 'Artikelen',    en: 'Articles'     },
+    { href: '/contact/',      nl: 'Contact',      en: 'Contact'      }
   ];
-  const listItems = ITEMS.map(i =>
-    `<li><a href="${i.href}" data-nl="${i.nl}" data-en="${i.en}">${i.nl}</a></li>`).join('\n      ');
-  const mobileItems = ITEMS.map(i =>
-    `<a href="${i.href}" data-nl="${i.nl}" data-en="${i.en}">${i.nl}</a>`).join('\n  ');
+
+  const listItems = ITEMS.map(i => {
+    if (!i.sub) {
+      return `<li><a href="${i.href}" data-nl="${i.nl}" data-en="${i.en}">${i.nl}</a></li>`;
+    }
+    const kids = i.sub.map(k =>
+      `<li><a href="${k.href}" data-nl="${k.nl}<span class='nav-sub-d'>${k.dnl}</span>" data-en="${k.en}<span class='nav-sub-d'>${k.den}</span>">${k.nl}<span class="nav-sub-d">${k.dnl}</span></a></li>`
+    ).join('\n          ');
+    return `<li class="has-sub">
+        <a href="${i.href}" aria-haspopup="true" aria-expanded="false"><span data-nl="${i.nl}" data-en="${i.en}">${i.nl}</span>${CARET}</a>
+        <ul class="nav-sub">
+          ${kids}
+        </ul>
+      </li>`;
+  }).join('\n      ');
+
+  const mobileItems = ITEMS.map(i => {
+    const own = `<a href="${i.href}" data-nl="${i.nl}" data-en="${i.en}">${i.nl}</a>`;
+    if (!i.sub) return own;
+    return own + '\n  ' + i.sub.map(k =>
+      `<a class="mobile-sub" href="${k.href}" data-nl="${k.nl}" data-en="${k.en}">${k.nl}</a>`
+    ).join('\n  ');
+  }).join('\n  ');
 
   root.innerHTML = `
 <nav id="mainNav">
@@ -239,6 +317,33 @@
   const onScroll = () => navEl && navEl.classList.toggle('scrolled', window.scrollY > 60);
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ── Services dropdown ──────────────────────────────────────────────
+     Hover opens it on a fine pointer, with a short close delay so the
+     pointer can cross the gap to the menu. Click and keyboard work
+     everywhere, which hover alone does not.                              */
+  document.querySelectorAll('#mainNav .has-sub').forEach(li => {
+    const trigger = li.querySelector(':scope > a');
+    let t;
+    const open  = () => { clearTimeout(t); li.classList.add('open');    trigger.setAttribute('aria-expanded', 'true'); };
+    const close = () => { clearTimeout(t); li.classList.remove('open'); trigger.setAttribute('aria-expanded', 'false'); };
+    const lazyClose = () => { clearTimeout(t); t = setTimeout(close, 220); };
+
+    if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+      li.addEventListener('pointerenter', open);
+      li.addEventListener('pointerleave', lazyClose);
+      /* on desktop the parent link is a shortcut, not a toggle */
+    } else {
+      trigger.addEventListener('click', e => {
+        if (!li.classList.contains('open')) { e.preventDefault(); open(); }
+      });
+    }
+    li.addEventListener('focusin', open);
+    li.addEventListener('focusout', e => {
+      if (!li.contains(e.relatedTarget)) close();
+    });
+    li.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+  });
 
   const tog  = document.getElementById('mobileToggle');
   const menu = document.getElementById('mobileMenu');

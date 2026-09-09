@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a website costs &mdash; WebKreatives</title>
+<meta name="description" content="A rough estimate in two minutes. Pick the scope, add what you need, and see a range before you talk to anyone. No email required.">
+<link rel="canonical" href="https://webkreatives.com/pricing/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webkreatives.com/pricing/">
+<meta property="og:title" content="What a website costs — WebKreatives">
+<meta property="og:description" content="A rough estimate in two minutes. Pick the scope, add what you need, and see a range before you talk to anyone.">
+<meta property="og:image" content="https://webkreatives.com/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="WebKreatives">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c0a09">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css?v=v5">
+<style>
+/* ═══ COST CALCULATOR ═══════════════════════════════════════════════ */
+.pc-body{padding:clamp(44px,6vw,80px) 0 clamp(40px,5vw,70px)}
+.pc-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);
+  gap:clamp(28px,4vw,60px);align-items:start;
+}
+@media(max-width:980px){.pc-grid{grid-template-columns:1fr}}
+
+/* ── question blocks ──────────────────────────────────────────────── */
+.pc-q{padding:26px 0;border-top:1px solid var(--rule)}
+.pc-q:first-child{border-top:0;padding-top:0}
+.pc-q-h{display:flex;align-items:baseline;gap:13px;margin-bottom:16px}
+.pc-q-n{
+  font-family:var(--f-body);font-size:11px;font-weight:700;letter-spacing:.14em;
+  color:var(--red);flex-shrink:0;
+}
+.pc-q-t{
+  font-family:var(--f-display);font-weight:900;font-size:clamp(17px,1.8vw,21px);
+  letter-spacing:-.03em;color:var(--cream);
+}
+.pc-q-s{
+  font-size:13.5px;line-height:1.65;color:var(--cream-mute);
+  margin:-8px 0 16px;max-width:60ch;
+}
+.pc-opts{display:flex;flex-wrap:wrap;gap:9px}
+.pc-opt{position:relative}
+.pc-opt input{position:absolute;opacity:0;width:0;height:0}
+.pc-opt span{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 16px;border-radius:var(--radius);cursor:pointer;
+  border:1px solid var(--rule-hard);background:transparent;
+  font-size:13.5px;font-weight:500;color:var(--cream-dim);
+  transition:border-color .2s,background .2s,color .2s;
+}
+.pc-opt span:hover{border-color:var(--cream-faint);color:var(--cream)}
+.pc-opt input:checked + span{
+  border-color:var(--red);background:rgba(223,56,33,.10);color:var(--cream);
+}
+.pc-opt input:focus-visible + span{outline:2px solid var(--red);outline-offset:2px}
+.pc-opt em{
+  font-style:normal;font-size:11.5px;color:var(--cream-faint);
+  font-family:var(--f-body);font-weight:600;
+}
+.pc-opt input:checked + span em{color:var(--red)}
+
+/* ── add-ons ──────────────────────────────────────────────────────── */
+.pc-adds{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:8px}
+.pc-add{position:relative}
+.pc-add input{position:absolute;opacity:0;width:0;height:0}
+.pc-add span{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 14px;border-radius:var(--radius);cursor:pointer;
+  border:1px solid var(--rule);background:var(--ink-2);
+  font-size:13.5px;color:var(--cream-dim);
+  transition:border-color .2s,background .2s,color .2s;
+}
+.pc-add span:hover{border-color:var(--rule-hard);color:var(--cream)}
+.pc-add input:checked + span{border-color:var(--red);background:rgba(223,56,33,.10);color:var(--cream)}
+.pc-add input:focus-visible + span{outline:2px solid var(--red);outline-offset:2px}
+.pc-add b{
+  font-family:var(--f-body);font-weight:700;font-size:12px;
+  color:var(--cream-faint);white-space:nowrap;
+}
+.pc-add input:checked + span b{color:var(--red)}
+.pc-qty{display:flex;align-items:center;gap:8px;margin-top:14px}
+.pc-qty[hidden],.pc-q[hidden]{display:none!important}
+.pc-qty label{font-size:12.5px;color:var(--cream-mute)}
+.pc-qty input{
+  width:74px;padding:8px 10px;border-radius:var(--radius);
+  border:1px solid var(--rule-hard);background:var(--ink);color:var(--cream);
+  font-family:var(--f-body);font-size:13.5px;
+}
+
+/* ── result rail ──────────────────────────────────────────────────── */
+.pc-out{position:sticky;top:104px}
+@media(max-width:980px){.pc-out{position:static}}
+.pc-card{
+  border:1px solid var(--rule);border-radius:14px;background:var(--ink-2);
+  padding:clamp(22px,2.6vw,30px);position:relative;overflow:hidden;
+}
+.pc-card::before{
+  content:'';position:absolute;left:0;right:0;top:0;height:2px;
+  background:linear-gradient(90deg,var(--red),var(--yellow),var(--lime),var(--blue));
+  opacity:.75;
+}
+.pc-lbl{
+  font-family:var(--f-body);font-size:10.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);
+  display:block;margin-bottom:12px;
+}
+.pc-range{
+  font-family:var(--f-display);font-weight:900;letter-spacing:-.045em;
+  font-size:clamp(27px,3.2vw,40px);line-height:1.02;color:var(--cream);
+}
+.pc-range small{font-size:.52em;letter-spacing:-.02em;color:var(--cream-mute);font-weight:700}
+.pc-vat{
+  font-family:var(--f-body);font-size:11.5px;letter-spacing:.03em;
+  color:var(--cream-faint);margin-top:9px;
+}
+.pc-scope{margin-top:22px;border-top:1px solid var(--rule);padding-top:16px}
+.pc-line{
+  display:flex;justify-content:space-between;gap:14px;
+  font-size:13px;line-height:1.6;color:var(--cream-mute);padding:5px 0;
+}
+.pc-line b{color:var(--cream-dim);font-weight:500;text-align:right}
+.pc-hint{
+  margin-top:18px;padding:13px 15px;border-radius:var(--radius);
+  background:var(--ink-3);border-left:2px solid var(--red);
+  font-size:12.5px;line-height:1.65;color:var(--cream-mute);
+}
+.pc-card .wk-btn{margin-top:20px;width:100%;justify-content:center}
+.pc-note{
+  margin-top:16px;font-size:11.5px;line-height:1.7;color:var(--cream-faint);
+}
+
+/* ── excluded / included ──────────────────────────────────────────── */
+.pc-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+.pc-col{background:var(--ink);padding:clamp(20px,2.4vw,28px)}
+.pc-col h3{
+  font-family:var(--f-display);font-weight:900;font-size:18px;letter-spacing:-.03em;
+  color:var(--cream);margin:0 0 14px;
+}
+.pc-col ul{margin:0;padding:0;list-style:none}
+.pc-col li{
+  padding:9px 0 9px 22px;position:relative;
+  font-size:14px;line-height:1.6;color:var(--cream-mute);
+  border-top:1px solid var(--rule-soft);
+}
+.pc-col li:first-child{border-top:0}
+.pc-col li::before{
+  content:'';position:absolute;left:2px;top:17px;width:9px;height:2px;border-radius:1px;
+  background:var(--red);opacity:.8;
+}
+.pc-col--out li::before{background:var(--cream-faint)}
+</style>
+</head>
+<body data-page="pricing">
+<div id="wkProgress"></div>
+<div id="globalNav"></div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="wk-phero wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb" aria-label="Breadcrumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <span class="sep">/</span>
+      <a href="/services/websites/" data-nl="Diensten" data-en="Services">Services</a>
+      <span class="sep">/</span>
+      <span data-nl="Kosten" data-en="Cost">Cost</span>
+    </nav>
+    <div class="wk-phero-split">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Kostencalculator" data-en="Cost calculator">Cost calculator</span>
+        <h1 class="wk-display wk-h1" data-split
+          data-nl="Wat kost een website? <em class='mark'>Dit is de bandbreedte</em>."
+          data-en="What does a website cost? <em class='mark'>Here is the range</em>.">What does a website cost? <em class="mark">Here is the range</em>.</h1>
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+          data-nl="Kies de omvang, vink aan wat je nodig hebt, en je ziet meteen een indicatie. Geen e-mailadres, geen verkoopgesprek eerst."
+          data-en="Pick the scope, tick what you need, and you get a range straight away. No email address, no sales call first.">Pick the scope, tick what you need, and you get a range straight away. No email address, no sales call first.</p>
+      </div>
+      <div class="wk-stats" data-reveal data-reveal-delay=".25">
+        <div><span class="wk-stat-n">2</span><span class="wk-stat-l" data-nl="Minuten" data-en="Minutes">Minutes</span></div>
+        <div><span class="wk-stat-n">0</span><span class="wk-stat-l" data-nl="Velden verplicht" data-en="Fields required">Fields required</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CALCULATOR ════════════════════════════════════════════════ -->
+<section class="pc-body">
+  <div class="wk-wrap pc-grid">
+
+    <form id="pcForm">
+      <!-- 1 · project type -->
+      <div class="pc-q">
+        <div class="pc-q-h">
+          <span class="pc-q-n">01</span>
+          <span class="pc-q-t" data-nl="Wat voor project is het?" data-en="What kind of project is it?">What kind of project is it?</span>
+        </div>
+        <div class="pc-opts" data-group="type">
+          <label class="pc-opt"><input type="radio" name="type" value="new" checked><span data-nl="Nieuwe site" data-en="New site">New site</span></label>
+          <label class="pc-opt"><input type="radio" name="type" value="redesign"><span data-nl="Redesign, zelfde platform" data-en="Redesign, same platform">Redesign, same platform</span></label>
+          <label class="pc-opt"><input type="radio" name="type" value="rebuild"><span data-nl="Herbouw met migratie" data-en="Rebuild with migration">Rebuild with migration</span></label>
+          <label class="pc-opt"><input type="radio" name="type" value="landing"><span data-nl="Eén landingspagina" data-en="Single landing page">Single landing page</span></label>
+        </div>
+      </div>
+
+      <!-- 2 · pages -->
+      <div class="pc-q" id="pcPagesQ">
+        <div class="pc-q-h">
+          <span class="pc-q-n">02</span>
+          <span class="pc-q-t" data-nl="Hoeveel pagina's?" data-en="How many pages?">How many pages?</span>
+        </div>
+        <p class="pc-q-s"
+          data-nl="Tel alleen pagina's met eigen inhoud. Een blog telt als één, hoeveel artikelen er ook op komen."
+          data-en="Count only pages with their own content. A blog counts as one, however many articles end up on it.">Count only pages with their own content. A blog counts as one, however many articles end up on it.</p>
+        <div class="pc-opts" data-group="pages">
+          <label class="pc-opt"><input type="radio" name="pages" value="p1"><span data-nl="1 pagina" data-en="1 page">1 page</span></label>
+          <label class="pc-opt"><input type="radio" name="pages" value="p4" checked><span data-nl="2 tot 4" data-en="2 to 4">2 to 4</span></label>
+          <label class="pc-opt"><input type="radio" name="pages" value="p8"><span data-nl="5 tot 8" data-en="5 to 8">5 to 8</span></label>
+          <label class="pc-opt"><input type="radio" name="pages" value="p15"><span data-nl="9 tot 15" data-en="9 to 15">9 to 15</span></label>
+          <label class="pc-opt"><input type="radio" name="pages" value="p30"><span data-nl="16 of meer" data-en="16 or more">16 or more</span></label>
+        </div>
+      </div>
+
+      <!-- 3 · features -->
+      <div class="pc-q">
+        <div class="pc-q-h">
+          <span class="pc-q-n">03</span>
+          <span class="pc-q-t" data-nl="Wat moet de site kunnen?" data-en="What does the site need to do?">What does the site need to do?</span>
+        </div>
+        <p class="pc-q-s"
+          data-nl="Alleen aanvinken wat je echt nodig hebt. Wat je nu niet kiest kan later alsnog."
+          data-en="Only tick what you actually need. Anything you leave out can still be added later.">Only tick what you actually need. Anything you leave out can still be added later.</p>
+        <div class="pc-adds" id="pcAdds"></div>
+
+        <div class="pc-qty" id="pcCopyQty" hidden>
+          <label for="pcPages" data-nl="Pagina's tekstschrijven:" data-en="Pages of copywriting:">Pages of copywriting:</label>
+          <input type="number" id="pcPages" min="1" max="40" value="4">
+        </div>
+      </div>
+
+      <!-- 4 · timing -->
+      <div class="pc-q">
+        <div class="pc-q-h">
+          <span class="pc-q-n">04</span>
+          <span class="pc-q-t" data-nl="Wanneer moet het live?" data-en="When does it need to be live?">When does it need to be live?</span>
+        </div>
+        <div class="pc-opts" data-group="when">
+          <label class="pc-opt"><input type="radio" name="when" value="rush"><span data-nl="Binnen 4 weken" data-en="Within 4 weeks">Within 4 weeks <em>+20%</em></span></label>
+          <label class="pc-opt"><input type="radio" name="when" value="normal" checked><span data-nl="1 tot 3 maanden" data-en="1 to 3 months">1 to 3 months</span></label>
+          <label class="pc-opt"><input type="radio" name="when" value="later"><span data-nl="Dit jaar" data-en="This year">This year</span></label>
+          <label class="pc-opt"><input type="radio" name="when" value="none"><span data-nl="Geen haast" data-en="No rush">No rush</span></label>
+        </div>
+      </div>
+
+      <!-- 5 · updates -->
+      <div class="pc-q">
+        <div class="pc-q-h">
+          <span class="pc-q-n">05</span>
+          <span class="pc-q-t" data-nl="Hoe vaak verandert de inhoud?" data-en="How often will the content change?">How often will the content change?</span>
+        </div>
+        <p class="pc-q-s"
+          data-nl="Dit verandert de bouwprijs niet. Het bepaalt wel of je zelf moet kunnen bewerken, en welk supportplan past."
+          data-en="This does not change the build price. It decides whether you need to edit it yourself, and which support plan fits.">This does not change the build price. It decides whether you need to edit it yourself, and which support plan fits.</p>
+        <div class="pc-opts" data-group="freq">
+          <label class="pc-opt"><input type="radio" name="freq" value="rare" checked><span data-nl="Bijna nooit" data-en="Rarely">Rarely</span></label>
+          <label class="pc-opt"><input type="radio" name="freq" value="month"><span data-nl="Maandelijks" data-en="Monthly">Monthly</span></label>
+          <label class="pc-opt"><input type="radio" name="freq" value="week"><span data-nl="Wekelijks" data-en="Weekly">Weekly</span></label>
+          <label class="pc-opt"><input type="radio" name="freq" value="day"><span data-nl="Dagelijks" data-en="Daily">Daily</span></label>
+        </div>
+      </div>
+    </form>
+
+    <!-- ── result ── -->
+    <aside class="pc-out">
+      <div class="pc-card">
+        <span class="pc-lbl" data-nl="Indicatie" data-en="Rough estimate">Rough estimate</span>
+        <p class="pc-range" id="pcRange">&euro;950 <small>&ndash;</small> &euro;1.250</p>
+        <p class="pc-vat" data-nl="Eenmalig, exclusief btw" data-en="One-time, excluding VAT">One-time, excluding VAT</p>
+
+        <div class="pc-scope" id="pcScope"></div>
+        <p class="pc-hint" id="pcHint"></p>
+
+        <a href="/contact/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Stuur deze scope door" data-en="Send this scope over">Send this scope over</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+        <p class="pc-note"
+          data-nl="Dit is een indicatie, geen offerte. De bovenkant laat ruimte voor wat er tijdens inhoud, integraties en de laatste test altijd bijkomt. Je krijgt een vaste prijs voordat we beginnen."
+          data-en="This is an indication, not a quote. The upper end leaves room for what always surfaces during content, integrations and the final check. You get a fixed price before we start.">This is an indication, not a quote. The upper end leaves room for what always surfaces during content, integrations and the final check. You get a fixed price before we start.</p>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ══ IN / OUT ══════════════════════════════════════════════════ -->
+<section class="wk-section" style="padding-top:0">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="De kleine letters" data-en="The fine print">The fine print</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Wat er wel en niet in zit."
+          data-en="What the number does and does not cover.">What the number does and does not cover.</h2>
+      </div>
+      <p class="wk-lede" data-reveal
+        data-nl="Er is niets vervelender dan een prijs die achteraf groeit. Daarom staat hier vooraf wat erbuiten valt."
+        data-en="Nothing sours a project like a price that grows afterwards. So here is what sits outside it, up front.">Nothing sours a project like a price that grows afterwards. So here is what sits outside it, up front.</p>
+    </div>
+
+    <div class="pc-cols" data-reveal>
+      <div class="pc-col">
+        <h3 data-nl="Zit erin" data-en="Included">Included</h3>
+        <ul>
+          <li data-nl="Ontwerp op maat, geen template" data-en="Custom design, no template">Custom design, no template</li>
+          <li data-nl="Bouw, testen en live zetten" data-en="Build, testing and going live">Build, testing and going live</li>
+          <li data-nl="Werkt op telefoon, tablet en desktop" data-en="Works on phone, tablet and desktop">Works on phone, tablet and desktop</li>
+          <li data-nl="Technische SEO-basis en snelheid" data-en="Technical SEO groundwork and speed">Technical SEO groundwork and speed</li>
+          <li data-nl="Contactformulier en analytics" data-en="Contact form and analytics">Contact form and analytics</li>
+          <li data-nl="Twee rondes feedback voor livegang" data-en="Two rounds of feedback before launch">Two rounds of feedback before launch</li>
+          <li data-nl="Domein, code en accounts op jouw naam" data-en="Domain, code and accounts in your name">Domain, code and accounts in your name</li>
+        </ul>
+      </div>
+      <div class="pc-col pc-col--out">
+        <h3 data-nl="Zit er niet in" data-en="Not included">Not included</h3>
+        <ul>
+          <li data-nl="Btw" data-en="VAT">VAT</li>
+          <li data-nl="Domeinnaam en hosting, zie het supportplan" data-en="Domain and hosting, see the support plan">Domain and hosting, see the support plan</li>
+          <li data-nl="Teksten en fotografie, tenzij aangevinkt" data-en="Copy and photography, unless ticked above">Copy and photography, unless ticked above</li>
+          <li data-nl="Betaalde advertenties en advertentiebudget" data-en="Paid ads and ad budget">Paid ads and ad budget</li>
+          <li data-nl="Licenties van derden, zoals een boekingssysteem" data-en="Third-party licences, such as a booking system">Third-party licences, such as a booking system</li>
+          <li data-nl="Ongewone migraties van een verouderd platform" data-en="Unusual migrations off a legacy platform">Unusual migrations off a legacy platform</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING CTA ═══════════════════════════════════════════════ -->
+<div class="wk-cta-wrap">
+  <div class="wk-wrap">
+    <section class="wk-cta-card wk-grain" data-cursor-grid>
+      <h2 class="wk-display wk-h2" data-split
+        data-nl="Een getal is geen plan. <em class='mark'>Stuur je scope door</em>."
+        data-en="A number is not a plan. <em class='mark'>Send the scope over</em>.">A number is not a plan. <em class="mark">Send the scope over</em>.</h2>
+      <p class="wk-lede" data-reveal
+        data-nl="Vertel wat het bedrijf doet en wat je hierboven hebt aangevinkt. Je krijgt binnen één werkdag een vaste prijs terug, of het eerlijke antwoord dat het anders moet."
+        data-en="Tell us what the business does and what you ticked above. You get a fixed price back within one business day, or the honest answer that it should be scoped differently.">Tell us what the business does and what you ticked above. You get a fixed price back within one business day, or the honest answer that it should be scoped differently.</p>
+      <div class="wk-cta-row" data-reveal data-reveal-delay=".1">
+        <a href="/contact/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Start een project" data-en="Start a project">Start a project</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+        <a href="/services/websites/" class="wk-btn wk-btn--ghost">
+          <span data-nl="Hoe we bouwen" data-en="How we build">How we build</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="globalFooter"></div>
+
+<script src="/js/motion.js?v=v5"></script>
+<script src="/js/site-nav.js?v=v5"></script>
+<script src="/js/site-footer.js?v=v5"></script>
+<script src="/js/cookie-consent.js?v=v5"></script>
+<script>
+/* ═══ estimate ══════════════════════════════════════════════════════
+   Every number lives in this one block so the pricing can be tuned in
+   one place. All figures are euros, one-time, excluding VAT.        */
+(function () {
+  'use strict';
+
+  const BASE = { p1: 495, p4: 950, p8: 1650, p15: 2600, p30: 3900 };
+  const TYPE = { new: 1, redesign: 0.85, rebuild: 1.15, landing: 1 };
+  const WHEN = { rush: 1.20, normal: 1, later: 1, none: 0.95 };
+
+  /* id, price, label NL/EN. `per` marks a per-page item. */
+  const ADDONS = [
+    { id: 'lang',    p: 700,  nl: 'Tweetalig, NL en EN',        en: 'Two languages, NL and EN' },
+    { id: 'lang3',   p: 450,  nl: 'Elke extra taal',            en: 'Each further language' },
+    { id: 'booking', p: 650,  nl: 'Afspraken of reserveren',    en: 'Bookings or appointments' },
+    { id: 'menu',    p: 550,  nl: 'Menu- of catalogusmodule',   en: 'Menu or catalogue module' },
+    { id: 'shop',    p: 2400, nl: 'Webshop',                    en: 'Online shop' },
+    { id: 'motion',  p: 900,  nl: 'Maatwerk animatie',          en: 'Custom motion' },
+    { id: 'member',  p: 1500, nl: 'Ledengedeelte met login',    en: 'Member area with login' },
+    { id: 'chat',    p: 1400, nl: 'Chat of AI-assistent',       en: 'Chat or AI assistant' },
+    { id: 'calc',    p: 850,  nl: 'Calculator of keuzehulp',    en: 'Calculator or quiz' },
+    { id: 'crm',     p: 600,  nl: 'CRM- of mailkoppeling',      en: 'CRM or mailing integration' },
+    { id: 'multiloc',p: 1100, nl: 'Meerdere vestigingen, lokale SEO', en: 'Multi-location local SEO' },
+    { id: 'video',   p: 450,  nl: 'Video optimaliseren',        en: 'Video optimisation' },
+    { id: 'photo',   p: 650,  nl: 'Fotografie, halve dag',      en: 'Photography, half a day' },
+    { id: 'copy',    p: 120,  per: true, nl: 'Tekstschrijven, per pagina', en: 'Copywriting, per page' }
+  ];
+
+  const PLAN = {
+    rare:  { nl: 'Basis',    en: 'Basic',    price: 19.99 },
+    month: { nl: 'Basis',    en: 'Basic',    price: 19.99 },
+    week:  { nl: 'Plus',     en: 'Plus',     price: 39 },
+    day:   { nl: 'Plus',     en: 'Plus',     price: 39 }
+  };
+
+  const lang = () => localStorage.getItem('wk-lang') === 'en' ? 'en' : 'nl';
+  const t = (nl, en) => lang() === 'en' ? en : nl;
+
+  /* ── build the add-on list ── */
+  const wrap = document.getElementById('pcAdds');
+  wrap.innerHTML = ADDONS.map(a =>
+    '<label class="pc-add"><input type="checkbox" name="add" value="' + a.id + '">' +
+    '<span data-nl="' + a.nl + '" data-en="' + a.en + '">' +
+      '<i style="font-style:normal">' + a.nl + '</i>' +
+      '<b>+&euro;' + a.p.toLocaleString('nl-NL') + (a.per ? '/p' : '') + '</b>' +
+    '</span></label>'
+  ).join('');
+
+  /* the label spans carry both languages; rewrite them on a switch */
+  function relabel() {
+    const L = lang();
+    wrap.querySelectorAll('.pc-add').forEach((el, i) => {
+      const a = ADDONS[i];
+      el.querySelector('i').textContent = L === 'en' ? a.en : a.nl;
+    });
+  }
+
+  const form   = document.getElementById('pcForm');
+  const rangeE = document.getElementById('pcRange');
+  const scopeE = document.getElementById('pcScope');
+  const hintE  = document.getElementById('pcHint');
+  const pagesQ = document.getElementById('pcPagesQ');
+  const copyQ  = document.getElementById('pcCopyQty');
+  const copyN  = document.getElementById('pcPages');
+
+  const eur = n => '€' + Math.round(n).toLocaleString('nl-NL');
+  const round50 = n => Math.round(n / 50) * 50;
+
+  function calc() {
+    const d = new FormData(form);
+    const type = d.get('type');
+    const when = d.get('when');
+    const freq = d.get('freq');
+
+    /* a single landing page has no page count to answer */
+    const isLanding = type === 'landing';
+    pagesQ.hidden = isLanding;
+    const pages = isLanding ? 'p1' : (d.get('pages') || 'p4');
+
+    const picked = d.getAll('add');
+    copyQ.hidden = picked.indexOf('copy') === -1;
+
+    let base = BASE[pages] * TYPE[type];
+    let adds = 0;
+    picked.forEach(id => {
+      const a = ADDONS.find(x => x.id === id);
+      if (!a) return;
+      adds += a.per ? a.p * Math.max(1, Math.min(40, +copyN.value || 1)) : a.p;
+    });
+
+    const sub  = (base + adds) * WHEN[when];
+    const low  = round50(sub);
+    const high = round50(sub * 1.3);
+
+    rangeE.innerHTML = eur(low) + ' <small>&ndash;</small> ' + eur(high);
+
+    /* scope summary */
+    const typeLbl = {
+      new:      t('Nieuwe site', 'New site'),
+      redesign: t('Redesign', 'Redesign'),
+      rebuild:  t('Herbouw met migratie', 'Rebuild with migration'),
+      landing:  t('Eén landingspagina', 'Single landing page')
+    }[type];
+    const pageLbl = { p1: '1', p4: '2–4', p8: '5–8', p15: '9–15', p30: '16+' }[pages];
+
+    let rows = '<div class="pc-line"><span>' + t('Type', 'Type') + '</span><b>' + typeLbl + '</b></div>';
+    if (!isLanding) {
+      rows += '<div class="pc-line"><span>' + t("Pagina's", 'Pages') + '</span><b>' + pageLbl + '</b></div>';
+    }
+    rows += '<div class="pc-line"><span>' + t('Extra’s', 'Add-ons') + '</span><b>' +
+            (picked.length ? picked.length : t('geen', 'none')) + '</b></div>';
+    if (when === 'rush') {
+      rows += '<div class="pc-line"><span>' + t('Spoed', 'Rush') + '</span><b>+20%</b></div>';
+    }
+    scopeE.innerHTML = rows;
+
+    /* the update frequency shapes the advice, not the price */
+    const plan = PLAN[freq];
+    const editable = (freq === 'week' || freq === 'day');
+    hintE.innerHTML = editable
+      ? t('Je verandert de inhoud vaak, dus je moet zelf kunnen bewerken zonder ons. Dat zit in de bouw. Daarna past het <a href="/services/hosting/">' + plan.nl + '-plan</a> op €' + plan.price + ' per maand.',
+          'You will change the content often, so you need to edit it yourself without us. That is part of the build. After that the <a href="/services/hosting/">' + plan.en + ' plan</a> at €' + plan.price + ' a month fits.')
+      : t('De inhoud verandert zelden, dus je hoeft niet voor een bewerkbaar systeem te betalen. Voor online blijven past het <a href="/services/hosting/">' + plan.nl + '-plan</a> op €' + plan.price + ' per maand.',
+          'The content rarely changes, so you do not need to pay for an editable system. To stay online the <a href="/services/hosting/">' + plan.en + ' plan</a> at €' + plan.price + ' a month fits.');
+  }
+
+  form.addEventListener('change', calc);
+  form.addEventListener('input', calc);
+  document.addEventListener('wk:languagechange', () => { relabel(); calc(); });
+  relabel(); calc();
+
+  /* light the closing card */
+  const card = document.querySelector('.wk-cta-card');
+  if (card) new IntersectionObserver((e, o) => e.forEach(x => {
+    if (x.isIntersecting) { card.classList.add('is-lit'); o.disconnect(); }
+  }), { threshold: .3 }).observe(card);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website design and build &mdash; WebKreatives</title>
+<meta name="description" content="Custom websites for owner-led businesses in the Netherlands. Fixed price before we start, built to fit, and everything stays in your name.">
+<link rel="canonical" href="https://webkreatives.com/services/websites/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webkreatives.com/services/websites/">
+<meta property="og:title" content="Website design and build — WebKreatives">
+<meta property="og:description" content="Custom websites for owner-led businesses. Fixed price before we start, built to fit, everything stays in your name.">
+<meta property="og:image" content="https://webkreatives.com/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="WebKreatives">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c0a09">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css?v=v5">
+<style>
+/* ═══ SERVICE PAGE ══════════════════════════════════════════════════ */
+.sv-work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,40px)}
+@media(max-width:860px){.sv-work{grid-template-columns:1fr}}
+.sv-card{display:flex;flex-direction:column}
+.sv-card .wk-frame{margin-bottom:16px}
+.sv-card .wk-frame img{aspect-ratio:1200/760;object-fit:cover;object-position:top center}
+.sv-card h3{
+  font-family:var(--f-display);font-weight:900;font-size:clamp(19px,2.1vw,25px);
+  letter-spacing:-.035em;line-height:1.1;color:var(--cream);margin:0 0 8px;
+  transition:color var(--dur-fast);
+}
+.sv-card:hover h3{color:#fff}
+.sv-card p{font-size:14px;line-height:1.65;color:var(--cream-mute);margin:0}
+.sv-card .wk-meta{display:block;margin-bottom:9px}
+
+/* ── stages ───────────────────────────────────────────────────────── */
+.sv-stages{border-top:1px solid var(--rule)}
+.sv-stage{
+  display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,320px);
+  gap:clamp(16px,3vw,44px);align-items:start;
+  padding:clamp(24px,3vw,36px) 0;border-bottom:1px solid var(--rule);
+}
+@media(max-width:820px){
+  .sv-stage{grid-template-columns:44px minmax(0,1fr)}
+  .sv-stage-out{grid-column:2}
+}
+.sv-stage-n{
+  font-family:var(--f-display);font-weight:900;font-size:clamp(22px,2.6vw,34px);
+  line-height:1;letter-spacing:-.04em;color:var(--red);opacity:.85;
+}
+.sv-stage h3{
+  font-family:var(--f-display);font-weight:900;font-size:clamp(18px,2vw,24px);
+  letter-spacing:-.035em;color:var(--cream);margin:0 0 10px;
+}
+.sv-stage p{font-size:15px;line-height:1.7;color:var(--cream-mute);margin:0;max-width:54ch}
+.sv-stage-out{
+  padding:14px 16px;border-radius:var(--radius);
+  background:var(--ink-2);border:1px solid var(--rule);
+}
+.sv-stage-out b{
+  display:block;font-family:var(--f-body);font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);margin-bottom:7px;
+}
+.sv-stage-out span{font-size:13.5px;line-height:1.6;color:var(--cream-dim)}
+
+/* ── audiences ────────────────────────────────────────────────────── */
+.sv-aud{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+@media(max-width:820px){.sv-aud{grid-template-columns:1fr}}
+.sv-a{background:var(--ink);padding:clamp(22px,2.6vw,32px);transition:background var(--dur)}
+.sv-a:hover{background:var(--ink-2)}
+.sv-a-k{
+  font-family:var(--f-body);font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:12px;display:block;
+}
+.sv-a:nth-child(1) .sv-a-k{color:var(--lime)}
+.sv-a:nth-child(2) .sv-a-k{color:var(--yellow)}
+.sv-a:nth-child(3) .sv-a-k{color:var(--blue)}
+.sv-a h3{
+  font-family:var(--f-display);font-weight:900;font-size:19px;letter-spacing:-.035em;
+  color:var(--cream);margin:0 0 10px;line-height:1.2;
+}
+.sv-a p{font-size:14px;line-height:1.68;color:var(--cream-mute);margin:0}
+
+/* ── expectations ─────────────────────────────────────────────────── */
+.sv-exp{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media(max-width:760px){.sv-exp{grid-template-columns:1fr}}
+.sv-e{padding:26px 26px 26px 0;border-right:1px solid var(--rule)}
+.sv-e:not(:first-child){padding-left:26px}
+.sv-e:last-child{border-right:0;padding-right:0}
+@media(max-width:760px){
+  .sv-e{border-right:0;border-bottom:1px solid var(--rule);padding:22px 0!important}
+  .sv-e:last-child{border-bottom:0}
+}
+.sv-e-n{
+  font-family:var(--f-display);font-weight:900;font-size:clamp(24px,2.8vw,34px);
+  letter-spacing:-.04em;line-height:1.05;color:var(--cream);display:block;margin-bottom:10px;
+}
+.sv-e-l{
+  font-family:var(--f-body);font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-faint);display:block;margin-bottom:10px;
+}
+.sv-e p{font-size:13.5px;line-height:1.65;color:var(--cream-mute);margin:0}
+
+/* ── faq ──────────────────────────────────────────────────────────── */
+.sv-faq{border-top:1px solid var(--rule)}
+.sv-q{border-bottom:1px solid var(--rule)}
+.sv-q-btn{
+  width:100%;display:flex;align-items:center;gap:16px;text-align:left;
+  padding:22px 0;background:none;border:0;cursor:pointer;color:inherit;
+}
+.sv-q-n{font-family:var(--f-body);font-size:10.5px;font-weight:700;letter-spacing:.13em;color:var(--red);flex-shrink:0}
+.sv-q-t{
+  flex:1;font-family:var(--f-body);font-weight:600;font-size:clamp(15px,1.5vw,17.5px);
+  color:var(--cream);letter-spacing:-.01em;
+}
+.sv-q-ic{width:15px;height:15px;flex-shrink:0;color:var(--cream-faint);transition:transform .35s var(--ease-premium),color .2s}
+.sv-q.open .sv-q-ic{transform:rotate(45deg);color:var(--red)}
+.sv-q-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease-premium)}
+.sv-q.open .sv-q-a{grid-template-rows:1fr}
+.sv-q-a-in{overflow:hidden}
+.sv-q-a p{
+  font-size:15px;line-height:1.75;color:var(--cream-mute);
+  margin:0 0 22px;padding-left:40px;max-width:70ch;
+}
+@media(max-width:600px){.sv-q-a p{padding-left:0}}
+</style>
+</head>
+<body data-page="service">
+<div id="wkProgress"></div>
+<div id="globalNav"></div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="wk-phero wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb" aria-label="Breadcrumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <span class="sep">/</span>
+      <span data-nl="Diensten" data-en="Services">Services</span>
+      <span class="sep">/</span>
+      <span data-nl="Websites" data-en="Websites">Websites</span>
+    </nav>
+    <div class="wk-phero-split">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Ontwerp &amp; bouw" data-en="Design &amp; build">Design &amp; build</span>
+        <h1 class="wk-display wk-h1" data-split
+          data-nl="Een website die het bedrijf <em class='mark'>makkelijker te kiezen</em> maakt."
+          data-en="A website that makes the business <em class='mark'>easier to choose</em>.">A website that makes the business <em class="mark">easier to choose</em>.</h1>
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+          data-nl="Voor eigenaar-gedreven bedrijven die goed werk leveren maar dat online niet laten zien. We ontwerpen en bouwen op maat, met een vaste prijs voordat we beginnen."
+          data-en="For owner-led businesses that do good work but do not show it online. We design and build to fit, with a fixed price agreed before we start.">For owner-led businesses that do good work but do not show it online. We design and build to fit, with a fixed price agreed before we start.</p>
+        <div class="wk-cta-row" data-reveal data-reveal-delay=".25" style="margin-top:32px">
+          <a href="/contact/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+            <span data-nl="Start een project" data-en="Start a project">Start a project</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+          <a href="/pricing/" class="wk-btn wk-btn--ghost">
+            <span data-nl="Wat kost het?" data-en="What does it cost?">What does it cost?</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE WORK ══════════════════════════════════════════════════ -->
+<section class="wk-section">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Het werk" data-en="The work">The work</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Vier builds, live en aanklikbaar."
+          data-en="Four builds, live and clickable.">Four builds, live and clickable.</h2>
+      </div>
+      <p class="wk-lede" data-reveal
+        data-nl="Geen mockups in een raster. Open ze, klik erdoorheen, bekijk ze op je telefoon. Zo zie je hoe we bouwen voordat je iets uitgeeft."
+        data-en="No mockups in a grid. Open them, click through, look at them on your phone. That is how you see the way we build before you spend anything.">No mockups in a grid. Open them, click through, look at them on your phone. That is how you see the way we build before you spend anything.</p>
+    </div>
+
+    <div class="sv-work">
+      <a class="sv-card" href="/client-projects/de-groot-accountants/" target="_blank" rel="noopener" data-reveal>
+        <div class="wk-frame">
+          <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/de-groot-accountants</span></div>
+          <img src="/assets/screenshots/de-groot-accountants.png" alt="De Groot &amp; Partners" loading="lazy" width="1200" height="760">
+        </div>
+        <span class="wk-meta" data-nl="Accountancy · Multi-page" data-en="Accountancy · Multi-page">Accountancy · Multi-page</span>
+        <h3>De Groot &amp; Partners</h3>
+        <p data-nl="Vier pagina's met gedeelde navigatie, FAQ en contactformulier. Voor een kantoor dat klem zit tussen grote namen en goedkope boekhoudpakketten."
+           data-en="Four pages with shared navigation, FAQ and contact form. For a firm squeezed between the big names and cheap bookkeeping packages.">Four pages with shared navigation, FAQ and contact form. For a firm squeezed between the big names and cheap bookkeeping packages.</p>
+      </a>
+
+      <a class="sv-card" href="/client-projects/leyenburger/" target="_blank" rel="noopener" data-reveal data-reveal-delay=".08">
+        <div class="wk-frame">
+          <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/leyenburger</span></div>
+          <img src="/assets/screenshots/leyenburger.png" alt="Leyenburger" loading="lazy" width="1200" height="760">
+        </div>
+        <span class="wk-meta" data-nl="Horeca · One-page" data-en="Food &amp; drink · One-page">Food &amp; drink · One-page</span>
+        <h3>Leyenburger</h3>
+        <p data-nl="De kaart is de homepage. Geen PDF, geen download. Tik een categorie aan en de gerechten met prijzen klappen open op dezelfde plek."
+           data-en="The menu is the homepage. No PDF, no download. Tap a category and the dishes and prices open in place.">The menu is the homepage. No PDF, no download. Tap a category and the dishes and prices open in place.</p>
+      </a>
+
+      <a class="sv-card" href="/client-projects/tandarts-knoll/" target="_blank" rel="noopener" data-reveal data-reveal-delay=".16">
+        <div class="wk-frame">
+          <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/tandarts-knoll</span></div>
+          <img src="/assets/screenshots/tandarts-knoll.png" alt="Tandarts Knoll" loading="lazy" width="1200" height="760">
+        </div>
+        <span class="wk-meta" data-nl="Zorg · Lokale praktijk" data-en="Healthcare · Local practice">Healthcare · Local practice</span>
+        <h3>Tandarts Knoll</h3>
+        <p data-nl="Geschreven voor iemand die om elf uur 's avonds met kiespijn zoekt. Openingstijden krijgen een eigen blok in plaats van een regel in de footer."
+           data-en="Written for someone searching at eleven at night with toothache. Opening hours get their own section instead of a line in the footer.">Written for someone searching at eleven at night with toothache. Opening hours get their own section instead of a line in the footer.</p>
+      </a>
+
+      <a class="sv-card" href="/client-projects/vanderberg-loodgieter/" target="_blank" rel="noopener" data-reveal data-reveal-delay=".24">
+        <div class="wk-frame">
+          <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/vanderberg-loodgieter</span></div>
+          <img src="/assets/screenshots/vanderberg-loodgieter.png" alt="Van den Berg Loodgieter" loading="lazy" width="1200" height="760">
+        </div>
+        <span class="wk-meta" data-nl="Vakwerk · Servicebedrijf" data-en="Trades · Service business">Trades · Service business</span>
+        <h3>Van den Berg Loodgieter</h3>
+        <p data-nl="Eén pagina die de hele route afdekt: wat je doet, waar je werkt, wat het kost en hoe je belt. Gebouwd voor iemand met een lekkage."
+           data-en="One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak.">One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak.</p>
+      </a>
+    </div>
+
+    <div style="margin-top:34px" data-reveal>
+      <a href="/portfolio/" class="wk-btn wk-btn--ghost">
+        <span data-nl="Alle twaalf" data-en="All twelve">All twelve</span>
+        <span class="wk-arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT RUNS ═══════════════════════════════════════════════ -->
+<section class="wk-section" style="border-top:1px solid var(--rule)">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Hoe het loopt" data-en="How it runs">How it runs</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Vier stappen, en je weet steeds waar je staat."
+          data-en="Four steps, and you always know where you are.">Four steps, and you always know where you are.</h2>
+      </div>
+      <p class="wk-lede" data-reveal
+        data-nl="Elke stap eindigt met iets dat je kunt bekijken en goedkeuren. Er komt niets als verrassing aan het einde."
+        data-en="Every step ends with something you can look at and sign off. Nothing arrives as a surprise at the end.">Every step ends with something you can look at and sign off. Nothing arrives as a surprise at the end.</p>
+    </div>
+
+    <div class="sv-stages">
+      <div class="sv-stage" data-reveal>
+        <span class="sv-stage-n">01</span>
+        <div>
+          <h3 data-nl="Wie moet er kiezen?" data-en="Who has to choose?">Who has to choose?</h3>
+          <p data-nl="We beginnen bij de klant, niet bij het ontwerp. Wat zoekt die persoon, wat twijfelt er nog, en wat moet er op het scherm staan voordat ze bellen. Dat bepaalt de structuur van de hele site."
+             data-en="We start with the customer, not the design. What are they looking for, what are they still unsure about, and what has to be on screen before they call. That decides the structure of the whole site.">We start with the customer, not the design. What are they looking for, what are they still unsure about, and what has to be on screen before they call. That decides the structure of the whole site.</p>
+        </div>
+        <div class="sv-stage-out">
+          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
+          <span data-nl="Een pagina-indeling en een vaste prijs" data-en="A page plan and a fixed price">A page plan and a fixed price</span>
+        </div>
+      </div>
+
+      <div class="sv-stage" data-reveal>
+        <span class="sv-stage-n">02</span>
+        <div>
+          <h3 data-nl="Ontwerp op de echte inhoud" data-en="Design on the real content">Design on the real content</h3>
+          <p data-nl="Geen lorem ipsum. We ontwerpen met jouw teksten, prijzen en foto's, want een layout die mooi is met nepinhoud valt om zodra de echte tekst erin gaat."
+             data-en="No lorem ipsum. We design with your words, prices and photos, because a layout that looks good with placeholder content falls apart the moment the real text goes in.">No lorem ipsum. We design with your words, prices and photos, because a layout that looks good with placeholder content falls apart the moment the real text goes in.</p>
+        </div>
+        <div class="sv-stage-out">
+          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
+          <span data-nl="Het ontwerp, plus twee rondes feedback" data-en="The design, plus two rounds of feedback">The design, plus two rounds of feedback</span>
+        </div>
+      </div>
+
+      <div class="sv-stage" data-reveal>
+        <span class="sv-stage-n">03</span>
+        <div>
+          <h3 data-nl="Bouwen, niet samenklikken" data-en="Built, not assembled">Built, not assembled</h3>
+          <p data-nl="Handgeschreven code in plaats van een stapel plugins. Dat maakt de site sneller, veiliger en goedkoper om te onderhouden, en er zit geen thema-licentie aan vast die je elk jaar moet verlengen."
+             data-en="Hand-written code instead of a stack of plugins. That makes the site faster, safer and cheaper to maintain, and there is no theme licence to renew every year.">Hand-written code instead of a stack of plugins. That makes the site faster, safer and cheaper to maintain, and there is no theme licence to renew every year.</p>
+        </div>
+        <div class="sv-stage-out">
+          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
+          <span data-nl="Een testlink om alles op je eigen telefoon te bekijken" data-en="A preview link to check it on your own phone">A preview link to check it on your own phone</span>
+        </div>
+      </div>
+
+      <div class="sv-stage" data-reveal>
+        <span class="sv-stage-n">04</span>
+        <div>
+          <h3 data-nl="Live, op jouw naam" data-en="Live, in your name">Live, in your name</h3>
+          <p data-nl="Domein, code, teksten en accounts staan op jouw naam, niet op de onze. Je kunt op elk moment vertrekken en alles meenemen. Dat is geen gunst, dat hoort zo."
+             data-en="Domain, code, content and accounts are in your name, not ours. You can walk away at any point and take everything with you. That is not a favour, it is how it should work.">Domain, code, content and accounts are in your name, not ours. You can walk away at any point and take everything with you. That is not a favour, it is how it should work.</p>
+        </div>
+        <div class="sv-stage-out">
+          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
+          <span data-nl="Alle toegang, en een korte uitleg hoe je het beheert" data-en="Every login, and a short handover on running it">Every login, and a short handover on running it</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AUDIENCES ═════════════════════════════════════════════════ -->
+<section class="wk-section" style="background:var(--ink-2);border-top:1px solid var(--rule)">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Voor wie" data-en="Who it is for">Who it is for</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Andere klant, andere eerste vraag."
+          data-en="Different customer, different first question.">Different customer, different first question.</h2>
+      </div>
+      <p class="wk-lede" data-reveal
+        data-nl="Een site voor een loodgieter en een site voor een restaurant hebben niets met elkaar te maken, behalve dat ze allebei op een telefoon moeten werken."
+        data-en="A site for a plumber and a site for a restaurant have nothing in common except that both have to work on a phone.">A site for a plumber and a site for a restaurant have nothing in common except that both have to work on a phone.</p>
+    </div>
+
+    <div class="sv-aud" data-reveal>
+      <div class="sv-a">
+        <span class="sv-a-k" data-nl="Vakwerk &amp; service" data-en="Trades &amp; local service">Trades &amp; local service</span>
+        <h3 data-nl="Kan ik je nu bellen?" data-en="Can I call you right now?">Can I call you right now?</h3>
+        <p data-nl="Iemand met een lekkage leest niet. Werkgebied, tarief en telefoonnummer staan boven de vouw, en de belknop blijft in beeld terwijl je scrollt."
+           data-en="Someone with a leak does not read. Service area, rate and phone number sit above the fold, and the call button stays on screen while you scroll.">Someone with a leak does not read. Service area, rate and phone number sit above the fold, and the call button stays on screen while you scroll.</p>
+      </div>
+      <div class="sv-a">
+        <span class="sv-a-k" data-nl="Horeca &amp; retail" data-en="Hospitality &amp; retail">Hospitality &amp; retail</span>
+        <h3 data-nl="Wat hebben jullie, en wat kost het?" data-en="What have you got, and what does it cost?">What have you got, and what does it cost?</h3>
+        <p data-nl="De kaart of de collectie is de site, geen PDF die je moet downloaden en inzoomen. Openingstijden en route staan er als eigen blok, niet als voetnoot."
+           data-en="The menu or the range is the site, not a PDF you download and pinch to zoom. Opening hours and directions get their own block, not a footnote.">The menu or the range is the site, not a PDF you download and pinch to zoom. Opening hours and directions get their own block, not a footnote.</p>
+      </div>
+      <div class="sv-a">
+        <span class="sv-a-k" data-nl="Zakelijk &amp; zorg" data-en="Professional &amp; care">Professional &amp; care</span>
+        <h3 data-nl="Kan ik jullie vertrouwen?" data-en="Can I trust you with this?">Can I trust you with this?</h3>
+        <p data-nl="Hier wint bewijs van beloftes. Wie je bent, wat je precies doet, wat het kost en wat er daarna gebeurt, in gewone taal in plaats van vakjargon."
+           data-en="Here proof beats promises. Who you are, what exactly you do, what it costs and what happens next, in plain language rather than jargon.">Here proof beats promises. Who you are, what exactly you do, what it costs and what happens next, in plain language rather than jargon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPECTATIONS ══════════════════════════════════════════════ -->
+<section class="wk-section" style="border-top:1px solid var(--rule)">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Wat je kunt verwachten" data-en="What to expect">What to expect</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Tijd, geld en wat we van je nodig hebben."
+          data-en="Time, money, and what we need from you.">Time, money, and what we need from you.</h2>
+      </div>
+      <p class="wk-lede" data-reveal
+        data-nl="Scope eerst, prijs daarna. We noemen pas een bedrag als duidelijk is wat erin zit, en dat bedrag verandert daarna niet."
+        data-en="Scope first, price second. We only name a figure once it is clear what is in it, and that figure does not move afterwards.">Scope first, price second. We only name a figure once it is clear what is in it, and that figure does not move afterwards.</p>
+    </div>
+
+    <div class="sv-exp" data-reveal>
+      <div class="sv-e">
+        <span class="sv-e-l" data-nl="Doorlooptijd" data-en="Timeline">Timeline</span>
+        <span class="sv-e-n" data-nl="2&ndash;8 weken" data-en="2&ndash;8 weeks">2&ndash;8 weeks</span>
+        <p data-nl="Een eenpager kan in twee weken. Een site met acht pagina's, twee talen en een boekingssysteem is eerder acht. Wat het meest vertraagt is niet de bouw, maar het wachten op teksten en foto's."
+           data-en="A one-pager can be two weeks. Eight pages, two languages and a booking system is nearer eight. The thing that slows projects is rarely the build, it is waiting on copy and photos.">A one-pager can be two weeks. Eight pages, two languages and a booking system is nearer eight. The thing that slows projects is rarely the build, it is waiting on copy and photos.</p>
+      </div>
+      <div class="sv-e">
+        <span class="sv-e-l" data-nl="Investering" data-en="Investment">Investment</span>
+        <span class="sv-e-n" data-nl="Vanaf &euro;495" data-en="From &euro;495">From &euro;495</span>
+        <p data-nl="Dat is een eenpager, eenmalig en exclusief btw. De meeste projecten met meerdere pagina's liggen tussen &euro;950 en &euro;2.600. De calculator geeft je in twee minuten een bandbreedte."
+           data-en="That is a one-pager, one-time and excluding VAT. Most multi-page projects land between &euro;950 and &euro;2,600. The calculator gives you a range in two minutes.">That is a one-pager, one-time and excluding VAT. Most multi-page projects land between &euro;950 and &euro;2,600. The calculator gives you a range in two minutes.</p>
+      </div>
+      <div class="sv-e">
+        <span class="sv-e-l" data-nl="Van jou" data-en="From you">From you</span>
+        <span class="sv-e-n" data-nl="Een paar uur" data-en="A few hours">A few hours</span>
+        <p data-nl="Een gesprek aan het begin, teksten en foto's aanleveren, en twee keer feedback geven. Meer hebben we niet nodig. Heb je geen teksten of foto's, dan regelen we dat als losse post."
+           data-en="One conversation at the start, handing over copy and photos, and two rounds of feedback. That is all we need. If you have no copy or photos, we handle that as a separate line.">One conversation at the start, handing over copy and photos, and two rounds of feedback. That is all we need. If you have no copy or photos, we handle that as a separate line.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px" data-reveal>
+      <a href="/pricing/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+        <span data-nl="Reken je eigen scope door" data-en="Price up your own scope">Price up your own scope</span>
+        <span class="wk-arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ═══════════════════════════════════════════════════════ -->
+<section class="wk-section" style="border-top:1px solid var(--rule)">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-nl="Vragen" data-en="Questions">Questions</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Wat mensen meestal eerst vragen."
+          data-en="What people usually ask first.">What people usually ask first.</h2>
+      </div>
+    </div>
+
+    <div class="sv-faq">
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">01</span><span class="sv-q-t" data-nl="Kan ik zelf dingen aanpassen?" data-en="Can I change things myself?">Can I change things myself?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Dat hangt ervan af hoe vaak je iets verandert, en we vragen dat vooraf. Verandert er bijna nooit iets, dan betaal je niet voor een bewerkbaar systeem dat je toch niet gebruikt, en passen wij het aan als het nodig is. Verandert er wekelijks iets, dan bouwen we het zo dat je het zelf kunt zonder ons te bellen." data-en="It depends on how often things change, and we ask that up front. If almost nothing changes, you do not pay for an editing system you will never use, and we make the change when one is needed. If something changes weekly, we build it so you can do it yourself without calling us.">It depends on how often things change, and we ask that up front. If almost nothing changes, you do not pay for an editing system you will never use, and we make the change when one is needed. If something changes weekly, we build it so you can do it yourself without calling us.</p></div></div>
+      </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">02</span><span class="sv-q-t" data-nl="Wat als ik nog geen teksten of foto's heb?" data-en="What if I have no copy or photos yet?">What if I have no copy or photos yet?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Heel normaal. We kunnen de teksten schrijven per pagina en fotografie inplannen, allebei als aparte post zodat je precies ziet wat het kost. Wat we niet doen is stockfoto's van een kantoor plaatsen dat niet van jou is: dat ziet iedereen." data-en="Very common. We can write the copy per page and arrange photography, both as separate lines so you can see exactly what each costs. What we will not do is drop in stock photos of an office that is not yours: everyone can tell.">Very common. We can write the copy per page and arrange photography, both as separate lines so you can see exactly what each costs. What we will not do is drop in stock photos of an office that is not yours: everyone can tell.</p></div></div>
+      </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">03</span><span class="sv-q-t" data-nl="Moet ik het maandplan afnemen?" data-en="Do I have to take the monthly plan?">Do I have to take the monthly plan?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Nee. De bouw en het onderhoud zijn losse dingen. Je kunt de site laten bouwen en zelf ergens anders hosten, wij leveren dan gewoon alle bestanden en toegang. De meeste mensen kiezen het plan omdat ze er niet aan willen denken, niet omdat het moet." data-en="No. The build and the upkeep are separate things. You can have the site built and host it somewhere else yourself, and we hand over every file and login. Most people take the plan because they would rather not think about it, not because they have to.">No. The build and the upkeep are separate things. You can have the site built and host it somewhere else yourself, and we hand over every file and login. Most people take the plan because they would rather not think about it, not because they have to.</p></div></div>
+      </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">04</span><span class="sv-q-t" data-nl="Werken jullie ook buiten Nederland?" data-en="Do you work outside the Netherlands?">Do you work outside the Netherlands?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Ja. We zitten in Amsterdam en werken wereldwijd. Alles loopt via video en e-mail, wat voor de meeste projecten toch al zo is. Facturen zijn in euro's." data-en="Yes. We are in Amsterdam and work worldwide. Everything runs over video and email, which is how most projects run anyway. Invoices are in euros.">Yes. We are in Amsterdam and work worldwide. Everything runs over video and email, which is how most projects run anyway. Invoices are in euros.</p></div></div>
+      </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">05</span><span class="sv-q-t" data-nl="Wat gebeurt er als ik later wil stoppen?" data-en="What happens if I want to leave later?">What happens if I want to leave later?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Dan neem je alles mee. Het domein staat al op jouw naam bij de registratie, de code krijg je, en de accounts zijn van jou. Er is geen technische reden waarom je bij ons zou moeten blijven, en dat is met opzet." data-en="Then you take everything with you. The domain is registered in your name from the start, you get the code, and the accounts are yours. There is no technical reason you would have to stay with us, and that is deliberate.">Then you take everything with you. The domain is registered in your name from the start, you get the code, and the accounts are yours. There is no technical reason you would have to stay with us, and that is deliberate.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING CTA ═══════════════════════════════════════════════ -->
+<div class="wk-cta-wrap">
+  <div class="wk-wrap">
+    <section class="wk-cta-card wk-grain" data-cursor-grid>
+      <h2 class="wk-display wk-h2" data-split
+        data-nl="Vertel wat de site nu <em class='mark'>niet doet</em>."
+        data-en="Tell us what the site is <em class='mark'>not doing</em>.">Tell us what the site is <em class="mark">not doing</em>.</h2>
+      <p class="wk-lede" data-reveal
+        data-nl="Een paar regels is genoeg. Je krijgt binnen één werkdag terug wat we zouden bouwen, wat we zouden weglaten en wat het kost."
+        data-en="A few lines is enough. Within one business day you get back what we would build, what we would leave out and what it costs.">A few lines is enough. Within one business day you get back what we would build, what we would leave out and what it costs.</p>
+      <div class="wk-cta-row" data-reveal data-reveal-delay=".1">
+        <a href="/contact/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Stuur een briefing" data-en="Send a short brief">Send a short brief</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+        <a href="/services/hosting/" class="wk-btn wk-btn--ghost">
+          <span data-nl="Hosting &amp; support" data-en="Hosting &amp; support">Hosting &amp; support</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="globalFooter"></div>
+
+<script src="/js/motion.js?v=v5"></script>
+<script src="/js/site-nav.js?v=v5"></script>
+<script src="/js/site-footer.js?v=v5"></script>
+<script src="/js/cookie-consent.js?v=v5"></script>
+<script>
+document.querySelectorAll('.sv-q-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const q = btn.parentElement, open = q.classList.contains('open');
+    document.querySelectorAll('.sv-q').forEach(x => x.classList.remove('open'));
+    if (!open) q.classList.add('open');
+  });
+});
+(function () {
+  const c = document.querySelector('.wk-cta-card');
+  if (!c) return;
+  new IntersectionObserver((e, o) => e.forEach(x => {
+    if (x.isIntersecting) { c.classList.add('is-lit'); o.disconnect(); }
+  }), { threshold: .3 }).observe(c);
+})();
+</script>
+</body>
+</html>
