@@ -494,6 +494,78 @@
 @media(prefers-reduced-motion:reduce){.art-item{transition:none}}
 
 
+
+/* ── calculator CTA ───────────────────────────────────────────────── */
+.hm-calc{
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--ink-2);position:relative;overflow:hidden;
+}
+.hm-calc-in{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  gap:clamp(28px,5vw,72px);align-items:center;
+  padding:clamp(40px,5.5vw,72px) 0;
+}
+@media(max-width:820px){
+  .hm-calc-in{grid-template-columns:1fr;gap:32px}
+  .hm-calc-viz{justify-self:start}
+}
+.hm-calc h2{margin:14px 0 12px;max-width:20ch}
+.hm-calc p{
+  margin:0 0 26px;font-size:15.5px;line-height:1.7;
+  color:var(--cream-mute);max-width:52ch;
+}
+
+/* ── the calculator itself ────────────────────────────────────────── */
+.hm-calc-viz{width:clamp(168px,19vw,208px);flex-shrink:0}
+.hm-calc-viz svg{width:100%;height:auto;overflow:visible}
+.cx-body{fill:var(--ink-deep);stroke:var(--rule-hard);stroke-width:1.2}
+.cx-screen{fill:rgba(239,230,210,.04);stroke:var(--rule);stroke-width:1}
+.cx-sum{font-family:var(--f-body);font-size:7.5px;font-weight:600;fill:var(--cream-faint);letter-spacing:.06em}
+.cx-out{font-family:var(--f-display);font-weight:900;font-size:12px;fill:var(--cream);letter-spacing:-.045em}
+.cx-key{fill:rgba(239,230,210,.06);stroke:var(--rule);stroke-width:.8}
+.cx-eq{fill:rgba(223,56,33,.16);stroke:rgba(223,56,33,.5);stroke-width:1}
+
+/* keys press in sequence, then the equals key holds */
+.is-in .cx-key,.is-in .cx-eq{transform-box:fill-box;transform-origin:center}
+.is-in .cx-key{animation:cx-press 5.6s var(--ease-premium) infinite}
+.is-in .cx-key:nth-of-type(1){animation-delay:.15s}
+.is-in .cx-key:nth-of-type(2){animation-delay:.45s}
+.is-in .cx-key:nth-of-type(3){animation-delay:.75s}
+.is-in .cx-key:nth-of-type(4){animation-delay:1.05s}
+.is-in .cx-key:nth-of-type(5){animation-delay:1.35s}
+.is-in .cx-key:nth-of-type(6){animation-delay:1.65s}
+@keyframes cx-press{
+  0%,3%{fill:rgba(239,230,210,.06);transform:scale(1)}
+  5%{fill:rgba(223,56,33,.35);transform:scale(.9)}
+  9%,100%{fill:rgba(239,230,210,.06);transform:scale(1)}
+}
+.is-in .cx-eq{animation:cx-eq 5.6s var(--ease-premium) infinite}
+@keyframes cx-eq{
+  0%,32%{fill:rgba(223,56,33,.16)}
+  36%{fill:rgba(223,56,33,.75)}
+  44%,100%{fill:rgba(223,56,33,.16)}
+}
+
+/* the sum builds, then the total lands */
+.cx-sum,.cx-out{opacity:0}
+.is-in .cx-sum{animation:cx-fade 5.6s linear infinite}
+.is-in .cx-sum:nth-of-type(1){animation-delay:.2s}
+.is-in .cx-sum:nth-of-type(2){animation-delay:.8s}
+.is-in .cx-sum:nth-of-type(3){animation-delay:1.4s}
+@keyframes cx-fade{0%{opacity:0}4%,72%{opacity:1}80%,100%{opacity:0}}
+.is-in .cx-out{animation:cx-total 5.6s var(--ease-pop) infinite}
+@keyframes cx-total{
+  0%,36%{opacity:0;transform:translateY(5px)}
+  42%,72%{opacity:1;transform:translateY(0)}
+  80%,100%{opacity:0;transform:translateY(0)}
+}
+.cx-out{transform-box:fill-box;transform-origin:center}
+
+@media(prefers-reduced-motion:reduce){
+  .hm-calc-viz *{animation:none!important;transform:none!important}
+  .cx-sum,.cx-out{opacity:1}
+}
+
 /* ── articles: header, chips, counter rail ────────────────────────── */
 .art-head-r{display:flex;align-items:center;gap:18px;flex-shrink:0}
 .art-count{
@@ -1020,6 +1092,51 @@
   </div>
 </section>
 
+
+<!-- ══ CALCULATOR CTA ════════════════════════════════════════════ -->
+<section class="hm-calc" id="calc-cta">
+  <div class="wk-wrap hm-calc-in">
+    <div>
+      <span class="wk-eyebrow" data-reveal data-decode data-nl="Kosten" data-en="Cost">Cost</span>
+      <h2 class="wk-display wk-h2" data-split
+        data-nl="Geen idee wat het <em class='mark'>kost</em>?"
+        data-en="Not sure what it would <em class='mark'>cost</em>?">Not sure what it would <em class="mark">cost</em>?</h2>
+      <p data-reveal
+        data-nl="Kies de omvang, vink aan wat je nodig hebt, en je ziet meteen een bandbreedte. Twee minuten, geen e-mailadres, en je zit nergens aan vast."
+        data-en="Pick the scope, tick what you need, and you see a range straight away. Two minutes, no email address, and it commits you to nothing.">Pick the scope, tick what you need, and you see a range straight away. Two minutes, no email address, and it commits you to nothing.</p>
+      <div class="hm-cta-row" data-reveal data-reveal-delay=".1">
+        <a href="/pricing/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Reken het hier uit" data-en="Work it out here">Work it out here</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hm-calc-viz" data-reveal data-reveal-delay=".15">
+      <svg viewBox="0 0 130 176" role="img" aria-label="A calculator working out a price">
+        <rect class="cx-body" x="1" y="1" width="128" height="174" rx="13"/>
+        <rect class="cx-screen" x="13" y="13" width="104" height="46" rx="7"/>
+
+        <text class="cx-sum" x="21" y="27">1 page</text>
+        <text class="cx-sum" x="21" y="27">1 page + form</text>
+        <text class="cx-sum" x="21" y="27">1 page + form + SEO</text>
+        <text class="cx-out" x="21" y="48">&euro;230 &ndash; 330</text>
+
+        <rect class="cx-key" x="15"  y="71"  width="30" height="22" rx="5"/>
+        <rect class="cx-key" x="50"  y="71"  width="30" height="22" rx="5"/>
+        <rect class="cx-key" x="85"  y="71"  width="30" height="22" rx="5"/>
+        <rect class="cx-key" x="15"  y="99"  width="30" height="22" rx="5"/>
+        <rect class="cx-key" x="50"  y="99"  width="30" height="22" rx="5"/>
+        <rect class="cx-key" x="85"  y="99"  width="30" height="22" rx="5"/>
+        <rect class="cx-key" x="15"  y="127" width="30" height="22" rx="5"/>
+        <rect class="cx-key" x="50"  y="127" width="30" height="22" rx="5"/>
+        <rect class="cx-eq"  x="85"  y="127" width="30" height="50" rx="5"/>
+        <rect class="cx-key" x="15"  y="155" width="65" height="22" rx="5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
 <!-- ══ 5 · STUDIO ════════════════════════════════════════════════ -->
 <section class="wk-section hm-studio" data-cursor-grid>
   <div class="wk-wrap hm-studio-grid">
@@ -1295,6 +1412,13 @@
 <script src="/articles/articles-data.js?v=v5"></script>
 <script>
 /* FAQ accordion */
+(function(){
+  const c=document.querySelector('.hm-calc-viz');
+  if(!c)return;
+  new IntersectionObserver((e,o)=>e.forEach(x=>{
+    if(x.isIntersecting){x.target.classList.add('is-in');o.unobserve(x.target);}
+  }),{threshold:.3}).observe(c);
+})();
 document.querySelectorAll('.hm-q-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const q=btn.parentElement, open=q.classList.contains('open');
