@@ -106,6 +106,16 @@
   color:var(--cream-faint);margin:14px 0 0;
 }
 .ct-small a{color:var(--bronze)}
+.ct-scope-note{
+  display:flex;align-items:flex-start;gap:9px;
+  margin:0 0 4px;padding:11px 13px;border-radius:var(--radius);
+  background:var(--bronze-mist);border:1px solid var(--bronze-rule);
+  font-size:12.5px;line-height:1.6;color:var(--cream-dim);
+}
+.ct-scope-note::before{
+  content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;
+  background:var(--bronze);margin-top:6px;
+}
 </style>
 </head>
 <body data-page="contact">
@@ -263,6 +273,34 @@
 <script src="/js/site-footer.js?v=v5"></script>
 <script src="/js/cookie-consent.js?v=v5"></script>
 <script>
+/* ── a scope arriving from the calculator ─────────────────────────────
+   If they came from /pricing/ having ticked through the options, the brief
+   is already written; drop it in rather than asking for it twice.        */
+(function () {
+  let scope = null;
+  try { scope = sessionStorage.getItem('wk-scope'); } catch (e) {}
+  if (!scope) return;
+  try { sessionStorage.removeItem('wk-scope'); } catch (e) {}
+
+  const ta = document.getElementById('ct-msg');
+  if (!ta) return;
+  ta.value = scope;
+  ta.style.minHeight = '260px';
+
+  const note = document.createElement('p');
+  note.className = 'ct-scope-note';
+  note.innerHTML = (localStorage.getItem('wk-lang') === 'en')
+    ? 'Your scope from the calculator is filled in below. Add anything about the business and send it.'
+    : 'Je scope uit de calculator staat hieronder al ingevuld. Vul aan wat je bedrijf doet en verstuur het.';
+  ta.parentElement.insertBefore(note, ta);
+
+  /* put the cursor where they actually have to type */
+  requestAnimationFrame(() => {
+    ta.focus({ preventScroll: true });
+    ta.setSelectionRange(ta.value.length, ta.value.length);
+  });
+})();
+
 /* placeholder follows the language switch */
 (function(){
   const ta = document.getElementById('ct-msg');
