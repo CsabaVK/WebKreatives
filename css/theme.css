@@ -298,6 +298,12 @@ button{font:inherit}
 }
 @media(max-width:900px){.wk-phero-split{grid-template-columns:1fr;align-items:flex-start}}
 
+
+/* The two service pages are a pair, so their heroes hold the same height
+   whatever the headline wraps to. */
+.wk-phero--service{min-height:clamp(560px,51.5vw,780px);display:flex;align-items:center}
+.wk-phero--service > .wk-phero-in{width:100%}
+
 /* ── figure strip ─────────────────────────────────────────────────────── */
 .wk-stats{display:flex;gap:clamp(26px,4vw,54px);flex-wrap:wrap;flex-shrink:0}
 .wk-stat-n{
