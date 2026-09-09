@@ -184,13 +184,12 @@ span.pc-flag{
 .pc-range small{font-size:.6em}
 
 /* ── the two advice lines, each with an explanation on hover ──────── */
-.pc-advice{
-  margin-top:18px;display:flex;flex-direction:column;gap:9px;
-  padding:13px 15px;border-radius:var(--radius);
-  background:var(--ink-3);border-left:2px solid var(--red);
-}
+.pc-advice{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+/* each line gets its own card, so they read as two separate points */
 .pc-adv{
   display:flex;align-items:center;gap:9px;position:relative;
+  padding:12px 14px;border-radius:var(--radius);
+  background:var(--ink-3);border-left:2px solid var(--red);
   font-size:12px;line-height:1.45;color:var(--cream-mute);
   white-space:nowrap;
 }
@@ -206,7 +205,7 @@ span.pc-flag{
 }
 .pc-adv:hover .pc-i{color:#fff;background:var(--red);border-color:var(--red)}
 .pc-tip{
-  position:absolute;left:-15px;right:-15px;bottom:calc(100% + 11px);z-index:20;
+  position:absolute;left:0;right:0;bottom:calc(100% + 9px);z-index:20;
   white-space:normal;
   padding:12px 14px;border-radius:8px;
   background:oklch(12% .010 25);border:1px solid var(--rule-hard);
