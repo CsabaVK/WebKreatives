@@ -271,8 +271,8 @@
           <span class="pc-q-t" data-nl="Hoe vaak verandert de inhoud?" data-en="How often will the content change?">How often will the content change?</span>
         </div>
         <p class="pc-q-s"
-          data-nl="Dit verandert de bouwprijs niet. Het bepaalt wel of je zelf moet kunnen bewerken, en welk supportplan past."
-          data-en="This does not change the build price. It decides whether you need to edit it yourself, and which support plan fits.">This does not change the build price. It decides whether you need to edit it yourself, and which support plan fits.</p>
+          data-nl="Dit verandert de bouwprijs niet. Wijzigingen lopen altijd via ons; dit bepaalt alleen welk Hosting-plan genoeg ruimte voor je heeft."
+          data-en="This does not change the build price. Changes always go through us; this only decides which Hosting plan gives you enough room.">This does not change the build price. Changes always go through us; this only decides which Hosting plan gives you enough room.</p>
         <div class="pc-opts" data-group="freq">
           <label class="pc-opt"><input type="radio" name="freq" value="rare" checked><span data-nl="Bijna nooit" data-en="Rarely">Rarely</span></label>
           <label class="pc-opt"><input type="radio" name="freq" value="month"><span data-nl="Maandelijks" data-en="Monthly">Monthly</span></label>
@@ -286,7 +286,7 @@
     <aside class="pc-out">
       <div class="pc-card">
         <span class="pc-lbl" data-nl="Indicatie" data-en="Rough estimate">Rough estimate</span>
-        <p class="pc-range" id="pcRange">&euro;950 <small>&ndash;</small> &euro;1.250</p>
+        <p class="pc-range" id="pcRange">&euro;190 <small>&ndash;</small> &euro;380</p>
         <p class="pc-vat" data-nl="Eenmalig, exclusief btw" data-en="One-time, excluding VAT">One-time, excluding VAT</p>
 
         <div class="pc-scope" id="pcScope"></div>
@@ -330,6 +330,7 @@
           <li data-nl="Algemene SEO en snelheid, standaard inbegrepen" data-en="General SEO and speed, included as standard">General SEO and speed, included as standard</li>
           <li data-nl="Contactformulier en analytics" data-en="Contact form and analytics">Contact form and analytics</li>
           <li data-nl="Twee rondes feedback voor livegang" data-en="Two rounds of feedback before launch">Two rounds of feedback before launch</li>
+          <li data-nl="Wijzigingen na livegang lopen via ons, via je Hosting-plan" data-en="Changes after launch go through us, via your Hosting plan">Changes after launch go through us, via your Hosting plan</li>
           <li data-nl="Domein, code en accounts op jouw naam" data-en="Domain, code and accounts in your name">Domain, code and accounts in your name</li>
         </ul>
       </div>
@@ -385,27 +386,31 @@
 (function () {
   'use strict';
 
-  const BASE = { p1: 495, p4: 950, p8: 1650, p15: 2600, p30: 3900 };
+  /* Everything below is one-time, in euros, excluding VAT. The whole build
+     ladder divides by five off the old figures; SEO is the exception and
+     stays where it was. SPREAD is what the top of the range adds. */
+  const BASE = { p1: 100, p4: 190, p8: 330, p15: 520, p30: 780 };
   const TYPE = { new: 1, redesign: 0.85, rebuild: 1.15, landing: 1 };
   const WHEN = { rush: 1.20, normal: 1, later: 1, none: 0.95 };
+  const SPREAD = 2.0;   /* the top of the range on the build itself */
 
   /* id, price, label NL/EN. `per` marks a per-page item. */
   const ADDONS = [
-    { id: 'lang',    p: 700,  nl: 'Tweetalig, NL en EN',        en: 'Two languages, NL and EN' },
-    { id: 'lang3',   p: 450,  nl: 'Elke extra taal',            en: 'Each further language' },
-    { id: 'booking', p: 650,  nl: 'Afspraken of reserveren',    en: 'Bookings or appointments' },
-    { id: 'menu',    p: 550,  nl: 'Menu- of catalogusmodule',   en: 'Menu or catalogue module' },
-    { id: 'shop',    p: 2400, nl: 'Webshop',                    en: 'Online shop' },
-    { id: 'motion',  p: 900,  nl: 'Maatwerk animatie',          en: 'Custom motion' },
-    { id: 'member',  p: 1500, nl: 'Ledengedeelte met login',    en: 'Member area with login' },
-    { id: 'chat',    p: 1400, nl: 'Chat of AI-assistent',       en: 'Chat or AI assistant' },
-    { id: 'calc',    p: 850,  nl: 'Calculator of keuzehulp',    en: 'Calculator or quiz' },
-    { id: 'crm',     p: 600,  nl: 'CRM- of mailkoppeling',      en: 'CRM or mailing integration' },
-    { id: 'seo',     p: 49,   nl: 'Gerichte SEO-campagne',         en: 'Targeted SEO campaign' },
-    { id: 'multiloc',p: 1100, nl: 'Meerdere vestigingen, lokale SEO', en: 'Multi-location local SEO' },
-    { id: 'video',   p: 450,  nl: 'Video optimaliseren',        en: 'Video optimisation' },
-    { id: 'photo',   p: 650,  nl: 'Fotografie, halve dag',      en: 'Photography, half a day' },
-    { id: 'copy',    p: 120,  per: true, nl: 'Tekstschrijven, per pagina', en: 'Copywriting, per page' }
+    { id: 'lang',    p: 140, nl: 'Tweetalig, NL en EN',        en: 'Two languages, NL and EN' },
+    { id: 'lang3',   p: 90,  nl: 'Elke extra taal',            en: 'Each further language' },
+    { id: 'booking', p: 130, nl: 'Afspraken of reserveren',    en: 'Bookings or appointments' },
+    { id: 'menu',    p: 110, nl: 'Menu- of catalogusmodule',   en: 'Menu or catalogue module' },
+    { id: 'shop',    p: 480, nl: 'Webshop',                    en: 'Online shop' },
+    { id: 'motion',  p: 180, nl: 'Maatwerk animatie',          en: 'Custom motion' },
+    { id: 'member',  p: 300, nl: 'Ledengedeelte met login',    en: 'Member area with login' },
+    { id: 'chat',    p: 280, nl: 'Chat of AI-assistent',       en: 'Chat or AI assistant' },
+    { id: 'calc',    p: 170, nl: 'Calculator of keuzehulp',    en: 'Calculator or quiz' },
+    { id: 'crm',     p: 120, nl: 'CRM- of mailkoppeling',      en: 'CRM or mailing integration' },
+    { id: 'seo',     p: 49,  nl: 'Gerichte SEO-campagne',      en: 'Targeted SEO campaign' },
+    { id: 'multiloc',p: 220, nl: 'Meerdere vestigingen, lokale SEO', en: 'Multi-location local SEO' },
+    { id: 'video',   p: 90,  nl: 'Video optimaliseren',        en: 'Video optimisation' },
+    { id: 'photo',   p: 130, nl: 'Fotografie, halve dag',      en: 'Photography, half a day' },
+    { id: 'copy',    p: 25,  per: true, nl: 'Tekstschrijven, per pagina', en: 'Copywriting, per page' }
   ];
 
   const PLAN = {
@@ -446,7 +451,7 @@
   const copyN  = document.getElementById('pcPages');
 
   const eur = n => '€' + Math.round(n).toLocaleString('nl-NL');
-  const round50 = n => Math.round(n / 50) * 50;
+  const round10 = n => Math.round(n / 10) * 10;
 
   /* the estimate rolls to its new value rather than snapping, so a ticked
      box visibly moves the number */
@@ -497,9 +502,11 @@
       adds += a.per ? a.p * Math.max(1, Math.min(40, +copyN.value || 1)) : a.p;
     });
 
-    const sub  = (base + adds) * WHEN[when];
-    const low  = round50(sub);
-    const high = round50(sub * 1.3);
+    /* The spread covers what is unknown, and what is unknown is the build
+       scope — not a line with a price already on it. So the add-ons go in at
+       their exact figure at both ends, and only the base widens. */
+    const low  = round10((base + adds) * WHEN[when]);
+    const high = round10((base * SPREAD + adds) * WHEN[when]);
 
     roll(low, high);
 
@@ -524,13 +531,15 @@
     scopeE.innerHTML = rows;
 
     /* the update frequency shapes the advice, not the price */
+    /* every change runs through us, so this only picks the plan that has
+       enough change allowance for how often things move */
     const plan = PLAN[freq];
-    const editable = (freq === 'week' || freq === 'day');
-    hintE.innerHTML = editable
-      ? t('Je verandert de inhoud vaak, dus je moet zelf kunnen bewerken zonder ons. Dat zit in de bouw. Daarna past het <a href="/services/hosting/">' + plan.nl + '-plan</a> op €' + plan.price + ' per maand.',
-          'You will change the content often, so you need to edit it yourself without us. That is part of the build. After that the <a href="/services/hosting/">' + plan.en + ' plan</a> at €' + plan.price + ' a month fits.')
-      : t('De inhoud verandert zelden, dus je hoeft niet voor een bewerkbaar systeem te betalen. Voor online blijven past het <a href="/services/hosting/">' + plan.nl + '-plan</a> op €' + plan.price + ' per maand.',
-          'The content rarely changes, so you do not need to pay for an editable system. To stay online the <a href="/services/hosting/">' + plan.en + ' plan</a> at €' + plan.price + ' a month fits.');
+    const busy = (freq === 'week' || freq === 'day');
+    hintE.innerHTML = busy
+      ? t('Er verandert vaak iets, dus je hebt ruimte nodig. Het <a href="/services/hosting/">' + plan.nl + '-plan</a> op €' + plan.price + ' per maand bevat de wijzigingen; je mailt en wij doen het.',
+          'Things change often, so you need room for it. The <a href="/services/hosting/">' + plan.en + ' plan</a> at €' + plan.price + ' a month covers the changes: you email, we make them.')
+      : t('Er verandert zelden iets, dus je hebt weinig nodig. Het <a href="/services/hosting/">' + plan.nl + '-plan</a> op €' + plan.price + ' per maand houdt de site online en dekt de wijzigingen die je wel doet.',
+          'Things rarely change, so you need very little. The <a href="/services/hosting/">' + plan.en + ' plan</a> at €' + plan.price + ' a month keeps the site online and covers the changes you do make.');
   }
 
   form.addEventListener('change', calc);
