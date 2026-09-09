@@ -1,53 +1,67 @@
-/* ─── WebKreatives — shared design tokens (redesign v4) ──────────────────────
- * Warm, studio-grade foundation. Loaded by every page before anything else.
- * Edit a value here and it changes site-wide.
+/* ─── WebKreatives — shared design tokens ────────────────────────────────────
+ * The original WebKreatives palette and type, on the v4 structure.
+ * Values are the ones from the original site; the v4 names are kept so every
+ * page keeps reading from here. Edit a value and it changes site-wide.
  * ─────────────────────────────────────────────────────────────────────────── */
 
 :root{
-  /* ── Surface: warm near-black, not neutral grey. This is what makes it
-        read as a studio rather than a tech product. ─────────────────────── */
-  --ink:        #1b1a15;   /* page background            */
-  --ink-2:      #211f1a;   /* raised surface / cards     */
-  --ink-3:      #2a2721;   /* hover / higher elevation   */
-  --ink-deep:   #141310;   /* footer, deepest wells      */
+  /* ── Surface ─────────────────────────────────────────────────────────── */
+  --ink:        oklch(8%  .010 25);   /* page background          */
+  --ink-2:      oklch(18% .010 25);   /* raised surface / cards   */
+  --ink-3:      oklch(24% .010 25);   /* hover / higher elevation */
+  --ink-deep:   oklch(5%  .010 25);   /* footer, deepest wells    */
 
-  /* ── Text: warm cream, never pure white ─────────────────────────────── */
-  --cream:      #efe6d2;
-  --cream-dim:  #b8ae99;
-  --cream-mute: #8a8272;
-  --cream-faint:#5d574c;
+  /* ── Text ────────────────────────────────────────────────────────────── */
+  --cream:      oklch(97% .008 80);
+  --cream-dim:  oklch(80% .006 80);
+  --cream-mute: oklch(62% .006 80);
+  --cream-faint:oklch(56% .006 80);
+  --white:      oklch(99% .004 80);
+  --cream2:     oklch(93% .012 80);
 
-  /* ── Accents ─────────────────────────────────────────────────────────── */
-  --red:        #df3821;   /* WebKreatives brand, primary action */
+  /* ── Accents: red leads, the other three carry the secondary marks ───── */
+  --red:        #df3821;
+  --red2:       oklch(43% .200 25);
   --red-deep:   #a82716;
-  --bronze:     #d9a748;   /* warm highlight, eyebrows, figures  */
-  --bronze-mid: #b88e57;
-  --bronze-low: #7a5418;
-  --bronze-mist:rgba(217,167,72,.10);
-  --bronze-rule:rgba(217,167,72,.20);
-  --sage:       #6a8f5d;   /* success / positive          */
   --lime:       #b9e185;
+  --blue:       #648dcb;
+  --yellow:     #fbeb78;
+  --grn:        oklch(68% .150 130);
+
+  /* The v4 structure calls its primary accent "bronze" in a few hundred
+     places. Point it at the brand red rather than renaming everything. */
+  --bronze:     var(--red);
+  --bronze-mid: var(--red2);
+  --bronze-low: var(--red-deep);
+  --bronze-mist:rgba(223,56,33,.10);
+  --bronze-rule:rgba(223,56,33,.24);
+  --sage:       var(--grn);
 
   /* ── Lines ───────────────────────────────────────────────────────────── */
-  --rule:       rgba(239,230,210,.09);
-  --rule-soft:  rgba(239,230,210,.05);
-  --rule-hard:  rgba(239,230,210,.16);
+  --rule:       rgba(239,230,210,.10);
+  --rule-soft:  rgba(239,230,210,.06);
+  --rule-hard:  rgba(239,230,210,.18);
+  --line:       oklch(88% .006 80);
+  --lined:      oklch(22% .010 25);
 
   /* ── Type ────────────────────────────────────────────────────────────── */
-  --f-display:  'Poiret One', 'Times New Roman', Georgia, serif;
+  --f-display:  'Unbounded', system-ui, sans-serif;
   --f-body:     'Figtree', system-ui, -apple-system, sans-serif;
-  --f-mono:     'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --f-mono:     'Unbounded', system-ui, sans-serif;   /* micro-labels */
+  --f1:         var(--f-display);
+  --f2:         var(--f-body);
 
   /* ── Motion ──────────────────────────────────────────────────────────── */
-  --ease-premium: cubic-bezier(.22,.9,.18,1);
+  --ease-premium: cubic-bezier(.16,1,.3,1);
   --ease-soft:    cubic-bezier(.32,.72,.24,1);
   --ease-pop:     cubic-bezier(.34,1.36,.64,1);
+  --ease:         cubic-bezier(.16,1,.3,1);
   --dur-fast:   .28s;
   --dur:        .55s;
   --dur-slow:   .9s;
 
   /* ── Rhythm ──────────────────────────────────────────────────────────── */
-  --radius:     3px;
+  --radius:     8px;
   --gutter:     5vw;
   --maxw:       1280px;
   --maxw-text:  680px;
@@ -69,18 +83,18 @@ button{font:inherit}
 
 /* ── Display type ─────────────────────────────────────────────────────── */
 .wk-display{
-  font-family:var(--f-display);font-weight:400;
-  color:var(--cream);letter-spacing:-.02em;line-height:1.04;
+  font-family:var(--f-display);font-weight:900;
+  color:var(--cream);letter-spacing:-.04em;line-height:.96;
 }
-.wk-h1{font-size:clamp(38px,6.2vw,86px)}
-.wk-h2{font-size:clamp(28px,4.2vw,56px)}
-.wk-h3{font-size:clamp(20px,2.4vw,30px)}
+.wk-h1{font-size:clamp(34px,5.4vw,74px)}
+.wk-h2{font-size:clamp(26px,3.6vw,48px)}
+.wk-h3{font-size:clamp(19px,2.1vw,27px)}
 .wk-accent{color:var(--bronze)}
 .wk-accent-red{color:var(--red)}
 
 /* ── Mono eyebrow: the label style that carries the whole system ──────── */
 .wk-eyebrow{
-  font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;
   letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);
   display:inline-flex;align-items:center;gap:9px;
 }
@@ -89,7 +103,7 @@ button{font:inherit}
 }
 .wk-eyebrow--plain::before{display:none}
 .wk-meta{
-  font-family:var(--f-mono);font-size:10px;font-weight:400;
+  font-family:var(--f-mono);font-size:10px;font-weight:700;
   letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint);
 }
 
@@ -101,7 +115,7 @@ button{font:inherit}
 /* ── Buttons ──────────────────────────────────────────────────────────── */
 .wk-btn{
   display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--f-mono);font-size:11px;font-weight:500;
+  font-family:var(--f-mono);font-size:11px;font-weight:700;
   letter-spacing:.13em;text-transform:uppercase;
   padding:14px 26px;border-radius:var(--radius);position:relative;overflow:hidden;
   transition:transform var(--dur-fast) var(--ease-premium),
@@ -111,9 +125,9 @@ button{font:inherit}
 .wk-btn span{position:relative;z-index:1}
 .wk-btn .wk-arrow{transition:transform var(--dur-fast) var(--ease-premium)}
 .wk-btn:hover .wk-arrow{transform:translateX(4px)}
-.wk-btn--primary{background:var(--bronze);color:#1b1a15;font-weight:600}
+.wk-btn--primary{background:var(--bronze);color:#fff;font-weight:600}
 .wk-btn--primary::before{
-  content:'';position:absolute;inset:0;background:#e8bc66;
+  content:'';position:absolute;inset:0;background:#f14b35;
   transform:translateX(-101%);transition:transform var(--dur) var(--ease-premium);
 }
 .wk-btn--primary:hover::before{transform:translateX(0)}
@@ -229,7 +243,7 @@ button{font:inherit}
 /* ── Concept badge ────────────────────────────────────────────────────── */
 .wk-badge{
   display:inline-flex;align-items:center;gap:7px;
-  font-family:var(--f-mono);font-size:9.5px;font-weight:500;
+  font-family:var(--f-mono);font-size:9.5px;font-weight:700;
   letter-spacing:.16em;text-transform:uppercase;
   padding:5px 10px;border-radius:var(--radius);
   color:var(--bronze);background:var(--bronze-mist);
@@ -264,8 +278,8 @@ button{font:inherit}
 .wk-phero-bg{
   position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(58% 62% at 82% 8%, rgba(217,167,72,.13), transparent 70%),
-    radial-gradient(46% 50% at 4% 92%, rgba(217,167,72,.05), transparent 70%);
+    radial-gradient(58% 62% at 82% 8%, rgba(223,56,33,.13), transparent 70%),
+    radial-gradient(46% 50% at 4% 92%, rgba(223,56,33,.05), transparent 70%);
 }
 .wk-phero-grid{
   position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;
@@ -288,7 +302,7 @@ button{font:inherit}
 .wk-stats{display:flex;gap:clamp(26px,4vw,54px);flex-wrap:wrap;flex-shrink:0}
 .wk-stat-n{
   font-family:var(--f-display);font-size:clamp(32px,3.8vw,52px);
-  line-height:1;color:var(--cream);display:block;letter-spacing:-.02em;
+  line-height:1;color:var(--cream);display:block;letter-spacing:-.04em;
 }
 .wk-stat-l{
   font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;
@@ -368,7 +382,7 @@ button{font:inherit}
 }
 .wk-row::after{
   content:'';position:absolute;left:0;right:0;top:0;bottom:0;z-index:-1;
-  background:linear-gradient(90deg,rgba(217,167,72,.055),transparent 60%);
+  background:linear-gradient(90deg,rgba(223,56,33,.055),transparent 60%);
   opacity:0;transition:opacity var(--dur) var(--ease-premium);
 }
 .wk-row:hover::after{opacity:1}
@@ -379,9 +393,9 @@ button{font:inherit}
 .wk-row-body{min-width:0}
 .wk-row-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .wk-row h3{
-  font-family:var(--f-display);font-weight:400;
+  font-family:var(--f-display);font-weight:900;
   font-size:clamp(23px,2.9vw,38px);line-height:1.05;
-  color:var(--cream);letter-spacing:-.015em;margin:0 0 10px;
+  color:var(--cream);letter-spacing:-.04em;margin:0 0 10px;
   transition:color var(--dur-fast);
 }
 .wk-row:hover h3{color:#fff}
@@ -426,8 +440,8 @@ a:hover .wk-frame img,.wk-row:hover .wk-frame img{transform:scale(1.028);filter:
 /* ── long-form prose (case studies, articles) ─────────────────────────── */
 .wk-prose{max-width:var(--maxw-text);font-size:16.5px;line-height:1.82;color:var(--cream-dim)}
 .wk-prose h2{
-  font-family:var(--f-display);font-weight:400;font-size:clamp(24px,3vw,36px);
-  color:var(--cream);letter-spacing:-.02em;line-height:1.15;
+  font-family:var(--f-display);font-weight:900;font-size:clamp(24px,3vw,36px);
+  color:var(--cream);letter-spacing:-.04em;line-height:1.15;
   margin:2.2em 0 .55em;
 }
 .wk-prose h3{
@@ -443,7 +457,7 @@ a:hover .wk-frame img,.wk-row:hover .wk-frame img{transform:scale(1.028);filter:
   margin:1.8em 0;padding:2px 0 2px 22px;
   border-left:2px solid var(--bronze-rule);
   font-family:var(--f-display);font-size:clamp(20px,2.2vw,27px);
-  line-height:1.35;color:var(--cream);letter-spacing:-.01em;
+  line-height:1.35;color:var(--cream);letter-spacing:-.04em;
 }
 .wk-prose a{color:var(--bronze);border-bottom:1px solid var(--bronze-rule)}
 .wk-prose a:hover{border-bottom-color:var(--bronze)}

@@ -1,6 +1,6 @@
 /* ─── WebKreatives — motion layer (redesign v4) ──────────────────────────────
  * Everything animated in one place. Degrades safely:
- *  - if Lenis fails to load, native scrolling still works
+ *  - scrolling is native; nothing sits between the wheel and the page
  *  - if JS is off, [data-reveal] elements are shown by a <noscript> rule
  *  - honours prefers-reduced-motion throughout
  * ─────────────────────────────────────────────────────────────────────────── */
@@ -9,39 +9,22 @@
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── 1. Smooth scroll (Lenis, loaded lazily) ────────────────────────── */
-  function initSmoothScroll() {
-    if (reduced || window.__wkLenis) return;
-    const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js';
-    s.onload = () => {
-      const L = window.Lenis || (window.lenis && window.lenis.Lenis);
-      if (!L) return;
-      const lenis = new L({
-        lerp: 0.115,            /* snappier than a long duration */
-        wheelMultiplier: 1.05,
-        smoothWheel: true,
-        syncTouch: false,       /* native momentum on touch, far smoother */
-        touchMultiplier: 1.6
-      });
-      window.__wkLenis = lenis;
-      const raf = time => { lenis.raf(time); requestAnimationFrame(raf); };
-      requestAnimationFrame(raf);
-
-      /* keep in-page anchors working with smooth scroll */
-      document.addEventListener('click', e => {
-        const a = e.target.closest('a[href^="#"], a[href^="/#"]');
-        if (!a) return;
-        const hash = a.getAttribute('href').replace(/^\//, '');
-        if (hash === '#' || hash.length < 2) return;
-        const t = document.querySelector(hash);
-        if (!t) return;
-        e.preventDefault();
-        lenis.scrollTo(t, { offset: -80 });
-      });
-    };
-    s.onerror = () => {};   /* native scroll is a fine fallback */
-    document.head.appendChild(s);
+  /* ── 1. Anchor scrolling ────────────────────────────────────────────────
+     No smooth-scroll library. An interpolated scroll always trails the wheel
+     by design, which is what "laggy and not reactive" is. Native scrolling
+     has no such lag, and CSS scroll-behavior still eases the anchor jumps. */
+  function initAnchors() {
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"], a[href^="/#"]');
+      if (!a) return;
+      const hash = a.getAttribute('href').replace(/^\//, '');
+      if (hash === '#' || hash.length < 2) return;
+      const t = document.querySelector(hash);
+      if (!t) return;
+      e.preventDefault();
+      const y = t.getBoundingClientRect().top + scrollY - 80;
+      scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' });
+    });
   }
 
   /* ── 2. Reveal on scroll ────────────────────────────────────────────── */
@@ -228,16 +211,23 @@
   function initProgress() {
     const bar = document.getElementById('wkProgress');
     if (!bar) return;
-    let ticking = false;
+    let ticking = false, max = 0;
+    /* scrollHeight is a layout read; measuring it every frame would put a
+       forced reflow in the scroll path. Measure on resize instead. */
+    const measure = () => { max = document.documentElement.scrollHeight - innerHeight; };
     const run = () => {
-      const max = document.documentElement.scrollHeight - innerHeight;
       bar.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
       ticking = false;
     };
     addEventListener('scroll', () => {
       if (!ticking) { requestAnimationFrame(run); ticking = true; }
     }, { passive: true });
-    run();
+    let rt; addEventListener('resize', () => {
+      clearTimeout(rt); rt = setTimeout(() => { measure(); run(); }, 150);
+    });
+    /* images and webfonts change the page height after load */
+    addEventListener('load', measure);
+    measure(); run();
   }
 
 
@@ -255,47 +245,73 @@
       host.appendChild(cv);
       const ctx = cv.getContext('2d');
 
-      const GAP = 30, R = 1.1, REACH = 150;
+      const GAP = 38, R = 1.1, REACH = 165;
       let w = 0, h = 0, dpr = 1, dots = [], raf = 0, live = false;
+      let rect = null, dirty = true;
       const pointer = { x: -9999, y: -9999, tx: -9999, ty: -9999 };
 
       function build() {
-        const r = host.getBoundingClientRect();
-        dpr = Math.min(devicePixelRatio || 1, 2);
-        w = r.width; h = r.height;
-        cv.width = w * dpr; cv.height = h * dpr;
+        rect = host.getBoundingClientRect();
+        if (!rect.width) return;
+        dpr = Math.min(devicePixelRatio || 1, 1.5);
+        w = rect.width; h = rect.height;
+        cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
         cv.style.width = w + 'px'; cv.style.height = h + 'px';
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         dots = [];
         for (let y = GAP / 2; y < h; y += GAP)
           for (let x = GAP / 2; x < w; x += GAP) dots.push({ x, y });
+        dirty = true;
       }
 
       function frame() {
-        pointer.x += (pointer.tx - pointer.x) * 0.12;
-        pointer.y += (pointer.ty - pointer.y) * 0.12;
-        ctx.clearRect(0, 0, w, h);
-        for (const d of dots) {
-          const dx = d.x - pointer.x, dy = d.y - pointer.y;
-          const dist = Math.hypot(dx, dy);
-          const f = dist < REACH ? 1 - dist / REACH : 0;
-          const rad = R + f * 2.1;
-          const a = 0.10 + f * 0.68;
+        const dx0 = pointer.tx - pointer.x, dy0 = pointer.ty - pointer.y;
+        const moving = Math.abs(dx0) > 0.4 || Math.abs(dy0) > 0.4;
+
+        if (moving || dirty) {
+          pointer.x += dx0 * 0.14;
+          pointer.y += dy0 * 0.14;
+          ctx.clearRect(0, 0, w, h);
+
+          /* every dot outside the pointer's reach is the same colour and the
+             same size, so they go down as ONE path with one fill instead of
+             one arc() call each. That is the whole cost of this effect. */
+          ctx.fillStyle = 'rgba(239,230,210,0.10)';
           ctx.beginPath();
-          ctx.arc(d.x - dx * f * 0.10, d.y - dy * f * 0.10, rad, 0, 6.2832);
-          ctx.fillStyle = f > 0.02
-            ? 'rgba(217,167,72,' + a.toFixed(3) + ')'
-            : 'rgba(239,230,210,0.10)';
+          const near = [];
+          for (const d of dots) {
+            const dx = d.x - pointer.x, dy = d.y - pointer.y;
+            if (dx * dx + dy * dy < REACH * REACH) { near.push([d, dx, dy]); continue; }
+            ctx.moveTo(d.x + R, d.y);
+            ctx.arc(d.x, d.y, R, 0, 6.2832);
+          }
           ctx.fill();
+
+          for (const [d, dx, dy] of near) {
+            const f = 1 - Math.hypot(dx, dy) / REACH;
+            ctx.beginPath();
+            ctx.arc(d.x - dx * f * 0.10, d.y - dy * f * 0.10, R + f * 2.1, 0, 6.2832);
+            ctx.fillStyle = 'rgba(223,56,33,' + (0.10 + f * 0.68).toFixed(3) + ')';
+            ctx.fill();
+          }
+          dirty = moving;
         }
         raf = live ? requestAnimationFrame(frame) : 0;
       }
 
+      /* The host rect is cached. Scrolling only flags it stale (a boolean
+         write); it is re-read lazily on the next pointer move, which cannot
+         happen during a scroll anyway. Reading layout in a scroll handler is
+         what makes a page feel heavy. */
+      let stale = true;
       host.addEventListener('pointermove', e => {
-        const r = host.getBoundingClientRect();
-        pointer.tx = e.clientX - r.left; pointer.ty = e.clientY - r.top;
-      });
-      host.addEventListener('pointerleave', () => { pointer.tx = -9999; pointer.ty = -9999; });
+        if (stale) { rect = host.getBoundingClientRect(); stale = false; }
+        pointer.tx = e.clientX - rect.left;
+        pointer.ty = e.clientY - rect.top;
+        dirty = true;
+      }, { passive: true });
+      addEventListener('scroll', () => { stale = true; }, { passive: true });
+      host.addEventListener('pointerleave', () => { pointer.tx = -9999; pointer.ty = -9999; dirty = true; });
 
       const io = new IntersectionObserver(es => {
         es.forEach(en => {
@@ -334,10 +350,10 @@
 
       /* colour, radius, orbit radii, speed, phase, peak alpha */
       const SPEC = [
-        { c: [217, 167,  72], rad: .58, ax: .30, ay: .20, sp: .00021, ph: 0.0, a: .24 },
-        { c: [223,  56,  33], rad: .50, ax: .26, ay: .24, sp: .00016, ph: 2.1, a: .11 },
-        { c: [106, 143,  93], rad: .42, ax: .22, ay: .18, sp: .00025, ph: 4.2, a: .07 },
-        { c: [239, 230, 210], rad: .32, ax: .34, ay: .14, sp: .00013, ph: 1.2, a: .05 }
+        { c: [223,  56,  33], rad: .58, ax: .30, ay: .20, sp: .00021, ph: 0.0, a: .13 },
+        { c: [100, 141, 203], rad: .50, ax: .26, ay: .24, sp: .00016, ph: 2.1, a: .08 },
+        { c: [185, 225, 133], rad: .42, ax: .22, ay: .18, sp: .00025, ph: 4.2, a: .05 },
+        { c: [251, 235, 120], rad: .32, ax: .34, ay: .14, sp: .00013, ph: 1.2, a: .04 }
       ];
 
       let w = 0, h = 0, raf = 0, live = false;
@@ -348,8 +364,11 @@
         const r = host.getBoundingClientRect();
         if (!r.width || !r.height) return;
         w = r.width; h = r.height;
-        const dpr = Math.min(devicePixelRatio || 1, 1.5);
-        cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+        /* the wash is soft by definition, so the backing store is capped well
+           below device pixels: a full-viewport drawImage every frame is the
+           expensive part, and nobody can see the difference. */
+        const scale = Math.min(1, 900 / w);
+        cv.width = Math.round(w * scale); cv.height = Math.round(h * scale);
         cv.style.width = w + 'px'; cv.style.height = h + 'px';
         off.width = LOW; off.height = Math.max(2, Math.round(LOW * h / w));
         ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -357,7 +376,11 @@
         ctx.imageSmoothingQuality = 'high';
       }
 
+      let last = 0;
       function frame(now) {
+        raf = live ? requestAnimationFrame(frame) : 0;
+        if (now - last < 33) return;   /* 30fps is plenty for a slow wash */
+        last = now;
         const ow = off.width, oh = off.height;
         ptr.x += (ptr.tx - ptr.x) * .045;
         ptr.y += (ptr.ty - ptr.y) * .045;
@@ -381,14 +404,11 @@
 
         ctx.clearRect(0, 0, cv.width, cv.height);
         ctx.drawImage(off, 0, 0, ow, oh, 0, 0, cv.width, cv.height);
-
-        raf = live ? requestAnimationFrame(frame) : 0;
       }
 
       addEventListener('pointermove', e => {
-        const r = host.getBoundingClientRect();
-        ptr.tx = (e.clientX - r.left) / r.width;
-        ptr.ty = (e.clientY - r.top) / r.height;
+        ptr.tx = e.clientX / innerWidth;
+        ptr.ty = e.clientY / innerHeight;
       }, { passive: true });
 
       new IntersectionObserver(es => es.forEach(e => {
@@ -404,7 +424,7 @@
 
   /* ── boot ───────────────────────────────────────────────────────────── */
   function boot() {
-    initSmoothScroll();
+    initAnchors();
     initSplit();
     initReveal();
     initCounters();

@@ -16,7 +16,7 @@
     st.textContent = `
 .wk-ft{
   border-top:1px solid var(--rule,rgba(239,230,210,.09));
-  background:var(--ink,#1b1a15);font-family:var(--f-body,'Figtree',sans-serif);
+  background:var(--ink,#0c0a09);font-family:var(--f-body,'Figtree',sans-serif);
 }
 .wk-ft a{text-decoration:none;color:inherit}
 .wk-ft-top{
@@ -27,27 +27,27 @@
 }
 .wk-ft-brand{display:flex;flex-direction:column;gap:16px}
 .wk-ft-kicker{
-  font-family:var(--f-mono,monospace);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--cream-faint,#5d574c);
+  font-family:var(--f-mono,'Unbounded',sans-serif);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-faint,#635f5a);
 }
 .wk-ft-line{
-  font-family:var(--f-display,'Poiret One',serif);font-weight:400;
-  font-size:clamp(24px,2.8vw,36px);line-height:1.08;letter-spacing:-.02em;
-  color:var(--cream,#efe6d2);margin:0;max-width:14ch;
+  font-family:var(--f-display,'Unbounded',sans-serif);font-weight:900;
+  font-size:clamp(24px,2.8vw,36px);line-height:1.08;letter-spacing:-.04em;
+  color:var(--cream,#f7f3ec);margin:0;max-width:14ch;
 }
-.wk-ft-line .mark{font-style:normal;color:var(--bronze,#d9a748)}
+.wk-ft-line .mark{font-style:normal;color:var(--bronze,#df3821)}
 .wk-ft-col{display:flex;flex-direction:column;gap:2px}
 .wk-ft-col h4{
-  font-family:var(--f-mono,monospace);font-size:10px;font-weight:500;
+  font-family:var(--f-mono,'Unbounded',sans-serif);font-size:10px;font-weight:900;
   letter-spacing:.14em;text-transform:uppercase;
-  color:var(--cream-faint,#5d574c);margin:0 0 8px;
+  color:var(--cream-faint,#635f5a);margin:0 0 8px;
 }
 .wk-ft-col a{
   display:flex;align-items:center;min-height:32px;
-  font-size:14px;font-weight:300;color:var(--cream-mute,#8a8272);
+  font-size:14px;font-weight:300;color:var(--cream-mute,#918d87);
   transition:color .2s var(--ease-premium,ease);
 }
-.wk-ft-col a:hover{color:var(--bronze,#d9a748)}
+.wk-ft-col a:hover{color:var(--bronze,#df3821)}
 .wk-ft-globe{position:relative;height:200px;display:none}
 @media(min-width:1100px){.wk-ft-globe{display:block}}
 .wk-ft-globe canvas{position:absolute;inset:0;width:100%;height:100%}
@@ -58,8 +58,8 @@
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
 }
 .wk-ft-pay-l{
-  font-family:var(--f-mono,monospace);font-size:9.5px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--cream-faint,#5d574c);
+  font-family:var(--f-mono,'Unbounded',sans-serif);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--cream-faint,#635f5a);
   display:flex;align-items:center;gap:7px;flex-shrink:0;
 }
 .wk-ft-pay-icons{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
@@ -78,11 +78,11 @@
   gap:14px;flex-wrap:wrap;
 }
 .wk-ft-bot p,.wk-ft-bot a,.wk-ft-bot span{
-  font-family:var(--f-mono,monospace);font-size:10.5px;line-height:1.6;
-  letter-spacing:.05em;color:var(--cream-faint,#5d574c);margin:0;
+  font-family:var(--f-mono,'Unbounded',sans-serif);font-size:10.5px;line-height:1.6;
+  letter-spacing:.05em;color:var(--cream-faint,#635f5a);margin:0;
 }
 .wk-ft-bot a{transition:color .2s}
-.wk-ft-bot a:hover{color:var(--bronze,#d9a748)}
+.wk-ft-bot a:hover{color:var(--bronze,#df3821)}
 .wk-ft-legal{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 @media(max-width:1099px){.wk-ft-top{grid-template-columns:1.6fr 1fr 1fr 1fr}}
 @media(max-width:860px){
@@ -188,12 +188,16 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    function draw() {
+    let last = 0;
+    function draw(now) {
+      raf = live ? requestAnimationFrame(draw) : 0;
+      if (now - last < 33) return;
+      last = now;
       ctx.clearRect(0, 0, w, h);
       const cx = w / 2, cy = h / 2, R = Math.min(w, h) * 0.40;
 
       ctx.lineWidth = 1;
-      ctx.strokeStyle = 'rgba(217,167,72,.28)';
+      ctx.strokeStyle = 'rgba(223,56,33,.28)';
       ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.2832); ctx.stroke();
 
       ctx.strokeStyle = 'rgba(239,230,210,.13)';
@@ -203,14 +207,13 @@
         ctx.beginPath(); ctx.ellipse(cx, y, rx, rx * 0.20, 0, 0, 6.2832); ctx.stroke();
       }
 
-      ctx.strokeStyle = 'rgba(217,167,72,.20)';
+      ctx.strokeStyle = 'rgba(223,56,33,.20)';
       for (let i = 0; i < 7; i++) {
         const p = (t / 300 + i / 7) % 1;
         const rx = Math.abs(Math.cos(p * Math.PI)) * R;
         ctx.beginPath(); ctx.ellipse(cx, cy, rx, R, 0, 0, 6.2832); ctx.stroke();
       }
       t++;
-      raf = live ? requestAnimationFrame(draw) : 0;
     }
 
     new IntersectionObserver(es => es.forEach(e => {
