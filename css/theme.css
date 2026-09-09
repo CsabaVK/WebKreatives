@@ -511,3 +511,43 @@ body.cursor-on-red.has-cursor #c-ring{border-color:var(--ink);opacity:.8}
 @media(prefers-reduced-motion:reduce){
   #c-dot,#c-ring{display:none!important}
 }
+
+/* ── Cursor label (js/motion.js initCursorLabel) ──────────────────────── */
+.c-label{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-body);font-size:9.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:#fff;white-space:nowrap;
+  opacity:0;transition:opacity .18s;pointer-events:none;
+}
+body.cursor-label.has-cursor #c-ring{
+  width:82px;height:82px;opacity:1;
+  background:var(--red);border-color:var(--red);
+}
+body.cursor-label.has-cursor #c-ring .c-label{opacity:1}
+body.cursor-label #c-dot{opacity:0}
+
+/* ── Frame wipe (js/motion.js initWipe) ───────────────────────────────── */
+.wk-wipe{
+  clip-path:inset(100% 0 0 0);
+  transform:scale(1.06);
+  transition:clip-path 1.05s var(--ease-premium),
+             transform 1.35s var(--ease-premium),
+             filter var(--dur) var(--ease-premium);
+}
+.wk-wipe.is-wiped{clip-path:inset(0 0 0 0);transform:scale(1)}
+/* the hover zoom already on frames must win once the wipe has finished */
+a:hover .wk-frame .wk-wipe.is-wiped,
+.wk-row:hover .wk-frame .wk-wipe.is-wiped{transform:scale(1.028)}
+
+/* ── Tilt (js/motion.js initTilt) ─────────────────────────────────────── */
+[data-tilt]{
+  transform-style:preserve-3d;
+  transition:transform .5s var(--ease-premium);
+}
+[data-tilt]:hover{transition:transform .12s linear}
+
+@media(prefers-reduced-motion:reduce){
+  .wk-wipe{clip-path:none!important;transform:none!important}
+  [data-tilt]{transform:none!important}
+  .c-label{display:none}
+}

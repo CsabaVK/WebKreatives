@@ -477,6 +477,133 @@
     })();
   }
 
+
+  /* ── 12. Cursor label ────────────────────────────────────────────────────
+     The ring grows into a pill with a word in it over anything carrying
+     data-cursor-label. Costs nothing: it is the cursor element already on
+     screen, plus one class and one text write per hover.                   */
+  function initCursorLabel() {
+    if (reduced) return;
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+
+    const ring = document.getElementById('c-ring');
+    if (!ring) return;
+    let label = ring.querySelector('.c-label');
+    if (!label) {
+      label = document.createElement('span');
+      label.className = 'c-label';
+      ring.appendChild(label);
+    }
+
+    addEventListener('pointerover', e => {
+      const t = e.target;
+      if (!t || t.nodeType !== 1) return;
+      const host = t.closest('[data-cursor-label]');
+      document.body.classList.toggle('cursor-label', !!host);
+      if (host) {
+        const en = localStorage.getItem('wk-lang') === 'en';
+        label.textContent = (en && host.dataset.cursorLabelEn) || host.dataset.cursorLabel;
+      }
+    }, { passive: true });
+  }
+
+  /* ── 13. Frame wipe ──────────────────────────────────────────────────────
+     Screenshots wipe up into their frame instead of just fading. clip-path
+     animates on the compositor, so this is free.                           */
+  function initWipe() {
+    const els = document.querySelectorAll('.wk-frame img, [data-wipe]');
+    if (!els.length || reduced) return;
+    const io = new IntersectionObserver(ents => {
+      ents.forEach(en => {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('is-wiped');
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => { el.classList.add('wk-wipe'); io.observe(el); });
+
+    /* same safety net as the reveals: never leave an image invisible */
+    setTimeout(() => els.forEach(el => {
+      if (el.getBoundingClientRect().top < innerHeight) el.classList.add('is-wiped');
+    }), 2500);
+  }
+
+  /* ── 14. Tilt ────────────────────────────────────────────────────────────
+     A few degrees of pointer-follow on cards. The rect is read once on enter
+     rather than on every move.                                             */
+  function initTilt() {
+    if (reduced) return;
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      if (el.dataset.tiltDone) return;
+      el.dataset.tiltDone = '1';
+      const MAX = parseFloat(el.dataset.tilt) || 5;
+      let r = null, raf = 0, tx = 0, ty = 0;
+
+      const apply = () => {
+        el.style.transform =
+          'perspective(900px) rotateX(' + ty.toFixed(2) + 'deg) rotateY(' + tx.toFixed(2) + 'deg)';
+        raf = 0;
+      };
+      el.addEventListener('pointerenter', () => {
+        r = el.getBoundingClientRect();
+        el.style.willChange = 'transform';
+      });
+      el.addEventListener('pointermove', e => {
+        if (!r) return;
+        tx = ((e.clientX - r.left) / r.width - .5) * 2 * MAX;
+        ty = ((e.clientY - r.top) / r.height - .5) * -2 * MAX;
+        if (!raf) raf = requestAnimationFrame(apply);
+      }, { passive: true });
+      el.addEventListener('pointerleave', () => {
+        r = null; tx = ty = 0;
+        if (!raf) raf = requestAnimationFrame(apply);
+        setTimeout(() => { el.style.willChange = ''; }, 400);
+      });
+    });
+  }
+
+  /* ── 15. Decoding labels ─────────────────────────────────────────────────
+     Eyebrows land by resolving out of noise, one pass, ~600ms. Only on
+     [data-decode], and it restores the exact original text.                */
+  function initDecode() {
+    const els = document.querySelectorAll('[data-decode]');
+    if (!els.length || reduced) return;
+    const POOL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&/';
+
+    const run = el => {
+      const final = el.textContent;
+      const n = final.length;
+      let frame = 0;
+      const steps = 22;
+      /* if frames stop coming, the label must not be left as noise */
+      setTimeout(() => { if (el.textContent !== final) el.textContent = final; }, 1200);
+      const tick = () => {
+        const settled = Math.floor((frame / steps) * n);
+        let out = '';
+        for (let i = 0; i < n; i++) {
+          const ch = final[i];
+          if (i < settled || ch === ' ' || ch === '·') out += ch;
+          else out += POOL[(Math.random() * POOL.length) | 0];
+        }
+        el.textContent = out;
+        if (frame++ < steps) requestAnimationFrame(tick);
+        else el.textContent = final;
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(ents => {
+      ents.forEach(en => {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        run(en.target);
+      });
+    }, { threshold: 0.6 });
+    els.forEach(el => io.observe(el));
+  }
+
   /* ── boot ───────────────────────────────────────────────────────────── */
   function boot() {
     initAnchors();
@@ -490,12 +617,16 @@
     initCursorGrid();
     initField();
     initCursor();
+    initCursorLabel();
+    initWipe();
+    initTilt();
+    initDecode();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 
   /* re-scan after language switches (nav/footer re-render their text) */
-  window.wkRescanMotion = () => { initReveal(); initMagnetic(); };
+  window.wkRescanMotion = () => { initReveal(); initMagnetic(); initWipe(); initTilt(); };
 
   document.addEventListener('wk:languagechange', () => {
     setTimeout(() => { initReveal(); initMagnetic(); }, 60);

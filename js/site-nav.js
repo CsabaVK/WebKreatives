@@ -197,17 +197,7 @@
   const CARET = '<svg class="nav-caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 3l4 4 4-4"/></svg>';
 
   const ITEMS = [
-    {
-      href: '/portfolio/', nl: 'Werk', en: 'Work',
-      sub: [
-        { href: '/portfolio/', nl: 'Portfolio', en: 'Portfolio',
-          dnl: 'Twaalf builds, live en aanklikbaar',
-          den: 'Twelve builds, live and clickable' },
-        { href: '/case-studies/', nl: 'Case studies', en: 'Case studies',
-          dnl: 'De keuzes achter drie ervan',
-          den: 'The decisions behind three of them' }
-      ]
-    },
+    { href: '/portfolio/', nl: 'Portfolio', en: 'Portfolio' },
     {
       href: '/services/websites/', nl: 'Diensten', en: 'Services',
       sub: [
@@ -219,19 +209,8 @@
           den: 'Kept online, fast and up to date' }
       ]
     },
-    {
-      href: '/pricing/', nl: 'Prijzen', en: 'Pricing',
-      sub: [
-        { href: '/pricing/', nl: 'Kostencalculator', en: 'Cost calculator',
-          dnl: 'Een indicatie in twee minuten',
-          den: 'A rough estimate in two minutes' },
-        { href: '/services/hosting/#plans', nl: 'Maandplannen', en: 'Monthly plans',
-          dnl: 'Vanaf &euro;19,99 per maand',
-          den: 'From &euro;19.99 a month' }
-      ]
-    },
-    { href: '/articles/', nl: 'Artikelen', en: 'Articles' },
-    { href: '/contact/',  nl: 'Contact',   en: 'Contact'  }
+    { href: '/pricing/',  nl: 'Prijzen',   en: 'Pricing'  },
+    { href: '/articles/', nl: 'Artikelen', en: 'Articles' }
   ];
 
   const listItems = ITEMS.map(i => {
@@ -275,7 +254,7 @@
       </div>
     </div>
     <div class="nav-divider"></div>
-    <a href="${'/contact/'}" class="nav-cta"><span data-nl="Offerte Aanvragen" data-en="Get a Quote">Offerte Aanvragen</span></a>
+    <a href="${'/contact/'}" class="nav-cta"><span data-nl="Neem contact op" data-en="Get in touch">Neem contact op</span></a>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -283,7 +262,7 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   ${mobileItems}
-  <a class="mobile-menu-cta" href="${'/contact/'}" data-nl="Offerte Aanvragen" data-en="Get a Quote">Offerte Aanvragen</a>
+  <a class="mobile-menu-cta" href="${'/contact/'}" data-nl="Neem contact op" data-en="Get in touch">Neem contact op</a>
 </div>`;
 
   /* ── The single language switcher ───────────────────────────────────── */
