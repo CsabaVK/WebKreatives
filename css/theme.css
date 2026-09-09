@@ -355,8 +355,8 @@ button{font:inherit}
   position:relative;overflow:hidden;text-align:center;
   border:1px solid var(--rule);border-radius:10px;background:var(--ink-2);
   padding:clamp(44px,7vw,96px) clamp(22px,5vw,72px);
-  background-image:radial-gradient(rgba(239,230,210,.055) 1px,transparent 1px);
-  background-size:22px 22px;
+  /* no CSS dot pattern here: the cursor-grid canvas already draws one, and
+     the two together read as a doubled grid */
 }
 .wk-cta-card > *:not(.cursor-grid__canvas),
 .hm-close-card > *:not(.cursor-grid__canvas){position:relative;z-index:1}

@@ -265,6 +265,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://webkreatives.com/refund-policy/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://webkreatives.com/services/hosting/</loc>
     <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
