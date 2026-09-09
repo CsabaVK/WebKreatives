@@ -62,13 +62,29 @@
   text-transform:uppercase;color:var(--cream-faint,#635f5a);
   display:flex;align-items:center;gap:7px;flex-shrink:0;
 }
-.wk-ft-pay-icons{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.wk-ft-pay-icons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .wk-ft-badge{
-  width:44px;height:29px;object-fit:contain;padding:5px;flex-shrink:0;
-  border-radius:var(--radius,3px);background:rgba(239,230,210,.92);
-  opacity:.5;transition:opacity .25s;
+  width:52px;height:34px;object-fit:contain;padding:6px;flex-shrink:0;
+  box-sizing:border-box;border-radius:10px;
+  background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);
+  border:1px solid rgba(15,23,42,.08);
+  box-shadow:0 6px 16px rgba(15,23,42,.05);
+  opacity:.96;
+  transition:opacity .2s,transform .2s,box-shadow .2s,border-color .2s;
 }
-.wk-ft-badge:hover{opacity:1}
+.wk-ft-badge:hover{opacity:1;transform:translateY(-1px);box-shadow:0 10px 22px rgba(15,23,42,.08)}
+/* each card carries its brand's colour as a stripe across the top */
+.wk-ft-badge[alt="Visa"]{border-color:rgba(26,31,113,.22);box-shadow:inset 0 2px 0 #1a1f71,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="Mastercard"]{border-color:rgba(255,95,0,.2);box-shadow:inset 0 2px 0 #ff5f00,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="iDEAL"]{border-color:rgba(204,0,102,.22);box-shadow:inset 0 2px 0 #cc0066,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="Apple Pay"]{border-color:rgba(17,17,17,.18);box-shadow:inset 0 2px 0 #111,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="Google Pay"]{border-color:rgba(66,133,244,.2);box-shadow:inset 0 2px 0 #4285f4,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="Klarna"]{border-color:rgba(255,179,199,.55);box-shadow:inset 0 2px 0 #ffb3c7,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="PayPal"]{border-color:rgba(0,48,135,.18);box-shadow:inset 0 2px 0 #003087,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="Stripe"]{border-color:rgba(99,91,255,.22);box-shadow:inset 0 2px 0 #635bff,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="Amazon Pay"]{border-color:rgba(255,153,0,.24);box-shadow:inset 0 2px 0 #ff9900,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="Visa"],.wk-ft-badge[alt="Mastercard"],.wk-ft-badge[alt="Apple Pay"],
+.wk-ft-badge[alt="Google Pay"],.wk-ft-badge[alt="Amazon Pay"]{padding:4px}
 
 .wk-ft-bot{
   max-width:var(--maxw,1280px);margin:0 auto;
@@ -100,7 +116,7 @@
   const PAY = [
     ['visa','Visa'],['mastercard','Mastercard'],['ideal','iDEAL'],['applepay','Apple Pay'],
     ['googlepay','Google Pay'],['klarna','Klarna'],['paypal','PayPal'],['stripe','Stripe'],['amazonpay','Amazon Pay']
-  ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="44" height="29">`).join('');
+  ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="52" height="34">`).join('');
 
   const L = (href, nl, en) => `<a href="${href}" data-nl="${nl}" data-en="${en}">${nl}</a>`;
 

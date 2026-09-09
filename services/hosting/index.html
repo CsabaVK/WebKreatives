@@ -44,6 +44,34 @@
 }
 .hs-i p{font-size:13.5px;line-height:1.65;color:var(--cream-mute);margin:0}
 
+
+/* ── the icons draw themselves in, then a couple keep moving ──────── */
+.hs-i-ic svg *{
+  stroke-dasharray:130;stroke-dashoffset:130;
+  transition:stroke-dashoffset 1.1s var(--ease-premium);
+}
+.hs-i.is-in .hs-i-ic svg *{stroke-dashoffset:0}
+.hs-i:nth-child(1).is-in .hs-i-ic svg *{transition-delay:.05s}
+.hs-i:nth-child(2).is-in .hs-i-ic svg *{transition-delay:.13s}
+.hs-i:nth-child(3).is-in .hs-i-ic svg *{transition-delay:.21s}
+.hs-i:nth-child(4).is-in .hs-i-ic svg *{transition-delay:.29s}
+.hs-i:nth-child(5).is-in .hs-i-ic svg *{transition-delay:.37s}
+.hs-i:nth-child(6).is-in .hs-i-ic svg *{transition-delay:.45s}
+
+/* the clock hand sweeps, the update arrows turn, the bolt flickers */
+.hs-i.is-in [data-spin]{transform-origin:12px 12px;animation:hs-spin 9s linear infinite}
+@keyframes hs-spin{to{transform:rotate(360deg)}}
+.hs-i.is-in [data-hand]{transform-origin:12px 12px;animation:hs-hand 6s steps(12) infinite}
+@keyframes hs-hand{to{transform:rotate(360deg)}}
+.hs-i.is-in [data-bolt]{animation:hs-bolt 3.4s var(--ease-premium) infinite}
+@keyframes hs-bolt{0%,72%,100%{opacity:1}78%{opacity:.25}84%{opacity:1}90%{opacity:.4}}
+.hs-i-ic{overflow:visible}
+.hs-i:hover .hs-i-ic{border-color:rgba(223,56,33,.45);background:rgba(223,56,33,.08)}
+
+@media(prefers-reduced-motion:reduce){
+  .hs-i-ic svg *{stroke-dashoffset:0!important;animation:none!important}
+}
+
 /* ── plans ────────────────────────────────────────────────────────── */
 .hs-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
 @media(max-width:900px){.hs-plans{grid-template-columns:1fr}}
@@ -218,19 +246,19 @@
            data-en="A copy every day, kept for thirty days, and tested to make sure it actually restores. A backup you have never tried is not a backup.">A copy every day, kept for thirty days, and tested to make sure it actually restores. A backup you have never tried is not a backup.</p>
       </div>
       <div class="hs-i">
-        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path data-bolt d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
         <h3 data-nl="Snelheid bewaakt" data-en="Speed watched">Speed watched</h3>
         <p data-nl="Sites worden langzaam sluipenderwijs, meestal door een te zware foto die iemand snel toevoegde. We meten het en grijpen in voordat het je bezoekers kost."
            data-en="Sites get slow by drift, usually one oversized photo somebody added in a hurry. We measure it and fix it before it starts costing you visitors.">Sites get slow by drift, usually one oversized photo somebody added in a hurry. We measure it and fix it before it starts costing you visitors.</p>
       </div>
       <div class="hs-i">
-        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path data-hand d="M12 7v5l3 2"/></svg></span>
         <h3 data-nl="Uptime-controle" data-en="Uptime checks">Uptime checks</h3>
         <p data-nl="De site wordt elke paar minuten gecontroleerd. Gaat hij eruit, dan weten wij het voordat jij het hoort van een klant die niet kon bestellen."
            data-en="The site is checked every few minutes. If it goes down we know before you hear it from a customer who could not place an order.">The site is checked every few minutes. If it goes down we know before you hear it from a customer who could not place an order.</p>
       </div>
       <div class="hs-i">
-        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></span>
+        <span class="hs-i-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><g data-spin><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></g></svg></span>
         <h3 data-nl="Updates en kleine wijzigingen" data-en="Updates and small changes">Updates and small changes</h3>
         <p data-nl="Nieuwe openingstijden, een prijs die verandert, een medewerker erbij. Kleine tekstwijzigingen zitten in het plan, je hoeft er geen offerte voor te vragen."
            data-en="New opening hours, a price that changed, a member of staff added. Small text changes are in the plan; you do not have to ask for a quote.">New opening hours, a price that changed, a member of staff added. Small text changes are in the plan; you do not have to ask for a quote.</p>
@@ -460,6 +488,12 @@
 <script src="/js/site-footer.js?v=v5"></script>
 <script src="/js/cookie-consent.js?v=v5"></script>
 <script>
+document.querySelectorAll('.hs-i').forEach(el => {
+  new IntersectionObserver((es, o) => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-in'); o.unobserve(e.target); }
+  }), { threshold: .3 }).observe(el);
+});
+
 document.querySelectorAll('.sv-q-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const q = btn.parentElement, open = q.classList.contains('open');
