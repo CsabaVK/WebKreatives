@@ -551,3 +551,34 @@ a:hover .wk-frame .wk-wipe.is-wiped,
   [data-tilt]{transform:none!important}
   .c-label{display:none}
 }
+
+/* ── Row preview (js/motion.js initRowPreview) ────────────────────────── */
+.wk-prev{
+  position:fixed;top:0;left:0;z-index:9990;pointer-events:none;
+  width:340px;height:220px;border-radius:10px;overflow:hidden;
+  border:1px solid var(--rule-hard);background:var(--ink-deep);
+  box-shadow:0 30px 70px rgba(0,0,0,.55);
+  opacity:0;
+  /* the position is written every frame; only the reveal is transitioned */
+  transition:opacity .3s var(--ease-premium),clip-path .5s var(--ease-premium);
+  clip-path:inset(46% 12% 46% 12% round 10px);
+  will-change:transform,opacity;
+}
+.wk-prev.is-on{opacity:1;clip-path:inset(0 0 0 0 round 10px)}
+.wk-prev img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+@media (pointer:coarse),(max-width:900px){.wk-prev{display:none}}
+@media(prefers-reduced-motion:reduce){.wk-prev{display:none}}
+
+/* ── "See everything" link ────────────────────────────────────────────────
+   For the quiet way through to an index. A bordered button here competes
+   with the real call to action beside it; this does not. ───────────────── */
+.wk-more{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--f-body);font-size:14px;font-weight:500;
+  color:var(--cream-mute);white-space:nowrap;
+  border-bottom:1px solid var(--rule-hard);padding-bottom:3px;
+  transition:color .2s,border-color .2s;
+}
+.wk-more:hover{color:var(--white);border-color:var(--white)}
+.wk-more .wk-arrow{transition:transform .25s var(--ease-premium)}
+.wk-more:hover .wk-arrow{transform:translateX(4px)}

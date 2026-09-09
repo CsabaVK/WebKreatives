@@ -604,6 +604,56 @@
     els.forEach(el => io.observe(el));
   }
 
+
+  /* ── 16. Row preview ─────────────────────────────────────────────────────
+     A screenshot that trails the pointer while a [data-preview] row is
+     hovered. One element for the whole page, positioned from cached
+     coordinates inside a single rAF loop.                                 */
+  function initRowPreview() {
+    const rows = document.querySelectorAll('[data-preview]');
+    if (!rows.length || reduced) return;
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+
+    const box = document.createElement('div');
+    box.className = 'wk-prev';
+    box.innerHTML = '<img alt="">';
+    document.body.appendChild(box);
+    const img = box.querySelector('img');
+
+    let mx = innerWidth / 2, my = innerHeight / 2;
+    let x = mx, y = my, on = false, raf = 0, last = mx;
+
+    addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+
+    function frame() {
+      x += (mx - x) * 0.14;
+      y += (my - y) * 0.14;
+      /* lean into the direction of travel, so it feels carried not pasted */
+      const tilt = Math.max(-9, Math.min(9, (mx - last) * 0.55));
+      last += (mx - last) * 0.2;
+      box.style.transform =
+        'translate3d(' + (x - 170) + 'px,' + (y - 110) + 'px,0) rotate(' + tilt.toFixed(2) + 'deg)';
+      raf = on ? requestAnimationFrame(frame) : 0;
+    }
+
+    rows.forEach(row => {
+      row.addEventListener('pointerenter', () => {
+        const src = row.dataset.preview;
+        if (!src) return;
+        if (img.getAttribute('src') !== src) img.src = src;
+        /* start it where the pointer already is, not where it last was */
+        if (!on) { x = mx; y = my; last = mx; }
+        on = true;
+        box.classList.add('is-on');
+        if (!raf) raf = requestAnimationFrame(frame);
+      });
+      row.addEventListener('pointerleave', () => {
+        on = false;
+        box.classList.remove('is-on');
+      });
+    });
+  }
+
   /* ── boot ───────────────────────────────────────────────────────────── */
   function boot() {
     initAnchors();
@@ -621,6 +671,7 @@
     initWipe();
     initTilt();
     initDecode();
+    initRowPreview();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
