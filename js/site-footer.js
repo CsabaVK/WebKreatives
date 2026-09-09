@@ -60,7 +60,7 @@
 }
 .wk-ft-col a:hover svg{opacity:1;transform:translateY(-1px)}
 /* the primary line in Connect reads as an action, not a link */
-.wk-ft-col a.go{color:var(--cream,#f7f3ec);font-weight:600}
+.wk-ft-col a.go{color:var(--cream,#f7f3ec);font-weight:600;white-space:nowrap}
 .wk-ft-col a.go::after{
   content:'\\2192';margin-left:8px;opacity:.55;
   transition:transform .25s var(--ease-premium,ease),opacity .2s;
@@ -202,7 +202,7 @@
 
     <div class="wk-ft-col">
       <h4 data-nl="Verbinden" data-en="Connect">Connect</h4>
-      <a class="go" href="/contact/" data-nl="Start een project" data-en="Start a project">Start a project</a>
+      <a class="go" href="/contact/" data-nl="Aan de slag" data-en="Get started">Get started</a>
       <a href="https://www.instagram.com/webkreatives/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
       <a href="https://www.linkedin.com/company/webkreatives/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.5A5 5 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12" rx=".5"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
       <a href="https://webkreatives.medium.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>Medium</a>
