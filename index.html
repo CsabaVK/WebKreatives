@@ -60,19 +60,29 @@
 
 .shape{
   position:absolute;z-index:0;border-radius:9999px;
-  pointer-events:none;will-change:transform,opacity;
-  opacity:0;transform:translateY(-180px);
-  /* drop in once, then hand over to a slow independent float */
-  animation:sh-in 2.4s cubic-bezier(.16,1,.3,1) forwards,
-            sh-float var(--fd,11s) ease-in-out 2.4s infinite alternate;
+  pointer-events:none;will-change:transform,translate,opacity;
+  opacity:0;translate:0 -180px;
+  /* The drop uses `translate`, the float uses `transform`. They are separate
+     properties, so the two run at once and compose instead of fighting —
+     which is how the original behaved: the pills drift from the first frame,
+     they never sit still waiting for the entrance to finish. */
+  animation:
+    sh-in    2.4s cubic-bezier(.215,.61,.355,1) var(--dd,.1s) forwards,
+    sh-float var(--fd,11s) cubic-bezier(.37,0,.63,1) var(--fdl,0s) infinite alternate;
 }
 .shape::after{
   content:'';position:absolute;inset:0;border-radius:inherit;
   background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.18),transparent 70%);
 }
-@keyframes sh-in{to{opacity:1;transform:translateY(0)}}
+@keyframes sh-in{
+  from{opacity:0;translate:0 -180px}
+  to  {opacity:1;translate:0 0}
+}
+/* both ends explicit: an implicit `from` would resolve against the element's
+   base transform, not against where the entrance left it */
 @keyframes sh-float{
-  to{transform:translate(var(--fx,0px),var(--fy,18px)) rotate(var(--fr,0deg))}
+  from{transform:translate(0,0) rotate(0deg)}
+  to  {transform:translate(var(--fx,0px),var(--fy,18px)) rotate(var(--fr,0deg))}
 }
 
 .sh1{
@@ -81,7 +91,7 @@
   border:1.5px solid color-mix(in srgb,var(--red) 20%,transparent);
   box-shadow:0 8px 40px color-mix(in srgb,var(--red) 12%,transparent);
   left:-6%;top:18%;rotate:12deg;
-  --fy:18px;--fx:0px;--fr:0deg;--fd:11s;animation-delay:.1s,2.5s;
+  --fx:0px;--fy:18px;--fr:0deg;--fd:11s;--fdl:0s;--dd:.10s;
 }
 .sh2{
   width:clamp(280px,36vw,530px);height:clamp(70px,8vw,128px);
@@ -89,7 +99,7 @@
   border:1.5px solid color-mix(in srgb,var(--lime) 15%,transparent);
   box-shadow:0 8px 40px color-mix(in srgb,var(--lime) 7%,transparent);
   right:-4%;top:66%;rotate:-15deg;
-  --fy:-14px;--fx:8px;--fr:.5deg;--fd:13s;animation-delay:.45s,3.2s;
+  --fx:8px;--fy:-14px;--fr:.5deg;--fd:13s;--fdl:.8s;--dd:.52s;
 }
 .sh3{
   width:clamp(200px,24vw,380px);height:clamp(55px,6.5vw,100px);
@@ -97,7 +107,7 @@
   border:1.5px solid color-mix(in srgb,var(--blue) 16%,transparent);
   box-shadow:0 8px 40px color-mix(in srgb,var(--blue) 8%,transparent);
   left:5%;bottom:9%;rotate:-8deg;
-  --fy:12px;--fx:-6px;--fr:-.4deg;--fd:9.5s;animation-delay:.25s,2.8s;
+  --fx:-6px;--fy:12px;--fr:-.4deg;--fd:9.5s;--fdl:.4s;--dd:.24s;
 }
 .sh4{
   width:clamp(160px,18vw,280px);height:clamp(45px,5vw,78px);
@@ -105,28 +115,28 @@
   border:1.5px solid color-mix(in srgb,var(--yellow) 13%,transparent);
   box-shadow:0 8px 40px color-mix(in srgb,var(--yellow) 6%,transparent);
   right:14%;top:9%;rotate:22deg;
-  --fy:-10px;--fx:0px;--fr:.6deg;--fd:12s;animation-delay:.6s,3.6s;
+  --fx:0px;--fy:-10px;--fr:.6deg;--fd:12s;--fdl:1.2s;--dd:.66s;
 }
 .sh5{
   width:clamp(120px,14vw,220px);height:clamp(36px,4vw,62px);
   background:linear-gradient(100deg,color-mix(in srgb,var(--blue) 18%,transparent),transparent 70%);
   border:1.5px solid color-mix(in srgb,var(--blue) 14%,transparent);
   left:22%;top:5%;rotate:-24deg;
-  --fy:16px;--fx:5px;--fr:-.3deg;--fd:8.5s;animation-delay:.35s,3s;
+  --fx:5px;--fy:16px;--fr:-.3deg;--fd:8.5s;--fdl:.6s;--dd:.38s;
 }
 .sh6{
   width:clamp(240px,28vw,420px);height:clamp(62px,7vw,110px);
   background:linear-gradient(100deg,color-mix(in srgb,var(--yellow) 14%,transparent),transparent 70%);
   border:1.5px solid color-mix(in srgb,var(--yellow) 11%,transparent);
   right:6%;bottom:16%;rotate:8deg;
-  --fy:-12px;--fx:-4px;--fr:.4deg;--fd:14s;animation-delay:.55s,3.4s;
+  --fx:-4px;--fy:-12px;--fr:.4deg;--fd:14s;--fdl:1.0s;--dd:.80s;
 }
 @media(max-width:1100px){
   .sh1{width:clamp(260px,55vw,420px)}
   .sh2{width:clamp(220px,48vw,360px)}
 }
 @media(prefers-reduced-motion:reduce){
-  .shape{animation:none;opacity:1;transform:none}
+  .shape{animation:none;opacity:1;translate:none;transform:none}
 }
 .hm-hero-inner{position:relative;z-index:2;max-width:1180px}
 .hm-hero h1{margin:22px 0 30px;max-width:15ch}
@@ -699,22 +709,21 @@
           data-en="Work that shows what we build.">Work that shows what we build.</h2>
       </div>
       <p class="wk-lede" data-reveal
-        data-nl="Volledig uitgewerkte conceptontwerpen voor twaalf branches. Elk concept is klikbaar en live te bekijken. Bij elk project staat één cijfer dat je zelf kunt controleren in het ontwerp, geen resultaatbelofte."
-        data-en="Fully designed concept builds across twelve sectors. Every concept is clickable and live to inspect. Each carries one figure you can verify in the build itself, not a performance claim.">Fully designed concept builds across twelve sectors. Every concept is clickable and live to inspect. Each carries one figure you can verify in the build itself, not a performance claim.</p>
+        data-nl="Twaalf branches, twaalf sites die je kunt openen en doorklikken. Bij elk project staat één cijfer dat je zelf kunt controleren in het ontwerp, geen resultaatbelofte."
+        data-en="Twelve sectors, twelve builds you can open and click through. Each carries one figure you can verify in the build itself, not a performance claim.">Twelve sectors, twelve builds you can open and click through. Each carries one figure you can verify in the build itself, not a performance claim.</p>
     </div>
 
     <a class="hm-item" href="/client-projects/de-groot-accountants/" target="_blank" rel="noopener" data-reveal>
       <span class="hm-item-n">01</span>
       <div class="hm-item-body">
         <div class="hm-item-top">
-          <span class="wk-badge">Concept</span>
           <span class="wk-meta" data-nl="Accountancy · Multi-page" data-en="Accountancy · Multi-page">Accountancy · Multi-page</span>
         </div>
         <h3>De Groot &amp; Partners</h3>
         <p class="hm-item-desc"
           data-nl="Een kantoor dat klem zit tussen grote namen en goedkope boekhoudpakketten. Diensten, over ons en contact krijgen elk een eigen pagina."
           data-en="A firm squeezed between the big names and cheap bookkeeping packages. Services, about and contact each earn their own page.">A firm squeezed between the big names and cheap bookkeeping packages. Services, about and contact each earn their own page.</p>
-        <span class="hm-item-go"><span data-nl="Bekijk het concept" data-en="View the concept">View the concept</span><span>→</span></span>
+        <span class="hm-item-go"><span data-nl="Bekijk het project" data-en="View the project">View the project</span><span>→</span></span>
       </div>
       <div class="hm-item-fig">
         <span class="hm-item-fig-n" data-count="4">4</span>
@@ -726,14 +735,13 @@
       <span class="hm-item-n">02</span>
       <div class="hm-item-body">
         <div class="hm-item-top">
-          <span class="wk-badge">Concept</span>
           <span class="wk-meta" data-nl="Horeca · One-page" data-en="Food &amp; drink · One-page">Food &amp; drink · One-page</span>
         </div>
         <h3>Leyenburger</h3>
         <p class="hm-item-desc"
           data-nl="De kaart is de homepage. Geen PDF, geen download. Je tikt een categorie aan en de gerechten met prijzen klappen open op dezelfde plek."
           data-en="The menu is the homepage. No PDF, no download. Tap a category and the dishes and prices open in place.">The menu is the homepage. No PDF, no download. Tap a category and the dishes and prices open in place.</p>
-        <span class="hm-item-go"><span data-nl="Bekijk het concept" data-en="View the concept">View the concept</span><span>→</span></span>
+        <span class="hm-item-go"><span data-nl="Bekijk het project" data-en="View the project">View the project</span><span>→</span></span>
       </div>
       <div class="hm-item-fig">
         <span class="hm-item-fig-n" data-count="2">2</span>
@@ -745,14 +753,13 @@
       <span class="hm-item-n">03</span>
       <div class="hm-item-body">
         <div class="hm-item-top">
-          <span class="wk-badge">Concept</span>
           <span class="wk-meta" data-nl="Zorg · Lokale praktijk" data-en="Healthcare · Local practice">Healthcare · Local practice</span>
         </div>
         <h3>Tandarts Knoll</h3>
         <p class="hm-item-desc"
           data-nl="Geschreven voor iemand die om elf uur 's avonds met kiespijn zoekt. Openingstijden krijgen een eigen blok in plaats van een regel in de footer."
           data-en="Written for someone searching at eleven at night with toothache. Opening hours get their own section instead of a line in the footer.">Written for someone searching at eleven at night with toothache. Opening hours get their own section instead of a line in the footer.</p>
-        <span class="hm-item-go"><span data-nl="Bekijk het concept" data-en="View the concept">View the concept</span><span>→</span></span>
+        <span class="hm-item-go"><span data-nl="Bekijk het project" data-en="View the project">View the project</span><span>→</span></span>
       </div>
       <div class="hm-item-fig">
         <span class="hm-item-fig-n" data-count="6">6</span>
@@ -764,14 +771,13 @@
       <span class="hm-item-n">04</span>
       <div class="hm-item-body">
         <div class="hm-item-top">
-          <span class="wk-badge">Concept</span>
           <span class="wk-meta" data-nl="Vakwerk · Servicebedrijf" data-en="Trades · Service business">Trades · Service business</span>
         </div>
         <h3>Van den Berg Loodgieter</h3>
         <p class="hm-item-desc"
           data-nl="Eén pagina die de hele route afdekt: wat je doet, waar je werkt, wat het kost en hoe je belt. Gebouwd voor iemand met een lekkage, niet voor een jury."
           data-en="One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak, not for a design jury.">One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak, not for a design jury.</p>
-        <span class="hm-item-go"><span data-nl="Bekijk het concept" data-en="View the concept">View the concept</span><span>→</span></span>
+        <span class="hm-item-go"><span data-nl="Bekijk het project" data-en="View the project">View the project</span><span>→</span></span>
       </div>
       <div class="hm-item-fig">
         <span class="hm-item-fig-n" data-count="8">8</span>
@@ -779,13 +785,9 @@
       </div>
     </a>
 
-    <p class="hm-work-note" data-reveal
-      data-nl="Dit zijn conceptontwerpen van WebKreatives, gemaakt om onze aanpak te laten zien. Het zijn geen officiële websites van de genoemde bedrijven en er is geen samenwerking mee. Elk cijfer is een feit over de build, geen prestatieclaim."
-      data-en="These are concept designs by WebKreatives, made to show our approach. They are not the official websites of the businesses shown and no affiliation is implied. Every figure is a fact about the build, not a performance claim.">These are concept designs by WebKreatives, made to show our approach. They are not the official websites of the businesses shown and no affiliation is implied. Every figure is a fact about the build, not a performance claim.</p>
-
     <div style="margin-top:34px" data-reveal>
       <a href="/portfolio/" class="wk-btn wk-btn--ghost">
-        <span data-nl="Alle twaalf concepten" data-en="All twelve concepts">All twelve concepts</span>
+        <span data-nl="Alle twaalf projecten" data-en="All twelve projects">All twelve projects</span>
         <span class="wk-arrow">→</span>
       </a>
     </div>
@@ -1100,7 +1102,7 @@
       <div class="hm-team-figs" data-reveal data-reveal-delay=".1">
         <div class="hm-team-fig">
           <span class="wk-stat-n" data-count="12">12</span>
-          <span class="wk-stat-l" data-nl="Conceptsites live" data-en="Concept sites live">Concept sites live</span>
+          <span class="wk-stat-l" data-nl="Sites live" data-en="Sites live">Sites live</span>
         </div>
         <div class="hm-team-fig">
           <span class="wk-stat-n" data-count="22">22</span>

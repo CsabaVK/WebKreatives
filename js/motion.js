@@ -422,6 +422,61 @@
     });
   }
 
+
+  /* ── 11. Custom cursor ───────────────────────────────────────────────────
+     The red dot with the trailing ring, as the original had it. Fine pointers
+     only. One rAF loop drives both elements; the pointer handler only stores
+     coordinates, so nothing reads layout while the page is moving.          */
+  function initCursor() {
+    if (reduced) return;
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    if (document.getElementById('c-dot')) return;
+
+    const dot = document.createElement('div');  dot.id = 'c-dot';
+    const ring = document.createElement('div'); ring.id = 'c-ring';
+    document.body.append(dot, ring);
+
+    /* surfaces where the cursor sits on the brand red and has to invert */
+    const RED = '.wk-btn--primary,.nav-cta,.mobile-menu-cta,.btn-red,.ck-btn-p,' +
+                '.af-btn.active,.pf-f.is-on,.pf-shot-go,.ct-submit';
+    const BTN = 'button,.wk-btn,.btn,.nav-cta,.mobile-menu-cta,.ck-btn';
+    const TXT = 'input,textarea,select';
+
+    let mx = innerWidth / 2, my = innerHeight / 2;
+    let dx = mx, dy = my, rx = mx, ry = my, on = false;
+
+    addEventListener('pointermove', e => {
+      mx = e.clientX; my = e.clientY;
+      if (!on) { on = true; dx = rx = mx; dy = ry = my; document.body.classList.add('has-cursor'); }
+    }, { passive: true });
+
+    addEventListener('pointerdown', () => document.body.classList.add('cursor-down'), { passive: true });
+    addEventListener('pointerup',   () => document.body.classList.remove('cursor-down'), { passive: true });
+    addEventListener('pointerleave',() => document.body.classList.remove('has-cursor'), { passive: true });
+
+    /* one delegated listener rather than one per element, and closest() only
+       walks the tree — it never computes style */
+    addEventListener('pointerover', e => {
+      const t = e.target;
+      if (!t || t.nodeType !== 1) return;
+      const cl = document.body.classList;
+      cl.toggle('cursor-btn',    !!t.closest(BTN));
+      cl.toggle('cursor-text',   !!t.closest(TXT));
+      cl.toggle('cursor-hover',  !t.closest(BTN) && !t.closest(TXT) && !!t.closest('a,[data-cursor-grid],.hm-q-btn,.wk-row,.pf-card,.al-row,.csi-card'));
+      cl.toggle('cursor-on-red', !!t.closest(RED));
+    }, { passive: true });
+
+    (function tick() {
+      dx += (mx - dx) * 0.55;   /* the dot is nearly on the pointer */
+      dy += (my - dy) * 0.55;
+      rx += (mx - rx) * 0.14;   /* the ring trails it */
+      ry += (my - ry) * 0.14;
+      dot.style.transform  = 'translate3d(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px,0) translate(-50%,-50%)';
+      ring.style.transform = 'translate3d(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px,0) translate(-50%,-50%)';
+      requestAnimationFrame(tick);
+    })();
+  }
+
   /* ── boot ───────────────────────────────────────────────────────────── */
   function boot() {
     initAnchors();
@@ -434,6 +489,7 @@
     initProgress();
     initCursorGrid();
     initField();
+    initCursor();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();

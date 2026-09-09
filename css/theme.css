@@ -467,3 +467,47 @@ a:hover .wk-frame img,.wk-row:hover .wk-frame img{transform:scale(1.028);filter:
   .mark::after{transform:scaleX(1)!important;transition:none!important}
   .wk-shimmer::after{display:none}
 }
+
+/* ── Custom cursor (js/motion.js initCursor) ──────────────────────────── */
+#c-dot,#c-ring{
+  position:fixed;top:0;left:0;pointer-events:none;
+  opacity:0;transition:opacity .25s;
+}
+body.has-cursor #c-dot,body.has-cursor #c-ring{opacity:1}
+#c-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--red);z-index:9999;
+  transition:width .2s var(--ease-premium),height .2s var(--ease-premium),
+             background .2s,opacity .25s;
+}
+#c-ring{
+  width:38px;height:38px;border-radius:50%;
+  border:1.5px solid var(--red);z-index:9998;
+}
+body.has-cursor #c-ring{opacity:.6}
+#c-ring{
+  transition:width .25s var(--ease-premium),height .25s var(--ease-premium),
+             border-radius .25s,opacity .2s,border-color .2s,background .2s;
+}
+body.cursor-hover.has-cursor #c-ring{width:52px;height:52px;opacity:.9}
+body.cursor-btn #c-dot{width:4px;height:4px}
+body.cursor-btn.has-cursor #c-ring{
+  width:64px;height:64px;opacity:.35;background:rgba(223,56,33,.08);
+}
+body.cursor-text.has-cursor #c-ring{width:4px;height:28px;border-radius:2px;opacity:.5}
+body.cursor-down #c-dot{width:14px;height:14px}
+body.cursor-on-red #c-dot{background:var(--ink)}
+body.cursor-on-red.has-cursor #c-ring{border-color:var(--ink);opacity:.8}
+
+/* hide the native cursor only where the custom one actually runs */
+@media (hover:hover) and (pointer:fine){
+  body.has-cursor,
+  body.has-cursor a,
+  body.has-cursor button,
+  body.has-cursor [role="button"]{cursor:none}
+}
+@media (pointer:coarse),(max-width:900px){
+  #c-dot,#c-ring{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #c-dot,#c-ring{display:none!important}
+}
