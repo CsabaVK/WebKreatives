@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'how-to-get-more-google-reviews',
+    title:            'Hoe Je Meer Google Reviews Krijgt Zonder Opdringerig te Zijn',
+    titleEn:          'How to Get More Google Reviews Without Being Pushy',
+    category:         'Lokale SEO',
+    categoryEn:       'Local SEO',
+    date:             '2026-09-10',
+    dateFormatted:    '10 september 2026',
+    dateFormattedEn:  '10 September 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-09-10T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Reviews vragen voelt ongemakkelijk omdat je het op het verkeerde moment doet. Dit is het vaste moment, de zin en de link waarmee het wél lukt.',
+    excerptEn:        'Asking for reviews feels awkward because you are asking at the wrong moment. Here is the fixed moment, the sentence and the link that make it work.'
+  },
+
+  {
     slug:             'why-page-speed-and-seo-go-together',
     title:            'Waarom Snelheid en SEO Onlosmakelijk Verbonden Zijn',
     titleEn:          'Why Page Speed and SEO Go Hand in Hand',
