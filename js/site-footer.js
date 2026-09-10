@@ -106,8 +106,14 @@
 .wk-ft-cur b:hover{color:var(--white,#fff)}
 @media(max-width:520px){.wk-ft-cur{gap:0 14px}.wk-ft-cur b + b::before{left:-8px}}
 
+/* The icons are square (24x24 viewBox) but the card was landscape, 52x34 with
+   6px of padding — so object-fit:contain sized each glyph to the 22px height
+   and left 18px, nearly half the card's width, empty. Anything with detail in
+   it, the Amex box and the SEPA wordmark especially, was illegible at 22px.
+   A card closer to square draws the same glyph at 34px: 55% larger on each
+   axis, and it fills the space it was always occupying. */
 .wk-ft-badge{
-  width:52px;height:34px;object-fit:contain;padding:6px;flex-shrink:0;
+  width:54px;height:42px;object-fit:contain;padding:4px;flex-shrink:0;
   box-sizing:border-box;border-radius:10px;
   background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);
   border:1px solid rgba(15,23,42,.08);
@@ -128,9 +134,6 @@
 .wk-ft-badge[alt="PayPal"]{border-color:rgba(0,48,135,.18);box-shadow:inset 0 2px 0 #003087,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Stripe"]{border-color:rgba(99,91,255,.22);box-shadow:inset 0 2px 0 #635bff,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Amazon Pay"]{border-color:rgba(255,153,0,.24);box-shadow:inset 0 2px 0 #ff9900,0 6px 16px rgba(15,23,42,.05)}
-.wk-ft-badge[alt="Visa"],.wk-ft-badge[alt="Mastercard"],.wk-ft-badge[alt="Apple Pay"],
-.wk-ft-badge[alt="Google Pay"],.wk-ft-badge[alt="Amazon Pay"]{padding:4px}
-
 .wk-ft-bot{
   max-width:var(--maxw,1280px);margin:0 auto;
   border-top:1px solid var(--rule,rgba(239,230,210,.09));
@@ -210,7 +213,7 @@
     ['ideal','iDEAL'],['sepa','SEPA'],
     ['applepay','Apple Pay'],['googlepay','Google Pay'],['klarna','Klarna'],
     ['paypal','PayPal'],['stripe','Stripe'],['amazonpay','Amazon Pay']
-  ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="52" height="34">`).join('');
+  ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="54" height="42">`).join('');
 
 
   const L = (href, nl, en) => `<a href="${href}" data-nl="${nl}" data-en="${en}">${nl}</a>`;
