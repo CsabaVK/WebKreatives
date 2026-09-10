@@ -62,7 +62,12 @@
 
   /* ── Rhythm ──────────────────────────────────────────────────────────── */
   --radius:     8px;
-  --gutter:     5vw;
+  /* The gutter is padding inside a border-box container capped at --maxw, so
+     a raw 5vw made the readable column NARROWER as the screen grew: 1137px of
+     content at 1280, but only 896px on a 4K display, where the page then used
+     23% of the width. Capping it holds the column steady from 1280 upward,
+     and the floor keeps a phone off its own edges. */
+  --gutter:     clamp(22px,5vw,64px);
   --maxw:       1280px;
   --maxw-text:  680px;
 }
@@ -109,6 +114,24 @@ button{font:inherit}
 
 /* ── Layout ───────────────────────────────────────────────────────────── */
 .wk-wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+
+/* ── Very wide displays ───────────────────────────────────────────────────
+   A cap tuned for a 1280 laptop turns into a narrow ribbon on a 27" or a
+   scaled 4K panel, so the frame steps up twice rather than staying fixed.
+   Prose does not get longer lines out of this — body copy is capped
+   separately at --maxw-text — it is the grids and rows that fill out. The
+   display sizes step with it, otherwise the headings start to look undersized
+   against a wider column. */
+@media(min-width:1700px){
+  :root{--maxw:1560px;--gutter:78px}
+  .wk-h1{font-size:82px}
+  .wk-h2{font-size:54px}
+}
+@media(min-width:2400px){
+  :root{--maxw:1760px;--gutter:88px}
+  .wk-h1{font-size:90px}
+  .wk-h2{font-size:58px}
+}
 .wk-section{padding:clamp(70px,10vw,150px) 0;position:relative}
 .wk-lede{font-size:clamp(15px,1.35vw,18px);line-height:1.75;color:var(--cream-mute);max-width:var(--maxw-text)}
 

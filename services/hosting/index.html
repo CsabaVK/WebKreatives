@@ -108,7 +108,9 @@
 /* ── what support covers ──────────────────────────────────────────── */
 .hs-sup{
   display:flex;align-items:center;gap:clamp(18px,3vw,40px);
-  flex-wrap:wrap;padding:22px 0;
+  flex-wrap:wrap;
+  /* see .hm-band-in — the shorthand would drop .wk-wrap's side gutter */
+  padding-block:22px;
 }
 .hs-sup-k{
   font-family:var(--f-body);font-size:10px;font-weight:700;letter-spacing:.14em;
