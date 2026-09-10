@@ -194,6 +194,12 @@
         <form class="cform" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="96c3a987-04bf-4ae0-9cdf-ddbe098611cd">
           <input type="hidden" name="subject" value="New enquiry via WebKreatives">
+          <!-- Filled by js/locale.js so the enquiry says which market it came
+               from and which prices this person was actually shown. Both are
+               read from the browser's own settings, not from an IP lookup. -->
+          <input type="hidden" name="region" id="ct-region" value="">
+          <input type="hidden" name="currency_shown" id="ct-currency" value="">
+          <input type="hidden" name="timezone" id="ct-tz" value="">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="frow">
@@ -269,6 +275,7 @@
 <div id="globalFooter"></div>
 
 <script src="/js/motion.js?v=v5"></script>
+<script src="/js/locale.js?v=v5"></script>
 <script src="/js/site-nav.js?v=v5"></script>
 <script src="/js/site-footer.js?v=v5"></script>
 <script src="/js/cookie-consent.js?v=v5"></script>
@@ -333,6 +340,27 @@ document.querySelector('.cform')?.addEventListener('submit', async function (e) 
   }
   label.textContent = orig;
 });
+</script>
+<script>
+  /* The region fields travel with the enquiry: knowing someone came in from
+     a US timezone and was quoted in dollars is the difference between
+     replying with a euro invoice and replying properly. */
+  (function () {
+    var r = document.getElementById('ct-region');
+    var c = document.getElementById('ct-currency');
+    var z = document.getElementById('ct-tz');
+    function fill() {
+      var L = window.wkLocale;
+      if (r) r.value = (L && L.region) ? L.region : 'unknown';
+      if (c) c.value = (L ? L.currency() : 'eur').toUpperCase();
+      if (z) {
+        try { z.value = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; }
+        catch (e) { z.value = ''; }
+      }
+    }
+    fill();
+    document.addEventListener('wk:currencychange', fill);
+  })();
 </script>
 </body>
 </html>

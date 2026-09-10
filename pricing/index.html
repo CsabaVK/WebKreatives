@@ -447,6 +447,7 @@ span.pc-flag{
 <div id="globalFooter"></div>
 
 <script src="/js/motion.js?v=v5"></script>
+<script src="/js/locale.js?v=v5"></script>
 <script src="/js/site-nav.js?v=v5"></script>
 <script src="/js/site-footer.js?v=v5"></script>
 <script src="/js/cookie-consent.js?v=v5"></script>
@@ -460,7 +461,18 @@ span.pc-flag{
   /* Everything below is one-time, in euros, excluding VAT. The whole build
      ladder divides by five off the old figures; SEO is the exception and
      stays where it was. SPREAD is what the top of the range adds. */
-  const BASE = { p1: 100, p4: 190, p8: 330, p15: 520, p30: 780 };
+  /* Two authored ladders, not one ladder and a conversion: the dollar
+     figures are round numbers in their own right. Update them together. */
+  const BASE = {
+    eur: { p1: 100, p4: 190, p8: 330, p15: 520, p30: 780 },
+    usd: { p1: 110, p4: 210, p8: 360, p15: 570, p30: 850 }
+  };
+  const CUR = () => (window.wkLocale && window.wkLocale.currency() === 'usd') ? 'usd' : 'eur';
+  const SIGN = { eur: '\u20ac', usd: '$' };
+  /* Grouping follows the currency, not the page language: 1.234 is a euro
+     convention and 1,234 a dollar one. Declared up here because the add-on
+     list is rendered long before the estimate is. */
+  const money = n => SIGN[CUR()] + Math.round(n).toLocaleString(CUR() === 'usd' ? 'en-US' : 'nl-NL');
   const TYPE = { new: 1, redesign: 0.85, rebuild: 1.15, landing: 1 };
   /* nothing from a month out costs extra */
   const WHEN = { now: 1.35, week: 1.20, month: 1, q: 1, none: 1 };
@@ -468,30 +480,31 @@ span.pc-flag{
 
   /* id, price, label NL/EN. `per` marks a per-page item. */
   const ADDONS = [
-    { id: 'lang',    p: 140, nl: 'Tweede taal',                en: 'Second language' },
-    { id: 'lang3',   p: 90,  needs: 'lang', per: true,
+    { id: 'lang',    p: { eur: 140, usd: 150 }, nl: 'Tweede taal',                en: 'Second language' },
+    { id: 'lang3',   p: { eur: 90,  usd: 100 }, needs: 'lang', per: true,
                              nl: 'Elke extra taal',            en: 'Each further language' },
-    { id: 'booking', p: 200, nl: 'Afspraken of reserveren',    en: 'Bookings or appointments' },
-    { id: 'menu',    p: 110, nl: 'Menu- of catalogusmodule',   en: 'Menu or catalogue module' },
-    { id: 'shop',    p: 350, nl: 'Webshop',                    en: 'Online shop' },
-    { id: 'form',    p: 50,  nl: 'Contactformulier',           en: 'Contact form' },
-    { id: 'motion',  p: 180, nl: 'Maatwerk animatie',          en: 'Custom motion / animation' },
-    { id: 'aivideo', p: 250, nl: 'AI-gegenereerde video',      en: 'AI generated video' },
-    { id: 'chat',    p: 280, nl: 'Chat of AI-assistent',       en: 'Chat or AI assistant' },
-    { id: 'seo',     p: 80,  nl: 'Extra SEO op eigen zoekwoorden', en: 'Extra SEO on your own keywords' },
-    { id: 'multiloc',p: 220, nl: 'Meerdere vestigingen, lokale SEO', en: 'Multi-location local SEO' },
-    { id: 'video',   p: 80,  nl: 'Video optimaliseren',        en: 'Video optimisation' },
-    { id: 'photo',   p: 20,  per: true,
+    { id: 'booking', p: { eur: 200, usd: 220 }, nl: 'Afspraken of reserveren',    en: 'Bookings or appointments' },
+    { id: 'menu',    p: { eur: 110, usd: 120 }, nl: 'Menu- of catalogusmodule',   en: 'Menu or catalogue module' },
+    { id: 'shop',    p: { eur: 350, usd: 380 }, nl: 'Webshop',                    en: 'Online shop' },
+    { id: 'form',    p: { eur: 50,  usd: 55  }, nl: 'Contactformulier',           en: 'Contact form' },
+    { id: 'motion',  p: { eur: 180, usd: 200 }, nl: 'Maatwerk animatie',          en: 'Custom motion / animation' },
+    { id: 'aivideo', p: { eur: 250, usd: 275 }, nl: 'AI-gegenereerde video',      en: 'AI generated video' },
+    { id: 'chat',    p: { eur: 280, usd: 300 }, nl: 'Chat of AI-assistent',       en: 'Chat or AI assistant' },
+    { id: 'seo',     p: { eur: 80,  usd: 90  }, nl: 'Extra SEO op eigen zoekwoorden', en: 'Extra SEO on your own keywords' },
+    { id: 'multiloc',p: { eur: 220, usd: 240 }, nl: 'Meerdere vestigingen, lokale SEO', en: 'Multi-location local SEO' },
+    { id: 'video',   p: { eur: 80,  usd: 90  }, nl: 'Video optimaliseren',        en: 'Video optimisation' },
+    { id: 'photo',   p: { eur: 20,  usd: 25  }, per: true,
                              nl: 'Foto bewerken en optimaliseren', en: 'Photo editing and optimising' },
-    { id: 'copy',    p: 20,  per: true, nl: 'Tekstschrijven, per pagina', en: 'Copywriting, per page' }
+    { id: 'copy',    p: { eur: 20,  usd: 25  }, per: true, nl: 'Tekstschrijven, per pagina', en: 'Copywriting, per page' }
   ];
+  const price = a => a.p[CUR()];
 
 
   const PLAN = {
-    rare:  { nl: 'Basis',    en: 'Basic',    price: 25 },
-    month: { nl: 'Basis',    en: 'Basic',    price: 25 },
-    week:  { nl: 'Plus',     en: 'Plus',     price: 55 },
-    day:   { nl: 'Plus',     en: 'Plus',     price: 55 }
+    rare:  { nl: 'Basis',    en: 'Basic',    price: { eur: 25, usd: 29 } },
+    month: { nl: 'Basis',    en: 'Basic',    price: { eur: 25, usd: 29 } },
+    week:  { nl: 'Plus',     en: 'Plus',     price: { eur: 55, usd: 59 } },
+    day:   { nl: 'Plus',     en: 'Plus',     price: { eur: 55, usd: 59 } }
   };
 
   const lang = () => localStorage.getItem('wk-lang') === 'en' ? 'en' : 'nl';
@@ -505,7 +518,7 @@ span.pc-flag{
     '<input type="checkbox" name="add" value="' + a.id + '"' + (a.needs ? ' disabled' : '') + '>' +
     '<span data-nl="' + a.nl + '" data-en="' + a.en + '">' +
       '<i style="font-style:normal">' + a.nl + '</i>' +
-      '<b>+&euro;' + a.p.toLocaleString('nl-NL') + (a.per ? '/p' : '') + '</b>' +
+      '<b>+' + money(price(a)) + (a.per ? '/p' : '') + '</b>' +
     '</span></label>'
   ).join('');
 
@@ -528,6 +541,15 @@ span.pc-flag{
     wrap.querySelectorAll('.pc-add').forEach((el, i) => {
       const a = ADDONS[i];
       el.querySelector('i').textContent = L === 'en' ? a.en : a.nl;
+    });
+  }
+
+  /* the prices printed on those labels were rendered once, in whichever
+     currency was active at load */
+  function reprice() {
+    wrap.querySelectorAll('.pc-add').forEach((el, i) => {
+      const a = ADDONS[i];
+      el.querySelector('b').textContent = '+' + money(price(a)) + (a.per ? '/p' : '');
     });
   }
 
@@ -575,7 +597,6 @@ span.pc-flag{
     }
   }
 
-  const eur = n => '€' + Math.round(n).toLocaleString('nl-NL');
   const round10 = n => Math.round(n / 10) * 10;
 
   /* the estimate rolls to its new value rather than snapping, so a ticked
@@ -584,7 +605,7 @@ span.pc-flag{
   function roll(low, high) {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       curLow = low; curHigh = high;
-      rangeE.innerHTML = eur(low) + ' <small>&ndash;</small> ' + eur(high);
+      rangeE.innerHTML = money(low) + ' <small>&ndash;</small> ' + money(high);
       return;
     }
     const fromL = curLow, fromH = curHigh;
@@ -594,13 +615,13 @@ span.pc-flag{
     /* the roll is decoration; the correct number is not optional */
     clearTimeout(rollFallback);
     rollFallback = setTimeout(() => {
-      rangeE.innerHTML = eur(low) + ' <small>&ndash;</small> ' + eur(high);
+      rangeE.innerHTML = money(low) + ' <small>&ndash;</small> ' + money(high);
     }, dur + 120);
     rollRaf = requestAnimationFrame(function tick(now) {
       const p = Math.min((now - t0) / dur, 1);
       const e = 1 - Math.pow(1 - p, 3);
-      rangeE.innerHTML = eur(fromL + (low - fromL) * e) +
-        ' <small>&ndash;</small> ' + eur(fromH + (high - fromH) * e);
+      rangeE.innerHTML = money(fromL + (low - fromL) * e) +
+        ' <small>&ndash;</small> ' + money(fromH + (high - fromH) * e);
       if (p < 1) rollRaf = requestAnimationFrame(tick);
     });
   }
@@ -620,12 +641,12 @@ span.pc-flag{
     const picked = d.getAll('add');
     renderQtys(picked);
 
-    let base = BASE[pages] * TYPE[type];
+    let base = BASE[CUR()][pages] * TYPE[type];
     let adds = 0;
     picked.forEach(id => {
       const a = ADDONS.find(x => x.id === id);
       if (!a) return;
-      adds += a.per ? a.p * (qty[a.id] || 1) : a.p;
+      adds += a.per ? price(a) * (qty[a.id] || 1) : price(a);
     });
 
     /* The spread covers what is unknown, and what is unknown is the build
@@ -665,8 +686,8 @@ span.pc-flag{
     adviceE.innerHTML =
       '<div class="pc-adv" tabindex="0">' +
         '<i class="pc-i">i</i>' +
-        '<span>' + t('<a href="/services/hosting/">' + plan.nl + '-plan</a> aangeraden, €' + plan.price + ' p/m',
-                     '<a href="/services/hosting/">' + plan.en + ' plan</a> suggested, €' + plan.price + '/mo') + '</span>' +
+        '<span>' + t('<a href="/services/hosting/">' + plan.nl + '-plan</a> aangeraden, ' + money(plan.price[CUR()]) + ' p/m',
+                     '<a href="/services/hosting/">' + plan.en + ' plan</a> suggested, ' + money(plan.price[CUR()]) + '/mo') + '</span>' +
         '<span class="pc-tip">' + (busy
           ? t('Je verandert vaak iets aan de inhoud. Wijzigingen lopen altijd via ons, dus je hebt een plan nodig met genoeg ruimte: je mailt wat er moet veranderen en wij voeren het door.',
               'You change the content often. Changes always go through us, so you want a plan with enough room in it: you email what needs changing and we make it.')
@@ -739,7 +760,10 @@ span.pc-flag{
   form.addEventListener('change', calc);
   form.addEventListener('input', calc);
   document.addEventListener('wk:languagechange', () => { relabel(); calc(); });
-  relabel(); calc();
+  /* a currency switch changes every number on the page, including the ones
+     already printed onto the add-on labels */
+  document.addEventListener('wk:currencychange', () => { reprice(); curLow = curHigh = 0; calc(); });
+  relabel(); reprice(); calc();
 
   /* light the closing card */
   const card = document.querySelector('.wk-cta-card');

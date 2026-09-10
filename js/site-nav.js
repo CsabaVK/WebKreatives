@@ -93,6 +93,10 @@
 }
 .lang-opt:hover,.lang-opt.active{background:oklch(22% .010 25);color:var(--white,oklch(99% .004 80))}
 .nav-divider{width:1px;height:18px;background:oklch(24% .008 25);margin:0 2px}
+.cur-drop .lang-menu{min-width:84px}
+#mainNav .nav-controls{gap:6px}
+@media(max-width:1000px){#mainNav .nav-controls{gap:2px}}
+@media(max-width:360px){.cur-drop .lang-btn-nav{padding:0 3px;font-size:11px}}
 .nav-cta{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--f-body,'Figtree',sans-serif);
@@ -347,6 +351,16 @@ html.wk-menu-open,html.wk-menu-open body{overflow:hidden}
       ${listItems}
   </ul>
   <div class="nav-controls">
+    <div class="lang-drop cur-drop" id="curDrop">
+      <button class="lang-btn-nav" id="curBtn" aria-label="Currency" aria-haspopup="true" aria-expanded="false">
+        <span id="cur-label-nav">EUR</span>
+        <svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" style="opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
+      </button>
+      <div class="lang-menu">
+        <button class="lang-opt" data-cur="eur">EUR</button>
+        <button class="lang-opt" data-cur="usd">USD</button>
+      </div>
+    </div>
     <div class="lang-drop" id="langDrop">
       <button class="lang-btn-nav" id="langBtn" aria-label="Language">
         <span id="lang-label-nav">NL</span>
@@ -404,18 +418,58 @@ html.wk-menu-open,html.wk-menu-open body{overflow:hidden}
   function initialLanguage() {
     const saved = localStorage.getItem('wk-lang');
     if (saved === 'nl' || saved === 'en') return saved;
+    /* js/locale.js weighs the machine's timezone as well as the browser
+       language, so someone sitting in Amsterdam gets Dutch even on an
+       English-language build of Chrome. */
+    if (window.wkLocale) return window.wkLocale.suggestedLanguage();
     return (navigator.language || '').toLowerCase().startsWith('nl') ? 'nl' : 'en';
   }
   applyLanguage(initialLanguage());
 
   const btn = document.getElementById('langBtn');
   if (btn) {
-    btn.addEventListener('click', e => { e.stopPropagation(); drop.classList.toggle('open'); });
-    document.querySelectorAll('.lang-opt').forEach(o =>
+    btn.addEventListener('click', e => { e.stopPropagation(); drop.classList.toggle('open'); curDrop && curDrop.classList.remove('open'); });
+    document.querySelectorAll('.lang-opt[data-lang]').forEach(o =>
       o.addEventListener('click', () => applyLanguage(o.dataset.lang))
     );
-    document.addEventListener('click', () => drop.classList.remove('open'));
   }
+
+  /* ── Currency ───────────────────────────────────────────────────────
+     Detection is a guess, so it is never the last word: this is always
+     here, and a choice made with it is remembered. */
+  const curDrop  = document.getElementById('curDrop');
+  const curBtn   = document.getElementById('curBtn');
+  const curLabel = document.getElementById('cur-label-nav');
+
+  function paintCurrency(c) {
+    if (curLabel) curLabel.textContent = c.toUpperCase();
+    document.querySelectorAll('.lang-opt[data-cur]').forEach(o =>
+      o.classList.toggle('active', o.dataset.cur === c)
+    );
+    if (curDrop) curDrop.classList.remove('open');
+  }
+
+  if (curBtn && window.wkLocale) {
+    paintCurrency(window.wkLocale.currency());
+    curBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      curDrop.classList.toggle('open');
+      drop && drop.classList.remove('open');
+      curBtn.setAttribute('aria-expanded', String(curDrop.classList.contains('open')));
+    });
+    document.querySelectorAll('.lang-opt[data-cur]').forEach(o =>
+      o.addEventListener('click', () => window.wkLocale.set(o.dataset.cur))
+    );
+    document.addEventListener('wk:currencychange', e => paintCurrency(e.detail.currency));
+  } else if (curDrop) {
+    /* no locale module on the page — do not show a control that does nothing */
+    curDrop.style.display = 'none';
+  }
+
+  document.addEventListener('click', () => {
+    if (drop) drop.classList.remove('open');
+    if (curDrop) curDrop.classList.remove('open');
+  });
 
   /* ── Scroll state + mobile menu ─────────────────────────────────────── */
   const navEl = document.getElementById('mainNav');
