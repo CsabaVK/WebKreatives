@@ -82,7 +82,7 @@
     <h3>Curious how your site really performs?</h3>
     <p>We build websites for local businesses that are fast by nature — no heavy themes, no plugin stacks, just a site that ranks and converts.</p>
   </div>
-  <a href="/#contact" class="btn btn-red">Request a quote →</a>
+  <a href="/contact/" class="btn btn-red">Request a quote →</a>
 </div>
 <h2>Where the time usually leaks away</h2>
 <p>Almost every slow small business website has the same four leaks. It's rarely one big technical disaster; it's usually the sum of things that were once added "just quickly".</p>
@@ -174,7 +174,7 @@
     <h3>Not sure what belongs on your about page?</h3>
     <p>We write and design websites for local businesses where every page has a clear job — including the page where people shed their last bit of doubt.</p>
   </div>
-  <a href="/#contact" class="btn btn-red">Request a quote →</a>
+  <a href="/contact/" class="btn btn-red">Request a quote →</a>
 </div>
 <h2><span class="num">6</span> A structure that nearly always works</h2>
 <p>You don't need to reinvent anything. This order suits most small businesses and can be written in an afternoon:</p>
@@ -257,7 +257,7 @@
     <h3>Not sure how your colours hold up online?</h3>
     <p>We're happy to review your identity, contrast and readability — and translate it into a website that looks professional and actually works.</p>
   </div>
-  <a href="/#contact" class="btn btn-red">Request a quote →</a>
+  <a href="/contact/" class="btn btn-red">Request a quote →</a>
 </div>
 <h2>One accent colour, strictly guarded</h2>
 <p>If there's one piece of advice that makes an immediate difference, it's this: reserve your brightest colour exclusively for the action you want visitors to take. Calling, requesting a quote, booking an appointment.</p>
@@ -343,7 +343,7 @@
     <h3>Not sure whether your site is set up properly?</h3>
     <p>We check the SSL, updates, backups and hosting of your website and tell you in plain language what is and isn't in order.</p>
   </div>
-  <a href="/#contact" class="btn btn-red">Request a check →</a>
+  <a href="/contact/" class="btn btn-red">Request a check →</a>
 </div>
 <h2><span class="num">5</span> Your hosting decides more than you'd think</h2>
 <p>Cheap hosting at two euros a month is rarely a bargain. You're sharing a server with hundreds of other sites, server software updates lag behind, and support consists of a form you wait days on.</p>
@@ -424,7 +424,7 @@
     <h3>Want a website where content actually does something?</h3>
     <p>We build sites for small businesses where articles, service pages and enquiry forms connect properly, so visits don't hit a dead end.</p>
   </div>
-  <a href="/#contact" class="btn btn-red">Request a quote →</a>
+  <a href="/contact/" class="btn btn-red">Request a quote →</a>
 </div>
 <h2>When a blog isn't the priority yet</h2>
 <p>Sometimes the honest advice is: not yet. Content only works once the basics are in place. If a visitor lands on your article and then meets a confusing homepage, a slow load or a phone number they can't find, all you've done is buy traffic that leaves again.</p>
@@ -492,7 +492,7 @@
   <li>Fixed in the menu or as a standout button, so contact is always within reach</li>
 </ul>
 <p>The idea isn't to scatter buttons everywhere, but to give the visitor a clear route to contact at every natural decision point.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Are your visitors actually taking the step to get in touch?</h3><p>We build websites for small businesses with clear calls-to-action and conversion flows that generate enquiries, instead of visitors who disappear again.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Are your visitors actually taking the step to get in touch?</h3><p>We build websites for small businesses with clear calls-to-action and conversion flows that generate enquiries, instead of visitors who disappear again.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2><span class="num">5</span> The words on your button matter a lot</h2>
 <p>The text on a button looks like a small detail, but it does a lot of work. A good CTA line is concrete, active and tells the visitor what they get. Compare these two:</p>
 <ul class="art-checklist">
@@ -550,7 +550,7 @@
 <p>You don't need to be a professional copywriter to write strong pages. Follow these four steps and your copy gets more convincing almost by itself.</p>
 <ol class="art-steps"><li><strong>Start with the problem</strong>Briefly name the situation your customer is in. That makes them feel understood straight away and keeps them reading instead of clicking away.</li><li><strong>Show the solution</strong>Explain clearly what you offer and how it removes their problem. No jargon, just plain language anyone understands.</li><li><strong>Give a reason to trust you</strong>Add proof: a review, a concrete result, years of experience or a real-world example.</li><li><strong>End with one clear action</strong>Tell the visitor exactly what to do now: call, book an appointment, or request a quote.</li></ol>
 <p>This order works on almost any page, from your homepage to a single service page. Problem, solution, proof, action. Remember those four words and you already have a structure most websites go without.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Is your copy falling flat?</h3><p>We help small businesses with websites and copy that genuinely persuade customers to get in touch — clear, human and focused on results.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Is your copy falling flat?</h3><p>We help small businesses with websites and copy that genuinely persuade customers to get in touch — clear, human and focused on results.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>Give every page one clear choice</h2>
 <p>A common mistake is trying to do too much. A page that asks you to call, sign up for the newsletter, follow on social media and request a quote all at once paralyses the visitor. Too much choice often leads to no choice at all.</p>
 <p>Decide per page what the most important action is and make that one the most visible. The rest can exist, but should never compete with that single main goal. One clear direction works better than five half-hearted ones.</p>
@@ -594,7 +594,7 @@
 <p>The real price of a DIY site rarely sits in one place. It's spread across small things that look harmless on their own but add up together.</p>
 <div class="art-mini-grid"><div class="art-mini-card"><span class="eyebrow">Technical</span><h3>Slowness and errors</h3><p>Heavy templates, unused code and wrong-sized photos make your site slow. Every second of delay costs you visitors.</p></div><div class="art-mini-card"><span class="eyebrow">Trust</span><h3>An amateur look</h3><p>Stock templates everyone recognises, mismatched fonts and soulless stock photos make you less credible.</p></div><div class="art-mini-card"><span class="eyebrow">Visibility</span><h3>Invisible in Google</h3><p>Without solid structure, speed and copy, Google barely finds you. A pretty site nobody sees earns nothing.</p></div></div>
 <p>Each of these is fixable on its own. But doing it yourself means "fixing" is something you work out — and that's more time again. This is how the bill that appears nowhere keeps growing.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Torn between doing it yourself and outsourcing?</h3><p>We'll think it through with you, no strings attached — sometimes that means a few smart tweaks, sometimes a full site that actually brings in enquiries.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Torn between doing it yourself and outsourcing?</h3><p>We'll think it through with you, no strings attached — sometimes that means a few smart tweaks, sometimes a full site that actually brings in enquiries.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2><span class="num">4</span> When doing it yourself does make sense</h2>
 <p>Staying honest works better than scaremongering. There are situations where a DIY solution is perfectly fine, and it would be a waste to overspend then.</p>
 <ul class="art-checklist"><li>You're testing an idea and want to see if there's demand first</li><li>You need one simple page with just contact details and opening hours</li><li>You genuinely enjoy building and have the time for it</li><li>You don't (yet) expect meaningful revenue through the website</li></ul>
@@ -641,7 +641,7 @@
 <p>Mobile visitors are more often on a variable connection and have less patience. A site that loads fine on fibre can feel slow on 4G in the checkout queue. And every extra second of load time costs you visitors before they've seen anything about your business at all.</p>
 <div class="art-mistake"><strong>Common mistake</strong><p>Loading heavy desktop images unchanged on mobile. The visitor then downloads a huge file on a slow connection, when a smaller size would look exactly the same on their screen.</p></div>
 <p>That's why mobile-first thinking and speed go together. Lighter images, fewer unnecessary elements and a clear structure make your site not only faster, but also calmer to use.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Does your website really work well on a phone?</h3><p>We build websites designed mobile-first: fast, clear and made for how your customers actually view you.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Does your website really work well on a phone?</h3><p>We build websites designed mobile-first: fast, clear and made for how your customers actually view you.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>What mobile-first means in practice</h2>
 <p>You don't need to be a technical expert for this. It's mostly about a different order and a few deliberate choices. Take a look at your own site on your phone and watch for these points:</p>
 <ol class="art-checklist"><li>Can you see at a glance what your business does and where you are?</li><li>Is the main action — call or contact — immediately reachable?</li><li>Does the page load quickly, even without wifi?</li><li>Can you read and tap everything without zooming?</li><li>Does scrolling feel logical, or do you have to hunt for what you need?</li></ol>
@@ -682,7 +682,7 @@
 <p>When you notice your site is due for a refresh, don't jump straight to "rebuild it all". Often a targeted update solves the biggest part of the problem. A handy order:</p>
 <ol class="art-steps"><li>Check your facts: opening hours, prices, services, contact details</li><li>Replace dated or stock-like photos with real, recent images</li><li>Update your most important copy so it matches what you offer now</li><li>Test everything on your phone and fix whatever looks messy there</li><li>Add recent reviews or new projects as proof that you're active</li></ol>
 <p>In the vast majority of cases this gives your site a tidy, current feel again, without any need for a full redesign.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure whether your site needs an update or a redesign?</h3><p>We're happy to take a quick look. Often a targeted refresh is enough, and sometimes a new foundation is the smarter choice. We'll tell you honestly what fits.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure whether your site needs an update or a redesign?</h3><p>We're happy to take a quick look. Often a targeted refresh is enough, and sometimes a new foundation is the smarter choice. We'll tell you honestly what fits.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>The two extremes you want to avoid</h2>
 <p>Around refreshing a website you often see two kinds of mistakes, and they sit at opposite ends.</p>
 <div class="art-mistake"><strong>Common mistake</strong><p>Leaving the site completely untouched for years, until everything is outdated and a redesign becomes unavoidable and expensive. Or the opposite: throwing everything out every year out of restlessness, when the old version worked fine and customers had just got used to it.</p></div>
@@ -723,7 +723,7 @@
 <div class="art-mistake"><strong>Common mistake</strong><p>A smiling "team" on the about page that obviously came from a stock library. Visitors spot this more often than you'd think, and at that moment they start doubting everything else on the site.</p></div>
 <p>The damage is worst in the places where people expect authenticity: your team, your premises, your products, your finished work and real customer situations. There, a generic model doesn't feel like a detail — it feels like a small lie. And one visibly fake image can make the rest of your hard work look suspect.</p>
 <figure class="art-img"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80" alt="Business owner taking their own photos of the work with a phone" loading="lazy"><figcaption>You don't need an expensive studio. One good session with natural light often gives you more than dozens of polished stock images.</figcaption></figure>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure which photos make your website stronger?</h3><p>We help small businesses with websites that come across as real and trustworthy, with an image choice that fits who you are and what you do.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure which photos make your website stronger?</h3><p>We help small businesses with websites that come across as real and trustworthy, with an image choice that fits who you are and what you do.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>Real photos don't have to be expensive</h2>
 <p>Many owners assume authentic imagery requires an expensive photographer and a full production. That certainly helps, but it isn't required. With a modern phone and a bit of attention, you'll get surprisingly far:</p>
 <ul class="art-checklist"><li>Shoot in daylight, ideally close to a window</li><li>Keep the background calm and tidy</li><li>Take lots of photos and pick the best ones afterwards</li><li>Show real people and real work, not stiff poses</li><li>Keep one style in colour and mood for consistency</li></ul>
@@ -765,7 +765,7 @@
 <p>Not everyone wants to fill in a form. One person would rather make a quick call, another prefers to send a message, and someone else likes to email at their leisure in the evening. By visibly offering several channels, you let the customer choose what feels most natural to them.</p>
 <div class="art-mini-grid"><div class="art-mini-card"><h3>Phone</h3><p>For those who want clarity fast. Make the number clickable so it starts a call straight away on mobile. Mention when you're reachable.</p></div><div class="art-mini-card"><h3>WhatsApp</h3><p>Low-threshold and familiar. Many people prefer messaging to calling. One tap and they can ask a quick question without any hassle.</p></div><div class="art-mini-card"><h3>Form or email</h3><p>For those who prefer to type a longer message at their own pace. Ideal outside office hours, when calling isn't an option.</p></div></div>
 <p>You don't have to offer every channel — pick what suits you and what you actually keep up with. A WhatsApp button nobody reads is worse than no button at all. But one extra low-threshold option alongside the form often noticeably lowers the barrier.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want your contact page to bring in more enquiries?</h3><p>We build websites for small businesses where getting in touch feels effortless — with clear forms, clickable channels and flows that actually get customers moving.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want your contact page to bring in more enquiries?</h3><p>We build websites for small businesses where getting in touch feels effortless — with clear forms, clickable channels and flows that actually get customers moving.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>Be honest about what happens next</h2>
 <p>One of the biggest invisible barriers is uncertainty. When will I get a reply? From whom? Will I be called or emailed? If you don't answer those questions, the visitor fills them in themselves — usually more negatively than reality. A few reassuring lines take that doubt away.</p>
 <ul class="art-checklist"><li>State how quickly you respond, for example "usually within one working day"</li><li>Say who will get in touch, ideally with a name and a face</li><li>Make clear whether the conversation is free and without obligation</li><li>Show a short confirmation after the form is sent, not an empty page</li></ul>
@@ -813,7 +813,7 @@
 <ul class="art-checklist"><li>Heavy, unoptimised photos uploaded straight from the camera</li><li>An overloaded theme or page builder with dozens of features you never use</li><li>Too many separate plugins and external scripts, each adding its own load time</li><li>Cheap, overcrowded hosting where your site shares a server with hundreds of others</li></ul>
 <div class="art-mistake"><strong>Common mistake</strong><p>Putting a beautiful 6 MB photo as a background on the homepage. On your fast wifi you don't notice it, but a customer on mobile data in the waiting room waits seconds for an image that could just as easily have been 300 KB.</p></div>
 <figure class="art-img"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80" alt="Customer viewing a website on a smartphone" loading="lazy"><figcaption>Most visitors come via their phone and a mobile network. There, every saved kilobyte counts double.</figcaption></figure>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Curious where your site loses time?</h3><p>We build fast, light websites for local businesses and clean up existing sites that have become slow. No unnecessary ballast, just a sharp result.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Curious where your site loses time?</h3><p>We build fast, light websites for local businesses and clean up existing sites that have become slow. No unnecessary ballast, just a sharp result.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2><span class="num">4</span> Quick wins you can often make today</h2>
 <p>You don't need to be a developer to spot the biggest accelerators. Often eighty percent of the win sits in a few changes.</p>
 <ol class="art-steps"><li><strong>Compress your images</strong> — resize and optimise photos before you upload them. This usually delivers the biggest jump.</li><li><strong>Clean up plugins and scripts</strong> — remove everything you don't actively use. Every tool fewer is load time gained.</li><li><strong>Choose decent hosting</strong> — a slightly more expensive hosting package that isn't overcrowded often pays for itself in speed.</li><li><strong>Load heavy elements later</strong> — videos, maps and widgets don't need to load before the page is visible.</li></ol>
@@ -861,7 +861,7 @@
 <h2>Deliverability: why your emails actually arrive more often</h2>
 <p>There is also a practical side that has nothing to do with image. Sending from your own domain, set up correctly, lowers the chance your messages land in the spam folder. Especially when you send quotes or invoices, you do not want them to disappear unnoticed.</p>
 <p>With your own domain you can arrange the right settings that prove to mail servers you really are the sender. That makes your messages more trustworthy in the eyes of Gmail, Outlook and other providers, and therefore filtered out less often.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want an email address that matches your brand?</h3><p>For local businesses we arrange both a website and a professional email address on your own domain, set up so your messages arrive properly.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want an email address that matches your brand?</h3><p>For local businesses we arrange both a website and a professional email address on your own domain, set up so your messages arrive properly.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>Consistency with your brand and your website</h2>
 <p>A domain of your own makes everything line up. Your website is yourbusiness.nl, your email is info@yourbusiness.nl, and your invoice points to the same address. That unity makes you recognisable and trustworthy. Customers do not have to puzzle over whether they are dealing with the right business.</p>
 <p>On top of that, you can create several addresses at no extra cost: info@, quote@, or yourname@yourbusiness.nl. Handy when you hire someone later or want to separate different kinds of messages.</p>
@@ -914,7 +914,7 @@
 <h2><span class="num">4</span> The call-to-action: one clear next step</h2>
 <p>Many homepages end in nothing. The visitor is convinced, but does not know what to do next. No button, no form, no visible phone number. That is exactly the moment a potential customer drops off.</p>
 <p>A good call-to-action is visible, concrete, and repeated at logical points on the page. Not five different options, but one primary action you carry through consistently.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure your homepage brings in enough?</h3><p>We are happy to look at it and show you exactly which parts could be stronger.</p></div><a href="/#contact" class="btn btn-primary">Request a free check →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure your homepage brings in enough?</h3><p>We are happy to look at it and show you exactly which parts could be stronger.</p></div><a href="/contact/" class="btn btn-primary">Request a free check →</a></div>
 <h2><span class="num">5</span> Speed and mobile: the invisible foundation</h2>
 <p>You can have the perfect structure and copy, but if your homepage loads slowly or does not work well on a phone, none of the rest counts. Most visitors to a local business arrive on a smartphone.</p>
 <p>Speed and mobile display are not extras, but the foundation everything else rests on. A homepage that stumbles on mobile loses customers before they have read a single word.</p>
@@ -931,7 +931,7 @@
       docTitle: '5 Reasons Customers Leave Your Website | WebKreatives',
       title: '5 Reasons Customers Leave<br><em>Your Website</em>',
       bottomTitle: 'We can fix it.',
-      bottomText: 'A website that actually works for your business: fast, mobile-friendly, and built to bring in customers. From €199, live within 5 days.',
+      bottomText: 'A website that actually works for your business: fast, mobile-friendly, and built to bring in customers. Work out what yours would cost in two minutes.',
       bottomPrimaryBtn: 'Start your project →',
       bottomSecondaryBtn: 'Read more articles',
       relatedTitle: 'Read more',
@@ -960,7 +960,7 @@
 <figure class="art-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Clean website interface on laptop" loading="lazy"><figcaption>A clean design with one obvious next action converts far better than a page full of competing choices.</figcaption></figure>
 <p>A good CTA is not vague. It is visible, concrete, and easy to act on:</p>
 <ul><li><strong>Book a free intro call →</strong></li><li><strong>Call us now</strong></li><li><strong>Request a quote</strong> with a short, simple form</li></ul>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure if your website converts well?</h3><p>We can review it and show you exactly what to improve.</p></div><a href="/#contact" class="btn btn-primary">Get free advice →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure if your website converts well?</h3><p>We can review it and show you exactly what to improve.</p></div><a href="/contact/" class="btn btn-primary">Get free advice →</a></div>
 <h2><span class="num">4</span> The design looks outdated</h2>
 <p>People trust what they see. Website design shapes how professional and credible your business feels within seconds. If the site looks old, cluttered, or unfinished, visitors assume the business behind it may be the same.</p>
 <div class="art-quote"><p>"You only get one first impression online, and people make it fast."</p></div>
@@ -979,7 +979,7 @@
       docTitle: 'Why Your Hair Salon Needs a Website | WebKreatives',
       title: 'Why Your Hair Salon<br><em>Needs a Website</em>',
       bottomTitle: 'Your salon deserves<br>a professional website',
-      bottomText: 'Starter package from €199, mobile-friendly, quick to launch, and tailored to your salon.',
+      bottomText: 'Mobile-friendly, quick to launch, and built around how your salon actually books.',
       bottomPrimaryBtn: 'Start your project →',
       bottomSecondaryBtn: 'Read more articles',
       relatedTitle: 'Read more',
@@ -995,7 +995,7 @@
 <p>A website makes it easier for clients to book, check your opening hours, and contact you without calling during working hours. Fewer missed opportunities, less back-and-forth, and a smoother customer experience.</p>
 <h2>3. Your work deserves a proper portfolio</h2>
 <p>Photos are one of the strongest trust signals for a salon. A clean gallery on your own site feels more professional and helps new visitors quickly understand your style and quality.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Ready for your own salon website?</h3><p>Starter package: professional, quick to launch, €199 one-time.</p></div><a href="https://webkreatives.com/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Ready for your own salon website?</h3><p>Tell us what the salon does and what the site is not doing. You get an honest answer within one business day.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>4. Trust starts online</h2>
 <p>When someone hears about your salon, their first instinct is usually to Google it. If they find no website, no clear info, and no polished presentation, many simply move on.</p>
 <p>A professional website with photos, reviews, services, prices, and location details gives them confidence before they ever walk in.</p>
@@ -1004,7 +1004,7 @@
 <h2>What should a salon website include?</h2>
 <ul class="art-checklist"><li>A strong first impression</li><li>Your services and pricing</li><li>Photos of your work and salon</li><li>A booking button or contact form</li><li>Address, opening hours, and phone number</li><li>Google Maps integration</li><li>Client reviews</li></ul>
 <h2>What does a salon website cost?</h2>
-<p>Many salon owners assume a website must be expensive and complicated. It does not have to be. At WebKreatives, a professional salon website starts at €199 and can be live quickly.</p>
+<p>Many salon owners assume a website must be expensive and complicated. It does not have to be. A professional salon site can be live in days rather than months, and the <a href="/pricing/">cost calculator</a> gives you a range in two minutes.</p>
 <div class="art-quote"><p>"A website that brings in even one extra client can pay for itself surprisingly fast."</p></div>
 <h2>Conclusion</h2>
 <p>Every day without a website is another day potential clients choose someone else. A professional online presence is no longer optional if you want to grow.</p>
@@ -1046,7 +1046,7 @@
 <h2><span class="num">5</span> Local content gives Google useful context</h2>
 <p>Not every small business needs to publish articles every week. But a few strong pages or articles tied to your service area can help Google understand where you are relevant.</p>
 <p>Examples include local case studies, city-specific service pages, or practical articles connected to the kinds of questions people in your area actually search for.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want to be found more easily in your area?</h3><p>We can help structure your website and local visibility in a way that is clear, simple, and built to convert.</p></div><a href="/#contact" class="btn btn-primary">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want to be found more easily in your area?</h3><p>We can help structure your website and local visibility in a way that is clear, simple, and built to convert.</p></div><a href="/contact/" class="btn btn-primary">Request a quote →</a></div>
 <h2>A simple local SEO plan</h2>
 <ul class="art-checklist"><li>Complete your Google Business Profile</li><li>Add new photos and keep details current</li><li>Ask for reviews consistently</li><li>Make your city and services obvious on your website</li><li>Keep your business details identical everywhere</li><li>Add one or two useful local articles or case pages</li></ul>
 <h2>Conclusion</h2>
@@ -1094,7 +1094,7 @@
 <h2><span class="num">6</span> How do you judge a quote more intelligently?</h2>
 <p>Do not just ask what is included. Ask why it is structured that way. A good quote should make it clear how the project helps you look more professional, become easier to trust, and generate more enquiries.</p>
 <ol class="art-checklist"><li>Check whether structure, messaging, and calls to action are included</li><li>Ask how mobile experience, speed, and SEO will be handled</li><li>See whether the website can grow with your business later</li><li>Look at whether support, revisions, or handover help are included</li><li>Compare business impact, not only headline price</li></ol>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Curious what a smart website would cost for your business?</h3><p>We help small businesses get websites that do not just look clean, but also build trust and support enquiries.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Curious what a smart website would cost for your business?</h3><p>We help small businesses get websites that do not just look clean, but also build trust and support enquiries.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>Conclusion</h2>
 <p>The cost of a website for a small business depends on what the website is supposed to do. If you only need a basic online presence, the price can stay low. If you want to look professional, support SEO, and convert more visitors, a somewhat higher investment usually makes more sense.</p>
 <p>For many small businesses, the best balance is a compact but strategically strong site: not oversized, not overcomplicated, but clearly built to help the business grow.</p>`
@@ -1136,7 +1136,7 @@
 <h2><span class="num">5</span> What small businesses should do right now</h2>
 <p>You do not need to turn this into a huge project. A few focused improvements can already make a meaningful difference.</p>
 <ul class="art-checklist"><li>Check whether your primary category is truly specific</li><li>Update your description so it clearly explains what you do</li><li>Add fresh photos regularly</li><li>Ask for reviews consistently after real jobs or appointments</li><li>Reply actively to reviews and questions</li><li>Make sure your website and your profile show identical business details</li><li>Link your website to pages that support your core service or local area</li></ul>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want better visibility in Google Maps and local search?</h3><p>We help small businesses with a stronger combination of website structure, profile clarity, and local SEO foundations.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want better visibility in Google Maps and local search?</h3><p>We help small businesses with a stronger combination of website structure, profile clarity, and local SEO foundations.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>Conclusion</h2>
 <p>In 2026, a Google Business Profile is no longer a side detail for most local businesses. It is often the first place where a potential customer evaluates you.</p>
 <p>If you want to grow locally, you should not choose between website or profile. You need both. But you also need to understand that your profile is often the first screen where the sale begins.</p>`
@@ -1176,7 +1176,7 @@
 <p>Not every review carries the same weight. A short “Great service” helps, but a review that says what you did, for whom, in which city, or with what result is much more powerful.</p>
 <ol class="art-checklist"><li>They feel more credible to new customers</li><li>They add context around your service or specialty</li><li>They often contain language that aligns with local search terms</li><li>They help visitors understand faster whether you fit their situation</li></ol>
 <p>You do not need unnatural scripts, but you can make better reviews more likely by giving customers one or two simple prompts.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want to be easier to trust and easier to find?</h3><p>We help small businesses with websites and local visibility systems that work logically with reviews, Google profiles, and clearer conversion flows.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Want to be easier to trust and easier to find?</h3><p>We help small businesses with websites and local visibility systems that work logically with reviews, Google profiles, and clearer conversion flows.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2><span class="num">5</span> Replying to reviews is part of your reputation</h2>
 <p>Many businesses collect reviews and then leave them unanswered. That is a missed opportunity. A response shows there is a real business behind the profile, one that pays attention to customers and stays involved.</p>
 <p>That matters for negative reviews as well. A calm, professional reply often builds more trust than a perfect-looking profile with zero interaction.</p>
@@ -1225,7 +1225,7 @@
 <p>There are situations where one page is genuinely enough:</p>
 <ol class="art-checklist"><li>You have one very clear offer</li><li>You mainly want to get online quickly</li><li>You are using the site as a simple landing page</li><li>You still have very little content or proof to build out</li></ol>
 <p>But once the business needs to answer more questions, rank better locally, or create stronger confidence, that one page often becomes tight.</p>
-<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure whether your website is thinking too small?</h3><p>We help small businesses choose between a smart compact site and a structure that gives more room for trust, SEO, and conversion.</p></div><a href="/#contact" class="btn btn-red">Request a quote →</a></div>
+<div class="art-cta-box"><div class="art-cta-box-text"><h3>Not sure whether your website is thinking too small?</h3><p>We help small businesses choose between a smart compact site and a structure that gives more room for trust, SEO, and conversion.</p></div><a href="/contact/" class="btn btn-red">Request a quote →</a></div>
 <h2>Conclusion</h2>
 <p>A one-page website is not automatically wrong. But in 2026, for many local businesses, it is more often a stepping stone than a strong final solution.</p>
 <p>If your website needs to genuinely support trust, visibility, and enquiries, a slightly richer structure is often not overkill at all. It is simply a stronger foundation.</p>`
