@@ -70,6 +70,10 @@
      was filed as a Dutch lead. The language is consulted only when there is
      no timezone to read at all. */
   var region = zone() ? regionFromZone() : regionFromLanguage();
+  /* Kept in storage as well as on wkLocale. Nothing reads it back yet — it is
+     here so the detected market is available to whatever wants it later
+     without re-deriving it. It is declared in the privacy policy and named on
+     the consent banner like every other key. */
   try { localStorage.setItem(RKEY, region || 'XX'); } catch (e) {}
 
   /* ── Currency ───────────────────────────────────────────────────────── */

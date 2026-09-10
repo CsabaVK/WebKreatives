@@ -17,26 +17,26 @@
   const COPY = {
     nl: {
       title:        'Cookies op WebKreatives',
-      text:         'We gebruiken essentiële cookies voor taal- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',
+      text:         'We gebruiken essentiële cookies voor taal-, valuta- en themavoorkeuren. Analytics helpt ons de site te verbeteren.',
       accept:       'Alles accepteren',
       customize:    'Aanpassen',
       save:         'Voorkeuren opslaan',
       privacy:      'Privacybeleid',
       essential:    'Essentieel',
-      essentialTxt: 'Taal-, thema- en sessievoorkeuren. Altijd actief.',
+      essentialTxt: 'Taal-, valuta-, regio-, thema- en sessievoorkeuren. Altijd actief.',
       analytics:    'Analytics',
       analyticsTxt: 'Helpt ons begrijpen welke pagina’s het beste werken zodat we de site blijven verbeteren.',
       manage:       '🍪 Cookie-instellingen'
     },
     en: {
       title:        'Cookies on WebKreatives',
-      text:         'We use essential cookies for language and theme preferences. Analytics helps us improve the site.',
+      text:         'We use essential cookies for language, currency and theme preferences. Analytics helps us improve the site.',
       accept:       'Accept all',
       customize:    'Customize',
       save:         'Save preferences',
       privacy:      'Privacy Policy',
       essential:    'Essential',
-      essentialTxt: 'Language, theme, and session preferences. Always on.',
+      essentialTxt: 'Language, currency, region, theme, and session preferences. Always on.',
       analytics:    'Analytics',
       analyticsTxt: 'Helps us understand which pages work best so we can keep improving.',
       manage:       '🍪 Cookie settings'
