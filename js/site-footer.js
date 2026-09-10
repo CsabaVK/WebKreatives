@@ -124,7 +124,6 @@
 .wk-ft-badge[alt="Google Pay"]{border-color:rgba(66,133,244,.2);box-shadow:inset 0 2px 0 #4285f4,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Klarna"]{border-color:rgba(255,179,199,.55);box-shadow:inset 0 2px 0 #ffb3c7,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="American Express"]{border-color:rgba(0,111,207,.22);box-shadow:inset 0 2px 0 #006fcf,0 6px 16px rgba(15,23,42,.05)}
-.wk-ft-badge[alt="Discover"]{border-color:rgba(255,96,0,.22);box-shadow:inset 0 2px 0 #ff6000,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="SEPA"]{border-color:rgba(16,41,142,.22);box-shadow:inset 0 2px 0 #10298e,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="PayPal"]{border-color:rgba(0,48,135,.18);box-shadow:inset 0 2px 0 #003087,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Stripe"]{border-color:rgba(99,91,255,.22);box-shadow:inset 0 2px 0 #635bff,0 6px 16px rgba(15,23,42,.05)}
@@ -208,7 +207,7 @@
   /* brands we hold artwork for */
   const PAY = [
     ['visa','Visa'],['mastercard','Mastercard'],['americanexpress','American Express'],
-    ['discover','Discover'],['ideal','iDEAL'],['sepa','SEPA'],
+    ['ideal','iDEAL'],['sepa','SEPA'],
     ['applepay','Apple Pay'],['googlepay','Google Pay'],['klarna','Klarna'],
     ['paypal','PayPal'],['stripe','Stripe'],['amazonpay','Amazon Pay']
   ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="52" height="34">`).join('');
