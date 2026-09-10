@@ -1294,16 +1294,21 @@
         <text class="cx-sum" x="21" y="27">1 page + form + SEO</text>
         <text class="cx-out" x="21" y="48" data-price data-eur="&euro;230 &ndash; 330" data-usd="$250 &ndash; 360">&euro;230 &ndash; 330</text>
 
-        <rect class="cx-key" x="15"  y="71"  width="30" height="22" rx="5"/>
-        <rect class="cx-key" x="50"  y="71"  width="30" height="22" rx="5"/>
-        <rect class="cx-key" x="85"  y="71"  width="30" height="22" rx="5"/>
-        <rect class="cx-key" x="15"  y="99"  width="30" height="22" rx="5"/>
-        <rect class="cx-key" x="50"  y="99"  width="30" height="22" rx="5"/>
-        <rect class="cx-key" x="85"  y="99"  width="30" height="22" rx="5"/>
-        <rect class="cx-key" x="15"  y="127" width="30" height="22" rx="5"/>
-        <rect class="cx-key" x="50"  y="127" width="30" height="22" rx="5"/>
-        <rect class="cx-eq"  x="85"  y="127" width="30" height="50" rx="5"/>
-        <rect class="cx-key" x="15"  y="155" width="65" height="22" rx="5"/>
+        <!-- The body runs y=1..175. The old grid ended at 177, so the tall
+             red key and the bottom row hung two units past the case — and
+             with overflow:visible on the svg they drew outside it. The keys
+             now finish at 163, leaving the same 12 of margin at the bottom
+             as the screen has at the top. -->
+        <rect class="cx-key" x="15"  y="65"  width="30" height="20" rx="5"/>
+        <rect class="cx-key" x="50"  y="65"  width="30" height="20" rx="5"/>
+        <rect class="cx-key" x="85"  y="65"  width="30" height="20" rx="5"/>
+        <rect class="cx-key" x="15"  y="91"  width="30" height="20" rx="5"/>
+        <rect class="cx-key" x="50"  y="91"  width="30" height="20" rx="5"/>
+        <rect class="cx-key" x="85"  y="91"  width="30" height="20" rx="5"/>
+        <rect class="cx-key" x="15"  y="117" width="30" height="20" rx="5"/>
+        <rect class="cx-key" x="50"  y="117" width="30" height="20" rx="5"/>
+        <rect class="cx-eq"  x="85"  y="117" width="30" height="46" rx="5"/>
+        <rect class="cx-key" x="15"  y="143" width="65" height="20" rx="5"/>
       </svg>
     </div>
   </div>

@@ -74,7 +74,10 @@
 .sv-aud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
 @media(max-width:900px){.sv-aud{grid-template-columns:minmax(0,1fr)}}
 .sv-a{background:var(--ink);padding:clamp(22px,2.6vw,30px);transition:background var(--dur);display:flex;flex-direction:column}
-.sv-a:hover{background:var(--ink-2)}
+/* --ink-3 is the token for hover: this section's own background is --ink-2,
+   so lifting the card to --ink-2 made it exactly the colour behind it and
+   the card dissolved on hover instead of standing up. */
+.sv-a:hover{background:var(--ink-3)}
 .sv-a-k{
   font-family:var(--f-body);font-size:10px;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;margin-bottom:20px;display:block;
@@ -198,8 +201,9 @@
 /* direct child only: the number in the <b> above now carries a price span of
    its own, and a descendant selector styled that as a caption too */
 .sv-calc-dial-c > span{
-  font-family:var(--f-body);font-size:9px;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--cream-faint);margin-top:8px;
+  font-family:var(--f-body);font-size:8.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--cream-faint);margin-top:7px;
+  max-width:78%;line-height:1.35;
 }
 @media(prefers-reduced-motion:reduce){.sv-calc-dial .ar{stroke-dashoffset:96;animation:none}}
 
@@ -565,9 +569,9 @@
     <div class="sv-exp" data-reveal>
       <div class="sv-e">
         <span class="sv-e-l" data-nl="Doorlooptijd" data-en="Timeline">Timeline</span>
-        <span class="sv-e-n" data-nl="2&ndash;8 weken" data-en="2&ndash;8 weeks">2&ndash;8 weeks</span>
-        <p data-nl="Een eenpager kan in twee weken. Een site met acht pagina's, twee talen en een boekingssysteem is eerder acht. Wat het meest vertraagt is niet de bouw, maar het wachten op teksten en foto's."
-           data-en="A one-pager can be two weeks. Eight pages, two languages and a booking system is nearer eight. The thing that slows projects is rarely the build, it is waiting on copy and photos.">A one-pager can be two weeks. Eight pages, two languages and a booking system is nearer eight. The thing that slows projects is rarely the build, it is waiting on copy and photos.</p>
+        <span class="sv-e-n" data-nl="3 dagen &ndash; 8 weken" data-en="3 days &ndash; 8 weeks">3 days &ndash; 8 weeks</span>
+        <p data-nl="Met voorrang staat een eenpager er binnen drie dagen &mdash; dat is precies wat de spoedoptie in de calculator betaalt. Zonder haast is diezelfde pagina eerder twee weken, en acht pagina's met twee talen en een boekingssysteem eerder acht. Wat het meest vertraagt is zelden de bouw, maar het wachten op teksten en foto's."
+           data-en="With priority a one-pager can be live in three days, which is exactly what the rush option in the calculator pays for. Without the hurry that same page is nearer two weeks, and eight pages with two languages and a booking system nearer eight. What actually slows a project is rarely the build, it is waiting on copy and photos.">With priority a one-pager can be live in three days, which is exactly what the rush option in the calculator pays for. Without the hurry that same page is nearer two weeks, and eight pages with two languages and a booking system nearer eight. What actually slows a project is rarely the build, it is waiting on copy and photos.</p>
       </div>
       <div class="sv-e">
         <span class="sv-e-l" data-nl="Investering" data-en="Investment">Investment</span>
@@ -615,8 +619,8 @@
           <circle class="ar" cx="50" cy="50" r="45"/>
         </svg>
         <div class="sv-calc-dial-c">
-          <b data-nl="<span data-price data-eur='&euro;100+' data-usd='$110+'>&euro;100+</span>" data-en="<span data-price data-eur='&euro;100+' data-usd='$110+'>&euro;100+</span>">&euro;100+</b>
-          <span data-nl="Vanaf" data-en="Starting at">Starting at</span>
+          <b id="svDialN">&euro;290</b>
+          <span data-nl="Gemiddeld, 2&ndash;4 pagina's" data-en="Typical, 2&ndash;4 pages">Typical, 2&ndash;4 pages</span>
         </div>
       </div>
     </div>
@@ -715,6 +719,65 @@ document.querySelectorAll('.sv-q-btn').forEach(btn => {
   new IntersectionObserver((e, o) => e.forEach(x => {
     if (x.isIntersecting) { c.classList.add('is-lit'); o.disconnect(); }
   }), { threshold: .3 }).observe(c);
+})();
+</script>
+<script>
+/* ── the dial's number ────────────────────────────────────────────────
+   It used to read "from €100", which is the floor and the least useful
+   figure on the page: nobody's project is the cheapest one. It now counts
+   up to the midpoint of the 2-4 page band the calculator actually
+   produces — €190 to €380 — and rides the same 3.4s loop as the arc, so
+   the ring filling and the number climbing are one movement.            */
+(function () {
+  const el = document.getElementById('svDialN');
+  if (!el) return;
+
+  const TARGET = { eur: 290, usd: 320 };
+  const SIGN   = { eur: '€', usd: '$' };
+  const cur = () => (window.wkLocale && window.wkLocale.currency() === 'usd') ? 'usd' : 'eur';
+  const show = n => { el.textContent = SIGN[cur()] + Math.round(n); };
+
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    show(TARGET[cur()]);
+    document.addEventListener('wk:currencychange', () => show(TARGET[cur()]));
+    return;
+  }
+
+  /* Rest on the real figure, not on zero. If rAF never runs — a background
+     tab, a battery saver, a frozen clock — the dial still reads the number
+     it is supposed to. The count-up is the decoration; the figure is not
+     optional. */
+  show(TARGET[cur()]);
+  document.addEventListener('wk:currencychange', () => { if (!running) show(TARGET[cur()]); });
+
+  const CYCLE = 3400;               /* the arc's period */
+  const ease  = t => 1 - Math.pow(1 - t, 3);
+  let t0 = 0, running = false;
+
+  function frame(now) {
+    if (!t0) t0 = now;
+    const p = ((now - t0) % CYCLE) / CYCLE;
+    const end = TARGET[cur()];
+    /* 4%-38% climbing, then held until the arc lets go at 96% */
+    if (p < 0.04)      show(0);
+    else if (p < 0.38) show(end * ease((p - 0.04) / 0.34));
+    else if (p < 0.96) show(end);
+    else               show(0);
+    requestAnimationFrame(frame);
+  }
+
+  /* start with the section, like the arc does */
+  const sec = el.closest('.sv-calc') || el;
+  new IntersectionObserver((es, o) => es.forEach(e => {
+    if (e.isIntersecting && !running) { running = true; requestAnimationFrame(frame); o.disconnect(); }
+  }), { threshold: .3 }).observe(sec);
+
+  /* and a net, so it never sits on zero if the observer is slow */
+  setTimeout(() => {
+    if (!running && sec.getBoundingClientRect().top < innerHeight) {
+      running = true; requestAnimationFrame(frame);
+    }
+  }, 2500);
 })();
 </script>
 </body>

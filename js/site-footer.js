@@ -85,17 +85,26 @@
 .wk-ft-pay-icons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 
 /* the currencies we actually invoice in, ahead of the methods */
-.wk-ft-cur{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+/* A list, not a row of buttons. Pills read as things to press, and there is
+   nothing here to press — it is a statement of what we bill in. Separated by
+   a drawn dot, the same device the legal links in the bottom bar use. */
+.wk-ft-cur{display:flex;gap:0 18px;flex-wrap:wrap;align-items:center}
 .wk-ft-cur b{
-  font-family:var(--f-mono,'Unbounded',sans-serif);
-  font-size:10px;font-weight:700;letter-spacing:.1em;
-  padding:7px 11px;border-radius:9px;
-  color:var(--cream-dim,#cfc9bf);
-  border:1px solid var(--rule-hard,rgba(239,230,210,.14));
-  background:var(--ink-2,#16130f);
-  transition:color .2s,border-color .2s,background .2s;
+  position:relative;
+  font-family:var(--f-body,'Figtree',sans-serif);
+  font-size:12px;font-weight:600;letter-spacing:.04em;
+  color:var(--cream-mute,#8b857c);
+  transition:color .2s;
 }
-.wk-ft-cur b:hover{color:var(--white,#fff);border-color:var(--bronze-rule,rgba(223,56,33,.4))}
+.wk-ft-cur b + b::before{
+  content:'';position:absolute;left:-10px;top:50%;
+  width:3px;height:3px;border-radius:50%;
+  background:var(--cream-faint,#635f5a);opacity:.5;transform:translateY(-50%);
+}
+/* the two we quote in carry a little more weight than the rest */
+.wk-ft-cur b.lead{color:var(--cream-dim,#cfc9bf);font-weight:700}
+.wk-ft-cur b:hover{color:var(--white,#fff)}
+@media(max-width:520px){.wk-ft-cur{gap:0 14px}.wk-ft-cur b + b::before{left:-8px}}
 
 /* a brand we hold no artwork for, drawn as a wordmark in the same card */
 .wk-ft-badge--text{
@@ -200,9 +209,11 @@
     document.head.appendChild(st);
   }
 
-  /* We invoice in these; Stripe settles the rest. */
-  const CUR = ['EUR', 'USD', 'GBP']
-    .map(c => `<b>${c}</b>`).join('');
+  /* The site quotes in the first two; Stripe settles the rest for a Dutch
+     account, so they are worth naming for anyone wondering whether they can
+     pay in their own money. */
+  const CUR = ['EUR', 'USD', 'GBP', 'CHF', 'SEK', 'NOK', 'DKK', 'PLN', 'CZK', 'CAD', 'AUD', 'NZD', 'JPY']
+    .map((c, i) => `<b${i < 2 ? ' class="lead"' : ''}>${c}</b>`).join('');
 
   /* brands we hold artwork for */
   const PAY = [
