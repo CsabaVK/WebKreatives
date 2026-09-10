@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brief received | WebKreatives</title>
+<meta name="description" content="Your brief has arrived. You get a reply within one business day, with what we would build, what we would leave out, and what it costs.">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Brief received | WebKreatives">
+<meta property="og:description" content="Your brief has arrived. A reply follows within one business day.">
+<meta property="og:image" content="https://webkreatives.com/og-image.svg">
+<meta name="theme-color" content="#0c0a09">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css?v=v5">
+<style>
+/* ═══ THANKS ════════════════════════════════════════════════════════════
+   The 404's shell, because both are single-message pages and the site
+   should not grow a third layout for one screen. */
+.tk{
+  position:relative;overflow:hidden;
+  min-height:100svh;display:flex;align-items:center;
+  padding:clamp(120px,15vw,180px) 0 clamp(60px,8vw,100px);
+  border-bottom:1px solid var(--rule);
+}
+.tk-in{width:100%;position:relative;z-index:2}
+.tk-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,30vw,380px);
+  gap:clamp(34px,6vw,80px);align-items:center;
+}
+@media(max-width:900px){
+  .tk-grid{grid-template-columns:minmax(0,1fr);gap:38px}
+  .tk-art{order:-1;max-width:300px}
+}
+
+.tk-code{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--grn,#7fb069);
+}
+.tk-code::before{content:'';width:26px;height:1px;background:currentColor;opacity:.7}
+
+.tk h1{margin:20px 0 22px;max-width:16ch}
+.tk .wk-lede{max-width:54ch}
+.tk-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+
+/* what actually happens, in order */
+.tk-steps{
+  margin-top:clamp(38px,5vw,54px);padding-top:26px;
+  border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(18px,2.4vw,32px);
+}
+@media(max-width:760px){.tk-steps{grid-template-columns:minmax(0,1fr);gap:20px}}
+.tk-step{position:relative;padding-left:34px}
+.tk-step b{
+  position:absolute;left:0;top:-1px;
+  width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-mono);font-size:9.5px;font-weight:700;
+  color:var(--red);border:1px solid var(--bronze-rule);
+  background:var(--ink-2);
+}
+.tk-step h3{
+  margin:0 0 5px;font-family:var(--f-body);font-size:12.5px;font-weight:700;
+  letter-spacing:.02em;color:var(--cream);
+}
+.tk-step p{margin:0;font-size:13.5px;line-height:1.65;color:var(--cream-mute)}
+
+/* ── the drawing: an envelope that seals and gets a tick ─────────────── */
+.tk-art{width:100%;position:relative}
+.tk-art svg{width:100%;height:auto;display:block;overflow:visible}
+.tk-s{fill:none;stroke:var(--cream-faint);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tk-s.acc{stroke:var(--grn,#7fb069)}
+.tk-d{stroke-dasharray:var(--len,120);stroke-dashoffset:var(--len,120)}
+.tk-art.go .tk-d{animation:tk-draw 4.5s var(--ease-premium) infinite}
+@keyframes tk-draw{
+  0%,5%   {stroke-dashoffset:var(--len,120)}
+  40%,84% {stroke-dashoffset:0}
+  96%,100%{stroke-dashoffset:var(--len,120)}
+}
+.tk-ping{fill:var(--grn,#7fb069);opacity:0;transform-origin:center;transform-box:fill-box}
+.tk-art.go .tk-ping{animation:tk-ping 4.5s var(--ease-premium) infinite}
+@keyframes tk-ping{0%,45%{opacity:0;transform:scale(.3)}62%,84%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.3)}}
+
+@media(prefers-reduced-motion:reduce){
+  .tk-art.go .tk-d{animation:none;stroke-dashoffset:0}
+  .tk-art.go .tk-ping{animation:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="globalNav"></div>
+
+<section class="tk wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+
+  <div class="wk-wrap tk-in">
+    <div class="tk-grid">
+
+      <div>
+        <span class="tk-code" data-reveal
+              data-nl="Verstuurd" data-en="Sent">Sent</span>
+
+        <h1 class="wk-display wk-h1" data-split
+            data-nl="Binnen. Nu lezen we hem <em class='mark'>goed door</em>."
+            data-en="Got it. Now we read it <em class='mark'>properly</em>.">Got it. Now we read it <em class="mark">properly</em>.</h1>
+
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+           data-nl="Je briefing is aangekomen. Je krijgt binnen één werkdag antwoord van een mens: wat we zouden bouwen, wat we zouden weglaten en wat dat kost. Geen automatische reeks mails, geen verkoopgesprek dat je niet gevraagd hebt."
+           data-en="Your brief has arrived. You get a reply from a person within one business day: what we would build, what we would leave out, and what it costs. No automated sequence, no sales call you did not ask for.">Your brief has arrived. You get a reply from a person within one business day: what we would build, what we would leave out, and what it costs. No automated sequence, no sales call you did not ask for.</p>
+
+        <div class="tk-row" data-reveal data-reveal-delay=".25">
+          <a href="/portfolio/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+            <span data-nl="Bekijk het werk" data-en="See the work">See the work</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+          <a href="/articles/" class="wk-btn wk-btn--ghost">
+            <span data-nl="Lees iets nuttigs" data-en="Read something useful">Read something useful</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="tk-steps" data-reveal data-reveal-delay=".35">
+          <div class="tk-step">
+            <b>1</b>
+            <h3 data-nl="We lezen het" data-en="We read it">We read it</h3>
+            <p data-nl="Vandaag nog, meestal binnen een paar uur. We kijken ook even naar je huidige site."
+               data-en="Today, usually within a few hours. We look at your current site while we are at it.">Today, usually within a few hours. We look at your current site while we are at it.</p>
+          </div>
+          <div class="tk-step">
+            <b>2</b>
+            <h3 data-nl="Je krijgt een oordeel" data-en="You get a read">You get a read</h3>
+            <p data-nl="Wat we zouden bouwen, wat niet, en een prijs. Binnen één werkdag, per e-mail."
+               data-en="What we would build, what we would not, and a price. Within one business day, by email.">What we would build, what we would not, and a price. Within one business day, by email.</p>
+          </div>
+          <div class="tk-step">
+            <b>3</b>
+            <h3 data-nl="Jij beslist" data-en="You decide">You decide</h3>
+            <p data-nl="Past het niet, dan zeggen we dat ook. Je zit nergens aan vast tot je zelf ja zegt."
+               data-en="If it is not a fit, we say so. Nothing is committed until you say yes.">If it is not a fit, we say so. Nothing is committed until you say yes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tk-art" id="tkArt" data-reveal data-reveal-delay=".2">
+        <svg viewBox="0 0 120 100" role="img"
+             aria-label="An envelope sealing, with a tick">
+          <rect class="tk-s" x="10" y="22" width="86" height="60" rx="6"/>
+          <path class="tk-s tk-d" style="--len:130" d="M10 28l43 30 43-30"/>
+          <path class="tk-s tk-d" style="--len:70" d="M10 76l30-24M96 76L66 52"/>
+          <circle class="tk-s acc tk-d" style="--len:120" cx="96" cy="74" r="18" fill="var(--ink)"/>
+          <path class="tk-s acc tk-d" style="--len:34" d="M88 74l6 6 11-13"/>
+          <circle class="tk-ping" cx="96" cy="74" r="2.6"/>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="globalFooter"></div>
+
+<script src="/js/motion.js?v=v5"></script>
+<script src="/js/locale.js?v=v5"></script>
+<script src="/js/site-nav.js?v=v5"></script>
+<script src="/js/site-footer.js?v=v5"></script>
+<script src="/js/cookie-consent.js?v=v5"></script>
+<script>
+  (function () {
+    var art = document.getElementById('tkArt');
+    if (art) {
+      var start = function () { art.classList.add('go'); };
+      if (!window.IntersectionObserver) { start(); }
+      else {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { start(); io.disconnect(); } });
+        }, { threshold: .25 });
+        io.observe(art);
+        setTimeout(start, 1500);
+      }
+    }
+    function title(lang) {
+      document.title = lang === 'nl'
+        ? 'Briefing ontvangen | WebKreatives'
+        : 'Brief received | WebKreatives';
+    }
+    title(localStorage.getItem('wk-lang') || 'en');
+    document.addEventListener('wk:languagechange', function (e) {
+      title((e && e.detail && e.detail.lang) || localStorage.getItem('wk-lang') || 'en');
+    });
+  })();
+</script>
+</body>
+</html>

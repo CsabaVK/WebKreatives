@@ -190,7 +190,10 @@
       <div class="ct-form-card">
         <form class="cform" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="96c3a987-04bf-4ae0-9cdf-ddbe098611cd">
-          <input type="hidden" name="subject" value="New enquiry via WebKreatives">
+          <!-- subject is rewritten on submit from what they picked, so the
+               inbox list is triageable without opening anything -->
+          <input type="hidden" name="subject" id="ct-subject" value="New enquiry via WebKreatives">
+          <input type="hidden" name="from_name" value="WebKreatives enquiry">
           <!-- Filled by js/locale.js so the enquiry says which market it came
                from and which prices this person was actually shown. Both are
                read from the browser's own settings, not from an IP lookup. -->
@@ -364,22 +367,47 @@
 /* Web3Forms submit */
 document.querySelector('.cform')?.addEventListener('submit', async function (e) {
   e.preventDefault();
+  const en     = localStorage.getItem('wk-lang') === 'en';
   const status = document.getElementById('formStatus');
   const label  = this.querySelector('.ct-submit span');
   const orig   = label.textContent;
-  label.textContent = 'Sending…';
+
+  /* Web3Forms puts `subject` straight into the email header, so build it from
+     what they actually picked. Twenty enquiries all called "New enquiry via
+     WebKreatives" cannot be triaged from the inbox list; "New site · €500 –
+     €1,000 · US" can. */
+  const pick = id => {
+    const el = document.getElementById(id);
+    if (!el || !el.value) return '';
+    const o = el.options[el.selectedIndex];
+    return o ? o.textContent.trim() : '';
+  };
+  const bits = [pick('ct-need'), pick('ct-budget'), (window.wkLocale && window.wkLocale.region) || '']
+    .filter(Boolean);
+  const subj = document.getElementById('ct-subject');
+  if (subj) subj.value = 'Enquiry: ' + (bits.length ? bits.join(' · ') : 'no details given');
+
+  label.textContent = en ? 'Sending…' : 'Versturen…';
   status.className = 'ct-status';
   try {
     const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) });
     const data = await res.json();
-    status.className = 'ct-status ' + (data.success ? 'ok' : 'err');
-    status.textContent = data.success
-      ? 'Sent. You get a reply within one business day.'
-      : 'Something went wrong. Please try again, or email info@webkreatives.com';
-    if (data.success) this.reset();
+    if (data.success) {
+      this.reset();
+      /* a page of its own, so there is something to measure a conversion
+         against and somewhere to say what happens next */
+      location.href = '/contact/thanks/';
+      return;
+    }
+    status.className = 'ct-status err';
+    status.textContent = en
+      ? 'Something went wrong. Please try again, or email info@webkreatives.com'
+      : 'Er ging iets mis. Probeer het opnieuw, of mail info@webkreatives.com';
   } catch (err) {
     status.className = 'ct-status err';
-    status.textContent = 'Connection error. Email us at info@webkreatives.com';
+    status.textContent = en
+      ? 'Connection error. Email us at info@webkreatives.com'
+      : 'Verbindingsfout. Mail ons op info@webkreatives.com';
   }
   label.textContent = orig;
 });
