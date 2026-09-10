@@ -549,8 +549,12 @@
   padding-block:clamp(40px,5.5vw,72px);
 }
 @media(max-width:820px){
-  .hm-calc-in{grid-template-columns:minmax(0,1fr);gap:32px}
-  .hm-calc-viz{justify-self:start}
+  .hm-calc-in{grid-template-columns:minmax(0,1fr);gap:30px}
+  /* Stacked, the graphic was the last thing in the band: 330px of content
+     above it and 40px of padding below, so it read as sitting on the floor,
+     and the call to action ended up buried in the middle. Leading with it
+     puts the button last, which is where a CTA band should end anyway. */
+  .hm-calc-viz{order:-1;justify-self:start;width:clamp(150px,34vw,190px)}
 }
 .hm-calc h2{margin:14px 0 12px;max-width:20ch}
 .hm-calc p{

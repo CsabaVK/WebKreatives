@@ -70,6 +70,7 @@
 }
 .cform{display:flex;flex-direction:column;gap:18px}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ct-hint{margin:8px 0 0;font-size:12.5px;line-height:1.6;color:var(--cream-faint)}
 @media(max-width:600px){.frow{grid-template-columns:minmax(0,1fr)}}
 .fg{display:flex;flex-direction:column;gap:8px;min-width:0}
 .fg label{
@@ -210,45 +211,56 @@
           </div>
 
           <div class="fg">
-            <label for="ct-phone" data-nl="Telefoonnummer (optioneel)" data-en="Phone number (optional)">Phone number (optional)</label>
-            <input id="ct-phone" type="tel" name="phone" placeholder="+31 6 00000000">
+            <label for="ct-need" data-nl="Wat heb je nodig?" data-en="What do you need?">What do you need?</label>
+            <select id="ct-need" name="what_you_need" required>
+              <option value="" data-nl="Kies er &eacute;&eacute;n" data-en="Pick one">Pick one</option>
+              <option value="new-site" data-nl="Een nieuwe website" data-en="A new website">A new website</option>
+              <option value="redesign" data-nl="Herontwerp van de huidige site" data-en="A redesign of the current site">A redesign of the current site</option>
+              <option value="rebuild" data-nl="Opnieuw bouwen en overzetten" data-en="A rebuild with migration">A rebuild with migration</option>
+              <option value="landing" data-nl="&Eacute;&eacute;n landingspagina" data-en="A single landing page">A single landing page</option>
+              <option value="shop" data-nl="Een webshop" data-en="An online shop">An online shop</option>
+              <option value="hosting" data-nl="Alleen hosting en onderhoud" data-en="Hosting and upkeep only">Hosting and upkeep only</option>
+              <option value="unsure" data-nl="Weet ik nog niet" data-en="Not sure yet">Not sure yet</option>
+            </select>
           </div>
 
           <div class="frow">
             <div class="fg">
-              <label for="ct-type" data-nl="Type bedrijf" data-en="Business type">Business type</label>
-              <select id="ct-type" name="type">
-                <option value="" data-nl="Selecteer je branche" data-en="Select your sector">Select your sector</option>
-                <option data-nl="Horeca" data-en="Food &amp; drink">Food &amp; drink</option>
-                <option data-nl="Retail / Winkel" data-en="Retail / Shop">Retail / Shop</option>
-                <option data-nl="Zakelijke dienstverlening" data-en="Professional services">Professional services</option>
-                <option data-nl="Zorg &amp; Beauty" data-en="Health &amp; Beauty">Health &amp; Beauty</option>
-                <option data-nl="Bouw &amp; Installatie" data-en="Construction &amp; Trades">Construction &amp; Trades</option>
-                <option data-nl="Anders" data-en="Other">Other</option>
+              <label for="ct-pages" data-nl="Hoeveel pagina's?" data-en="How many pages?">How many pages?</label>
+              <select id="ct-pages" name="pages">
+                <option value="" data-nl="Ruwe schatting" data-en="A rough guess is fine">A rough guess is fine</option>
+                <option value="1" data-nl="&Eacute;&eacute;n pagina" data-en="One page">One page</option>
+                <option value="2-4" data-nl="2 tot 4" data-en="2 to 4">2 to 4</option>
+                <option value="5-8" data-nl="5 tot 8" data-en="5 to 8">5 to 8</option>
+                <option value="9-15" data-nl="9 tot 15" data-en="9 to 15">9 to 15</option>
+                <option value="16+" data-nl="16 of meer" data-en="16 or more">16 or more</option>
+                <option value="unsure" data-nl="Geen idee" data-en="No idea">No idea</option>
               </select>
             </div>
             <div class="fg">
-              <label for="ct-project" data-nl="Type project" data-en="Project type">Project type</label>
-              <select id="ct-project" name="project_type">
-                <option value="" data-nl="Wat zoek je?" data-en="What are you after?">What are you after?</option>
-                <option data-nl="Nieuwe website" data-en="New website">New website</option>
-                <option data-nl="Webshop" data-en="Online shop">Online shop</option>
-                <option data-nl="Redesign bestaande site" data-en="Redesign of an existing site">Redesign of an existing site</option>
-                <option data-nl="Branding &amp; identiteit" data-en="Branding &amp; identity">Branding &amp; identity</option>
-                <option data-nl="Hosting" data-en="Hosting">Hosting</option>
-                <option data-nl="Anders" data-en="Other">Other</option>
+              <label for="ct-when" data-nl="Wanneer moet het live?" data-en="When does it need to be live?">When does it need to be live?</label>
+              <select id="ct-when" name="timing">
+                <option value="" data-nl="Kies een termijn" data-en="Pick a timeframe">Pick a timeframe</option>
+                <option value="now" data-nl="Zo snel mogelijk" data-en="As soon as possible">As soon as possible</option>
+                <option value="week" data-nl="Binnen een week" data-en="Within a week">Within a week</option>
+                <option value="month" data-nl="Binnen een maand" data-en="Within a month">Within a month</option>
+                <option value="quarter" data-nl="Binnen drie maanden" data-en="Within three months">Within three months</option>
+                <option value="none" data-nl="Geen haast" data-en="No rush">No rush</option>
               </select>
             </div>
           </div>
 
           <div class="fg">
-            <label for="ct-lang" data-nl="Voorkeurstaal" data-en="Preferred language">Preferred language</label>
-            <input id="ct-lang" type="text" name="language" placeholder="Nederlands / English">
+            <label for="ct-budget" data-nl="Budget" data-en="Budget">Budget</label>
+            <select id="ct-budget" name="budget"></select>
+            <p class="ct-hint"
+               data-nl="Een richting is genoeg. Het bepaalt vooral hoeveel we in de eerste versie stoppen, niet of we reageren."
+               data-en="A direction is enough. It mostly decides how much goes into the first version, not whether you get a reply.">A direction is enough. It mostly decides how much goes into the first version, not whether you get a reply.</p>
           </div>
 
           <div class="fg">
-            <label for="ct-msg" data-nl="Vertel over het project" data-en="Tell us about the project">Tell us about the project</label>
-            <textarea id="ct-msg" name="message" data-nl-ph="Wat doet het bedrijf, en wat doet de site nu niet?" data-en-ph="What does the business do, and what is the site not doing?" placeholder="What does the business do, and what is the site not doing?"></textarea>
+            <label for="ct-msg" data-nl="Wat is de situatie?" data-en="What is the situation?">What is the situation?</label>
+            <textarea id="ct-msg" name="message" data-nl-ph="Wat doet het bedrijf, wie moet de site bereiken, en wat gaat er nu mis?" data-en-ph="What does the business do, who does the site need to reach, and what is going wrong now?" placeholder="What does the business do, who does the site need to reach, and what is going wrong now?" required></textarea>
           </div>
 
           <button type="submit" class="wk-btn wk-btn--primary wk-shimmer ct-submit" data-magnetic>
@@ -276,6 +288,41 @@
 <script src="/js/site-footer.js?v=v5"></script>
 <script src="/js/cookie-consent.js?v=v5"></script>
 <script>
+/* ── budget bands, in whatever currency this visitor is being shown ─────
+   Quoting a US lead in euro and then invoicing dollars is exactly the
+   mismatch the pricing work went to trouble to avoid. Bands are authored
+   per currency, like every other price on the site. */
+(function () {
+  const BANDS = {
+    eur: [['u250','tot &euro;250','under &euro;250'],['250-500','&euro;250 &ndash; &euro;500','&euro;250 &ndash; &euro;500'],
+          ['500-1000','&euro;500 &ndash; &euro;1.000','&euro;500 &ndash; &euro;1,000'],
+          ['1000-2000','&euro;1.000 &ndash; &euro;2.000','&euro;1,000 &ndash; &euro;2,000'],
+          ['2000+','meer dan &euro;2.000','over &euro;2,000']],
+    usd: [['u250','tot $275','under $275'],['250-500','$275 &ndash; $550','$275 &ndash; $550'],
+          ['500-1000','$550 &ndash; $1.100','$550 &ndash; $1,100'],
+          ['1000-2000','$1.100 &ndash; $2.200','$1,100 &ndash; $2,200'],
+          ['2000+','meer dan $2.200','over $2,200']]
+  };
+
+  const sel = document.getElementById('ct-budget');
+  if (!sel) return;
+
+  function fill() {
+    const cur  = (window.wkLocale && window.wkLocale.currency() === 'usd') ? 'usd' : 'eur';
+    const en   = localStorage.getItem('wk-lang') === 'en';
+    const keep = sel.value;
+    sel.innerHTML =
+      '<option value="">' + (en ? 'Pick a range' : 'Kies een bandbreedte') + '</option>' +
+      BANDS[cur].map(b => '<option value="' + b[0] + '">' + (en ? b[2] : b[1]) + '</option>').join('') +
+      '<option value="unsure">' + (en ? 'Not sure yet' : 'Weet ik nog niet') + '</option>';
+    if (keep) sel.value = keep;
+  }
+
+  fill();
+  document.addEventListener('wk:currencychange', fill);
+  document.addEventListener('wk:languagechange', fill);
+})();
+
 /* ── a scope arriving from the calculator ─────────────────────────────
    If they came from /pricing/ having ticked through the options, the brief
    is already written; drop it in rather than asking for it twice.        */
