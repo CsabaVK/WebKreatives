@@ -150,11 +150,11 @@
 
 /* ── responsive ───────────────────────────────────────────────────── */
 @media(max-width:900px){
-  .legal-grid{grid-template-columns:1fr}
+  .legal-grid{grid-template-columns:minmax(0,1fr)}
   .legal-side{position:static}
 }
 @media(max-width:580px){
-  .legal-table{grid-template-columns:1fr}
+  .legal-table{grid-template-columns:minmax(0,1fr)}
   .legal-table strong{border-bottom:none;padding-bottom:4px}
 }
 </style>

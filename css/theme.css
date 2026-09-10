@@ -296,7 +296,11 @@ button{font:inherit}
   display:grid;grid-template-columns:minmax(0,1fr) auto;
   gap:clamp(26px,5vw,70px);align-items:flex-end;
 }
-@media(max-width:900px){.wk-phero-split{grid-template-columns:1fr;align-items:flex-start}}
+/* `1fr` is `minmax(auto,1fr)`, and that `auto` floor is the headline's
+   min-content width, so a long display word pushed the column wider than
+   the screen and the words ran off the right edge. `minmax(0,1fr)` lets
+   the column shrink to the viewport and the headline wrap instead. */
+@media(max-width:900px){.wk-phero-split{grid-template-columns:minmax(0,1fr);align-items:flex-start}}
 
 
 /* The two service pages are a pair, so their heroes hold the same height
@@ -323,7 +327,7 @@ button{font:inherit}
 }
 .wk-intro h2{margin:16px 0 0}
 .wk-intro .wk-lede{margin:0}
-@media(max-width:900px){.wk-intro{grid-template-columns:1fr;align-items:start;gap:20px}}
+@media(max-width:900px){.wk-intro{grid-template-columns:minmax(0,1fr);align-items:start;gap:20px}}
 
 /* ── disclaimer / footnote ────────────────────────────────────────────── */
 .wk-note{
@@ -345,6 +349,27 @@ button{font:inherit}
   transition:transform 1s var(--ease-premium) .45s;
 }
 .is-lit .mark::after{transform:scaleX(1)}
+
+/* On a phone the accent phrase is often wider than the screen, and the nowrap
+   above — there to keep the drawn underline on a single line — turns that into
+   text running off the edge. Below 900px let it wrap and draw the rule as a
+   background instead, which repeats correctly on every line box. The desktop
+   keeps the pseudo-element. */
+@media(max-width:900px){
+  .mark{
+    white-space:normal;
+    background-image:linear-gradient(color-mix(in oklab,currentColor 35%,transparent),
+                                     color-mix(in oklab,currentColor 35%,transparent));
+    background-repeat:no-repeat;background-position:0 100%;background-size:0 .07em;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone;
+    transition:background-size 1s var(--ease-premium) .45s;
+  }
+  .mark::after{display:none}
+  .is-lit .mark{background-size:100% .07em}
+}
+@media(max-width:900px) and (prefers-reduced-motion:reduce){
+  .mark{background-size:100% .07em;transition:none}
+}
 
 /* ── shimmer sweep on a primary button ────────────────────────────────── */
 .wk-shimmer::after{

@@ -158,9 +158,15 @@
   .wk-ft-bot-top{flex-direction:column;align-items:flex-start;gap:12px}
   .wk-ft-legal{justify-content:flex-start}
 }
+/* Two columns still fit a 360px phone — the longest label, "What it costs",
+   sits in 146px with room to spare — and one column turned the footer into
+   an extra screen and a half of stacked links. Only the narrowest handsets
+   drop to a single column now. */
 @media(max-width:430px){
-  .wk-ft-top{grid-template-columns:1fr;gap:30px}
   .wk-ft-pay{gap:12px}
+}
+@media(max-width:339px){
+  .wk-ft-top{grid-template-columns:minmax(0,1fr);gap:30px}
 }
 `;
     document.head.appendChild(st);

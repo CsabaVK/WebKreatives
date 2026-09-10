@@ -46,7 +46,6 @@
           <rect x="2" y="9" width="4" height="12" rx=".5"/>
           <circle cx="4" cy="4" r="2"/>
         </svg>
-        LinkedIn
       </a>
       <a class="share-btn instagram" href="${INSTAGRAM_PAGE}" target="_blank" rel="noopener" aria-label="${t('Volg ons op Instagram', 'Follow us on Instagram')}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -54,36 +53,42 @@
           <circle cx="12" cy="12" r="4"/>
           <circle cx="17.5" cy="6.5" r="1.5" fill="white" stroke="none"/>
         </svg>
-        Instagram
       </a>
       <button class="share-btn copy" id="wkCopyBtn" aria-label="${t('Kopieer paginalink', 'Copy page link')}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="9" y="9" width="13" height="13" rx="2"/>
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
         </svg>
-        ${t('Kopieer link', 'Copy link')}
       </button>`;
 
     const copyBtn = document.getElementById('wkCopyBtn');
     if (copyBtn) {
+      /* The button is an icon control, so both the confirmation and the reset
+         swap the icon. Writing text into it instead leaves a 38px box with a
+         label spilling out of it. */
+      const ICON_COPY = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>`;
+      const ICON_DONE = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>`;
+
+      const confirm = () => {
+        copyBtn.classList.add('copied');
+        copyBtn.innerHTML = ICON_DONE;
+        copyBtn.setAttribute('aria-label', t('Gekopieerd!', 'Copied!'));
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.innerHTML = ICON_COPY;
+          copyBtn.setAttribute('aria-label', t('Kopieer paginalink', 'Copy page link'));
+        }, 2800);
+      };
+
       copyBtn.addEventListener('click', function () {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          copyBtn.classList.add('copied');
-          copyBtn.innerHTML = `
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"/>
-            </svg>
-            ${t('Gekopieerd!', 'Copied!')}`;
-          setTimeout(() => {
-            copyBtn.classList.remove('copied');
-            copyBtn.innerHTML = `
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2"/>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-              </svg>
-              ${t('Kopieer link', 'Copy link')}`;
-          }, 2800);
-        }).catch(() => {
+        navigator.clipboard.writeText(window.location.href).then(confirm).catch(() => {
           /* Fallback for older browsers */
           const ta = document.createElement('textarea');
           ta.value = window.location.href;
@@ -91,8 +96,7 @@
           ta.select();
           document.execCommand('copy');
           document.body.removeChild(ta);
-          copyBtn.textContent = `✓ ${t('Gekopieerd!', 'Copied!')}`;
-          setTimeout(() => { copyBtn.textContent = t('Kopieer link', 'Copy link'); }, 2800);
+          confirm();
         });
       });
     }

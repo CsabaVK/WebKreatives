@@ -137,7 +137,7 @@
   letter-spacing:.1em;text-transform:uppercase;color:var(--cream-faint);
 }
 @media(max-width:700px){
-  .art-stats{grid-template-columns:1fr}
+  .art-stats{grid-template-columns:minmax(0,1fr)}
   .art-stat{border-right:0;border-bottom:1px solid var(--rule);padding:20px 0!important}
   .art-stat:last-child{border-bottom:0}
 }
@@ -228,7 +228,7 @@ ol.art-checklist li::before{
   color:var(--cream-mute);cursor:pointer;
   transition:color var(--dur-fast),border-color var(--dur-fast),background var(--dur-fast);
 }
-.share-btn svg{width:16px;height:16px}
+.share-btn svg{width:16px;height:16px;flex-shrink:0}
 .share-btn:hover{color:var(--bronze);border-color:var(--bronze);background:var(--bronze-mist)}
 .share-btn.linkedin:hover,.share-btn.instagram:hover,.share-btn.copy:hover{
   color:var(--bronze);border-color:var(--bronze);

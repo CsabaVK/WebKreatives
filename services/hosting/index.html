@@ -31,7 +31,7 @@
 .hs-i{background:var(--ink);padding:clamp(20px,2.4vw,26px);transition:background var(--dur)}
 .hs-i:hover{background:var(--ink-2)}
 @media(max-width:900px){.hs-inc{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:620px){.hs-inc{grid-template-columns:1fr}}
+@media(max-width:620px){.hs-inc{grid-template-columns:minmax(0,1fr)}}
 .hs-i h3{
   font-family:var(--f-display);font-weight:900;font-size:17px;letter-spacing:-.035em;
   color:var(--cream);margin:0 0 9px;
@@ -130,7 +130,7 @@
 
 /* ── plans ────────────────────────────────────────────────────────── */
 .hs-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
-@media(max-width:900px){.hs-plans{grid-template-columns:1fr}}
+@media(max-width:900px){.hs-plans{grid-template-columns:minmax(0,1fr)}}
 .hs-p{
   border:1px solid var(--rule);border-radius:14px;background:var(--ink-2);
   padding:clamp(24px,2.8vw,32px);display:flex;flex-direction:column;position:relative;
@@ -179,7 +179,7 @@
   gap:clamp(14px,3vw,40px);align-items:baseline;
   padding:20px 0;border-bottom:1px solid var(--rule);
 }
-@media(max-width:640px){.hs-m{grid-template-columns:1fr;gap:6px}}
+@media(max-width:640px){.hs-m{grid-template-columns:minmax(0,1fr);gap:6px}}
 .hs-m-k{
   font-family:var(--f-body);font-size:10.5px;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:var(--red);
@@ -189,7 +189,7 @@
 
 /* ── expectations reused from the service page ────────────────────── */
 .sv-exp{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-@media(max-width:760px){.sv-exp{grid-template-columns:1fr}}
+@media(max-width:760px){.sv-exp{grid-template-columns:minmax(0,1fr)}}
 .sv-e{padding:26px 26px 26px 0;border-right:1px solid var(--rule)}
 .sv-e:not(:first-child){padding-left:26px}
 .sv-e:last-child{border-right:0;padding-right:0}

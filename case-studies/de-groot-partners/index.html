@@ -32,11 +32,11 @@
   display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);
   gap:clamp(28px,5vw,84px);align-items:start;
 }
-@media(max-width:900px){.cs-layout{grid-template-columns:1fr;gap:34px}}
+@media(max-width:900px){.cs-layout{grid-template-columns:minmax(0,1fr);gap:34px}}
 
 /* ── sticky fact rail ─────────────────────────────────────────────── */
 .cs-facts{position:sticky;top:104px}
-@media(max-width:900px){.cs-facts{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:0 22px}}
+@media(max-width:900px){.cs-facts{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}}
 .cs-fact{padding:13px 0;border-top:1px solid var(--rule)}
 .cs-fact:last-of-type{border-bottom:1px solid var(--rule)}
 .cs-fact-k{
