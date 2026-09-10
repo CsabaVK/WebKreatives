@@ -106,23 +106,6 @@
 .wk-ft-cur b:hover{color:var(--white,#fff)}
 @media(max-width:520px){.wk-ft-cur{gap:0 14px}.wk-ft-cur b + b::before{left:-8px}}
 
-/* A brand we hold no artwork for. Set as bare text it read as a caption that
-   had lost its logo, so it now sits on a brand-coloured plate inside the same
-   white card — the shape of a payment mark, without pretending to be one. */
-.wk-ft-badge--text{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:5px;overflow:hidden;
-}
-.wk-ft-badge--text i{
-  display:flex;align-items:center;justify-content:center;
-  width:100%;height:100%;border-radius:5px;
-  background:var(--brand,#0f172a);
-  font-family:var(--f-body,'Figtree',sans-serif);font-style:normal;
-  font-size:7px;font-weight:800;letter-spacing:.03em;line-height:1;
-  color:#fff;white-space:nowrap;
-}
-/* the longer names need to come down a step to stay on the plate */
-.wk-ft-badge--text i.sm{font-size:5.6px;letter-spacing:0}
 .wk-ft-badge{
   width:52px;height:34px;object-fit:contain;padding:6px;flex-shrink:0;
   box-sizing:border-box;border-radius:10px;
@@ -140,11 +123,9 @@
 .wk-ft-badge[alt="Apple Pay"]{border-color:rgba(17,17,17,.18);box-shadow:inset 0 2px 0 #111,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Google Pay"]{border-color:rgba(66,133,244,.2);box-shadow:inset 0 2px 0 #4285f4,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Klarna"]{border-color:rgba(255,179,199,.55);box-shadow:inset 0 2px 0 #ffb3c7,0 6px 16px rgba(15,23,42,.05)}
-.wk-ft-badge[alt="American Express"]{border-color:rgba(0,111,207,.22);box-shadow:inset 0 2px 0 #006fcf,0 6px 16px rgba(15,23,42,.05);--brand:#006fcf}
-.wk-ft-badge[alt="Discover"]{border-color:rgba(255,96,0,.22);box-shadow:inset 0 2px 0 #ff6000,0 6px 16px rgba(15,23,42,.05);--brand:#e35205}
-.wk-ft-badge[alt="Maestro"]{border-color:rgba(0,153,223,.22);box-shadow:inset 0 2px 0 #0099df,0 6px 16px rgba(15,23,42,.05);--brand:#0068a5}
-.wk-ft-badge[alt="Bancontact"]{border-color:rgba(0,84,152,.22);box-shadow:inset 0 2px 0 #005498,0 6px 16px rgba(15,23,42,.05);--brand:#005498}
-.wk-ft-badge[alt="SEPA Direct Debit"]{border-color:rgba(16,41,142,.22);box-shadow:inset 0 2px 0 #10298e,0 6px 16px rgba(15,23,42,.05);--brand:#10298e}
+.wk-ft-badge[alt="American Express"]{border-color:rgba(0,111,207,.22);box-shadow:inset 0 2px 0 #006fcf,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="Discover"]{border-color:rgba(255,96,0,.22);box-shadow:inset 0 2px 0 #ff6000,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="SEPA"]{border-color:rgba(16,41,142,.22);box-shadow:inset 0 2px 0 #10298e,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="PayPal"]{border-color:rgba(0,48,135,.18);box-shadow:inset 0 2px 0 #003087,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Stripe"]{border-color:rgba(99,91,255,.22);box-shadow:inset 0 2px 0 #635bff,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Amazon Pay"]{border-color:rgba(255,153,0,.24);box-shadow:inset 0 2px 0 #ff9900,0 6px 16px rgba(15,23,42,.05)}
@@ -226,18 +207,12 @@
 
   /* brands we hold artwork for */
   const PAY = [
-    ['visa','Visa'],['mastercard','Mastercard'],['ideal','iDEAL'],['applepay','Apple Pay'],
-    ['googlepay','Google Pay'],['klarna','Klarna'],['paypal','PayPal'],['stripe','Stripe'],['amazonpay','Amazon Pay']
+    ['visa','Visa'],['mastercard','Mastercard'],['americanexpress','American Express'],
+    ['discover','Discover'],['ideal','iDEAL'],['sepa','SEPA'],
+    ['applepay','Apple Pay'],['googlepay','Google Pay'],['klarna','Klarna'],
+    ['paypal','PayPal'],['stripe','Stripe'],['amazonpay','Amazon Pay']
   ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="52" height="34">`).join('');
 
-  /* and the ones we do not — a wordmark beats a logo drawn from memory */
-  const TEXT = [
-    ['American Express', 'AMEX'],
-    ['Discover', 'DISCOVER'],
-    ['Maestro', 'MAESTRO'],
-    ['Bancontact', 'BANCONTACT'],
-    ['SEPA Direct Debit', 'SEPA']
-  ].map(([a, t]) => `<span class="wk-ft-badge wk-ft-badge--text" role="img" aria-label="${a}" alt="${a}"><i${t.length > 8 ? ' class="sm"' : ''}>${t}</i></span>`).join('');
 
   const L = (href, nl, en) => `<a href="${href}" data-nl="${nl}" data-en="${en}">${nl}</a>`;
 
@@ -292,7 +267,7 @@
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       <span data-nl="Veilig betalen" data-en="Secure payments">Secure payments</span>
     </span>
-    <div class="wk-ft-pay-icons">${PAY}${TEXT}</div>
+    <div class="wk-ft-pay-icons">${PAY}</div>
   </div>
 
   <div class="wk-ft-bot">
