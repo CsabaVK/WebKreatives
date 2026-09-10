@@ -17,6 +17,87 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'how-to-get-more-google-reviews': {
+      current: 'Local SEO',
+      category: 'Local SEO',
+      date: '10 September 2026',
+      read: '7 min read',
+      docTitle: 'How to Get More Google Reviews Without Being Pushy | WebKreatives',
+      title: 'How to Get More Google Reviews<br><em>Without Being Pushy</em>',
+      bottomTitle: 'Want new customers to find you<br>and trust you straight away?',
+      bottomText: 'We build websites and local visibility for small businesses: professional in look, clear in message and built around real enquiries.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>A customer is standing at the counter, clearly happy, says something kind — and walks out. And you think: <em>I should have asked for a review there.</em> But it felt awkward, you weren't sure how to phrase it, and the moment was gone before you'd finished the sentence.</p>
+<p>That is the real reason almost every small business collects so few reviews. Not that customers are unhappy. Not that they refuse. <strong>It simply never gets asked, or it gets asked once and then never again.</strong></p>
+<p>In an earlier article we covered why reviews have so much influence on your local visibility. This one is about the practical part that comes next: how to get more of them consistently, without it feeling like begging.</p>
+<h2><span class="num">1</span> The problem is timing, not nerve</h2>
+<p>Most business owners ask at the wrong moment. Usually days later, by email, when the customer already has three other things on their mind. Or far too early, before the result is even visible.</p>
+<p>There is almost always one natural moment when a customer is at their happiest. For a hairdresser it's the second the mirror goes up. For a trade business it's the handover, once the mess is cleared and the work is standing there. For a dentist it's after a treatment that turned out less bad than feared. For a restaurant it's while paying, not while leaving.</p>
+<div class="art-quote">
+  <p>"Asking for a review only feels awkward when you do it separately from the work. At the right moment it's just the end of the conversation."</p>
+</div>
+<p>Find that moment in your own process and write it down literally. Not "we ask for reviews", but "we ask when the customer pays". That difference decides whether it happens at all.</p>
+<h2><span class="num">2</span> The words that make it easy</h2>
+<p>What stops people is rarely the idea — it's the sentence. You don't want to sound like you need something. The fix is to make the request small and concrete, and to explain why it helps you.</p>
+<p>Something along these lines works almost every time:</p>
+<ul class="art-checklist">
+  <li>"Glad you're happy with it. Can I ask you something small? Most of our new customers find us through Google. If you have a minute to write that down, it genuinely helps us."</li>
+  <li>"I'll send the invoice over shortly. I'll include a link to our Google profile — if you'd like to leave something, wonderful, and if not, that's completely fine too."</li>
+  <li>"Would you recommend this to someone else? Writing that on Google saves us a lot of explaining with the next customer."</li>
+</ul>
+<p>Notice what these have in common: they're short, they give a reason, and they offer a way out. That way out matters more than it seems. The moment someone feels that "no" is allowed, "yes" gets easier.</p>
+<figure class="art-img">
+  <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=1200&q=80" alt="Business owner sending a short follow-up to a customer after a job" loading="lazy">
+  <figcaption>The request works best inside the context of the work itself — at handover, on the invoice or while paying, not as a separate campaign weeks later.</figcaption>
+</figure>
+<h2><span class="num">3</span> Make the route to the form absurdly short</h2>
+<p>Every extra step costs you reviews. "Just look us up on Google" sounds easy, but in practice it means: open the app, type the name, hope the right profile is at the top, scroll to reviews, tap the stars. Most people drop out halfway.</p>
+<p>Google gives every business profile a direct review link. You'll find it in your Google Business Profile under "Ask for reviews". That link is your only real tool here.</p>
+<ol class="art-steps">
+  <li><strong>Get your review link</strong> — open your Google Business Profile and copy the short link under "Ask for reviews". Store it somewhere you can find again in two seconds.</li>
+  <li><strong>Put it in your signature</strong> — one line under your email signature, something like "Happy with our work? A review on Google helps us enormously."</li>
+  <li><strong>Turn it into a QR code</strong> — free to generate, and easy to stick on the counter, the receipt, the invoice or the back window of the van.</li>
+  <li><strong>Save it as a ready text</strong> — a stored message with one sentence and the link, so that asking really does take five seconds.</li>
+  <li><strong>Attach it to your fixed moment</strong> — the link does nothing if it isn't tied to step one. Invoice going out? Link with it. Job finished? Message sent.</li>
+</ol>
+<p>This isn't a big system. It's one link in four places. But the difference between businesses with forty reviews and businesses with four almost always sits exactly here.</p>
+<div class="art-mistake">
+  <strong>Common mistake</strong>
+  <p>Emailing twenty past customers at once asking for a review. Google then sees a sudden spike of ratings that doesn't match your normal rhythm, and customers can feel it's a campaign rather than a sincere request. Five reviews a month, every month, is far stronger than thirty in one week.</p>
+</div>
+<h2><span class="num">4</span> Give people something to write about</h2>
+<p>"Great service, recommended" is a review. But it barely convinces the next customer, and it tells Google nothing about what you do or where you are. A review that names your speciality, your town or the problem you solved is worth several times as much.</p>
+<p>You don't need to dictate anything — it shows immediately in the result, and it's against Google's rules anyway. What is allowed, and works, is offering a starting point: "if you write something, feel free to mention what we actually did — that's what helps other people most."</p>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Does your website carry the trust you've already earned offline?</h3>
+    <p>We build websites for local businesses where reviews, your Google profile and a clear enquiry route reinforce each other instead of living separately.</p>
+  </div>
+  <a href="/contact/" class="btn btn-red">Request a quote →</a>
+</div>
+<h2><span class="num">5</span> Reply — including, and especially, to the awkward ones</h2>
+<p>An unanswered profile looks abandoned. A short, human reply under a review shows someone is paying attention. Two sentences is enough; you don't need to write a letter.</p>
+<p>With a negative review the reflex is to defend yourself or set the record straight. Don't do that in public. Remember you aren't writing for the angry customer, but for the dozens of people who will read it later. What they judge is mostly your tone.</p>
+<ul class="art-checklist">
+  <li>Acknowledge what went wrong, without arguing over who was right</li>
+  <li>Offer one concrete route to fix it, offline</li>
+  <li>Keep it short, calm and free of blame</li>
+  <li>Reply within a few days, not within a few minutes</li>
+</ul>
+<p>One calmly handled complaint among thirty good reviews makes your profile more credible, not weaker. A flawless five-star profile with no interaction at all is what raises doubts.</p>
+<h2><span class="num">6</span> Then actually use them</h2>
+<p>Reviews that only live on Google do half their job. The strongest two or three belong on your website too: on your homepage, next to your prices and on your contact page — exactly where someone is about to hesitate.</p>
+<p>Include the name and, where possible, the town. An anonymous quote reads as something you made up yourself. A name with a village behind it reads as a neighbour who already tried it.</p>
+<h2>Conclusion</h2>
+<p>Getting more Google reviews isn't a matter of persuasion or marketing tricks. It's a matter of choosing one fixed moment, having one sentence ready and keeping one link within reach.</p>
+<p>Businesses that keep this up for a few months see the difference not just in their star rating, but mostly in the kind of conversation they have: new customers who call having already decided. That's what a stack of recent, specific reviews does for you — it takes most of the convincing off your hands.</p>
+`
+    },
+
     'why-page-speed-and-seo-go-together': {
       current: 'Local SEO',
       category: 'Local SEO',
