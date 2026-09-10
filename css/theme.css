@@ -552,12 +552,19 @@ body.cursor-down #c-dot{width:14px;height:14px}
 body.cursor-on-red #c-dot{background:var(--ink)}
 body.cursor-on-red.has-cursor #c-ring{border-color:var(--ink);opacity:.8}
 
-/* hide the native cursor only where the custom one actually runs */
+/* Hide the native cursor only where the custom one actually runs — but hide
+   it everywhere, not just on links and buttons. Naming those four left the
+   I-beam showing over every input and textarea and the pointing hand over
+   anything carrying its own cursor:pointer, such as the calculator's add-on
+   labels, so the custom cursor appeared to switch off in exactly the places
+   it changes shape for. `*` with !important is deliberate: page-level rules
+   like `.pc-add span{cursor:pointer}` match with the same specificity and
+   load later, so they would otherwise win. */
 @media (hover:hover) and (pointer:fine){
   body.has-cursor,
-  body.has-cursor a,
-  body.has-cursor button,
-  body.has-cursor [role="button"]{cursor:none}
+  body.has-cursor *,
+  body.has-cursor *::before,
+  body.has-cursor *::after{cursor:none!important}
 }
 @media (pointer:coarse),(max-width:900px){
   #c-dot,#c-ring{display:none!important}

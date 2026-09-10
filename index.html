@@ -225,6 +225,42 @@
   border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
   background:var(--ink-2);position:relative;overflow:hidden;
 }
+
+/* ── the band writes itself a brief ─────────────────────────────────
+   The section asks for a short brief, so the background is one being
+   written: rules that grow from the left the way a line of text does,
+   hold, then clear and start again. Transform-only, so it never touches
+   layout, and the whole thing sits under the copy at low opacity. */
+.hm-band-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hm-band-bg i{
+  position:absolute;height:2px;border-radius:2px;display:block;
+  background:var(--cream-faint);opacity:0;
+  transform:scaleX(0);transform-origin:left center;
+}
+.hm-band-bg i.acc{background:var(--red)}
+.hm-band.is-in .hm-band-bg i{animation:hb-write 9s var(--ease-premium) infinite}
+@keyframes hb-write{
+  0%      {transform:scaleX(0);opacity:0}
+  6%      {opacity:.22}
+  34%,58% {transform:scaleX(1);opacity:.22}
+  72%     {transform:scaleX(1);opacity:0}
+  100%    {transform:scaleX(1);opacity:0}
+}
+/* a wash that breathes underneath, so the lines are not the only movement */
+.hm-band-bg::after{
+  content:'';position:absolute;inset:-20% -10%;
+  background:radial-gradient(38% 60% at 70% 50%,rgba(223,56,33,.10),transparent 70%);
+  opacity:0;
+}
+.hm-band.is-in .hm-band-bg::after{animation:hb-wash 12s ease-in-out infinite}
+@keyframes hb-wash{
+  0%,100%{opacity:.35;transform:translateX(-4%)}
+  50%    {opacity:.85;transform:translateX(4%)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hm-band.is-in .hm-band-bg i{animation:none;transform:scaleX(1);opacity:.14}
+  .hm-band.is-in .hm-band-bg::after{animation:none;opacity:.5}
+}
 .hm-band-in{
   display:grid;grid-template-columns:minmax(0,1fr) auto;
   gap:32px;align-items:center;
@@ -990,6 +1026,17 @@
 
 <!-- ══ 3 · INLINE CTA BAND ═══════════════════════════════════════ -->
 <section class="hm-band">
+  <div class="hm-band-bg" aria-hidden="true">
+    <i style="left:6%;top:22%;width:26%;animation-delay:0.0s"></i>
+    <i class="acc" style="left:6%;top:33%;width:17%;animation-delay:0.5s"></i>
+    <i style="left:6%;top:44%;width:31%;animation-delay:1.0s"></i>
+    <i style="left:52%;top:18%;width:22%;animation-delay:1.9s"></i>
+    <i style="left:52%;top:29%;width:34%;animation-delay:2.4s"></i>
+    <i class="acc" style="left:52%;top:40%;width:15%;animation-delay:3.0s"></i>
+    <i style="left:24%;top:62%;width:29%;animation-delay:3.7s"></i>
+    <i style="left:60%;top:68%;width:20%;animation-delay:4.3s"></i>
+    <i style="left:6%;top:76%;width:12%;animation-delay:5.0s"></i>
+  </div>
   <div class="wk-wrap hm-band-in">
     <div data-reveal>
       <h2 class="wk-display wk-h3"
@@ -1428,11 +1475,16 @@
 <script>
 /* FAQ accordion */
 (function(){
-  const c=document.querySelector('.hm-calc-viz');
-  if(!c)return;
-  new IntersectionObserver((e,o)=>e.forEach(x=>{
+  /* Looping background art starts when its section arrives and is left
+     running. Not data-reveal: that would fade the whole band in on top of
+     the children, which do their own. */
+  const io=new IntersectionObserver((e,o)=>e.forEach(x=>{
     if(x.isIntersecting){x.target.classList.add('is-in');o.unobserve(x.target);}
-  }),{threshold:.3}).observe(c);
+  }),{threshold:.25});
+  ['.hm-calc-viz','.hm-band'].forEach(sel=>{
+    const el=document.querySelector(sel);
+    if(el)io.observe(el);
+  });
 })();
 document.querySelectorAll('.hm-q-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
