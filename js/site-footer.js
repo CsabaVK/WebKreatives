@@ -113,7 +113,10 @@
    A card closer to square draws the same glyph at 34px: 55% larger on each
    axis, and it fills the space it was always occupying. */
 .wk-ft-badge{
-  width:54px;height:42px;object-fit:contain;padding:4px;flex-shrink:0;
+  /* Back to the original 52x34 footprint. The glyphs stay readable because
+     the padding came down rather than the card going up: 3px instead of 6
+     draws them at 28px inside the same card, where they were 22. */
+  width:52px;height:34px;object-fit:contain;padding:3px;flex-shrink:0;
   box-sizing:border-box;border-radius:10px;
   background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);
   border:1px solid rgba(15,23,42,.08);
@@ -213,7 +216,7 @@
     ['ideal','iDEAL'],['sepa','SEPA'],
     ['applepay','Apple Pay'],['googlepay','Google Pay'],['klarna','Klarna'],
     ['paypal','PayPal'],['stripe','Stripe'],['amazonpay','Amazon Pay']
-  ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="54" height="42">`).join('');
+  ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="52" height="34">`).join('');
 
 
   const L = (href, nl, en) => `<a href="${href}" data-nl="${nl}" data-en="${en}">${nl}</a>`;
