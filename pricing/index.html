@@ -71,7 +71,13 @@
 .pc-opt input:checked + span em{color:var(--red)}
 
 /* ── add-ons ──────────────────────────────────────────────────────── */
-.pc-adds{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:8px}
+/* Two columns, always, until a phone forces one. auto-fill looked tidy but
+   the count tracked the container, and the container jumps wider when the
+   layout stacks at 980px — so the list went 2 columns at 1024 and 3 at 860,
+   getting more columns as the screen got smaller. Fourteen add-ons divide
+   evenly into two, so no row is ever left half full either. */
+.pc-adds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media(max-width:520px){.pc-adds{grid-template-columns:minmax(0,1fr)}}
 .pc-add{position:relative}
 .pc-add input{position:absolute;opacity:0;width:0;height:0}
 .pc-add span{

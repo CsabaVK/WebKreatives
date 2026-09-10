@@ -73,7 +73,7 @@
 
 .wk-ft-pay{
   max-width:var(--maxw,1280px);margin:0 auto;
-  padding:0 var(--gutter,5vw) clamp(34px,4vw,46px);
+  padding:0 var(--gutter,5vw) 16px;
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
 }
 .wk-ft-pay-l{
@@ -81,7 +81,30 @@
   text-transform:uppercase;color:var(--cream-faint,#635f5a);
   display:flex;align-items:center;gap:7px;flex-shrink:0;
 }
+.wk-ft-pay:last-of-type{padding-bottom:clamp(34px,4vw,46px)}
 .wk-ft-pay-icons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* the currencies we actually invoice in, ahead of the methods */
+.wk-ft-cur{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.wk-ft-cur b{
+  font-family:var(--f-mono,'Unbounded',sans-serif);
+  font-size:10px;font-weight:700;letter-spacing:.1em;
+  padding:7px 11px;border-radius:9px;
+  color:var(--cream-dim,#cfc9bf);
+  border:1px solid var(--rule-hard,rgba(239,230,210,.14));
+  background:var(--ink-2,#16130f);
+  transition:color .2s,border-color .2s,background .2s;
+}
+.wk-ft-cur b:hover{color:var(--white,#fff);border-color:var(--bronze-rule,rgba(223,56,33,.4))}
+
+/* a brand we hold no artwork for, drawn as a wordmark in the same card */
+.wk-ft-badge--text{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:5px 4px;font-family:var(--f-body,'Figtree',sans-serif);
+  /* 7.5px so the longest of them, MAESTRO, still fits the 52px card */
+  font-size:7.5px;font-weight:800;letter-spacing:0;line-height:1;
+  color:#0f172a;text-align:center;white-space:nowrap;overflow:hidden;
+}
 .wk-ft-badge{
   width:52px;height:34px;object-fit:contain;padding:6px;flex-shrink:0;
   box-sizing:border-box;border-radius:10px;
@@ -99,6 +122,11 @@
 .wk-ft-badge[alt="Apple Pay"]{border-color:rgba(17,17,17,.18);box-shadow:inset 0 2px 0 #111,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Google Pay"]{border-color:rgba(66,133,244,.2);box-shadow:inset 0 2px 0 #4285f4,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Klarna"]{border-color:rgba(255,179,199,.55);box-shadow:inset 0 2px 0 #ffb3c7,0 6px 16px rgba(15,23,42,.05)}
+.wk-ft-badge[alt="American Express"]{border-color:rgba(0,111,207,.22);box-shadow:inset 0 2px 0 #006fcf,0 6px 16px rgba(15,23,42,.05);color:#006fcf}
+.wk-ft-badge[alt="Discover"]{border-color:rgba(255,96,0,.22);box-shadow:inset 0 2px 0 #ff6000,0 6px 16px rgba(15,23,42,.05);color:#e35205}
+.wk-ft-badge[alt="Maestro"]{border-color:rgba(0,153,223,.22);box-shadow:inset 0 2px 0 #0099df,0 6px 16px rgba(15,23,42,.05);color:#0068a5}
+.wk-ft-badge[alt="Bancontact"]{border-color:rgba(0,84,152,.22);box-shadow:inset 0 2px 0 #005498,0 6px 16px rgba(15,23,42,.05);color:#005498}
+.wk-ft-badge[alt="SEPA Direct Debit"]{border-color:rgba(16,41,142,.22);box-shadow:inset 0 2px 0 #10298e,0 6px 16px rgba(15,23,42,.05);color:#10298e}
 .wk-ft-badge[alt="PayPal"]{border-color:rgba(0,48,135,.18);box-shadow:inset 0 2px 0 #003087,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Stripe"]{border-color:rgba(99,91,255,.22);box-shadow:inset 0 2px 0 #635bff,0 6px 16px rgba(15,23,42,.05)}
 .wk-ft-badge[alt="Amazon Pay"]{border-color:rgba(255,153,0,.24);box-shadow:inset 0 2px 0 #ff9900,0 6px 16px rgba(15,23,42,.05)}
@@ -172,10 +200,24 @@
     document.head.appendChild(st);
   }
 
+  /* We invoice in these; Stripe settles the rest. */
+  const CUR = ['EUR', 'USD', 'GBP']
+    .map(c => `<b>${c}</b>`).join('');
+
+  /* brands we hold artwork for */
   const PAY = [
     ['visa','Visa'],['mastercard','Mastercard'],['ideal','iDEAL'],['applepay','Apple Pay'],
     ['googlepay','Google Pay'],['klarna','Klarna'],['paypal','PayPal'],['stripe','Stripe'],['amazonpay','Amazon Pay']
   ].map(([f,a]) => `<img class="wk-ft-badge" src="/assets/payment/${f}.svg" alt="${a}" loading="lazy" width="52" height="34">`).join('');
+
+  /* and the ones we do not — a wordmark beats a logo drawn from memory */
+  const TEXT = [
+    ['American Express', 'AMEX'],
+    ['Discover', 'DISC'],
+    ['Maestro', 'MAESTRO'],
+    ['Bancontact', 'BCMC'],
+    ['SEPA Direct Debit', 'SEPA']
+  ].map(([a, t]) => `<span class="wk-ft-badge wk-ft-badge--text" role="img" aria-label="${a}" alt="${a}">${t}</span>`).join('');
 
   const L = (href, nl, en) => `<a href="${href}" data-nl="${nl}" data-en="${en}">${nl}</a>`;
 
@@ -219,10 +261,18 @@
 
   <div class="wk-ft-pay">
     <span class="wk-ft-pay-l">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <span data-nl="Veilig betalen" data-en="Secure payment">Secure payment</span>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <span data-nl="Wij factureren in" data-en="We invoice in">We invoice in</span>
     </span>
-    <div class="wk-ft-pay-icons">${PAY}</div>
+    <div class="wk-ft-cur">${CUR}</div>
+  </div>
+
+  <div class="wk-ft-pay">
+    <span class="wk-ft-pay-l">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span data-nl="Veilig betalen via Stripe" data-en="Secure payment via Stripe">Secure payment via Stripe</span>
+    </span>
+    <div class="wk-ft-pay-icons">${PAY}${TEXT}</div>
   </div>
 
   <div class="wk-ft-bot">

@@ -195,7 +195,9 @@
   font-family:var(--f-display);font-weight:900;letter-spacing:-.04em;
   font-size:clamp(21px,2.3vw,29px);color:var(--cream);line-height:1;
 }
-.sv-calc-dial-c span{
+/* direct child only: the number in the <b> above now carries a price span of
+   its own, and a descendant selector styled that as a caption too */
+.sv-calc-dial-c > span{
   font-family:var(--f-body);font-size:9px;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:var(--cream-faint);margin-top:8px;
 }
@@ -305,7 +307,7 @@
       <a class="sv-card" href="/client-projects/de-groot-accountants/" target="_blank" rel="noopener" data-reveal>
         <div class="wk-frame">
           <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/de-groot-accountants</span></div>
-          <img src="/assets/screenshots/de-groot-accountants.png" alt="De Groot &amp; Partners" loading="lazy" width="1200" height="760">
+          <img src="/assets/screenshots/de-groot-accountants.webp" alt="De Groot &amp; Partners" loading="lazy" width="1200" height="760">
         </div>
         <span class="wk-meta" data-nl="Accountancy · Multi-page" data-en="Accountancy · Multi-page">Accountancy · Multi-page</span>
         <h3>De Groot &amp; Partners</h3>
@@ -316,7 +318,7 @@
       <a class="sv-card" href="/client-projects/leyenburger/" target="_blank" rel="noopener" data-reveal data-reveal-delay=".08">
         <div class="wk-frame">
           <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/leyenburger</span></div>
-          <img src="/assets/screenshots/leyenburger.png" alt="Leyenburger" loading="lazy" width="1200" height="760">
+          <img src="/assets/screenshots/leyenburger.webp" alt="Leyenburger" loading="lazy" width="1200" height="760">
         </div>
         <span class="wk-meta" data-nl="Horeca · One-page" data-en="Food &amp; drink · One-page">Food &amp; drink · One-page</span>
         <h3>Leyenburger</h3>
@@ -327,7 +329,7 @@
       <a class="sv-card" href="/client-projects/tandarts-knoll/" target="_blank" rel="noopener" data-reveal data-reveal-delay=".16">
         <div class="wk-frame">
           <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/tandarts-knoll</span></div>
-          <img src="/assets/screenshots/tandarts-knoll.png" alt="Tandarts Knoll" loading="lazy" width="1200" height="760">
+          <img src="/assets/screenshots/tandarts-knoll.webp" alt="Tandarts Knoll" loading="lazy" width="1200" height="760">
         </div>
         <span class="wk-meta" data-nl="Zorg · Lokale praktijk" data-en="Healthcare · Local practice">Healthcare · Local practice</span>
         <h3>Tandarts Knoll</h3>
@@ -338,7 +340,7 @@
       <a class="sv-card" href="/client-projects/vanderberg-loodgieter/" target="_blank" rel="noopener" data-reveal data-reveal-delay=".24">
         <div class="wk-frame">
           <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/vanderberg-loodgieter</span></div>
-          <img src="/assets/screenshots/vanderberg-loodgieter.png" alt="Van den Berg Loodgieter" loading="lazy" width="1200" height="760">
+          <img src="/assets/screenshots/vanderberg-loodgieter.webp" alt="Van den Berg Loodgieter" loading="lazy" width="1200" height="760">
         </div>
         <span class="wk-meta" data-nl="Vakwerk · Servicebedrijf" data-en="Trades · Service business">Trades · Service business</span>
         <h3>Van den Berg Loodgieter</h3>
