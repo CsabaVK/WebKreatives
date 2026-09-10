@@ -110,33 +110,126 @@
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px oklch(51% .220 25 / .38)}
 .nav-cta:hover::before{transform:translateX(0)}
 .mobile-toggle{
-  display:none;flex-direction:column;justify-content:center;gap:5px;
-  width:38px;height:38px;padding:8px;color:oklch(70% .005 25);
-  background:none;border:none;cursor:pointer;
+  display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  width:42px;height:42px;padding:8px;color:oklch(74% .005 25);
+  background:none;border:1px solid transparent;border-radius:10px;cursor:pointer;
+  transition:border-color .25s var(--ease,cubic-bezier(.16,1,.3,1)),background .25s,color .25s;
 }
-.mobile-toggle span{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:.25s var(--ease,cubic-bezier(.16,1,.3,1))}
-.mobile-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.mobile-toggle.open span:nth-child(2){opacity:0}
-.mobile-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-toggle span{
+  display:block;width:19px;height:1.5px;background:currentColor;border-radius:2px;
+  transition:transform .4s var(--ease,cubic-bezier(.16,1,.3,1)),opacity .2s;
+}
+.mobile-toggle.open{color:var(--white,oklch(99% .004 80));border-color:oklch(26% .010 25);background:oklch(14% .010 25)}
+.mobile-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.mobile-toggle.open span:nth-child(2){opacity:0;transform:scaleX(.4)}
+.mobile-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* the sheet dims the page rather than floating over a live-looking one */
+.mobile-scrim{
+  position:fixed;inset:0;z-index:98;
+  background:oklch(4% .010 25 / .62);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  opacity:0;pointer-events:none;transition:opacity .38s var(--ease,cubic-bezier(.16,1,.3,1));
+}
+.mobile-scrim.open{opacity:1;pointer-events:auto}
+
 .mobile-menu{
-  display:none;position:fixed;top:70px;left:12px;right:12px;z-index:99;
-  background:oklch(10% .010 25);border:1px solid oklch(20% .010 25);
-  border-radius:14px;padding:12px;
-  box-shadow:0 22px 70px rgba(0,0,0,.45);
+  position:fixed;top:64px;left:10px;right:10px;z-index:99;
+  max-height:calc(100svh - 84px);overflow-y:auto;overscroll-behavior:contain;
+  background:oklch(9% .010 25);border:1px solid oklch(19% .010 25);
+  border-radius:16px;padding:8px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
   font-family:var(--f-body,'Figtree',sans-serif);
+  opacity:0;visibility:hidden;
+  transform:translateY(-10px) scale(.985);transform-origin:top center;
+  transition:opacity .3s var(--ease,cubic-bezier(.16,1,.3,1)),
+             transform .42s var(--ease,cubic-bezier(.16,1,.3,1)),
+             visibility 0s .42s;
 }
-.mobile-menu.open{display:block}
-.mobile-menu a{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 10px;text-decoration:none;
-  border-bottom:1px solid oklch(16% .010 25);
-  font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:oklch(72% .005 25);
+.mobile-menu.open{opacity:1;visibility:visible;transform:none;transition-delay:0s,0s,0s}
+
+/* rows arrive one after another, so the panel reads as a list being dealt */
+.mobile-menu .mm-row,.mobile-menu .mm-cta{
+  opacity:0;transform:translateY(7px);
+  transition:opacity .34s var(--ease,cubic-bezier(.16,1,.3,1)),
+             transform .34s var(--ease,cubic-bezier(.16,1,.3,1)),
+             color .2s,background .2s;
 }
-.mobile-menu a:last-child{border-bottom:0}
-.mobile-menu .mobile-menu-cta{
-  margin-top:8px;justify-content:center;border-radius:9px;
-  background:var(--red,#df3821);color:var(--white,oklch(99% .004 80));border-bottom:0;
+.mobile-menu.open .mm-row,.mobile-menu.open .mm-cta{
+  opacity:1;transform:none;
+  transition-delay:calc(70ms + var(--i,0) * 42ms);
+}
+
+.mobile-menu .mm-row{
+  display:flex;align-items:center;gap:12px;
+  width:100%;padding:15px 14px;text-decoration:none;
+  background:none;border:0;border-radius:10px;cursor:pointer;
+  font-family:inherit;font-size:13.5px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;text-align:left;
+  color:oklch(74% .005 25);
+}
+.mobile-menu .mm-row:active{background:oklch(14% .010 25)}
+.mobile-menu .mm-row .mm-label{flex:1}
+
+/* the same four accents the desktop underlines use, as a leading tick */
+.mobile-menu .mm-row::before{
+  content:'';width:3px;height:15px;border-radius:3px;flex-shrink:0;
+  background:var(--acc,var(--red,#df3821));
+  transform:scaleY(.32);opacity:.5;transform-origin:center;
+  transition:transform .3s var(--ease,cubic-bezier(.16,1,.3,1)),opacity .3s;
+}
+.mobile-menu .mm-row.is-here{color:var(--white,oklch(99% .004 80))}
+.mobile-menu .mm-row.is-here::before,
+.mobile-menu .mm-group.open > .mm-row::before{transform:none;opacity:1}
+
+.mobile-menu .mm-caret{
+  width:11px;height:11px;flex-shrink:0;opacity:.5;
+  transition:transform .38s var(--ease,cubic-bezier(.16,1,.3,1)),opacity .2s;
+}
+.mobile-menu .mm-group.open .mm-caret{transform:rotate(180deg);opacity:1}
+
+/* the accordion: height is measured and written by the toggle handler, so it
+   animates properly instead of snapping */
+.mobile-menu .mm-sub{
+  overflow:hidden;max-height:0;
+  transition:max-height .4s var(--ease,cubic-bezier(.16,1,.3,1)),opacity .3s;
+  opacity:0;
+}
+.mobile-menu .mm-group.open .mm-sub{opacity:1}
+.mobile-menu .mm-sub a{
+  display:block;padding:12px 14px 12px 29px;margin:2px 0;
+  border-radius:9px;text-decoration:none;
+  font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:none;
+  color:oklch(70% .005 25);
+}
+.mobile-menu .mm-sub a:active{background:oklch(14% .010 25)}
+.mobile-menu .mm-sub a.is-here{color:var(--white,oklch(99% .004 80))}
+.mobile-menu .mm-sub .mm-d{
+  display:block;margin-top:3px;
+  font-size:11.5px;font-weight:400;letter-spacing:0;
+  color:oklch(50% .005 25);
+}
+
+.mobile-menu .mm-sep{height:1px;margin:6px 12px;background:oklch(17% .010 25)}
+
+.mobile-menu .mm-cta{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  margin:6px 2px 2px;padding:15px;border-radius:11px;
+  background:var(--red,#df3821);color:var(--white,oklch(99% .004 80));
+  text-decoration:none;font-size:13px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.mobile-menu .mm-cta .wk-arrow{transition:transform .3s var(--ease,cubic-bezier(.16,1,.3,1))}
+.mobile-menu .mm-cta:active .wk-arrow{transform:translateX(3px)}
+
+/* the page must not scroll behind an open sheet */
+html.wk-menu-open,html.wk-menu-open body{overflow:hidden}
+
+@media(prefers-reduced-motion:reduce){
+  .mobile-menu,.mobile-menu .mm-row,.mobile-menu .mm-cta,
+  .mobile-menu .mm-sub,.mobile-scrim,.mobile-toggle span,.mobile-menu .mm-caret{
+    transition-duration:.01ms!important;transition-delay:0s!important;
+  }
 }
 
 /* ── Services dropdown ────────────────────────────────────────────── */
@@ -173,13 +266,6 @@
 .nav-sub-d{
   display:block;margin-top:3px;font-size:11px;font-weight:400;
   letter-spacing:0;text-transform:none;color:oklch(50% .005 25);
-}
-
-/* mobile: the children sit under the parent, no flyout */
-.mobile-menu .mobile-sub{
-  display:block;padding:11px 10px 11px 26px;
-  font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:none;
-  color:oklch(60% .005 25);
 }
 
 @media(max-width:1000px){
@@ -228,12 +314,30 @@
       </li>`;
   }).join('\n      ');
 
-  const mobileItems = ITEMS.map(i => {
-    const own = `<a href="${i.href}" data-nl="${i.nl}" data-en="${i.en}">${i.nl}</a>`;
-    if (!i.sub) return own;
-    return own + '\n  ' + i.sub.map(k =>
-      `<a class="mobile-sub" href="${k.href}" data-nl="${k.nl}" data-en="${k.en}">${k.nl}</a>`
-    ).join('\n  ');
+  /* the four accents the desktop underlines use, in the same order */
+  const ACCENT = ['var(--red,#df3821)', 'var(--lime,#b9e185)', 'var(--yellow,#fbeb78)', 'var(--blue,#648dcb)'];
+  const MCARET = '<svg class="mm-caret" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M1 3l4 4 4-4"/></svg>';
+
+  const mobileItems = ITEMS.map((i, n) => {
+    const acc = `style="--acc:${ACCENT[n % ACCENT.length]};--i:${n}"`;
+    const label = `<span class="mm-label" data-nl="${i.nl}" data-en="${i.en}">${i.nl}</span>`;
+    if (!i.sub) {
+      return `<a class="mm-row" ${acc} href="${i.href}">${label}</a>`;
+    }
+    const kids = i.sub.map(k =>
+      `<a href="${k.href}"
+          data-nl="${k.nl}<span class='mm-d'>${k.dnl}</span>"
+          data-en="${k.en}<span class='mm-d'>${k.den}</span>">${k.nl}<span class="mm-d">${k.dnl}</span></a>`
+    ).join('\n        ');
+    /* a button, not a link: on a phone the parent's job is to open the group */
+    return `<div class="mm-group">
+      <button class="mm-row mm-toggle" ${acc} type="button" aria-expanded="false" aria-controls="mmSub${n}">
+        ${label}${MCARET}
+      </button>
+      <div class="mm-sub" id="mmSub${n}">
+        ${kids}
+      </div>
+    </div>`;
   }).join('\n  ');
 
   root.innerHTML = `
@@ -260,9 +364,14 @@
     </button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-scrim" id="mobileScrim" hidden></div>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
   ${mobileItems}
-  <a class="mobile-menu-cta" href="${'/contact/'}" data-nl="Neem contact op" data-en="Get in touch">Neem contact op</a>
+  <div class="mm-sep"></div>
+  <a class="mm-cta" style="--i:4" href="${'/contact/'}">
+    <span data-nl="Neem contact op" data-en="Get in touch">Neem contact op</span>
+    <span class="wk-arrow">&rarr;</span>
+  </a>
 </div>`;
 
   /* ── The single language switcher ───────────────────────────────────── */
@@ -341,16 +450,70 @@
     li.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); trigger.focus(); } });
   });
 
-  const tog  = document.getElementById('mobileToggle');
-  const menu = document.getElementById('mobileMenu');
+  /* ── Mobile sheet ───────────────────────────────────────────────────── */
+  const tog   = document.getElementById('mobileToggle');
+  const menu  = document.getElementById('mobileMenu');
+  const scrim = document.getElementById('mobileScrim');
+
   if (tog && menu) {
-    tog.addEventListener('click', () => {
-      const open = tog.classList.toggle('open');
-      menu.classList.toggle('open', open);
-      tog.setAttribute('aria-expanded', String(open));
+    /* mark the page you are on, so the sheet says where you are */
+    const here = location.pathname.replace(/index\.html$/, '');
+    menu.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (href && href !== '/' && here.indexOf(href) === 0) {
+        a.classList.add('is-here');
+        const grp = a.closest('.mm-group');
+        if (grp) grp.querySelector('.mm-toggle').classList.add('is-here');
+      } else if (href === '/' && here === '/') {
+        a.classList.add('is-here');
+      }
     });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      tog.classList.remove('open'); menu.classList.remove('open');
-    }));
+
+    const closeGroups = () => menu.querySelectorAll('.mm-group.open').forEach(g => {
+      g.classList.remove('open');
+      g.querySelector('.mm-sub').style.maxHeight = '0px';
+      g.querySelector('.mm-toggle').setAttribute('aria-expanded', 'false');
+    });
+
+    const setOpen = (open) => {
+      tog.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      scrim.classList.toggle('open', open);
+      scrim.hidden = !open;
+      tog.setAttribute('aria-expanded', String(open));
+      document.documentElement.classList.toggle('wk-menu-open', open);
+      /* next time it opens, it opens clean */
+      if (!open) setTimeout(closeGroups, 320);
+    };
+
+    tog.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+    scrim.addEventListener('click', () => setOpen(false));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setOpen(false); tog.focus(); }
+    });
+    menu.querySelectorAll('a[href]').forEach(a =>
+      a.addEventListener('click', () => setOpen(false))
+    );
+
+    /* the accordion — measured height, so it eases instead of snapping */
+    menu.querySelectorAll('.mm-toggle').forEach(btn => {
+      const group = btn.closest('.mm-group');
+      const sub   = group.querySelector('.mm-sub');
+      btn.addEventListener('click', () => {
+        const open = !group.classList.contains('open');
+        group.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        sub.style.maxHeight = open ? sub.scrollHeight + 'px' : '0px';
+      });
+      /* a language switch changes the copy, so the measured height is stale */
+      document.addEventListener('wk:languagechange', () => {
+        if (group.classList.contains('open')) sub.style.maxHeight = sub.scrollHeight + 'px';
+      });
+    });
+
+    /* going back to a wide window should not leave the sheet hanging */
+    matchMedia('(min-width:1001px)').addEventListener('change', e => {
+      if (e.matches && menu.classList.contains('open')) setOpen(false);
+    });
   }
 })();

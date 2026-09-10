@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found | WebKreatives</title>
+<meta name="description" content="That page does not exist yet. Head back to the homepage, or tell us what you were looking for and we will build it.">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Page not found | WebKreatives">
+<meta property="og:description" content="That page does not exist yet. Building pages happens to be the whole job here.">
+<meta property="og:image" content="https://webkreatives.com/og-image.svg">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta name="theme-color" content="#0c0a09">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css?v=v5">
+<style>
+/* ═══ 404 ═══════════════════════════════════════════════════════════════
+   The joke only works if the page looks like the rest of the site, so this
+   borrows the service-page hero wholesale and changes the content. */
+.nf{
+  position:relative;overflow:hidden;
+  min-height:100svh;display:flex;align-items:center;
+  padding:clamp(120px,15vw,180px) 0 clamp(60px,8vw,100px);
+  border-bottom:1px solid var(--rule);
+}
+.nf-in{width:100%;position:relative;z-index:2}
+.nf-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) clamp(280px,32vw,420px);
+  gap:clamp(34px,6vw,80px);align-items:center;
+}
+@media(max-width:900px){
+  .nf-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .nf-art{order:-1;max-width:360px}
+}
+
+.nf-code{
+  display:inline-flex;align-items:baseline;gap:14px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--red);
+}
+.nf-code::before{content:'';width:26px;height:1px;background:currentColor;opacity:.7;align-self:center}
+
+.nf h1{margin:20px 0 22px;max-width:15ch}
+.nf .wk-lede{max-width:52ch}
+.nf-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+
+/* the quiet index of places that do exist */
+.nf-else{
+  margin-top:clamp(38px,5vw,56px);padding-top:26px;
+  border-top:1px solid var(--rule);
+}
+.nf-else-k{
+  display:block;margin-bottom:16px;
+  font-family:var(--f-body);font-size:10px;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--cream-faint);
+}
+.nf-links{display:flex;flex-wrap:wrap;gap:9px}
+.nf-link{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:10px 15px;border-radius:9px;
+  border:1px solid var(--rule-hard);background:var(--ink-2);
+  font-size:12.5px;font-weight:600;color:var(--cream-mute);
+  transition:color .2s var(--ease-premium),border-color .2s var(--ease-premium),
+             background .2s var(--ease-premium),transform .2s var(--ease-premium);
+}
+.nf-link i{
+  width:5px;height:5px;border-radius:50%;flex-shrink:0;
+  background:var(--c,var(--red));opacity:.75;transition:opacity .2s;
+}
+.nf-link:hover{
+  color:var(--white);border-color:var(--bronze-rule);
+  background:var(--ink-3);transform:translateY(-2px);
+}
+.nf-link:hover i{opacity:1}
+
+/* ── the drawing ────────────────────────────────────────────────────────
+   A wireframe assembling itself inside a browser frame: the page that does
+   not exist, being built. It loops, because that is the offer. */
+.nf-art{width:100%;position:relative}
+.nf-art svg{width:100%;height:auto;display:block;overflow:visible}
+.nf-win{fill:var(--ink-deep);stroke:var(--rule-hard);stroke-width:1.2}
+.nf-bar{fill:var(--ink-2);stroke:var(--rule);stroke-width:1}
+.nf-dot{fill:rgba(239,230,210,.18)}
+.nf-url{
+  font-family:var(--f-mono);font-size:7.5px;fill:var(--cream-faint);
+  letter-spacing:.04em;
+}
+.nf-url tspan{fill:var(--red)}
+.nf-blk{
+  fill:none;stroke:var(--cream-faint);stroke-width:1.4;
+  stroke-linecap:round;opacity:.55;
+  stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
+}
+.nf-blk.acc{stroke:var(--red);opacity:.9}
+.nf-fill{fill:var(--cream-faint);opacity:0}
+.nf-fill.acc{fill:var(--red)}
+
+.nf-art.go .nf-blk{animation:nf-draw 7s var(--ease-premium) infinite}
+.nf-art.go .nf-fill{animation:nf-in 7s var(--ease-premium) infinite}
+@keyframes nf-draw{
+  0%,4%{stroke-dashoffset:var(--len)}
+  38%,88%{stroke-dashoffset:0}
+  97%,100%{stroke-dashoffset:var(--len)}
+}
+@keyframes nf-in{
+  0%,20%{opacity:0}
+  46%,88%{opacity:.34}
+  97%,100%{opacity:0}
+}
+.nf-art.go .nf-blk:nth-of-type(1),.nf-art.go .nf-fill:nth-of-type(1){animation-delay:0s}
+.nf-art.go .nf-blk:nth-of-type(2){animation-delay:.16s}
+.nf-art.go .nf-blk:nth-of-type(3){animation-delay:.32s}
+.nf-art.go .nf-blk:nth-of-type(4){animation-delay:.48s}
+.nf-art.go .nf-blk:nth-of-type(5){animation-delay:.64s}
+
+/* the cursor that appears to be doing the drawing */
+.nf-pen{opacity:0}
+.nf-art.go .nf-pen{animation:nf-pen 7s var(--ease-premium) infinite}
+@keyframes nf-pen{
+  0%,3%{opacity:0;transform:translate(0,0)}
+  8%{opacity:1}
+  22%{transform:translate(74px,16px)}
+  40%{transform:translate(30px,44px)}
+  58%{transform:translate(86px,62px)}
+  74%{opacity:1;transform:translate(50px,80px)}
+  84%,100%{opacity:0;transform:translate(50px,80px)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .nf-art.go .nf-blk,.nf-art.go .nf-fill,.nf-art.go .nf-pen{animation:none}
+  .nf-art .nf-blk{stroke-dashoffset:0}
+  .nf-art .nf-fill{opacity:.34}
+  .nf-art .nf-pen{opacity:0}
+}
+</style>
+</head>
+<body>
+
+<div id="globalNav"></div>
+
+<section class="nf wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+
+  <div class="wk-wrap nf-in">
+    <div class="nf-grid">
+
+      <div>
+        <span class="nf-code" data-reveal data-decode
+              data-nl="Fout 404" data-en="Error 404">Error 404</span>
+
+        <h1 class="wk-display wk-h1" data-split
+            data-nl="Deze pagina bestaat niet. <em class='mark'>Nog niet</em>."
+            data-en="This page does not exist. <em class='mark'>Yet</em>.">This page does not exist. <em class="mark">Yet</em>.</h1>
+
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+           data-nl="Je hebt een adres gevonden dat we nooit gebouwd hebben. Enigszins gênant, want pagina's bouwen is hier nu juist het hele werk. Zeg wat je zocht en dan staat hij er alsnog."
+           data-en="You have found an address we never built. Slightly awkward, given that building pages is the entire job here. Tell us what you were after and it can exist by the end of the week.">You have found an address we never built. Slightly awkward, given that building pages is the entire job here. Tell us what you were after and it can exist by the end of the week.</p>
+
+        <div class="nf-row" data-reveal data-reveal-delay=".25">
+          <a href="/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+            <span data-nl="Terug naar home" data-en="Back to the homepage">Back to the homepage</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+          <a href="/contact/" class="wk-btn wk-btn--ghost">
+            <span data-nl="Laat hem bouwen" data-en="Have us build it">Have us build it</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="nf-else" data-reveal data-reveal-delay=".35">
+          <span class="nf-else-k"
+                data-nl="Deze bestaan wel" data-en="These do exist">These do exist</span>
+          <div class="nf-links">
+            <a class="nf-link" href="/portfolio/" style="--c:var(--red)"><i></i><span data-nl="Portfolio" data-en="Portfolio">Portfolio</span></a>
+            <a class="nf-link" href="/services/websites/" style="--c:var(--lime)"><i></i><span data-nl="Websites" data-en="Websites">Websites</span></a>
+            <a class="nf-link" href="/services/hosting/" style="--c:var(--blue)"><i></i><span data-nl="Hosting" data-en="Hosting">Hosting</span></a>
+            <a class="nf-link" href="/pricing/" style="--c:var(--yellow)"><i></i><span data-nl="Wat kost het?" data-en="What it costs">What it costs</span></a>
+            <a class="nf-link" href="/articles/" style="--c:var(--red)"><i></i><span data-nl="Artikelen" data-en="Articles">Articles</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nf-art" id="nfArt" data-reveal data-reveal-delay=".2">
+        <svg viewBox="0 0 200 150" role="img"
+             aria-label="A wireframe page drawing itself inside a browser window">
+          <rect class="nf-win" x="8" y="10" width="184" height="130" rx="7"/>
+          <path class="nf-bar" d="M8 17a7 7 0 0 1 7-7h170a7 7 0 0 1 7 7v11H8z"/>
+          <circle class="nf-dot" cx="20" cy="22" r="2.6"/>
+          <circle class="nf-dot" cx="29" cy="22" r="2.6"/>
+          <circle class="nf-dot" cx="38" cy="22" r="2.6"/>
+          <text class="nf-url" x="50" y="25">webkreatives.com/<tspan>???</tspan></text>
+
+          <!-- the page being drawn -->
+          <rect class="nf-blk acc" style="--len:150" x="22" y="42" width="60" height="15" rx="3"/>
+          <rect class="nf-fill acc" x="22" y="42" width="60" height="15" rx="3"/>
+          <rect class="nf-blk" style="--len:260" x="22" y="64" width="156" height="8" rx="3"/>
+          <rect class="nf-fill" x="22" y="64" width="156" height="8" rx="3"/>
+          <rect class="nf-blk" style="--len:210" x="22" y="78" width="120" height="8" rx="3"/>
+          <rect class="nf-fill" x="22" y="78" width="120" height="8" rx="3"/>
+          <rect class="nf-blk" style="--len:190" x="22" y="98" width="74" height="26" rx="4"/>
+          <rect class="nf-fill" x="22" y="98" width="74" height="26" rx="4"/>
+          <rect class="nf-blk" style="--len:190" x="104" y="98" width="74" height="26" rx="4"/>
+          <rect class="nf-fill" x="104" y="98" width="74" height="26" rx="4"/>
+
+          <g class="nf-pen">
+            <path d="M0 0l0 11 3-3 2 5 2-1-2-5 4 0z" fill="var(--white)" transform="translate(22 42)"/>
+          </g>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="globalFooter"></div>
+
+<script src="/js/motion.js?v=v5"></script>
+<script src="/js/site-nav.js?v=v5"></script>
+<script src="/js/site-footer.js?v=v5"></script>
+<script src="/js/cookie-consent.js?v=v5"></script>
+<script>
+  /* Only run the drawing once it is actually on screen, and keep the page
+     title in step with the language switcher. */
+  (function () {
+    var art = document.getElementById('nfArt');
+    if (art) {
+      var start = function () { art.classList.add('go'); };
+      if (!window.IntersectionObserver) { start(); }
+      else {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { start(); io.disconnect(); } });
+        }, { threshold: .25 });
+        io.observe(art);
+        /* the drawing is the only thing holding that half of the layout, so
+           it must never stay blank if the observer does not fire */
+        setTimeout(start, 1500);
+      }
+    }
+    function title(lang) {
+      document.title = lang === 'nl'
+        ? 'Pagina niet gevonden | WebKreatives'
+        : 'Page not found | WebKreatives';
+    }
+    title(localStorage.getItem('wk-lang') || 'en');
+    document.addEventListener('wk:languagechange', function (e) {
+      title((e && e.detail && e.detail.lang) || localStorage.getItem('wk-lang') || 'en');
+    });
+  })();
+</script>
+</body>
+</html>
