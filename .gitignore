@@ -12,3 +12,9 @@ START-HERE.md
 tools/
 leads/
 memory/
+
+# These were committed before the rules above existed, so the rules never
+# took effect and the files stayed tracked in a public repo. Untracked now;
+# they remain on disk. Note the history still holds them.
+CLAUDE_MEMORY.md
+tmp-inspect-*.cjs
