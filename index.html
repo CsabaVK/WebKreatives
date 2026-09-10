@@ -731,20 +731,28 @@
 
 /* ── 3 · rank climb ─────────────────────────────────────────────── */
 .rk{width:100%;max-width:250px;position:relative;display:flex;flex-direction:column;gap:6px}
+/* A two-column grid, not a wrapping flex row. As a flex row the two bars
+   needed flex-basis:100% to break onto their own line under the number — but
+   that basis beats their width, so every bar drew full width instead of the
+   varied snippet lengths below, and the line carrying the number ran about
+   20px past the card. .hm-cap-viz clipped it, so it read as bars cut off at
+   the right edge. Here the number keeps its own column and the percentages
+   resolve against the other one, which cannot overflow. */
 .rk-bar{
-  display:flex;align-items:center;gap:9px;height:26px;padding:0 9px;
+  display:grid;grid-template-columns:12px minmax(0,1fr);
+  column-gap:9px;row-gap:4px;align-content:center;
+  height:26px;padding:0 9px;
   border-radius:2px;background:rgba(239,230,210,.05);position:relative;
 }
 .rk-n{
-  font-family:var(--f-mono);font-size:9px;color:var(--cream-faint);
-  width:12px;flex-shrink:0;text-align:center;
+  grid-row:1 / span 2;align-self:center;
+  font-family:var(--f-mono);font-size:9px;line-height:1;
+  color:var(--cream-faint);text-align:center;
 }
 .rk-l{height:4px;border-radius:2px;background:rgba(239,230,210,.14);display:block}
 .rk-sm{height:3px;opacity:.6}
 .w90{width:52%}.w80{width:44%}.w86{width:48%}.w95{width:56%}
 .w55{width:26%}.w60{width:30%}.w44{width:22%}.w58{width:28%}
-.rk-bar{flex-wrap:wrap}
-.rk-bar .rk-l{flex-basis:100%}
 .rk-you{
   background:rgba(223,56,33,.13);border:1px solid rgba(223,56,33,.28);
   position:relative;z-index:2;
