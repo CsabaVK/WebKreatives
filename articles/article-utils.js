@@ -26,7 +26,7 @@
   }
 
   function getArticleLanguage() {
-    return localStorage.getItem('wk-lang') || document.documentElement.lang || 'nl';
+    return localStorage.getItem('wk-lang') || document.documentElement.lang || 'en';
   }
 
   function t(nl, en) {
