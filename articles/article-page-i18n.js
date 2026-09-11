@@ -17,6 +17,85 @@
   const originalRelatedTitle = document.querySelector('.art-related h3')?.textContent || '';
 
   const translations = {
+    'what-to-put-on-your-services-page': {
+      current: 'Conversion',
+      category: 'Conversion',
+      date: '11 September 2026',
+      read: '7 min read',
+      docTitle: 'What Really Belongs on Your Services Page | WebKreatives',
+      title: 'What Really Belongs<br><em>on Your Services Page</em>',
+      bottomTitle: 'Want a website where visitors<br>pick the right service themselves?',
+      bottomText: 'We build websites for small businesses that make it clear what you do, who it is for and what it costs — so better enquiries come in.',
+      bottomPrimaryBtn: 'Start your project →',
+      bottomSecondaryBtn: 'Read more articles',
+      relatedTitle: 'Read more',
+      articlesLink: 'Articles',
+      content: `
+<p>There is one page where visitors quietly give up: your services page. They arrive from Google or from your homepage, scroll through a list and close the tab. Not because your work isn't good, but because the page gave them no way to work out whether you are the right fit.</p>
+<p>Most small-business services pages are a row of nouns. A trade business: "Maintenance. Renovation. Installation." A coach: "One-to-one programmes. Team sessions. Workshops." Technically all correct. But the visitor has something very different on their mind.</p>
+<div class="art-mini-grid">
+  <div class="art-mini-card">
+    <span class="eyebrow">Question 1</span>
+    <h3>Is this for me?</h3>
+    <p>The visitor is looking for confirmation that you regularly help customers like them — same type of job, same kind of business, same size.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Question 2</span>
+    <h3>What exactly do I get?</h3>
+    <p>Not the name of the service, but what happens, what is included and what is not.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Question 3</span>
+    <h3>Roughly what does it cost?</h3>
+    <p>Not an exact price. An order of magnitude, so they know whether it is worth getting in touch at all.</p>
+  </div>
+</div>
+<p>A services page that answers those three questions and then offers one clear next step does more work for your business than ten blog posts.</p>
+<h2>Your page is a decision point, not a catalogue</h2>
+<p>The biggest mistake is treating a services page as a place to <em>show</em> everything you can do. That is not what is happening. Someone landing on that page is choosing: you, or the next business in the search results.</p>
+<p>Which means your page has to help people self-select. The visitor should be able to find themselves in one of your services — and just as importantly, the people who are not a fit should realise that quickly. A dental practice that specialises in anxious patients should say so in those words. A photographer who does not shoot weddings, likewise.</p>
+<p>You do not lose customers by being clear. You lose time by being vague: quote requests from people you were always going to refer elsewhere.</p>
+<h2>The five building blocks per service</h2>
+<p>You don't need much per service, but you do need the same five parts every time. Leave one out and the visitor has to guess — and guessing rarely turns into an enquiry.</p>
+<ul class="art-checklist">
+  <li><strong>Scope</strong> — what is covered and what is not. "Including removal and disposal" is information; "complete solution" is not.</li>
+  <li><strong>Outcome</strong> — what the customer is left with when it's done, in plain language. Not "SEO optimisation" but "found for the searches your customers actually use".</li>
+  <li><strong>Price signal</strong> — a figure, a from-price, a range or a worked example.</li>
+  <li><strong>Proof</strong> — one short review, one photo of real work or one concrete number. Per service, not one block at the bottom of the page.</li>
+  <li><strong>Next step</strong> — one button with a verb on it, right underneath that service.</li>
+</ul>
+<p>Pay attention to that last point. Many pages have a single call-to-action at the very bottom. But someone who decides at service two of five that this is what they want should be able to click there — not scroll past three services that don't interest them.</p>
+<div class="art-mistake">
+  <h3>The mistake almost everyone makes</h3>
+  <p>Describing services from inside your own trade instead of from the customer's problem. An installer writes "heat pump installation including commissioning". The customer searches for "off gas without the hassle". Both describe the same thing, but only one of them reaches the person who has to decide. Write the heading in customer language and put your trade language underneath — then it works for both.</p>
+</div>
+<h2>The price signal you can give</h2>
+<p>"Every job is different, so we don't put prices on the site." Often true. But the visitor isn't using price to decide whether to buy — they use it to decide whether to <em>keep looking</em>. With no signal at all they assume you're expensive, or they lazily request quotes from three businesses at once.</p>
+<p>You can almost always give something without committing yourself: a from-price ("bathroom renovations from €8,000"), a range ("most programmes land between €1,200 and €2,500"), an hourly rate, or a worked example of a recent job with the line items. That last one works particularly well, because it explains where the money goes.</p>
+<div class="art-quote">
+  <p>A price signal doesn't filter out your customers. It filters out the conversations that were never going anywhere.</p>
+</div>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Is your services page bringing in too few enquiries?</h3>
+    <p>We rewrite and rebuild services pages for small businesses, so visitors pick the right service themselves and know where they stand.</p>
+  </div>
+  <a href="/contact/" class="btn btn-red">Request a quote →</a>
+</div>
+<h2>One overview page or a page per service?</h2>
+<p>This is the question that comes up most, and the answer depends on how different your services really are.</p>
+<p><strong>A single overview page</strong> works when your services are similar and customers often buy several. A hair salon simply lists cuts, colour and treatments with prices. A separate page per treatment would feel empty, and nobody searches that way.</p>
+<p><strong>A page per service</strong> is better as soon as people actively search for that one service, or as soon as there is genuinely something to explain. "Dormer window installation" and "bathroom renovation" are two different customers, two different searches and two different decisions. Each deserves its own page, with its own photos, its own reviews and its own pricing explanation.</p>
+<p>The practical middle ground: keep an overview page as the entrance, giving each service one paragraph and one button through to the full page. That way you have one place for people still orienting themselves, and deep pages for people who already know what they want. It helps your local visibility too, because each page is about one topic instead of seven at once.</p>
+<h2>What you can leave out</h2>
+<p>Almost every services page improves by deleting. You can cut: the opening paragraph about how long the business has existed (that belongs on your about page), the list of brands and tools you use, the sentence about quality being your priority, and the stock photo of a handshake.</p>
+<p>What's left is shorter, but far more concrete. And that is exactly what someone needs when they're standing in a queue on their phone, choosing between you and two others.</p>
+<h2>Conclusion</h2>
+<p>Your services page is not a shop window but a decision aid. Give five things per service — scope, outcome, price signal, proof and one clear next step — and leave the rest out.</p>
+<p>Take one service today and run through the list. There's a good chance two or three are missing. Those are exactly the places where visitors are quietly dropping off right now.</p>
+`
+    },
+
     'how-to-get-more-google-reviews': {
       current: 'Local SEO',
       category: 'Local SEO',

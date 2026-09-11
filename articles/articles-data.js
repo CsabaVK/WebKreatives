@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'what-to-put-on-your-services-page',
+    title:            'Wat er Echt op Je Dienstenpagina Hoort',
+    titleEn:          'What Really Belongs on Your Services Page',
+    category:         'Conversie',
+    categoryEn:       'Conversion',
+    date:             '2026-09-11',
+    dateFormatted:    '11 september 2026',
+    dateFormattedEn:  '11 September 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-09-11T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Een lijstje met dienstnamen laat bezoekers raden. Dit zijn de vijf bouwstenen per dienst waarmee iemand zelf kan kiezen: scope, resultaat, prijssignaal, bewijs en één knop.',
+    excerptEn:        'A list of service names leaves visitors guessing. These are the five blocks per service that let someone choose: scope, outcome, price signal, proof and one button.'
+  },
+
+  {
     slug:             'how-to-get-more-google-reviews',
     title:            'Hoe Je Meer Google Reviews Krijgt Zonder Opdringerig te Zijn',
     titleEn:          'How to Get More Google Reviews Without Being Pushy',
