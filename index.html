@@ -168,56 +168,277 @@
 
 /* ── selected work ────────────────────────────────────────────────── */
 .hm-work{border-top:1px solid var(--rule)}
-.hm-item{
-  display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,300px);
-  gap:clamp(18px,3vw,46px);align-items:center;
-  padding:clamp(30px,4vw,52px) 0;border-bottom:1px solid var(--rule);
-  position:relative;transition:background var(--dur) var(--ease-premium);
+/* ── the showcase: a laptop, a phone off its corner, four builds inside ──
+   Both screens hold a strip of screenshots that slides by --i. The copy
+   column holds one article per build and shows the one that matches.
+   Everything that moves is transform or opacity.                          */
+.hm-show{
+  display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.8fr);
+  gap:clamp(34px,5vw,84px);align-items:center;
+  margin-top:clamp(40px,5vw,64px);
 }
-.hm-item::after{
-  content:'';position:absolute;left:0;right:0;top:0;bottom:0;z-index:-1;
-  background:linear-gradient(90deg,rgba(223,56,33,.055),transparent 60%);
-  opacity:0;transition:opacity var(--dur) var(--ease-premium);
+@media(max-width:900px){
+  .hm-show{grid-template-columns:minmax(0,1fr);gap:54px}
 }
-.hm-item:hover::after{opacity:1}
-.hm-item-n{
-  font-family:var(--f-display);font-size:clamp(26px,3vw,40px);
-  line-height:1;color:var(--bronze);opacity:.75;
+
+/* stage: the laptop takes the width, the phone hangs off the right ── */
+.hm-stage{position:relative;padding:5% 11% 4% 0}
+.hm-laptop{position:relative;width:100%}
+.hm-lid{
+  position:relative;
+  background:#0e0c0b;
+  border:1px solid rgba(239,230,210,.14);
+  border-radius:clamp(12px,1.6vw,20px) clamp(12px,1.6vw,20px) 6px 6px;
+  padding:clamp(9px,1.2vw,15px) clamp(9px,1.2vw,15px) clamp(12px,1.6vw,20px);
+  box-shadow:
+    0 50px 90px -40px rgba(0,0,0,.85),
+    0 0 0 1px rgba(0,0,0,.6),
+    inset 0 1px 0 rgba(255,255,255,.05);
 }
-.hm-item-body{min-width:0}
-.hm-item-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-.hm-item h3{
+.hm-lid::before{
+  /* camera */
+  content:'';position:absolute;left:50%;top:clamp(4px,.55vw,7px);
+  width:5px;height:5px;margin-left:-2.5px;border-radius:50%;
+  background:#1c1a19;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.hm-screen{
+  position:relative;aspect-ratio:16/10;overflow:hidden;
+  display:flex;flex-direction:column;container-type:inline-size;
+  border-radius:clamp(5px,.7vw,9px);background:var(--ink-deep);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.hm-screen-body{flex:1 1 auto;min-height:0;position:relative;overflow:hidden}
+.hm-base{
+  position:relative;height:clamp(10px,1.5vw,18px);margin:0 -3.5%;
+  background:linear-gradient(180deg,#2b2826 0%,#1b1917 55%,#131110 100%);
+  border-radius:0 0 clamp(8px,1.2vw,14px) clamp(8px,1.2vw,14px);
+  box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 22px 40px -22px rgba(0,0,0,.9);
+}
+.hm-base i{
+  /* the lip you open it with */
+  position:absolute;left:50%;top:0;width:15%;height:38%;
+  transform:translateX(-50%);
+  background:#0d0c0b;border-radius:0 0 6px 6px;
+}
+
+/* the strips of screenshots ───────────────────────────────────────── */
+.hm-track{
+  display:flex;height:100%;
+  transform:translateX(calc(var(--i) * -100%));
+  transition:transform 1s var(--ease-premium);
+}
+.hm-track>*{flex:0 0 100%;width:100%;height:100%;display:block}
+.hm-track img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.hm-stage{touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.hm-track a,.hm-track img{-webkit-user-drag:none}
+.hm-track--phone{height:87.9%}
+.hm-track--phone .hm-ph{display:flex;flex-direction:column;background:var(--sbg,#000)}
+.hm-track--phone .hm-ph img{flex:1 1 auto;min-height:0}
+.hm-sb{
+  flex:0 0 auto;height:15cqw;box-sizing:border-box;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding:0 8.5cqw 2.2cqw 9cqw;color:var(--sfg,#fff);
+  font-family:-apple-system,'SF Pro Text',system-ui,sans-serif;
+  font-size:4.3cqw;font-weight:600;letter-spacing:-.01em;line-height:1;
+}
+.hm-sb svg{width:17cqw;height:auto;display:block}
+
+/* macOS Safari, above the site. Units are the screen's width. ─────── */
+.hm-saf{
+  flex:0 0 auto;height:4.1cqw;box-sizing:border-box;
+  display:flex;align-items:center;gap:1.1cqw;padding:0 1.1cqw;
+  background:#1f1e1f;border-bottom:1px solid rgba(255,255,255,.07);
+  color:#8f8d8e;
+}
+.hm-saf svg{width:1.15cqw;height:1.15cqw;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.hm-saf-lights{display:flex;gap:.6cqw;margin-right:.4cqw}
+.hm-saf-lights i{width:.95cqw;height:.95cqw;border-radius:50%;display:block}
+.hm-saf-lights i:nth-child(1){background:#ff5f57}
+.hm-saf-lights i:nth-child(2){background:#febc2e}
+.hm-saf-lights i:nth-child(3){background:#28c840}
+.hm-saf-nav{display:flex;gap:1cqw}
+.hm-saf-url{
+  flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:.6cqw;
+  max-width:46cqw;margin:0 auto;height:2.6cqw;padding:0 1cqw;
+  background:#2b2a2b;border-radius:.7cqw;
+  font-family:-apple-system,'SF Pro Text',system-ui,sans-serif;font-size:.95cqw;color:#d3d1d1;
+  white-space:nowrap;overflow:hidden;
+}
+.hm-saf-url b{font-weight:500;overflow:hidden;text-overflow:ellipsis}
+.hm-saf-url svg{width:.9cqw;height:.9cqw}
+.hm-saf-url svg:first-child{opacity:.7}
+.hm-saf-tools{display:flex;gap:1.3cqw}
+
+/* iOS Safari, under the site. Units are the screen's width. ─────────── */
+.hm-isaf{
+  position:absolute;left:0;right:0;bottom:0;height:26.2cqw;z-index:3;
+  box-sizing:border-box;padding:2cqw 3.6cqw 0;
+  background:rgba(28,28,30,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,255,255,.08);
+  font-family:-apple-system,'SF Pro Text',system-ui,sans-serif;
+}
+.hm-isaf svg{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.hm-isaf-url{
+  display:grid;grid-template-columns:8cqw 1fr 8cqw;align-items:center;
+  height:11cqw;border-radius:3cqw;background:#3a3a3c;color:#fff;
+  padding:0 2cqw;box-sizing:border-box;
+}
+.hm-isaf-url b{font-size:3.6cqw;font-weight:500;color:#e5e5ea;justify-self:start}
+.hm-isaf-url span{font-size:4.1cqw;text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.hm-isaf-url svg{width:4.2cqw;height:4.2cqw;justify-self:end;color:#e5e5ea}
+.hm-isaf-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  height:10cqw;padding:0 1cqw;color:#0a84ff;
+}
+.hm-isaf-bar svg{width:5.6cqw;height:5.6cqw}
+.hm-isaf-bar svg.dim{opacity:.35}
+.hm-isaf-home{
+  position:absolute;left:50%;bottom:1.6cqw;width:35cqw;height:1.3cqw;
+  transform:translateX(-50%);border-radius:1cqw;background:rgba(255,255,255,.9);
+}
+
+.hm-track--lap a{position:relative}
+
+/* arrows, counter and steps: one row under the laptop ─────────────── */
+.hm-nav{
+  --navh:46px;
+  display:flex;align-items:center;gap:10px;
+  margin-top:clamp(22px,3vw,34px);
+}
+.hm-nav-btn{
+  width:var(--navh);height:var(--navh);border-radius:50%;padding:0;
+  display:grid;place-items:center;
+  background:var(--ink-2);color:var(--cream);
+  border:1px solid var(--rule-hard);
+  transition:background var(--dur-fast) var(--ease-premium),border-color var(--dur-fast),color var(--dur-fast),transform var(--dur-fast) var(--ease-premium);
+}
+.hm-nav-btn svg{width:18px;height:18px}
+.hm-nav-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+.hm-nav-btn:active{transform:scale(.94)}
+.hm-nav-btn:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.hm-nav-count{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
+  color:var(--cream-mute);margin-left:8px;white-space:nowrap;
+}
+.hm-nav-count b{color:var(--cream);font-weight:700}
+.hm-nav-count i{font-style:normal;margin:0 5px;opacity:.5}
+.hm-steps{display:flex;gap:7px;margin-left:12px}
+.hm-step{
+  width:22px;height:3px;border:0;padding:0;border-radius:2px;
+  background:var(--rule-hard);transition:background var(--dur-fast),width var(--dur) var(--ease-premium);
+}
+.hm-step.is-on{background:var(--red);width:38px}
+.hm-step:hover{background:var(--cream-mute)}
+.hm-step.is-on:hover{background:var(--red)}
+.hm-step:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* the phone: a metal rim, a black bezel, the island, four buttons ──── */
+.hm-phone{
+  position:absolute;right:0;top:0;width:25%;z-index:4;
+  aspect-ratio:4262/8852;container-type:inline-size;
+  border-radius:15.2% / 7.3%;
+  background:linear-gradient(160deg,#5a544f 0%,#2a2724 22%,#1c1917 50%,#232020 78%,#4a4440 100%);
+  box-shadow:
+    0 60px 90px -30px rgba(0,0,0,.9),
+    0 18px 30px -18px rgba(0,0,0,.8),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+  animation:hm-float 7s var(--ease-soft) infinite;
+}
+.hm-phone-bezel{
+  position:relative;box-sizing:border-box;
+  margin:1.7cqw;width:calc(100% - 3.4cqw);height:calc(100% - 3.4cqw);
+  padding:2.2cqw;
+  background:#050505;
+  border-radius:13.6% / 6.3%;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),inset 0 0 12px rgba(0,0,0,.9);
+}
+.hm-phone-screen{
+  position:relative;width:100%;height:100%;overflow:hidden;container-type:inline-size;
+  border-radius:11.4% / 5.2%;background:var(--ink-deep);
+}
+.hm-phone-screen::after{
+  /* glass */
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(118deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.03) 28%,transparent 46%);
+}
+.hm-phone-island{
+  position:absolute;left:50%;top:2.3%;z-index:3;
+  width:30.5%;height:4.2%;transform:translateX(-50%);
+  background:#000;border-radius:999px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.035);
+}
+.hm-phone-island::after{
+  /* the camera in it */
+  content:'';position:absolute;right:9%;top:24%;height:52%;aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#2f3f52 0%,#0b1119 55%,#000 100%);
+}
+.hm-phone-btn{
+  position:absolute;width:2.2%;border-radius:2px;
+  background:linear-gradient(90deg,#3a3532,#1d1a18);
+}
+.hm-phone-btn.act{left:-2%;top:17.5%;height:3.6%}
+.hm-phone-btn.vu{left:-2%;top:23.5%;height:6.6%}
+.hm-phone-btn.vd{left:-2%;top:31.5%;height:6.6%}
+.hm-phone-btn.pw{right:-2%;top:26%;height:10.5%;background:linear-gradient(270deg,#3a3532,#1d1a18)}
+@keyframes hm-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
+}
+
+/* copy ─────────────────────────────────────────────────────────────── */
+.hm-copy{min-width:0}
+.hm-slides{position:relative}
+.hm-slide{
+  position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(14px);
+  transition:opacity var(--dur) var(--ease-premium),transform var(--dur) var(--ease-premium);
+  pointer-events:none;
+}
+.hm-slide.is-on{position:relative;opacity:1;transform:none;pointer-events:auto;transition-delay:.12s}
+.hm-slide-n{
+  display:block;font-family:var(--f-display);font-size:clamp(26px,3vw,40px);
+  line-height:1;color:var(--bronze);opacity:.75;margin-bottom:18px;
+}
+.hm-slide h3{
   font-family:var(--f-display);font-weight:900;
   font-size:clamp(23px,2.9vw,38px);line-height:1.05;
-  color:var(--cream);letter-spacing:-.04em;margin:0 0 10px;
-  transition:color var(--dur-fast);
+  color:var(--cream);letter-spacing:-.04em;margin:12px 0 14px;
 }
-.hm-item:hover h3{color:#fff}
-.hm-item-desc{font-size:15px;line-height:1.65;color:var(--cream-mute);max-width:52ch;margin:0}
-.hm-item-fig{text-align:right}
-.hm-item-fig-n{
-  font-family:var(--f-display);font-size:clamp(38px,4.6vw,60px);
-  line-height:1;color:var(--cream);display:block;
+.hm-slide-desc{font-size:15px;line-height:1.65;color:var(--cream-mute);max-width:44ch;margin:0}
+.hm-slide-foot{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  margin-top:26px;padding-top:22px;border-top:1px solid var(--rule);
 }
-.hm-item-fig-l{
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--cream-faint);
-  display:block;margin-top:9px;line-height:1.55;
+.hm-slide-fig b{
+  display:block;font-family:var(--f-display);font-size:clamp(34px,4vw,52px);
+  line-height:1;color:var(--cream);font-weight:400;
 }
-.hm-item-go{
-  display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+.hm-slide-fig>span{
+  display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint);line-height:1.55;
+}
+.hm-slide-go{
+  display:inline-flex;align-items:center;gap:8px;padding-bottom:4px;
   font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--bronze);
+  text-transform:uppercase;color:var(--bronze);white-space:nowrap;
 }
-.hm-item-go span:last-child{transition:transform var(--dur-fast) var(--ease-premium)}
-.hm-item:hover .hm-item-go span:last-child{transform:translateX(5px)}
+.hm-slide-go .wk-arrow{transition:transform var(--dur-fast) var(--ease-premium)}
+.hm-slide-go:hover .wk-arrow{transform:translateX(5px)}
+
+/* small screens: laptop full width, phone tucked bottom-right ──────── */
+@media(max-width:900px){
+  .hm-stage{padding:4% 0 0 0}
+  .hm-phone{width:27%;right:-2%;top:auto;bottom:16%}
+  .hm-nav{margin-top:26px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hm-phone{animation:none}
+  .hm-track{transition:none}
+  .hm-slide{transition:none}
+}
 .hm-work-note{
   margin-top:26px;font-size:12.5px;line-height:1.7;
   color:var(--cream-faint);max-width:70ch;
-}
-@media(max-width:860px){
-  .hm-item{grid-template-columns:44px minmax(0,1fr);gap:16px}
-  .hm-item-fig{grid-column:2;text-align:left;margin-top:14px}
 }
 
 /* ── inline cta band ──────────────────────────────────────────────── */
@@ -947,77 +1168,132 @@
         data-en="Sectors you can open and click through. Each build carries one figure you can verify in the design itself, not a performance claim.">Sectors you can open and click through. Each build carries one figure you can verify in the design itself, not a performance claim.</p>
     </div>
 
-    <a class="hm-item" data-preview="/assets/screenshots/de-groot-accountants-640.webp" href="/client-projects/de-groot-accountants/" target="_blank" rel="noopener" data-reveal>
-      <span class="hm-item-n">01</span>
-      <div class="hm-item-body">
-        <div class="hm-item-top">
-          <span class="wk-meta" data-nl="Accountancy · Multi-page" data-en="Accountancy · Multi-page">Accountancy · Multi-page</span>
+    <div class="hm-show" id="hmShow" style="--i:0;--n:4" data-reveal>
+
+      <!-- the devices -->
+      <div class="hm-stage">
+        <div class="hm-laptop" aria-hidden="false">
+          <div class="hm-lid">
+            <div class="hm-screen">
+            <div class="hm-saf" aria-hidden="true">
+              <span class="hm-saf-lights"><i></i><i></i><i></i></span>
+              <span class="hm-saf-nav"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+              <span class="hm-saf-url"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><b id="hmUrlLap">webkreatives.com/de-groot-accountants</b><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg></span>
+              <span class="hm-saf-tools"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg></span>
+            </div>
+            <div class="hm-screen-body">
+              <div class="hm-track hm-track--lap" id="hmTrackLap">
+        <a href="/client-projects/de-groot-accountants/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" data-cursor-label="View live"><img src="/assets/screenshots/de-groot-accountants.webp" srcset="/assets/screenshots/de-groot-accountants-640.webp 640w, /assets/screenshots/de-groot-accountants.webp 1280w" sizes="(max-width:900px) 92vw, 48vw" width="1280" height="900" alt="De Groot &amp; Partners" loading="eager" fetchpriority="high" decoding="async"></a>
+        <a href="/client-projects/leyenburger/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" data-cursor-label="View live"><img src="/assets/screenshots/leyenburger.webp" srcset="/assets/screenshots/leyenburger-640.webp 640w, /assets/screenshots/leyenburger.webp 1280w" sizes="(max-width:900px) 92vw, 48vw" width="1280" height="900" alt="Leyenburger" loading="lazy" decoding="async"></a>
+        <a href="/client-projects/tandarts-knoll/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" data-cursor-label="View live"><img src="/assets/screenshots/tandarts-knoll.webp" srcset="/assets/screenshots/tandarts-knoll-640.webp 640w, /assets/screenshots/tandarts-knoll.webp 1280w" sizes="(max-width:900px) 92vw, 48vw" width="1280" height="900" alt="Tandarts Knoll" loading="lazy" decoding="async"></a>
+        <a href="/client-projects/vanderberg-loodgieter/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" data-cursor-label="View live"><img src="/assets/screenshots/vanderberg-loodgieter.webp" srcset="/assets/screenshots/vanderberg-loodgieter-640.webp 640w, /assets/screenshots/vanderberg-loodgieter.webp 1280w" sizes="(max-width:900px) 92vw, 48vw" width="1280" height="900" alt="Van den Berg Loodgieter" loading="lazy" decoding="async"></a>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="hm-base"><i></i></div>
         </div>
+
+        <div class="hm-nav">
+          <button class="hm-nav-btn" data-dir="-1" aria-label="Previous project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+          <button class="hm-nav-btn" data-dir="1" aria-label="Next project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <span class="hm-nav-count"><b id="hmCur">01</b><i>/</i>04</span>
+          <div class="hm-steps" role="tablist" aria-label="Projects">
+            <button class="hm-step is-on" data-go="0" aria-label="Project 1"></button>
+            <button class="hm-step" data-go="1" aria-label="Project 2"></button>
+            <button class="hm-step" data-go="2" aria-label="Project 3"></button>
+            <button class="hm-step" data-go="3" aria-label="Project 4"></button>
+          </div>
+        </div>
+
+        <div class="hm-phone" aria-hidden="true">
+          <i class="hm-phone-btn act"></i><i class="hm-phone-btn vu"></i><i class="hm-phone-btn vd"></i><i class="hm-phone-btn pw"></i>
+          <div class="hm-phone-bezel">
+            <span class="hm-phone-island"></span>
+            <div class="hm-phone-screen">
+              <div class="hm-track hm-track--phone" id="hmTrackPhone">
+        <span class="hm-ph" style="--sbg:#0d2037;--sfg:#fff"><span class="hm-sb"><b>9:41</b><svg viewBox="0 0 60 12" fill="currentColor" aria-hidden="true"><rect x="0" y="7" width="3" height="5" rx=".8"/><rect x="4.5" y="5" width="3" height="7" rx=".8"/><rect x="9" y="3" width="3" height="9" rx=".8"/><rect x="13.5" y="1" width="3" height="11" rx=".8"/><path d="M27 4.2a8 8 0 0 1 10.6 0l-1.3 1.4a6 6 0 0 0-8 0zM29.6 7a4.4 4.4 0 0 1 5.4 0l-1.3 1.4a2.5 2.5 0 0 0-2.8 0zM32.3 9.9l1.2 1.3-1.2 1.2-1.2-1.2z"/><rect x="42" y="1.5" width="15" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".5"/><rect x="43.5" y="3" width="11" height="6" rx="1.4"/><path d="M58 4.5v3a1.6 1.6 0 0 0 0-3z"/></svg></span><img src="/assets/screenshots/de-groot-accountants-phone.webp" width="786" height="1380" alt="" loading="eager" decoding="async"></span>
+        <span class="hm-ph" style="--sbg:#2c170d;--sfg:#fff"><span class="hm-sb"><b>9:41</b><svg viewBox="0 0 60 12" fill="currentColor" aria-hidden="true"><rect x="0" y="7" width="3" height="5" rx=".8"/><rect x="4.5" y="5" width="3" height="7" rx=".8"/><rect x="9" y="3" width="3" height="9" rx=".8"/><rect x="13.5" y="1" width="3" height="11" rx=".8"/><path d="M27 4.2a8 8 0 0 1 10.6 0l-1.3 1.4a6 6 0 0 0-8 0zM29.6 7a4.4 4.4 0 0 1 5.4 0l-1.3 1.4a2.5 2.5 0 0 0-2.8 0zM32.3 9.9l1.2 1.3-1.2 1.2-1.2-1.2z"/><rect x="42" y="1.5" width="15" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".5"/><rect x="43.5" y="3" width="11" height="6" rx="1.4"/><path d="M58 4.5v3a1.6 1.6 0 0 0 0-3z"/></svg></span><img src="/assets/screenshots/leyenburger-phone.webp" width="786" height="1380" alt="" loading="lazy" decoding="async"></span>
+        <span class="hm-ph" style="--sbg:#d0e7eb;--sfg:#0b1b1e"><span class="hm-sb"><b>9:41</b><svg viewBox="0 0 60 12" fill="currentColor" aria-hidden="true"><rect x="0" y="7" width="3" height="5" rx=".8"/><rect x="4.5" y="5" width="3" height="7" rx=".8"/><rect x="9" y="3" width="3" height="9" rx=".8"/><rect x="13.5" y="1" width="3" height="11" rx=".8"/><path d="M27 4.2a8 8 0 0 1 10.6 0l-1.3 1.4a6 6 0 0 0-8 0zM29.6 7a4.4 4.4 0 0 1 5.4 0l-1.3 1.4a2.5 2.5 0 0 0-2.8 0zM32.3 9.9l1.2 1.3-1.2 1.2-1.2-1.2z"/><rect x="42" y="1.5" width="15" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".5"/><rect x="43.5" y="3" width="11" height="6" rx="1.4"/><path d="M58 4.5v3a1.6 1.6 0 0 0 0-3z"/></svg></span><img src="/assets/screenshots/tandarts-knoll-phone.webp" width="786" height="1380" alt="" loading="lazy" decoding="async"></span>
+        <span class="hm-ph" style="--sbg:#f8f8f8;--sfg:#111"><span class="hm-sb"><b>9:41</b><svg viewBox="0 0 60 12" fill="currentColor" aria-hidden="true"><rect x="0" y="7" width="3" height="5" rx=".8"/><rect x="4.5" y="5" width="3" height="7" rx=".8"/><rect x="9" y="3" width="3" height="9" rx=".8"/><rect x="13.5" y="1" width="3" height="11" rx=".8"/><path d="M27 4.2a8 8 0 0 1 10.6 0l-1.3 1.4a6 6 0 0 0-8 0zM29.6 7a4.4 4.4 0 0 1 5.4 0l-1.3 1.4a2.5 2.5 0 0 0-2.8 0zM32.3 9.9l1.2 1.3-1.2 1.2-1.2-1.2z"/><rect x="42" y="1.5" width="15" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".5"/><rect x="43.5" y="3" width="11" height="6" rx="1.4"/><path d="M58 4.5v3a1.6 1.6 0 0 0 0-3z"/></svg></span><img src="/assets/screenshots/vanderberg-loodgieter-phone.webp" width="786" height="1380" alt="" loading="lazy" decoding="async"></span>
+              </div>
+              <div class="hm-isaf" aria-hidden="true">
+                <span class="hm-isaf-url"><b>AA</b><span id="hmUrlPhone">webkreatives.com</span><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg></span>
+                <span class="hm-isaf-bar"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><svg class="dim" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg><svg viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg><svg viewBox="0 0 24 24"><path d="M4 5h6a3 3 0 0 1 2 1 3 3 0 0 1 2-1h6v14h-6a3 3 0 0 0-2 1 3 3 0 0 0-2-1H4z"/><path d="M12 6v14"/></svg><svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg></span>
+                <i class="hm-isaf-home"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- the words -->
+      <div class="hm-copy">
+        <div class="hm-slides" id="hmSlides">
+      <article class="hm-slide is-on" data-i="0">
+        <span class="hm-slide-n">01</span>
+        <span class="wk-meta" data-nl="Accountancy · Multi-page" data-en="Accountancy · Multi-page">Accountancy · Multi-page</span>
         <h3>De Groot &amp; Partners</h3>
-        <p class="hm-item-desc"
-          data-nl="Een kantoor dat klem zit tussen grote namen en goedkope boekhoudpakketten. Diensten, over ons en contact krijgen elk een eigen pagina."
-          data-en="A firm squeezed between the big names and cheap bookkeeping packages. Services, about and contact each earn their own page.">A firm squeezed between the big names and cheap bookkeeping packages. Services, about and contact each earn their own page.</p>
-        <span class="hm-item-go"><span data-nl="Bekijk het project" data-en="View the project">View the project</span><span>→</span></span>
-      </div>
-      <div class="hm-item-fig">
-        <span class="hm-item-fig-n" data-count="4">4</span>
-        <span class="hm-item-fig-l" data-nl="Pagina's in productie" data-en="Production pages">Production pages</span>
-      </div>
-    </a>
-
-    <a class="hm-item" data-preview="/assets/screenshots/leyenburger-640.webp" href="/client-projects/leyenburger/" target="_blank" rel="noopener" data-reveal>
-      <span class="hm-item-n">02</span>
-      <div class="hm-item-body">
-        <div class="hm-item-top">
-          <span class="wk-meta" data-nl="Horeca · One-page" data-en="Food &amp; drink · One-page">Food &amp; drink · One-page</span>
+        <p class="hm-slide-desc" data-nl="Een kantoor dat klem zit tussen grote namen en goedkope boekhoudpakketten. Diensten, over ons en contact krijgen elk een eigen pagina." data-en="A firm squeezed between the big names and cheap bookkeeping packages. Services, about and contact each earn their own page.">A firm squeezed between the big names and cheap bookkeeping packages. Services, about and contact each earn their own page.</p>
+        <div class="hm-slide-foot">
+          <span class="hm-slide-fig">
+            <b data-count="4">4</b>
+            <span data-nl="Pagina's in productie" data-en="Production pages">Production pages</span>
+          </span>
+          <a class="hm-slide-go" data-url="webkreatives.com/de-groot-accountants" href="/client-projects/de-groot-accountants/" target="_blank" rel="noopener">
+            <span data-nl="Bekijk het project" data-en="View the project">View the project</span><span class="wk-arrow">&rarr;</span>
+          </a>
         </div>
+      </article>
+      <article class="hm-slide" data-i="1" aria-hidden="true">
+        <span class="hm-slide-n">02</span>
+        <span class="wk-meta" data-nl="Horeca · One-page" data-en="Food &amp; drink · One-page">Food &amp; drink · One-page</span>
         <h3>Leyenburger</h3>
-        <p class="hm-item-desc"
-          data-nl="De kaart is de homepage. Geen PDF, geen download. Je tikt een categorie aan en de gerechten met prijzen klappen open op dezelfde plek."
-          data-en="The menu is the homepage. No PDF, no download. Tap a category and the dishes and prices open in place.">The menu is the homepage. No PDF, no download. Tap a category and the dishes and prices open in place.</p>
-        <span class="hm-item-go"><span data-nl="Bekijk het project" data-en="View the project">View the project</span><span>→</span></span>
-      </div>
-      <div class="hm-item-fig">
-        <span class="hm-item-fig-n" data-count="2">2</span>
-        <span class="hm-item-fig-l" data-nl="Talen ingebouwd, NL en EN" data-en="Languages built in, NL and EN">Languages built in, NL and EN</span>
-      </div>
-    </a>
-
-    <a class="hm-item" data-preview="/assets/screenshots/tandarts-knoll-640.webp" href="/client-projects/tandarts-knoll/" target="_blank" rel="noopener" data-reveal>
-      <span class="hm-item-n">03</span>
-      <div class="hm-item-body">
-        <div class="hm-item-top">
-          <span class="wk-meta" data-nl="Zorg · Lokale praktijk" data-en="Healthcare · Local practice">Healthcare · Local practice</span>
+        <p class="hm-slide-desc" data-nl="De kaart is de homepage. Geen PDF, geen download. Je tikt een categorie aan en de gerechten met prijzen klappen open op dezelfde plek." data-en="The menu is the homepage. No PDF, no download. Tap a category and the dishes and prices open in place.">The menu is the homepage. No PDF, no download. Tap a category and the dishes and prices open in place.</p>
+        <div class="hm-slide-foot">
+          <span class="hm-slide-fig">
+            <b data-count="2">2</b>
+            <span data-nl="Talen ingebouwd, NL en EN" data-en="Languages built in, NL and EN">Languages built in, NL and EN</span>
+          </span>
+          <a class="hm-slide-go" data-url="webkreatives.com/leyenburger" href="/client-projects/leyenburger/" target="_blank" rel="noopener">
+            <span data-nl="Bekijk het project" data-en="View the project">View the project</span><span class="wk-arrow">&rarr;</span>
+          </a>
         </div>
+      </article>
+      <article class="hm-slide" data-i="2" aria-hidden="true">
+        <span class="hm-slide-n">03</span>
+        <span class="wk-meta" data-nl="Zorg · Lokale praktijk" data-en="Healthcare · Local practice">Healthcare · Local practice</span>
         <h3>Tandarts Knoll</h3>
-        <p class="hm-item-desc"
-          data-nl="Geschreven voor iemand die om elf uur 's avonds met kiespijn zoekt. Openingstijden krijgen een eigen blok in plaats van een regel in de footer."
-          data-en="Written for someone searching at eleven at night with toothache. Opening hours get their own section instead of a line in the footer.">Written for someone searching at eleven at night with toothache. Opening hours get their own section instead of a line in the footer.</p>
-        <span class="hm-item-go"><span data-nl="Bekijk het project" data-en="View the project">View the project</span><span>→</span></span>
-      </div>
-      <div class="hm-item-fig">
-        <span class="hm-item-fig-n" data-count="6">6</span>
-        <span class="hm-item-fig-l" data-nl="Secties op één pagina" data-en="Sections on one page">Sections on one page</span>
-      </div>
-    </a>
-
-    <a class="hm-item" data-preview="/assets/screenshots/vanderberg-loodgieter-640.webp" href="/client-projects/vanderberg-loodgieter/" target="_blank" rel="noopener" data-reveal>
-      <span class="hm-item-n">04</span>
-      <div class="hm-item-body">
-        <div class="hm-item-top">
-          <span class="wk-meta" data-nl="Vakwerk · Servicebedrijf" data-en="Trades · Service business">Trades · Service business</span>
+        <p class="hm-slide-desc" data-nl="Geschreven voor iemand die om elf uur 's avonds met kiespijn zoekt. Openingstijden krijgen een eigen blok in plaats van een regel in de footer." data-en="Written for someone searching at eleven at night with toothache. Opening hours get their own section instead of a line in the footer.">Written for someone searching at eleven at night with toothache. Opening hours get their own section instead of a line in the footer.</p>
+        <div class="hm-slide-foot">
+          <span class="hm-slide-fig">
+            <b data-count="6">6</b>
+            <span data-nl="Secties op één pagina" data-en="Sections on one page">Sections on one page</span>
+          </span>
+          <a class="hm-slide-go" data-url="webkreatives.com/tandarts-knoll" href="/client-projects/tandarts-knoll/" target="_blank" rel="noopener">
+            <span data-nl="Bekijk het project" data-en="View the project">View the project</span><span class="wk-arrow">&rarr;</span>
+          </a>
         </div>
+      </article>
+      <article class="hm-slide" data-i="3" aria-hidden="true">
+        <span class="hm-slide-n">04</span>
+        <span class="wk-meta" data-nl="Vakwerk · Servicebedrijf" data-en="Trades · Service business">Trades · Service business</span>
         <h3>Van den Berg Loodgieter</h3>
-        <p class="hm-item-desc"
-          data-nl="Eén pagina die de hele route afdekt: wat je doet, waar je werkt, wat het kost en hoe je belt. Gebouwd voor iemand met een lekkage, niet voor een jury."
-          data-en="One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak, not for a design jury.">One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak, not for a design jury.</p>
-        <span class="hm-item-go"><span data-nl="Bekijk het project" data-en="View the project">View the project</span><span>→</span></span>
+        <p class="hm-slide-desc" data-nl="Eén pagina die de hele route afdekt: wat je doet, waar je werkt, wat het kost en hoe je belt. Gebouwd voor iemand met een lekkage, niet voor een jury." data-en="One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak, not for a design jury.">One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak, not for a design jury.</p>
+        <div class="hm-slide-foot">
+          <span class="hm-slide-fig">
+            <b data-count="8">8</b>
+            <span data-nl="Secties op één pagina" data-en="Sections on one page">Sections on one page</span>
+          </span>
+          <a class="hm-slide-go" data-url="webkreatives.com/vanderberg-loodgieter" href="/client-projects/vanderberg-loodgieter/" target="_blank" rel="noopener">
+            <span data-nl="Bekijk het project" data-en="View the project">View the project</span><span class="wk-arrow">&rarr;</span>
+          </a>
+        </div>
+      </article>
+        </div>
       </div>
-      <div class="hm-item-fig">
-        <span class="hm-item-fig-n" data-count="8">8</span>
-        <span class="hm-item-fig-l" data-nl="Secties op één pagina" data-en="Sections on one page">Sections on one page</span>
-      </div>
-    </a>
+
+    </div>
 
     <div style="margin-top:38px" data-reveal>
       <a href="/portfolio/" class="wk-more">
@@ -1476,6 +1752,72 @@
 <div id="globalFooter"></div>
 
 <script src="/js/motion.js?v=v6"></script>
+<script>
+/* Selected work: one index drives both screens and the copy. Arrows, the
+   dots, the keyboard and a swipe all move it; it also steps on its own
+   every few seconds while in view, until the visitor touches it. */
+(function () {
+  const show = document.getElementById('hmShow');
+  if (!show) return;
+  const slides = [...show.querySelectorAll('.hm-slide')];
+  const dots   = [...show.querySelectorAll('.hm-step')];
+  const cur    = document.getElementById('hmCur');
+  const n = slides.length;
+  const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let i = 0, timer = 0, auto = !reduced, inView = false;
+
+  function go(k, byUser) {
+    i = (k + n) % n;
+    show.style.setProperty('--i', i);
+    slides.forEach((s, j) => {
+      const on = j === i;
+      s.classList.toggle('is-on', on);
+      if (on) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
+    });
+    dots.forEach((d, j) => d.classList.toggle('is-on', j === i));
+    if (cur) cur.textContent = String(i + 1).padStart(2, '0');
+    const url = slides[i].querySelector('[data-url]')?.dataset.url || '';
+    const lap = document.getElementById('hmUrlLap'), ph = document.getElementById('hmUrlPhone');
+    if (lap) lap.textContent = url;
+    if (ph) ph.textContent = url.split('/')[0];
+    if (byUser) { auto = false; stop(); }
+  }
+
+  function tick() { timer = setTimeout(() => { if (auto && inView && !document.hidden) go(i + 1); tick(); }, 6500); }
+  function stop() { clearTimeout(timer); timer = 0; }
+
+  show.querySelectorAll('.hm-nav-btn').forEach(b =>
+    b.addEventListener('click', () => go(i + (+b.dataset.dir), true)));
+  dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.go, true)));
+
+  /* arrow keys while anything inside is focused, or the pointer is over it */
+  let over = false;
+  show.addEventListener('pointerenter', () => { over = true; });
+  show.addEventListener('pointerleave', () => { over = false; });
+  document.addEventListener('keydown', e => {
+    if (!(over || show.contains(document.activeElement))) return;
+    if (e.key === 'ArrowRight') { go(i + 1, true); e.preventDefault(); }
+    if (e.key === 'ArrowLeft')  { go(i - 1, true); e.preventDefault(); }
+  });
+
+  /* swipe on either device; a swipe that lands on the link must not open it */
+  const stage = show.querySelector('.hm-stage');
+  let x0 = null, swiped = false;
+  stage.addEventListener('dragstart', e => e.preventDefault());
+  stage.addEventListener('pointerdown', e => { x0 = e.clientX; swiped = false; }, { passive: true });
+  stage.addEventListener('pointerup', e => {
+    if (x0 === null) return;
+    const dx = e.clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) { swiped = true; go(i + (dx < 0 ? 1 : -1), true); }
+  }, { passive: true });
+  stage.addEventListener('click', e => { if (swiped) { e.preventDefault(); swiped = false; } }, true);
+
+  if (auto && 'IntersectionObserver' in window) {
+    new IntersectionObserver(es => es.forEach(e => { inView = e.isIntersecting; }), { threshold: .35 }).observe(show);
+    tick();
+  }
+})();
+</script>
 <script src="/js/locale.js?v=v6"></script>
 <script src="/js/site-nav.js?v=v6"></script>
 <script src="/js/site-footer.js?v=v6"></script>
