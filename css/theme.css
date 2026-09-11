@@ -587,18 +587,28 @@ body.cursor-label.has-cursor #c-ring{
 body.cursor-label.has-cursor #c-ring .c-label{opacity:1}
 body.cursor-label #c-dot{opacity:0}
 
-/* ── Frame wipe (js/motion.js initWipe) ───────────────────────────────── */
-.wk-wipe{
-  clip-path:inset(100% 0 0 0);
-  transform:scale(1.06);
-  transition:clip-path 1.05s var(--ease-premium),
-             transform 1.35s var(--ease-premium),
-             filter var(--dur) var(--ease-premium);
+/* ── Frame wipe (js/motion.js initWipe) ───────────────────────────────
+   The screenshot is uncovered, not unclipped. Chrome measures an image that
+   carries clip-path:inset(100%) as having no area, so an observer watching
+   it never fires and loading="lazy" never starts: the frame sat black until
+   a timeout happened to catch it. The cover is a pseudo-element on the
+   frame and the image keeps its full geometry throughout.                  */
+.wk-frame.wk-wipe::after{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:var(--ink-deep);
+  transform-origin:50% 0;
+  transition:transform 1.05s var(--ease-premium);
 }
-.wk-wipe.is-wiped{clip-path:inset(0 0 0 0);transform:scale(1)}
+.wk-frame.wk-wipe .wk-frame-bar{position:relative;z-index:3}
+.wk-frame.wk-wipe img{
+  transform:scale(1.06);
+  transition:transform 1.35s var(--ease-premium),filter var(--dur) var(--ease-premium);
+}
+.wk-frame.is-wiped::after{transform:scaleY(0)}
+.wk-frame.is-wiped img{transform:scale(1)}
 /* the hover zoom already on frames must win once the wipe has finished */
-a:hover .wk-frame .wk-wipe.is-wiped,
-.wk-row:hover .wk-frame .wk-wipe.is-wiped{transform:scale(1.028)}
+a:hover .wk-frame.is-wiped img,
+.wk-row:hover .wk-frame.is-wiped img{transform:scale(1.028)}
 
 /* ── Tilt (js/motion.js initTilt) ─────────────────────────────────────── */
 [data-tilt]{
@@ -608,7 +618,8 @@ a:hover .wk-frame .wk-wipe.is-wiped,
 [data-tilt]:hover{transition:transform .12s linear}
 
 @media(prefers-reduced-motion:reduce){
-  .wk-wipe{clip-path:none!important;transform:none!important}
+  .wk-frame.wk-wipe::after{display:none}
+  .wk-frame.wk-wipe img{transform:none!important}
   [data-tilt]{transform:none!important}
   .c-label{display:none}
 }

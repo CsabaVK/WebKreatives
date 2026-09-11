@@ -508,10 +508,14 @@
   }
 
   /* ── 13. Frame wipe ──────────────────────────────────────────────────────
-     Screenshots wipe up into their frame instead of just fading. clip-path
-     animates on the compositor, so this is free.                           */
+     Screenshots wipe up into their frame instead of just fading. The frame
+     is what gets observed, never the image: an image hidden by clip-path
+     has no area as far as Chrome is concerned, so watching it (or lazy-
+     loading it) never triggers. The cover itself lives in CSS.           */
   function initWipe() {
-    const els = document.querySelectorAll('.wk-frame img, [data-wipe]');
+    const els = [...document.querySelectorAll('.wk-frame, [data-wipe]')]
+      .filter(el => !el.classList.contains('wk-wipe') &&
+                    (el.hasAttribute('data-wipe') || el.querySelector('img')));
     if (!els.length || reduced) return;
     const io = new IntersectionObserver(ents => {
       ents.forEach(en => {
