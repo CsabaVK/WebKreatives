@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Onboarding · {{company}} · WebKreatives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+/* ═══ ONBOARDING ══════════════════════════════════════════════════════
+   One source, two outputs. Opened in a browser it is one interactive
+   document: the visitor picks a language and their domain provider and
+   sees only their path. Printed to PDF (build.cjs) every page is emitted
+   and the same buttons become links between pages, which every PDF
+   viewer honours, unlike scripts and layers.                              */
+:root{
+  --ink:#0c0a09;--ink-2:#1a1614;--ink-3:#241f1c;--ink-deep:#070605;
+  --cream:#f6f2ea;--cream-dim:#cdc6b8;--cream-mute:#9a9385;--cream-faint:#8a8376;
+  --red:#df3821;--red-deep:#a82716;--lime:#b9e185;
+  --rule:rgba(239,230,210,.10);--rule-hard:rgba(239,230,210,.18);--bronze-rule:rgba(223,56,33,.24);
+  --f-display:'Unbounded',system-ui,sans-serif;--f-body:'Figtree',system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+b,strong{font-weight:600}
+
+/* ── page ────────────────────────────────────────────────────────────── */
+.pg{
+  position:relative;width:210mm;min-height:297mm;margin:0 auto;
+  padding:22mm 20mm 20mm;display:flex;flex-direction:column;
+  background:var(--ink);
+}
+.pg + .pg{border-top:1px solid var(--rule)}
+.pg-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}
+.pg-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:900;font-size:13px;letter-spacing:-.02em}
+.pg-logo i{width:22px;height:22px;border-radius:6px;background:#0d0d0d;position:relative;border:1px solid var(--rule-hard);flex-shrink:0}
+.pg-logo i::before{content:'';position:absolute;left:3px;bottom:3px;width:7px;height:3px;border-radius:1px;background:var(--red)}
+.pg-logo i::after{content:'';position:absolute;left:12px;bottom:3px;width:3px;height:3px;border-radius:1px;background:#D4E157}
+.pg-nav{display:flex;gap:18px;font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint)}
+.pg-nav a:hover{color:var(--cream)}
+.pg-foot{
+  margin-top:auto;padding-top:18px;border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;gap:16px;
+  font-family:var(--f-display);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);
+}
+
+/* ── type ────────────────────────────────────────────────────────────── */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-display);font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.eyebrow::before{content:'';width:26px;height:1px;background:currentColor;opacity:.8}
+.n{font-family:var(--f-display);font-size:44px;line-height:1;color:var(--red);opacity:.85;margin:18px 0 12px}
+h1{font-family:var(--f-display);font-weight:900;font-size:36px;line-height:1.02;letter-spacing:-.04em;margin:16px 0 14px;max-width:16ch}
+h2{font-family:var(--f-display);font-weight:900;font-size:26px;line-height:1.05;letter-spacing:-.04em;margin:0 0 14px;max-width:18ch}
+h3{font-family:var(--f-display);font-weight:700;font-size:12.5px;letter-spacing:-.01em;margin:0 0 5px}
+.lede{font-size:15.5px;line-height:1.65;color:var(--cream-dim);max-width:52ch;margin:0 0 26px;font-weight:300}
+p{font-size:13.5px;line-height:1.65;color:var(--cream-mute);margin:0}
+.mark{background-image:linear-gradient(transparent 62%,var(--bronze-rule) 62%);font-style:normal}
+.note{margin-top:22px;padding:14px 16px;border:1px solid var(--rule);border-left:2px solid var(--red);border-radius:8px;font-size:12.5px;line-height:1.6;color:var(--cream-dim)}
+.note b{color:var(--cream)}
+
+/* ── steps ───────────────────────────────────────────────────────────── */
+.steps{display:flex;flex-direction:column;gap:0;margin:8px 0 0}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:16px;align-items:start;padding:14px 0;border-top:1px solid var(--rule)}
+.step:last-child{border-bottom:1px solid var(--rule)}
+.step b.k{font-family:var(--f-display);font-size:20px;line-height:1;color:var(--red);opacity:.85;padding-top:2px}
+.step .when{font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);padding-top:6px;white-space:nowrap;text-align:right}
+.step .when b{display:block;color:var(--cream);font-size:11px;letter-spacing:.02em;text-transform:none;margin-top:3px}
+
+/* ── lists / grids ───────────────────────────────────────────────────── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.card{padding:16px;border:1px solid var(--rule);border-radius:10px;background:var(--ink-2)}
+.card h3{margin-bottom:6px}
+.card p{font-size:12.5px}
+.price{font-family:var(--f-display);font-size:28px;letter-spacing:-.03em;color:var(--cream);margin:2px 0 4px}
+.price small{font-family:var(--f-display);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);margin-left:8px}
+.checks{list-style:none;margin:6px 0 0;padding:0}
+.checks li{position:relative;padding:9px 0 9px 30px;border-top:1px solid var(--rule);font-size:13.5px;line-height:1.5;color:var(--cream-dim)}
+.checks li:last-child{border-bottom:1px solid var(--rule)}
+.checks li::before{content:'';position:absolute;left:2px;top:14px;width:14px;height:14px;border-radius:50%;border:1px solid var(--bronze-rule);background:var(--ink-2)}
+.checks li::after{content:'';position:absolute;left:6.5px;top:18px;width:5px;height:5px;border-radius:50%;background:var(--red)}
+.checks li b{color:var(--cream)}
+
+/* ── buttons ─────────────────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 22px;border-radius:10px;border:1px solid var(--rule-hard);
+  font-family:var(--f-display);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);
+  background:var(--ink-2);cursor:pointer;
+}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn .ar{font-family:var(--f-body);font-size:14px}
+.btn:hover{border-color:var(--red)}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+
+/* language choice on the cover */
+.lang-pick{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+.lang-pick a,.lang-pick button{
+  display:flex;flex-direction:column;gap:8px;padding:24px 22px;text-align:left;
+  border:1px solid var(--rule-hard);border-radius:14px;background:var(--ink-2);color:var(--cream);cursor:pointer;font-family:inherit;
+}
+.lang-pick .l{font-family:var(--f-display);font-weight:900;font-size:22px;letter-spacing:-.03em}
+.lang-pick .s{font-size:12.5px;color:var(--cream-mute)}
+.lang-pick a:hover,.lang-pick button:hover{border-color:var(--red)}
+
+/* provider menu */
+.prov{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.prov a,.prov button{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 16px;
+  border:1px solid var(--rule-hard);border-radius:10px;background:var(--ink-2);color:var(--cream);
+  font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:-.01em;cursor:pointer;text-align:left;
+}
+.prov a:hover,.prov button:hover{border-color:var(--red)}
+.prov .is-detected{border-color:var(--red);background:rgba(223,56,33,.10)}
+.prov .is-detected::after{content:attr(data-tag);font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.prov .other{grid-column:1/-1;justify-content:flex-start;color:var(--cream-dim)}
+
+/* the line that must stand out on every provider page */
+.invite{
+  margin-top:20px;padding:18px 20px;border-radius:12px;
+  background:rgba(223,56,33,.10);border:1px solid var(--bronze-rule);
+}
+.invite span{display:block;font-family:var(--f-display);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.invite b{font-family:var(--f-display);font-size:19px;letter-spacing:-.02em;color:var(--cream);font-weight:700;word-break:break-all}
+.invite p{margin-top:8px;font-size:12px}
+
+/* cover */
+.cover .pg-top{margin-bottom:auto}
+.cover .who{margin-bottom:auto;padding-bottom:40px}
+.cover .who{font-family:var(--f-display);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);margin-top:26px;line-height:2}
+.cover .who b{color:var(--cream);font-weight:700}
+
+/* ── screen: one path at a time ──────────────────────────────────────── */
+body.web .pg{width:auto;max-width:210mm;min-height:0;padding:36px 22px 30px}
+body.web .pg-foot .pn{display:none}
+body.web [data-lang]{display:none}
+body.web[data-show="en"] [data-lang="en"],body.web[data-show="nl"] [data-lang="nl"]{display:flex}
+body.web .pg.cover{display:flex}
+body.web .pg.prov-page:not(.is-open){display:none!important}
+body.web .pg.cover .lang-pick a{display:none}
+body.pdf .lang-pick button{display:none}
+body.pdf .prov button{display:none}
+body.web .prov a{display:none}
+@media(max-width:640px){
+  h1{font-size:28px}h2{font-size:22px}.n{font-size:36px}
+  .grid2,.prov,.lang-pick{grid-template-columns:1fr}
+  .step{grid-template-columns:36px minmax(0,1fr)}.step .when{grid-column:2;text-align:left;padding-top:4px}
+}
+
+/* ── print: A4, one section per page ─────────────────────────────────── */
+@page{size:A4;margin:0}
+@media print{
+  html,body{background:var(--ink)}
+  .pg{width:210mm;height:297mm;min-height:0;margin:0;break-after:page;page-break-after:always;border-top:0!important;overflow:hidden}
+  .pg.last{break-after:auto;page-break-after:auto}
+  .btn,.lang-pick a,.prov a{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body class="{{mode}}" data-show="{{lang}}">
+
+<!-- ══ COVER ═══════════════════════════════════════════════════════════ -->
+<section class="pg cover" id="start">
+  <div class="pg-top">
+    <div class="pg-logo"><i></i>WebKreatives</div>
+    <div class="pg-nav"><span>Onboarding</span></div>
+  </div>
+  <span class="eyebrow">Onboarding · {{company}}</span>
+  <h1>Welcome. Here is how <em class="mark">this goes</em>.<br><span style="color:var(--cream-mute);font-weight:700">Welkom. Zo gaat het <em class="mark">in zijn werk</em>.</span></h1>
+  <p class="lede">One document, seven short pages. Pick your language.<br>Eén document, zeven korte pagina's. Kies je taal.</p>
+  <div class="lang-pick">
+    <a href="#en-1"><span class="l">English →</span><span class="s">Seven pages, five minutes.</span></a>
+    <a href="#nl-1"><span class="l">Nederlands →</span><span class="s">Zeven pagina's, vijf minuten.</span></a>
+    <button type="button" data-set-lang="en"><span class="l">English →</span><span class="s">Seven pages, five minutes.</span></button>
+    <button type="button" data-set-lang="nl"><span class="l">Nederlands →</span><span class="s">Zeven pagina's, vijf minuten.</span></button>
+  </div>
+  <div class="who">Prepared for <b>{{contact}}</b> · <b>{{company}}</b> · {{domain}}<br>{{date_long_en}} · webkreatives.com</div>
+  <div class="pg-foot"><span>WebKreatives · Amsterdam · worldwide</span><span class="pn">{{our_email}}</span></div>
+</section>
+
+<!-- ══ ENGLISH ═════════════════════════════════════════════════════════ -->
+<section class="pg" id="en-1" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-4">Access</a><a href="#en-3">Form</a></div></div>
+  <span class="eyebrow">Step 1 of 6</span>
+  <span class="n">01</span>
+  <h2>What happens now</h2>
+  <p class="lede">Five steps, one round of feedback, and a site that is yours. You do the talking; we do the rest.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>The brief</h3><p>A 30-minute call. You talk about the business, who calls you and why. We take notes. No homework.</p></div><div class="when">Call<b>{{d_brief_en}}</b></div></div>
+    <div class="step"><b class="k">2</b><div><h3>One click for access</h3><p>At the company where your domain is registered you invite us as a user. Two minutes, page 4. From here on everything technical is ours.</p></div><div class="when">This week<b>{{d_access_en}}</b></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Preview</h3><p>A link that opens on your phone. Real pages, real text, real photos. Nothing is live yet.</p></div><div class="when">Preview<b>{{d_preview_en}}</b></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Feedback</h3><p>One round. Everything you want changed in one message or one call, and we change it.</p></div><div class="when">Your reply<b>{{d_feedback_en}}</b></div></div>
+    <div class="step"><b class="k">5</b><div><h3>Live</h3><p>We switch it on. Your old site stays reachable until the new one is up; your email is never touched.</p></div><div class="when">Live<b>{{d_live_en}}</b></div></div>
+  </div>
+  <div class="note">Dates are what we aim for. If input arrives late they move along with it; nothing else changes.</div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · 1 / 6</span></div>
+</section>
+
+<section class="pg" id="en-2" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-1">← Back</a><a href="#en-3">Next →</a></div></div>
+  <span class="eyebrow">Step 2 of 6</span>
+  <span class="n">02</span>
+  <h2>What you get</h2>
+  <p class="lede">A fixed price agreed before we start, a site built for the phone first, and everything in your name.</p>
+  <div class="grid2">
+    <div class="card"><h3>The build</h3><div class="price">{{price}}<small>fixed · excl. VAT</small></div><p>{{scope_en}}</p></div>
+    <div class="card"><h3>Hosting, updates and support</h3><div class="price">{{hosting}}<small>per month</small></div><p>Domain, hosting, security, backups, updates and a person to email. Nothing is an extra.</p></div>
+  </div>
+  <ul class="checks">
+    <li><b>Built for the phone first.</b> Most of your visitors are on one; the site is designed there and scaled up, not the other way round.</li>
+    <li><b>Written to be found.</b> Page titles, descriptions and structure done properly, so Google understands what you do and where.</li>
+    <li><b>Domain, files and accounts in your name.</b> Leave whenever you like and take everything with you. No lock-in.</li>
+    <li><b>One person from first sketch to support.</b> The one who designs your site is the one who answers your email.</li>
+  </ul>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · 2 / 6</span></div>
+</section>
+
+<section class="pg" id="en-3" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-2">← Back</a><a href="#en-4">Next →</a></div></div>
+  <span class="eyebrow">Step 3 of 6</span>
+  <span class="n">03</span>
+  <h2>What we need from you</h2>
+  <p class="lede">Four things. Phone photos are fine; we would rather have real than stock. If you would rather tell us on the call, we write it down.</p>
+  <ul class="checks">
+    <li><b>Your logo.</b> Any file you have. A clear photo of your sign works too.</li>
+    <li><b>10 to 20 photos.</b> The place, the people, the work. Real ones.</li>
+    <li><b>The facts.</b> Opening hours, address, phone, email, socials, and the one thing you want visitors to do: call, book, come by.</li>
+    <li><b>Anything to keep.</b> Text, reviews or pages from the old site that must stay.</li>
+  </ul>
+  <div class="btn-row">
+    <a class="btn red" href="{{form_url}}">Fill in the 5-minute form <span class="ar">→</span></a>
+    <a class="btn" href="mailto:{{our_email}}?subject=Onboarding%20{{company_q}}">Or email it to us <span class="ar">→</span></a>
+  </div>
+  <div class="note"><b>Send it however is easiest.</b> WhatsApp, email, a shared folder. We sort it; you do not need to.</div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · 3 / 6</span></div>
+</section>
+
+<section class="pg" id="en-4" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-3">← Back</a><a href="#en-5">Skip →</a></div></div>
+  <span class="eyebrow">Step 4 of 6 · the one thing to click</span>
+  <span class="n">04</span>
+  <h2>Where is your domain registered?</h2>
+  <p class="lede">Pick the company on your domain invoice. You will invite us as a user there, which takes two minutes and means you never share a password.</p>
+  <p class="prov-hint" data-detected-only>Our check of <b>{{domain}}</b> says: <b style="color:var(--cream)">{{provider_name}}</b>. Start there.</p>
+  <div class="prov" data-providers>
+    <a href="#en-p-hostinger" data-p="hostinger">Hostinger</a>
+    <a href="#en-p-godaddy" data-p="godaddy">GoDaddy</a>
+    <a href="#en-p-cloudflare" data-p="cloudflare">Cloudflare</a>
+    <a href="#en-p-wix" data-p="wix">Wix</a>
+    <a href="#en-p-squarespace" data-p="squarespace">Squarespace</a>
+    <a href="#en-p-transip" data-p="transip">TransIP</a>
+    <a href="#en-p-other" data-p="other" class="other">Somewhere else, or not sure →</a>
+    <button type="button" data-open="en-p-hostinger" data-p="hostinger">Hostinger</button>
+    <button type="button" data-open="en-p-godaddy" data-p="godaddy">GoDaddy</button>
+    <button type="button" data-open="en-p-cloudflare" data-p="cloudflare">Cloudflare</button>
+    <button type="button" data-open="en-p-wix" data-p="wix">Wix</button>
+    <button type="button" data-open="en-p-squarespace" data-p="squarespace">Squarespace</button>
+    <button type="button" data-open="en-p-transip" data-p="transip">TransIP</button>
+    <button type="button" data-open="en-p-other" data-p="other" class="other">Somewhere else, or not sure →</button>
+  </div>
+  <div class="note"><b>You never share a password with us.</b> If any page asks you to give one to us, stop and call. Inviting a user is always done from your own login.</div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · 4 / 6</span></div>
+</section>
+
+<!-- provider pages, EN -->
+<section class="pg prov-page" id="en-p-hostinger" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-4">← All providers</a><a href="#en-5">Done →</a></div></div>
+  <span class="eyebrow">Access · Hostinger · 2 minutes</span>
+  <h2>Invite us at Hostinger</h2>
+  <p class="lede">Your domain, hosting and email all stay exactly where they are, in your name. You give us a seat, not a key.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Go to <b>hpanel.hostinger.com</b> and sign in as usual.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Open Account sharing</h3><p>Top right, click your profile picture or name → <b>Account</b> → <b>Account sharing</b> (some accounts call it <b>Access management</b>).</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Grant access</h3><p>Click <b>Grant access</b>, enter the email below, choose <b>Full access</b>, confirm.</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>That is it</h3><p>We receive an invitation and accept it. Reply "done" to our email and we take it from there.</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>The email to invite</span><b>{{our_email}}</b><p>Type it exactly. It is a Hostinger account on our side, so the invite lands.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · Access</span></div>
+</section>
+
+<section class="pg prov-page" id="en-p-godaddy" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-4">← All providers</a><a href="#en-5">Done →</a></div></div>
+  <span class="eyebrow">Access · GoDaddy · 2 minutes</span>
+  <h2>Invite us at GoDaddy</h2>
+  <p class="lede">GoDaddy calls this delegate access. You stay the owner; we work under our own login.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Go to <b>godaddy.com</b>, sign in, click your name top right → <b>Account Settings</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Delegate Access</h3><p>Open <b>Delegate Access</b> → <b>Invite to Access</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Fill in</h3><p>Name: <b>WebKreatives</b>. Email: the one below. Access level: <b>Products, Domains &amp; Purchase</b> (or Products &amp; Domains).</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Invite</h3><p>Click <b>Invite</b>. We accept the email and reply "done" to you.</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>The email to invite</span><b>{{our_email}}</b><p>Type it exactly.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · Access</span></div>
+</section>
+
+<section class="pg prov-page" id="en-p-cloudflare" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-4">← All providers</a><a href="#en-5">Done →</a></div></div>
+  <span class="eyebrow">Access · Cloudflare · 2 minutes</span>
+  <h2>Invite us at Cloudflare</h2>
+  <p class="lede">Cloudflare accounts have members. You add one.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Go to <b>dash.cloudflare.com</b> and sign in.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Members</h3><p>Left menu: <b>Manage Account</b> → <b>Members</b> → <b>Invite</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Fill in</h3><p>Email: the one below. Role: <b>Administrator</b> (or <b>DNS</b> if you prefer to keep it narrow).</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Send</h3><p>We accept and reply "done".</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>The email to invite</span><b>{{our_email}}</b><p>Type it exactly.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · Access</span></div>
+</section>
+
+<section class="pg prov-page" id="en-p-wix" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-4">← All providers</a><a href="#en-5">Done →</a></div></div>
+  <span class="eyebrow">Access · Wix · 2 minutes</span>
+  <h2>Invite us at Wix</h2>
+  <p class="lede">Your Wix account has roles. You give us one; the account and the domain stay yours.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Go to <b>wix.com</b>, sign in, open the site's dashboard.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Roles &amp; Permissions</h3><p><b>Settings</b> → <b>Roles &amp; Permissions</b> → <b>Invite People</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Fill in</h3><p>Email: the one below. Role: <b>Website Manager</b> (or <b>Domain Manager</b> if only the domain lives at Wix).</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Send</h3><p>We accept and reply "done".</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>The email to invite</span><b>{{our_email}}</b><p>Type it exactly.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · Access</span></div>
+</section>
+
+<section class="pg prov-page" id="en-p-squarespace" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-4">← All providers</a><a href="#en-5">Done →</a></div></div>
+  <span class="eyebrow">Access · Squarespace · 2 minutes</span>
+  <h2>Invite us at Squarespace</h2>
+  <p class="lede">Squarespace calls us a contributor. You stay the owner.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Go to <b>squarespace.com</b>, sign in, open the site.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Permissions</h3><p><b>Settings</b> → <b>Permissions</b> → <b>Invite Contributor</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Fill in</h3><p>Email: the one below. Role: <b>Administrator</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Send</h3><p>We accept and reply "done". Only a domain at Squarespace, no site? Pick "not sure" on the previous page and we do it together.</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>The email to invite</span><b>{{our_email}}</b><p>Type it exactly.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · Access</span></div>
+</section>
+
+<section class="pg prov-page" id="en-p-transip" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-4">← All providers</a><a href="#en-5">Done →</a></div></div>
+  <span class="eyebrow">Access · TransIP · 2 minutes</span>
+  <h2>Invite us at TransIP</h2>
+  <p class="lede">TransIP lets you add users with their own login and their own rights.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Go to <b>controlpanel.transip.nl</b> and sign in.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Users</h3><p>Top right, your account → <b>Users</b> (Gebruikers) → <b>Add user</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Fill in</h3><p>Email: the one below. Rights: domains and DNS, or full.</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Save</h3><p>We accept and reply "done".</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>The email to invite</span><b>{{our_email}}</b><p>Type it exactly.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · Access</span></div>
+</section>
+
+<section class="pg prov-page" id="en-p-other" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-4">← All providers</a><a href="#en-5">Done →</a></div></div>
+  <span class="eyebrow">Access · somewhere else, or not sure · 15 minutes</span>
+  <h2>We do it together</h2>
+  <p class="lede">Strato, Namecheap, One.com, Antagonist, Mijndomein, a nephew's account from 2014: we have seen them all. This is the easy route.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Book 15 minutes</h3><p>Use the button below or reply to our email with a time that suits you.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Share your screen</h3><p>On the call you log in yourself and share your screen. We tell you where to click. You keep your password.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Not sure where the domain even is?</h3><p>Forward us the last invoice or email that mentions <b>{{domain}}</b>. It says who sent it, and that is where the domain lives.</p></div><div></div></div>
+  </div>
+  <div class="btn-row">
+    <a class="btn red" href="{{booking_url}}">Book the 15 minutes <span class="ar">→</span></a>
+    <a class="btn" href="mailto:{{our_email}}?subject=Domain%20access%20{{company_q}}">Forward the invoice <span class="ar">→</span></a>
+  </div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · Access</span></div>
+</section>
+
+<section class="pg" id="en-5" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-4">← Back</a><a href="#en-6">Next →</a></div></div>
+  <span class="eyebrow">Step 5 of 6</span>
+  <span class="n">05</span>
+  <h2>What you never have to do</h2>
+  <p class="lede">Everything on this list is ours, on the monthly fee. If someone ever asks you to "just quickly" do one of these, send them to us.</p>
+  <div class="grid2">
+    <div class="card"><h3>DNS and nameservers</h3><p>Pointing the domain at the site, and keeping your email records untouched while we do.</p></div>
+    <div class="card"><h3>Hosting and SSL</h3><p>Where the site lives, the padlock in the browser, renewals.</p></div>
+    <div class="card"><h3>Email settings</h3><p>Your email keeps working through the whole switch. That is a rule, not a hope.</p></div>
+    <div class="card"><h3>Google</h3><p>Search Console, sitemap, old links redirected to new pages so nothing you earned is lost.</p></div>
+    <div class="card"><h3>Backups and updates</h3><p>Automatic, checked by a person.</p></div>
+    <div class="card"><h3>Changes</h3><p>New opening hours, a new photo, a new page: email us. Small things are done the same day.</p></div>
+  </div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · 5 / 6</span></div>
+</section>
+
+<section class="pg" id="en-6" data-lang="en">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#en-5">← Back</a></div></div>
+  <span class="eyebrow">Step 6 of 6</span>
+  <span class="n">06</span>
+  <h2>What you own, and who to call</h2>
+  <p class="lede">Short version: everything, and us.</p>
+  <ul class="checks">
+    <li><b>The domain</b> stays registered to you, at your provider.</li>
+    <li><b>The site</b>: every file is yours. Ask and you get a copy, any time.</li>
+    <li><b>The accounts</b>: hosting, Google, analytics are opened in your name; we are added as a user, never the owner.</li>
+    <li><b>Leaving</b>: give us a month's notice. We hand everything over and remove ourselves. No fee, no fuss.</li>
+  </ul>
+  <div class="invite" style="margin-top:28px"><span>Your contact from here on</span><b>{{our_email}}</b><p>{{our_name}} · reply within one business day · {{our_phone}}</p></div>
+  <div class="btn-row">
+    <a class="btn red" href="{{form_url}}">Fill in the 5-minute form <span class="ar">→</span></a>
+    <a class="btn" href="#en-4">Back to the access step <span class="ar">↑</span></a>
+  </div>
+  <p style="margin-top:26px;font-size:13.5px;color:var(--cream-dim)">Talk soon.<br><b style="color:var(--cream)">{{our_name}}</b>, WebKreatives</p>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">EN · 6 / 6</span></div>
+</section>
+
+<!-- ══ NEDERLANDS ══════════════════════════════════════════════════════ -->
+<section class="pg" id="nl-1" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-4">Toegang</a><a href="#nl-3">Formulier</a></div></div>
+  <span class="eyebrow">Stap 1 van 6</span>
+  <span class="n">01</span>
+  <h2>Wat er nu gebeurt</h2>
+  <p class="lede">Vijf stappen, één feedbackronde en een site die van jou is. Jij praat; wij doen de rest.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>De briefing</h3><p>Een gesprek van 30 minuten. Jij vertelt over het bedrijf, wie er belt en waarom. Wij maken aantekeningen. Geen huiswerk.</p></div><div class="when">Gesprek<b>{{d_brief_nl}}</b></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Eén klik voor toegang</h3><p>Bij het bedrijf waar je domein staat nodig je ons uit als gebruiker. Twee minuten, pagina 4. Daarna is alles technische ons werk.</p></div><div class="when">Deze week<b>{{d_access_nl}}</b></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Preview</h3><p>Een link die op je telefoon opent. Echte pagina's, echte teksten, echte foto's. Nog niets staat live.</p></div><div class="when">Preview<b>{{d_preview_nl}}</b></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Feedback</h3><p>Eén ronde. Alles wat anders moet in één bericht of één gesprek, en wij passen het aan.</p></div><div class="when">Jouw reactie<b>{{d_feedback_nl}}</b></div></div>
+    <div class="step"><b class="k">5</b><div><h3>Live</h3><p>Wij zetten hem aan. Je oude site blijft bereikbaar tot de nieuwe staat; je e-mail raken we nooit aan.</p></div><div class="when">Live<b>{{d_live_nl}}</b></div></div>
+  </div>
+  <div class="note">De data zijn waar we op mikken. Komt input later, dan schuiven ze mee; verder verandert er niets.</div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · 1 / 6</span></div>
+</section>
+
+<section class="pg" id="nl-2" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-1">← Terug</a><a href="#nl-3">Verder →</a></div></div>
+  <span class="eyebrow">Stap 2 van 6</span>
+  <span class="n">02</span>
+  <h2>Wat je krijgt</h2>
+  <p class="lede">Een vaste prijs die vaststaat voordat we beginnen, een site die eerst voor de telefoon is gebouwd, en alles op jouw naam.</p>
+  <div class="grid2">
+    <div class="card"><h3>De bouw</h3><div class="price">{{price}}<small>vast · excl. btw</small></div><p>{{scope_nl}}</p></div>
+    <div class="card"><h3>Hosting, updates en support</h3><div class="price">{{hosting}}<small>per maand</small></div><p>Domein, hosting, beveiliging, back-ups, updates en iemand die je kunt mailen. Niets is extra.</p></div>
+  </div>
+  <ul class="checks">
+    <li><b>Eerst voor de telefoon gebouwd.</b> Daar zitten de meeste bezoekers; daar wordt de site ontworpen en dan opgeschaald, niet andersom.</li>
+    <li><b>Geschreven om gevonden te worden.</b> Paginatitels, omschrijvingen en structuur netjes gedaan, zodat Google snapt wat je doet en waar.</li>
+    <li><b>Domein, bestanden en accounts op jouw naam.</b> Weggaan kan altijd en je neemt alles mee. Geen lock-in.</li>
+    <li><b>Eén persoon van eerste schets tot support.</b> Wie je site ontwerpt, beantwoordt ook je mail.</li>
+  </ul>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · 2 / 6</span></div>
+</section>
+
+<section class="pg" id="nl-3" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-2">← Terug</a><a href="#nl-4">Verder →</a></div></div>
+  <span class="eyebrow">Stap 3 van 6</span>
+  <span class="n">03</span>
+  <h2>Wat we van jou nodig hebben</h2>
+  <p class="lede">Vier dingen. Telefoonfoto's zijn prima; liever echt dan stock. Vertel je het liever in het gesprek, dan schrijven wij het op.</p>
+  <ul class="checks">
+    <li><b>Je logo.</b> Elk bestand dat je hebt. Een scherpe foto van je gevelbord kan ook.</li>
+    <li><b>10 tot 20 foto's.</b> De zaak, de mensen, het werk. Echte.</li>
+    <li><b>De feiten.</b> Openingstijden, adres, telefoon, e-mail, socials, en het ene wat bezoekers moeten doen: bellen, boeken, langskomen.</li>
+    <li><b>Wat moet blijven.</b> Teksten, reviews of pagina's van de oude site die mee moeten.</li>
+  </ul>
+  <div class="btn-row">
+    <a class="btn red" href="{{form_url}}">Vul het formulier van 5 minuten in <span class="ar">→</span></a>
+    <a class="btn" href="mailto:{{our_email}}?subject=Onboarding%20{{company_q}}">Of mail het ons <span class="ar">→</span></a>
+  </div>
+  <div class="note"><b>Stuur het zoals het jou uitkomt.</b> WhatsApp, e-mail, een gedeelde map. Wij sorteren het; jij hoeft dat niet.</div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · 3 / 6</span></div>
+</section>
+
+<section class="pg" id="nl-4" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-3">← Terug</a><a href="#nl-5">Overslaan →</a></div></div>
+  <span class="eyebrow">Stap 4 van 6 · het ene wat je moet aanklikken</span>
+  <span class="n">04</span>
+  <h2>Waar staat je domein geregistreerd?</h2>
+  <p class="lede">Kies het bedrijf dat op je domeinfactuur staat. Daar nodig je ons uit als gebruiker: twee minuten, en je deelt nooit een wachtwoord.</p>
+  <p class="prov-hint" data-detected-only>Onze check van <b>{{domain}}</b> zegt: <b style="color:var(--cream)">{{provider_name}}</b>. Begin daar.</p>
+  <div class="prov" data-providers>
+    <a href="#nl-p-hostinger" data-p="hostinger">Hostinger</a>
+    <a href="#nl-p-godaddy" data-p="godaddy">GoDaddy</a>
+    <a href="#nl-p-cloudflare" data-p="cloudflare">Cloudflare</a>
+    <a href="#nl-p-wix" data-p="wix">Wix</a>
+    <a href="#nl-p-squarespace" data-p="squarespace">Squarespace</a>
+    <a href="#nl-p-transip" data-p="transip">TransIP</a>
+    <a href="#nl-p-other" data-p="other" class="other">Ergens anders, of geen idee →</a>
+    <button type="button" data-open="nl-p-hostinger" data-p="hostinger">Hostinger</button>
+    <button type="button" data-open="nl-p-godaddy" data-p="godaddy">GoDaddy</button>
+    <button type="button" data-open="nl-p-cloudflare" data-p="cloudflare">Cloudflare</button>
+    <button type="button" data-open="nl-p-wix" data-p="wix">Wix</button>
+    <button type="button" data-open="nl-p-squarespace" data-p="squarespace">Squarespace</button>
+    <button type="button" data-open="nl-p-transip" data-p="transip">TransIP</button>
+    <button type="button" data-open="nl-p-other" data-p="other" class="other">Ergens anders, of geen idee →</button>
+  </div>
+  <div class="note"><b>Je deelt nooit een wachtwoord met ons.</b> Vraagt een pagina je om er een aan ons te geven, stop dan en bel. Een gebruiker uitnodigen doe je altijd vanuit je eigen login.</div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · 4 / 6</span></div>
+</section>
+
+<section class="pg prov-page" id="nl-p-hostinger" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-4">← Alle providers</a><a href="#nl-5">Klaar →</a></div></div>
+  <span class="eyebrow">Toegang · Hostinger · 2 minuten</span>
+  <h2>Nodig ons uit bij Hostinger</h2>
+  <p class="lede">Je domein, hosting en e-mail blijven precies waar ze staan, op jouw naam. Je geeft ons een stoel, geen sleutel.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Ga naar <b>hpanel.hostinger.com</b> en log in zoals altijd.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Open Account delen</h3><p>Rechtsboven op je profielfoto of naam → <b>Account</b> → <b>Account sharing</b> (bij sommige accounts heet het <b>Access management</b>).</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Toegang verlenen</h3><p>Klik <b>Grant access</b>, vul het e-mailadres hieronder in, kies <b>Full access</b>, bevestig.</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Dat was het</h3><p>Wij krijgen een uitnodiging en accepteren die. Antwoord "gedaan" op onze mail en wij nemen het over.</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>Het e-mailadres om uit te nodigen</span><b>{{our_email}}</b><p>Typ het precies zo. Aan onze kant is dat een Hostinger-account, dus de uitnodiging komt aan.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · Toegang</span></div>
+</section>
+
+<section class="pg prov-page" id="nl-p-godaddy" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-4">← Alle providers</a><a href="#nl-5">Klaar →</a></div></div>
+  <span class="eyebrow">Toegang · GoDaddy · 2 minuten</span>
+  <h2>Nodig ons uit bij GoDaddy</h2>
+  <p class="lede">GoDaddy noemt dit "delegate access". Jij blijft eigenaar; wij werken onder onze eigen login.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Ga naar <b>godaddy.com</b>, log in, klik rechtsboven op je naam → <b>Account Settings</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Delegate Access</h3><p>Open <b>Delegate Access</b> → <b>Invite to Access</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Invullen</h3><p>Naam: <b>WebKreatives</b>. E-mail: het adres hieronder. Toegangsniveau: <b>Products, Domains &amp; Purchase</b> (of Products &amp; Domains).</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Uitnodigen</h3><p>Klik <b>Invite</b>. Wij accepteren de mail en antwoorden "gedaan".</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>Het e-mailadres om uit te nodigen</span><b>{{our_email}}</b><p>Typ het precies zo.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · Toegang</span></div>
+</section>
+
+<section class="pg prov-page" id="nl-p-cloudflare" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-4">← Alle providers</a><a href="#nl-5">Klaar →</a></div></div>
+  <span class="eyebrow">Toegang · Cloudflare · 2 minuten</span>
+  <h2>Nodig ons uit bij Cloudflare</h2>
+  <p class="lede">Een Cloudflare-account heeft leden. Je voegt er een toe.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Ga naar <b>dash.cloudflare.com</b> en log in.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Members</h3><p>Linkermenu: <b>Manage Account</b> → <b>Members</b> → <b>Invite</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Invullen</h3><p>E-mail: het adres hieronder. Rol: <b>Administrator</b> (of <b>DNS</b> als je het smal wilt houden).</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Versturen</h3><p>Wij accepteren en antwoorden "gedaan".</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>Het e-mailadres om uit te nodigen</span><b>{{our_email}}</b><p>Typ het precies zo.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · Toegang</span></div>
+</section>
+
+<section class="pg prov-page" id="nl-p-wix" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-4">← Alle providers</a><a href="#nl-5">Klaar →</a></div></div>
+  <span class="eyebrow">Toegang · Wix · 2 minuten</span>
+  <h2>Nodig ons uit bij Wix</h2>
+  <p class="lede">Je Wix-account werkt met rollen. Je geeft ons er een; het account en het domein blijven van jou.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Ga naar <b>wix.com</b>, log in, open het dashboard van de site.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Roles &amp; Permissions</h3><p><b>Settings</b> → <b>Roles &amp; Permissions</b> → <b>Invite People</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Invullen</h3><p>E-mail: het adres hieronder. Rol: <b>Website Manager</b> (of <b>Domain Manager</b> als alleen het domein bij Wix staat).</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Versturen</h3><p>Wij accepteren en antwoorden "gedaan".</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>Het e-mailadres om uit te nodigen</span><b>{{our_email}}</b><p>Typ het precies zo.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · Toegang</span></div>
+</section>
+
+<section class="pg prov-page" id="nl-p-squarespace" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-4">← Alle providers</a><a href="#nl-5">Klaar →</a></div></div>
+  <span class="eyebrow">Toegang · Squarespace · 2 minuten</span>
+  <h2>Nodig ons uit bij Squarespace</h2>
+  <p class="lede">Squarespace noemt ons een contributor. Jij blijft eigenaar.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Ga naar <b>squarespace.com</b>, log in, open de site.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Permissions</h3><p><b>Settings</b> → <b>Permissions</b> → <b>Invite Contributor</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Invullen</h3><p>E-mail: het adres hieronder. Rol: <b>Administrator</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Versturen</h3><p>Wij accepteren en antwoorden "gedaan". Alleen een domein bij Squarespace, geen site? Kies "geen idee" op de vorige pagina en we doen het samen.</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>Het e-mailadres om uit te nodigen</span><b>{{our_email}}</b><p>Typ het precies zo.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · Toegang</span></div>
+</section>
+
+<section class="pg prov-page" id="nl-p-transip" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-4">← Alle providers</a><a href="#nl-5">Klaar →</a></div></div>
+  <span class="eyebrow">Toegang · TransIP · 2 minuten</span>
+  <h2>Nodig ons uit bij TransIP</h2>
+  <p class="lede">Bij TransIP voeg je gebruikers toe met een eigen login en eigen rechten.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Log in</h3><p>Ga naar <b>controlpanel.transip.nl</b> en log in.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Gebruikers</h3><p>Rechtsboven, je account → <b>Gebruikers</b> → <b>Gebruiker toevoegen</b>.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Invullen</h3><p>E-mail: het adres hieronder. Rechten: domeinen en DNS, of volledig.</p></div><div></div></div>
+    <div class="step"><b class="k">4</b><div><h3>Opslaan</h3><p>Wij accepteren en antwoorden "gedaan".</p></div><div></div></div>
+  </div>
+  <div class="invite"><span>Het e-mailadres om uit te nodigen</span><b>{{our_email}}</b><p>Typ het precies zo.</p></div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · Toegang</span></div>
+</section>
+
+<section class="pg prov-page" id="nl-p-other" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-4">← Alle providers</a><a href="#nl-5">Klaar →</a></div></div>
+  <span class="eyebrow">Toegang · ergens anders, of geen idee · 15 minuten</span>
+  <h2>We doen het samen</h2>
+  <p class="lede">Strato, Namecheap, One.com, Antagonist, Mijndomein, het account van een neef uit 2014: we hebben ze allemaal gezien. Dit is de makkelijke route.</p>
+  <div class="steps">
+    <div class="step"><b class="k">1</b><div><h3>Plan 15 minuten</h3><p>Gebruik de knop hieronder of antwoord op onze mail met een tijd die jou uitkomt.</p></div><div></div></div>
+    <div class="step"><b class="k">2</b><div><h3>Deel je scherm</h3><p>In het gesprek log je zelf in en deel je je scherm. Wij zeggen waar je moet klikken. Je wachtwoord blijft van jou.</p></div><div></div></div>
+    <div class="step"><b class="k">3</b><div><h3>Geen idee waar het domein staat?</h3><p>Stuur ons de laatste factuur of mail door waarin <b>{{domain}}</b> voorkomt. Daar staat de afzender op, en daar staat het domein.</p></div><div></div></div>
+  </div>
+  <div class="btn-row">
+    <a class="btn red" href="{{booking_url}}">Plan de 15 minuten <span class="ar">→</span></a>
+    <a class="btn" href="mailto:{{our_email}}?subject=Domein%20toegang%20{{company_q}}">Stuur de factuur door <span class="ar">→</span></a>
+  </div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · Toegang</span></div>
+</section>
+
+<section class="pg" id="nl-5" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-4">← Terug</a><a href="#nl-6">Verder →</a></div></div>
+  <span class="eyebrow">Stap 5 van 6</span>
+  <span class="n">05</span>
+  <h2>Wat je nooit hoeft te doen</h2>
+  <p class="lede">Alles op deze lijst is ons werk, binnen het maandbedrag. Vraagt iemand je ooit om "even snel" een van deze dingen te doen, stuur hem naar ons.</p>
+  <div class="grid2">
+    <div class="card"><h3>DNS en nameservers</h3><p>Het domein naar de site laten wijzen, en intussen je e-mailinstellingen met rust laten.</p></div>
+    <div class="card"><h3>Hosting en SSL</h3><p>Waar de site staat, het slotje in de browser, verlengingen.</p></div>
+    <div class="card"><h3>E-mailinstellingen</h3><p>Je e-mail blijft werken tijdens de hele overstap. Dat is een regel, geen hoop.</p></div>
+    <div class="card"><h3>Google</h3><p>Search Console, sitemap, oude links doorgestuurd naar nieuwe pagina's zodat niets wat je opbouwde verloren gaat.</p></div>
+    <div class="card"><h3>Back-ups en updates</h3><p>Automatisch, en door een mens gecontroleerd.</p></div>
+    <div class="card"><h3>Wijzigingen</h3><p>Nieuwe openingstijden, een nieuwe foto, een nieuwe pagina: mail ons. Kleine dingen zijn dezelfde dag klaar.</p></div>
+  </div>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · 5 / 6</span></div>
+</section>
+
+<section class="pg last" id="nl-6" data-lang="nl">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-nav"><a href="#start">↑ Start</a><a href="#nl-5">← Terug</a></div></div>
+  <span class="eyebrow">Stap 6 van 6</span>
+  <span class="n">06</span>
+  <h2>Wat van jou is, en wie je belt</h2>
+  <p class="lede">Korte versie: alles, en ons.</p>
+  <ul class="checks">
+    <li><b>Het domein</b> blijft op jouw naam geregistreerd, bij jouw provider.</li>
+    <li><b>De site</b>: elk bestand is van jou. Vraag erom en je krijgt een kopie, wanneer je wilt.</li>
+    <li><b>De accounts</b>: hosting, Google, statistieken worden op jouw naam geopend; wij worden toegevoegd als gebruiker, nooit als eigenaar.</li>
+    <li><b>Weggaan</b>: een maand opzegtermijn. Wij dragen alles over en verwijderen onszelf. Geen kosten, geen gedoe.</li>
+  </ul>
+  <div class="invite" style="margin-top:28px"><span>Vanaf nu je contactpersoon</span><b>{{our_email}}</b><p>{{our_name}} · antwoord binnen één werkdag · {{our_phone}}</p></div>
+  <div class="btn-row">
+    <a class="btn red" href="{{form_url}}">Vul het formulier van 5 minuten in <span class="ar">→</span></a>
+    <a class="btn" href="#nl-4">Terug naar de toegangsstap <span class="ar">↑</span></a>
+  </div>
+  <p style="margin-top:26px;font-size:13.5px;color:var(--cream-dim)">Tot snel.<br><b style="color:var(--cream)">{{our_name}}</b>, WebKreatives</p>
+  <div class="pg-foot"><span>WebKreatives · Onboarding {{company}}</span><span class="pn">NL · 6 / 6</span></div>
+</section>
+
+<script>
+/* Only runs on screen. In the PDF the same choices are links. */
+(function () {
+  var b = document.body;
+  if (!b.classList.contains('web')) return;
+  var detected = '{{provider}}';
+  b.querySelectorAll('[data-set-lang]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      b.setAttribute('data-show', el.getAttribute('data-set-lang'));
+      document.documentElement.lang = el.getAttribute('data-set-lang');
+      var first = document.getElementById(el.getAttribute('data-set-lang') + '-1');
+      if (first) first.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+  /* a provider opens in both languages at once; the language rule shows one */
+  function openProv(key, scroll) {
+    b.querySelectorAll('.prov-page.is-open').forEach(function (p) { p.classList.remove('is-open'); });
+    b.querySelectorAll('.prov-page').forEach(function (p) { if (p.id.endsWith('-p-' + key)) p.classList.add('is-open'); });
+    if (scroll) {
+      var pg = document.getElementById(b.getAttribute('data-show') + '-p-' + key);
+      if (pg) pg.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  b.querySelectorAll('[data-open]').forEach(function (el) {
+    el.addEventListener('click', function () { openProv(el.getAttribute('data-p'), true); });
+  });
+  if (detected && detected !== 'unknown') openProv(detected, false);
+})();
+</script>
+</body>
+</html>
