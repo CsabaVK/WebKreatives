@@ -193,7 +193,7 @@
       const ph = !r.text || /^Naam klant/.test(r.name);
       const name = ph ? t('phName') : (r.name || t('viaGoogle')), when = ph ? t('phWhen') : (r.when || 'Google'), text = ph ? t('phText').replace('#', i + 1) : r.text;
       const slot = '<span>' + (lang === 'en' ? 'Photo' : 'Foto') + ' ' + (i + 1) + '</span>';
-      const pic = r.photo ? '<img src="' + root + r.photo + '" alt="" loading="lazy" onerror="this.remove()">' + slot : slot;
+      const pic = r.photo ? '<img src="' + root + r.photo + '" alt="" decoding="async" onerror="this.remove()">' + slot : slot;
       return '<article class="rslide"><div class="pic">' + pic + '</div><div class="txt"><div class="stars">' + stars(r.stars) + '</div><blockquote>' + text + '</blockquote><div class="who"><b>' + name + '</b>' + (when ? '<span>' + when + '</span>' : '') + '</div></div></article>';
     }).join('');
     const dots = $('[data-rcar-dots]');
