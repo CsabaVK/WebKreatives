@@ -11,7 +11,7 @@
   const root = document.body.dataset.root || '';
   const here = document.body.dataset.page || '';
   const ARROW = '<span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
-  const LINKS = [['home', '', 'Home', 'Home'], ['diensten', 'diensten/', 'Diensten', 'Services'], ['team', '#team', 'Over ons', 'About us'], ['contact', '#contact', 'Contact', 'Contact']];
+  const LINKS = [['home', '#top', 'Home', 'Home'], ['diensten', '#diensten', 'Diensten', 'Services'], ['team', '#team', 'Over ons', 'About us'], ['contact', '#contact', 'Contact', 'Contact']];
   const links = () => LINKS.map(([k, h, nl, en]) => '<a href="' + root + h + '"' + (k === here ? ' class="on"' : '') + (nl !== en ? ' data-en="' + en + '"' : '') + '>' + nl + '</a>').join('');
   const langPill = '<div class="lang" role="group" aria-label="Taal"><button type="button" data-lang="nl">NL</button><button type="button" data-lang="en">EN</button></div>';
   const navEl = $('[data-nav]');
@@ -28,8 +28,8 @@
   const footEl = $('[data-footer]');
   if (footEl) footEl.innerHTML = '<div class="wrap foot-in">' +
     '<div><img src="' + root + 'assets/logo.png" alt="Auto District"><p data-en="RDW-approved garage in Poeldijk. Honest, clear dealings, quality and expertise first.">RDW-erkend garagebedrijf in Poeldijk. Eerlijk en helder zaken doen, kwaliteit en deskundigheid voorop.</p></div>' +
-    '<div><h4 data-en="Services">Diensten</h4><ul>' + [['apk', 'APK-keuring', 'MOT (APK)'], ['onderhoud', 'Onderhoud', 'Maintenance'], ['reparatie', 'Reparatie', 'Repairs'], ['storingen', 'Storingen &amp; diagnose', 'Fault diagnosis'], ['dsg', 'DSG-versnellingsbak', 'DSG gearbox'], ['airco', 'Airco-service', 'Air conditioning'], ['banden', 'Banden', 'Tyres']].map(([a, nl, en]) => '<li><a href="' + root + 'diensten/#' + a + '" data-en="' + en + '">' + nl + '</a></li>').join('') + '</ul></div>' +
-    '<div><h4>Contact</h4><ul><li><a data-tel href="#"><span data-tel="text"></span></a></li><li><a data-mail href="#"><span data-mail="text"></span></a></li><li><a data-route href="#" target="_blank" rel="noopener">Jupiter 39-B, 2685 LV Poeldijk</a></li><li><a href="' + root + 'contact/" data-en="Opening hours">Openingstijden</a></li><li><a href="' + root + 'privacy/" data-en="Privacy">Privacyverklaring</a></li></ul></div></div>' +
+    '<div><h4 data-en="Services">Diensten</h4><ul>' + [['apk', 'APK-keuring', 'MOT (APK)'], ['onderhoud', 'Onderhoud', 'Maintenance'], ['reparatie', 'Reparatie', 'Repairs'], ['storingen', 'Storingen &amp; diagnose', 'Fault diagnosis'], ['dsg', 'DSG-versnellingsbak', 'DSG gearbox'], ['airco', 'Airco-service', 'Air conditioning'], ['banden', 'Banden', 'Tyres']].map(([a, nl, en]) => '<li><a href="' + root + '#' + a + '" data-en="' + en + '">' + nl + '</a></li>').join('') + '</ul></div>' +
+    '<div><h4>Contact</h4><ul><li><a data-tel href="#"><span data-tel="text"></span></a></li><li><a data-mail href="#"><span data-mail="text"></span></a></li><li><a data-route href="#" target="_blank" rel="noopener">Jupiter 39-B, 2685 LV Poeldijk</a></li><li><a href="' + root + '#contact" data-en="Opening hours">Openingstijden</a></li><li><a href="' + root + 'privacy/" data-en="Privacy">Privacyverklaring</a></li></ul></div></div>' +
     '<div class="wrap foot-bot"><span>© 2026 Auto District · <span data-kvk></span></span><span><span data-en="Website by">Website door</span> <a href="https://webkreatives.com" style="color:var(--txt-2)">WebKreatives</a></span></div>';
 
   /* ── language: Dutch is the page, English lives in data-en ──────── */
@@ -76,12 +76,35 @@
     $$('[data-menu-close]').forEach(b => b.addEventListener('click', () => open(false)));
     if (menu) $$('nav a', menu).forEach(a => a.addEventListener('click', () => open(false)));
     addEventListener('keydown', e => { if (e.key === 'Escape') open(false); });
-    const targets = $$('.nav-links a[href^="#"]').map(a => [a, $(a.getAttribute('href'))]).filter(x => x[1]);
-    if (targets.length && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) targets.forEach(([a, el]) => a.classList.toggle('on', el === e.target)); }), { rootMargin: '-40% 0px -55% 0px' });
-      targets.forEach(([, el]) => io.observe(el));
+    // one page: the link whose section sits under the top third of the screen is the current one
+    const targets = $$('.nav-links a[href^="#"], [data-menu] nav a[href^="#"]').map(a => [a, $(a.getAttribute('href'))]).filter(x => x[1]);
+    if (targets.length) {
+      let queued = false;
+      const spy = () => {
+        queued = false;
+        const y = innerHeight * .36; let cur = null;
+        targets.forEach(([, el]) => { const r = el.getBoundingClientRect(); if (r.top <= y && r.bottom > y) cur = el; });
+        if (!cur && innerHeight + scrollY >= document.documentElement.scrollHeight - 2) cur = targets[targets.length - 1][1];
+        targets.forEach(([a, el]) => a.classList.toggle('on', el === cur));
+      };
+      const ask = () => { if (!queued) { queued = true; requestAnimationFrame(spy); } };
+      addEventListener('scroll', ask, { passive: true }); addEventListener('resize', ask); addEventListener('load', spy); spy();
     }
   }
+
+  /* ── services: every row folds open on the page itself ──────────── */
+  const rows = $$('.svc-list .row');
+  function rowOpen(row, o) {
+    row.classList.toggle('open', o);
+    $('.row-hd', row).setAttribute('aria-expanded', o);
+    const art = $('.art', row);
+    if (o && art) { art.classList.remove('in'); void art.offsetWidth; art.classList.add('in'); }
+  }
+  rows.forEach(row => $('.row-hd', row).addEventListener('click', () => rowOpen(row, !row.classList.contains('open'))));
+  const rowFor = h => { if (!h || h.length < 2) return null; const el = $(h); return el && rows.includes(el) ? el : null; };
+  const openHash = () => { const row = rowFor(location.hash); if (row) rowOpen(row, true); };
+  openHash(); addEventListener('hashchange', openHash);
+  document.addEventListener('click', e => { const a = e.target.closest('a[href^="#"]'); const row = a && rowFor(a.getAttribute('href')); if (row) rowOpen(row, true); });
 
   /* ── reveals ─────────────────────────────────────────────────────── */
   const rv = $$('[data-rv], .lift, .art');
