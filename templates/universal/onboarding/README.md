@@ -24,10 +24,11 @@ The onboarding is one template, two outputs:
 ```bash
 node templates/universal/onboarding/build.cjs \
   --company "Autodistrict" --contact "Jan de Vries" --domain autodistrict.nl \
-  --start 2026-09-15 --price "€ 890" --hosting "€ 25" \
+  --start 2026-09-15 --price "€ 890" --plan plus --lang nl \
   --scope-en "One-page site, six sections, NL and EN." \
   --scope-nl "One-page site, zes secties, NL en EN." \
-  --plan plus --lang nl   --address "Voorbeeldstraat 12, 2512 AB Den Haag" --kvk 12345678 --client-email "info@autodistrict.nl"   --form "https://forms.gle/..." --booking "https://cal.com/..."
+  --address "Voorbeeldstraat 12, 2512 AB Den Haag" --kvk 12345678 --client-email "info@autodistrict.nl" \
+  --form "https://forms.gle/..." --booking "https://cal.com/..."
 ```
 
 Output in `tools/onboarding/out/<slug>/`: `onboarding-<slug>.pdf`, `index.html`
