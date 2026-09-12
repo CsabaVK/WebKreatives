@@ -160,7 +160,7 @@
     const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Amsterdam' }));
     const today = (now.getDay() + 6) % 7;
     if (hoursEl) hoursEl.innerHTML = AD.hours.map((h, i) => '<tr' + (i === today ? ' class="today"' : '') + '><td>' + t('days')[i] + '</td><td>' + (h.open ? h.open + ' – ' + h.close : (h.note ? t('byAppt') : t('closed'))) + '</td></tr>').join('');
-    const st = $('[data-openstate]'); if (!st) return;
+    const sts = $$('[data-openstate]'); if (!sts.length) return;
     const h = AD.hours[today], mins = now.getHours() * 60 + now.getMinutes();
     const toM = s => { const [a, b] = s.split(':').map(Number); return a * 60 + b; };
     let open = false, txt;
@@ -169,8 +169,9 @@
       let n = today, d = 0; do { n = (n + 1) % 7; d++; } while (!AD.hours[n].open && d < 7);
       txt = h.open && mins < toM(h.open) ? t('opensAt') + h.open : t('opens') + (d === 1 ? t('tomorrow') : t('days')[n].toLowerCase()) + ' ' + AD.hours[n].open;
     }
-    st.innerHTML = '<i></i>' + txt; st.classList.toggle('closed', !open);
+    sts.forEach(st => { st.innerHTML = '<i></i>' + txt; st.classList.toggle('closed', !open); });
   }
+  setInterval(renderHours, 60000);
 
   /* ── team ────────────────────────────────────────────────────────── */
   const initials = n => n.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
