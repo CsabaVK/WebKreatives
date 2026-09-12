@@ -24,7 +24,7 @@
     '<button class="nav-burger" aria-label="Menu" data-menu-open><i></i></button></div></div>';
   const menuEl = $('[data-menu]');
   if (menuEl) menuEl.innerHTML = '<button class="menu-x" aria-label="Sluiten" data-menu-close><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div><nav>' + links() + '</nav>' +
-    '<div class="menu-cta">' + langPill + '<a class="btn plain" data-tel href="#"><span data-tel="text"></span></a><a class="btn red" data-wa href="#" target="_blank" rel="noopener">WhatsApp' + ARROW + '</a></div></div>';
+    '<div class="menu-cta">' + langPill + '<a class="btn red" data-wa href="#" target="_blank" rel="noopener">WhatsApp' + ARROW + '</a><a class="btn plain" data-mail href="#"><span data-mail="text"></span></a></div></div>';
   const footEl = $('[data-footer]');
   if (footEl) footEl.innerHTML = '<div class="wrap foot-in">' +
     '<div><img src="' + root + 'assets/logo.png" alt="Auto District"><p data-en="RDW-approved garage in Poeldijk. Honest, clear dealings, quality and expertise first.">RDW-erkend garagebedrijf in Poeldijk. Eerlijk en helder zaken doen, kwaliteit en deskundigheid voorop.</p></div>' +
