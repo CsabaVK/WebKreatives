@@ -1,0 +1,2 @@
+# Apache hosting (Hostinger): serve the custom 404. Adjust the path at go-live.
+ErrorDocument 404 /404.html

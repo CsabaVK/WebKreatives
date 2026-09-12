@@ -9,25 +9,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../site.css?v=2">
+<link rel="stylesheet" href="../site.css?v=3">
 <style>.legal{max-width:70ch}.legal h2{font-size:20px;margin:34px 0 10px}.legal p,.legal li{color:var(--txt-2);font-size:15px;line-height:1.7}.legal ul{padding-left:18px}</style>
 </head>
-<body>
-<header class="nav" data-nav>
-  <div class="nav-in">
-    <a class="nav-logo" href="../" aria-label="Auto District"><img src="../assets/logo.png" alt="Auto District"></a>
-    <nav class="nav-links"><a href="../diensten/" data-en="Services">Diensten</a><a href="../#werkwijze" data-en="How we work">Werkwijze</a><a href="../#reviews">Reviews</a><a href="../#team">Team</a><a href="../#contact">Contact</a></nav>
-    <div class="nav-cta">
-      <div class="lang" role="group" aria-label="Taal"><button type="button" data-lang="nl" class="on">NL</button><button type="button" data-lang="en">EN</button></div>
-      <a class="btn sm red" data-wa href="#" target="_blank" rel="noopener"><span data-en="Book now">Afspraak maken</span><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      <button class="nav-burger" aria-label="Menu" data-menu-open><i></i></button>
-    </div>
-  </div>
-</header>
-<div class="menu" data-menu>
-  <button class="menu-x" aria-label="Sluiten" data-menu-close><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <div><nav><a href="../">Home</a><a href="../diensten/" data-en="Services">Diensten</a><a href="../#contact">Contact</a></nav></div>
-</div>
+<body data-root="../" data-page="">
+<a class="skip" href="#main" data-en="Skip to content">Naar de inhoud</a>
+<header class="nav" data-nav></header>
+<div class="menu" data-menu></div>
 <main id="main">
 <section class="phero"><div class="wrap legal">
   <span class="tag"><i></i>Privacy</span>
@@ -48,8 +36,8 @@
   <p style="margin-top:20px"><a class="btn" data-mail href="#"><span data-mail="text"></span><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></p>
 </div></section>
 </main>
-<footer class="foot"><div class="wrap foot-bot" style="margin-top:0;border-top:0"><span>© 2026 Auto District · <span data-kvk></span></span><span><a href="../" class="link" data-en="Back to the homepage">Terug naar de homepage</a></span></div></footer>
-<script src="../data.js?v=2"></script>
-<script src="../site.js?v=2"></script>
+<footer class="foot" data-footer></footer>
+<script src="../data.js?v=3"></script>
+<script src="../site.js?v=3"></script>
 </body>
 </html>

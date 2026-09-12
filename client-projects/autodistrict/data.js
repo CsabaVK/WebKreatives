@@ -40,11 +40,14 @@ window.AD = {
     { name: 'Naam', role: 'Monteur · APK-keurmeester', photo: '' }
   ],
 
-  /* Highlighted reviews. Real Google reviews the client picks; photo is
-     optional. Leave text as-is until they arrive, the card says so. */
+  /* Highlighted reviews: five, each with a picture slot. Real Google
+     reviews the client picks; photo is a path under assets/. Until they
+     arrive the cards say so. */
   reviews: [
-    { name: 'Naam klant', photo: '', stars: 5, when: 'Google · datum', text: 'Hier komt een uitgelichte Google-review. Tekst, naam en foto volgen van de klant.' },
-    { name: 'Naam klant', photo: '', stars: 5, when: 'Google · datum', text: 'Hier komt een uitgelichte Google-review. Tekst, naam en foto volgen van de klant.' },
-    { name: 'Naam klant', photo: '', stars: 5, when: 'Google · datum', text: 'Hier komt een uitgelichte Google-review. Tekst, naam en foto volgen van de klant.' }
+    { name: 'Naam klant', photo: '', stars: 5, when: 'Google · datum', text: 'Uitgelichte Google-review 1. Tekst, naam en foto volgen van de klant.' },
+    { name: 'Naam klant', photo: '', stars: 5, when: 'Google · datum', text: 'Uitgelichte Google-review 2. Tekst, naam en foto volgen van de klant.' },
+    { name: 'Naam klant', photo: '', stars: 5, when: 'Google · datum', text: 'Uitgelichte Google-review 3. Tekst, naam en foto volgen van de klant.' },
+    { name: 'Naam klant', photo: '', stars: 5, when: 'Google · datum', text: 'Uitgelichte Google-review 4. Tekst, naam en foto volgen van de klant.' },
+    { name: 'Naam klant', photo: '', stars: 5, when: 'Google · datum', text: 'Uitgelichte Google-review 5. Tekst, naam en foto volgen van de klant.' }
   ]
 };

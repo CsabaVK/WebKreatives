@@ -6,6 +6,32 @@
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
 
+
+  /* ── one nav and one footer, drawn on every page ─────────────────── */
+  const root = document.body.dataset.root || '';
+  const here = document.body.dataset.page || '';
+  const ARROW = '<span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
+  const LINKS = [['home', '', 'Home', 'Home'], ['diensten', 'diensten/', 'Diensten', 'Services'], ['over-ons', 'over-ons/', 'Over ons', 'About us'], ['contact', 'contact/', 'Contact', 'Contact']];
+  const links = () => LINKS.map(([k, h, nl, en]) => '<a href="' + root + h + '"' + (k === here ? ' class="on"' : '') + (nl !== en ? ' data-en="' + en + '"' : '') + '>' + nl + '</a>').join('');
+  const langPill = '<div class="lang" role="group" aria-label="Taal"><button type="button" data-lang="nl">NL</button><button type="button" data-lang="en">EN</button></div>';
+  const navEl = $('[data-nav]');
+  if (navEl) navEl.innerHTML = '<div class="nav-in">' +
+    '<a class="nav-logo" href="' + root + '" aria-label="Auto District"><img src="' + root + 'assets/logo.png" alt="Auto District"></a>' +
+    '<nav class="nav-links">' + links() + '</nav>' +
+    '<div class="nav-cta">' + langPill +
+    '<a class="btn sm plain tel" data-tel href="#"><span data-tel="text"></span></a>' +
+    '<a class="btn sm red" data-wa href="#" target="_blank" rel="noopener"><span data-en="Book now">Afspraak maken</span>' + ARROW + '</a>' +
+    '<button class="nav-burger" aria-label="Menu" data-menu-open><i></i></button></div></div>';
+  const menuEl = $('[data-menu]');
+  if (menuEl) menuEl.innerHTML = '<button class="menu-x" aria-label="Sluiten" data-menu-close><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div><nav>' + links() + '</nav>' +
+    '<div class="menu-cta">' + langPill + '<a class="btn plain" data-tel href="#"><span data-tel="text"></span></a><a class="btn red" data-wa href="#" target="_blank" rel="noopener">WhatsApp' + ARROW + '</a></div></div>';
+  const footEl = $('[data-footer]');
+  if (footEl) footEl.innerHTML = '<div class="wrap foot-in">' +
+    '<div><img src="' + root + 'assets/logo.png" alt="Auto District"><p data-en="RDW-approved garage in Poeldijk. Honest, clear dealings, quality and expertise first.">RDW-erkend garagebedrijf in Poeldijk. Eerlijk en helder zaken doen, kwaliteit en deskundigheid voorop.</p></div>' +
+    '<div><h4 data-en="Services">Diensten</h4><ul>' + [['apk', 'APK-keuring', 'MOT (APK)'], ['onderhoud', 'Onderhoud', 'Maintenance'], ['reparatie', 'Reparatie', 'Repairs'], ['storingen', 'Storingen &amp; diagnose', 'Fault diagnosis'], ['dsg', 'DSG-versnellingsbak', 'DSG gearbox'], ['airco', 'Airco-service', 'Air conditioning'], ['bandenopslag', 'Bandenopslag', 'Tyre storage']].map(([a, nl, en]) => '<li><a href="' + root + 'diensten/#' + a + '" data-en="' + en + '">' + nl + '</a></li>').join('') + '</ul></div>' +
+    '<div><h4>Contact</h4><ul><li><a data-tel href="#"><span data-tel="text"></span></a></li><li><a data-mail href="#"><span data-mail="text"></span></a></li><li><a data-route href="#" target="_blank" rel="noopener">Jupiter 39-B, 2685 LV Poeldijk</a></li><li><a href="' + root + 'contact/" data-en="Opening hours">Openingstijden</a></li><li><a href="' + root + 'privacy/" data-en="Privacy">Privacyverklaring</a></li></ul></div></div>' +
+    '<div class="wrap foot-bot"><span>© 2026 Auto District · <span data-kvk></span></span><span><span data-en="Website by">Website door</span> <a href="https://webkreatives.com" style="color:var(--txt-2)">WebKreatives</a></span></div>';
+
   /* ── language: Dutch is the page, English lives in data-en ──────── */
   const T = {
     days: { nl: ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag'], en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] },
@@ -20,7 +46,7 @@
     wa: { nl: 'Hallo Auto District, ik wil graag een afspraak maken.', en: 'Hello Auto District, I would like to book an appointment.' },
     role: { 'Eigenaar · APK-keurmeester': 'Owner · MOT inspector', 'Monteur · APK-keurmeester': 'Mechanic · MOT inspector' },
     phName: { nl: 'Naam klant', en: 'Customer name' }, phWhen: { nl: 'Google · datum', en: 'Google · date' },
-    phText: { nl: 'Hier komt een uitgelichte Google-review. Tekst, naam en foto volgen van de klant.', en: 'A highlighted Google review goes here. Text, name and photo to follow from the client.' },
+    phText: { nl: 'Uitgelichte Google-review #. Tekst, naam en foto volgen van de klant.', en: 'Highlighted Google review #. Text, name and photo to follow from the client.' },
   };
   let lang = 'nl';
   try { lang = localStorage.getItem('ad-lang') === 'en' ? 'en' : 'nl'; } catch (e) {}
@@ -129,10 +155,10 @@
 
   /* ── hours ───────────────────────────────────────────────────────── */
   function renderHours() {
-    const hoursEl = $('[data-hours]'); if (!hoursEl || !AD.hours) return;
+    const hoursEl = $('[data-hours]'); if (!AD.hours) return;
     const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Amsterdam' }));
     const today = (now.getDay() + 6) % 7;
-    hoursEl.innerHTML = AD.hours.map((h, i) => '<tr' + (i === today ? ' class="today"' : '') + '><td>' + t('days')[i] + '</td><td>' + (h.open ? h.open + ' – ' + h.close : (h.note ? t('byAppt') : t('closed'))) + '</td></tr>').join('');
+    if (hoursEl) hoursEl.innerHTML = AD.hours.map((h, i) => '<tr' + (i === today ? ' class="today"' : '') + '><td>' + t('days')[i] + '</td><td>' + (h.open ? h.open + ' – ' + h.close : (h.note ? t('byAppt') : t('closed'))) + '</td></tr>').join('');
     const st = $('[data-openstate]'); if (!st) return;
     const h = AD.hours[today], mins = now.getHours() * 60 + now.getMinutes();
     const toM = s => { const [a, b] = s.split(':').map(Number); return a * 60 + b; };
@@ -149,7 +175,7 @@
   const initials = n => n.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
   function renderTeam() {
     const el = $('[data-team]'); if (!el || !AD.team) return;
-    el.innerHTML = AD.team.map((m, i) => '<div class="member" data-rv data-d="' + (i + 1) + '"><div class="core"><div class="av">' + (m.photo ? '<img src="' + m.photo + '" alt="' + m.name + '">' : initials(m.name === 'Naam' && lang === 'en' ? 'Name' : m.name)) + '</div><div><b>' + (m.name === 'Naam' && lang === 'en' ? 'Name' : m.name) + '</b><span>' + (lang === 'en' && T.role[m.role] ? T.role[m.role] : m.role) + '</span></div></div></div>').join('');
+    el.innerHTML = AD.team.map((m, i) => { const name = m.name === 'Naam' && lang === 'en' ? 'Name' : m.name; return '<div class="member" data-rv data-d="' + (i + 1) + '"><div class="av">' + (m.photo ? '<img src="' + root + m.photo + '" alt="' + name + '">' : initials(name)) + '</div><div><b>' + name + '</b><span>' + (lang === 'en' && T.role[m.role] ? T.role[m.role] : m.role) + '</span></div></div>'; }).join('');
     $$('[data-rv]', el).forEach(x => x.classList.add('in'));
   }
 
@@ -159,10 +185,11 @@
   function paintBadge(rating, count) { if (!badge || !rating) return; $('b', badge).textContent = rating.toFixed(1).replace('.', ','); $('.stars', badge).textContent = stars(rating); $('small', badge).textContent = t('basedOn') + count + t('greviews'); }
   function renderReviews() {
     const el = $('[data-reviews]'); if (!el || !AD.reviews) return;
-    el.innerHTML = AD.reviews.map((r, i) => {
+    el.innerHTML = AD.reviews.slice(0, 5).map((r, i) => {
       const ph = /^Naam klant/.test(r.name);
-      const name = ph ? t('phName') : r.name, when = ph ? t('phWhen') : r.when, text = ph ? t('phText') : r.text;
-      return '<article class="rev' + (ph ? ' ph' : '') + '" data-rv data-d="' + (i + 1) + '"><div class="core"><span class="q">“</span><div class="stars">' + stars(r.stars) + '</div><p>' + text + '</p><div class="who"><div class="av">' + (r.photo ? '<img src="' + r.photo + '" alt="' + name + '">' : initials(name)) + '</div><div><b>' + name + '</b><span>' + when + '</span></div></div></div></article>';
+      const name = ph ? t('phName') : r.name, when = ph ? t('phWhen') : r.when, text = ph ? t('phText').replace('#', i + 1) : r.text;
+      const pic = r.photo ? '<img src="' + root + r.photo + '" alt="' + name + '">' : '<span>' + (lang === 'en' ? 'Photo' : 'Foto') + ' ' + (i + 1) + '</span>';
+      return '<article class="rev' + (ph ? ' ph' : '') + '" data-rv data-d="' + (i + 1) + '"><div class="core"><div class="pic">' + pic + '</div><div class="stars">' + stars(r.stars) + '</div><p>' + text + '</p><div class="who"><b>' + name + '</b><span>' + when + '</span></div></div></article>';
     }).join('');
     if (el.getBoundingClientRect().top < innerHeight) $$('[data-rv]', el).forEach(x => x.classList.add('in'));
     else if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 }); $$('[data-rv]', el).forEach(x => io.observe(x)); }
