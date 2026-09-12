@@ -46,7 +46,7 @@
     wa: { nl: 'Hallo Auto District, ik wil graag een afspraak maken.', en: 'Hello Auto District, I would like to book an appointment.' },
     phName: { nl: 'Naam klant', en: 'Customer name' }, phWhen: { nl: 'Google · datum', en: 'Google · date' },
     phText: { nl: 'Uitgelichte Google-review #. Tekst, naam en foto volgen van de klant.', en: 'Highlighted Google review #. Text, name and photo to follow from the client.' },
-    viaGoogle: { nl: 'Klant via Google', en: 'Google customer' },
+    viaGoogle: { nl: 'Klant via Google', en: 'Google customer' }, yearsAgo: { nl: ' jaar geleden', en: ' years ago' }, yearAgo: { nl: ' jaar geleden', en: ' year ago' },
   };
   let lang = 'nl';
   try { lang = localStorage.getItem('ad-lang') === 'en' ? 'en' : 'nl'; } catch (e) {}
@@ -205,10 +205,11 @@
     const list = AD.reviews.slice(0, 5);
     el.innerHTML = list.map((r, i) => {
       const ph = !r.text || /^Naam klant/.test(r.name);
-      const name = ph ? t('phName') : (r.name || t('viaGoogle')), when = ph ? t('phWhen') : (r.when || 'Google'), text = ph ? t('phText').replace('#', i + 1) : r.text;
+      const name = ph ? t('phName') : (r.name || t('viaGoogle')), text = ph ? t('phText').replace('#', i + 1) : (lang === 'nl' && r.nl) || r.text;
+      const when = ph ? t('phWhen') : r.ago ? r.ago + t(r.ago === 1 ? 'yearAgo' : 'yearsAgo') : (r.when || 'Google');
       const slot = '<span>' + (lang === 'en' ? 'Photo' : 'Foto') + ' ' + (i + 1) + '</span>';
       const pic = r.photo ? '<img src="' + root + r.photo + '" alt="" decoding="async" onerror="this.remove()">' + slot : slot;
-      return '<article class="rslide"><div class="pic">' + pic + '</div><div class="txt"><div class="stars">' + stars(r.stars) + '</div><blockquote>' + text + '</blockquote><div class="who"><b>' + name + '</b>' + (when ? '<span>' + when + '</span>' : '') + '</div></div></article>';
+      return '<article class="rslide"><div class="pic">' + pic + '</div><div class="txt"><blockquote>' + text + '</blockquote><div class="who"><b>' + name + '</b><span class="stars" aria-label="' + r.stars + '/5">' + stars(r.stars) + '</span>' + (when ? '<span>' + when + '</span>' : '') + '</div></div></article>';
     }).join('');
     const dots = $('[data-rcar-dots]');
     if (dots) dots.innerHTML = list.map((_, i) => '<button type="button" data-go="' + i + '" aria-label="Review ' + (i + 1) + '"></button>').join('');
