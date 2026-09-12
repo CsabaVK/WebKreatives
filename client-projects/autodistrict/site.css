@@ -328,12 +328,6 @@ p{margin:0}
 .team-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
 .team-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,11,13,.85))}
 .team-photo figcaption{position:absolute;left:18px;bottom:16px;font-size:13px;color:var(--txt-2);z-index:1}
-.team-list{display:grid;gap:12px;margin-top:26px}
-.member{display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:14px;background:var(--core);border:1px solid var(--hair)}
-.member .av{width:54px;height:54px;border-radius:14px;background:var(--bg-3);border:1px solid var(--hair-2);display:grid;place-items:center;font-family:var(--fd);font-weight:700;color:var(--txt-2);overflow:hidden;flex-shrink:0}
-.member .av img{width:100%;height:100%;object-fit:cover}
-.member b{display:block;font-family:var(--fd);font-size:15px;font-weight:600}
-.member span{font-size:13px;color:var(--txt-3)}
 .story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,70px);align-items:start}
 @media(max-width:900px){.story{grid-template-columns:1fr}}
 .story p{font-size:16px;line-height:1.7;color:var(--txt-2);text-wrap:pretty}

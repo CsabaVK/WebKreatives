@@ -1,8 +1,8 @@
 /* Auto District — the facts the pages read from.
-   Everything a person might need to change lives here: hours, team,
+   Everything a person might need to change lives here: hours,
    highlighted reviews, company details. The pages render from this file,
    so nothing in the HTML has to be touched for a new opening time or a
-   new colleague. */
+   new review. */
 window.AD = {
   name: 'Auto District',
   phone: '+31 6 54 97 78 50',
@@ -28,14 +28,6 @@ window.AD = {
     { d: 'Vrijdag',   open: '08:00', close: '17:00' },
     { d: 'Zaterdag',  open: '08:30', close: '13:00' },
     { d: 'Zondag',    open: null,    close: null }
-  ],
-
-  /* Team. Photo paths are relative to the site root; leave photo empty for
-     an initial-avatar. TODO: names and roles from the client */
-  team: [
-    { name: 'Naam', role: 'Eigenaar · APK-keurmeester', photo: '' },
-    { name: 'Naam', role: 'Monteur · APK-keurmeester', photo: '' },
-    { name: 'Naam', role: 'Monteur · APK-keurmeester', photo: '' }
   ],
 
   /* Highlighted reviews: five real Google reviews, each with its own

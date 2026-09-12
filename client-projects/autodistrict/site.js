@@ -44,7 +44,6 @@
               en: [['Engine fault reported', [0, 1]], ['Battery not charging', [2]], ['ABS warning', [3, 0]], ['Coolant too hot', [4]], ['A/C not cooling', [5]]] },
     reading: { nl: 'Uitlezen met ODIS / Autel…', en: 'Reading out with ODIS / Autel…' }, fixed: { nl: 'Verholpen. Klaar voor de weg.', en: 'Fixed. Ready for the road.' },
     wa: { nl: 'Hallo Auto District, ik wil graag een afspraak maken.', en: 'Hello Auto District, I would like to book an appointment.' },
-    role: { 'Eigenaar · APK-keurmeester': 'Owner · MOT inspector', 'Monteur · APK-keurmeester': 'Mechanic · MOT inspector' },
     phName: { nl: 'Naam klant', en: 'Customer name' }, phWhen: { nl: 'Google · datum', en: 'Google · date' },
     phText: { nl: 'Uitgelichte Google-review #. Tekst, naam en foto volgen van de klant.', en: 'Highlighted Google review #. Text, name and photo to follow from the client.' },
     viaGoogle: { nl: 'Klant via Google', en: 'Google customer' },
@@ -62,7 +61,7 @@
     });
     $$('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
     document.title = l === 'en' ? document.title.replace('RDW-erkend garagebedrijf in Poeldijk · APK, onderhoud, reparatie', 'RDW-approved garage in Poeldijk · MOT, maintenance, repairs') : document.title;
-    renderHours(); renderTeam(); renderReviews(); paintBadge(AD.google && AD.google.rating, AD.google && AD.google.count);
+    renderHours(); renderReviews(); paintBadge(AD.google && AD.google.rating, AD.google && AD.google.count);
     $$('[data-wa]').forEach(a => { a.href = 'https://wa.me/' + AD.whatsapp + '?text=' + encodeURIComponent(t('wa')); });
   }
   $$('[data-lang]').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
@@ -172,14 +171,6 @@
     sts.forEach(st => { st.innerHTML = '<i></i>' + txt; st.classList.toggle('closed', !open); });
   }
   setInterval(renderHours, 60000);
-
-  /* ── team ────────────────────────────────────────────────────────── */
-  const initials = n => n.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-  function renderTeam() {
-    const el = $('[data-team]'); if (!el || !AD.team) return;
-    el.innerHTML = AD.team.map((m, i) => { const name = m.name === 'Naam' && lang === 'en' ? 'Name' : m.name; return '<div class="member" data-rv data-d="' + (i + 1) + '"><div class="av">' + (m.photo ? '<img src="' + root + m.photo + '" alt="' + name + '">' : initials(name)) + '</div><div><b>' + name + '</b><span>' + (lang === 'en' && T.role[m.role] ? T.role[m.role] : m.role) + '</span></div></div>'; }).join('');
-    $$('[data-rv]', el).forEach(x => x.classList.add('in'));
-  }
 
   /* ── reviews ─────────────────────────────────────────────────────── */
   const stars = n => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
