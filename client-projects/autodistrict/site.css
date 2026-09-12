@@ -238,9 +238,14 @@ p{margin:0}
 .lift .stripe{fill:var(--amber);opacity:.8}
 .lift .plat{fill:#2a2f36;stroke:rgba(255,255,255,.24)}
 .lift .body{fill:url(#carg);stroke:rgba(255,255,255,.32);stroke-width:2}
-.lift .glass{fill:#293039}
+.lift .glass{fill:#2b333d;stroke:rgba(255,255,255,.14);stroke-width:1}
+.lift .trim{fill:none;stroke:rgba(255,255,255,.14);stroke-width:1.2}
+.lift .handle,.lift .mirror{fill:#3a4048;stroke:rgba(255,255,255,.25);stroke-width:1}
+.lift .lamp-f{fill:rgba(255,255,255,.55)}
+.lift .lamp-r{fill:var(--red-2);opacity:.85}
+.lift .hub{fill:rgba(255,255,255,.4)}
 .lift .wheel{fill:#0a0b0d;stroke:rgba(255,255,255,.42);stroke-width:2}
-.lift .rim{fill:none;stroke:rgba(255,255,255,.32);stroke-width:1.5}
+.lift .rim{fill:none;stroke:rgba(255,255,255,.34);stroke-width:1.5}
 .lift .eng{fill:#3a3f47;stroke:rgba(255,255,255,.35);stroke-width:1.5}
 .lift .eng.new{fill:#2b3038;stroke:var(--red-2)}
 .lift .cable{stroke:rgba(255,255,255,.5);stroke-width:2}
@@ -259,9 +264,9 @@ p{margin:0}
 .lift .spark{opacity:0;transform-origin:center;transform-box:fill-box;animation:sparks 22s linear infinite}
 .lift .spark:nth-of-type(2){animation-delay:.3s}
 .lift .ok{opacity:0;transform-origin:center;transform-box:fill-box;animation:okpop 22s var(--out) infinite}
-@keyframes car{0%{transform:translateX(-560px)}9%,12%{transform:translateX(0)}17%,61%{transform:translate(0,-120px)}66%,80%{transform:translateX(0)}100%{transform:translateX(560px)}}
+@keyframes car{0%{transform:translateX(-560px)}9%,12%{transform:translateX(0)}17%,61%{transform:translate(0,-120px)}66%,80%{transform:translateX(0)}100%{transform:translateX(-560px)}}
 @keyframes rise{0%,12%{transform:translateY(0)}17%,61%{transform:translateY(-120px)}66%,100%{transform:translateY(0)}}
-@keyframes roll{0%{transform:rotate(0)}9%{transform:rotate(720deg)}80%{transform:rotate(720deg)}100%{transform:rotate(1440deg)}}
+@keyframes roll{0%{transform:rotate(0)}9%{transform:rotate(-720deg)}80%{transform:rotate(-720deg)}100%{transform:rotate(0)}}
 @keyframes engold{0%,21%{transform:translateY(0)}26%,31%{transform:translateY(-72px)}37%,100%{transform:translateY(-560px)}}
 @keyframes engnew{0%,37%{transform:translateY(-560px)}43%,48%{transform:translateY(-72px)}53%,100%{transform:translateY(0)}}
 @keyframes cablenew{0%,54%{transform:scaleY(1)}59%,100%{transform:scaleY(0)}}
@@ -468,4 +473,11 @@ p{margin:0}
   .lift .eng-old{transform:translateY(-560px)}.lift .cable-new{transform:scaleY(0)}
   .art .draw,.art .clip,.art .tick1,.art .tick2,.art .tick3,.art .okmark{stroke-dashoffset:0}
   .art .stack{transform:none;opacity:1}
+}
+
+/* ── cursor: a check-engine lamp, and a wrench over anything clickable ── */
+@media(hover:hover) and (pointer:fine){
+  html,body{cursor:url(assets/cursor-engine.png) 16 16,auto}
+  a,button,[role=button],label,select,summary,.btn,.rcar-btn,.rcar-dots button,.lang button,input[type=submit]{cursor:url(assets/cursor-wrench.png) 5 5,pointer}
+  input:not([type=submit]),textarea{cursor:text}
 }

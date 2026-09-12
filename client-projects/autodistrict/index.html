@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=7">
+<link rel="stylesheet" href="site.css?v=9">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AutoRepair","name":"Auto District","telephone":"+31654977850","email":"info@autodistrict.nl",
  "address":{"@type":"PostalAddress","streetAddress":"Jupiter 39-B","postalCode":"2685 LV","addressLocality":"Poeldijk","addressCountry":"NL"},
@@ -230,16 +230,21 @@
         <rect class="post" x="496" y="230" width="30" height="240" rx="4"/><rect class="stripe" x="506" y="240" width="10" height="220" rx="2" opacity=".18"/>
         <g class="carriage"><rect class="stripe" x="30" y="432" width="38" height="22" rx="3"/><rect class="stripe" x="492" y="432" width="38" height="22" rx="3"/></g>
         <g class="rise"><rect class="plat" x="64" y="440" width="432" height="14" rx="3"/><path d="M64 447h432" stroke="rgba(255,255,255,.12)"/></g>
-        <g class="car"><g transform="translate(0 18)">
+        <g class="car"><g transform="translate(560 18) scale(-1 1)">
           <!-- engines sit behind the body: hidden in the bay, visible once lifted -->
           <g class="eng-old"><line class="cable cable-old" x1="146" y1="368" x2="146" y2="-600"/><rect class="eng" x="116" y="374" width="60" height="18" rx="3"/><rect class="eng" x="122" y="368" width="8" height="6" rx="1"/><rect class="eng" x="134" y="368" width="8" height="6" rx="1"/><rect class="eng" x="146" y="368" width="8" height="6" rx="1"/><rect class="eng" x="158" y="368" width="8" height="6" rx="1"/></g>
           <g class="eng-new"><line class="cable cable-new" x1="146" y1="368" x2="146" y2="-600"/><rect class="eng new" x="116" y="374" width="60" height="18" rx="3"/><rect class="eng new" x="122" y="368" width="8" height="6" rx="1"/><rect class="eng new" x="134" y="368" width="8" height="6" rx="1"/><rect class="eng new" x="146" y="368" width="8" height="6" rx="1"/><rect class="eng new" x="158" y="368" width="8" height="6" rx="1"/></g>
-          <path class="body" d="M86 402v-24c0-8 6-14 14-16l46-8 46-50c6-7 14-10 24-10h140c12 0 22 4 30 12l40 46 30 6c10 2 16 10 16 20v16c0 4-2 6-6 6z"/>
-          <path class="glass" d="M160 346l36-40c4-4 10-6 16-6h96v46zM324 300h44c8 0 14 3 20 9l18 24H324z"/>
-          <path d="M104 372h356" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
-          <path d="M104 360l40-6" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
-          <g class="wheel-g"><circle class="wheel" cx="164" cy="392" r="30"/><circle class="rim" cx="164" cy="392" r="16"/><path class="rim" d="M164 376v32M148 392h32"/><circle class="rim" cx="164" cy="392" r="6"/></g>
-          <g class="wheel-g"><circle class="wheel" cx="400" cy="392" r="30"/><circle class="rim" cx="400" cy="392" r="16"/><path class="rim" d="M400 376v32M384 392h32"/><circle class="rim" cx="400" cy="392" r="6"/></g>
+          <!-- a Golf-ish hatchback, drawn nose-left and mirrored so it drives in nose-first -->
+          <path class="body" d="M98 410h35a36 36 0 0 1 62 0h174a36 36 0 0 1 62 0h21c6 0 10-4 10-10v-30c0-8-4-14-10-18l-50-52c-4-4-10-6-16-6H256c-10 0-18 4-24 10l-40 34-90 12c-8 1-14 8-14 16v36c0 5 4 8 10 8z"/>
+          <path class="glass" d="M206 338l30-28c4-4 9-6 14-6h50v34zM306 304h64v34h-64zM376 304h10c5 0 10 2 13 6l28 28H376z"/>
+          <path class="trim" d="M302 342v60M374 342v60"/>
+          <path class="trim" d="M110 404h344"/>
+          <rect class="handle" x="278" y="352" width="14" height="4" rx="2"/><rect class="handle" x="350" y="352" width="14" height="4" rx="2"/>
+          <rect class="mirror" x="196" y="330" width="10" height="9" rx="2"/>
+          <path class="lamp-f" d="M92 358c8-3 16-4 26-4v10c-10 0-18 1-26 3z"/>
+          <path class="lamp-r" d="M452 354h6c2 0 4 2 4 4v10c0 2-2 4-4 4h-6z"/>
+          <g class="wheel-g"><circle class="wheel" cx="164" cy="392" r="30"/><circle class="rim" cx="164" cy="392" r="17"/><path class="rim" d="M164 375v34M147 392h34M152 380l24 24M176 380l-24 24"/><circle class="hub" cx="164" cy="392" r="4"/></g>
+          <g class="wheel-g"><circle class="wheel" cx="400" cy="392" r="30"/><circle class="rim" cx="400" cy="392" r="17"/><path class="rim" d="M400 375v34M383 392h34M388 380l24 24M412 380l-24 24"/><circle class="hub" cx="400" cy="392" r="4"/></g>
           <g class="spark"><path d="M128 336l6 8-6 8-6-8z"/></g>
           <g class="spark"><path d="M176 334l4 6-4 6-4-6z"/></g>
           <g class="ok"><circle class="okb" cx="452" cy="276" r="16"/><path class="oktick" d="M444 276l6 6 10-12"/></g>
