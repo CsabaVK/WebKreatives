@@ -207,11 +207,18 @@
     $$('[data-rcar-dots] button').forEach((d, j) => d.classList.toggle('on', j === rcarIdx));
     const cur = $('[data-rcar-cur]'); if (cur) cur.textContent = String(rcarIdx + 1).padStart(2, '0');
     if (byUser) { rcarUser = true; clearTimeout(rcarTimer); }
+    rcarFit();
+  }
+  // on phones the slides stack, so the frame follows the current slide's height instead of the tallest one
+  function rcarFit() {
+    const track = $('[data-reviews]'), car = $('[data-rcar]'); if (!track || !car || !track.children.length) return;
+    car.style.height = window.matchMedia('(max-width:820px)').matches ? track.children[rcarIdx].offsetHeight + 'px' : '';
   }
   (function rcarInit() {
     const nav = $('[data-rcar-nav]'), car = $('[data-rcar]'); if (!nav || !car) return;
     $$('.rcar-btn', nav).forEach(b => b.addEventListener('click', () => rcarGo(rcarIdx + (+b.dataset.dir), true)));
     nav.addEventListener('click', e => { const d = e.target.closest('[data-go]'); if (d) rcarGo(+d.dataset.go, true); });
+    window.addEventListener('resize', rcarFit); window.addEventListener('load', rcarFit);
     let x0 = null;
     car.addEventListener('pointerdown', e => { x0 = e.clientX; }, { passive: true });
     car.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) rcarGo(rcarIdx + (dx < 0 ? 1 : -1), true); }, { passive: true });
