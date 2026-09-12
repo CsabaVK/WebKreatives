@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>{{doc_title}} · {{company}} · WebKreatives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+/* ═══ AGREEMENT ═══════════════════════════════════════════════════════
+   The one document that gets printed and signed, so it is paper-coloured:
+   the studio's type and red, on cream. One language per build; the
+   general terms come in from /terms as an annex so they cannot drift.   */
+:root{
+  --paper:#f6f2ea;--paper-2:#ede8de;--ink:#0c0a09;--ink-2:#3a3531;--ink-mute:#6f685f;--ink-faint:#9a9385;
+  --red:#df3821;--rule:rgba(12,10,9,.12);--rule-hard:rgba(12,10,9,.28);--red-rule:rgba(223,56,33,.28);
+  --f-display:'Unbounded',system-ui,sans-serif;--f-body:'Figtree',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+b,strong{font-weight:600}
+.pg{position:relative;width:210mm;min-height:297mm;margin:0 auto;padding:20mm 20mm 18mm;display:flex;flex-direction:column;background:var(--paper)}
+.pg + .pg{border-top:1px solid var(--rule)}
+.pg-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}
+.pg-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:900;font-size:13px;letter-spacing:-.02em}
+.pg-logo i{width:22px;height:22px;border-radius:6px;background:#0d0d0d;position:relative;flex-shrink:0}
+.pg-logo i::before{content:'';position:absolute;left:3px;bottom:3px;width:7px;height:3px;border-radius:1px;background:var(--red)}
+.pg-logo i::after{content:'';position:absolute;left:12px;bottom:3px;width:3px;height:3px;border-radius:1px;background:#D4E157}
+.pg-kicker{font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.pg-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:16px;font-family:var(--f-display);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-display);font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.eyebrow::before{content:'';width:26px;height:1px;background:currentColor}
+h1{font-family:var(--f-display);font-weight:900;font-size:30px;line-height:1.04;letter-spacing:-.04em;margin:14px 0 10px;max-width:18ch}
+h2{font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.02em;margin:22px 0 8px;display:flex;gap:12px;align-items:baseline}
+h2 span{color:var(--red);font-weight:400;font-size:11px}
+p,li{font-size:11.6px;line-height:1.62;color:var(--ink-2);margin:0 0 7px}
+ul{margin:0 0 8px;padding-left:16px}
+li{margin-bottom:4px}
+.lede{font-size:13.5px;line-height:1.6;color:var(--ink-2);max-width:60ch;margin:0 0 18px;font-weight:300}
+.parties{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 4px}
+.party{padding:14px 16px;border:1px solid var(--rule-hard);border-radius:10px;background:#fff}
+.party b.t{display:block;font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.party div{font-size:11.6px;line-height:1.55;color:var(--ink-2)}
+.party div b{color:var(--ink)}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:5px 14px;font-size:11.6px;line-height:1.55;margin:4px 0 8px}
+.kv span:nth-child(odd){color:var(--ink-faint);font-family:var(--f-display);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;padding-top:3px}
+.kv span:nth-child(even) b{color:var(--ink)}
+.sig{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.sig div{padding:16px 16px 14px;border:1px solid var(--rule-hard);border-radius:10px;background:#fff;min-height:130px;display:flex;flex-direction:column}
+.sig b.t{display:block;font-family:var(--f-display);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.sig .line{margin-top:auto;border-top:1px solid var(--ink);padding-top:6px;font-size:10px;color:var(--ink-faint);display:flex;justify-content:space-between}
+.sig .name{font-size:11.6px;color:var(--ink-2);margin-bottom:34px}
+.annex h2,.annex h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;margin:16px 0 6px;font-size:11.5px;display:block}
+.annex p,.annex li{font-size:10.4px;line-height:1.58;color:var(--ink-2)}
+.annex .legal-note{font-size:10px;color:var(--ink-mute);padding:10px 12px;border:1px solid var(--rule);border-radius:8px;margin-bottom:12px}
+.annex .legal-table{display:grid;grid-template-columns:150px 1fr;gap:3px 12px;font-size:10.4px;margin:4px 0 8px}
+.annex .legal-table strong{color:var(--ink-faint);font-weight:500}
+.annex a{color:var(--red)}
+.note{margin-top:14px;padding:12px 14px;border:1px solid var(--rule);border-left:2px solid var(--red);border-radius:8px;font-size:11px;line-height:1.55;color:var(--ink-2)}
+@page{size:A4;margin:0}
+@media print{
+  html,body{background:var(--paper)}
+  .pg{width:210mm;min-height:297mm;margin:0;break-after:page;page-break-after:always;border-top:0!important}
+  .pg.last{break-after:auto;page-break-after:auto}
+  .annex{break-before:page}
+  /* the annex flows over as many pages as it needs; no page-sized box, or the footer strands on a blank page */
+  .pg.annex{display:block;min-height:0;height:auto}
+  .annex .pg-foot{margin-top:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ ENGLISH ═════════════════════════════════════════════════════════ -->
+<div data-lang="en">
+<section class="pg">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-kicker">Agreement · {{date_long}}</div></div>
+  <span class="eyebrow">Agreement</span>
+  <h1>Website build and hosting for {{company}}</h1>
+  <p class="lede">This agreement covers two things: the one-off build of a website for {{domain}}, and the monthly plan that keeps it online afterwards. The general terms at webkreatives.com/terms are attached as Annex A and form part of it.</p>
+
+  <div class="parties">
+    <div class="party"><b class="t">Service provider</b><div><b>WebKreatives</b><br>Amsterdam, the Netherlands<br>Chamber of Commerce (KVK) 94051097<br>{{our_email}}</div></div>
+    <div class="party"><b class="t">Client</b><div><b>{{company}}</b><br>{{contact}}<br>{{client_address}}<br>{{client_kvk}}{{client_email}}</div></div>
+  </div>
+
+  <h2><span>1</span>The work</h2>
+  <p>WebKreatives designs and builds a website for the client, to be published at <b>{{domain}}</b>. Scope: <b>{{scope}}</b>. The client sees a working preview before anything is invoiced. The client's written approval of the preview (email or message) is the moment the build is accepted; up to two rounds of changes of reasonable scope are included after approval, in line with the original brief. Work beyond that scope is quoted separately before it starts.</p>
+
+  <h2><span>2</span>Price and payment for the build</h2>
+  <div class="kv">
+    <span>Build price</span><span><b>{{price}}</b> fixed, excluding VAT</span>
+    <span>Invoiced</span><span>In one go, via Stripe, on written approval of the preview. No deposit.</span>
+    <span>Due</span><span>Within 14 days of the invoice date. The site goes live once the invoice is paid.</span>
+  </div>
+  <p>Up to approval of the preview the client may end the project at no cost. After approval the build price remains due. VAT is charged according to where the client is based, as set out in Annex A.</p>
+
+  <div class="pg-foot"><span>WebKreatives · {{company}} · Agreement</span><span>1 / 3</span></div>
+</section>
+
+<section class="pg">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-kicker">Agreement · {{company}}</div></div>
+
+  <h2><span>3</span>Hosting, maintenance and support</h2>
+  <div class="kv">
+    <span>Plan</span><span><b>{{plan_name}}</b> · {{plan_desc}}</span>
+    <span>Price</span><span><b>{{hosting}}</b> per month, excluding VAT, billed monthly via Stripe</span>
+    <span>Starts</span><span>The day the site goes live</span>
+    <span>Minimum term</span><span>{{plan_term}}, then month to month</span>
+    <span>Notice</span><span>One month, by email, after the minimum term</span>
+  </div>
+  <p>The plan includes the domain connection, hosting, an always-valid SSL certificate, daily backups kept for 30 days, uptime monitoring, and the changes described for the plan on webkreatives.com/services/hosting at the date of this agreement. Larger work outside the plan's allowance is quoted before it starts. WebKreatives may adjust the monthly price with 30 days' written notice, never during a minimum term.</p>
+
+  <h2><span>4</span>Ownership</h2>
+  <ul>
+    <li>The domain is and stays registered in the client's name. WebKreatives is granted access as a user and never becomes the registrant.</li>
+    <li>On payment of the build price, all files of the website belong to the client. The client can request a full copy at any time.</li>
+    <li>Accounts opened for the site (hosting, Google, analytics) are opened in the client's name where the provider allows it; WebKreatives is added as a user or manager.</li>
+    <li>The client keeps ownership of all content they supply and confirms they hold the rights to use it. WebKreatives may show the finished site in its portfolio unless the client objects in writing.</li>
+  </ul>
+    <h2><span>5</span>What the client provides</h2>
+  <p>Logo, photos, the facts of the business and any text to keep, within a reasonable time; access to the domain registrar and, where the plan includes it, to the Google Business Profile, by inviting WebKreatives from the client's own login. Passwords are never shared. If the client is silent for 30 calendar days the project may be paused; after 60 days it may be ended, on the basis set out in Annex A.</p>
+
+  <div class="pg-foot"><span>WebKreatives · {{company}} · Agreement</span><span>2 / 3</span></div>
+</section>
+
+<section class="pg">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-kicker">Agreement · {{company}}</div></div>
+
+  <h2><span>6</span>Availability and support</h2>
+  <p>WebKreatives keeps the site online with best-effort availability, monitors it, and restores it from backup where needed. Requests are answered within one business day. Small text and image changes are made within a business day on every plan; larger work follows the plan's allowance.</p>
+
+  <h2><span>7</span>Ending the agreement</h2>
+  <p>The build part of this agreement ends when the site is live and the build invoice is paid. The hosting plan runs for its minimum term and then month to month, ending one month after either party gives notice by email. On ending, WebKreatives hands over all files, removes itself from the client's accounts, and the client's domain and email are unaffected. Either party may end the agreement immediately if the other seriously breaches it and does not put it right within 14 days of a written request.</p>
+
+  <h2><span>8</span>Liability, law and the general terms</h2>
+  <p>Liability is limited as set out in Annex A. Dutch law applies; disputes go to the competent court in Amsterdam. The general terms in Annex A apply; where this agreement and Annex A differ, this agreement prevails. Changes to this agreement are made in writing. A scanned or electronic signature has the same effect as a handwritten one.</p>
+
+  <div class="note"><b>Plain summary.</b> You see the site before you pay. You pay once, then a monthly plan. Everything stays in your name. Leave after the minimum term with one month's notice.</div>
+
+  <div class="sig">
+    <div><b class="t">WebKreatives</b><div class="name">{{our_name}}<br>Amsterdam</div><div class="line"><span>Signature</span><span>Date</span></div></div>
+    <div><b class="t">{{company}}</b><div class="name">{{contact}}<br>{{client_city}}</div><div class="line"><span>Signature</span><span>Date</span></div></div>
+  </div>
+  <div class="pg-foot"><span>WebKreatives · {{company}} · Agreement</span><span>3 / 3</span></div>
+</section>
+
+<section class="pg last annex">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-kicker">Annex A · General terms and conditions</div></div>
+  <span class="eyebrow">Annex A</span>
+  <h1 style="font-size:22px">General terms and conditions</h1>
+  <p class="lede" style="font-size:11.5px">As published at webkreatives.com/terms on {{date_long}}. The same text, reproduced here so both parties hold the version that applied when they signed.</p>
+  {{terms_html}}
+  <div class="pg-foot"><span>WebKreatives · {{company}} · Annex A</span><span>webkreatives.com/terms</span></div>
+</section>
+</div>
+
+<!-- ══ NEDERLANDS ══════════════════════════════════════════════════════ -->
+<div data-lang="nl">
+<section class="pg">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-kicker">Overeenkomst · {{date_long}}</div></div>
+  <span class="eyebrow">Overeenkomst</span>
+  <h1>Website en hosting voor {{company}}</h1>
+  <p class="lede">Deze overeenkomst regelt twee dingen: de eenmalige bouw van een website voor {{domain}}, en het maandelijkse pakket dat hem daarna online houdt. De algemene voorwaarden op webkreatives.com/terms zijn als Bijlage A bijgevoegd en maken er deel van uit.</p>
+
+  <div class="parties">
+    <div class="party"><b class="t">Opdrachtnemer</b><div><b>WebKreatives</b><br>Amsterdam, Nederland<br>KVK 94051097<br>{{our_email}}</div></div>
+    <div class="party"><b class="t">Opdrachtgever</b><div><b>{{company}}</b><br>{{contact}}<br>{{client_address}}<br>{{client_kvk}}{{client_email}}</div></div>
+  </div>
+
+  <h2><span>1</span>Het werk</h2>
+  <p>WebKreatives ontwerpt en bouwt een website voor de opdrachtgever, te publiceren op <b>{{domain}}</b>. Omvang: <b>{{scope}}</b>. De opdrachtgever ziet een werkende preview voordat er iets wordt gefactureerd. De schriftelijke goedkeuring van de preview (e-mail of bericht) is het moment waarop de bouw wordt aanvaard; daarna zijn tot twee rondes wijzigingen van redelijke omvang inbegrepen, in lijn met de oorspronkelijke briefing. Werk buiten die omvang krijgt vooraf een aparte prijs.</p>
+
+  <h2><span>2</span>Prijs en betaling van de bouw</h2>
+  <div class="kv">
+    <span>Bouwprijs</span><span><b>{{price}}</b> vast, exclusief btw</span>
+    <span>Facturatie</span><span>In één keer, via Stripe, bij schriftelijke goedkeuring van de preview. Geen aanbetaling.</span>
+    <span>Betaaltermijn</span><span>Binnen 14 dagen na factuurdatum. De site gaat live zodra de factuur is voldaan.</span>
+  </div>
+  <p>Tot aan de goedkeuring van de preview kan de opdrachtgever het project kosteloos beëindigen. Na goedkeuring blijft de bouwprijs verschuldigd. Btw wordt berekend naar de vestigingsplaats van de opdrachtgever, zoals beschreven in Bijlage A.</p>
+
+  <div class="pg-foot"><span>WebKreatives · {{company}} · Overeenkomst</span><span>1 / 3</span></div>
+</section>
+
+<section class="pg">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-kicker">Overeenkomst · {{company}}</div></div>
+
+  <h2><span>3</span>Hosting, onderhoud en support</h2>
+  <div class="kv">
+    <span>Pakket</span><span><b>{{plan_name}}</b> · {{plan_desc}}</span>
+    <span>Prijs</span><span><b>{{hosting}}</b> per maand, exclusief btw, maandelijks gefactureerd via Stripe</span>
+    <span>Ingang</span><span>De dag dat de site live gaat</span>
+    <span>Minimumduur</span><span>{{plan_term}}, daarna per maand</span>
+    <span>Opzegtermijn</span><span>Eén maand, per e-mail, na de minimumduur</span>
+  </div>
+  <p>Het pakket omvat de domeinkoppeling, hosting, een altijd geldig SSL-certificaat, dagelijkse back-ups die 30 dagen worden bewaard, uptime-monitoring, en de wijzigingen zoals voor het pakket beschreven op webkreatives.com/services/hosting op de datum van deze overeenkomst. Groter werk buiten de ruimte van het pakket krijgt vooraf een prijs. WebKreatives kan de maandprijs aanpassen met 30 dagen schriftelijke kennisgeving, nooit tijdens een minimumduur.</p>
+
+  <h2><span>4</span>Eigendom</h2>
+  <ul>
+    <li>Het domein staat en blijft op naam van de opdrachtgever. WebKreatives krijgt toegang als gebruiker en wordt nooit de houder.</li>
+    <li>Bij betaling van de bouwprijs zijn alle bestanden van de website eigendom van de opdrachtgever. De opdrachtgever kan op elk moment een volledige kopie opvragen.</li>
+    <li>Accounts die voor de site worden geopend (hosting, Google, statistieken) worden op naam van de opdrachtgever geopend waar de aanbieder dat toestaat; WebKreatives wordt toegevoegd als gebruiker of beheerder.</li>
+    <li>De opdrachtgever blijft eigenaar van alle aangeleverde content en bevestigt daarvoor de rechten te hebben. WebKreatives mag de opgeleverde site in zijn portfolio tonen, tenzij de opdrachtgever daar schriftelijk bezwaar tegen maakt.</li>
+  </ul>
+    <h2><span>5</span>Wat de opdrachtgever aanlevert</h2>
+  <p>Logo, foto's, de feiten van het bedrijf en eventuele teksten die mee moeten, binnen redelijke tijd; toegang tot de domeinregistrar en, als het pakket dat omvat, tot het Google Bedrijfsprofiel, door WebKreatives uit te nodigen vanuit de eigen login. Wachtwoorden worden nooit gedeeld. Blijft de opdrachtgever 30 kalenderdagen stil, dan kan het project worden gepauzeerd; na 60 dagen kan het worden beëindigd, op de wijze zoals beschreven in Bijlage A.</p>
+
+  <div class="pg-foot"><span>WebKreatives · {{company}} · Overeenkomst</span><span>2 / 3</span></div>
+</section>
+
+<section class="pg">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-kicker">Overeenkomst · {{company}}</div></div>
+
+  <h2><span>6</span>Beschikbaarheid en support</h2>
+  <p>WebKreatives houdt de site naar beste vermogen online, bewaakt hem en herstelt hem waar nodig vanuit een back-up. Verzoeken worden binnen één werkdag beantwoord. Kleine tekst- en beeldwijzigingen worden bij elk pakket binnen een werkdag doorgevoerd; groter werk volgt de ruimte van het pakket.</p>
+
+  <h2><span>7</span>Einde van de overeenkomst</h2>
+  <p>Het bouwdeel van deze overeenkomst eindigt zodra de site live staat en de bouwfactuur is voldaan. Het hostingpakket loopt de minimumduur en daarna per maand, en eindigt één maand nadat een van beide partijen per e-mail heeft opgezegd. Bij beëindiging draagt WebKreatives alle bestanden over, verwijdert zichzelf uit de accounts van de opdrachtgever, en blijven domein en e-mail van de opdrachtgever ongemoeid. Ieder van beide partijen kan de overeenkomst per direct beëindigen als de ander ernstig tekortschiet en dat niet binnen 14 dagen na schriftelijk verzoek herstelt.</p>
+
+  <h2><span>8</span>Aansprakelijkheid, recht en de algemene voorwaarden</h2>
+  <p>De aansprakelijkheid is beperkt zoals beschreven in Bijlage A. Nederlands recht is van toepassing; geschillen worden voorgelegd aan de bevoegde rechter in Amsterdam. De algemene voorwaarden in Bijlage A zijn van toepassing; waar deze overeenkomst en Bijlage A verschillen, gaat deze overeenkomst voor. Wijzigingen worden schriftelijk overeengekomen. Een gescande of elektronische handtekening heeft dezelfde werking als een handgeschreven.</p>
+
+  <div class="note"><b>In gewone taal.</b> Je ziet de site voordat je betaalt. Je betaalt één keer, daarna een maandpakket. Alles blijft op jouw naam. Na de minimumduur weggaan kan met één maand opzegtermijn.</div>
+
+  <div class="sig">
+    <div><b class="t">WebKreatives</b><div class="name">{{our_name}}<br>Amsterdam</div><div class="line"><span>Handtekening</span><span>Datum</span></div></div>
+    <div><b class="t">{{company}}</b><div class="name">{{contact}}<br>{{client_city}}</div><div class="line"><span>Handtekening</span><span>Datum</span></div></div>
+  </div>
+  <div class="pg-foot"><span>WebKreatives · {{company}} · Overeenkomst</span><span>3 / 3</span></div>
+</section>
+
+<section class="pg last annex">
+  <div class="pg-top"><div class="pg-logo"><i></i>WebKreatives</div><div class="pg-kicker">Bijlage A · Algemene voorwaarden</div></div>
+  <span class="eyebrow">Bijlage A</span>
+  <h1 style="font-size:22px">Algemene voorwaarden</h1>
+  <p class="lede" style="font-size:11.5px">Zoals gepubliceerd op webkreatives.com/terms op {{date_long}}. Dezelfde tekst, hier opgenomen zodat beide partijen de versie hebben die gold bij ondertekening.</p>
+  {{terms_html}}
+  <div class="pg-foot"><span>WebKreatives · {{company}} · Bijlage A</span><span>webkreatives.com/terms</span></div>
+</section>
+</div>
+
+</body>
+</html>
