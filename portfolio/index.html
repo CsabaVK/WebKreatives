@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Web design portfolio: live sites by sector &mdash; WebKreatives</title>
-<meta name="description" content="Website design examples for restaurants, salons, interior studios, photographers, bakeries and more. Every build is a live site you can open and click through.">
+<meta name="description" content="Website design examples for garages, restaurants, salons, interior studios, photographers, bakeries and more. Every build is a live site you can open and click through.">
 <link rel="canonical" href="https://webkreatives.com/portfolio/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://webkreatives.com/portfolio/">
 <meta property="og:title" content="Web design portfolio: live sites by sector — WebKreatives">
-<meta property="og:description" content="Website design examples for restaurants, salons, interior studios, photographers, bakeries and more. Every build is a live site you can open and click through.">
+<meta property="og:description" content="Website design examples for garages, restaurants, salons, interior studios, photographers, bakeries and more. Every build is a live site you can open and click through.">
 <meta property="og:image" content="https://webkreatives.com/og/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -100,6 +100,7 @@
 .pf-card[data-category="finance"]      .wk-meta{color:var(--lime)}
 .pf-card[data-category="health"]       .wk-meta{color:var(--blue)}
 .pf-card[data-category="restaurant"]   .wk-meta{color:oklch(72% .18 25)}
+.pf-card[data-category="automotive"]   .wk-meta{color:oklch(68% .2 28)}
 .pf-card[data-category="beauty"]       .wk-meta{color:oklch(82% .14 340)}
 .pf-card[data-category="creative"]     .wk-meta{color:oklch(80% .12 290)}
 .pf-card[data-category="interior"]     .wk-meta{color:oklch(82% .09 68)}
@@ -307,6 +308,7 @@
 <div class="pf-filters">
   <div class="pf-filters-in">
       <button class="pf-f is-on" data-filter="all" data-nl="Alles" data-en="All">All</button>
+      <button class="pf-f" data-filter="automotive" data-nl="Automotive" data-en="Automotive">Automotive</button>
       <button class="pf-f" data-filter="restaurant" data-nl="Restaurant" data-en="Restaurant">Restaurant</button>
       <button class="pf-f" data-filter="beauty" data-nl="Beauty" data-en="Beauty">Beauty</button>
       <button class="pf-f" data-filter="creative" data-nl="Creatief" data-en="Creative">Creative</button>
@@ -323,6 +325,31 @@
     <div class="pf-grid" id="pfGrid">
 
 
+    <a class="pf-card" data-tilt="3" data-cursor-label="View live" href="/client-projects/autodistrict/" target="_blank" rel="noopener"
+       data-category="automotive" data-reveal data-reveal-delay=".00">
+      <div class="wk-frame pf-shot">
+        <div class="wk-frame-bar">
+          <span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span>
+          <span class="wk-frame-url">webkreatives.com/autodistrict</span>
+        </div>
+        <img alt="Auto District" src="/assets/screenshots/autodistrict.webp" srcset="/assets/screenshots/autodistrict-640.webp 640w, /assets/screenshots/autodistrict.webp 1280w" sizes="(max-width:900px) 92vw, 33vw" width="1280" height="900" loading="lazy" decoding="async">
+        <span class="pf-shot-go"><span data-nl="Bekijk live" data-en="View live">View live</span> <span class="wk-arrow">&rarr;</span></span>
+      </div>
+      <div class="pf-meta">
+        <span class="pf-n">01</span>
+        <span class="wk-meta" data-nl="Automotive" data-en="Automotive">Automotive</span>
+      </div>
+      <h3>Auto District</h3>
+      <p class="pf-desc" data-nl="Voor een RDW-erkend garagebedrijf dat vertrouwen moet uitstralen. Dashboard-animatie die een storing verhelpt, live openingstijden, Google-reviews en een aparte dienstenpagina met bewegende illustraties." data-en="For an RDW-approved garage that has to project trust. A dashboard animation that clears a fault, live opening hours, Google reviews and a separate services page with animated illustrations.">For an RDW-approved garage that has to project trust. A dashboard animation that clears a fault, live opening hours, Google reviews and a separate services page with animated illustrations.</p>
+      <div class="pf-foot">
+        <span class="pf-fig">
+          <span class="pf-fig-n">7</span>
+          <span class="pf-fig-l" data-nl="diensten, elk met eigen animatie" data-en="services, each with its own animation">services, each with its own animation</span>
+        </span>
+        <span class="wk-row-go"><span data-nl="Bekijk het project" data-en="View the project">View the project</span><span>&rarr;</span></span>
+      </div>
+    </a>
+
     <a class="pf-card" data-tilt="3" data-cursor-label="View live" href="/client-projects/leyenburger/" target="_blank" rel="noopener"
        data-category="restaurant" data-reveal data-reveal-delay=".16">
       <div class="wk-frame pf-shot">
@@ -334,7 +361,7 @@
         <span class="pf-shot-go"><span data-nl="Bekijk live" data-en="View live">View live</span> <span class="wk-arrow">&rarr;</span></span>
       </div>
       <div class="pf-meta">
-        <span class="pf-n">01</span>
+        <span class="pf-n">02</span>
         <span class="wk-meta" data-nl="Restaurant" data-en="Restaurant">Restaurant</span>
       </div>
       <h3>Leyenburger Grill</h3>
@@ -359,7 +386,7 @@
         <span class="pf-shot-go"><span data-nl="Bekijk live" data-en="View live">View live</span> <span class="wk-arrow">&rarr;</span></span>
       </div>
       <div class="pf-meta">
-        <span class="pf-n">02</span>
+        <span class="pf-n">03</span>
         <span class="wk-meta" data-nl="Beauty" data-en="Beauty">Beauty</span>
       </div>
       <h3>Luna Beauty Studio</h3>
@@ -384,7 +411,7 @@
         <span class="pf-shot-go"><span data-nl="Bekijk live" data-en="View live">View live</span> <span class="wk-arrow">&rarr;</span></span>
       </div>
       <div class="pf-meta">
-        <span class="pf-n">03</span>
+        <span class="pf-n">04</span>
         <span class="wk-meta" data-nl="Creatief" data-en="Creative">Creative</span>
       </div>
       <h3>Studio Lena</h3>
@@ -409,7 +436,7 @@
         <span class="pf-shot-go"><span data-nl="Bekijk live" data-en="View live">View live</span> <span class="wk-arrow">&rarr;</span></span>
       </div>
       <div class="pf-meta">
-        <span class="pf-n">04</span>
+        <span class="pf-n">05</span>
         <span class="wk-meta" data-nl="Interieur" data-en="Interior">Interior</span>
       </div>
       <h3>Maison Blanc Interieur</h3>
@@ -435,7 +462,7 @@
         <span class="pf-shot-go"><span data-nl="Bekijk live" data-en="View live">View live</span> <span class="wk-arrow">&rarr;</span></span>
       </div>
       <div class="pf-meta">
-        <span class="pf-n">05</span>
+        <span class="pf-n">06</span>
         <span class="wk-meta" data-nl="Bakkerij" data-en="Bakery">Bakery</span>
       </div>
       <h3>Bakkerij Hartman</h3>
@@ -462,7 +489,7 @@
         <span class="pf-shot-go"><span data-nl="Bekijk live" data-en="View live">View live</span> <span class="wk-arrow">&rarr;</span></span>
       </div>
       <div class="pf-meta">
-        <span class="pf-n">06</span>
+        <span class="pf-n">07</span>
         <span class="wk-meta" data-nl="Sieraden" data-en="Jewellery">Jewellery</span>
       </div>
       <h3>Atelier Lune</h3>
