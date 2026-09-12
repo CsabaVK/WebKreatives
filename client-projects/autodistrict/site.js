@@ -11,7 +11,7 @@
   const root = document.body.dataset.root || '';
   const here = document.body.dataset.page || '';
   const ARROW = '<span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
-  const LINKS = [['home', '', 'Home', 'Home'], ['diensten', 'diensten/', 'Diensten', 'Services'], ['over-ons', 'over-ons/', 'Over ons', 'About us'], ['contact', 'contact/', 'Contact', 'Contact']];
+  const LINKS = [['home', '', 'Home', 'Home'], ['diensten', 'diensten/', 'Diensten', 'Services'], ['team', '#team', 'Over ons', 'About us'], ['contact', '#contact', 'Contact', 'Contact']];
   const links = () => LINKS.map(([k, h, nl, en]) => '<a href="' + root + h + '"' + (k === here ? ' class="on"' : '') + (nl !== en ? ' data-en="' + en + '"' : '') + '>' + nl + '</a>').join('');
   const langPill = '<div class="lang" role="group" aria-label="Taal"><button type="button" data-lang="nl">NL</button><button type="button" data-lang="en">EN</button></div>';
   const navEl = $('[data-nav]');
@@ -28,7 +28,7 @@
   const footEl = $('[data-footer]');
   if (footEl) footEl.innerHTML = '<div class="wrap foot-in">' +
     '<div><img src="' + root + 'assets/logo.png" alt="Auto District"><p data-en="RDW-approved garage in Poeldijk. Honest, clear dealings, quality and expertise first.">RDW-erkend garagebedrijf in Poeldijk. Eerlijk en helder zaken doen, kwaliteit en deskundigheid voorop.</p></div>' +
-    '<div><h4 data-en="Services">Diensten</h4><ul>' + [['apk', 'APK-keuring', 'MOT (APK)'], ['onderhoud', 'Onderhoud', 'Maintenance'], ['reparatie', 'Reparatie', 'Repairs'], ['storingen', 'Storingen &amp; diagnose', 'Fault diagnosis'], ['dsg', 'DSG-versnellingsbak', 'DSG gearbox'], ['airco', 'Airco-service', 'Air conditioning'], ['bandenopslag', 'Bandenopslag', 'Tyre storage']].map(([a, nl, en]) => '<li><a href="' + root + 'diensten/#' + a + '" data-en="' + en + '">' + nl + '</a></li>').join('') + '</ul></div>' +
+    '<div><h4 data-en="Services">Diensten</h4><ul>' + [['apk', 'APK-keuring', 'MOT (APK)'], ['onderhoud', 'Onderhoud', 'Maintenance'], ['reparatie', 'Reparatie', 'Repairs'], ['storingen', 'Storingen &amp; diagnose', 'Fault diagnosis'], ['dsg', 'DSG-versnellingsbak', 'DSG gearbox'], ['airco', 'Airco-service', 'Air conditioning'], ['banden', 'Banden', 'Tyres']].map(([a, nl, en]) => '<li><a href="' + root + 'diensten/#' + a + '" data-en="' + en + '">' + nl + '</a></li>').join('') + '</ul></div>' +
     '<div><h4>Contact</h4><ul><li><a data-tel href="#"><span data-tel="text"></span></a></li><li><a data-mail href="#"><span data-mail="text"></span></a></li><li><a data-route href="#" target="_blank" rel="noopener">Jupiter 39-B, 2685 LV Poeldijk</a></li><li><a href="' + root + 'contact/" data-en="Opening hours">Openingstijden</a></li><li><a href="' + root + 'privacy/" data-en="Privacy">Privacyverklaring</a></li></ul></div></div>' +
     '<div class="wrap foot-bot"><span>© 2026 Auto District · <span data-kvk></span></span><span><span data-en="Website by">Website door</span> <a href="https://webkreatives.com" style="color:var(--txt-2)">WebKreatives</a></span></div>';
 
@@ -110,7 +110,7 @@
     const draw = (i, deg) => { needles[i].style.transform = 'rotate(' + deg + 'deg)'; arcs[i].style.strokeDasharray = Math.max(1, deg + 120) + ' 1000'; };
     const label = (i, deg) => { nums[i].textContent = i === 0 ? ((deg + 120) / 240 * 8).toFixed(1) : String(Math.round((deg + 120) / 240 * 160)); };
     const setNeedle = (i, deg, val) => { base[i] = deg; if (!hover) { draw(i, deg); nums[i].textContent = val; } };
-    const say = (txt, good) => { status.textContent = txt; status.classList.toggle('good', !!good); chip.classList.toggle('good', !!good); chipTxt.textContent = txt; };
+    const say = (txt, good) => { status.textContent = txt; status.classList.toggle('good', !!good); if (chip) { chip.classList.toggle('good', !!good); chipTxt.textContent = txt; } };
 
     /* idle: a living engine, never a still needle */
     (function idle(now) {
@@ -183,17 +183,39 @@
   const stars = n => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
   const badge = $('[data-gbadge]');
   function paintBadge(rating, count) { if (!badge || !rating) return; $('b', badge).textContent = rating.toFixed(1).replace('.', ','); $('.stars', badge).textContent = stars(rating); $('small', badge).textContent = t('basedOn') + count + t('greviews'); }
+  let rcarIdx = 0, rcarTimer = 0, rcarUser = false;
   function renderReviews() {
     const el = $('[data-reviews]'); if (!el || !AD.reviews) return;
-    el.innerHTML = AD.reviews.slice(0, 5).map((r, i) => {
+    const list = AD.reviews.slice(0, 5);
+    el.innerHTML = list.map((r, i) => {
       const ph = /^Naam klant/.test(r.name);
       const name = ph ? t('phName') : r.name, when = ph ? t('phWhen') : r.when, text = ph ? t('phText').replace('#', i + 1) : r.text;
-      const pic = r.photo ? '<img src="' + root + r.photo + '" alt="' + name + '">' : '<span>' + (lang === 'en' ? 'Photo' : 'Foto') + ' ' + (i + 1) + '</span>';
-      return '<article class="rev' + (ph ? ' ph' : '') + '" data-rv data-d="' + (i + 1) + '"><div class="core"><div class="pic">' + pic + '</div><div class="stars">' + stars(r.stars) + '</div><p>' + text + '</p><div class="who"><b>' + name + '</b><span>' + when + '</span></div></div></article>';
+      const pic = r.photo ? '<img src="' + root + r.photo + '" alt="' + name + '" loading="lazy">' : '<span>' + (lang === 'en' ? 'Photo' : 'Foto') + ' ' + (i + 1) + '</span>';
+      return '<article class="rslide"><div class="pic">' + pic + '</div><div class="txt"><div class="stars">' + stars(r.stars) + '</div><blockquote>' + text + '</blockquote><div class="who"><b>' + name + '</b><span>' + when + '</span></div></div></article>';
     }).join('');
-    if (el.getBoundingClientRect().top < innerHeight) $$('[data-rv]', el).forEach(x => x.classList.add('in'));
-    else if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 }); $$('[data-rv]', el).forEach(x => io.observe(x)); }
+    const dots = $('[data-rcar-dots]');
+    if (dots) dots.innerHTML = list.map((_, i) => '<button type="button" data-go="' + i + '" aria-label="Review ' + (i + 1) + '"></button>').join('');
+    rcarGo(rcarIdx, false);
   }
+  function rcarGo(i, byUser) {
+    const track = $('[data-reviews]'); if (!track) return;
+    const n = track.children.length; if (!n) return;
+    rcarIdx = (i + n) % n;
+    track.style.transform = 'translateX(' + (-rcarIdx * 100) + '%)';
+    $$('[data-rcar-dots] button').forEach((d, j) => d.classList.toggle('on', j === rcarIdx));
+    const cur = $('[data-rcar-cur]'); if (cur) cur.textContent = String(rcarIdx + 1).padStart(2, '0');
+    if (byUser) { rcarUser = true; clearTimeout(rcarTimer); }
+  }
+  (function rcarInit() {
+    const nav = $('[data-rcar-nav]'), car = $('[data-rcar]'); if (!nav || !car) return;
+    $$('.rcar-btn', nav).forEach(b => b.addEventListener('click', () => rcarGo(rcarIdx + (+b.dataset.dir), true)));
+    nav.addEventListener('click', e => { const d = e.target.closest('[data-go]'); if (d) rcarGo(+d.dataset.go, true); });
+    let x0 = null;
+    car.addEventListener('pointerdown', e => { x0 = e.clientX; }, { passive: true });
+    car.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) rcarGo(rcarIdx + (dx < 0 ? 1 : -1), true); }, { passive: true });
+    let over = false; car.addEventListener('pointerenter', () => { over = true; }); car.addEventListener('pointerleave', () => { over = false; });
+    if (!reduced) (function tick() { rcarTimer = setTimeout(() => { if (!rcarUser && !over && !document.hidden) rcarGo(rcarIdx + 1, false); tick(); }, 7000); })();
+  })();
   const live = $('[data-greviews]');
   if (live && AD.google && AD.google.placesKey && AD.placeId) {
     fetch('https://places.googleapis.com/v1/places/' + AD.placeId + '?fields=rating,userRatingCount,reviews&languageCode=' + lang + '&key=' + AD.google.placesKey)
