@@ -160,7 +160,6 @@ p{margin:0}
 .dash .lamp{opacity:.13;transition:opacity .35s,filter .35s}
 .dash .lamp.on{opacity:1;filter:drop-shadow(0 0 7px currentColor)}
 .dash .lamp.warn{color:var(--amber)}.dash .lamp.bad{color:var(--red-2)}.dash .lamp.ok{color:var(--green)}
-.dash .lamp path{stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .dash .status{font-family:var(--fd);font-size:12.5px;font-weight:600;fill:var(--txt-2);letter-spacing:.02em}
 .dash .status.good{fill:var(--green)}
 .dash .scan{stroke:var(--red-2);stroke-width:2;opacity:0;filter:drop-shadow(0 0 6px var(--red-2))}
