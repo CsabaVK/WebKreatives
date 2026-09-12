@@ -47,6 +47,7 @@
     role: { 'Eigenaar · APK-keurmeester': 'Owner · MOT inspector', 'Monteur · APK-keurmeester': 'Mechanic · MOT inspector' },
     phName: { nl: 'Naam klant', en: 'Customer name' }, phWhen: { nl: 'Google · datum', en: 'Google · date' },
     phText: { nl: 'Uitgelichte Google-review #. Tekst, naam en foto volgen van de klant.', en: 'Highlighted Google review #. Text, name and photo to follow from the client.' },
+    viaGoogle: { nl: 'Klant via Google', en: 'Google customer' },
   };
   let lang = 'nl';
   try { lang = localStorage.getItem('ad-lang') === 'en' ? 'en' : 'nl'; } catch (e) {}
@@ -188,10 +189,11 @@
     const el = $('[data-reviews]'); if (!el || !AD.reviews) return;
     const list = AD.reviews.slice(0, 5);
     el.innerHTML = list.map((r, i) => {
-      const ph = /^Naam klant/.test(r.name);
-      const name = ph ? t('phName') : r.name, when = ph ? t('phWhen') : r.when, text = ph ? t('phText').replace('#', i + 1) : r.text;
-      const pic = r.photo ? '<img src="' + root + r.photo + '" alt="' + name + '" loading="lazy">' : '<span>' + (lang === 'en' ? 'Photo' : 'Foto') + ' ' + (i + 1) + '</span>';
-      return '<article class="rslide"><div class="pic">' + pic + '</div><div class="txt"><div class="stars">' + stars(r.stars) + '</div><blockquote>' + text + '</blockquote><div class="who"><b>' + name + '</b><span>' + when + '</span></div></div></article>';
+      const ph = !r.text || /^Naam klant/.test(r.name);
+      const name = ph ? t('phName') : (r.name || t('viaGoogle')), when = ph ? t('phWhen') : (r.when || 'Google'), text = ph ? t('phText').replace('#', i + 1) : r.text;
+      const slot = '<span>' + (lang === 'en' ? 'Photo' : 'Foto') + ' ' + (i + 1) + '</span>';
+      const pic = r.photo ? '<img src="' + root + r.photo + '" alt="" loading="lazy" onerror="this.remove()">' + slot : slot;
+      return '<article class="rslide"><div class="pic">' + pic + '</div><div class="txt"><div class="stars">' + stars(r.stars) + '</div><blockquote>' + text + '</blockquote><div class="who"><b>' + name + '</b>' + (when ? '<span>' + when + '</span>' : '') + '</div></div></article>';
     }).join('');
     const dots = $('[data-rcar-dots]');
     if (dots) dots.innerHTML = list.map((_, i) => '<button type="button" data-go="' + i + '" aria-label="Review ' + (i + 1) + '"></button>').join('');
@@ -235,7 +237,7 @@
   $$('[data-route]').forEach(a => { a.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(AD.mapsQuery); });
   $$('[data-greview-link]').forEach(a => { a.href = 'https://search.google.com/local/reviews?placeid=' + AD.placeId; });
   $$('[data-gwrite]').forEach(a => { a.href = 'https://search.google.com/local/writereview?placeid=' + AD.placeId; });
-  $$('[data-kvk]').forEach(el => { el.innerHTML = 'KVK ' + AD.kvk + ' · BTW ' + AD.btw; });
+  $$('[data-kvk]').forEach(el => { el.innerHTML = 'KVK ' + AD.kvk; });
   const map = $('[data-map]');
   if (map) map.innerHTML = '<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Kaart" src="https://www.google.com/maps?q=' + encodeURIComponent(AD.mapsQuery) + '&z=15&output=embed"></iframe>';
 
