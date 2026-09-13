@@ -177,6 +177,47 @@
 .hs-p li.off::before{background:var(--cream-faint);opacity:.5}
 .hs-p .wk-btn{width:100%;justify-content:center}
 
+/* ── billing switch ───────────────────────────────────────────────────
+   Two buttons in a pill, yearly on by default because that is the price
+   the page has always shown. The plans grid carries data-billing, and each
+   line that belongs to one mode carries data-bill, so the switch is one
+   attribute flip plus a repaint of the numbers. */
+.hs-bill-row{
+  display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;
+  margin:calc(-1 * clamp(14px,2.5vw,32px)) 0 clamp(24px,3vw,36px);
+}
+.hs-bill{display:inline-flex;align-items:center;gap:3px;padding:4px;border:1px solid var(--rule-hard);border-radius:99px;background:var(--ink)}
+.hs-bill button{
+  display:inline-flex;align-items:center;gap:9px;border:0;background:none;cursor:pointer;
+  padding:9px 16px;border-radius:99px;font-family:var(--f-mono);font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);white-space:nowrap;
+  transition:color var(--dur-fast),background var(--dur-fast);
+}
+.hs-bill button:hover{color:var(--cream-dim)}
+.hs-bill button[aria-pressed="true"]{background:var(--bronze);color:#fff}
+.hs-bill button:focus-visible{outline:2px solid var(--bronze);outline-offset:2px}
+.hs-bill-off{
+  font-family:var(--f-body);font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:none;
+  padding:3px 8px;border-radius:99px;background:var(--cream);color:var(--ink);
+}
+.hs-bill-note{font-size:12.5px;line-height:1.6;color:var(--cream-faint);max-width:46ch;margin:0}
+.hs-p-was{
+  font-family:var(--f-body);font-weight:500;font-size:.4em;letter-spacing:0;color:var(--cream-faint);
+  text-decoration:line-through;text-decoration-thickness:1.5px;margin-right:.3em;vertical-align:.35em;
+}
+.hs-p-price .num{display:inline-block;transition:opacity .22s var(--ease-premium),transform .22s var(--ease-premium)}
+.hs-p-price.is-swap .num{opacity:0;transform:translateY(5px)}
+.hs-p-vat{margin-bottom:6px}
+.hs-p-save{font-family:var(--f-body);font-size:11.5px;font-weight:600;color:var(--cream-dim);margin:0 0 20px;letter-spacing:.02em}
+.hs-plans[data-billing="year"] [data-bill="month"],
+.hs-plans[data-billing="month"] [data-bill="year"]{display:none}
+@media(max-width:520px){
+  .hs-bill{width:100%}
+  .hs-bill button{flex:1;justify-content:center;padding:9px 10px;gap:6px}
+  .hs-bill-off{font-size:9px;padding:2px 6px}
+}
+@media(prefers-reduced-motion:reduce){.hs-p-price .num{transition:none}}
+
 /* ── monthly rhythm ───────────────────────────────────────────────── */
 .hs-mo{border-top:1px solid var(--rule)}
 .hs-m{
@@ -420,21 +461,33 @@
       <div>
         <span class="wk-eyebrow" data-reveal data-decode data-nl="De plannen" data-en="The plans">The plans</span>
         <h2 class="wk-display wk-h2" data-split
-          data-nl="Drie plannen. Eén maandbedrag."
-          data-en="Three plans. One monthly fee.">Three plans. One monthly fee.</h2>
+          data-nl="Drie plannen. Per maand of per jaar."
+          data-en="Three plans. Monthly or yearly.">Three plans. Monthly or yearly.</h2>
       </div>
       <p class="wk-lede" data-reveal
-        data-nl="Wijzigingen aan je site lopen altijd via ons, dus het verschil tussen de plannen is vooral hoeveel ruimte je daarvoor hebt. Basis loopt minimaal twaalf maanden, Plus en Groei minimaal zes. Daarna maandelijks opzegbaar, en stoppen betekent dat je alles meeneemt."
-        data-en="Changes to your site always go through us, so what really separates the plans is how much room you get for them. Basic runs for a minimum of twelve months, Plus and Growth for six. Monthly after that, and leaving means you take everything with you.">Changes to your site always go through us, so what really separates the plans is how much room you get for them. Basic runs for a minimum of twelve months, Plus and Growth for six. Monthly after that, and leaving means you take everything with you.</p>
+        data-nl="Wijzigingen aan je site lopen altijd via ons, dus het verschil tussen de plannen is vooral hoeveel ruimte je daarvoor hebt. Per jaar betaal je vooraf en tot 17% minder, per maand betaal je elke maand. Basis loopt minimaal twaalf maanden, Plus en Groei minimaal zes. Daarna maandelijks opzegbaar, en stoppen betekent dat je alles meeneemt."
+        data-en="Changes to your site always go through us, so what really separates the plans is how much room you get for them. Yearly you pay up front and up to 17% less, monthly you pay every month. Basic runs for a minimum of twelve months, Plus and Growth for six. Monthly after that, and leaving means you take everything with you.">Changes to your site always go through us, so what really separates the plans is how much room you get for them. Yearly you pay up front and up to 17% less, monthly you pay every month. Basic runs for a minimum of twelve months, Plus and Growth for six. Monthly after that, and leaving means you take everything with you.</p>
     </div>
 
-    <div class="hs-plans">
+    <div class="hs-bill-row" data-reveal>
+      <div class="hs-bill" role="group" aria-label="Billing">
+        <button type="button" data-bill="month" aria-pressed="false"><span data-nl="Per maand" data-en="Monthly">Monthly</span></button>
+        <button type="button" data-bill="year" aria-pressed="true"><span data-nl="Per jaar" data-en="Yearly">Yearly</span><span class="hs-bill-off" data-nl="tot 17% korting" data-en="up to 17% off">up to 17% off</span></button>
+      </div>
+      <p class="hs-bill-note" data-nl="Per jaar: twaalf maanden vooraf, op één factuur. Per maand: elke maand een factuur, zonder korting."
+         data-en="Yearly: twelve months up front, on one invoice. Monthly: an invoice every month, no discount.">Yearly: twelve months up front, on one invoice. Monthly: an invoice every month, no discount.</p>
+    </div>
+
+    <div class="hs-plans" data-billing="year">
       <div class="hs-p" data-reveal>
         <h3 class="hs-p-n" data-nl="Basis" data-en="Basic">Basic</h3>
         <p class="hs-p-w" data-nl="Voor een site die zelden verandert. Een eenpager of een klein bedrijfsprofiel."
            data-en="For a site that rarely changes. A one-pager or a small business profile.">For a site that rarely changes. A one-pager or a small business profile.</p>
-        <p class="hs-p-price"><span data-price data-eur="&euro;25" data-usd="$29">&euro;25</span> <small data-nl="/ maand" data-en="/ month">/ month</small></p>
-        <p class="hs-p-vat" data-nl="<span data-price data-eur='Excl. btw' data-usd='Excl. belasting'>Excl. btw</span> &middot; minimaal 12 maanden" data-en="<span data-price data-eur='Excl. VAT' data-usd='Excl. tax'>Excl. VAT</span> &middot; 12 months minimum">Excl. VAT &middot; 12 months minimum</p>
+        <p class="hs-p-price"><s class="hs-p-was" data-bill="year" data-price data-eur="&euro;30" data-usd="$35">&euro;30</s><span class="num" data-price data-eur="&euro;25" data-usd="$29" data-y-eur="&euro;25" data-y-usd="$29" data-m-eur="&euro;30" data-m-usd="$35">&euro;25</span> <small data-nl="/ maand" data-en="/ month">/ month</small></p>
+        <p class="hs-p-vat" data-bill="year" data-nl="<span data-price data-eur='&euro;300' data-usd='$348'>&euro;300</span> per jaar, vooraf gefactureerd &middot; <span data-price data-eur='excl. btw' data-usd='excl. belasting'>excl. btw</span> &middot; minimaal 12 maanden" data-en="<span data-price data-eur='&euro;300' data-usd='$348'>&euro;300</span> a year, billed up front &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 12 months minimum"><span data-price data-eur='&euro;300' data-usd='$348'>&euro;300</span> a year, billed up front &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 12 months minimum</p>
+        <p class="hs-p-vat" data-bill="month" data-nl="Per maand gefactureerd &middot; <span data-price data-eur='excl. btw' data-usd='excl. belasting'>excl. btw</span> &middot; minimaal 12 maanden" data-en="Billed monthly &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 12 months minimum">Billed monthly &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 12 months minimum</p>
+        <p class="hs-p-save" data-bill="year" data-nl="Je bespaart <span data-price data-eur='&euro;60' data-usd='$72'>&euro;60</span> per jaar" data-en="You save <span data-price data-eur='&euro;60' data-usd='$72'>&euro;60</span> a year">You save <span data-price data-eur='&euro;60' data-usd='$72'>&euro;60</span> a year</p>
+        <p class="hs-p-save" data-bill="month" data-nl="Geen korting, wel elke maand opzegbaar na de minimumtermijn" data-en="No discount, cancel monthly after the minimum term">No discount, cancel monthly after the minimum term</p>
         <ul>
           <li data-nl="Domein en hosting inbegrepen" data-en="Domain and hosting included">Domain and hosting included</li>
           <li data-nl="SSL, altijd geldig" data-en="SSL, always valid">SSL, always valid</li>
@@ -454,8 +507,11 @@
         <h3 class="hs-p-n" data-nl="Plus" data-en="Plus">Plus</h3>
         <p class="hs-p-w" data-nl="Voor een site die meedraait met het bedrijf. Prijzen, kaart of aanbod veranderen regelmatig."
            data-en="For a site that moves with the business. Prices, menu or offer change regularly.">For a site that moves with the business. Prices, menu or offer change regularly.</p>
-        <p class="hs-p-price"><span data-price data-eur="&euro;55" data-usd="$59">&euro;55</span> <small data-nl="/ maand" data-en="/ month">/ month</small></p>
-        <p class="hs-p-vat" data-nl="<span data-price data-eur='Excl. btw' data-usd='Excl. belasting'>Excl. btw</span> &middot; minimaal 6 maanden" data-en="<span data-price data-eur='Excl. VAT' data-usd='Excl. tax'>Excl. VAT</span> &middot; 6 months minimum">Excl. VAT &middot; 6 months minimum</p>
+        <p class="hs-p-price"><s class="hs-p-was" data-bill="year" data-price data-eur="&euro;65" data-usd="$69">&euro;65</s><span class="num" data-price data-eur="&euro;55" data-usd="$59" data-y-eur="&euro;55" data-y-usd="$59" data-m-eur="&euro;65" data-m-usd="$69">&euro;55</span> <small data-nl="/ maand" data-en="/ month">/ month</small></p>
+        <p class="hs-p-vat" data-bill="year" data-nl="<span data-price data-eur='&euro;660' data-usd='$708'>&euro;660</span> per jaar, vooraf gefactureerd &middot; <span data-price data-eur='excl. btw' data-usd='excl. belasting'>excl. btw</span> &middot; minimaal 6 maanden" data-en="<span data-price data-eur='&euro;660' data-usd='$708'>&euro;660</span> a year, billed up front &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 6 months minimum"><span data-price data-eur='&euro;660' data-usd='$708'>&euro;660</span> a year, billed up front &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 6 months minimum</p>
+        <p class="hs-p-vat" data-bill="month" data-nl="Per maand gefactureerd &middot; <span data-price data-eur='excl. btw' data-usd='excl. belasting'>excl. btw</span> &middot; minimaal 6 maanden" data-en="Billed monthly &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 6 months minimum">Billed monthly &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 6 months minimum</p>
+        <p class="hs-p-save" data-bill="year" data-nl="Je bespaart <span data-price data-eur='&euro;120' data-usd='$120'>&euro;120</span> per jaar" data-en="You save <span data-price data-eur='&euro;120' data-usd='$120'>&euro;120</span> a year">You save <span data-price data-eur='&euro;120' data-usd='$120'>&euro;120</span> a year</p>
+        <p class="hs-p-save" data-bill="month" data-nl="Geen korting, wel elke maand opzegbaar na de minimumtermijn" data-en="No discount, cancel monthly after the minimum term">No discount, cancel monthly after the minimum term</p>
         <ul>
           <li data-nl="Alles uit Basis" data-en="Everything in Basic">Everything in Basic</li>
           <li data-nl="Onbeperkt kleine tekstwijzigingen, door ons" data-en="Unlimited small text changes, made by us">Unlimited small text changes, made by us</li>
@@ -475,8 +531,11 @@
         <h3 class="hs-p-n" data-nl="Groei" data-en="Growth">Growth</h3>
         <p class="hs-p-w" data-nl="Voor wie de site actief gebruikt om klanten te halen, niet alleen om gevonden te worden."
            data-en="For businesses actively using the site to win work, not just to be findable.">For businesses actively using the site to win work, not just to be findable.</p>
-        <p class="hs-p-price"><span data-price data-eur="&euro;89" data-usd="$99">&euro;89</span> <small data-nl="/ maand" data-en="/ month">/ month</small></p>
-        <p class="hs-p-vat" data-nl="<span data-price data-eur='Excl. btw' data-usd='Excl. belasting'>Excl. btw</span> &middot; minimaal 6 maanden" data-en="<span data-price data-eur='Excl. VAT' data-usd='Excl. tax'>Excl. VAT</span> &middot; 6 months minimum">Excl. VAT &middot; 6 months minimum</p>
+        <p class="hs-p-price"><s class="hs-p-was" data-bill="year" data-price data-eur="&euro;105" data-usd="$119">&euro;105</s><span class="num" data-price data-eur="&euro;89" data-usd="$99" data-y-eur="&euro;89" data-y-usd="$99" data-m-eur="&euro;105" data-m-usd="$119">&euro;89</span> <small data-nl="/ maand" data-en="/ month">/ month</small></p>
+        <p class="hs-p-vat" data-bill="year" data-nl="<span data-price data-eur='&euro;1.068' data-usd='$1,188'>&euro;1.068</span> per jaar, vooraf gefactureerd &middot; <span data-price data-eur='excl. btw' data-usd='excl. belasting'>excl. btw</span> &middot; minimaal 6 maanden" data-en="<span data-price data-eur='&euro;1.068' data-usd='$1,188'>&euro;1.068</span> a year, billed up front &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 6 months minimum"><span data-price data-eur='&euro;1.068' data-usd='$1,188'>&euro;1.068</span> a year, billed up front &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 6 months minimum</p>
+        <p class="hs-p-vat" data-bill="month" data-nl="Per maand gefactureerd &middot; <span data-price data-eur='excl. btw' data-usd='excl. belasting'>excl. btw</span> &middot; minimaal 6 maanden" data-en="Billed monthly &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 6 months minimum">Billed monthly &middot; <span data-price data-eur='excl. VAT' data-usd='excl. tax'>excl. VAT</span> &middot; 6 months minimum</p>
+        <p class="hs-p-save" data-bill="year" data-nl="Je bespaart <span data-price data-eur='&euro;192' data-usd='$240'>&euro;192</span> per jaar" data-en="You save <span data-price data-eur='&euro;192' data-usd='$240'>&euro;192</span> a year">You save <span data-price data-eur='&euro;192' data-usd='$240'>&euro;192</span> a year</p>
+        <p class="hs-p-save" data-bill="month" data-nl="Geen korting, wel elke maand opzegbaar na de minimumtermijn" data-en="No discount, cancel monthly after the minimum term">No discount, cancel monthly after the minimum term</p>
         <ul>
           <li data-nl="Alles uit Plus" data-en="Everything in Plus">Everything in Plus</li>
           <li data-nl="Drie uur grotere wijzigingen per maand" data-en="Three hours of larger changes a month">Three hours of larger changes a month</li>
@@ -594,6 +653,10 @@
         <button class="sv-q-btn"><span class="sv-q-n">04</span><span class="sv-q-t" data-nl="Wat gebeurt er als de site eruit ligt?" data-en="What happens if the site goes down?">What happens if the site goes down?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
         <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Wij krijgen de melding, niet jij. In de meeste gevallen ligt het aan de host en is het binnen een paar minuten voorbij. Duurt het langer, dan hoor je van ons wat er aan de hand is en wat we eraan doen, in gewone taal." data-en="We get the alert, not you. In most cases it is the host and it is over within a few minutes. If it takes longer, you hear from us what is going on and what we are doing about it, in plain language.">We get the alert, not you. In most cases it is the host and it is over within a few minutes. If it takes longer, you hear from us what is going on and what we are doing about it, in plain language.</p></div></div>
       </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">05</span><span class="sv-q-t" data-nl="Wat is het verschil tussen per maand en per jaar?" data-en="What is the difference between monthly and yearly?">What is the difference between monthly and yearly?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Per jaar betaal je twaalf maanden vooraf, op één factuur, en dat scheelt tot 17%. Per maand betaal je elke maand het hogere tarief. De minimumtermijn is bij allebei hetzelfde, en daarna zeg je per maand op." data-en="Yearly you pay twelve months up front, on one invoice, and that saves up to 17%. Monthly you pay the higher rate every month. The minimum term is the same either way, and after it you cancel month to month.">Yearly you pay twelve months up front, on one invoice, and that saves up to 17%. Monthly you pay the higher rate every month. The minimum term is the same either way, and after it you cancel month to month.</p></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -630,6 +693,33 @@
 <script src="/js/site-footer.js?v=v6"></script>
 <script src="/js/cookie-consent.js?v=v6"></script>
 <script>
+/* billing switch: flip the grid attribute, swap each price's currency
+   attributes to the chosen rate, let locale.js repaint the number */
+(function () {
+  const plans = document.querySelector('.hs-plans');
+  const btns = [...document.querySelectorAll('.hs-bill button')];
+  if (!plans || !btns.length) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function set(mode) {
+    if (plans.dataset.billing === mode) return;
+    plans.dataset.billing = mode;
+    btns.forEach(b => b.setAttribute('aria-pressed', b.dataset.bill === mode ? 'true' : 'false'));
+    plans.querySelectorAll('.hs-p-price').forEach(p => {
+      const n = p.querySelector('.num');
+      const paint = () => {
+        n.setAttribute('data-eur', n.getAttribute('data-' + mode[0] + '-eur'));
+        n.setAttribute('data-usd', n.getAttribute('data-' + mode[0] + '-usd'));
+        if (window.wkLocale) wkLocale.refresh(p); else n.textContent = n.getAttribute('data-eur');
+        p.classList.remove('is-swap');
+      };
+      if (reduced) return paint();
+      p.classList.add('is-swap');
+      setTimeout(paint, 180);
+    });
+  }
+  btns.forEach(b => b.addEventListener('click', () => set(b.dataset.bill)));
+})();
+
 document.querySelectorAll('.hs-i').forEach(el => {
   new IntersectionObserver((es, o) => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('is-in'); o.unobserve(e.target); }
