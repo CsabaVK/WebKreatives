@@ -31,7 +31,7 @@
 
   const COPY = {
     nl: {
-      title:     'Jij bepaalt wat we bewaren',
+      title:     'Cookies',
       text:      'Lees welke cookies we gebruiken en kies welke je toestaat. Noodzakelijke staan altijd aan.',
       accept:    'Alles accepteren',
       reject:    'Weigeren',
@@ -48,7 +48,7 @@
       analyticsTxt: 'Helpt ons begrijpen hoe je de site gebruikt: welke pagina’s, hoe lang, vanaf welk apparaat. Daarmee verbeteren we de site.'
     },
     en: {
-      title:     'You control your data',
+      title:     'Cookies',
       text:      'Learn which cookies we use and choose which to allow. Required ones are always on.',
       accept:    'Accept all',
       reject:    'Decline',
