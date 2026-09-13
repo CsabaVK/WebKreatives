@@ -334,6 +334,12 @@
 .hm-step:hover{background:var(--cream-mute)}
 .hm-step.is-on:hover{background:var(--red)}
 .hm-step:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+@media(max-width:600px){
+  .hm-nav{gap:8px}
+  .hm-steps{gap:5px;margin-left:8px;flex:1;min-width:0}
+  .hm-step{width:auto;flex:1 1 0}
+  .hm-step.is-on{width:auto;flex:2 1 0}
+}
 
 /* the phone: a metal rim, a black bezel, the island, four buttons ──── */
 .hm-phone{
@@ -1851,6 +1857,12 @@
     });
     dots.forEach((d, j) => d.classList.toggle('is-on', j === i));
     if (cur) cur.textContent = String(i + 1).padStart(2, '0');
+    /* eight slides put the far ones past the browser's lazy-load distance on a
+       phone, so the shown slide and its neighbours are fetched explicitly */
+    [document.getElementById('hmTrackLap'), document.getElementById('hmTrackPhone')].forEach(t => {
+      if (!t) return;
+      [i - 1, i, i + 1].forEach(k => t.children[(k + n) % n]?.querySelectorAll('img[loading="lazy"]').forEach(im => { im.loading = 'eager'; }));
+    });
     const url = slides[i].querySelector('[data-url]')?.dataset.url || '';
     const lap = document.getElementById('hmUrlLap'), ph = document.getElementById('hmUrlPhone');
     if (lap) lap.textContent = url;
@@ -1887,6 +1899,7 @@
   }, { passive: true });
   stage.addEventListener('click', e => { if (swiped) { e.preventDefault(); swiped = false; } }, true);
 
+  go(0);   /* same state as the markup, plus the neighbour preload */
   if (auto && 'IntersectionObserver' in window) {
     new IntersectionObserver(es => es.forEach(e => { inView = e.isIntersecting; }), { threshold: .35 }).observe(show);
     tick();
