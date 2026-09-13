@@ -126,11 +126,17 @@
       el.innerHTML = list.map(r => '<div class="plist-row"><span class="name">' + esc(rowName(r)) +
         (r.note && r.price ? '<span class="note">' + esc(rowNote(r)) + '</span>' : '') + '</span>' + priceHtml(r) + '</div>').join('');
     });
-    $$('[data-service="price"]').forEach(el => { el.textContent = euro(D.service.price); });
-    $$('[data-service="was"]').forEach(el => { if (D.service.was) el.textContent = euro(D.service.was); else el.hidden = true; });
-    $$('[data-service="name"]').forEach(el => { el.textContent = nl(D.service.name, D.service.en); });
-    $$('[data-service="note"]').forEach(el => { el.textContent = nl(D.service.note, D.service.noteEn); });
-    $$('[data-checklist]').forEach(el => { el.innerHTML = (lang === 'en' ? D.service.checklistEn : D.service.checklist).map(c => '<li>' + esc(c) + '</li>').join(''); });
+    // the two packages: data-service="…" reads the grote beurt, data-small="…" the kleine
+    [['service', D.service], ['small', D.small]].forEach(([k, P]) => {
+      if (!P) return;
+      $$('[data-' + k + '="price"]').forEach(el => { el.textContent = euro(P.price); });
+      $$('[data-' + k + '="was"]').forEach(el => { if (P.was) { el.textContent = euro(P.was); el.hidden = false; } else el.hidden = true; });
+      $$('[data-' + k + '="name"]').forEach(el => { el.textContent = nl(P.name, P.en); });
+      $$('[data-' + k + '="note"]').forEach(el => { el.textContent = nl(P.note, P.noteEn); });
+      $$('[data-' + k + '="summary"]').forEach(el => { el.textContent = nl(P.summary, P.summaryEn); });
+      $$('[data-' + k + '="count"]').forEach(el => { el.textContent = P.checklist.length; });
+      $$('[data-checklist="' + k + '"]').forEach(el => { el.innerHTML = (lang === 'en' ? P.checklistEn : P.checklist).map(c => '<li>' + esc(c) + '</li>').join(''); });
+    });
     $$('[data-price]').forEach(el => {
       const [list, idx] = el.dataset.price.split('.');
       const r = (D[list] || [])[+idx]; if (!r) return;

@@ -35,8 +35,32 @@ window.SSDH = {
   brands: ['Piaggio', 'Vespa', 'SYM', 'Peugeot', 'Gilera', 'Aprilia', 'AGM', 'La Souris', 'BTC', 'Kymco'],
 
   /* Prices. `from: true` renders "vanaf". `was` renders a struck-out old price. */
+
+  /* The two service packages. `summary` is the one-line reading on the
+     hero ticket and in the services list; `checklist` the full contents.
+     The kleine beurt contents are a workshop standard and were not on the
+     old site: change them here if the shop does it differently. */
+  small: {
+    name: 'Kleine beurt', en: 'Basic service', price: 60, was: null,
+    summary: 'Olie, bougie, luchtfilter, remmen en banden',
+    summaryEn: 'Oil, spark plug, air filter, brakes and tyres',
+    note: 'Alle merken. Vaak klaar terwijl je wacht.',
+    noteEn: 'All brands. Often done while you wait.',
+    checklist: [
+      'Motorolie verversen', 'Bougie vervangen', 'Luchtfilterelement reinigen of vervangen',
+      'Bandenspanning en bandenprofiel check', 'Voor- en achterrem controleren en afstellen',
+      'Verlichting en claxon check', 'Algemene controle en proefrit'
+    ],
+    checklistEn: [
+      'Engine oil change', 'New spark plug', 'Air filter element cleaned or replaced',
+      'Tyre pressure and tread checked', 'Front and rear brake checked and adjusted',
+      'Lights and horn checked', 'General check and test ride'
+    ]
+  },
   service: {
     name: 'Grote beurt', en: 'Full service', price: 100, was: 140,
+    summary: 'Zestien punten, ook V-snaar, variateur en kleppen',
+    summaryEn: 'Sixteen points, drive belt, variator and valves included',
     note: 'Alle merken. Op afspraak meestal dezelfde dag klaar.',
     noteEn: 'All brands. By appointment, usually ready the same day.',
     checklist: [
@@ -77,7 +101,9 @@ window.SSDH = {
   /* WhatsApp openers. The key matches data-wa="…" on a button. */
   wa: {
     default: 'Hoi Scootershop Den Haag, ik wil mijn scooter langsbrengen. Kan dat vandaag?',
-    beurt: 'Hoi, ik wil een grote beurt (€100) laten doen. Wanneer kan ik langskomen?',
+    beurt: 'Hoi, ik wil een onderhoudsbeurt laten doen (kleine beurt €60 of grote beurt €100). Wanneer kan ik langskomen?',
+    klein: 'Hoi, ik wil een kleine beurt (€60) laten doen. Wanneer kan ik langskomen?',
+    groot: 'Hoi, ik wil een grote beurt (€100) laten doen. Wanneer kan ik langskomen?',
     reparatie: 'Hoi, mijn scooter heeft een probleem: ',
     schade: 'Hoi, ik heb schade aan mijn scooter en wil graag een taxatie. Wanneer kan ik langskomen?',
     keuring: 'Hoi, ik wil mijn scooter laten keuren (snor naar brom / blauw naar geel / WOK). Wat is er nodig?',
@@ -86,7 +112,9 @@ window.SSDH = {
   },
   waEn: {
     default: 'Hi Scootershop Den Haag, I would like to bring my scooter in. Is today possible?',
-    beurt: 'Hi, I would like a full service (€100). When can I come by?',
+    beurt: 'Hi, I would like a service (basic €60 or full €100). When can I come by?',
+    klein: 'Hi, I would like a basic service (€60). When can I come by?',
+    groot: 'Hi, I would like a full service (€100). When can I come by?',
     reparatie: 'Hi, my scooter has a problem: ',
     schade: 'Hi, my scooter is damaged and I need an insurance assessment. When can I come by?',
     keuring: 'Hi, I would like my scooter inspected (moped class change / blue to yellow plate / WOK). What do you need?',
