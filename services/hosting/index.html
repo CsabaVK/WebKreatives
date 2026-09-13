@@ -690,8 +690,8 @@
 <script src="/js/motion.js?v=v6"></script>
 <script src="/js/locale.js?v=v6"></script>
 <script src="/js/site-nav.js?v=v6"></script>
-<script src="/js/site-footer.js?v=v6"></script>
-<script src="/js/cookie-consent.js?v=v6"></script>
+<script src="/js/site-footer.js?v=v7"></script>
+<script src="/js/cookie-consent.js?v=v7"></script>
 <script>
 /* billing switch: flip the grid attribute, swap each price's currency
    attributes to the chosen rate, let locale.js repaint the number */
@@ -717,7 +717,15 @@
       setTimeout(paint, 180);
     });
   }
-  btns.forEach(b => b.addEventListener('click', () => set(b.dataset.bill)));
+  btns.forEach(b => b.addEventListener('click', () => {
+    set(b.dataset.bill);
+    /* remembered for the next visit only with personalization allowed */
+    if (window.wkConsent && wkConsent.allows('personalization')) { try { localStorage.setItem('wk-billing', b.dataset.bill); } catch (e) {} }
+  }));
+  try { const r = localStorage.getItem('wk-billing'); if (r && window.wkConsent && wkConsent.allows('personalization')) set(r); } catch (e) {}
+  plans.querySelectorAll('.hs-p .wk-btn').forEach(a => a.addEventListener('click', () => {
+    if (window.wkTrack) wkTrack('select_plan', { plan: a.closest('.hs-p').querySelector('.hs-p-n').textContent.trim(), billing: plans.dataset.billing });
+  }));
 })();
 
 document.querySelectorAll('.hs-i').forEach(el => {

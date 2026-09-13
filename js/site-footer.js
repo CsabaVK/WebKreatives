@@ -282,6 +282,7 @@
         ${L('/privacy/','Privacy','Privacy')}
         ${L('/terms/','Voorwaarden','Terms')}
         ${L('/refund-policy/','Herroeping &amp; restitutie','Refund Policy')}
+        <a href="#cookies" id="wkFtCookies" data-nl="Cookies" data-en="Cookies">Cookies</a>
       </div>
       <span>© 2026 WebKreatives · Amsterdam, NL · KVK 94051097</span>
     </div>
@@ -297,6 +298,12 @@
     });
   }
   applyFooterLang(localStorage.getItem('wk-lang') || 'nl');
+
+  /* "Cookies" reopens the consent banner with the current choices shown */
+  root.querySelector('#wkFtCookies')?.addEventListener('click', e => {
+    e.preventDefault();
+    if (window.wkCookieOpen) window.wkCookieOpen();
+  });
   document.addEventListener('wk:languagechange', e =>
     applyFooterLang(e?.detail?.lang || localStorage.getItem('wk-lang') || 'nl'));
 
