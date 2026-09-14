@@ -71,6 +71,7 @@
 .fg textarea{resize:vertical;min-height:110px;line-height:1.65}
 /* ── Artboard previews ───────────────────────────────────────────────── */
 .ab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:40px 34px}
+@media(max-width:480px){.ab-grid{grid-template-columns:minmax(0,1fr)}}
 .ab-card{display:flex;flex-direction:column;gap:14px}
 .ab-view{position:relative;overflow:hidden;border:1px solid var(--rule-hard);border-radius:var(--radius);background:var(--ink-deep)}
 .ab-view .ab{transform-origin:0 0}
@@ -188,6 +189,19 @@
 .ab--red .ab-cta-url{font-family:var(--f-display);font-weight:900;font-size:56px;letter-spacing:-.03em;color:#fff;margin:64px 0 0}
 .ab--red.wk-grain::after{opacity:.05}
 
+/* ── S Single post arc: stage table and text skeleton ────────────────── */
+.arc-rows{background:var(--ink-2);border-radius:var(--radius);padding:6px 22px}
+.arc-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:4px 20px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.arc-row:last-child{border-bottom:0}
+.arc-row b{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint);padding-top:4px}
+.arc-row span{font-family:var(--f-body);font-size:17px;color:var(--cream)}
+.arc-row small{grid-column:2;font-size:13px;line-height:1.55;color:var(--cream-mute)}
+.arc-skel{list-style:none;margin:0;padding:0;counter-reset:st}
+.arc-skel li{counter-increment:st;display:grid;grid-template-columns:112px minmax(0,1fr);gap:20px;padding:12px 0;border-bottom:1px solid var(--rule-soft);font-size:14px;line-height:1.6;color:var(--cream-mute)}
+.arc-skel li:last-child{border-bottom:0}
+.arc-skel li b{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--bronze);padding-top:5px}
+.arc-skel li b::before{content:counter(st,decimal-leading-zero) ' ';color:var(--cream-faint)}
+
 /* ── Print mode: the five carousel slides as PDF pages ────────────────── */
 @page{size:1200px 1500px;margin:0}
 body.is-print{margin:0;background:var(--ink)}
@@ -209,7 +223,7 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
     <h1 class="wk-display wk-h1">One system, one site, <span class="wk-accent">many posts</span>.</h1>
     <p class="wk-lede">Everything WebKreatives publishes under its own name reads from here. Values come from <code>css/theme.css</code>; the rules are in <code>DESIGN.md</code>. The artboards at the bottom are real: <code>node _design/render.cjs statement out.png --headline "…"</code> turns one into a PNG.</p>
     <nav class="ds-nav">
-      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#patterns">Web patterns</a><a href="#motion">Motion</a><a href="#social">Social artboards</a><a href="#variation">Variation</a><a href="#carousel">Carousel arc</a>
+      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#patterns">Web patterns</a><a href="#motion">Motion</a><a href="#social">Social artboards</a><a href="#variation">Variation</a><a href="#carousel">Carousel arc</a><a href="#single">Single post arc</a>
     </nav>
   </div>
 </header>
@@ -806,6 +820,51 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
           </div>
         </div>
         <p class="ab-desc">The only red ground in the system. White type, ink accent word, the URL set in display. No comment keyword, no price line until cleared.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="single">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">09 · Single post arc</span>
+    <h2 class="wk-display wk-h2">One image, <span class="wk-accent">one stage</span>.</h2>
+    <p class="ds-note">A LinkedIn image post carries one image, so the five stages split: the image carries one stage, the post text carries the other four. The image stops the scroll; the text does the reasoning. Hook on the image by default, proof when a screenshot or a list beats a sentence, pain on paper at most one in four, join never. Worked example with the render command and the full post text in <code>_design/single-example.md</code>.</p>
+    <div class="ab-grid">
+
+      <div class="ab-card">
+        <div class="ab-title"><b>Hook on the image</b><span class="is-main">T1 · 1200×1500</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink wk-grain" data-tpl="single-hook" data-mark="none">
+            <div class="ab-glow"></div>
+            <span class="ab-eyebrow" data-slot="eyebrow">Ownership</span>
+            <h2 class="ab-h ab-h--2" data-slot="headline">Own what you <em>paid</em> for.</h2>
+            <p class="ab-lede" data-slot="lede">Domain, code and accounts in your name, not ours.</p>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"><span class="ab-url">webkreatives.com</span></div>
+          </div>
+        </div>
+        <p class="ab-desc">The example post's image: T1, two lines at 124px, one accent word, lede on. Portrait only; the headline has to read at 40% width. Alt text is the headline in plain words: "Own what you paid for."</p>
+      </div>
+
+      <div class="ab-card">
+        <div class="ab-title"><b>Which stage goes on the image</b><span>Stage · image · when</span></div>
+        <div class="arc-rows">
+          <div class="arc-row"><b>Hook</b><span>T1 Statement, portrait</span><small>The default. The text carries pain, mechanism, proof and join.</small></div>
+          <div class="arc-row"><b>Proof</b><span>T3 Showcase or T2 Ledger</span><small>When a real screenshot or a checkable list beats a sentence. The text carries hook, pain, mechanism and join.</small></div>
+          <div class="arc-row"><b>Pain</b><span>T4 Paper</span><small>At most one in four, to break the ink run. The text carries hook, mechanism, proof and join.</small></div>
+          <div class="arc-row"><b>Join</b><span>Never as a single image</span><small>A red ground without the four slides before it reads as an ad. The close lives in the text.</small></div>
+        </div>
+        <div class="ab-title"><b>The rest goes in the text</b><span>120 to 180 words</span></div>
+        <ol class="arc-skel">
+          <li><b>Hook</b><span>One or two lines that restate the image in other words. Lands within the first 140 characters, before "…more" on a phone.</span></li>
+          <li><b>Pain</b><span>Two or three lines.</span></li>
+          <li><b>Mechanism</b><span>Three lines, one step each.</span></li>
+          <li><b>Proof</b><span>One checkable line.</span></li>
+          <li><b>Join</b><span>The last line: a plain offer plus webkreatives.com. No comment keyword.</span></li>
+        </ol>
+        <p class="ab-desc">The text never repeats the lede. Singles go out Wednesday and Thursday; the carousel on Tuesday, at most once a week. Single rotation follows the run under Variation: T1, T3 or T2, T1, T4.</p>
       </div>
 
     </div>

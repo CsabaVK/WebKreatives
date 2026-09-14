@@ -340,6 +340,42 @@ node _design/carousel.cjs _design/carousel-example.json out/
 Writes `01-hook.png` to `05-join.png` and `carousel.pdf` (about 2.5 MB). Copy the
 example JSON, change the words, keep the shape. The PDF is what goes to LinkedIn.
 
+### Single post arc (S)
+
+A LinkedIn image post carries one image. The five stages of the carousel do not fit
+on one artboard, so the arc splits: the image carries one stage, the post text carries
+the other four. The image stops the scroll; the text does the reasoning.
+
+| Stage | Image | When |
+|---|---|---|
+| Hook | T1 Statement, portrait | The default. The text carries pain, mechanism, proof and join. |
+| Proof | T3 Showcase or T2 Ledger | When a real screenshot or a checkable list beats a sentence. The text carries hook, pain, mechanism and join. |
+| Pain | T4 Paper | At most one in four, to break the ink run. The text carries hook, mechanism, proof and join. |
+| Join | never | A red ground without the four slides before it reads as an ad. The close lives in the text. |
+
+Post text, in carousel order, 120 to 180 words:
+
+1. Hook: one or two lines that restate the image in other words. Lands within the
+   first 140 characters, before "...more" on a phone.
+2. Pain: two or three lines.
+3. Mechanism: three lines, one step each.
+4. Proof: one checkable line.
+5. Join: the last line, a plain offer plus `webkreatives.com`. No comment keyword.
+
+Rules on top of the fixed frame:
+
+- Portrait only. 4:5 takes the most feed height.
+- The headline stays legible at 40% width, the size of a phone feed.
+- Alt text is the headline in plain words: no asterisks, no markup.
+- The text never repeats the lede. It restates the headline once, in the hook, and
+  moves on.
+
+Rhythm: singles on Wednesday and Thursday. The carousel goes out on Tuesday, at most
+once a week. Single rotation follows the run under Variation: T1, T3 or T2, T1, T4.
+
+Worked example with the render command, the alt text and the post text:
+`_design/single-example.md`.
+
 ### Variation, inside the system
 
 The templates above are the structure. These knobs give variety without a new system:
@@ -388,9 +424,10 @@ goes anywhere. Link previews still need `og:image` as an absolute JPG or PNG URL
 | `css/theme.css` | tokens, base, display type, eyebrow, buttons, frame, rows, CTA card, prose, grain, motion primitives |
 | `js/motion.js` | every `data-*` motion hook, the custom cursor, the progress rail |
 | `js/site-nav.js`, `js/site-footer.js`, `js/cookie-consent.js` | nav, footer and consent banner, rendered on every page |
-| `_design/index.html` | this system rendered live from `theme.css` and `motion.js`, plus the six social artboards and the carousel |
+| `_design/index.html` | this system rendered live from `theme.css` and `motion.js`, plus the six social artboards, the carousel and the single post arc |
 | `_design/render.cjs` | artboard to PNG |
 | `_design/carousel.cjs`, `carousel-example.json` | five-slide carousel to PNGs and PDF |
+| `_design/single-example.md` | one worked single post: render command, alt text, post text |
 | `_design/wordmark-light.png`, `wordmark-dark.png` | cropped wordmarks for the artboards |
 | `assets/Horizontallogo.png`, `darkmodehorizontallogo.png` | source logos |
 | `assets/screenshots/*-phone.webp` | real portfolio screenshots for T3 |
