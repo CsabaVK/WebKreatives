@@ -22,7 +22,7 @@ Own what you paid for. WebKreatives.
 
 ## Post text
 
-Hook, pain, mechanism, proof, join. 124 words. The hook lands in 101 characters, before
+Hook, pain, mechanism, proof, join. 121 words. The hook lands in 102 characters, before
 the fold on a phone. The lede is not repeated.
 
 ```
