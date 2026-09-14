@@ -48,6 +48,110 @@
   };
 
   const dutch = {
+ "why-your-website-needs-analytics": {
+  "articlesLink": "Artikelen",
+  "current": "Techniek & Snelheid",
+  "category": "Techniek & Snelheid",
+  "title": "Waarom Je Website Cijfers Nodig Heeft<br><em>en Welke Er Echt Toe Doen</em>",
+  "date": "14 september 2026",
+  "read": "7 min lezen",
+  "coverAlt": "Ondernemer die de statistieken van zijn website bekijkt op een laptop",
+  "docTitle": "Waarom Je Website Cijfers Nodig Heeft en Welke | WebKreatives",
+  "bottomTitle": "Wil je een website die je kunt<br>sturen op echte cijfers?",
+  "bottomText": "We bouwen snelle, privacyvriendelijke websites voor kleine bedrijven, met de meting goed ingericht — zodat je precies ziet wat klanten oplevert.",
+  "bottomPrimaryBtn": "Start jouw project →",
+  "bottomSecondaryBtn": "Lees meer artikelen",
+  "relatedTitle": "Lees meer",
+  "content": `
+    <div class="art-stats"><div class="art-stat"><span class="art-stat-num">4</span><span class="art-stat-label">cijfers die je bijna alles vertellen over de website van een klein bedrijf</span></div><div class="art-stat"><span class="art-stat-num">10 min</span><span class="art-stat-label">kost een zinvolle maandelijkse check, zodra het goed is ingericht</span></div><div class="art-stat"><span class="art-stat-num">0</span><span class="art-stat-label">cookiebanners heeft een privacyvriendelijke meting nodig</span></div></div>
+
+    <p>Vraag een ondernemer hoe zijn website het doet en je krijgt meestal een van twee antwoorden. "Goed, denk ik." Of een aantal bezoekers per maand, genoemd met de schouderophaal van iemand die zelf al vermoedt dat het weinig zegt. Beide antwoorden komen uit dezelfde hoek: de cijfers zijn er wel, maar niemand heeft ooit verteld naar welk deel je moet kijken.</p>
+
+    <p>Zonde, want je website is het enige stuk van je marketing dat precies kan vertellen wat er gebeurd is. Een folder in de brievenbus is gokken. Een advertentie in het huis-aan-huisblad is gokken. Je website weet hoe iemand je gevonden heeft, welke pagina hem overtuigde en of hij de telefoon pakte. Je moet alleen de juiste vier vragen stellen.</p>
+
+    <h2>Waarom het bezoekersaantal je het minst helpt</h2>
+    <p>Bijna elk gesprek over websitestatistieken begint bij bezoekers per maand. Het is het makkelijkst te vinden cijfer en het beweegt het hardst, dus het voelt als het belangrijkste.</p>
+
+    <p>Dat is het niet. Tweehonderd bezoekers per maand die allemaal binnen vijftien kilometer wonen en precies zoeken wat jij doet, zijn meer waard dan tweeduizend uit een blogartikel dat even viraal ging in een ander land. Een kapper wiens bezoekersaantal verdubbelde na een landelijk artikel had precies evenveel extra klanten in de stoel: nul.</p>
+
+    <p>Bezoekersaantallen gaan pas iets betekenen als je ze naast het antwoord op twee andere vragen kunt leggen: <em>wie kwam er binnen</em>, en <em>wat deden ze</em>. Dat zijn de cijfers hieronder.</p>
+
+    <h2><span class="num">1</span> Waar je bezoekers vandaan komen</h2>
+    <p>Je bronnenrapport verdeelt bezoeken over een handvol bakjes: Google-zoekresultaten, je Google-bedrijfsprofiel of Maps, direct (iemand typte je naam of heeft je in zijn favorieten), social en verwijzingen vanaf andere sites.</p>
+
+    <p>Dit cijfer bepaalt waar je tijd heen gaat. Komt twee derde van je bezoek binnen via je Google-bedrijfsprofiel, dan levert een uur foto's toevoegen en reviews beantwoorden in dat profiel meer op dan een uur je homepage herschrijven. Komt er bijna niets uit zoekresultaten, dan ben je ofwel niet vindbaar op de termen die je klanten gebruiken, ofwel gaan je pagina's helemaal niet over die termen.</p>
+
+    <p>Let ook op het bakje "direct". Een groot en stabiel direct-aandeel betekent meestal terugkerende klanten en mond-tot-mondreclame — gezond, maar ook een teken dat je weinig <em>nieuwe</em> mensen wint via zoekmachines.</p>
+
+    <h2><span class="num">2</span> Welke pagina's het werk doen</h2>
+    <p>Elke site heeft pagina's die het bedrijf dragen en pagina's die sinds de oplevering niemand geopend heeft. Welke welke zijn, raad je vrijwel nooit goed.</p>
+
+    <p>Kijk naar twee dingen: welke pagina's de meeste bezoeken krijgen, en op welke pagina's mensen <em>binnenkomen</em>. Dat zijn twee verschillende rapporten en de tweede is de interessante. Het gebeurt vaak dat een klusbedrijf ontdekt dat vier van de vijf nieuwe bezoekers op één specifieke dienstenpagina landen en nooit op de homepage, simpelweg omdat die pagina past bij wat mensen zoeken.</p>
+
+    <p>Zodra je dat weet, wordt het werk vanzelf duidelijk. Die pagina krijgt je beste foto's, een echt prijssignaal, de review van een klant met dezelfde klus en een knop die zichtbaar is zonder te scrollen. En de pagina over de geschiedenis van je bedrijf, goed voor elf bezoeken per maand, hoeft geen middag van je tijd meer.</p>
+
+    <h2><span class="num">3</span> Hoeveel mensen de vervolgstap zetten</h2>
+    <p>Dit is het cijfer dat de meeste kleine bedrijven nooit inrichten, en zonder dat cijfer zijn de andere drie niet meer dan roddel. Een vervolgstap is wat bij jou telt als lead: een aangetikt telefoonnummer, een verstuurd contactformulier, een klik naar WhatsApp, een routeverzoek, een boeking, een aangeklikt e-mailadres.</p>
+
+    <p>Elke serieuze tool kan die als gebeurtenissen registreren, en een bouwer is er zo'n twintig minuten mee bezig. Het resultaat is één getal dat je naast je bezoeken kunt leggen: 340 bezoeken, 22 vervolgstappen. Die verhouding — zeg zes of zeven procent — is nu iets wat je kunt bewegen.</p>
+
+    <figure class="art-img"><img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80" alt="Iemand die een knop aantikt op een smartphone" loading="lazy"><figcaption>Aangetikte telefoonnummers en verstuurde formulieren zijn de gebeurtenissen die tellen — niet hoe ver iemand scrollde.</figcaption></figure>
+
+    <p>En zodra het meetbaar is, houden gewone aanpassingen op smaakkwesties te zijn. Je zet het telefoonnummer in de mobiele balk en de verhouding gaat van vier naar zeven procent. Dat is geen mening over vormgeving meer; dat is ongeveer één extra aanvraag per week.</p>
+
+    <div class="art-mistake">
+      <h3>De fout die bijna iedereen maakt</h3>
+      <p>Statistieken installeren en nooit één conversie definiëren. De tool registreert dan twee jaar lang braaf bezoeken, sessies, bouncepercentages en gemiddelde tijd op de pagina, en je leert er niets van. Richt je deze maand maar één ding in, maak er dan "telefoonnummer aangetikt" en "formulier verstuurd" van. De rest kan wachten.</p>
+    </div>
+
+    <div class="art-cta-box">
+      <div class="art-cta-box-text">
+        <h3>Weet je niet wat je website eigenlijk oplevert?</h3>
+        <p>We richten de meting goed in op websites van kleine bedrijven — conversies incluis — zodat je ziet welke pagina's en welke kanalen klanten binnenbrengen.</p>
+      </div>
+      <a href="/contact/" class="btn btn-red">Vraag een check aan →</a>
+    </div>
+
+    <h2><span class="num">4</span> Wat je site mensen aan wachttijd kost</h2>
+    <p>Het vierde cijfer komt niet uit je statistiekentool maar uit Google Search Console, en het is gratis: hoe snel je site laadt voor echte bezoekers op echte apparaten, op de verbinding die ze werkelijk hebben.</p>
+
+    <p>Dat zegt meer dan een losse score uit een snelheidstest, want zo'n test draait op een snelle machine in een datacentrum, terwijl je klant op een telefoon met twee streepjes bereik op een parkeerplaats staat. Search Console laat de spreiding over echte bezoeken zien en markeert welke pagina's traag zijn. Google gebruikt diezelfde gegevens als rankingsignaal, dus een trage pagina kost je dubbel: minder mensen vinden hem, en meer van de mensen die hem vinden haken af voordat hij verschijnt.</p>
+
+    <p>Je hoeft hier geen expert in te worden. Je moet het opmerken als een pagina rood kleurt, en weten dat het bijna altijd te herleiden is tot één ding: een foto die iemand rechtstreeks van de camera heeft geüpload.</p>
+
+    <h2>Privacyvriendelijke tools, en wat je kunt overslaan</h2>
+    <p>Google Analytics is gratis en krachtig, maar voor een lokaal bedrijf ook enorm, en onder de AVG beland je ermee in cookiebannerland met een toestemmingsmelding die de meeste bezoekers wegklikken — waardoor je data alsnog incompleet is.</p>
+
+    <p>De lichte alternatieven — Plausible, Fathom, Simple Analytics of een zelf gehoste Matomo — kosten een paar euro per maand, plaatsen geen cookies, volgen mensen niet over sites heen en hebben doorgaans helemaal geen banner nodig. Hun dashboard past op één scherm, wat hier een voordeel is en geen beperking. Ze laden ook een fractie van het gewicht, wat cijfer vier weer helpt.</p>
+
+    <ul class="art-checklist">
+      <li><strong>Google Search Console</strong> — gratis en altijd de moeite waard. Laat zien op welke zoektermen je verschijnt en hoe snel je bent bij echte bezoeken.</li>
+      <li><strong>Eén lichte statistiekentool</strong> — bronnen, landingspagina's, conversies. Eén scherm is genoeg.</li>
+      <li><strong>Twee of drie gebeurtenissen</strong> — telefoontik, formulier verstuurd, route- of boekingsklik.</li>
+      <li><strong>De cijfers van je Google-bedrijfsprofiel</strong> — belletjes, routeverzoeken en klikken naar je site, staan gratis al in het profiel.</li>
+    </ul>
+
+    <p>Wat je kunt overslaan: heatmaps en sessie-opnames op een site met een paar honderd bezoekers per maand (te weinig data om een patroon te zien), dashboards die je een pdf mailen die niemand opent, en alles wat "AI-inzichten" belooft bovenop elf bezoeken per dag.</p>
+
+    <h2>De maandelijkse routine van tien minuten</h2>
+    <p>Cijfers verzamelen heeft alleen zin als iemand ernaar kijkt, en de grootste reden dat mensen ermee stoppen is dat ze dagelijks kijken. Dagcijfers zijn voor een lokaal bedrijf ruis: één rustige dinsdag zegt niets. Zet één keer per maand een half uur in je agenda en doe dit.</p>
+
+    <ol class="art-steps">
+      <li><strong>Eerst de vervolgstappen</strong> — hoeveel belletjes, formulieren en routeklikken vergeleken met vorige maand? Dit is het enige cijfer dat je rekeningen betaalt.</li>
+      <li><strong>Dan de bronnen</strong> — is er iets verschoven? Een daling in zoekverkeer is het uitzoeken waard; een daling in social betekent meestal dat je niets geplaatst hebt.</li>
+      <li><strong>Dan de landingspagina's</strong> — is er een nieuwe pagina die mensen begint binnen te halen? Geef die aandacht.</li>
+      <li><strong>Dan Search Console</strong> — zoektermen waarop je verschijnt maar waar je nooit aan gedacht had? Dat zijn gratis pagina-ideeën. En is er een pagina rood geworden op snelheid?</li>
+      <li><strong>Schrijf één ding op dat je gaat veranderen</strong> — één, en doe het voor volgende maand. Tien kleine verbeteringen per jaar winnen het van één grote herbouw.</li>
+    </ol>
+
+    <h2>Conclusie</h2>
+    <p>Meten voor een klein bedrijf gaat niet over dashboards. Het gaat over vier vragen: waar mensen vandaan kwamen, welke pagina ze vasthield, hoeveel er de vervolgstap zetten, en hoe lang ze op die pagina moesten wachten.</p>
+
+    <p>Richt deze week het meten van conversies in — al is het alleen het telefoonnummer en het contactformulier — en geef het een maand. Dat ene getal, afgezet tegen je bezoeken, vertelt je meer over je website dan elk rapport dat je tot nu toe gelezen hebt.</p>
+
+`
+ },
+
  "what-to-put-on-your-services-page": {
   "articlesLink": "Artikelen",
   "current": "Conversie",

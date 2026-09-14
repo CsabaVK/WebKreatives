@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'why-your-website-needs-analytics',
+    title:            'Waarom Je Website Cijfers Nodig Heeft en Welke',
+    titleEn:          'Why Your Website Needs Analytics and Which Numbers Matter',
+    category:         'Techniek & Snelheid',
+    categoryEn:       'Performance',
+    date:             '2026-09-14',
+    dateFormatted:    '14 september 2026',
+    dateFormattedEn:  '14 September 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-09-14T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'De meeste websites van kleine bedrijven verzamelen cijfers waar niemand naar kijkt. Dit zijn de vier getallen die er maandelijks toe doen, waarom het bezoekersaantal het minst nuttige is, en welke privacyvriendelijke tools je nodig hebt.',
+    excerptEn:        'Most small business websites collect data nobody ever looks at. These are the four numbers worth checking every month, why visitors is the least useful of them, and which privacy-friendly tools to use.'
+  },
+
+  {
     slug:             'what-to-put-on-your-services-page',
     title:            'Wat er Echt op Je Dienstenpagina Hoort',
     titleEn:          'What Really Belongs on Your Services Page',
