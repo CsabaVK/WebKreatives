@@ -199,7 +199,7 @@
   const stars = n => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
   const badge = $('[data-gbadge]');
   function paintBadge(rating, count) { if (!badge || !rating) return; $('b', badge).textContent = rating.toFixed(1).replace('.', ','); $('.stars', badge).textContent = stars(rating); $('small', badge).textContent = t('basedOn') + count + t('greviews'); }
-  let rcarIdx = 0, rcarTimer = 0, rcarUser = false;
+  let rcarIdx = 0;
   function renderReviews() {
     const el = $('[data-reviews]'); if (!el || !AD.reviews) return;
     const list = AD.reviews.slice(0, 5);
@@ -213,16 +213,15 @@
     }).join('');
     const dots = $('[data-rcar-dots]');
     if (dots) dots.innerHTML = list.map((_, i) => '<button type="button" data-go="' + i + '" aria-label="Review ' + (i + 1) + '"></button>').join('');
-    rcarGo(rcarIdx, false);
+    rcarGo(rcarIdx);
   }
-  function rcarGo(i, byUser) {
+  function rcarGo(i) {
     const track = $('[data-reviews]'); if (!track) return;
     const n = track.children.length; if (!n) return;
     rcarIdx = (i + n) % n;
     track.style.transform = 'translateX(' + (-rcarIdx * 100) + '%)';
     $$('[data-rcar-dots] button').forEach((d, j) => d.classList.toggle('on', j === rcarIdx));
     const cur = $('[data-rcar-cur]'); if (cur) cur.textContent = String(rcarIdx + 1).padStart(2, '0');
-    if (byUser) { rcarUser = true; clearTimeout(rcarTimer); }
     rcarFit();
   }
   // on phones the slides stack, so the frame follows the current slide's height instead of the tallest one
@@ -232,14 +231,12 @@
   }
   (function rcarInit() {
     const nav = $('[data-rcar-nav]'), car = $('[data-rcar]'); if (!nav || !car) return;
-    $$('.rcar-btn', nav).forEach(b => b.addEventListener('click', () => rcarGo(rcarIdx + (+b.dataset.dir), true)));
-    nav.addEventListener('click', e => { const d = e.target.closest('[data-go]'); if (d) rcarGo(+d.dataset.go, true); });
+    $$('.rcar-btn', nav).forEach(b => b.addEventListener('click', () => rcarGo(rcarIdx + (+b.dataset.dir))));
+    nav.addEventListener('click', e => { const d = e.target.closest('[data-go]'); if (d) rcarGo(+d.dataset.go); });
     window.addEventListener('resize', rcarFit); window.addEventListener('load', rcarFit);
     let x0 = null;
     car.addEventListener('pointerdown', e => { x0 = e.clientX; }, { passive: true });
-    car.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) rcarGo(rcarIdx + (dx < 0 ? 1 : -1), true); }, { passive: true });
-    let over = false; car.addEventListener('pointerenter', () => { over = true; }); car.addEventListener('pointerleave', () => { over = false; });
-    if (!reduced) (function tick() { rcarTimer = setTimeout(() => { if (!rcarUser && !over && !document.hidden) rcarGo(rcarIdx + 1, false); tick(); }, 7000); })();
+    car.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) rcarGo(rcarIdx + (dx < 0 ? 1 : -1)); }, { passive: true });
   })();
   const live = $('[data-greviews]');
   if (live && AD.google && AD.google.placesKey && AD.placeId) {
