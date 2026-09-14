@@ -46,6 +46,29 @@
 .ledger-row b{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint)}
 .ledger-row span{font-family:var(--f-body);font-size:17px;font-weight:400;color:var(--cream);text-align:right}
 
+/* ── Web patterns and motion demos ───────────────────────────────────── */
+.pt{padding:26px 0;border-bottom:1px solid var(--rule-soft)}
+.pt:last-child{border-bottom:0}
+.pt-lab{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint);margin:0 0 16px;display:flex;gap:14px;flex-wrap:wrap;align-items:baseline}
+.pt-lab code{font-family:var(--f-mono);font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:none;color:var(--cream-dim);background:var(--ink-2);padding:2px 6px;border-radius:4px}
+.pt-lab small{font-family:var(--f-body);font-size:12px;font-weight:300;letter-spacing:0;text-transform:none;color:var(--cream-faint)}
+.pt-demo{position:relative}
+.pt-demo.pt-demo--phero .wk-phero{padding-top:clamp(56px,7vw,90px);border-radius:var(--radius);border:1px solid var(--rule)}
+.pt-demo.pt-demo--phero .wk-wrap{padding:0 clamp(22px,4vw,48px)}
+.pt-code{margin:14px 0 0;padding:14px 16px;background:var(--ink-deep);border:1px solid var(--rule);border-radius:var(--radius);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;line-height:1.6;color:var(--cream-mute);overflow-x:auto;white-space:pre}
+.pt-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media(max-width:860px){.pt-two{grid-template-columns:minmax(0,1fr)}}
+.sw--alpha i{background-image:linear-gradient(45deg,var(--ink-2) 25%,transparent 25%,transparent 75%,var(--ink-2) 75%),linear-gradient(45deg,var(--ink-2) 25%,transparent 25%,transparent 75%,var(--ink-2) 75%);background-size:16px 16px;background-position:0 0,8px 8px;background-color:var(--ink)}
+.sw--alpha i::after{content:'';display:block;height:100%}
+.mq-strip span{font-family:var(--f-display);font-weight:900;font-size:18px;letter-spacing:-.03em;color:var(--cream-faint);white-space:nowrap}
+.mq-strip i{width:6px;height:6px;border-radius:50%;background:var(--red);opacity:.6;flex-shrink:0;align-self:center}
+/* the contact form's field styles, copied here so the input renders as it does on /contact/ */
+.fg{display:flex;flex-direction:column;gap:8px;min-width:0}
+.fg label{font-family:var(--f-mono);font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cream-faint)}
+.fg input,.fg textarea,.fg select{font-family:var(--f-body);font-size:14.5px;font-weight:300;background:var(--ink);color:var(--cream);border:1px solid var(--rule-hard);border-radius:var(--radius);padding:13px 15px;outline:none;width:100%;transition:border-color var(--dur-fast),box-shadow var(--dur-fast),background var(--dur-fast)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--cream-faint)}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--bronze);background:var(--ink-3);box-shadow:0 0 0 3px rgba(223,56,33,.12)}
+.fg textarea{resize:vertical;min-height:110px;line-height:1.65}
 /* ── Artboard previews ───────────────────────────────────────────────── */
 .ab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:40px 34px}
 .ab-card{display:flex;flex-direction:column;gap:14px}
@@ -182,11 +205,11 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
 
 <header class="ds-head">
   <div class="ds-wrap">
-    <span class="wk-eyebrow">Design system · v1 · September 2026</span>
-    <h1 class="wk-display wk-h1">One system, six artboards, <span class="wk-accent">many posts</span>.</h1>
+    <span class="wk-eyebrow">Design system · v1.1 · September 2026</span>
+    <h1 class="wk-display wk-h1">One system, one site, <span class="wk-accent">many posts</span>.</h1>
     <p class="wk-lede">Everything WebKreatives publishes under its own name reads from here. Values come from <code>css/theme.css</code>; the rules are in <code>DESIGN.md</code>. The artboards at the bottom are real: <code>node _design/render.cjs statement out.png --headline "…"</code> turns one into a PNG.</p>
     <nav class="ds-nav">
-      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#social">Social artboards</a><a href="#variation">Variation</a><a href="#carousel">Carousel arc</a>
+      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#patterns">Web patterns</a><a href="#motion">Motion</a><a href="#social">Social artboards</a><a href="#variation">Variation</a><a href="#carousel">Carousel arc</a>
     </nav>
   </div>
 </header>
@@ -206,12 +229,22 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
       <div class="sw"><i style="background:var(--cream-mute)"></i><b>--cream-mute</b><span>oklch(62% .006 80)<br>lede</span></div>
       <div class="sw"><i style="background:var(--cream-faint)"></i><b>--cream-faint</b><span>oklch(56% .006 80)<br>meta</span></div>
       <div class="sw"><i style="background:var(--cream2)"></i><b>--cream2</b><span>oklch(93% .012 80)<br>paper ground</span></div>
+      <div class="sw"><i style="background:var(--white)"></i><b>--white</b><span>oklch(99% .004 80)<br>brightest hover</span></div>
       <div class="sw"><i style="background:var(--red)"></i><b>--red</b><span>#df3821<br>the accent</span></div>
+      <div class="sw"><i style="background:#f14b35"></i><b>#f14b35</b><span>literal<br>hover wipe on a button</span></div>
+      <div class="sw"><i style="background:var(--red2)"></i><b>--red2</b><span>oklch(43% .200 25)<br>pressed, rare</span></div>
       <div class="sw"><i style="background:var(--red-deep)"></i><b>--red-deep</b><span>#a82716<br>red on paper</span></div>
+      <div class="sw sw--alpha"><i style="background-color:var(--bronze-mist)"></i><b>--bronze-mist</b><span>rgba(223,56,33,.10)<br>badge and tag fill</span></div>
+      <div class="sw sw--alpha"><i style="background-color:var(--bronze-rule)"></i><b>--bronze-rule</b><span>rgba(223,56,33,.24)<br>badge border, frame hover</span></div>
       <div class="sw"><i style="background:var(--lime)"></i><b>--lime</b><span>#b9e185<br>mark</span></div>
       <div class="sw"><i style="background:var(--blue)"></i><b>--blue</b><span>#648dcb<br>mark</span></div>
       <div class="sw"><i style="background:var(--yellow)"></i><b>--yellow</b><span>#fbeb78<br>mark</span></div>
       <div class="sw"><i style="background:var(--grn)"></i><b>--grn</b><span>oklch(68% .150 130)<br>status dot</span></div>
+      <div class="sw sw--alpha"><i style="background-color:var(--rule)"></i><b>--rule</b><span>rgba(239,230,210,.10)<br>hairline on ink</span></div>
+      <div class="sw sw--alpha"><i style="background-color:var(--rule-soft)"></i><b>--rule-soft</b><span>rgba(239,230,210,.06)<br>hairline inside a card</span></div>
+      <div class="sw sw--alpha"><i style="background-color:var(--rule-hard)"></i><b>--rule-hard</b><span>rgba(239,230,210,.18)<br>ghost border, input border</span></div>
+      <div class="sw"><i style="background:var(--line)"></i><b>--line</b><span>oklch(88% .006 80)<br>hairline on paper</span></div>
+      <div class="sw"><i style="background:var(--lined)"></i><b>--lined</b><span>oklch(22% .010 25)<br>opaque hairline on a card</span></div>
     </div>
   </div>
 </section>
@@ -228,6 +261,10 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
     <div class="ty-row"><div class="ty-lab">Meta<br>Unbounded 700 · 10px · .13em</div><div><span class="wk-meta">webkreatives.com</span></div></div>
     <div class="ty-row"><div class="ty-lab">Lede<br>Figtree 300 · clamp(15, 1.35vw, 18)</div><div class="wk-lede">WebKreatives designs, builds and looks after custom websites for owner-led businesses. Fixed price, full ownership, one studio from first sketch through ongoing support.</div></div>
     <div class="ty-row"><div class="ty-lab">Body<br>Figtree 300 · 16px · 1.7</div><div>Start with the problem you are seeing, and we work out whether the answer is design, build, visibility, or something smaller. You do not need to know the solution before reaching out.</div></div>
+    <div class="ty-row"><div class="ty-lab">Figure<br>.wk-stat-n · clamp(32, 3.8vw, 52)</div><div class="wk-stats"><div><span class="wk-stat-n" data-count="8">8</span><span class="wk-stat-l">Projects</span></div><div><span class="wk-stat-n" data-count="2">2</span><span class="wk-stat-l">Languages</span></div></div></div>
+    <div class="ty-row"><div class="ty-lab">Prose<br>.wk-prose · 16.5px · 1.82</div><div class="wk-prose" style="max-width:none"><h2 style="margin-top:0">What goes wrong</h2><p>Most competitors send you to a PDF or to a delivery platform taking a cut. <strong>Here the menu is the site itself.</strong> Prose runs at 680px; this row is wider so the scale reads.</p><h3>Decisions we made</h3><blockquote>One page, the menu on it, nothing to download.</blockquote></div></div>
+    <div class="ty-row"><div class="ty-lab">Note<br>.wk-note · 12.5px · 1.72</div><p class="wk-note" style="margin:0">Prices exclude VAT. Basic runs for a minimum of twelve months, Plus and Growth for six; after that one email is enough to stop.</p></div>
+    <div class="ty-row"><div class="ty-lab">Button label<br>Unbounded 700 · 11px · .13em</div><div><span class="wk-btn wk-btn--ghost" style="pointer-events:none"><span>Send a short brief</span><span class="wk-arrow">→</span></span></div></div>
   </div>
 </section>
 
@@ -240,7 +277,11 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
       <a class="wk-btn wk-btn--primary" href="#"><span>Start a project</span><span class="wk-arrow">→</span></a>
       <a class="wk-btn wk-btn--ghost" href="#"><span>See the work</span><span class="wk-arrow">→</span></a>
     </div>
+    <div class="cmp-row"><div class="cmp-lab">Quiet link</div><a class="wk-more" href="#"><span>See the full portfolio</span><span class="wk-arrow">→</span></a><a class="wk-row-go" href="#"><span>View the project</span><span>→</span></a></div>
+    <div class="cmp-row"><div class="cmp-lab">Badge</div><span class="wk-badge">Concept build</span><span class="wk-badge">Client demo</span></div>
+    <div class="cmp-row"><div class="cmp-lab">Breadcrumb</div><nav class="wk-crumb" style="margin:0"><a href="#">Home</a><span class="sep">/</span><a href="#">Portfolio</a><span class="sep">/</span><span>Leyenburger Grill</span></nav></div>
     <div class="cmp-row"><div class="cmp-lab">Status chip</div><span class="wk-chip">Project openings available</span></div>
+    <div class="cmp-row"><div class="cmp-lab">Accent word</div><div class="wk-display wk-h3 is-lit" style="margin:0">Websites that <em class="mark">do their job</em>.</div></div>
     <div class="cmp-row"><div class="cmp-lab">Ledger</div>
       <div class="ledger">
         <div class="ledger-row"><b>Price</b><span>Fixed, agreed before we start</span></div>
@@ -252,9 +293,258 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
   </div>
 </section>
 
+<section class="ds-section" id="patterns">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">04 · Web patterns</span>
+    <h2 class="wk-display wk-h2">The same parts on every page.</h2>
+    <p class="ds-note">Each block below is the real component from <code>css/theme.css</code>, not a copy. Hover the frame and the rows; the snippet under each one is what a page pastes.</p>
+    <div class="pt">
+      <p class="pt-lab">Intro block <code>.wk-intro</code> <small>eyebrow and heading left, lede right, one column under 900px</small></p>
+      <div class="pt-demo">
+<div class="wk-intro" style="margin-bottom:0">
+  <div>
+    <span class="wk-eyebrow">The plans</span>
+    <h2 class="wk-display wk-h2">Three plans. Monthly or <em class="mark">yearly</em>.</h2>
+  </div>
+  <p class="wk-lede">Changes to your site always go through us, so what really separates the plans is how much room you get for them.</p>
+</div>
+      </div>
+      <pre class="pt-code">&lt;div class="wk-intro" style="margin-bottom:0"&gt;
+  &lt;div&gt;
+    &lt;span class="wk-eyebrow"&gt;The plans&lt;/span&gt;
+    &lt;h2 class="wk-display wk-h2"&gt;Three plans. Monthly or &lt;em class="mark"&gt;yearly&lt;/em&gt;.&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;p class="wk-lede"&gt;Changes to your site always go through us, so what really separates the plans is how much room you get for them.&lt;/p&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab">Inner-page hero <code>.wk-phero</code> + <code>.wk-phero-split</code> + <code>.wk-stats</code> <small>padding reduced here; on a page the light field canvas sits under it</small></p>
+      <div class="pt-demo pt-demo--phero">
+<section class="wk-phero wk-grain">
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb"><a href="#">Home</a><span class="sep">/</span><span>Portfolio</span></nav>
+    <div class="wk-phero-split">
+      <div>
+        <span class="wk-eyebrow">The work</span>
+        <h1 class="wk-display wk-h1">Work you can <em class="mark">click through</em>.</h1>
+        <p class="wk-lede">Websites for garages, restaurants, salons and studios. Not mockups in a grid: every site actually runs.</p>
+      </div>
+      <div class="wk-stats">
+        <div><span class="wk-stat-n">8</span><span class="wk-stat-l">Projects</span></div>
+        <div><span class="wk-stat-n">2</span><span class="wk-stat-l">Languages</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+      </div>
+      <pre class="pt-code">&lt;section class="wk-phero wk-grain"&gt;
+  &lt;div class="wk-phero-bg"&gt;&lt;/div&gt;
+  &lt;div class="wk-phero-grid"&gt;&lt;/div&gt;
+  &lt;div class="wk-wrap wk-phero-in"&gt;
+    &lt;nav class="wk-crumb"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;span class="sep"&gt;/&lt;/span&gt;&lt;span&gt;Portfolio&lt;/span&gt;&lt;/nav&gt;
+    &lt;div class="wk-phero-split"&gt;
+      &lt;div&gt;
+        &lt;span class="wk-eyebrow"&gt;The work&lt;/span&gt;
+        &lt;h1 class="wk-display wk-h1"&gt;Work you can &lt;em class="mark"&gt;click through&lt;/em&gt;.&lt;/h1&gt;
+        &lt;p class="wk-lede"&gt;Websites for garages, restaurants, salons and studios. Not mockups in a grid: every site actually runs.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="wk-stats"&gt;
+        &lt;div&gt;&lt;span class="wk-stat-n"&gt;8&lt;/span&gt;&lt;span class="wk-stat-l"&gt;Projects&lt;/span&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;span class="wk-stat-n"&gt;2&lt;/span&gt;&lt;span class="wk-stat-l"&gt;Languages&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab">Frame <code>.wk-frame</code> <small>wipes up on scroll, hover lifts the filter and turns the border red; data-tilt and data-cursor-label are optional</small></p>
+      <div class="pt-demo">
+<a class="wk-frame" href="#" data-tilt="4" data-cursor-label="View live" style="max-width:520px;display:block">
+  <div class="wk-frame-bar">
+    <span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span>
+    <span class="wk-frame-url">webkreatives.com/leyenburger</span>
+  </div>
+  <img src="../assets/screenshots/leyenburger-640.webp" width="640" height="450" alt="Leyenburger Grill" decoding="async">
+</a>
+      </div>
+      <pre class="pt-code">&lt;a class="wk-frame" href="#" data-tilt="4" data-cursor-label="View live" style="max-width:520px;display:block"&gt;
+  &lt;div class="wk-frame-bar"&gt;
+    &lt;span class="wk-frame-dot"&gt;&lt;/span&gt;&lt;span class="wk-frame-dot"&gt;&lt;/span&gt;&lt;span class="wk-frame-dot"&gt;&lt;/span&gt;
+    &lt;span class="wk-frame-url"&gt;webkreatives.com/leyenburger&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;img src="../assets/screenshots/leyenburger-640.webp" width="640" height="450" alt="Leyenburger Grill" decoding="async"&gt;
+&lt;/a&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab">Rows <code>.wk-rows</code> &gt; <code>.wk-row</code> <small>red number, body, figure; a wash fades in from the left on hover; data-preview floats a screenshot</small></p>
+      <div class="pt-demo">
+<div class="wk-rows">
+  <div class="wk-row" data-preview="../assets/screenshots/leyenburger-640.webp">
+    <span class="wk-row-n">01</span>
+    <div class="wk-row-body">
+      <div class="wk-row-top"><span class="wk-meta">Food &amp; drink</span></div>
+      <h3>Leyenburger Grill</h3>
+      <p class="wk-row-desc">The menu is the site itself, no PDF and no delivery platform in between.</p>
+      <a class="wk-row-go" href="#"><span>Read the case study</span><span>→</span></a>
+    </div>
+    <div class="wk-row-fig"><span class="wk-stat-n">43</span><span class="wk-stat-l">Dishes on the menu</span></div>
+  </div>
+  <div class="wk-row">
+    <span class="wk-row-n">02</span>
+    <div class="wk-row-body">
+      <div class="wk-row-top"><span class="wk-meta">Automotive</span></div>
+      <h3>Scootershop Den Haag</h3>
+      <p class="wk-row-desc">Brought in the morning, ready by evening. The price sits on the first screen.</p>
+      <a class="wk-row-go" href="#"><span>View the project</span><span>→</span></a>
+    </div>
+    <div class="wk-row-fig"><span class="wk-stat-n">2</span><span class="wk-stat-l">Fixed-price services</span></div>
+  </div>
+</div>
+      </div>
+      <pre class="pt-code">&lt;div class="wk-rows"&gt;
+  &lt;div class="wk-row" data-preview="../assets/screenshots/leyenburger-640.webp"&gt;
+    &lt;span class="wk-row-n"&gt;01&lt;/span&gt;
+    &lt;div class="wk-row-body"&gt;
+      &lt;div class="wk-row-top"&gt;&lt;span class="wk-meta"&gt;Food &amp;amp; drink&lt;/span&gt;&lt;/div&gt;
+      &lt;h3&gt;Leyenburger Grill&lt;/h3&gt;
+      &lt;p class="wk-row-desc"&gt;The menu is the site itself, no PDF and no delivery platform in between.&lt;/p&gt;
+      &lt;a class="wk-row-go" href="#"&gt;&lt;span&gt;Read the case study&lt;/span&gt;&lt;span&gt;→&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="wk-row-fig"&gt;&lt;span class="wk-stat-n"&gt;43&lt;/span&gt;&lt;span class="wk-stat-l"&gt;Dishes on the menu&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="wk-row"&gt;
+    &lt;span class="wk-row-n"&gt;02&lt;/span&gt;
+    &lt;div class="wk-row-body"&gt;
+      &lt;div class="wk-row-top"&gt;&lt;span class="wk-meta"&gt;Automotive&lt;/span&gt;&lt;/div&gt;
+      &lt;h3&gt;Scootershop Den Haag&lt;/h3&gt;
+      &lt;p class="wk-row-desc"&gt;Brought in the morning, ready by evening. The price sits on the first screen.&lt;/p&gt;
+      &lt;a class="wk-row-go" href="#"&gt;&lt;span&gt;View the project&lt;/span&gt;&lt;span&gt;→&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="wk-row-fig"&gt;&lt;span class="wk-stat-n"&gt;2&lt;/span&gt;&lt;span class="wk-stat-l"&gt;Fixed-price services&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab">Closing CTA card <code>.wk-cta-card</code> <small>the one centred surface; data-cursor-grid lights the dots, .is-lit draws the underline</small></p>
+      <div class="pt-demo">
+<div class="wk-cta-wrap" style="padding:0">
+  <section class="wk-cta-card wk-grain is-lit" data-cursor-grid>
+    <h2 class="wk-display wk-h2">Your business belongs on this <em class="mark">list</em>.</h2>
+    <p class="wk-lede">Send a short brief: what you do and what the site has to do. You get back what we would build and what it costs.</p>
+    <div class="wk-cta-row">
+      <a href="#" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic><span>Send a short brief</span><span class="wk-arrow">→</span></a>
+      <a href="#" class="wk-btn wk-btn--ghost"><span>See the prices</span><span class="wk-arrow">→</span></a>
+    </div>
+    <p class="wk-cta-note">You get a reply within one business day. Sending a brief does not commit you to anything.</p>
+  </section>
+</div>
+      </div>
+      <pre class="pt-code">&lt;div class="wk-cta-wrap" style="padding:0"&gt;
+  &lt;section class="wk-cta-card wk-grain is-lit" data-cursor-grid&gt;
+    &lt;h2 class="wk-display wk-h2"&gt;Your business belongs on this &lt;em class="mark"&gt;list&lt;/em&gt;.&lt;/h2&gt;
+    &lt;p class="wk-lede"&gt;Send a short brief: what you do and what the site has to do. You get back what we would build and what it costs.&lt;/p&gt;
+    &lt;div class="wk-cta-row"&gt;
+      &lt;a href="#" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic&gt;&lt;span&gt;Send a short brief&lt;/span&gt;&lt;span class="wk-arrow"&gt;→&lt;/span&gt;&lt;/a&gt;
+      &lt;a href="#" class="wk-btn wk-btn--ghost"&gt;&lt;span&gt;See the prices&lt;/span&gt;&lt;span class="wk-arrow"&gt;→&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p class="wk-cta-note"&gt;You get a reply within one business day. Sending a brief does not commit you to anything.&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab">Boxed note <code>.wk-note--boxed</code></p>
+      <div class="pt-demo">
+<p class="wk-note wk-note--boxed" style="margin:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>Client demos are concept builds. The banner on each one says so, and links back here.</span></p>
+      </div>
+      <pre class="pt-code">&lt;p class="wk-note wk-note--boxed" style="margin:0"&gt;&lt;svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"&gt;&lt;circle cx="12" cy="12" r="9"/&gt;&lt;path d="M12 8v5M12 16h.01"/&gt;&lt;/svg&gt;&lt;span&gt;Client demos are concept builds. The banner on each one says so, and links back here.&lt;/span&gt;&lt;/p&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab">Inputs <code>.fg</code> <small>(contact page CSS, copied here)</small> <small>focus: red border, --ink-3 ground, 3px red ring</small></p>
+      <div class="pt-demo">
+<div class="pt-two">
+  <div class="fg"><label for="ds-name">Name</label><input id="ds-name" type="text" placeholder="Your name"></div>
+  <div class="fg"><label for="ds-mail">Email</label><input id="ds-mail" type="email" placeholder="name@business.nl"></div>
+  <div class="fg" style="grid-column:1/-1"><label for="ds-msg">What the site has to do</label><textarea id="ds-msg" placeholder="Start with the problem you are seeing."></textarea></div>
+</div>
+      </div>
+      <pre class="pt-code">&lt;div class="pt-two"&gt;
+  &lt;div class="fg"&gt;&lt;label for="ds-name"&gt;Name&lt;/label&gt;&lt;input id="ds-name" type="text" placeholder="Your name"&gt;&lt;/div&gt;
+  &lt;div class="fg"&gt;&lt;label for="ds-mail"&gt;Email&lt;/label&gt;&lt;input id="ds-mail" type="email" placeholder="name@business.nl"&gt;&lt;/div&gt;
+  &lt;div class="fg" style="grid-column:1/-1"&gt;&lt;label for="ds-msg"&gt;What the site has to do&lt;/label&gt;&lt;textarea id="ds-msg" placeholder="Start with the problem you are seeing."&gt;&lt;/textarea&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="motion">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow" data-decode>05 · Motion</span>
+    <h2 class="wk-display wk-h2" data-split>Motion explains something, <span class="wk-accent">or it does not exist</span>.</h2>
+    <p class="ds-note">Every hook is an attribute, read by <code>js/motion.js</code>. Transform and opacity only, eased with <code>--ease-premium</code>. All of it stands still under <code>prefers-reduced-motion</code>. Reload to see the entrances again.</p>
+    <div class="pt">
+      <p class="pt-lab"><code>data-reveal</code> <code>data-reveal-delay</code></p>
+      <div class="pt-demo">
+<p data-reveal data-reveal-delay=".1" style="margin:0;color:var(--cream)">Rises 26px and fades in when scrolled into view.</p>
+      </div>
+      <pre class="pt-code">&lt;p data-reveal data-reveal-delay=".1"&gt;Rises 26px and fades in.&lt;/p&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab"><code>data-split</code></p>
+      <div class="pt-demo">
+<h3 class="wk-display wk-h3" data-split style="margin:0">Word by word out of a mask, 55ms apart.</h3>
+      </div>
+      <pre class="pt-code">&lt;h3 class="wk-display wk-h3" data-split&gt;Word by word out of a mask.&lt;/h3&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab"><code>data-decode</code></p>
+      <div class="pt-demo">
+<span class="wk-eyebrow" data-decode>Resolves out of noise</span>
+      </div>
+      <pre class="pt-code">&lt;span class="wk-eyebrow" data-decode&gt;Resolves out of noise&lt;/span&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab"><code>data-count</code></p>
+      <div class="pt-demo">
+<div class="wk-stats"><div><span class="wk-stat-n" data-count="309">309</span><span class="wk-stat-l">Counts up on entry</span></div></div>
+      </div>
+      <pre class="pt-code">&lt;span class="wk-stat-n" data-count="309"&gt;309&lt;/span&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab"><code>data-magnetic</code> and <code>.wk-shimmer</code></p>
+      <div class="pt-demo">
+<a class="wk-btn wk-btn--primary wk-shimmer" href="#" data-magnetic><span>Leans to the pointer</span><span class="wk-arrow">→</span></a>
+      </div>
+      <pre class="pt-code">&lt;a class="wk-btn wk-btn--primary wk-shimmer" data-magnetic&gt;&lt;span&gt;Leans to the pointer&lt;/span&gt;&lt;span class="wk-arrow"&gt;→&lt;/span&gt;&lt;/a&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab"><code>data-tilt</code> and <code>data-cursor-label</code></p>
+      <div class="pt-demo">
+<div data-tilt="6" data-cursor-label="View live" style="max-width:320px;padding:28px;border:1px solid var(--rule);border-radius:var(--radius);background:var(--ink-2)"><span class="wk-meta">Tilts with the pointer</span><h3 class="wk-display wk-h3" style="margin:8px 0 0">The cursor becomes a red disc with a label.</h3></div>
+      </div>
+      <pre class="pt-code">&lt;div data-tilt="6" data-cursor-label="View live"&gt;…&lt;/div&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab"><code>data-marquee</code></p>
+      <div class="pt-demo">
+<div data-marquee="24" style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 0"><div class="mq-strip" style="gap:36px"><span>Automotive</span><i></i><span>Food &amp; drink</span><i></i><span>Beauty</span><i></i><span>Photography</span><i></i><span>Interior</span><i></i><span>Bakery</span><i></i><span>Jewellery</span><i></i></div></div>
+      </div>
+      <pre class="pt-code">&lt;div data-marquee="24"&gt;&lt;div class="mq-strip"&gt;…&lt;/div&gt;&lt;/div&gt;</pre>
+    </div>
+    <div class="pt">
+      <p class="pt-lab">Frame wipe and hover <small>the screenshot wipes up into its frame on entry; the parent link's hover scales it 1.028 and lifts the desaturation</small></p>
+      <div class="pt-demo">
+<a class="wk-frame" href="#" style="max-width:420px;display:block"><div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/scootershopdenhaag</span></div><img src="../assets/screenshots/scootershopdenhaag-640.webp" width="640" height="450" alt="" decoding="async"></a>
+      </div>
+      <pre class="pt-code">&lt;a class="wk-frame" href="#"&gt;…&lt;img …&gt;&lt;/a&gt;</pre>
+    </div>
+  </div>
+</section>
+
 <section class="ds-section" id="social">
   <div class="ds-wrap">
-    <span class="wk-eyebrow">04 · Social artboards</span>
+    <span class="wk-eyebrow">06 · Social artboards</span>
     <h2 class="wk-display wk-h2">Six artboards. <span class="wk-accent">T1 is the default.</span></h2>
     <p class="ds-note">Shared frame on all of them: 96px margin, eyebrow top-left, wordmark bottom-left, URL bottom-right, grain and a 64px grid on ink. Portrait 1200×1500 unless stated. Every text below is a <code>data-slot</code> the renderer fills.</p>
 
@@ -364,7 +654,7 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
 
 <section class="ds-section" id="variation">
   <div class="ds-wrap">
-    <span class="wk-eyebrow">05 · Variation</span>
+    <span class="wk-eyebrow">07 · Variation</span>
     <h2 class="wk-display wk-h2">Same system, <span class="wk-accent">different post</span>.</h2>
     <p class="ds-note">Knobs, not new layouts. Mark: none, lime square, blue dot, yellow square, top-right, one at a time, never on paper. Accent word: first, last or mid-phrase. Headline: two lines at 124px or three at 104px. Lede: on or off. Glow: on or off. Rotation over a run: T1, T3 or T2, T1, T4, T1, T5 or T6, repeat.</p>
     <div class="ab-grid">
@@ -418,7 +708,7 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
 
 <section class="ds-section" id="carousel">
   <div class="ds-wrap">
-    <span class="wk-eyebrow">06 · Carousel arc</span>
+    <span class="wk-eyebrow">08 · Carousel arc</span>
     <h2 class="wk-display wk-h2">Five slides, <span class="wk-accent">one arc</span>.</h2>
     <p class="ds-note">Hook, pain, steps, proof, join. Grab attention, name the pain, show the system, prove it works, drive the action. One hero word on the cover; a list of what breaks; the mechanism as a numbered list; outcomes as checkmarks; a red closing slide with the URL. Rendered as a PDF for LinkedIn documents by <code>node _design/carousel.cjs spec.json out/</code>.</p>
     <div class="ab-grid">
@@ -551,6 +841,10 @@ window.fitHeroes = function () {
   });
 };
 document.fonts.ready.then(window.fitHeroes);
+// the motion hooks, only when a person is looking; render.cjs never loads them
+if (!new URLSearchParams(location.search).has('render')) {
+  const m = document.createElement('script'); m.src = '../js/motion.js'; document.body.appendChild(m);
+}
 </script>
 </body>
 </html>

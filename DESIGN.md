@@ -43,19 +43,34 @@ All neutrals carry a warm hue. Never `#000`, never `#fff`.
 | `--cream-mute` | `oklch(62% .006 80)` | ledes, secondary text |
 | `--cream-faint` | `oklch(56% .006 80)` | meta labels, captions |
 | `--cream2` | `oklch(93% .012 80)` | paper ground on the inverted variant |
+| `--white` | `oklch(99% .004 80)` | brightest hover on quiet links |
 | `--red` | `#df3821` | the accent: one word, the eyebrow, the primary button |
-| `--red-deep` | `#a82716` | red on paper, hover on red |
+| `--red2` | `oklch(43% .200 25)` | pressed red, rare |
+| `--red-deep` | `#a82716` | red on paper |
+| `#f14b35` | literal in `theme.css` | the lighter red that wipes in behind a primary button on hover |
+| `--bronze-mist` | `rgba(223,56,33,.10)` | badge and tag fill, red at whisper volume |
+| `--bronze-rule` | `rgba(223,56,33,.24)` | badge border, frame border on hover, blockquote rule |
 | `--lime` | `#b9e185` | logo mark, one geometric aside |
 | `--blue` | `#648dcb` | logo mark, one geometric aside |
 | `--yellow` | `#fbeb78` | logo mark, one geometric aside |
 | `--grn` | `oklch(68% .150 130)` | status dot, "open for projects" |
 | `--rule` | `rgba(239,230,210,.10)` | hairlines on ink |
-| `--rule-hard` | `rgba(239,230,210,.18)` | ghost button border, stronger hairline |
+| `--rule-soft` | `rgba(239,230,210,.06)` | hairlines between list items inside a card |
+| `--rule-hard` | `rgba(239,230,210,.18)` | ghost button border, input border, stronger hairline |
 | `--line` | `oklch(88% .006 80)` | hairlines on paper |
+| `--lined` | `oklch(22% .010 25)` | an opaque hairline where alpha would stack on a dark card |
+
+`--bronze`, `--bronze-mid`, `--bronze-low` and `--sage` are aliases for `--red`, `--red2`,
+`--red-deep` and `--grn`, kept so older pages keep reading from the same values. New code
+uses the plain names.
 
 Rules:
 
 - Red leads. On any one surface, red is the only saturated colour in the type.
+- The neutrals are never grey: every ink carries hue 25, every cream hue 80. `#000` and
+  `#fff` appear only as the text on a red fill and the cursor label.
+- `--grn` is a status colour: the "open for projects" dot, "open now" on client demos, the
+  locked consent toggle. Never a button, never type.
 - One secondary mark (lime, blue or yellow) per surface at most, as a shape, never as
   type colour, never two together outside the logo.
 - Grain (`.wk-grain`, opacity .035) on every ink surface larger than a card.
@@ -72,10 +87,23 @@ Two families, no third.
 | Eyebrow, meta, buttons | Unbounded | 700, uppercase | .13em to .16em | 1 |
 | Body | Figtree | 300 (400 on paper) | 0 | 1.7 |
 | Lede | Figtree | 300 | 0 | 1.75 |
+| Prose (case studies, articles) | Figtree | 300, `strong` 500 | 0 | 1.82 |
+| Figures (`.wk-stat-n`, ordinals) | Unbounded | 900 | -.04em to -.05em | 1 |
+| Note (`.wk-note`, `.ct-hint`) | Figtree | 300 | 0 | 1.72 |
 
 Web scale: `.wk-h1` clamp(34px, 5.4vw, 74px), `.wk-h2` clamp(26px, 3.6vw, 48px),
-`.wk-h3` clamp(19px, 2.1vw, 27px), lede clamp(15px, 1.35vw, 18px), eyebrow 10.5px,
-meta 10px, button 11px.
+`.wk-h3` clamp(19px, 2.1vw, 27px), lede clamp(15px, 1.35vw, 18px), body 16px, prose
+16.5px, note 12.5px, eyebrow 10.5px, meta 10px, button 11px. Figures: `.wk-stat-n`
+clamp(32px, 3.8vw, 52px); the red ordinal over a frame clamp(44px, 5.4vw, 78px) with a
+2px ink text stroke. Prose headings: `h2` Unbounded 900 clamp(24px, 3vw, 36px), `h3`
+Figtree 500 18px, blockquote Unbounded clamp(20px, 2.2vw, 27px) on a 2px red rule.
+
+Wide screens step the display up rather than leaving it small in a wider column:
+`.wk-h1` 82px and `.wk-h2` 54px from 1700px, 90px and 58px from 2400px.
+
+Steps are at least 1.25 apart (10.5, 16, 27, 48, 74); nothing sits between steps. The
+`.mark` phrase never wraps on desktop so its drawn underline stays one line; below 900px
+it wraps and the rule becomes a repeating background under every line box.
 
 Social scale, on a 1200px wide artboard: display 104px (three lines) or 124px (two
 lines), eyebrow 22px, body 36px, meta 20px, ledger label 22px, ledger value 40px.
@@ -86,10 +114,18 @@ image, at most 3 lines.
 
 ## 4. Rhythm
 
-- Radius 8px everywhere. No pills except the ghost status chip.
-- Web gutter `clamp(22px, 5vw, 64px)`, max width 1280px, text column 680px.
+- Radius 8px (`--radius`) on buttons, frames, inputs, badges and swatches. 10px on the
+  closing CTA card and the hover preview, 14px on the hosting plan cards. Pills (99px)
+  only for tags (`.pf-case-tag`, `.hs-p-tag`) and the billing switch (`.hs-bill`).
+- Web gutter `clamp(22px, 5vw, 64px)`, max width 1280px, text column 680px. From 1700px
+  the frame steps to 1560px with a 78px gutter, from 2400px to 1760px with 88px.
+- Section padding on web `clamp(70px, 10vw, 150px)`; the intro block sits
+  `clamp(40px, 5.5vw, 72px)` above its content; bands run
+  `padding-block: clamp(38px, 5vw, 64px)`.
+- Breakpoints: 900px is where two-column layouts (intro, hero split, case grid) become one
+  column and the custom cursor switches off; 860px collapses rows and the plan grid; 600px
+  and below stacks button rows and shrinks the consent banner.
 - Social margin 96px on all sides of a 1200px artboard (8%). Baseline grid 8px.
-- Section padding on web `clamp(70px, 10vw, 150px)`.
 - Hairlines, not boxes, separate content. A card is a surface (`--ink-2`), not a border.
 
 ## 5. Texture and motion
@@ -98,20 +134,124 @@ image, at most 3 lines.
 - Grid: 1px lines every 64px at `rgba(239,230,210,.04)`, hero and social only.
 - Glow pills: two or three long blurred capsules in red, lime and blue at 10 to 16%
   opacity behind the hero. On social, at most one, red, behind the display type.
-- Motion on web: `--ease-premium cubic-bezier(.16,1,.3,1)`, durations .28s / .55s /
-  .9s. Reveal is translateY(26px) to 0 with fade. Per-word masked line reveal for
-  display type. Everything respects `prefers-reduced-motion`.
+- Motion on web: `--ease-premium cubic-bezier(.16,1,.3,1)` for almost everything,
+  `--ease-soft cubic-bezier(.32,.72,.24,1)` for long drifts, `--ease-pop
+  cubic-bezier(.34,1.36,.64,1)` for the one overshoot allowed (the cursor ring).
+  Durations `--dur-fast` .28s, `--dur` .55s, `--dur-slow` .9s. Transform and opacity
+  only; never a layout property. Everything respects `prefers-reduced-motion`.
 - Motion explains something or does not exist. No parallax for its own sake.
+- The hooks, all in `js/motion.js`, all opt-in by attribute:
+
+| Attribute | What happens |
+|---|---|
+| `data-reveal` (+ `data-reveal-delay`) | rises 26px and fades in when scrolled into view |
+| `data-reveal-line` | clip-path wipe from the top |
+| `data-split` | display type rises word by word out of a mask, 55ms stagger |
+| `data-decode` | an eyebrow resolves out of noise, one pass, about 600ms |
+| `data-count` | a figure counts up to its value on entry |
+| `data-magnetic` | a button leans toward the pointer |
+| `data-tilt="5"` | a card tilts a few degrees with the pointer |
+| `data-parallax=".15"` | vertical drift on scroll, cached measurements |
+| `data-marquee="32"` | a strip loops sideways, pauses on hover |
+| `.wk-frame` / `data-wipe` | a screenshot wipes up into its frame |
+| `data-cursor-label="View live"` | the custom cursor grows into a red disc with a label |
+| `data-cursor-grid` | a dot grid on the surface lights up around the pointer |
+| `data-preview="<img>"` | a floating screenshot follows the pointer over a row |
+| `data-field` | the hero light field canvas |
+
+- Custom cursor: an 8px red dot and a 38px red ring, pointer-fine screens only. The ring
+  grows over links, shrinks to a bar over text, turns ink over red surfaces. `#wkProgress`
+  is a 2px red rail along the top that scales with scroll depth.
 
 ## 6. Components (web)
 
-- Eyebrow `.wk-eyebrow`: 20px red rule, gap 9px, mono uppercase red.
+Everything shared lives in `css/theme.css` under a `wk-` prefix and is bilingual by
+`data-nl` / `data-en` attributes. Pages extend the system inside their own `<style>`
+with their own prefix (`hm-` home, `hs-` hosting, `pf-` portfolio, `ct-` contact) and
+never redefine a token. `_design/index.html` renders each of these live.
+
+Text and marks:
+
+- Eyebrow `.wk-eyebrow`: 20px red rule, gap 9px, mono uppercase red. `data-decode` to land it.
 - Meta `.wk-meta`: mono uppercase, `--cream-faint`.
-- Primary button `.wk-btn--primary`: red ground, white mono label, arrow slides 4px on
-  hover, brighter red wipes in from the left.
-- Ghost button `.wk-btn--ghost`: `--rule-hard` border, `--cream-dim` label, red on hover.
-- Status chip: `--grn` dot, mono label "Project openings available".
-- Ledger row: mono label left in `--cream-faint`, value right in cream, hairline below.
+- Lede `.wk-lede`: Figtree 300, `--cream-mute`, capped at 680px or 60ch.
+- Note `.wk-note`: 12.5px `--cream-faint`, max 76ch; `.wk-note--boxed` adds an icon and a
+  surface. `.wk-cta-note` is the mono 11px line under a CTA.
+- Accent `.mark` inside display type: the red word with a drawn underline that scales in
+  when the parent gets `.is-lit`.
+- Badge `.wk-badge`: mono 9.5px, red on `--bronze-mist`, `--bronze-rule` border, 5px red dot.
+  Concept and demo markers.
+- Breadcrumb `.wk-crumb`: mono 10px `--cream-faint`, separators at 45% opacity.
+- Status chip (`.hm-avail`, home): `--grn` dot with a slow pulse, mono label.
+
+Actions:
+
+- Primary button `.wk-btn.wk-btn--primary`: red ground, white mono label, `padding:
+  14px 26px`, radius 8px; the arrow slides 4px on hover while `#f14b35` wipes in from the
+  left. `.wk-shimmer` adds a one-off diagonal sheen, `data-magnetic` the pointer pull.
+- Ghost button `.wk-btn.wk-btn--ghost`: `--rule-hard` border, `--cream-dim` label, red on
+  hover.
+- Quiet link `.wk-more`: Figtree 500 14px `--cream-mute` with a hairline underline; white
+  on hover. The second path beside a real button, never a second button.
+- Row link `.wk-row-go`: mono 10px red with an arrow that moves 5px on hover.
+- Filter pill (`.pf-f`, portfolio): mono 10px, transparent, `aria-pressed="true"` turns it
+  white on red. Segmented switch (`.hs-bill`, hosting): a 99px pill at `--ink` with the
+  active button in red.
+
+Surfaces and layout:
+
+- Section shell `.wk-section` inside `.wk-wrap`: `clamp(70px, 10vw, 150px)` of vertical
+  room, gutters from `--gutter`.
+- Intro `.wk-intro`: eyebrow and `.wk-h2` left, lede right, baseline aligned, one column
+  under 900px. Every section opens with one.
+- Inner hero `.wk-phero`: `padding: clamp(120px, 15vw, 190px) 0 clamp(46px, 6vw, 80px)`,
+  red radial wash top-right, masked 1px grid at 22%, the light field, breadcrumb, eyebrow,
+  `.wk-h1`, lede. `.wk-phero-split` seats a figure strip or a wall beside the copy.
+- Stats `.wk-stats`: `clamp(32px, 3.8vw, 52px)` figures over mono 9.5px labels;
+  `data-count` counts them up.
+- Frame `.wk-frame`: the browser window around a screenshot. 1px `--rule`, radius 8px,
+  `--ink-deep` well, `.wk-frame-bar` in `--ink-2` with three 7px dots and a mono URL. The
+  image sits at `saturate(.85) brightness(.92)` and wipes up on scroll; the parent link's
+  hover turns the border `--bronze-rule`, drops the filter and scales the image 1.028 over
+  1.1s.
+- Rows `.wk-rows > .wk-row`: 64px red number column at 75% opacity, body, 300px figure
+  column, hairlines, a red wash fading in from the left on hover. `data-preview` floats a
+  screenshot beside the pointer.
+- Ledger row: mono label left in `--cream-faint`, value right in cream, hairline below. The
+  social and pricing list pattern.
+- CTA card `.wk-cta-card` inside `.wk-cta-wrap > .wk-wrap`: `--ink-2`, radius 10px,
+  centred heading, lede, button row and mono note; `data-cursor-grid` lights a dot grid
+  around the pointer and `.is-lit` draws the underline. The one place centring is allowed.
+- Band (`.hm-band`, `.pf-band`): full-bleed `--ink-2` strip between hairlines, heading left,
+  one button right.
+- Card (`.hs-p`, hosting): `--ink-2`, radius 14px, 1px `--rule`, `--rule-hard` on hover,
+  `rgba(223,56,33,.45)` for the chosen plan, list items with a 9px red dash. A card is a
+  surface for a plan or a CTA, never a wrapper for a list of work, and never nested.
+- Prose `.wk-prose`: 680px column, `strong` in cream, red list markers, a blockquote on a
+  2px red rule, links in red with a `--bronze-rule` underline.
+
+Forms and chrome:
+
+- Inputs (`.fg input, textarea, select`, contact): Figtree 300 14.5px on `--ink`, 1px
+  `--rule-hard`, radius 8px, `padding: 13px 15px`; labels mono 9.5px `--cream-faint`.
+  Focus: border red, ground `--ink-3`, ring `0 0 0 3px rgba(223,56,33,.12)`.
+- Toggle (`.ck-toggle`, consent): 38 × 21 pill, 14px knob; on is red mist with a red knob,
+  locked is green.
+- Nav (`#mainNav`, `js/site-nav.js`): fixed, three-column grid, `padding: 20px 5vw`; on
+  scroll it shrinks to `10px 5vw`, takes `oklch(7% .010 25 / .92)` with a 20px blur (the
+  only blur in the system) and a hairline. Links Figtree 700 12.5px uppercase with a 2px
+  red underline scaling in from the left; the CTA is the primary button at nav size.
+  Mobile: a full-screen drawer.
+- Footer (`js/site-footer.js`): tagline in display type, four link ladders, the wire
+  globe, payment marks, a centred legal row (Privacy · Terms · Refund Policy · Cookies)
+  with drawn dots between links.
+- Consent banner (`js/cookie-consent.js`): fixed bottom-right, `--ink-2`, the one in-flow
+  shadow exception (`0 24px 56px rgba(0,0,0,.55)`), four categories, three buttons.
+
+Elevation is flat. Depth is `--ink-deep`, `--ink`, `--ink-2`, `--ink-3` and hairlines.
+Shadows exist on the consent banner, the hover preview (`0 30px 70px rgba(0,0,0,.55)`)
+and the input focus ring, nothing in flow. Hover is a border turning red, an image losing
+its desaturation, an arrow moving 4px, never a lift.
 
 ## 7. Social system
 
@@ -245,8 +385,10 @@ goes anywhere. Link previews still need `og:image` as an absolute JPG or PNG URL
 
 | Path | Holds |
 |---|---|
-| `css/theme.css` | tokens, base, display type, eyebrow, buttons, grain, motion primitives |
-| `_design/index.html` | this system rendered, plus the six social artboards |
+| `css/theme.css` | tokens, base, display type, eyebrow, buttons, frame, rows, CTA card, prose, grain, motion primitives |
+| `js/motion.js` | every `data-*` motion hook, the custom cursor, the progress rail |
+| `js/site-nav.js`, `js/site-footer.js`, `js/cookie-consent.js` | nav, footer and consent banner, rendered on every page |
+| `_design/index.html` | this system rendered live from `theme.css` and `motion.js`, plus the six social artboards and the carousel |
 | `_design/render.cjs` | artboard to PNG |
 | `_design/carousel.cjs`, `carousel-example.json` | five-slide carousel to PNGs and PDF |
 | `_design/wordmark-light.png`, `wordmark-dark.png` | cropped wordmarks for the artboards |
