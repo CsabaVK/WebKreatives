@@ -1,0 +1,47 @@
+{
+  "hook": {
+    "eyebrow": "Outgrown templates",
+    "word": "Out*grown*.",
+    "sub": "The template did its job. Now it costs you clients. What a custom site changes, in four slides.",
+    "mark": "none"
+  },
+  "pain": {
+    "eyebrow": "The problem",
+    "headline": "What breaks *first*.",
+    "items": [
+      "The site looks like every competitor's",
+      "Every change waits on a plugin update",
+      "Google cannot tell what you do",
+      "The phone number is three taps away",
+      "You do not own the thing you paid for"
+    ]
+  },
+  "steps": {
+    "eyebrow": "How a build runs",
+    "headline": "The *mechanism*.",
+    "items": [
+      "A short brief: what the business does and what the site is not doing",
+      "A fixed price back within one business day",
+      "Design and build by the same person, feedback rounds included",
+      "Launch, then hosting and support on one monthly plan"
+    ],
+    "mark": "none"
+  },
+  "proof": {
+    "eyebrow": "What you get",
+    "headline": "What you *walk away* with.",
+    "items": [
+      "A site built around how your buyers decide",
+      "Domain, code and accounts in your name",
+      "Found on Google for what you actually do",
+      "Someone to call when something breaks"
+    ],
+    "mark": "lime"
+  },
+  "cta": {
+    "eyebrow": "Start",
+    "headline": "Send the problem, *not the solution*.",
+    "body": "A short brief is enough. You get a fixed price back, or the honest answer that it should be scoped differently.",
+    "url": "webkreatives.com"
+  }
+}

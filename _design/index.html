@@ -131,6 +131,47 @@
   background:var(--ink-2);border:1px solid var(--rule-hard);border-right:0;border-bottom:0;padding:12px 0 0 12px;overflow:hidden}
 .ab-strip img{width:100%;height:100%;object-fit:cover;object-position:top left;border-radius:6px 0 0 0;display:block}
 
+/* ── T7 Carousel: five slides, one arc ────────────────────────────────── */
+.ab-page{position:absolute;right:96px;top:96px;z-index:3;font-family:var(--f-mono);font-size:20px;font-weight:700;letter-spacing:.13em;color:var(--cream-faint)}
+.ab--paper .ab-page{color:oklch(52% .01 60)}
+.ab--red .ab-page,.ab--red .ab-url{color:rgba(255,255,255,.72)}
+.ab-hero{font-family:var(--f-display);font-weight:900;color:var(--cream);letter-spacing:-.05em;line-height:.9;font-size:236px;margin:64px 0 0;white-space:nowrap}
+[data-tpl="car-hook"] .ab-hero{margin-top:340px}
+[data-tpl^="car-"][data-mark] .ab-mark{top:176px}
+[data-tpl^="car-"][data-mark="blue"] .ab-mark{top:200px}
+.ab-hero em{font-style:normal;color:var(--bronze)}
+.ab-sub{font-size:40px;line-height:1.4;color:var(--cream-mute);margin:48px 0 0;max-width:900px}
+.ab-swipe{position:absolute;right:96px;bottom:96px;z-index:3;font-family:var(--f-mono);font-size:20px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream)}
+.ab-swipe::after{content:'\2192';margin-left:14px;color:var(--bronze)}
+.ab--paper .ab-swipe{color:var(--ink)}
+.ab--paper .ab-swipe::after{color:var(--red-deep)}
+.ab-list{list-style:none;margin:56px 0 0;padding:0;max-width:960px}
+.ab-list li{display:flex;gap:28px;align-items:flex-start;padding:26px 0;border-bottom:1px solid var(--rule);font-size:38px;line-height:1.3;color:var(--cream)}
+.ab-list li:last-child{border-bottom:0}
+.ab-list li::before{flex:0 0 auto;font-family:var(--f-mono);font-weight:700;color:var(--bronze);line-height:1.2}
+.ab-list--x li::before{content:'\00d7';font-size:44px}
+.ab-list--num{counter-reset:step}
+.ab-list--num li{counter-increment:step}
+.ab-list--num li::before{content:counter(step,decimal-leading-zero);font-size:22px;letter-spacing:.13em;padding-top:12px;min-width:52px}
+.ab-list--check li::before{content:'\2713';font-size:38px}
+.ab--paper .ab-list li{color:var(--ink);border-color:var(--line)}
+.ab--paper .ab-list li::before{color:var(--red-deep)}
+.ab--red{background:var(--red);color:#fff}
+.ab--red .ab-eyebrow{color:#fff}
+.ab--red .ab-eyebrow::before{background:#fff}
+.ab--red .ab-h{color:#fff}
+.ab--red .ab-h em{color:var(--ink)}
+.ab--red .ab-lede{color:rgba(255,255,255,.82);font-weight:400}
+.ab--red .ab-cta-url{font-family:var(--f-display);font-weight:900;font-size:56px;letter-spacing:-.03em;color:#fff;margin:64px 0 0}
+.ab--red.wk-grain::after{opacity:.05}
+
+/* ── Print mode: the five carousel slides as PDF pages ────────────────── */
+@page{size:1200px 1500px;margin:0}
+body.is-print{margin:0;background:var(--ink)}
+body.is-print > *:not(.ab-print){display:none!important}
+body.is-print > .ab-print{position:relative;transform:none;page-break-after:always;break-after:page}
+body.is-print > .ab-print:last-child{page-break-after:auto;break-after:auto}
+
 /* ── Render mode: one artboard, native size, nothing else ─────────────── */
 body.is-render{background:transparent;padding:0;margin:0;overflow:hidden}
 body.is-render > *:not(.ab-render){display:none!important}
@@ -145,7 +186,7 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
     <h1 class="wk-display wk-h1">One system, six artboards, <span class="wk-accent">many posts</span>.</h1>
     <p class="wk-lede">Everything WebKreatives publishes under its own name reads from here. Values come from <code>css/theme.css</code>; the rules are in <code>DESIGN.md</code>. The artboards at the bottom are real: <code>node _design/render.cjs statement out.png --headline "…"</code> turns one into a PNG.</p>
     <nav class="ds-nav">
-      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#social">Social artboards</a><a href="#variation">Variation</a>
+      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#social">Social artboards</a><a href="#variation">Variation</a><a href="#carousel">Carousel arc</a>
     </nav>
   </div>
 </header>
@@ -375,6 +416,112 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
   </div>
 </section>
 
+<section class="ds-section" id="carousel">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">06 · Carousel arc</span>
+    <h2 class="wk-display wk-h2">Five slides, <span class="wk-accent">one arc</span>.</h2>
+    <p class="ds-note">Hook, pain, steps, proof, join. Grab attention, name the pain, show the system, prove it works, drive the action. One hero word on the cover; a list of what breaks; the mechanism as a numbered list; outcomes as checkmarks; a red closing slide with the URL. Rendered as a PDF for LinkedIn documents by <code>node _design/carousel.cjs spec.json out/</code>.</p>
+    <div class="ab-grid">
+
+      <div class="ab-card">
+        <div class="ab-title"><b>01 · Hook</b><span>Cover</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink wk-grain" data-tpl="car-hook" data-mark="none">
+            <div class="ab-glow"></div>
+            <span class="ab-eyebrow" data-slot="eyebrow">Outgrown templates</span>
+            <span class="ab-page" data-slot="page">01 / 05</span>
+            <h2 class="ab-hero" data-slot="headline">Out<em>grown</em>.</h2>
+            <p class="ab-sub" data-slot="lede">The template did its job. Now it costs you clients. What a custom site changes, in four slides.</p>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"></div>
+            <span class="ab-swipe">Swipe</span>
+          </div>
+        </div>
+        <p class="ab-desc">One hero word at 236px, accent on one syllable or none. Subline: the pain and the payoff in two sentences. Swipe cue bottom-right.</p>
+      </div>
+
+      <div class="ab-card">
+        <div class="ab-title"><b>02 · Pain</b><span>Problem</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--paper" data-tpl="car-pain" data-mark="none">
+            <span class="ab-eyebrow" data-slot="eyebrow">The problem</span>
+            <span class="ab-page" data-slot="page">02 / 05</span>
+            <h2 class="ab-h ab-h--s" data-slot="headline">What breaks <em>first</em>.</h2>
+            <ul class="ab-list ab-list--x" data-slot="list">
+              <li>The site looks like every competitor's</li>
+              <li>Every change waits on a plugin update</li>
+              <li>Google cannot tell what you do</li>
+              <li>The phone number is three taps away</li>
+              <li>You do not own the thing you paid for</li>
+            </ul>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-light.png" alt="WebKreatives"></div>
+            <span class="ab-swipe">Swipe</span>
+          </div>
+        </div>
+        <p class="ab-desc">Paper ground. Name the problem in the headline, then three to five things that break, each one line, red cross markers.</p>
+      </div>
+
+      <div class="ab-card">
+        <div class="ab-title"><b>03 · Steps</b><span>System</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink wk-grain" data-tpl="car-steps" data-mark="none">
+            <span class="ab-eyebrow" data-slot="eyebrow">How a build runs</span>
+            <span class="ab-page" data-slot="page">03 / 05</span>
+            <h2 class="ab-h ab-h--s" data-slot="headline">The <em>mechanism</em>.</h2>
+            <ol class="ab-list ab-list--num" data-slot="list">
+              <li>A short brief: what the business does and what the site is not doing</li>
+              <li>A fixed price back within one business day</li>
+              <li>Design and build by the same person, feedback rounds included</li>
+              <li>Launch, then hosting and support on one monthly plan</li>
+            </ol>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"></div>
+            <span class="ab-swipe">Swipe</span>
+          </div>
+        </div>
+        <p class="ab-desc">Ink ground. The mechanism that solves it as a numbered list, three or four steps, one line each, red numerals.</p>
+      </div>
+
+      <div class="ab-card">
+        <div class="ab-title"><b>04 · Proof</b><span>Result</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink wk-grain" data-tpl="car-proof" data-mark="lime">
+            <span class="ab-eyebrow" data-slot="eyebrow">What you get</span>
+            <span class="ab-page" data-slot="page">04 / 05</span>
+            <h2 class="ab-h ab-h--s" data-slot="headline">What you <em>walk away</em> with.</h2>
+            <ul class="ab-list ab-list--check" data-slot="list">
+              <li>A site built around how your buyers decide</li>
+              <li>Domain, code and accounts in your name</li>
+              <li>Found on Google for what you actually do</li>
+              <li>Someone to call when something breaks</li>
+            </ul>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"></div>
+            <span class="ab-swipe">Swipe</span>
+          </div>
+        </div>
+        <p class="ab-desc">Outcomes as checkmarks. A specific number goes here once the owner clears numbers; until then a checkable outcome per line. One mark allowed.</p>
+      </div>
+
+      <div class="ab-card">
+        <div class="ab-title"><b>05 · Join</b><span>CTA</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--red wk-grain" data-tpl="car-cta" data-mark="none">
+            <span class="ab-eyebrow" data-slot="eyebrow">Start</span>
+            <span class="ab-page" data-slot="page">05 / 05</span>
+            <h2 class="ab-h" data-slot="headline">Send the problem, <em>not the solution</em>.</h2>
+            <p class="ab-lede" data-slot="lede">A short brief is enough. You get a fixed price back, or the honest answer that it should be scoped differently.</p>
+            <p class="ab-cta-url" data-slot="url">webkreatives.com</p>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"></div>
+          </div>
+        </div>
+        <p class="ab-desc">The only red ground in the system. White type, ink accent word, the URL set in display. No comment keyword, no price line until cleared.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <footer class="ds-section" style="border-bottom:0">
   <div class="ds-wrap"><span class="wk-meta">WebKreatives · design system · not part of the public site</span></div>
 </footer>
@@ -395,6 +542,15 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
   fit();
   addEventListener('resize', fit);
 })();
+// Shrink a one-word hero until it fits its line. Also called by carousel.cjs.
+window.fitHeroes = function () {
+  document.querySelectorAll('.ab-hero').forEach(el => {
+    let size = 236;
+    el.style.fontSize = size + 'px';
+    while (el.scrollWidth > el.clientWidth && size > 120) { size -= 8; el.style.fontSize = size + 'px'; }
+  });
+};
+document.fonts.ready.then(window.fitHeroes);
 </script>
 </body>
 </html>

@@ -116,7 +116,8 @@ image, at most 3 lines.
 ## 7. Social system
 
 Where the images for LinkedIn (company page) and Instagram come from. Every image
-starts from one of the six artboards in `_design/index.html`. No freehand layouts.
+starts from one of the six artboards in `_design/index.html`, or from the five-slide
+carousel arc. No freehand layouts.
 
 ### Formats
 
@@ -166,6 +167,39 @@ meta: "WebKreatives". For quotable closes and reposts.
 two or three lines at 64px, one-line body says what changed, a strip of the changed page along
 the bottom edge as a screenshot. For "what went live this week".
 
+### Carousel arc (T7)
+
+A LinkedIn document post: five pages, 1200 x 1500 each, one arc. Grab attention, name
+the pain, show the system, prove it works, drive the action.
+
+| Slide | Ground | Job | Content |
+|---|---|---|---|
+| 01 Hook | ink, glow | grab attention | one hero word, auto-fit to the line, accent on one syllable or none; subline of two sentences, the pain then the payoff; "Swipe" cue |
+| 02 Pain | paper | name the pain | headline names the problem; three to five things that break, one line each, red cross markers |
+| 03 Steps | ink | show the system | headline; the mechanism as a numbered list, three or four steps, red numerals |
+| 04 Proof | ink | prove it works | headline; outcomes as red checkmarks, one checkable outcome per line; one mark allowed |
+| 05 Join | red | drive the action | headline with an ink accent word, one-line body, the URL set in display type |
+
+Rules on top of the fixed frame:
+
+- Page number top-right in meta on every slide. Wordmark bottom-left. Swipe cue
+  bottom-right on 01 to 04, nothing on 05.
+- Red ground exists only on slide 05. Type on red is white, the accent word is ink, no
+  other colour.
+- No comment keyword, no "comment X to get Y". The close is the URL and a plain offer.
+- Proof carries a specific number once numbers are cleared; until then, checkable
+  outcomes.
+- Paper is used on slide 02 by default, so the run reads ink, paper, ink, ink, red.
+
+Render:
+
+```
+node _design/carousel.cjs _design/carousel-example.json out/
+```
+
+Writes `01-hook.png` to `05-join.png` and `carousel.pdf` (about 2.5 MB). Copy the
+example JSON, change the words, keep the shape. The PDF is what goes to LinkedIn.
+
 ### Variation, inside the system
 
 The templates above are the structure. These knobs give variety without a new system:
@@ -201,7 +235,8 @@ Fields: `--eyebrow`, `--headline` (wrap the accent in `*asterisks*`), `--lede`,
 `--rows "Label|Value;Label|Value"` (T2), `--shot assets/screenshots/<slug>-phone.webp`
 (T3, T6), `--caption` (T3), `--mark lime|blue|yellow`, `--glow off`.
 
-Templates: `statement`, `ledger`, `showcase`, `paper`, `maxim`, `update`.
+Templates: `statement`, `ledger`, `showcase`, `paper`, `maxim`, `update`. Carousel slides
+render through `_design/carousel.cjs`, see the arc above.
 
 Output is a PNG at native size, rendered by headless Chrome. Check the PNG before it
 goes anywhere. Link previews still need `og:image` as an absolute JPG or PNG URL.
@@ -213,6 +248,7 @@ goes anywhere. Link previews still need `og:image` as an absolute JPG or PNG URL
 | `css/theme.css` | tokens, base, display type, eyebrow, buttons, grain, motion primitives |
 | `_design/index.html` | this system rendered, plus the six social artboards |
 | `_design/render.cjs` | artboard to PNG |
+| `_design/carousel.cjs`, `carousel-example.json` | five-slide carousel to PNGs and PDF |
 | `_design/wordmark-light.png`, `wordmark-dark.png` | cropped wordmarks for the artboards |
 | `assets/Horizontallogo.png`, `darkmodehorizontallogo.png` | source logos |
 | `assets/screenshots/*-phone.webp` | real portfolio screenshots for T3 |
