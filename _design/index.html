@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WebKreatives design system</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/theme.css">
+<style>
+/* ── Page chrome ─────────────────────────────────────────────────────── */
+.ds-wrap{max-width:1280px;margin:0 auto;padding:0 clamp(22px,5vw,64px)}
+.ds-head{padding:72px 0 40px;border-bottom:1px solid var(--rule)}
+.ds-head .wk-h1{margin:14px 0 18px}
+.ds-nav{display:flex;flex-wrap:wrap;gap:22px;margin-top:26px}
+.ds-nav a{font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint)}
+.ds-nav a:hover{color:var(--bronze)}
+.ds-section{padding:72px 0;border-bottom:1px solid var(--rule)}
+.ds-section .wk-h2{margin:14px 0 10px}
+.ds-note{font-size:15px;line-height:1.7;color:var(--cream-mute);max-width:680px;margin:0 0 34px}
+.ds-note code,.ds-td code{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--cream-dim);background:var(--ink-2);padding:2px 6px;border-radius:4px}
+
+/* ── Swatches ────────────────────────────────────────────────────────── */
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.sw{border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--ink-2)}
+.sw i{display:block;height:96px}
+.sw b{display:block;font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);padding:12px 12px 2px}
+.sw span{display:block;font-size:12px;color:var(--cream-faint);padding:0 12px 12px;line-height:1.5}
+
+/* ── Type samples ────────────────────────────────────────────────────── */
+.ty-row{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--rule-soft);align-items:baseline}
+.ty-row:last-child{border-bottom:0}
+.ty-lab{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint);line-height:1.8}
+
+/* ── Component demos ─────────────────────────────────────────────────── */
+.cmp-row{display:flex;flex-wrap:wrap;gap:22px;align-items:center;padding:22px 0;border-bottom:1px solid var(--rule-soft)}
+.cmp-row:last-child{border-bottom:0}
+.cmp-lab{flex:0 0 178px;font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint)}
+.wk-chip{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint)}
+.wk-chip::before{content:'';width:10px;height:10px;border-radius:50%;background:var(--grn);box-shadow:0 0 0 4px rgba(120,200,80,.18)}
+.ledger{width:100%;max-width:560px;background:var(--ink-2);border-radius:var(--radius);padding:6px 22px}
+.ledger-row{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.ledger-row:last-child{border-bottom:0}
+.ledger-row b{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint)}
+.ledger-row span{font-family:var(--f-body);font-size:17px;font-weight:400;color:var(--cream);text-align:right}
+
+/* ── Artboard previews ───────────────────────────────────────────────── */
+.ab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:40px 34px}
+.ab-card{display:flex;flex-direction:column;gap:14px}
+.ab-view{position:relative;overflow:hidden;border:1px solid var(--rule-hard);border-radius:var(--radius);background:var(--ink-deep)}
+.ab-view .ab{transform-origin:0 0}
+.ab-title{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.ab-title b{font-family:var(--f-display);font-weight:700;font-size:16px;letter-spacing:-.02em;color:var(--cream)}
+.ab-title span{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint)}
+.ab-title .is-main{color:var(--bronze)}
+.ab-desc{font-size:13.5px;line-height:1.65;color:var(--cream-mute);margin:0}
+
+/* ── Artboards: the shared frame ─────────────────────────────────────── */
+.ab{position:relative;overflow:hidden;background:var(--ink);color:var(--cream-dim);
+  width:1200px;height:1500px;padding:96px;box-sizing:border-box;
+  font-family:var(--f-body);font-weight:300;line-height:1.5;
+  -webkit-font-smoothing:antialiased}
+.ab--square{height:1200px}
+.ab--land{height:627px}
+.ab--ink::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;
+  background-image:linear-gradient(rgba(239,230,210,.04) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(239,230,210,.04) 1px,transparent 1px);
+  background-size:64px 64px;background-position:32px 32px}
+.ab--ink.wk-grain::after{z-index:1}
+.ab > *{position:relative;z-index:2}
+.ab-glow{position:absolute;z-index:0;left:-140px;top:560px;width:960px;height:250px;border-radius:999px;
+  background:var(--red);opacity:.15;filter:blur(90px);transform:rotate(-16deg)}
+.ab-glow--off{display:none}
+.ab-eyebrow{font-family:var(--f-mono);font-size:22px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--bronze);display:inline-flex;align-items:center;gap:18px}
+.ab-eyebrow::before{content:'';width:40px;height:2px;background:var(--bronze);opacity:.7}
+.ab-h{font-family:var(--f-display);font-weight:900;color:var(--cream);letter-spacing:-.04em;line-height:.96;
+  font-size:104px;margin:40px 0 0;max-width:1008px;text-wrap:balance}
+.ab-h--2{font-size:124px}
+.ab-h--s{font-size:88px}
+.ab-h em{font-style:normal;color:var(--bronze)}
+.ab-lede{font-size:36px;line-height:1.5;color:var(--cream-mute);margin:40px 0 0;max-width:880px}
+.ab-foot{position:absolute;left:96px;right:96px;bottom:96px;z-index:3;display:flex;justify-content:space-between;align-items:flex-end}
+.ab-logo{height:112px;width:auto;display:block}
+.ab-url{font-family:var(--f-mono);font-size:20px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint);line-height:1}
+.ab-mark{position:absolute;z-index:2;display:none}
+[data-mark="lime"] .ab-mark{display:block;right:96px;top:96px;width:168px;height:168px;background:var(--lime)}
+[data-mark="blue"] .ab-mark{display:block;right:120px;top:120px;width:104px;height:104px;border-radius:50%;background:var(--blue)}
+[data-mark="yellow"] .ab-mark{display:block;right:96px;top:120px;width:200px;height:200px;background:var(--yellow)}
+
+/* T2 ledger */
+.ab-rows{margin:56px 0 0;background:var(--ink-2);border-radius:var(--radius);padding:8px 40px;max-width:1008px}
+.ab-row{display:flex;justify-content:space-between;align-items:baseline;gap:40px;padding:28px 0;border-bottom:1px solid var(--rule)}
+.ab-row:last-child{border-bottom:0}
+.ab-row b{font-family:var(--f-mono);font-size:22px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint);flex:0 0 auto}
+.ab-row span{font-family:var(--f-body);font-size:38px;font-weight:400;line-height:1.25;color:var(--cream);text-align:right}
+
+/* T3 showcase */
+.ab--showcase .ab-h{max-width:640px}
+.ab-caption{font-size:30px;line-height:1.45;color:var(--cream-mute);margin:36px 0 0;max-width:560px}
+.ab-shot{position:absolute;z-index:2;right:96px;bottom:-120px;width:560px;height:962px;border-radius:44px;overflow:hidden;
+  background:var(--ink-2);border:1px solid var(--rule-hard);padding:14px;box-shadow:0 60px 120px rgba(0,0,0,.55)}
+.ab-shot img{width:100%;height:auto;border-radius:32px;display:block}
+.ab--showcase .ab-foot{right:auto}
+
+/* T4 paper */
+.ab--paper{background:var(--cream2);color:var(--ink-2)}
+.ab--paper .ab-h{color:var(--ink)}
+.ab--paper .ab-h em{color:var(--red-deep)}
+.ab--paper .ab-eyebrow{color:var(--red-deep)}
+.ab--paper .ab-eyebrow::before{background:var(--red-deep)}
+.ab--paper .ab-lede{color:oklch(42% .012 60);font-weight:400}
+.ab--paper .ab-url{color:oklch(52% .01 60)}
+.ab--paper .ab-mark{display:none!important}
+
+/* T5 maxim */
+.ab-quote{font-family:var(--f-display);font-weight:900;font-size:260px;line-height:.7;color:var(--bronze);
+  letter-spacing:-.06em;margin:0;height:170px;display:block}
+.ab--maxim .ab-h{margin-top:0;font-size:124px}
+.ab-attr{font-family:var(--f-mono);font-size:20px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint);margin:48px 0 0}
+
+/* T6 update */
+.ab--update{padding:72px 96px}
+.ab--update .ab-h{font-size:64px;margin-top:20px;max-width:700px}
+.ab--update .ab-lede{font-size:24px;margin-top:16px;max-width:640px}
+.ab--update .ab-foot{left:96px;right:auto;bottom:56px}
+.ab--update .ab-logo{height:72px}
+.ab-strip{position:absolute;z-index:2;right:0;bottom:0;width:360px;height:330px;border-radius:var(--radius) 0 0 0;
+  background:var(--ink-2);border:1px solid var(--rule-hard);border-right:0;border-bottom:0;padding:12px 0 0 12px;overflow:hidden}
+.ab-strip img{width:100%;height:100%;object-fit:cover;object-position:top left;border-radius:6px 0 0 0;display:block}
+
+/* ── Render mode: one artboard, native size, nothing else ─────────────── */
+body.is-render{background:transparent;padding:0;margin:0;overflow:hidden}
+body.is-render > *:not(.ab-render){display:none!important}
+body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
+</style>
+</head>
+<body class="wk-grain">
+
+<header class="ds-head">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">Design system · v1 · September 2026</span>
+    <h1 class="wk-display wk-h1">One system, six artboards, <span class="wk-accent">many posts</span>.</h1>
+    <p class="wk-lede">Everything WebKreatives publishes under its own name reads from here. Values come from <code>css/theme.css</code>; the rules are in <code>DESIGN.md</code>. The artboards at the bottom are real: <code>node _design/render.cjs statement out.png --headline "…"</code> turns one into a PNG.</p>
+    <nav class="ds-nav">
+      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#social">Social artboards</a><a href="#variation">Variation</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ds-section" id="palette">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">01 · Palette</span>
+    <h2 class="wk-display wk-h2">Warm ink, cream, one red.</h2>
+    <p class="ds-note">Never <code>#000</code> or <code>#fff</code>. Red is the only saturated colour in type on any surface. Lime, blue and yellow are the logo's marks: one at a time, as a shape.</p>
+    <div class="sw-grid">
+      <div class="sw"><i style="background:var(--ink)"></i><b>--ink</b><span>oklch(8% .010 25)<br>ground</span></div>
+      <div class="sw"><i style="background:var(--ink-2)"></i><b>--ink-2</b><span>oklch(18% .010 25)<br>surface, ledger</span></div>
+      <div class="sw"><i style="background:var(--ink-3)"></i><b>--ink-3</b><span>oklch(24% .010 25)<br>hover</span></div>
+      <div class="sw"><i style="background:var(--ink-deep)"></i><b>--ink-deep</b><span>oklch(5% .010 25)<br>footer</span></div>
+      <div class="sw"><i style="background:var(--cream)"></i><b>--cream</b><span>oklch(97% .008 80)<br>display type</span></div>
+      <div class="sw"><i style="background:var(--cream-dim)"></i><b>--cream-dim</b><span>oklch(80% .006 80)<br>body</span></div>
+      <div class="sw"><i style="background:var(--cream-mute)"></i><b>--cream-mute</b><span>oklch(62% .006 80)<br>lede</span></div>
+      <div class="sw"><i style="background:var(--cream-faint)"></i><b>--cream-faint</b><span>oklch(56% .006 80)<br>meta</span></div>
+      <div class="sw"><i style="background:var(--cream2)"></i><b>--cream2</b><span>oklch(93% .012 80)<br>paper ground</span></div>
+      <div class="sw"><i style="background:var(--red)"></i><b>--red</b><span>#df3821<br>the accent</span></div>
+      <div class="sw"><i style="background:var(--red-deep)"></i><b>--red-deep</b><span>#a82716<br>red on paper</span></div>
+      <div class="sw"><i style="background:var(--lime)"></i><b>--lime</b><span>#b9e185<br>mark</span></div>
+      <div class="sw"><i style="background:var(--blue)"></i><b>--blue</b><span>#648dcb<br>mark</span></div>
+      <div class="sw"><i style="background:var(--yellow)"></i><b>--yellow</b><span>#fbeb78<br>mark</span></div>
+      <div class="sw"><i style="background:var(--grn)"></i><b>--grn</b><span>oklch(68% .150 130)<br>status dot</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="type">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">02 · Type</span>
+    <h2 class="wk-display wk-h2">Unbounded shouts, Figtree explains.</h2>
+    <p class="ds-note">Two families, no third. Display is Unbounded 900 at -.04em tracking and .96 leading, always with exactly one red word. Labels are Unbounded 700 uppercase, spaced. Body is Figtree 300 at 1.7.</p>
+    <div class="ty-row"><div class="ty-lab">Display h1<br>Unbounded 900<br>clamp(34, 5.4vw, 74)</div><div class="wk-display wk-h1">Websites that earn trust, get found and <span class="wk-accent">bring in work</span>.</div></div>
+    <div class="ty-row"><div class="ty-lab">Display h2<br>clamp(26, 3.6vw, 48)</div><div class="wk-display wk-h2">Small on purpose.</div></div>
+    <div class="ty-row"><div class="ty-lab">Display h3<br>clamp(19, 2.1vw, 27)</div><div class="wk-display wk-h3">Everything stays yours.</div></div>
+    <div class="ty-row"><div class="ty-lab">Eyebrow<br>Unbounded 700 · 10.5px · .16em</div><div><span class="wk-eyebrow">Web design · Websites · Hosting</span></div></div>
+    <div class="ty-row"><div class="ty-lab">Meta<br>Unbounded 700 · 10px · .13em</div><div><span class="wk-meta">webkreatives.com</span></div></div>
+    <div class="ty-row"><div class="ty-lab">Lede<br>Figtree 300 · clamp(15, 1.35vw, 18)</div><div class="wk-lede">WebKreatives designs, builds and looks after custom websites for owner-led businesses. Fixed price, full ownership, one studio from first sketch through ongoing support.</div></div>
+    <div class="ty-row"><div class="ty-lab">Body<br>Figtree 300 · 16px · 1.7</div><div>Start with the problem you are seeing, and we work out whether the answer is design, build, visibility, or something smaller. You do not need to know the solution before reaching out.</div></div>
+  </div>
+</section>
+
+<section class="ds-section" id="components">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">03 · Components</span>
+    <h2 class="wk-display wk-h2">Hairlines, not boxes.</h2>
+    <p class="ds-note">Radius 8px. A card is a surface, not a border. Buttons carry the mono label. The ledger row is the one list pattern: label left, value right, hairline below.</p>
+    <div class="cmp-row"><div class="cmp-lab">Buttons</div>
+      <a class="wk-btn wk-btn--primary" href="#"><span>Start a project</span><span class="wk-arrow">→</span></a>
+      <a class="wk-btn wk-btn--ghost" href="#"><span>See the work</span><span class="wk-arrow">→</span></a>
+    </div>
+    <div class="cmp-row"><div class="cmp-lab">Status chip</div><span class="wk-chip">Project openings available</span></div>
+    <div class="cmp-row"><div class="cmp-lab">Ledger</div>
+      <div class="ledger">
+        <div class="ledger-row"><b>Price</b><span>Fixed, agreed before we start</span></div>
+        <div class="ledger-row"><b>Team</b><span>The person who designs it builds it</span></div>
+        <div class="ledger-row"><b>Ownership</b><span>Domain, code and accounts in your name</span></div>
+      </div>
+    </div>
+    <div class="cmp-row"><div class="cmp-lab">Rule</div><hr class="wk-rule" style="flex:1"></div>
+  </div>
+</section>
+
+<section class="ds-section" id="social">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">04 · Social artboards</span>
+    <h2 class="wk-display wk-h2">Six artboards. <span class="wk-accent">T1 is the default.</span></h2>
+    <p class="ds-note">Shared frame on all of them: 96px margin, eyebrow top-left, wordmark bottom-left, URL bottom-right, grain and a 64px grid on ink. Portrait 1200×1500 unless stated. Every text below is a <code>data-slot</code> the renderer fills.</p>
+
+    <div class="ab-grid">
+
+      <!-- T1 Statement (main) -->
+      <div class="ab-card">
+        <div class="ab-title"><b>T1 Statement</b><span class="is-main">Main · 1200×1500</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink wk-grain" data-tpl="statement" data-mark="none">
+            <div class="ab-glow"></div>
+            <span class="ab-eyebrow" data-slot="eyebrow">Studio</span>
+            <h2 class="ab-h" data-slot="headline">Custom websites for businesses that have <em>outgrown templates</em>.</h2>
+            <p class="ab-lede" data-slot="lede">Fixed price, full ownership, one studio from first sketch through ongoing support.</p>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"><span class="ab-url">webkreatives.com</span></div>
+          </div>
+        </div>
+        <p class="ab-desc">Ink, eyebrow, three-line headline at 104px with one red phrase, optional lede, one red glow low behind the type. At least every second image.</p>
+      </div>
+
+      <!-- T2 Ledger -->
+      <div class="ab-card">
+        <div class="ab-title"><b>T2 Ledger</b><span>1200×1500</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink wk-grain" data-tpl="ledger" data-mark="none">
+            <span class="ab-eyebrow" data-slot="eyebrow">In practice</span>
+            <h2 class="ab-h ab-h--s" data-slot="headline">What a fixed price <em>means</em>.</h2>
+            <div class="ab-rows" data-slot="rows">
+              <div class="ab-row"><b>Price</b><span>Agreed before we start</span></div>
+              <div class="ab-row"><b>Team</b><span>The person who designs it builds it</span></div>
+              <div class="ab-row"><b>Capacity</b><span>A few active projects at a time</span></div>
+              <div class="ab-row"><b>Ownership</b><span>Domain, code, accounts in your name</span></div>
+              <div class="ab-row"><b>Reply</b><span>Within one business day</span></div>
+            </div>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"><span class="ab-url">webkreatives.com</span></div>
+          </div>
+        </div>
+        <p class="ab-desc">Two-line headline at 88px, then four to six rows on an ink-2 surface. For "what that means in practice", what is included, how the process runs.</p>
+      </div>
+
+      <!-- T3 Showcase -->
+      <div class="ab-card">
+        <div class="ab-title"><b>T3 Showcase</b><span>1200×1500</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink ab--showcase wk-grain" data-tpl="showcase" data-mark="none">
+            <span class="ab-eyebrow" data-slot="eyebrow">Portfolio</span>
+            <h2 class="ab-h ab-h--s" data-slot="headline">Brought in today, <em>done today</em>.</h2>
+            <p class="ab-caption" data-slot="caption">Scooter workshop. Prices out in the open, WhatsApp and call from the first screen, live opening hours.</p>
+            <div class="ab-shot"><img data-slot="shot" src="../assets/screenshots/scootershopdenhaag-phone.webp" alt=""></div>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"><span class="ab-url" style="display:none">webkreatives.com</span></div>
+          </div>
+        </div>
+        <p class="ab-desc">Headline top-left, real phone screenshot standing on the right and cut by the bottom edge. Caption names the sector and one checkable detail. Real screenshots only.</p>
+      </div>
+
+      <!-- T4 Paper -->
+      <div class="ab-card">
+        <div class="ab-title"><b>T4 Paper</b><span>Inverted · max 1 in 4</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--paper" data-tpl="paper" data-mark="none">
+            <span class="ab-eyebrow" data-slot="eyebrow">Template vs custom</span>
+            <h2 class="ab-h" data-slot="headline">A template is the right call <em>more often</em> than we would like.</h2>
+            <p class="ab-lede" data-slot="lede">Until the day it starts costing you the clients it was supposed to bring.</p>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-light.png" alt="WebKreatives"><span class="ab-url">webkreatives.com</span></div>
+          </div>
+        </div>
+        <p class="ab-desc">Cream ground, ink type, red-deep accent, light wordmark. No grain, no glow, no mark. Breaks the dark run in the feed; never two in a row.</p>
+      </div>
+
+      <!-- T5 Maxim -->
+      <div class="ab-card">
+        <div class="ab-title"><b>T5 Maxim</b><span>Square · 1200×1200</span></div>
+        <div class="ab-view" data-w="1200" data-h="1200">
+          <div class="ab ab--ink ab--square ab--maxim wk-grain" data-tpl="maxim" data-mark="none">
+            <span class="ab-quote">“</span>
+            <h2 class="ab-h" data-slot="headline">No handoffs, <em>no finger-pointing</em>.</h2>
+            <p class="ab-attr" data-slot="attr">WebKreatives</p>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"><span class="ab-url">webkreatives.com</span></div>
+          </div>
+        </div>
+        <p class="ab-desc">One line, six words at most, 124px. Red opening quote as a shape. For quotable closes and reposts.</p>
+      </div>
+
+      <!-- T6 Update -->
+      <div class="ab-card">
+        <div class="ab-title"><b>T6 Update</b><span>Landscape · 1200×627</span></div>
+        <div class="ab-view" data-w="1200" data-h="627">
+          <div class="ab ab--ink ab--land ab--update wk-grain" data-tpl="update" data-mark="none">
+            <span class="ab-eyebrow" data-slot="eyebrow">Shipped</span>
+            <h2 class="ab-h" data-slot="headline">Privacy page: a section on the <em>LinkedIn</em> tool.</h2>
+            <p class="ab-lede" data-slot="lede">What the company-page tool reads, what it never does with it, and how to have it deleted.</p>
+            <div class="ab-strip"><img data-slot="shot" src="../assets/screenshots/autodistrict.webp" alt=""></div>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"></div>
+          </div>
+        </div>
+        <p class="ab-desc">Eyebrow "Shipped", two-line headline at 72px, one-line body, a strip of the changed page along the bottom-right. For "what went live this week".</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="variation">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">05 · Variation</span>
+    <h2 class="wk-display wk-h2">Same system, <span class="wk-accent">different post</span>.</h2>
+    <p class="ds-note">Knobs, not new layouts. Mark: none, lime square, blue dot, yellow square, top-right, one at a time, never on paper. Accent word: first, last or mid-phrase. Headline: two lines at 124px or three at 104px. Lede: on or off. Glow: on or off. Rotation over a run: T1, T3 or T2, T1, T4, T1, T5 or T6, repeat.</p>
+    <div class="ab-grid">
+      <div class="ab-card">
+        <div class="ab-title"><b>T1 · lime mark, two lines, no lede</b><span>Variant</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink wk-grain" data-tpl="statement-lime" data-mark="lime">
+            <div class="ab-glow ab-glow--off"></div>
+            <span class="ab-eyebrow" data-slot="eyebrow">Ownership</span>
+            <h2 class="ab-h ab-h--2" data-slot="headline">Everything stays <em>yours</em>.</h2>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"><span class="ab-url">webkreatives.com</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ab-card">
+        <div class="ab-title"><b>T1 · blue mark, accent first</b><span>Variant</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink wk-grain" data-tpl="statement-blue" data-mark="blue">
+            <div class="ab-glow"></div>
+            <span class="ab-eyebrow" data-slot="eyebrow">Studio</span>
+            <h2 class="ab-h" data-slot="headline"><em>Small</em> on purpose, so the person who designs it ships it.</h2>
+            <p class="ab-lede" data-slot="lede">No account manager in between.</p>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"><span class="ab-url">webkreatives.com</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ab-card">
+        <div class="ab-title"><b>T2 · yellow mark</b><span>Variant</span></div>
+        <div class="ab-view" data-w="1200" data-h="1500">
+          <div class="ab ab--ink wk-grain" data-tpl="ledger-yellow" data-mark="yellow">
+            <span class="ab-eyebrow" data-slot="eyebrow">Included</span>
+            <h2 class="ab-h ab-h--s" data-slot="headline">Inside the <em>fixed price</em>.</h2>
+            <div class="ab-rows" data-slot="rows">
+              <div class="ab-row"><b>Design</b><span>Custom, no template</span></div>
+              <div class="ab-row"><b>Build</b><span>Tested and live</span></div>
+              <div class="ab-row"><b>Devices</b><span>Phone, tablet, desktop</span></div>
+              <div class="ab-row"><b>SEO</b><span>General SEO and speed</span></div>
+              <div class="ab-row"><b>Feedback</b><span>Two rounds before launch</span></div>
+              <div class="ab-row"><b>Yours</b><span>Domain, code, accounts</span></div>
+            </div>
+            <span class="ab-mark"></span>
+            <div class="ab-foot"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"><span class="ab-url">webkreatives.com</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ds-section" style="border-bottom:0">
+  <div class="ds-wrap"><span class="wk-meta">WebKreatives · design system · not part of the public site</span></div>
+</footer>
+
+<script>
+// Scale every artboard preview to its card width. Skipped in render mode.
+(function () {
+  const isRender = new URLSearchParams(location.search).has('render');
+  if (isRender) return;
+  function fit() {
+    document.querySelectorAll('.ab-view').forEach(v => {
+      const w = +v.dataset.w, h = +v.dataset.h, s = v.clientWidth / w;
+      v.style.height = Math.round(h * s) + 'px';
+      const ab = v.querySelector('.ab');
+      ab.style.transform = 'scale(' + s + ')';
+    });
+  }
+  fit();
+  addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
