@@ -2,7 +2,10 @@
    One line at the very top of every client demo that is listed in the portfolio,
    saying the page is a demo and not the business's own website. It sits in the
    page flow (a spacer keeps content below it) and stays on top while scrolling;
-   fixed elements that hug the top edge (navs) are moved down by its height.
+   fixed and sticky elements that hug the top edge (navs) are moved down by its
+   height, and --wk-demo on <html> carries that height for anything else
+   (a phone menu that starts below the nav, for instance). On a phone the
+   back link is just the arrow and the message is one short line.
 
    Include once per page, before </body>:
    <script src="/client-projects/demo-banner.js" data-name="Business name" data-site="business.nl" defer></script>
@@ -21,14 +24,16 @@
     '#wkDemo .wkBack{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}#wkDemo .wkBack svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}' +
     '#wkDemo .wkSite{color:#fff;font-weight:600;text-decoration:underline;text-decoration-color:rgba(255,255,255,.4);text-underline-offset:2px}' +
     '#wkDemoX{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;border:0;border-radius:50%;background:none;color:rgba(255,255,255,.55);cursor:pointer;display:grid;place-items:center;padding:0}#wkDemoX:hover{color:#fff;background:rgba(255,255,255,.1)}#wkDemoX svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round}' +
-    '#wkDemoPad{height:40px}@media(max-width:640px){#wkDemo{font-size:12px;gap:2px 14px;padding:7px 44px 7px 12px}}';
+    '#wkDemoPad{height:40px}#wkDemo .wkShort{display:none}' +
+    '@media(max-width:640px){#wkDemo{font-size:12px;padding:7px 44px;min-height:38px}#wkDemo .wkBack{position:absolute;left:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;justify-content:center;border-radius:50%}#wkDemo .wkBack:hover{background:rgba(255,255,255,.1)}#wkDemo .wkBack .wkT,#wkDemo .wkLong{display:none}#wkDemo .wkShort{display:inline}}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var who = site ? '<a class="wkSite" href="https://' + esc(site.replace(/^https?:\/\//, '')) + '" target="_blank" rel="noopener">' + esc(name) + '</a>' : '<b>' + esc(name) + '</b>';
   var bar = document.createElement('div'); bar.id = 'wkDemo'; bar.setAttribute('role', 'note'); bar.lang = 'en';
-  bar.innerHTML = '<a class="wkBack" href="' + HOME + '"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to WebKreatives</a>' +
-    '<span>Client demo by <a href="' + HOME + '">webkreatives.com</a> &middot; this is not the actual website of ' + who + '</span>' +
+  bar.innerHTML = '<a class="wkBack" href="' + HOME + '" aria-label="Back to WebKreatives"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="wkT">Back to WebKreatives</span></a>' +
+    '<span class="wkLong">Client demo by <a href="' + HOME + '">webkreatives.com</a> &middot; this is not the actual website of ' + who + '</span>' +
+    '<span class="wkShort">Demo by <a href="' + HOME + '">webkreatives.com</a>, not the site of ' + who + '</span>' +
     '<button id="wkDemoX" type="button" aria-label="Close this notice" title="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
   var pad = document.createElement('div'); pad.id = 'wkDemoPad';
 
@@ -42,7 +47,7 @@
     Array.prototype.forEach.call(body.querySelectorAll('nav, header, aside, div, a, button'), function (el) {
       if (el === bar || el === pad) return;
       var s = getComputedStyle(el);
-      if (s.position !== 'fixed') return;
+      if (s.position !== 'fixed' && s.position !== 'sticky') return;
       var t = parseFloat(s.top), r = el.getBoundingClientRect();
       if (isNaN(t) || t > 40 || r.width < innerWidth * 0.4 || r.height > innerHeight * 0.8) return;
       top.push([el, t]);
@@ -53,6 +58,7 @@
       pad.style.height = h + 'px';
       top.forEach(function (x) { x[0].style.top = (x[1] + h) + 'px'; });
       document.documentElement.style.scrollPaddingTop = (base + h) + 'px';
+      document.documentElement.style.setProperty('--wk-demo', h + 'px');
     }
     fit();
     var ro = window.ResizeObserver ? new ResizeObserver(fit) : null;
@@ -63,6 +69,7 @@
       bar.remove(); pad.remove();
       top.forEach(function (x) { x[0].style.top = ''; });
       document.documentElement.style.scrollPaddingTop = '';
+      document.documentElement.style.removeProperty('--wk-demo');
       try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
     });
   }
