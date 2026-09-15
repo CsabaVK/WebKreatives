@@ -1,10 +1,11 @@
-"""Schedule an Instagram carousel through Publora from local PNGs.
+"""Schedule an image post through Publora from local PNGs.
 
-    python _design/publora-ig.py <slides-dir> <caption.txt> <ISO-8601-UTC>
+    python _design/publora-post.py <platform-id> <caption.txt> <ISO-8601-UTC> <image.png> [more.png ...]
 
-Reads PUBLORA_API_KEY and INSTAGRAM_PLATFORM_ID (or the id below) from .env,
-creates a draft, uploads every *.png in the folder in name order, then flips
-the post to scheduled. Prints the postGroupId.
+Works for any Publora connection (facebook-…, instagram-…, linkedin-…). Reads
+PUBLORA_API_KEY from .env, creates a draft, uploads the images in the order
+given, then flips the post to scheduled. Prints the postGroupId. LinkedIn PDF
+document posts cannot go through here; upload those by hand.
 """
 import io
 import json
@@ -18,7 +19,6 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / ".env", override=True)
 KEY = os.environ["PUBLORA_API_KEY"]
-IG = os.environ.get("INSTAGRAM_PLATFORM_ID", "instagram-17841442997106917")
 API = "https://api.publora.com/api/v1"
 H = {"x-publora-key": KEY, "Content-Type": "application/json"}
 
@@ -30,26 +30,25 @@ def call(method, path, **kw):
     return r.json()
 
 
-def main(slides_dir, caption_path, when):
+def main(platform, caption_path, when, *images):
     caption = io.open(caption_path, encoding="utf-8").read().strip()
-    slides = sorted(Path(slides_dir).glob("*.png"))
-    slides = [s for s in slides if not s.name.startswith("sheet")]
-    if not slides:
-        sys.exit("no slides")
+    images = [Path(p) for p in images]
+    if not images:
+        sys.exit("no images")
 
-    draft = call("POST", "/create-post", data=json.dumps({"content": caption, "platforms": [IG]}))
+    draft = call("POST", "/create-post", data=json.dumps({"content": caption, "platforms": [platform]}))
     gid = draft["postGroupId"]
     print("draft", gid)
 
-    for s in slides:
+    for img in images:
         up = call("POST", "/get-upload-url", data=json.dumps({
-            "fileName": s.name, "contentType": "image/png", "type": "image", "postGroupId": gid}))
-        put = requests.put(up["uploadUrl"], data=s.read_bytes(), headers={"Content-Type": "image/png"}, timeout=120)
+            "fileName": img.name, "contentType": "image/png", "type": "image", "postGroupId": gid}))
+        put = requests.put(up["uploadUrl"], data=img.read_bytes(), headers={"Content-Type": "image/png"}, timeout=120)
         if not put.ok:
-            sys.exit(f"PUT {s.name} -> {put.status_code}")
+            sys.exit(f"PUT {img.name} -> {put.status_code}")
         # No finalise call over REST: Publora probes the object itself and
         # marks it ready before the scheduled time.
-        print("uploaded", s.name, up["mediaId"])
+        print("uploaded", img.name, up["mediaId"])
 
     sched = call("PUT", f"/update-post/{gid}", data=json.dumps({"status": "scheduled", "scheduledTime": when}))
     print("scheduled", json.dumps(sched)[:300])
@@ -57,4 +56,4 @@ def main(slides_dir, caption_path, when):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:4])
+    main(*sys.argv[1:])
