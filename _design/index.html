@@ -245,12 +245,13 @@
 .ab--sticker[data-mark="lime"] .ab-mark{display:block;right:140px;top:140px;width:110px;height:110px;background:var(--lime)}
 .ab--sticker[data-mark="yellow"] .ab-mark{display:block;right:140px;top:140px;width:110px;height:110px;background:var(--yellow)}
 .ab--sticker[data-mark="blue"] .ab-mark{display:block;right:160px;top:160px;width:76px;height:76px;border-radius:50%;background:var(--blue)}
-/* trio: the wordmark's three marks as a cluster, yellow square, red circle, blue dot */
-.ab--sticker[data-mark="trio"] .ab-mark{display:block;right:140px;top:150px;width:150px;height:130px;background:none}
+/* trio: the wordmark's four marks as a cluster: yellow square, red circle, blue dot, lime square */
+.ab--sticker[data-mark="trio"] .ab-mark{display:block;right:140px;top:140px;width:190px;height:150px;background:none}
 .ab--sticker[data-mark="trio"] .ab-mark::before{content:'';position:absolute;left:0;bottom:0;width:84px;height:84px;background:var(--yellow)}
-.ab--sticker[data-mark="trio"] .ab-mark::after{content:'';position:absolute;right:0;top:0;width:72px;height:72px;border-radius:50%;background:var(--red)}
-.ab--sticker .ab-mark i{display:none}
-.ab--sticker[data-mark="trio"] .ab-mark i{display:block;position:absolute;right:8px;bottom:14px;width:26px;height:26px;border-radius:50%;background:var(--blue)}
+.ab--sticker[data-mark="trio"] .ab-mark::after{content:'';position:absolute;left:52px;top:0;width:72px;height:72px;border-radius:50%;background:var(--red)}
+.ab--sticker .ab-mark i,.ab--sticker .ab-mark u{display:none}
+.ab--sticker[data-mark="trio"] .ab-mark i{display:block;position:absolute;left:104px;top:82px;width:26px;height:26px;border-radius:50%;background:var(--blue)}
+.ab--sticker[data-mark="trio"] .ab-mark u{display:block;position:absolute;right:0;bottom:0;width:62px;height:62px;background:var(--lime)}
 .ab-trim{position:absolute;inset:60px;z-index:4;pointer-events:none;border:1px dashed rgba(223,56,33,.7);border-radius:60px;display:none}
 .ab-view .ab--sticker .ab-trim{display:block}
 
@@ -960,11 +961,11 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
         <div class="ab-title"><b>T10 Sticker</b><span>Client window · 50×50 mm + bleed</span></div>
         <div class="ab-view" data-w="1120" data-h="1120">
           <div class="ab ab--sticker" data-tpl="sticker" data-mark="trio">
-            <span class="ab-eyebrow" data-slot="eyebrow">Website by</span>
+            <span class="ab-eyebrow" data-slot="eyebrow">Websites by</span>
             <img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives">
             <div class="ab-qr"><img data-slot="shot" src="" alt=""><span class="ab-badge"><b>W</b><i></i></span></div>
             <span class="ab-url" data-slot="url">webkreatives.com</span>
-            <span class="ab-mark"><i></i></span>
+            <span class="ab-mark"><i></i><u></u></span>
             <div class="ab-trim"></div>
           </div>
         </div>

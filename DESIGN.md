@@ -399,15 +399,17 @@ Client window sticker, 50 x 50 mm, 3 mm bleed, 3 mm die-cut radius, 4 mm safe zo
 Rendered at 20 px per mm: 1120 px canvas, trim at 60 px.
 
 - Print surfaces drop grain, glow and grid. Ink ground like the site, cream type.
-- Layout: eyebrow "Website by" in red and the wordmark top-left, the trio mark
-  top-right (yellow square, red circle, blue dot, the wordmark's own marks), the QR
-  centred at 28 mm, the plain domain under it in mono.
+- Layout: eyebrow "Websites by" in red and the wordmark top-left, the trio mark
+  top-right (yellow square, red circle, blue dot, lime square: the wordmark's own
+  marks), the QR centred at 28 mm, the plain domain under it in mono.
 - The QR is part of the design, not a pasted patch: cream dots on ink, finder eyes as
-  cream rounded rings with a red ring in the gap, and the W badge (cream Unbounded W
-  on the ink ground, red and lime bars, the favicon inverted) over a 9-module clear
-  square in the middle. Error correction H covers the badge. Red sits only in
-  logical-light zones (the eye gap, the badge bars): on ink it reads as dark to a
-  decoder, so it never flips a module.
+  cream rounded rings with an empty gap and a red centre, eight data dots in the
+  logo's colours, and the W badge (cream Unbounded W on the ink ground, red and lime
+  bars, the favicon inverted) over a 9-module clear square in the middle. Error
+  correction H covers the badge and the coloured dots.
+- The red inside the QR is `#f14b35`, the button-wipe red, not `#df3821`. The brand
+  red is too dark for an inverted eye: with it the code stops reading below 400 px;
+  with the brighter red it reads down to 160 px and through blur.
 - It is an inverted code (light on dark). Current phone cameras and the zxing engine
   read it; some older scanner apps do not. The decode proof in `qr.py`'s notes uses
   zxing-cpp, which reads the rendered sticker down to 200 px. Scan the print proof
@@ -431,7 +433,7 @@ The templates above are the structure. These knobs give variety without a new sy
 - Mark: `none` (default), `lime`, `blue`, `yellow`, and on print `trio`. Adds one
   geometric shape in the logo's palette: lime square, blue dot, yellow square, placed
   top-right or beside the headline. `trio` is the wordmark's own cluster (yellow
-  square, red circle, blue dot) and counts as one mark. Never two marks. Never on T4.
+  square, red circle, blue dot, lime square) and counts as one mark. Never two marks. Never on T4.
 - Accent placement: the red word can be the first word, the last word, or a phrase in
   the middle. Rotate.
 - Headline length: two lines at 124px or three lines at 104px.
