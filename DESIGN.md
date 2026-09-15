@@ -399,24 +399,27 @@ Client window sticker, 50 x 50 mm, 3 mm bleed, 3 mm die-cut radius, 4 mm safe zo
 Rendered at 20 px per mm: 1120 px canvas, trim at 60 px.
 
 - Print surfaces drop grain, glow and grid. Ink ground like the site, cream type.
-- The QR sits on a cream stamp (`--cream2`, 24px radius, 2 mm quiet zone) so cameras
-  read dark modules on light; the rest of the sticker stays ink.
-- Layout: eyebrow "Website by" in red, wordmark under it, QR 24 mm on the stamp
-  bottom-left, URL set vertically beside it, "Scan for the case study" bottom-right
-  in meta, one mark top-right.
-- QR: `python _design/qr.py <url> qr.png`, error correction H, no logo. Target one
-  path per client, `webkreatives.com/s/<client>`, redirecting to the case study, so
-  each sticker is traceable and the landing page can change without a reprint.
-- Proof: decode the rendered PNG before sending to print (OpenCV
-  `QRCodeDetector` reads it at 280 px, so a phone reads it at 30 mm).
+- Layout: eyebrow "Website by" in red and the wordmark top-left, one mark top-right,
+  the QR centred at 28 mm, the URL under it in mono.
+- The QR is part of the design, not a pasted patch: cream dots on ink, finder eyes as
+  rounded rings with a lime centre, and a cream W badge (Unbounded W, red and lime
+  bars, the favicon in system colours) over a 9-module clear square in the middle.
+  Error correction H covers the badge.
+- It is an inverted code (light on dark). Current phone cameras and the zxing engine
+  read it; some older scanner apps do not. The decode proof in `qr.py`'s notes uses
+  zxing-cpp, which reads the rendered sticker down to 200 px. Scan the print proof
+  with two phones before the run. If a client's audience skews old, use the
+  cream-ground variant by passing `--ink "#110d0c"` and swapping the ground.
+- Target: `https://webkreatives.com/sticker`, one URL for every sticker, so the
+  landing page can change without a reprint.
 
 ```
-python _design/qr.py https://webkreatives.com/s/leyenburger out/qr.png
-node _design/render.cjs sticker out/sticker.png --shot out/qr.png --url webkreatives.com
+python _design/qr.py https://webkreatives.com/sticker out/qr.svg
+node _design/render.cjs sticker out/sticker.png --shot out/qr.svg --url webkreatives.com/sticker
 ```
 
-Print file: export the PNG to PDF at 300 dpi or hand the printer the PNG at 1120 px
-for 56 mm; ask for matte vinyl, and for the red as a CMYK match of `#a82716`.
+Print file: the PNG at 1120 px for 56 mm; ask for matte vinyl, and for the red as a
+CMYK match of `#df3821`.
 
 ### Variation, inside the system
 
@@ -469,7 +472,7 @@ goes anywhere. Link previews still need `og:image` as an absolute JPG or PNG URL
 | `_design/index.html` | this system rendered live from `theme.css` and `motion.js`, plus the six social artboards, the carousel and the single post arc |
 | `_design/render.cjs` | artboard to PNG |
 | `_design/carousel.cjs`, `carousel-example.json` | five-slide carousel to PNGs and PDF |
-| `_design/qr.py` | print-grade QR PNG |
+| `_design/qr.py` | styled QR as SVG (dots, lime eyes, badge gap) |
 | `_design/publora-ig.py` | Instagram carousel to Publora |
 | `_design/single-example.md` | one worked single post: render command, alt text, post text |
 | `_design/wordmark-light.png`, `wordmark-dark.png` | cropped wordmarks for the artboards |
