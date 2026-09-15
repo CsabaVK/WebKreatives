@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Business card template</title>
+<style>
+/* ── Brand-agnostic 85 x 55 mm business card, two sides ────────────────
+   20 px per mm. 1820 x 1220 px canvas = 85 x 55 mm + 3 mm bleed each side.
+   Trim at 60 px, safe zone 80 px inside trim (content inset 140 px).
+   card.cjs fills the custom properties and the slots from a client spec.
+   Print surface: no grain, no gradients, no shadows.
+
+   Front: eyebrow and wordmark bottom-left, the mark cluster top-right.
+   Back: eyebrow and name top-left, the contact lines middle-left, the QR
+   right at 30 mm (same polarity and styling as the sticker, badge in the
+   middle), the services in one centred line along the bottom, divided by
+   points, some words in the accent. */
+:root{
+  --ground:#0c0c0d;          /* card ground: a neutral near-black, cooler than the site's ink */
+  --type:#f2ede4;            /* wordmark, name, services, contact lines, QR modules */
+  --type-mute:#8a8580;       /* the points between the services */
+  --accent:#df3821;          /* eyebrow text and rule */
+  --display:'Unbounded',system-ui,sans-serif;
+  --body:'Figtree',system-ui,sans-serif;
+  --m1:#df3821;              /* marks: same four as the sticker */
+  --m2:#fbeb78;
+  --m3:#b9e185;
+  --m4:#648dcb;
+  --mks:1.5;                 /* cluster scale against the sticker's 136 px */
+  --bar1:#df3821;            /* the two bars under the badge letter */
+  --bar2:#b9e185;
+  --badge-radius:26px;
+}
+html,body{margin:0;background:#2a2624}
+.side{position:relative;overflow:hidden;width:1820px;height:1220px;padding:140px;box-sizing:border-box;
+  background:var(--ground);color:var(--type);font-family:var(--body);-webkit-font-smoothing:antialiased}
+.side + .side{margin-top:40px}
+.side > *{position:relative;z-index:2}
+.eyebrow{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);display:inline-flex;align-items:center;gap:20px;white-space:nowrap}
+.eyebrow::before{content:'';width:48px;height:2px;background:var(--accent);opacity:.8}
+
+/* front */
+.brand{position:absolute;left:140px;bottom:140px;display:flex;flex-direction:column;align-items:flex-start}
+.logo{display:block;height:300px;width:auto;margin:30px 0 0}
+.wordmark{display:block;font-family:var(--display);font-weight:900;font-size:120px;line-height:1;letter-spacing:-.03em;color:var(--type);margin:40px 0 0;max-width:1200px}
+.marks{position:absolute;right:140px;top:140px;width:calc(136px * var(--mks));height:calc(126px * var(--mks))}
+.marks span{position:absolute;display:block}
+.mk1{z-index:1;left:0;top:0;width:calc(76px * var(--mks));height:calc(76px * var(--mks));border-radius:50%;background:var(--m1)}
+.mk2{z-index:3;left:calc(60px * var(--mks));top:calc(40px * var(--mks));width:calc(52px * var(--mks));height:calc(52px * var(--mks));background:var(--m2)}
+.mk3{z-index:2;left:calc(20px * var(--mks));top:calc(66px * var(--mks));width:calc(60px * var(--mks));height:calc(60px * var(--mks));background:var(--m3)}
+.mk4{z-index:4;left:calc(96px * var(--mks));top:calc(80px * var(--mks));width:calc(40px * var(--mks));height:calc(40px * var(--mks));border-radius:50%;background:var(--m4)}
+.marks[data-shapes="squares"] .mk1,.marks[data-shapes="squares"] .mk4{border-radius:calc(6px * var(--mks))}
+.marks[data-shapes="circles"] .mk2,.marks[data-shapes="circles"] .mk3{border-radius:50%}
+
+/* back */
+.person{position:absolute;left:140px;top:140px}
+.name{display:block;font-family:var(--display);font-weight:900;font-size:76px;line-height:1;letter-spacing:-.04em;color:var(--type);margin:30px 0 0;white-space:nowrap}
+.name em{font-style:normal;color:var(--accent)}
+/* the services: one line along the bottom, points between, starred words in the accent */
+.services{position:absolute;left:140px;right:140px;bottom:140px;text-align:center;font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:.06em;line-height:1;color:var(--type);white-space:nowrap}
+.services em{font-style:normal;color:var(--accent)}
+.services i{font-style:normal;color:var(--type-mute);margin:0 22px}
+/* the contact lines: mail, site, phone, in the small display face */
+.lines{position:absolute;left:140px;top:50%;transform:translateY(-50%);margin:0;padding:0;list-style:none}
+.lines li{font-family:var(--display);font-size:30px;letter-spacing:.06em;font-weight:700;line-height:1;color:var(--type);white-space:nowrap}
+.lines li + li{margin-top:26px}
+.qr{position:absolute;right:140px;top:50%;width:600px;height:600px;transform:translateY(-50%)}
+.qr img{width:100%;height:100%;display:block}
+.badge{position:absolute;left:50%;top:50%;width:160px;height:160px;transform:translate(-50%,-50%);
+  background:var(--ground);border-radius:var(--badge-radius);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.badge b{font-family:var(--display);font-weight:900;font-size:90px;line-height:1;color:var(--type);letter-spacing:-.04em}
+.badge i{display:flex;gap:8px}
+.badge i::before{content:'';width:38px;height:13px;border-radius:3px;background:var(--bar1)}
+.badge i::after{content:'';width:15px;height:13px;border-radius:3px;background:var(--bar2)}
+.marks[hidden],.wordmark[hidden],.eyebrow[hidden],.services[hidden],.lines[hidden]{display:none}
+.services{margin:0}
+.trim{position:absolute;inset:60px;z-index:5;pointer-events:none;border:1px dashed rgba(255,80,60,.7);display:none}
+.safe{position:absolute;inset:140px;z-index:5;pointer-events:none;border:1px dashed rgba(100,141,203,.6);display:none}
+body.guides .trim,body.guides .safe{display:block}
+</style>
+</head>
+<body>
+<div class="side front" id="front">
+  <div class="brand">
+    <span class="eyebrow" data-slot="eyebrow">Websites by</span>
+    <img class="logo" data-slot="logo" src="" alt="">
+    <span class="wordmark" data-slot="wordmark" hidden>Brand</span>
+  </div>
+  <span class="marks" data-slot="marks"><span class="mk1"></span><span class="mk2"></span><span class="mk3"></span><span class="mk4"></span></span>
+  <div class="trim"></div><div class="safe"></div>
+</div>
+<div class="side back" id="back">
+  <div class="person">
+    <span class="eyebrow" data-slot="person-eyebrow">Founder</span>
+    <span class="name" data-slot="name">Name</span>
+  </div>
+  <ul class="lines" data-slot="lines"></ul>
+  <p class="services" data-slot="services"></p>
+  <div class="qr" id="qr"><img data-slot="qr" src="" alt=""><span class="badge"><b data-slot="badge">W</b><i></i></span></div>
+  <div class="trim"></div><div class="safe"></div>
+</div>
+</body>
+</html>

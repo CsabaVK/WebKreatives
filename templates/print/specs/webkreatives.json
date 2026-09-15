@@ -43,5 +43,25 @@
     "#b9e185",
     "#648dcb"
   ],
-  "markShapes": "squares"
+  "markShapes": "squares",
+  "card": {
+    "url": "https://webkreatives.com/card",
+    "ground": "#0c0c0d",
+    "logoHeight": 300,
+    "person": {
+      "eyebrow": "Co-Founder",
+      "name": "*Csaba* Garaguly"
+    },
+    "services": [
+      "Web Design",
+      "*Hosting*",
+      "Support",
+      "*Branding*"
+    ],
+    "lines": [
+      "info@webkreatives.com",
+      "webkreatives.com",
+      "+31 6 15 04 43 69"
+    ]
+  }
 }

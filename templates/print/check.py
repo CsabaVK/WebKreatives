@@ -28,11 +28,17 @@ def run(tag, img, required=True):
     print(f"{tag:>10}  {'ok' if ok else ('FAIL' if required else 'miss (margin only)')}  {text or ''}")
 
 
+def small(sz):
+    # scale on the longer side, so a landscape render keeps its shape
+    h, w = im.shape[:2]
+    k = sz / max(h, w)
+    return cv2.resize(im, (max(1, round(w * k)), max(1, round(h * k))), interpolation=cv2.INTER_AREA)
+
+
 for sz in [None, 400, 280, 200]:
-    img = im if sz is None else cv2.resize(im, (sz, sz), interpolation=cv2.INTER_AREA)
-    run("full" if sz is None else f"{sz}px", img)
+    run("full" if sz is None else f"{sz}px", im if sz is None else small(sz))
 # 160 px is a 50 mm sticker seen from across a room; a margin check, not a gate
-run("160px", cv2.resize(im, (160, 160), interpolation=cv2.INTER_AREA), required=False)
-run("blur 400", cv2.GaussianBlur(cv2.resize(im, (400, 400), interpolation=cv2.INTER_AREA), (5, 5), 0))
-run("blur 280", cv2.GaussianBlur(cv2.resize(im, (280, 280), interpolation=cv2.INTER_AREA), (3, 3), 0))
+run("160px", small(160), required=False)
+run("blur 400", cv2.GaussianBlur(small(400), (5, 5), 0))
+run("blur 280", cv2.GaussianBlur(small(280), (3, 3), 0))
 sys.exit(0 if ok_all else 1)

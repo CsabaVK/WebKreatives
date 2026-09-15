@@ -426,6 +426,33 @@ node _design/render.cjs sticker out/sticker.png --shot out/qr.svg --mark trio
 Print file: the PNG at 1120 px for 56 mm; ask for matte vinyl, and for the red as a
 CMYK match of `#df3821`.
 
+### Print: business card (T11)
+
+85 x 55 mm, 3 mm bleed, 4 mm safe zone, square corners, rendered at 20 px per mm from
+`templates/print/card.html` and `card.cjs` with the `card` block of
+`templates/print/specs/webkreatives.json`. Ground `#0c0c0d`, a neutral near-black,
+darker and cooler than `--ink`; the warm ink read as red on the card.
+
+- Front is the brand side: "Websites by" and the wordmark bottom-left, 15 mm tall, the
+  trio cluster top-right at 1.5x the sticker's. Nothing else.
+- Back: "Co-Founder" and the name in Unbounded 900 top-left, first name in red; mail,
+  bare domain, phone in mono 30px middle-left; the sticker's code at 30 mm right,
+  vertically centred, nothing under it; the services in one centred mono 30px line
+  along the bottom, "Web Design · Hosting · Support · Branding", Hosting and
+  Branding in red, the points in `--cream-faint`. No labels, no hairlines, no city.
+- The code is the sticker's exactly: cream dots on the ground, `#f14b35` eye
+  centres, eight coloured dots, the W badge. `check.py` proves the code with 4 mm
+  of ground around it, not the whole side.
+- Target: `https://webkreatives.com/card`, a noindex page that forwards home with
+  `utm_source=card`, so a card scan and a sticker scan are told apart.
+
+```
+node templates/print/card.cjs templates/print/specs/webkreatives.json templates/print/out
+```
+
+Print files: `webkreatives-card-front.png` and `-back.png` at 1820 x 1220 px for
+91 x 61 mm; 350 g uncoated or matte laminate, never gloss on the ink ground.
+
 ### Variation, inside the system
 
 The templates above are the structure. These knobs give variety without a new system:
