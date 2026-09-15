@@ -235,8 +235,8 @@
 .ab--sticker .ab-qr{position:absolute;left:280px;top:330px;width:560px;height:560px}
 .ab--sticker .ab-qr img{width:100%;height:100%;display:block}
 .ab--sticker .ab-badge{position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);
-  background:var(--cream2);border-radius:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
-.ab--sticker .ab-badge b{font-family:var(--f-display);font-weight:900;font-size:78px;line-height:1;color:var(--ink);letter-spacing:-.04em}
+  background:var(--ink);border-radius:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.ab--sticker .ab-badge b{font-family:var(--f-display);font-weight:900;font-size:84px;line-height:1;color:var(--cream2);letter-spacing:-.04em}
 .ab--sticker .ab-badge i{display:flex;gap:8px}
 .ab--sticker .ab-badge i::before{content:'';width:36px;height:12px;border-radius:3px;background:var(--red)}
 .ab--sticker .ab-badge i::after{content:'';width:14px;height:12px;border-radius:3px;background:var(--lime)}
@@ -245,6 +245,12 @@
 .ab--sticker[data-mark="lime"] .ab-mark{display:block;right:140px;top:140px;width:110px;height:110px;background:var(--lime)}
 .ab--sticker[data-mark="yellow"] .ab-mark{display:block;right:140px;top:140px;width:110px;height:110px;background:var(--yellow)}
 .ab--sticker[data-mark="blue"] .ab-mark{display:block;right:160px;top:160px;width:76px;height:76px;border-radius:50%;background:var(--blue)}
+/* trio: the wordmark's three marks as a cluster, yellow square, red circle, blue dot */
+.ab--sticker[data-mark="trio"] .ab-mark{display:block;right:140px;top:150px;width:150px;height:130px;background:none}
+.ab--sticker[data-mark="trio"] .ab-mark::before{content:'';position:absolute;left:0;bottom:0;width:84px;height:84px;background:var(--yellow)}
+.ab--sticker[data-mark="trio"] .ab-mark::after{content:'';position:absolute;right:0;top:0;width:72px;height:72px;border-radius:50%;background:var(--red)}
+.ab--sticker .ab-mark i{display:none}
+.ab--sticker[data-mark="trio"] .ab-mark i{display:block;position:absolute;right:8px;bottom:14px;width:26px;height:26px;border-radius:50%;background:var(--blue)}
 .ab-trim{position:absolute;inset:60px;z-index:4;pointer-events:none;border:1px dashed rgba(223,56,33,.7);border-radius:60px;display:none}
 .ab-view .ab--sticker .ab-trim{display:block}
 
@@ -953,16 +959,16 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
       <div class="ab-card">
         <div class="ab-title"><b>T10 Sticker</b><span>Client window · 50×50 mm + bleed</span></div>
         <div class="ab-view" data-w="1120" data-h="1120">
-          <div class="ab ab--sticker" data-tpl="sticker" data-mark="lime">
+          <div class="ab ab--sticker" data-tpl="sticker" data-mark="trio">
             <span class="ab-eyebrow" data-slot="eyebrow">Website by</span>
             <img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives">
             <div class="ab-qr"><img data-slot="shot" src="" alt=""><span class="ab-badge"><b>W</b><i></i></span></div>
-            <span class="ab-url" data-slot="url">webkreatives.com/sticker</span>
-            <span class="ab-mark"></span>
+            <span class="ab-url" data-slot="url">webkreatives.com</span>
+            <span class="ab-mark"><i></i></span>
             <div class="ab-trim"></div>
           </div>
         </div>
-        <p class="ab-desc">Ink ground like the site. Wordmark top-left, one mark top-right, QR centred at 28 mm: cream dots, lime eyes, W badge in the middle. URL under it. Lives on the client's window or counter. QR target: <code>webkreatives.com/sticker</code>.</p>
+        <p class="ab-desc">Ink ground like the site. Wordmark top-left, one mark top-right, QR centred at 28 mm: cream dots, red rings in the eyes, cream W on ink in the middle. Plain domain under it; the code carries the tracked path. Lives on the client's window or counter. QR target: <code>webkreatives.com/sticker</code>.</p>
       </div>
     </div>
   </div>
