@@ -1,0 +1,25 @@
+{
+  "slug": "scootershopdenhaag",
+  "name": "Scootershop Den Haag",
+  "url": "https://webkreatives.com/scootershopdenhaag/",
+  "urlText": "scootershopdenhaag.nl",
+  "eyebrow": "Vandaag gebracht, vandaag klaar",
+  "fontsUrl": "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap",
+  "fonts": {
+    "display": "'Archivo', system-ui, sans-serif",
+    "body": "'Archivo', system-ui, sans-serif"
+  },
+  "colors": {
+    "ground": "#f7f4ee",
+    "type": "#221e19",
+    "accent": "#2f8a4a"
+  },
+  "qr": {
+    "style": "rounded",
+    "eye": "#2f8a4a",
+    "accents": ["#2f8a4a", "#2f8a4a", "#c8352b"]
+  },
+  "badge": { "letter": "S", "bars": ["#2f8a4a", "#c8352b"] },
+  "marks": ["#2f8a4a", "#c8352b", "#221e19", "#2f8a4a"],
+  "markShapes": "squares"
+}

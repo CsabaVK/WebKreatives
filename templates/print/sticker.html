@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sticker template</title>
+<style>
+/* ── Brand-agnostic 50 mm sticker ───────────────────────────────────────
+   20 px per mm. 1120 px canvas = 50 mm + 3 mm bleed each side. Trim at 60 px,
+   safe zone 80 px inside trim (content inset 140 px). render.cjs fills the
+   custom properties and the slots from a client spec. Print surface: no
+   grain, no gradients, no shadows. */
+:root{
+  --ground:#110d0c;          /* sticker ground */
+  --type:#f2ede4;            /* wordmark, URL, W, QR modules */
+  --type-mute:#b8b0a4;       /* secondary text */
+  --accent:#df3821;          /* eyebrow text and rule */
+  --display:'Unbounded',system-ui,sans-serif;
+  --body:'Figtree',system-ui,sans-serif;
+  --m1:#df3821;              /* marks: big circle, small square, big square, small circle */
+  --m2:#fbeb78;
+  --m3:#b9e185;
+  --m4:#648dcb;
+  --bar1:#df3821;            /* the two bars under the badge letter */
+  --bar2:#b9e185;
+  --badge-radius:26px;
+}
+html,body{margin:0;background:#2a2624}
+.ab{position:relative;overflow:hidden;width:1120px;height:1120px;padding:140px;box-sizing:border-box;
+  background:var(--ground);color:var(--type);font-family:var(--body);-webkit-font-smoothing:antialiased}
+.ab > *{position:relative;z-index:2}
+.eyebrow{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);display:inline-flex;align-items:center;gap:18px}
+.eyebrow::before{content:'';width:40px;height:2px;background:var(--accent);opacity:.8}
+.logo{display:block;height:96px;width:auto;margin:22px 0 0}
+.wordmark{display:block;font-family:var(--display);font-weight:900;font-size:64px;line-height:1;letter-spacing:-.03em;color:var(--type);margin:30px 0 0;max-width:560px}
+.qr{position:absolute;left:280px;top:330px;width:560px;height:560px}
+.qr img{width:100%;height:100%;display:block}
+.badge{position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);
+  background:var(--ground);border-radius:var(--badge-radius);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.badge b{font-family:var(--display);font-weight:900;font-size:84px;line-height:1;color:var(--type);letter-spacing:-.04em}
+.badge i{display:flex;gap:8px}
+.badge i::before{content:'';width:36px;height:12px;border-radius:3px;background:var(--bar1)}
+.badge i::after{content:'';width:14px;height:12px;border-radius:3px;background:var(--bar2)}
+.url{position:absolute;left:0;right:0;bottom:140px;text-align:center;font-family:var(--display);font-size:30px;letter-spacing:.06em;font-weight:700;color:var(--type)}
+/* the mark cluster: four shapes in four sizes, overlapping, circles on opposite corners */
+.marks{position:absolute;right:140px;top:140px;width:136px;height:126px}
+.marks span{position:absolute;display:block}
+.mk1{z-index:1;left:0;top:0;width:76px;height:76px;border-radius:50%;background:var(--m1)}
+.mk2{z-index:3;left:60px;top:40px;width:52px;height:52px;background:var(--m2)}
+.mk3{z-index:2;left:20px;top:66px;width:60px;height:60px;background:var(--m3)}
+.mk4{z-index:4;left:96px;top:80px;width:40px;height:40px;border-radius:50%;background:var(--m4)}
+.marks[data-shapes="squares"] .mk1,.marks[data-shapes="squares"] .mk4{border-radius:6px}
+.marks[data-shapes="circles"] .mk2,.marks[data-shapes="circles"] .mk3{border-radius:50%}
+.marks[hidden],.wordmark[hidden]{display:none}
+.trim{position:absolute;inset:60px;z-index:5;pointer-events:none;border:1px dashed rgba(255,80,60,.7);border-radius:60px;display:none}
+body.guides .trim{display:block}
+</style>
+</head>
+<body>
+<div class="ab" id="ab">
+  <span class="eyebrow" data-slot="eyebrow">Websites by</span>
+  <img class="logo" data-slot="logo" src="" alt="">
+  <span class="wordmark" data-slot="wordmark" hidden>Brand</span>
+  <div class="qr"><img data-slot="qr" src="" alt=""><span class="badge"><b data-slot="badge">W</b><i></i></span></div>
+  <span class="url" data-slot="url">example.com</span>
+  <span class="marks" data-slot="marks"><span class="mk1"></span><span class="mk2"></span><span class="mk3"></span><span class="mk4"></span></span>
+  <div class="trim"></div>
+</div>
+</body>
+</html>

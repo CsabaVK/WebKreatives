@@ -21,3 +21,6 @@ tmp-inspect-*.cjs
 
 # Rendered social images, regenerated from _design/ on demand
 _design/out/
+
+# Client print renders, regenerated from templates/print/specs on demand
+templates/print/out/

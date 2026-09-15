@@ -479,6 +479,7 @@ goes anywhere. Link previews still need `og:image` as an absolute JPG or PNG URL
 | `_design/render.cjs` | artboard to PNG |
 | `_design/carousel.cjs`, `carousel-example.json` | five-slide carousel to PNGs and PDF |
 | `_design/qr.py` | styled QR as SVG (dots, lime eyes, badge gap) |
+| `templates/print/` | the same sticker for any client: spec in, print file and proof out |
 | `_design/publora-ig.py` | Instagram carousel to Publora |
 | `_design/single-example.md` | one worked single post: render command, alt text, post text |
 | `_design/wordmark-light.png`, `wordmark-dark.png` | cropped wordmarks for the artboards |
