@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WebKreatives</title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="refresh" content="0; url=/?utm_source=facebook&amp;utm_medium=social&amp;utm_campaign=page">
+<!-- Short link for the Facebook page. Forwards to the site with the utm_ parameters
+     that tell Google Analytics where the visit came from.
+       /facebook/                      -> /?utm_source=facebook&utm_medium=social&utm_campaign=page
+       /facebook/?t=/pricing/          -> that page instead of the homepage
+       /facebook/?c=slug               -> campaign "post", utm_content=slug (one link per post)
+     The redirect happens in the script below; the meta refresh is the
+     fallback without JavaScript. Only paths on this site are accepted. -->
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var t = q.get('t') || '/';
+  if (!/^\/(?!\/)[\w\-\/.]*$/.test(t)) t = '/';
+  var c = q.get('c');
+  var u = new URLSearchParams({ utm_source: 'facebook', utm_medium: 'social', utm_campaign: c ? 'post' : 'page' });
+  if (c) u.set('utm_content', c.slice(0, 80));
+  location.replace(t + '?' + u.toString());
+})();
+</script>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#171413;color:#f7f3ec;font:300 15px/1.6 system-ui,sans-serif}a{color:#df3821}</style>
+</head>
+<body>
+<p><a href="/?utm_source=facebook&amp;utm_medium=social&amp;utm_campaign=page">webkreatives.com</a></p>
+</body>
+</html>

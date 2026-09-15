@@ -165,6 +165,7 @@ Templates are split into three categories:
 |---------|--------|
 | GitHub Pages | Auto-deploys from `main` → `webkreatives.com` |
 | Web3Forms | Contact form handler → `info@webkreatives.com` |
+| Google Analytics 4 | Property `G-CG9705BC61`, loaded by `js/cookie-consent.js` only after the visitor allows Analytics. Short tagged links for profiles and print: `/instagram/`, `/linkedin/`, `/facebook/`, `/medium/`, `/qr/` (each forwards to the site with `utm_` parameters; `?c=slug` marks one post, `?t=/path/` picks the page) |
 | Gmail | Connected via MCP for automated workflows |
 
 ---

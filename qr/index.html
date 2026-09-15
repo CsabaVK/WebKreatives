@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WebKreatives</title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="refresh" content="0; url=/?utm_source=sticker&amp;utm_medium=qr&amp;utm_campaign=business-sticker">
+<!-- Short link for the QR code on stickers and print. Forwards to the site with the utm_ parameters
+     that tell Google Analytics where the visit came from.
+       /qr/                      -> /?utm_source=sticker&utm_medium=qr&utm_campaign=business-sticker
+       /qr/?t=/pricing/          -> that page instead of the homepage
+       /qr/?c=slug               -> campaign "business-sticker", utm_content=slug (one link per post)
+     The redirect happens in the script below; the meta refresh is the
+     fallback without JavaScript. Only paths on this site are accepted. -->
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var t = q.get('t') || '/';
+  if (!/^\/(?!\/)[\w\-\/.]*$/.test(t)) t = '/';
+  var c = q.get('c');
+  var u = new URLSearchParams({ utm_source: 'sticker', utm_medium: 'qr', utm_campaign: c ? 'business-sticker' : 'business-sticker' });
+  if (c) u.set('utm_content', c.slice(0, 80));
+  location.replace(t + '?' + u.toString());
+})();
+</script>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#171413;color:#f7f3ec;font:300 15px/1.6 system-ui,sans-serif}a{color:#df3821}</style>
+</head>
+<body>
+<p><a href="/?utm_source=sticker&amp;utm_medium=qr&amp;utm_campaign=business-sticker">webkreatives.com</a></p>
+</body>
+</html>

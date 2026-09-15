@@ -9,7 +9,10 @@
  *                   (wk-billing, wk-scope-saved); browser only
  *   marketing       ad tags (Google Ads, Meta, LinkedIn); nothing loads
  *                   until an ID is filled in below
- *   analytics       Google Analytics 4, IP anonymised
+ *   analytics       Google Analytics 4, IP anonymised. Loads only after
+ *                   consent; page views, the arrival source (see wk-landing
+ *                   below), a few named events and the delegated click
+ *                   events at the bottom of the Tags section
  *
  * The banner waits six seconds on a first visit, then never returns once a
  * choice is made. The "Cookies" link in the footer (or window.wkCookieOpen)
@@ -26,6 +29,8 @@
   const OLD     = ['wk-cookie-consent', 'wk-cookie-preferences'];
   const DELAY   = 6000;                  // first-visit banner delay, ms
   const GA_ID   = 'G-CG9705BC61';
+  const LANDING = 'wk-landing';          // sessionStorage: the first page of this tab and where it came from
+  const DEV     = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
   const ADS     = { googleAds: '', metaPixel: '', linkedin: '' };   // fill in to activate marketing tags
   const CATS    = ['personalization', 'marketing', 'analytics'];
 
@@ -104,6 +109,43 @@
     if (!consentDefaulted) { window.gtag('consent', 'default', state); consentDefaulted = true; }
     else window.gtag('consent', 'update', state);
   }
+  /* The page this visit arrived on, kept for the tab's lifetime. A visitor
+   * who arrives from Instagram with ?utm_source=instagram and allows
+   * analytics two pages later would otherwise be counted as "direct": by
+   * then the URL has no utm_ parameters and the referrer is our own site.
+   * An arrival is a page with campaign parameters or an outside referrer
+   * (or none); it replaces what an earlier arrival in the same tab stored.
+   * Nothing is sent anywhere until analytics is allowed; loadGA() is the
+   * only reader. */
+  function landing() {
+    const now = { u: location.href, r: document.referrer || '' };
+    const arrival = /[?&](utm_[a-z]+|gclid|fbclid|msclkid)=/.test(location.search) || now.r.indexOf(location.origin + '/') !== 0;
+    try {
+      const v = arrival ? null : JSON.parse(sessionStorage.getItem(LANDING) || 'null');
+      if (v && v.u) return v;
+      sessionStorage.setItem(LANDING, JSON.stringify(now));
+    } catch (e) {}
+    return now;
+  }
+  const UTM = { source: 'campaign_source', medium: 'campaign_medium', campaign: 'campaign_name',
+                content: 'campaign_content', term: 'campaign_term', id: 'campaign_id' };
+  function attribution() {
+    const L = landing();
+    if (L.u === location.href) return {};          // still on the landing page: gtag reads the URL itself
+    const out = {};
+    try {
+      const q = new URL(L.u).searchParams;
+      Object.keys(UTM).forEach(k => { const v = q.get('utm_' + k); if (v) out[UTM[k]] = v; });
+    } catch (e) {}
+    if (L.r && L.r.indexOf(location.origin + '/') !== 0) out.page_referrer = L.r;
+    return out;
+  }
+  /* Set once per load and again when the language changes. Register them in
+   * GA4 as user-scoped custom dimensions to see them in reports. */
+  function userProps() {
+    const g = k => { try { return localStorage.getItem(k) || undefined; } catch (e) { return undefined; } };
+    return { site_language: g('wk-lang') || 'nl', site_currency: g('wk-currency'), site_region: g('wk-region') };
+  }
   let gaLoaded = false;
   function loadGA() {
     if (gaLoaded || !GA_ID) return;
@@ -113,7 +155,12 @@
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
     document.head.appendChild(s);
     window.gtag('js', new Date());
-    window.gtag('config', GA_ID, { anonymize_ip: true });
+    window.gtag('set', 'user_properties', userProps());
+    /* On localhost every event is marked developer traffic (DebugView) and
+     * internal traffic, so the GA4 data filters keep it out of the reports. */
+    const cfg = Object.assign({ anonymize_ip: true }, attribution(), DEV ? { debug_mode: true, traffic_type: 'internal' } : {});
+    window.gtag('config', GA_ID, cfg);
+    wireEvents();
   }
   let adsLoaded = false;
   function loadMarketing() {
@@ -144,6 +191,38 @@
     consentMode(p);
     if (p.analytics) loadGA();
     if (p.marketing) loadMarketing();
+  }
+
+  /* Named events on top of the page views, wired once GA is loaded:
+   *   contact_click   mailto:, tel: and WhatsApp links      (method)
+   *   social_click    links to our Instagram, LinkedIn, Medium, Facebook (network)
+   *   cta_click       any .wk-btn or .btn link               (link_text, link_url)
+   *   language_change the NL/EN switch                      (site_language)
+   * Pages add their own through window.wkTrack: generate_lead on the thanks
+   * page, calculator_send on pricing, select_plan on hosting, page_not_found
+   * on the 404 page. Scrolls, outbound clicks and downloads come from the
+   * GA4 enhanced measurement toggles, not from here. */
+  let eventsWired = false;
+  function wireEvents() {
+    if (eventsWired) return;
+    eventsWired = true;
+    document.addEventListener('click', e => {
+      const a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      const h = a.getAttribute('href') || '';
+      const text = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+      const social = h.match(/(instagram|linkedin|medium|facebook)\.com/);
+      if (h.indexOf('mailto:') === 0) window.wkTrack('contact_click', { method: 'email', link_text: text });
+      else if (h.indexOf('tel:') === 0) window.wkTrack('contact_click', { method: 'phone', link_text: text });
+      else if (/wa\.me|whatsapp\.com/.test(h)) window.wkTrack('contact_click', { method: 'whatsapp', link_text: text });
+      else if (social) window.wkTrack('social_click', { network: social[1], link_url: h });
+      else if (a.matches('.wk-btn, .btn, .btn-p, .btn-g')) window.wkTrack('cta_click', { link_text: text, link_url: h });
+    }, true);
+    document.addEventListener('wk:languagechange', e => {
+      const l = (e && e.detail && e.detail.lang) || getLang();
+      window.gtag('set', 'user_properties', { site_language: l });
+      window.wkTrack('language_change', { site_language: l });
+    });
   }
 
   /* ── Public: other modules ask before they remember, and log events ── */
@@ -269,6 +348,7 @@
   /* ── Init + react to language changes ───────────────────────────────── */
   let timer = 0;
   function init() {
+    landing();
     OLD.forEach(k => { try { localStorage.removeItem(k); } catch (e) {} });
     const saved = read();
     if (saved) { apply(saved); return; }
