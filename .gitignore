@@ -18,3 +18,6 @@ memory/
 # they remain on disk. Note the history still holds them.
 CLAUDE_MEMORY.md
 tmp-inspect-*.cjs
+
+# Rendered social images, regenerated from _design/ on demand
+_design/out/
