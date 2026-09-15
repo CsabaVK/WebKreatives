@@ -48,6 +48,7 @@ All neutrals carry a warm hue. Never `#000`, never `#fff`.
 | `--red2` | `oklch(43% .200 25)` | pressed red, rare |
 | `--red-deep` | `#a82716` | red on paper |
 | `#f14b35` | literal in `theme.css` | the lighter red that wipes in behind a primary button on hover |
+| `#0c0c0d` | literal in the card | neutral near-black, the business card ground; the warm ink read as red on paper |
 | `--bronze-mist` | `rgba(223,56,33,.10)` | badge and tag fill, red at whisper volume |
 | `--bronze-rule` | `rgba(223,56,33,.24)` | badge border, frame border on hover, blockquote rule |
 | `--lime` | `#b9e185` | logo mark, one geometric aside |

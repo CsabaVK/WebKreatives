@@ -255,6 +255,44 @@
 .ab-trim{position:absolute;inset:60px;z-index:4;pointer-events:none;border:1px dashed rgba(223,56,33,.7);border-radius:60px;display:none}
 .ab-view .ab--sticker .ab-trim{display:block}
 
+/* ── T11 Card: business card, 85 x 55 mm + 3 mm bleed, two sides ───────
+   20 px per mm: 1820 x 1220 canvas a side, trim at 60 px, safe zone 140 px
+   in, square corners. Ground #0c0c0d, a neutral near-black a step darker and
+   cooler than --ink: the warm ink read as red on the card. Front: eyebrow and
+   wordmark bottom-left, the trio top-right at 1.5x. Back: name top-left with
+   the first name red, the contact lines middle-left, the sticker's code at
+   30 mm right, the services in one centred line along the bottom. Print files
+   come from templates/print/card.cjs; this is the reference. */
+.ab--card{width:1820px;height:1220px;padding:140px;background:#0c0c0d;color:var(--cream)}
+.ab--card .ab-eyebrow{font-size:26px;gap:20px}
+.ab--card .ab-eyebrow::before{width:48px}
+.ab--card .ab-brand{position:absolute;left:140px;bottom:140px;display:flex;flex-direction:column;align-items:flex-start}
+.ab--card .ab-logo{height:300px;margin:30px 0 0}
+.ab--card[data-mark="trio"] .ab-mark{display:block;right:140px;top:140px;width:204px;height:189px;background:none}
+.ab--card[data-mark="trio"] .ab-mark::after{content:'';position:absolute;z-index:1;left:0;top:0;width:114px;height:114px;border-radius:9px;background:var(--red)}
+.ab--card[data-mark="trio"] .ab-mark::before{content:'';position:absolute;z-index:3;left:90px;top:60px;width:78px;height:78px;background:var(--yellow)}
+.ab--card[data-mark="trio"] .ab-mark u{display:block;position:absolute;z-index:2;left:30px;top:99px;width:90px;height:90px;background:var(--lime)}
+.ab--card[data-mark="trio"] .ab-mark i{display:block;position:absolute;z-index:4;left:144px;top:120px;width:60px;height:60px;border-radius:9px;background:var(--blue)}
+.ab--card .ab-person{position:absolute;left:140px;top:140px}
+.ab--card .ab-name{display:block;font-family:var(--f-display);font-weight:900;font-size:76px;line-height:1;letter-spacing:-.04em;color:var(--cream);margin:30px 0 0;white-space:nowrap}
+.ab--card .ab-name em{font-style:normal;color:var(--red)}
+.ab--card .ab-lines{position:absolute;left:140px;top:50%;transform:translateY(-50%);margin:0;padding:0;list-style:none}
+.ab--card .ab-lines li{font-family:var(--f-mono);font-size:30px;font-weight:700;letter-spacing:.06em;line-height:1;color:var(--cream);white-space:nowrap}
+.ab--card .ab-lines li + li{margin-top:26px}
+.ab--card .ab-qr{position:absolute;right:140px;top:50%;width:600px;height:600px;transform:translateY(-50%)}
+.ab--card .ab-qr img{width:100%;height:100%;display:block}
+.ab--card .ab-badge{position:absolute;left:50%;top:50%;width:160px;height:160px;transform:translate(-50%,-50%);
+  background:#0c0c0d;border-radius:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.ab--card .ab-badge b{font-family:var(--f-display);font-weight:900;font-size:90px;line-height:1;color:var(--cream2);letter-spacing:-.04em}
+.ab--card .ab-badge i{display:flex;gap:8px}
+.ab--card .ab-badge i::before{content:'';width:38px;height:13px;border-radius:3px;background:var(--red)}
+.ab--card .ab-badge i::after{content:'';width:15px;height:13px;border-radius:3px;background:var(--lime)}
+.ab--card .ab-services{position:absolute;left:140px;right:140px;bottom:140px;margin:0;text-align:center;font-family:var(--f-mono);font-weight:700;font-size:30px;letter-spacing:.06em;line-height:1;color:var(--cream);white-space:nowrap}
+.ab--card .ab-services em{font-style:normal;color:var(--red)}
+.ab--card .ab-services i{font-style:normal;color:var(--cream-faint);margin:0 22px}
+.ab--card .ab-trim{border-radius:0}
+.ab-view .ab--card .ab-trim{display:block}
+
 /* ── Print mode: the five carousel slides as PDF pages ────────────────── */
 @page{size:1200px 1500px;margin:0}
 body.is-print{margin:0;background:var(--ink)}
@@ -955,7 +993,7 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
   <div class="ds-wrap">
     <span class="wk-eyebrow">08 · Print</span>
     <h2 class="wk-display wk-h2">Ink base, <span class="wk-accent">dots that scan</span>.</h2>
-    <p class="ds-note">Print surfaces drop the grain, the glow and the grid. 20 px per mm. Red dashes mark the trim and the 3 mm die-cut radius; everything sits 4 mm inside it. QR from <code>python _design/qr.py &lt;url&gt; qr.svg</code>, then <code>node _design/render.cjs sticker out.png --shot qr.svg</code>.</p>
+    <p class="ds-note">Print surfaces drop the grain, the glow and the grid. 20 px per mm. Red dashes mark the trim; everything sits 4 mm inside it. The sticker is 50 mm with a 3 mm die-cut radius, the card 85 × 55 mm with square corners. Both render from one client spec through <code>templates/print/</code>: <code>render.cjs</code> for the sticker, <code>card.cjs</code> for the card, and <code>check.py</code> must read the code at every size before a file goes to print. The codes here are <code>qr-sticker.svg</code> and <code>qr-card.svg</code>, made with <code>templates/print/qr.py</code>.</p>
     <div class="ab-grid">
       <div class="ab-card">
         <div class="ab-title"><b>T10 Sticker</b><span>Client window · 50×50 mm + bleed</span></div>
@@ -963,13 +1001,43 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
           <div class="ab ab--sticker" data-tpl="sticker" data-mark="trio">
             <span class="ab-eyebrow" data-slot="eyebrow">Websites by</span>
             <img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives">
-            <div class="ab-qr"><img data-slot="shot" src="" alt=""><span class="ab-badge"><b>W</b><i></i></span></div>
+            <div class="ab-qr"><img data-slot="shot" src="qr-sticker.svg" alt=""><span class="ab-badge"><b>W</b><i></i></span></div>
             <span class="ab-url" data-slot="url">webkreatives.com</span>
             <span class="ab-mark"><i></i><u></u></span>
             <div class="ab-trim"></div>
           </div>
         </div>
-        <p class="ab-desc">Ink ground like the site. Wordmark top-left, one mark top-right, QR centred at 28 mm: cream dots, red rings in the eyes, cream W on ink in the middle. Plain domain under it; the code carries the tracked path. Lives on the client's window or counter. QR target: <code>webkreatives.com/sticker</code>.</p>
+        <p class="ab-desc">Ink ground like the site. Wordmark top-left, the trio top-right, QR centred at 28 mm: cream dots, cream rings with red centres in the eyes, cream W on ink in the middle. Plain domain under it; the code carries the tracked path. Lives on the client's window or counter. QR target: <code>webkreatives.com/sticker</code>.</p>
+      </div>
+      <div class="ab-card">
+        <div class="ab-title"><b>T11 Card, front</b><span>Business card · 85×55 mm + bleed</span></div>
+        <div class="ab-view" data-w="1820" data-h="1220">
+          <div class="ab ab--card" data-tpl="card-front" data-mark="trio">
+            <div class="ab-brand">
+              <span class="ab-eyebrow">Websites by</span>
+              <img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives">
+            </div>
+            <span class="ab-mark"><i></i><u></u></span>
+            <div class="ab-trim"></div>
+          </div>
+        </div>
+        <p class="ab-desc">The brand side. Eyebrow and wordmark bottom-left at 15 mm, the trio top-right at 1.5x the sticker's, nothing else: two things on a diagonal and the rest is ground. Neutral near-black <code>#0c0c0d</code>, not the warm ink; square corners; 350 g uncoated or matte laminate, never gloss.</p>
+      </div>
+      <div class="ab-card">
+        <div class="ab-title"><b>T11 Card, back</b><span>Business card · 85×55 mm + bleed</span></div>
+        <div class="ab-view" data-w="1820" data-h="1220">
+          <div class="ab ab--card" data-tpl="card-back">
+            <div class="ab-person">
+              <span class="ab-eyebrow">Co-Founder</span>
+              <span class="ab-name"><em>Csaba</em> Garaguly</span>
+            </div>
+            <ul class="ab-lines"><li>info@webkreatives.com</li><li>webkreatives.com</li><li>+31 6 15 04 43 69</li></ul>
+            <div class="ab-qr"><img src="qr-card.svg" alt=""><span class="ab-badge"><b>W</b><i></i></span></div>
+            <p class="ab-services">Web Design<i>·</i><em>Hosting</em><i>·</i>Support<i>·</i><em>Branding</em></p>
+            <div class="ab-trim"></div>
+          </div>
+        </div>
+        <p class="ab-desc">The person. "Co-Founder" and the name top-left, first name in red; mail, bare domain and phone middle-left in mono 30px; the sticker's code at 30 mm on the right, nothing under it; the services in one centred mono line along the bottom, points between, Hosting and Branding in red. No labels, no hairlines, no city. QR target: <code>webkreatives.com/card</code>. Render: <code>node templates/print/card.cjs templates/print/specs/webkreatives.json templates/print/out</code>.</p>
       </div>
     </div>
   </div>
