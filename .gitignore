@@ -24,3 +24,4 @@ _design/out/
 
 # Client print renders, regenerated from templates/print/specs on demand
 templates/print/out/
+__pycache__/
