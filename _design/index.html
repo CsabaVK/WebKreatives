@@ -203,6 +203,27 @@
 .arc-skel li b{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--bronze);padding-top:5px}
 .arc-skel li b::before{content:counter(st,decimal-leading-zero) ' ';color:var(--cream-faint)}
 
+/* ── T8 Cover: Facebook page banner, 1640×624 (2x of 820×312) ──────────
+   Mobile shows the central 1120px only, and the profile photo sits over the
+   bottom-left corner on desktop, so everything lives inside the safe box and
+   nothing goes bottom-left. */
+.ab--cover{width:1640px;height:624px;padding:0}
+.ab-safe{position:absolute;left:260px;top:64px;width:1120px;height:496px;z-index:2}
+.ab--cover .ab-glow{left:120px;top:300px;width:1100px;height:220px;opacity:.14}
+.ab--cover .ab-eyebrow{font-size:18px}
+.ab--cover .ab-h{font-size:68px;margin:24px 0 0;max-width:1120px}
+.ab--cover .ab-lede{font-size:26px;margin:22px 0 0;max-width:820px}
+.ab--cover .ab-brand{position:absolute;right:0;bottom:0;display:flex;align-items:flex-end;gap:28px}
+.ab--cover .ab-logo{height:88px}
+.ab--cover .ab-mark{display:none}
+.ab--cover[data-mark="lime"] .ab-mark{display:block;right:260px;top:64px;width:112px;height:112px;background:var(--lime)}
+.ab--cover[data-mark="blue"] .ab-mark{display:block;right:280px;top:84px;width:72px;height:72px;border-radius:50%;background:var(--blue)}
+.ab--cover[data-mark="yellow"] .ab-mark{display:block;right:260px;top:64px;width:132px;height:132px;background:var(--yellow)}
+.ab-safe-guide{position:absolute;inset:0;z-index:4;pointer-events:none;display:none}
+.ab-view .ab--cover .ab-safe-guide{display:block}
+.ab-safe-guide::before{content:'';position:absolute;left:260px;right:260px;top:0;bottom:0;border-left:1px dashed rgba(100,141,203,.6);border-right:1px dashed rgba(100,141,203,.6)}
+.ab-safe-guide::after{content:'';position:absolute;left:0;bottom:0;width:360px;height:200px;border:1px dashed rgba(223,56,33,.6);border-left:0;border-bottom:0}
+
 /* ── Print mode: the five carousel slides as PDF pages ────────────────── */
 @page{size:1200px 1500px;margin:0}
 body.is-print{margin:0;background:var(--ink)}
@@ -224,7 +245,7 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
     <h1 class="wk-display wk-h1">One system, one site, <span class="wk-accent">many posts</span>.</h1>
     <p class="wk-lede">Everything WebKreatives publishes under its own name reads from here. Values come from <code>css/theme.css</code>; the rules are in <code>DESIGN.md</code>. The artboards at the bottom are real: <code>node _design/render.cjs statement out.png --headline "…"</code> turns one into a PNG.</p>
     <nav class="ds-nav">
-      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#patterns">Web patterns</a><a href="#motion">Motion</a><a href="#social">Social artboards</a><a href="#variation">Variation</a><a href="#carousel">Carousel arc</a><a href="#single">Single post arc</a>
+      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#patterns">Web patterns</a><a href="#motion">Motion</a><a href="#social">Social artboards</a><a href="#variation">Variation</a><a href="#carousel">Carousel arc</a><a href="#cover">Covers</a><a href="#single">Single post arc</a>
     </nav>
   </div>
 </header>
@@ -868,6 +889,33 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
         <p class="ab-desc">The text never repeats the lede. Singles go out Wednesday and Thursday; the carousel on Tuesday, at most once a week. Single rotation follows the run under Variation: T1, T3 or T2, T1, T4.</p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="cover">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">07 · Page covers</span>
+    <h2 class="wk-display wk-h2">One banner, <span class="wk-accent">two crops</span>.</h2>
+    <p class="ds-note">Facebook cover at 1640×624, shown at 820×312 on desktop and cropped to the central 1120px on phones. Blue dashes mark the mobile-safe box, red dashes the corner the profile photo covers on desktop. Everything sits inside the safe box; nothing goes bottom-left. Render with <code>node _design/render.cjs cover out.png</code>.</p>
+    <div class="ab-grid" style="grid-template-columns:1fr">
+      <div class="ab-card">
+        <div class="ab-title"><b>T8 Cover</b><span>Facebook · 1640×624</span></div>
+        <div class="ab-view" data-w="1640" data-h="624">
+          <div class="ab ab--ink ab--cover wk-grain" data-tpl="cover" data-mark="lime">
+            <div class="ab-glow"></div>
+            <div class="ab-safe">
+              <span class="ab-eyebrow" data-slot="eyebrow">Web design · Websites · Hosting</span>
+              <h2 class="ab-h" data-slot="headline">Custom websites for businesses that have <em>outgrown templates</em>.</h2>
+              <p class="ab-lede" data-slot="lede">Fixed price, full ownership, one studio from first sketch through ongoing support.</p>
+              <div class="ab-brand"><img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives"></div>
+            </div>
+            <span class="ab-mark"></span>
+            <div class="ab-safe-guide"></div>
+          </div>
+        </div>
+        <p class="ab-desc">Eyebrow, three-line headline at 68px with one red phrase, one-line lede, wordmark bottom-right of the safe box, one mark top-right. Same file works for the LinkedIn page cover (1128×191 shown, upload 1584×396: crop the middle band) and X.</p>
+      </div>
     </div>
   </div>
 </section>

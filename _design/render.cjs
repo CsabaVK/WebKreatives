@@ -46,7 +46,7 @@ function headlineHtml(s) {
 
   const browser = await puppeteer.launch({ executablePath: CHROME, headless: 'new' });
   const page = await browser.newPage();
-  await page.setViewport({ width: 1200, height: 1500, deviceScaleFactor: 1 });
+  await page.setViewport({ width: 1640, height: 1500, deviceScaleFactor: 1 });
   await page.goto(PAGE, { waitUntil: 'networkidle0', timeout: 60000 });
 
   const ok = await page.evaluate((tpl, o, hl, shotUrl) => {

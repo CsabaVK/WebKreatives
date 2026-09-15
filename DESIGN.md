@@ -376,6 +376,23 @@ once a week. Single rotation follows the run under Variation: T1, T3 or T2, T1, 
 Worked example with the render command, the alt text and the post text:
 `_design/single-example.md`.
 
+### Page covers (T8)
+
+Facebook cover, rendered at 1640 x 624 (twice the 820 x 312 desktop display). Phones
+show only the central 1120px, and the profile photo covers the bottom-left corner on
+desktop, so:
+
+- Everything sits inside the safe box: 260px in from each side, 64px from top and
+  bottom. The design page draws the box in blue dashes and the photo corner in red.
+- Eyebrow top-left of the box, three-line headline at 68px with one red phrase,
+  one-line lede, wordmark bottom-right of the box, one mark top-right. Nothing
+  bottom-left.
+- Same PNG serves LinkedIn (upload 1584 x 396: crop the middle band) and X.
+
+```
+node _design/render.cjs cover out/facebook-cover.png
+```
+
 ### Variation, inside the system
 
 The templates above are the structure. These knobs give variety without a new system:
@@ -411,7 +428,7 @@ Fields: `--eyebrow`, `--headline` (wrap the accent in `*asterisks*`), `--lede`,
 `--rows "Label|Value;Label|Value"` (T2), `--shot assets/screenshots/<slug>-phone.webp`
 (T3, T6), `--caption` (T3), `--mark lime|blue|yellow`, `--glow off`.
 
-Templates: `statement`, `ledger`, `showcase`, `paper`, `maxim`, `update`. Carousel slides
+Templates: `statement`, `ledger`, `showcase`, `paper`, `maxim`, `update`, `cover`. Carousel slides
 render through `_design/carousel.cjs`, see the arc above.
 
 Output is a PNG at native size, rendered by headless Chrome. Check the PNG before it
