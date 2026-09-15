@@ -19,8 +19,29 @@
   "qr": {
     "style": "dots",
     "eye": "#f14b35",
-    "accents": ["#b9e185", "#fbeb78", "#f14b35", "#b9e185", "#648dcb", "#fbeb78", "#f14b35", "#b9e185"]
+    "accents": [
+      "#b9e185",
+      "#fbeb78",
+      "#f14b35",
+      "#b9e185",
+      "#648dcb",
+      "#fbeb78",
+      "#f14b35",
+      "#b9e185"
+    ]
   },
-  "badge": { "letter": "W", "bars": ["#df3821", "#b9e185"] },
-  "marks": ["#df3821", "#fbeb78", "#b9e185", "#648dcb"]
+  "badge": {
+    "letter": "W",
+    "bars": [
+      "#df3821",
+      "#b9e185"
+    ]
+  },
+  "marks": [
+    "#df3821",
+    "#fbeb78",
+    "#b9e185",
+    "#648dcb"
+  ],
+  "markShapes": "squares"
 }

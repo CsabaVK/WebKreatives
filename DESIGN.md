@@ -400,8 +400,8 @@ Rendered at 20 px per mm: 1120 px canvas, trim at 60 px.
 
 - Print surfaces drop grain, glow and grid. Ink ground like the site, cream type.
 - Layout: eyebrow "Websites by" in red and the wordmark top-left, the trio mark
-  top-right (yellow square, red circle, blue dot, lime square: the wordmark's own
-  marks), the QR centred at 28 mm, the plain domain under it in mono.
+  top-right (four rounded squares in red, yellow, lime and blue, four sizes,
+  overlapping), the QR centred at 28 mm, the plain domain under it in mono.
 - The QR is part of the design, not a pasted patch: cream dots on ink, finder eyes as
   cream rounded rings with an empty gap and a red centre, eight data dots in the
   logo's colours, and the W badge (cream Unbounded W on the ink ground, red and lime
@@ -432,8 +432,9 @@ The templates above are the structure. These knobs give variety without a new sy
 
 - Mark: `none` (default), `lime`, `blue`, `yellow`, and on print `trio`. Adds one
   geometric shape in the logo's palette: lime square, blue dot, yellow square, placed
-  top-right or beside the headline. `trio` is the wordmark's own cluster (yellow
-  square, red circle, blue dot, lime square) and counts as one mark. Never two marks. Never on T4.
+  top-right or beside the headline. `trio` is a cluster of four rounded squares in the
+  wordmark's colours (red, yellow, lime, blue), four sizes, overlapping, and counts
+  as one mark. Never two marks. Never on T4.
 - Accent placement: the red word can be the first word, the last word, or a phrase in
   the middle. Rotate.
 - Headline length: two lines at 124px or three lines at 104px.
