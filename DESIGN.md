@@ -393,6 +393,30 @@ desktop, so:
 node _design/render.cjs cover out/facebook-cover.png
 ```
 
+### Print: sticker (T10)
+
+Client window sticker, 50 x 50 mm, 3 mm bleed, 3 mm die-cut radius, 4 mm safe zone.
+Rendered at 20 px per mm: 1120 px canvas, trim at 60 px.
+
+- Print surfaces drop grain, glow and grid. Cream ground (`--cream2`), ink type.
+- Ink where it is read, cream where it is scanned: the QR must be dark modules on a
+  light ground, so this sticker is the one cream surface among the brand pieces.
+- Layout: eyebrow "Website by" in `--red-deep`, light wordmark under it, QR 30 mm
+  bottom-left, URL set vertically beside the QR, one mark top-right.
+- QR: `python _design/qr.py <url> qr.png`, error correction H, no logo. Target one
+  path per client, `webkreatives.com/s/<client>`, redirecting to the case study, so
+  each sticker is traceable and the landing page can change without a reprint.
+- Proof: decode the rendered PNG before sending to print (OpenCV
+  `QRCodeDetector` reads it at 280 px, so a phone reads it at 30 mm).
+
+```
+python _design/qr.py https://webkreatives.com/s/leyenburger out/qr.png
+node _design/render.cjs sticker out/sticker.png --shot out/qr.png --url webkreatives.com
+```
+
+Print file: export the PNG to PDF at 300 dpi or hand the printer the PNG at 1120 px
+for 56 mm; ask for matte vinyl, and for the red as a CMYK match of `#a82716`.
+
 ### Variation, inside the system
 
 The templates above are the structure. These knobs give variety without a new system:
@@ -428,7 +452,7 @@ Fields: `--eyebrow`, `--headline` (wrap the accent in `*asterisks*`), `--lede`,
 `--rows "Label|Value;Label|Value"` (T2), `--shot assets/screenshots/<slug>-phone.webp`
 (T3, T6), `--caption` (T3), `--mark lime|blue|yellow`, `--glow off`.
 
-Templates: `statement`, `ledger`, `showcase`, `paper`, `maxim`, `update`, `cover`. Carousel slides
+Templates: `statement`, `ledger`, `showcase`, `paper`, `maxim`, `update`, `cover`, `sticker`. Carousel slides
 render through `_design/carousel.cjs`, see the arc above.
 
 Output is a PNG at native size, rendered by headless Chrome. Check the PNG before it
@@ -444,6 +468,8 @@ goes anywhere. Link previews still need `og:image` as an absolute JPG or PNG URL
 | `_design/index.html` | this system rendered live from `theme.css` and `motion.js`, plus the six social artboards, the carousel and the single post arc |
 | `_design/render.cjs` | artboard to PNG |
 | `_design/carousel.cjs`, `carousel-example.json` | five-slide carousel to PNGs and PDF |
+| `_design/qr.py` | print-grade QR PNG |
+| `_design/publora-ig.py` | Instagram carousel to Publora |
 | `_design/single-example.md` | one worked single post: render command, alt text, post text |
 | `_design/wordmark-light.png`, `wordmark-dark.png` | cropped wordmarks for the artboards |
 | `assets/Horizontallogo.png`, `darkmodehorizontallogo.png` | source logos |

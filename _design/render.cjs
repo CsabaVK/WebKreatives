@@ -4,9 +4,9 @@
  *
  *   node _design/render.cjs <template> <out.png> [--eyebrow "…"] [--headline "… *accent* …"]
  *        [--lede "…"] [--caption "…"] [--attr "…"] [--rows "Label|Value;Label|Value"]
- *        [--shot path/to/screenshot.webp] [--mark none|lime|blue|yellow] [--glow on|off]
+ *        [--shot path/to/screenshot.webp] [--url "…"] [--mark none|lime|blue|yellow] [--glow on|off]
  *
- * Templates: statement (main), ledger, showcase, paper, maxim, update.
+ * Templates: statement (main), ledger, showcase, paper, maxim, update, cover, sticker.
  * The accent word in --headline is wrapped in *asterisks*. Output is native size
  * (1200×1500, 1200×1200 or 1200×627) at 1x, straight from headless Chrome.
  */
@@ -62,6 +62,7 @@ function headlineHtml(s) {
     set('lede', o.lede);
     set('caption', o.caption);
     set('attr', o.attr);
+    set('url', o.url);
     if (o.rows) {
       const rows = o.rows.split(';').map(r => r.split('|'));
       set('rows', rows.map(([l, v]) => `<div class="ab-row"><b>${l}</b><span>${v}</span></div>`).join(''), true);

@@ -224,6 +224,24 @@
 .ab-safe-guide::before{content:'';position:absolute;left:260px;right:260px;top:0;bottom:0;border-left:1px dashed rgba(100,141,203,.6);border-right:1px dashed rgba(100,141,203,.6)}
 .ab-safe-guide::after{content:'';position:absolute;left:0;bottom:0;width:360px;height:200px;border:1px dashed rgba(223,56,33,.6);border-left:0;border-bottom:0}
 
+/* ── T10 Sticker: client window sticker, 50 mm square + 3 mm bleed ──────
+   20 px per mm: 1120 px canvas, trim at 60 px, safe zone 80 px inside trim.
+   Print surface: no grain, no glow, no grid. Cream ground so the QR scans in
+   sunlight; ink modules; one red rule; one mark. */
+.ab--sticker{width:1120px;height:1120px;padding:140px;background:var(--cream2);color:var(--ink)}
+.ab--sticker .ab-eyebrow{font-size:20px;color:var(--red-deep)}
+.ab--sticker .ab-eyebrow::before{background:var(--red-deep)}
+.ab--sticker .ab-logo{height:96px;margin:22px 0 0}
+.ab--sticker .ab-qr{position:absolute;left:140px;bottom:140px;width:600px;height:600px;background:var(--cream2);display:block}
+.ab--sticker .ab-qr img{width:100%;height:100%;display:block;image-rendering:pixelated}
+.ab--sticker .ab-url{position:absolute;left:770px;bottom:140px;width:210px;color:var(--ink);font-size:22px;line-height:1.4;letter-spacing:.1em;text-transform:none;font-weight:700;writing-mode:vertical-rl;transform:rotate(180deg);height:600px;display:flex;align-items:flex-start}
+.ab--sticker .ab-mark{display:none}
+.ab--sticker[data-mark="lime"] .ab-mark{display:block;right:140px;top:140px;width:120px;height:120px;background:var(--lime)}
+.ab--sticker[data-mark="yellow"] .ab-mark{display:block;right:140px;top:140px;width:120px;height:120px;background:var(--yellow)}
+.ab--sticker[data-mark="blue"] .ab-mark{display:block;right:160px;top:160px;width:80px;height:80px;border-radius:50%;background:var(--blue)}
+.ab-trim{position:absolute;inset:60px;z-index:4;pointer-events:none;border:1px dashed rgba(223,56,33,.7);border-radius:60px;display:none}
+.ab-view .ab--sticker .ab-trim{display:block}
+
 /* ── Print mode: the five carousel slides as PDF pages ────────────────── */
 @page{size:1200px 1500px;margin:0}
 body.is-print{margin:0;background:var(--ink)}
@@ -245,7 +263,7 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
     <h1 class="wk-display wk-h1">One system, one site, <span class="wk-accent">many posts</span>.</h1>
     <p class="wk-lede">Everything WebKreatives publishes under its own name reads from here. Values come from <code>css/theme.css</code>; the rules are in <code>DESIGN.md</code>. The artboards at the bottom are real: <code>node _design/render.cjs statement out.png --headline "…"</code> turns one into a PNG.</p>
     <nav class="ds-nav">
-      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#patterns">Web patterns</a><a href="#motion">Motion</a><a href="#social">Social artboards</a><a href="#variation">Variation</a><a href="#carousel">Carousel arc</a><a href="#cover">Covers</a><a href="#single">Single post arc</a>
+      <a href="#palette">Palette</a><a href="#type">Type</a><a href="#components">Components</a><a href="#patterns">Web patterns</a><a href="#motion">Motion</a><a href="#social">Social artboards</a><a href="#variation">Variation</a><a href="#carousel">Carousel arc</a><a href="#cover">Covers</a><a href="#print">Print</a><a href="#single">Single post arc</a>
     </nav>
   </div>
 </header>
@@ -915,6 +933,30 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
           </div>
         </div>
         <p class="ab-desc">Eyebrow, three-line headline at 68px with one red phrase, one-line lede, wordmark bottom-right of the safe box, one mark top-right. Same file works for the LinkedIn page cover (1128×191 shown, upload 1584×396: crop the middle band) and X.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="print">
+  <div class="ds-wrap">
+    <span class="wk-eyebrow">08 · Print</span>
+    <h2 class="wk-display wk-h2">Ink where it is read, <span class="wk-accent">cream where it is scanned</span>.</h2>
+    <p class="ds-note">Print surfaces drop the grain, the glow and the grid. 20 px per mm. Red dashes mark the trim and the 3 mm die-cut radius; everything sits 4 mm inside it. QR from <code>python _design/qr.py &lt;url&gt; qr.png</code>, then <code>node _design/render.cjs sticker out.png --shot qr.png</code>.</p>
+    <div class="ab-grid">
+      <div class="ab-card">
+        <div class="ab-title"><b>T10 Sticker</b><span>Client window · 50×50 mm + bleed</span></div>
+        <div class="ab-view" data-w="1120" data-h="1120">
+          <div class="ab ab--sticker" data-tpl="sticker" data-mark="lime">
+            <span class="ab-eyebrow" data-slot="eyebrow">Website by</span>
+            <img class="ab-logo" src="wordmark-light.png" alt="WebKreatives">
+            <div class="ab-qr"><img data-slot="shot" src="" alt=""></div>
+            <span class="ab-url" data-slot="url">webkreatives.com</span>
+            <span class="ab-mark"></span>
+            <div class="ab-trim"></div>
+          </div>
+        </div>
+        <p class="ab-desc">Cream ground, ink QR at 30 mm, wordmark top-left, URL set vertically beside the QR, one mark. Lives on the client's window or counter, so it must scan in daylight. QR target: <code>webkreatives.com/s/&lt;client&gt;</code>, one per client.</p>
       </div>
     </div>
   </div>
