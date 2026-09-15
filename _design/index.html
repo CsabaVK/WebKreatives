@@ -226,15 +226,15 @@
 
 /* ── T10 Sticker: client window sticker, 50 mm square + 3 mm bleed ──────
    20 px per mm: 1120 px canvas, trim at 60 px, safe zone 80 px inside trim.
-   Print surface: no grain, no glow, no grid. Cream ground so the QR scans in
-   sunlight; ink modules; one red rule; one mark. */
-.ab--sticker{width:1120px;height:1120px;padding:140px;background:var(--cream2);color:var(--ink)}
-.ab--sticker .ab-eyebrow{font-size:20px;color:var(--red-deep)}
-.ab--sticker .ab-eyebrow::before{background:var(--red-deep)}
-.ab--sticker .ab-logo{height:96px;margin:22px 0 0}
-.ab--sticker .ab-qr{position:absolute;left:140px;bottom:140px;width:600px;height:600px;background:var(--cream2);display:block}
-.ab--sticker .ab-qr img{width:100%;height:100%;display:block;image-rendering:pixelated}
-.ab--sticker .ab-url{position:absolute;left:770px;bottom:140px;width:210px;color:var(--ink);font-size:22px;line-height:1.4;letter-spacing:.1em;text-transform:none;font-weight:700;writing-mode:vertical-rl;transform:rotate(180deg);height:600px;display:flex;align-items:flex-start}
+   Print surface: no grain, no glow, no grid. Ink ground like the site; the QR
+   sits on a cream stamp so cameras read dark modules on light. */
+.ab--sticker{width:1120px;height:1120px;padding:140px;background:var(--ink);color:var(--cream)}
+.ab--sticker .ab-eyebrow{font-size:20px}
+.ab--sticker .ab-logo{height:108px;margin:24px 0 0}
+.ab--sticker .ab-stamp{position:absolute;left:140px;bottom:140px;width:560px;height:560px;background:var(--cream2);border-radius:24px;padding:40px;display:block}
+.ab--sticker .ab-stamp img{width:100%;height:100%;display:block;image-rendering:pixelated}
+.ab--sticker .ab-url{position:absolute;left:740px;bottom:140px;height:560px;color:var(--cream-dim);font-size:22px;letter-spacing:.1em;text-transform:none;font-weight:700;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:flex-start}
+.ab--sticker .ab-scan{position:absolute;right:140px;bottom:140px;width:200px;text-align:right;font-family:var(--f-mono);font-size:18px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-faint);line-height:1.5}
 .ab--sticker .ab-mark{display:none}
 .ab--sticker[data-mark="lime"] .ab-mark{display:block;right:140px;top:140px;width:120px;height:120px;background:var(--lime)}
 .ab--sticker[data-mark="yellow"] .ab-mark{display:block;right:140px;top:140px;width:120px;height:120px;background:var(--yellow)}
@@ -941,7 +941,7 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
 <section class="ds-section" id="print">
   <div class="ds-wrap">
     <span class="wk-eyebrow">08 · Print</span>
-    <h2 class="wk-display wk-h2">Ink where it is read, <span class="wk-accent">cream where it is scanned</span>.</h2>
+    <h2 class="wk-display wk-h2">Ink base, <span class="wk-accent">cream stamp</span> for the scan.</h2>
     <p class="ds-note">Print surfaces drop the grain, the glow and the grid. 20 px per mm. Red dashes mark the trim and the 3 mm die-cut radius; everything sits 4 mm inside it. QR from <code>python _design/qr.py &lt;url&gt; qr.png</code>, then <code>node _design/render.cjs sticker out.png --shot qr.png</code>.</p>
     <div class="ab-grid">
       <div class="ab-card">
@@ -949,14 +949,15 @@ body.is-render > .ab-render{position:fixed;left:0;top:0;transform:none}
         <div class="ab-view" data-w="1120" data-h="1120">
           <div class="ab ab--sticker" data-tpl="sticker" data-mark="lime">
             <span class="ab-eyebrow" data-slot="eyebrow">Website by</span>
-            <img class="ab-logo" src="wordmark-light.png" alt="WebKreatives">
-            <div class="ab-qr"><img data-slot="shot" src="" alt=""></div>
+            <img class="ab-logo" src="wordmark-dark.png" alt="WebKreatives">
+            <div class="ab-stamp"><img data-slot="shot" src="" alt=""></div>
             <span class="ab-url" data-slot="url">webkreatives.com</span>
+            <span class="ab-scan" data-slot="scan">Scan for the case study</span>
             <span class="ab-mark"></span>
             <div class="ab-trim"></div>
           </div>
         </div>
-        <p class="ab-desc">Cream ground, ink QR at 30 mm, wordmark top-left, URL set vertically beside the QR, one mark. Lives on the client's window or counter, so it must scan in daylight. QR target: <code>webkreatives.com/s/&lt;client&gt;</code>, one per client.</p>
+        <p class="ab-desc">Ink ground like the site. Wordmark top-left, QR on a cream stamp at 24 mm with a 2 mm quiet zone, URL vertical beside it, scan line bottom-right, one mark. Lives on the client's window or counter. QR target: <code>webkreatives.com/s/&lt;client&gt;</code>, one per client.</p>
       </div>
     </div>
   </div>

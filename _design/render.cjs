@@ -63,6 +63,7 @@ function headlineHtml(s) {
     set('caption', o.caption);
     set('attr', o.attr);
     set('url', o.url);
+    set('scan', o.scan);
     if (o.rows) {
       const rows = o.rows.split(';').map(r => r.split('|'));
       set('rows', rows.map(([l, v]) => `<div class="ab-row"><b>${l}</b><span>${v}</span></div>`).join(''), true);

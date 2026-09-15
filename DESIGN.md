@@ -398,11 +398,12 @@ node _design/render.cjs cover out/facebook-cover.png
 Client window sticker, 50 x 50 mm, 3 mm bleed, 3 mm die-cut radius, 4 mm safe zone.
 Rendered at 20 px per mm: 1120 px canvas, trim at 60 px.
 
-- Print surfaces drop grain, glow and grid. Cream ground (`--cream2`), ink type.
-- Ink where it is read, cream where it is scanned: the QR must be dark modules on a
-  light ground, so this sticker is the one cream surface among the brand pieces.
-- Layout: eyebrow "Website by" in `--red-deep`, light wordmark under it, QR 30 mm
-  bottom-left, URL set vertically beside the QR, one mark top-right.
+- Print surfaces drop grain, glow and grid. Ink ground like the site, cream type.
+- The QR sits on a cream stamp (`--cream2`, 24px radius, 2 mm quiet zone) so cameras
+  read dark modules on light; the rest of the sticker stays ink.
+- Layout: eyebrow "Website by" in red, wordmark under it, QR 24 mm on the stamp
+  bottom-left, URL set vertically beside it, "Scan for the case study" bottom-right
+  in meta, one mark top-right.
 - QR: `python _design/qr.py <url> qr.png`, error correction H, no logo. Target one
   path per client, `webkreatives.com/s/<client>`, redirecting to the case study, so
   each sticker is traceable and the landing page can change without a reprint.
