@@ -399,23 +399,26 @@ Client window sticker, 50 x 50 mm, 3 mm bleed, 3 mm die-cut radius, 4 mm safe zo
 Rendered at 20 px per mm: 1120 px canvas, trim at 60 px.
 
 - Print surfaces drop grain, glow and grid. Ink ground like the site, cream type.
-- Layout: eyebrow "Website by" in red and the wordmark top-left, one mark top-right,
-  the QR centred at 28 mm, the URL under it in mono.
+- Layout: eyebrow "Website by" in red and the wordmark top-left, the trio mark
+  top-right (yellow square, red circle, blue dot, the wordmark's own marks), the QR
+  centred at 28 mm, the plain domain under it in mono.
 - The QR is part of the design, not a pasted patch: cream dots on ink, finder eyes as
-  rounded rings with a lime centre, and a cream W badge (Unbounded W, red and lime
-  bars, the favicon in system colours) over a 9-module clear square in the middle.
-  Error correction H covers the badge.
+  cream rounded rings with a red ring in the gap, and the W badge (cream Unbounded W
+  on the ink ground, red and lime bars, the favicon inverted) over a 9-module clear
+  square in the middle. Error correction H covers the badge. Red sits only in
+  logical-light zones (the eye gap, the badge bars): on ink it reads as dark to a
+  decoder, so it never flips a module.
 - It is an inverted code (light on dark). Current phone cameras and the zxing engine
   read it; some older scanner apps do not. The decode proof in `qr.py`'s notes uses
   zxing-cpp, which reads the rendered sticker down to 200 px. Scan the print proof
   with two phones before the run. If a client's audience skews old, use the
   cream-ground variant by passing `--ink "#110d0c"` and swapping the ground.
-- Target: `https://webkreatives.com/sticker`, one URL for every sticker, so the
-  landing page can change without a reprint.
+- Target: `https://webkreatives.com/sticker`, a noindex page that forwards to the
+  homepage with `utm_source=sticker`. The printed text stays the bare domain.
 
 ```
 python _design/qr.py https://webkreatives.com/sticker out/qr.svg
-node _design/render.cjs sticker out/sticker.png --shot out/qr.svg --url webkreatives.com/sticker
+node _design/render.cjs sticker out/sticker.png --shot out/qr.svg --mark trio
 ```
 
 Print file: the PNG at 1120 px for 56 mm; ask for matte vinyl, and for the red as a
@@ -425,9 +428,10 @@ CMYK match of `#df3821`.
 
 The templates above are the structure. These knobs give variety without a new system:
 
-- Mark: `none` (default), `lime`, `blue`, `yellow`. Adds one geometric shape in the
-  logo's palette: lime square, blue dot, yellow square, placed top-right or beside the
-  headline. Never two marks. Never on T4.
+- Mark: `none` (default), `lime`, `blue`, `yellow`, and on print `trio`. Adds one
+  geometric shape in the logo's palette: lime square, blue dot, yellow square, placed
+  top-right or beside the headline. `trio` is the wordmark's own cluster (yellow
+  square, red circle, blue dot) and counts as one mark. Never two marks. Never on T4.
 - Accent placement: the red word can be the first word, the last word, or a phrase in
   the middle. Rotate.
 - Headline length: two lines at 124px or three lines at 104px.
