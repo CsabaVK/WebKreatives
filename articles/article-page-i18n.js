@@ -48,6 +48,108 @@
   };
 
   const dutch = {
+ "booking-forms-vs-phone-calls": {
+  "articlesLink": "Artikelen",
+  "current": "Conversie",
+  "category": "Conversie",
+  "title": "Online Boeken of Bellen?<br><em>Wat Je Klanten Echt Willen</em>",
+  "date": "16 september 2026",
+  "read": "7 min lezen",
+  "coverAlt": "Open afsprakenagenda op een bureau naast een telefoon",
+  "docTitle": "Online Boeken of Bellen? Wat Je Klanten Echt Willen | WebKreatives",
+  "bottomTitle": "Wil je een website waar contact<br>opnemen één tik kost?",
+  "bottomText": "We bouwen snelle websites voor kleine bedrijven, met boeken en contact ingericht zoals jouw klanten ze gebruiken — zodat er minder aanvragen verdwijnen.",
+  "bottomPrimaryBtn": "Start jouw project →",
+  "bottomSecondaryBtn": "Lees meer artikelen",
+  "relatedTitle": "Lees meer",
+  "content": `
+    <p>Twee mensen willen een afspraak bij dezelfde kapper, op dezelfde dinsdagavond. De een opent de website om half elf op haar telefoon, tikt drie keer en is klaar. De ander ziet dezelfde boekknop, sluit de site en belt de volgende ochtend om te vragen of zaterdag nog vrij is.</p>
+
+    <p>Geen van beiden doet het verkeerd. Het zijn twee verschillende klanten, en de kapsalon houdt ze allebei alleen als de website ieder zijn eigen route gunt. Dat is het hele verhaal in één zin — maar het interessante zit in het <em>waarom</em> ze anders kiezen. Zodra je dat kunt voorspellen, kun je ernaar ontwerpen.</p>
+
+    <div class="art-mini-grid">
+      <div class="art-mini-card">
+        <span class="eyebrow">Route A</span>
+        <h3>De formulier-klant</h3>
+        <p>Boekt buiten kantooruren, heeft geen zin in een verkoopgesprek, wil het binnen een minuut geregeld hebben en verwacht een bevestiging op papier.</p>
+      </div>
+      <div class="art-mini-card">
+        <span class="eyebrow">Route B</span>
+        <h3>De bel-klant</h3>
+        <p>Heeft een vraag die het formulier niet stelt, wil horen met wie hij te maken heeft, of wil het vandaag geregeld hebben in plaats van "binnen twee werkdagen".</p>
+      </div>
+      <div class="art-mini-card">
+        <span class="eyebrow">Route C</span>
+        <h3>Degene die allebei doet</h3>
+        <p>Vult het formulier in, hoort een dag niets en belt alsnog. De meeste bedrijven tellen dat als twee aanvragen. Het is één klant die zijn geduld verliest.</p>
+      </div>
+    </div>
+
+    <h2><span class="num">1</span> Urgentie bepaalt meer dan leeftijd</h2>
+
+    <p>De aanname is dat jonge mensen online boeken en oudere mensen bellen. Daar zit iets in, maar urgentie is het sterkere signaal. Iemand met een lekkende radiator op vrijdagmiddag belt, ongeacht zijn leeftijd. Iemand die over drie weken een kleurbehandeling wil, gebruikt het formulier, ongeacht zijn leeftijd.</p>
+
+    <p>Gebruik dat. Hoe urgenter, duurder of onduidelijker de klus, hoe zichtbaarder je telefoonnummer moet zijn. Een loodgieter of slotenmaker hoort een aantikbaar nummer in de header van elke pagina te hebben — een formulier staat daar tussen een klant in paniek en jouw omzet in. Een mondhygiënist, rijschool of yogastudio verkoopt plekken in een agenda, weken vooruit, en daar draagt een formulier of boektool het grootste deel van het verkeer.</p>
+
+    <p>Het tijdstip telt net zo zwaar. Een flink deel van de afspraakaanvragen bij lokale bedrijven komt 's avonds binnen, wanneer er toch niemand de telefoon opneemt. Is bellen de enige route, dan valt dat hele venster weg — stilletjes, want die mensen verschijnen nergens in je inbox.</p>
+
+    <h2><span class="num">2</span> Waarom mensen een formulier laten liggen</h2>
+
+    <p>Als een boekformulier weinig oplevert, ligt het bijna nooit aan "klanten bellen nu eenmaal liever". Het ligt eraan dat het formulier te veel vraagt, of niet vertelt wat er daarna gebeurt.</p>
+
+    <ul class="art-checklist">
+      <li><strong>Te veel velden.</strong> Naam, telefoon en waar het om gaat. Een postcode als je naar mensen toe rijdt. De rest vraag je wel bij je antwoord.</li>
+      <li><strong>Vragen die ze niet kunnen beantwoorden.</strong> Niemand kent het typenummer van zijn ketel, of weet welk van je zeven pakketten bij hem past. Geef keuzes, of schrap de vraag.</li>
+      <li><strong>Geen idee van de termijn.</strong> "Versturen" zegt niets. "We reageren binnen 4 uur op werkdagen" vertelt iemand of hij kan stoppen met zoeken.</li>
+      <li><strong>Een doodlopend eind na het versturen.</strong> Een pagina die terugspringt naar boven met een klein groen regeltje voelt alsof er niets gebeurd is. Zeg gewoon dat het binnen is, wanneer ze iets horen en hoe ze je ondertussen bereiken.</li>
+      <li><strong>Kapot op de telefoon.</strong> Velden die inzoomen, een datumkiezer die vecht met je duim, een toetsenbord dat de verstuurknop bedekt. Test het op een echte telefoon, niet op een smal browservenster.</li>
+    </ul>
+
+    <div class="art-quote">
+      <p>Een formulier faalt niet omdat het een formulier is. Het faalt omdat het nu moeite vraagt en er niets voor terugbelooft.</p>
+    </div>
+
+    <h2><span class="num">3</span> Waarom mensen ook niet bellen</h2>
+
+    <p>De telefoon heeft zijn eigen drempel, en die zie je makkelijk over het hoofd omdat jij aan de ontvangende kant zit. Bellen betekent een vreemde spreken, misschien iets aangesmeerd krijgen, misschien in de wacht staan, misschien te horen krijgen "dat moet ik even navragen, ik bel u terug" — precies de onzekerheid die de beller wilde vermijden.</p>
+
+    <p>Twee kleinigheden halen daar veel uit weg. Ten eerste: maak het nummer op mobiel een echte link (<code>tel:</code>), zodat het met één tik belt in plaats van dat iemand het overtikt. Ten tweede: zet je openingstijden ernaast. "Ma–vr 08:00–17:00" bespaart iemand de kleine vernedering van een gesloten bedrijf bellen, en stuurt de avondbezoeker naar het formulier zonder dat je het hoeft uit te leggen.</p>
+
+    <figure class="art-img"><img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1200&q=80" alt="Iemand tikt een telefoonnummer aan op een mobiele website" loading="lazy"><figcaption>Op mobiel is een telefoonnummer dat je niet kunt aantikken pure decoratie.</figcaption></figure>
+
+    <div class="art-mistake">
+      <h3>De fout die het meeste kost</h3>
+      <p>Het formulier zien als het veilige, goedkope kanaal en de telefoon als een storing — waardoor het nummer alleen op de contactpagina staat, in klein grijs. Elke bezoeker die binnen dertig seconden gebeld zou hebben, moet nu gaan zoeken. De meesten gaan terug naar Google, waar je concurrent het nummer wél in de header heeft staan.</p>
+    </div>
+
+    <h2><span class="num">4</span> Allebei aanbieden zonder rommel</h2>
+
+    <p>"Bied allebei aan" is precies waar veel sites de andere kant op misgaan: een formulier, een telefoonnummer, een WhatsApp-knop, een chatvenster en een e-mailadres, allemaal even hard op hetzelfde scherm. Vijf gelijkwaardige opties zijn geen keuze, maar een beslissing die de bezoeker moet nemen vóór hij kan doen waarvoor hij kwam.</p>
+
+    <p>Kies één hoofdroute die bij je vak past en zet de andere er zichtbaar onder. Bij een spoedberoep: nummer eerst, formulier eronder als "geen spoed? stuur een bericht". Bij een salon of praktijk: boekknop eerst, nummer eronder als "liever even overleggen? bel ons op …". Dezelfde twee opties, andere volgorde — en die volgorde doet het echte werk.</p>
+
+    <div class="art-cta-box">
+      <div class="art-cta-box-text">
+        <h3>Niet zeker welke route jouw klanten willen?</h3>
+        <p>We bouwen websites voor kleine bedrijven waarbij de boekroute is ingericht op hoe jouw klanten echt contact opnemen — en de andere optie precies staat waar ze hem verwachten.</p>
+      </div>
+      <a href="/contact/" class="btn btn-red">Vraag een offerte aan →</a>
+    </div>
+
+    <h2><span class="num">5</span> Reactiesnelheid geldt voor allebei</h2>
+
+    <p>Een formulier en een telefoonlijn zijn precies zoveel waard als wat erna gebeurt. Een formulier dat binnen twintig minuten beantwoord wordt, verslaat een telefoonlijn die naar de voicemail gaat. Een telefoon die bij de tweede keer overgaan wordt opgenomen, verslaat een prachtige boekflow met een bevestigingsmail die de volgende middag aankomt.</p>
+
+    <p>Kijk dus eerst naar de eerlijke cijfers voordat je iets aan de pagina verandert: hoe lang blijft een aanvraag echt liggen voordat iemand antwoordt, en hoeveel telefoontjes worden er daadwerkelijk opgenomen binnen de tijden die je adverteert? Die twee getallen verklaren meer weggelopen klanten dan welke layoutkeuze ook. Kun je de telefoon niet opnemen tijdens een behandeling, zeg dat dan op de site en geef het formulier een belofte die je wél waarmaakt. Klanten vergeven een bedrijf dat het druk heeft. Ze komen niet terug bij een bedrijf dat zwijgt.</p>
+
+    <h2>Conclusie</h2>
+
+    <p>Er is geen winnend kanaal. Er is een klant met een lekkage die een nummer nodig heeft, en een klant die om tien uur 's avonds vooruit plant en een formulier nodig heeft — en een bedrijf dat er maar één van ziet als het maar één route aanbiedt.</p>
+
+    <p>Open vanavond je eigen site op je telefoon en probeer op allebei de manieren een afspraak te maken. Klok het. De route die trager, onzekerder of ongemakkelijker voelt, is de route waarmee je nu stilletjes klanten wegstuurt.</p>
+`
+ },
+
  "why-your-website-needs-analytics": {
   "articlesLink": "Artikelen",
   "current": "Techniek & Snelheid",

@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'booking-forms-vs-phone-calls',
+    title:            'Online Boeken of Bellen? Wat Je Klanten Echt Willen',
+    titleEn:          'Booking Forms vs Phone Calls: What Customers Actually Prefer',
+    category:         'Conversie',
+    categoryEn:       'Conversion',
+    date:             '2026-09-16',
+    dateFormatted:    '16 september 2026',
+    dateFormattedEn:  '16 September 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-09-16T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Sommige klanten vullen nooit een formulier in. Anderen bellen je nooit. Welk kanaal iemand kiest hangt af van urgentie, vak en tijdstip — en waarom allebei aanbieden, goed gedaan, beter werkt dan één route afdwingen.',
+    excerptEn:        'Some customers will never fill in a form. Others will never ring you. Which channel people pick depends on urgency, trade and timing — and why offering both, done properly, beats forcing one.'
+  },
+
+  {
     slug:             'why-your-website-needs-analytics',
     title:            'Waarom Je Website Cijfers Nodig Heeft en Welke',
     titleEn:          'Why Your Website Needs Analytics and Which Numbers Matter',
