@@ -31,3 +31,6 @@ Adjuncts — layer these on top of an `impeccable` pass, never as a substitute f
 - A specific look the user asks for by name: `minimalist-ui`, `industrial-brutalist-ui`, `brandkit`, `webgpu-threejs-tsl` (3D/WebGL hero).
 
 Non-design skills, separate triggers: `cybersec` (security tasks, router), `brag` + `hyperframes-*` (make a launch video), `linkedin-*` / print / outreach as their own rules already cover.
+
+### Ponytail vs design ambition
+`ponytail` is always active and governs *code* — fewest lines, files, and dependencies. It does **not** govern the deliverable. "Design a page" means a full, finished, high-quality design: full hero, full sections, real hierarchy, the motion that earns its place — judged only on whether the page is good, not on how little code it took. Never scope down the design, cut sections, or drop requested polish in the name of laziness. Ponytail applies only *inside* the chosen implementation: once the design is decided, build it with clean, minimal, dependency-light code (which also matches the static-site rules and the not-AI checklist — no gratuitous effects, but every effect the design calls for stays). If lazy-code instinct and design quality ever pull apart, design quality wins; Ponytail trims the code, never the deliverable.
