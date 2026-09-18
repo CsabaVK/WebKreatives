@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://snap.licdn.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://px.ads.linkedin.com https://www.facebook.com; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://snap.licdn.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://wk-quote.webkreatives.workers.dev https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://px.ads.linkedin.com https://www.facebook.com; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>How much does a website cost? Fixed prices &mdash; WebKreatives</title>
 <meta name="description" content="How much does a website cost? Fixed prices for small business websites, plus a two-minute calculator that shows a range before you talk to anyone.">
@@ -458,7 +458,7 @@ span.pc-flag{
 <script src="/js/motion.js?v=v6"></script>
 <script src="/js/locale.js?v=v6"></script>
 <script src="/js/site-nav.js?v=v6"></script>
-<script src="/js/site-footer.js?v=v7"></script>
+<script src="/js/site-footer.js?v=v8"></script>
 <script src="/js/cookie-consent.js?v=v10"></script>
 <script>
 /* ═══ estimate ══════════════════════════════════════════════════════
@@ -467,61 +467,25 @@ span.pc-flag{
 (function () {
   'use strict';
 
-  /* Everything below is one-time, in euros, excluding VAT. The whole build
-     ladder divides by five off the old figures; SEO is the exception and
-     stays where it was. SPREAD is what the top of the range adds. */
-  /* Two authored ladders, not one ladder and a conversion: the dollar
-     figures are round numbers in their own right. Update them together. */
-  const BASE = {
-    eur: { p1: 100, p4: 190, p8: 330, p15: 520, p30: 780 },
-    usd: { p1: 110, p4: 210, p8: 360, p15: 570, p30: 850 }
-  };
+  /* Prices live in the quote API (Cloudflare Worker, private repo). This
+     page draws the form, sends the answers and shows what comes back. */
+  const QUOTE_API = 'https://wk-quote.webkreatives.workers.dev';
+  let ADDONS = [], PLAN = {};
   const CUR = () => (window.wkLocale && window.wkLocale.currency() === 'usd') ? 'usd' : 'eur';
   const SIGN = { eur: '\u20ac', usd: '$' };
   /* Grouping follows the currency, not the page language: 1.234 is a euro
      convention and 1,234 a dollar one. Declared up here because the add-on
      list is rendered long before the estimate is. */
   const money = n => SIGN[CUR()] + Math.round(n).toLocaleString(CUR() === 'usd' ? 'en-US' : 'nl-NL');
-  const TYPE = { new: 1, redesign: 0.85, rebuild: 1.15, landing: 1 };
-  /* nothing from a month out costs extra */
-  const WHEN = { now: 1.35, week: 1.20, month: 1, q: 1, none: 1 };
-  const SPREAD = 2.0;   /* the top of the range on the build itself */
-
-  /* id, price, label NL/EN. `per` marks a per-page item. */
-  const ADDONS = [
-    { id: 'lang',    p: { eur: 140, usd: 150 }, nl: 'Tweede taal',                en: 'Second language' },
-    { id: 'lang3',   p: { eur: 90,  usd: 100 }, needs: 'lang', per: true,
-                             nl: 'Elke extra taal',            en: 'Each further language' },
-    { id: 'booking', p: { eur: 200, usd: 220 }, nl: 'Afspraken of reserveren',    en: 'Bookings or appointments' },
-    { id: 'menu',    p: { eur: 110, usd: 120 }, nl: 'Menu- of catalogusmodule',   en: 'Menu or catalogue module' },
-    { id: 'shop',    p: { eur: 350, usd: 380 }, nl: 'Webshop',                    en: 'Online shop' },
-    { id: 'form',    p: { eur: 50,  usd: 55  }, nl: 'Contactformulier',           en: 'Contact form' },
-    { id: 'motion',  p: { eur: 180, usd: 200 }, nl: 'Maatwerk animatie',          en: 'Custom motion / animation' },
-    { id: 'aivideo', p: { eur: 250, usd: 275 }, nl: 'AI-gegenereerde video',      en: 'AI generated video' },
-    { id: 'chat',    p: { eur: 280, usd: 300 }, nl: 'Chat of AI-assistent',       en: 'Chat or AI assistant' },
-    { id: 'seo',     p: { eur: 80,  usd: 90  }, nl: 'Extra SEO op eigen zoekwoorden', en: 'Extra SEO on your own keywords' },
-    { id: 'multiloc',p: { eur: 220, usd: 240 }, nl: 'Meerdere vestigingen, lokale SEO', en: 'Multi-location local SEO' },
-    { id: 'video',   p: { eur: 80,  usd: 90  }, nl: 'Video optimaliseren',        en: 'Video optimisation' },
-    { id: 'photo',   p: { eur: 20,  usd: 25  }, per: true,
-                             nl: 'Foto bewerken en optimaliseren', en: 'Photo editing and optimising' },
-    { id: 'copy',    p: { eur: 20,  usd: 25  }, per: true, nl: 'Tekstschrijven, per pagina', en: 'Copywriting, per page' }
-  ];
   const price = a => a.p[CUR()];
 
-
-  const PLAN = {
-    rare:  { nl: 'Basis',    en: 'Basic',    price: { eur: 25, usd: 29 } },
-    month: { nl: 'Basis',    en: 'Basic',    price: { eur: 25, usd: 29 } },
-    week:  { nl: 'Plus',     en: 'Plus',     price: { eur: 55, usd: 59 } },
-    day:   { nl: 'Plus',     en: 'Plus',     price: { eur: 55, usd: 59 } }
-  };
 
   const lang = () => localStorage.getItem('wk-lang') === 'en' ? 'en' : 'nl';
   const t = (nl, en) => lang() === 'en' ? en : nl;
 
   /* ── build the add-on list ── */
   const wrap = document.getElementById('pcAdds');
-  wrap.innerHTML = ADDONS.map(a =>
+  function renderAddons() { wrap.innerHTML = ADDONS.map(a =>
     '<label class="pc-add' + (a.needs ? ' locked' : '') + '" data-id="' + a.id + '"' +
       (a.needs ? ' data-needs="' + a.needs + '"' : '') + '>' +
     '<input type="checkbox" name="add" value="' + a.id + '"' + (a.needs ? ' disabled' : '') + '>' +
@@ -529,7 +493,7 @@ span.pc-flag{
       '<i style="font-style:normal">' + a.nl + '</i>' +
       '<b>+' + money(price(a)) + (a.per ? '/p' : '') + '</b>' +
     '</span></label>'
-  ).join('');
+  ).join(''); }
 
   /* an add-on that depends on another stays disabled until that one is on,
      and clears itself if the dependency is turned back off */
@@ -635,6 +599,7 @@ span.pc-flag{
     });
   }
 
+  let quoteSeq = 0;
   function calc() {
     syncLocks();
     const d = new FormData(form);
@@ -650,21 +615,12 @@ span.pc-flag{
     const picked = d.getAll('add');
     renderQtys(picked);
 
-    let base = BASE[CUR()][pages] * TYPE[type];
-    let adds = 0;
-    picked.forEach(id => {
-      const a = ADDONS.find(x => x.id === id);
-      if (!a) return;
-      adds += a.per ? price(a) * (qty[a.id] || 1) : price(a);
-    });
-
-    /* The spread covers what is unknown, and what is unknown is the build
-       scope — not a line with a price already on it. So the add-ons go in at
-       their exact figure at both ends, and only the base widens. */
-    const low  = round10((base + adds) * WHEN[when]);
-    const high = round10((base * SPREAD + adds) * WHEN[when]);
-
-    roll(low, high);
+    const adds = picked.map(id => ({ id, qty: qty[id] || 1 }));
+    const seq = ++quoteSeq;
+    fetch(QUOTE_API + '/quote', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cur: CUR(), type, when, pages, adds })
+    }).then(r => r.json()).then(q => { if (seq === quoteSeq) roll(q.low, q.high); }).catch(() => {});
 
     /* scope summary */
     const typeLbl = {
@@ -776,7 +732,13 @@ span.pc-flag{
   /* a currency switch changes every number on the page, including the ones
      already printed onto the add-on labels */
   document.addEventListener('wk:currencychange', () => { reprice(); curLow = curHigh = 0; calc(); });
-  relabel(); reprice(); calc();
+  fetch(QUOTE_API + '/config').then(r => r.json()).then(c => {
+    ADDONS = c.addons; PLAN = c.plans;
+    renderAddons(); relabel(); reprice(); calc();
+  }).catch(() => {
+    rangeE.innerHTML = '<small>' + t('Calculator even niet beschikbaar. Mail ons, dan rekenen wij het voor.',
+                                     'Calculator briefly unavailable. Email us and we will work it out for you.') + '</small>';
+  });
 
   /* light the closing card */
   const card = document.querySelector('.wk-cta-card');
