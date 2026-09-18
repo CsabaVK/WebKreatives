@@ -6,14 +6,14 @@ Client sites live in `client-projects/<client>/` with their own `site.css`, `sit
 ## Every session
 - Caveman mode is on. Short answers, no recaps, no option lists unless asked.
 - "save" = commit + push. Stop the dev server (launch.json `webkreatives`, port 8080) when done.
-- Verify in headless Chrome before showing anything: puppeteer-core is in node_modules, Chrome at `C:/Program Files/Google/Chrome/Application/chrome.exe`. Element screenshots, not clip. Show only the shot that proves the point.
+- Do not screenshot or run a verification pass by default. When work is done, report it done — the visual result here is reliably good, and the routine proof-shot wastes image tokens. Screenshot or verify only when: (a) the user says something looks wrong or off, (b) the user asks for a shot, or (c) the change touched executable JS logic (not copy, CSS, or content) that could break silently — then run the cheap text check first (`read_page` / `read_console_messages`, no image tokens) and screenshot only if that flags a problem or the user needs visual proof. When a screenshot is warranted: puppeteer-core is in node_modules, Chrome at `C:/Program Files/Google/Chrome/Application/chrome.exe`; element screenshots, not clip; show only the shot that proves the point.
 - Bash heredocs eat backslashes: write helper scripts with the Write tool. Files mix CRLF/LF: Python reads/writes with `newline=''`.
 - After editing a live site's CSS/JS/data, bump `?v=N` on every page that loads it (Pages CDN caches ~10 min).
 - Link previews need absolute `og:image` URLs and a JPG/PNG, never webp.
 
 ## New client site — before the first line of code
 1. Write `client-projects/<client>/PRODUCT.md` (who it is for, tone, brand, anti-references) and `DESIGN.md` (palette, type, spacing, components). The root PRODUCT.md is WebKreatives' own — never use it for a client.
-2. `/impeccable shape` with that context, get the brief confirmed, then `/impeccable craft`. Before showing the site: `/impeccable audit`, and `redesign-existing-projects` if it still reads generic.
+2. `/impeccable shape` with that context, get the brief confirmed, then build the site — `/impeccable` new-work (the old `/impeccable craft` still works as a deprecated alias for this). Before showing the site: `/impeccable audit`, and `redesign-existing-projects` if it still reads generic. (impeccable v4.3.1: `craft` and `teach` are deprecated aliases; canonical verbs are `init`/`new-work` to build and `document` to capture a design system. `shape` and `audit` unchanged.)
 3. Not-AI checklist, any hit means redesign: purple/blue gradient hero · row of three equal cards with icons in circles · Inter/Roboto by default · glass blur on everything · everything centered · "Welcome to…" copy · stock-photo placeholders · more than one accent colour · emoji as bullets. Wanted: the client's real photos, one committed type pairing, asymmetric layout, a hierarchy you can squint at, motion that explains something.
 
 ## Design skill routing

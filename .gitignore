@@ -26,3 +26,8 @@ _design/out/
 templates/print/out/
 __pycache__/
 _design/horizonx/
+
+# MemPalace per-project files (issue #185)
+mempalace.yaml
+entities.json
+.mcp.json
