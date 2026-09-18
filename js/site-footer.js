@@ -284,7 +284,7 @@
         ${L('/refund-policy/','Herroeping &amp; restitutie','Refund Policy')}
         <a href="#cookies" id="wkFtCookies" data-nl="Cookies" data-en="Cookies">Cookies</a>
       </div>
-      <span>© 2026 WebKreatives · Amsterdam, NL · KVK 94051097</span>
+      <span>© 2026 WebKreatives · Amsterdam, NL · KVK 94051097 · All rights reserved</span>
     </div>
   </div>
 </footer>`;

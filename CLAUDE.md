@@ -10,6 +10,8 @@ Client sites live in `client-projects/<client>/` with their own `site.css`, `sit
 - Bash heredocs eat backslashes: write helper scripts with the Write tool. Files mix CRLF/LF: Python reads/writes with `newline=''`.
 - After editing a live site's CSS/JS/data, bump `?v=N` on every page that loads it (Pages CDN caches ~10 min).
 - Link previews need absolute `og:image` URLs and a JPG/PNG, never webp.
+- Live site = minified build of `main` (`build.mjs` via `.github/workflows/pages.yml`, Pages source "GitHub Actions"). Source stays readable here; the dev server serves source. `_site/` is build output, never committed.
+- Pricing calculator numbers live in the private Cloudflare Worker repo `../04-WebKreatives-quote` (`src/index.js`, deploy with `npx wrangler deploy`). `pricing/index.html` only calls `QUOTE_API`.
 
 ## New client site — before the first line of code
 1. Write `client-projects/<client>/PRODUCT.md` (who it is for, tone, brand, anti-references) and `DESIGN.md` (palette, type, spacing, components). The root PRODUCT.md is WebKreatives' own — never use it for a client.

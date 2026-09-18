@@ -31,3 +31,6 @@ _design/horizonx/
 mempalace.yaml
 entities.json
 .mcp.json
+
+# Build output for GitHub Pages (built by .github/workflows/pages.yml)
+_site/
