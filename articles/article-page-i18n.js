@@ -48,6 +48,76 @@
   };
 
   const dutch = {
+ "how-to-photograph-your-own-business": {
+  "articlesLink": "Artikelen",
+  "current": "Merk & Vertrouwen",
+  "category": "Merk & Vertrouwen",
+  "title": "Hoe Je Zelf Goede Foto's<br><em>Maakt van Je Bedrijf</em>",
+  "date": "18 september 2026",
+  "read": "7 min lezen",
+  "coverAlt": "Iemand die met een telefoon een vitrine in een bakkerij fotografeert",
+  "docTitle": "Hoe Je Zelf Goede Foto's Maakt van Je Bedrijf | WebKreatives",
+  "bottomTitle": "Wil je een website rondom<br>je eigen foto's?",
+  "bottomText": "We ontwerpen websites voor kleine bedrijven met echte foto's van echt werk — zodat bezoekers de zaak herkennen, de mensen vertrouwen en contact opnemen.",
+  "bottomPrimaryBtn": "Start jouw project →",
+  "bottomSecondaryBtn": "Lees meer artikelen",
+  "relatedTitle": "Lees meer",
+  "content": `
+<p>Open de websites van tien bedrijven in je eigen straat en je ziet binnen een seconde welke hun foto's zelf gemaakt hebben. Niet omdat die zelfgemaakte foto's scherper zijn — vaak zijn ze dat niet. Je ziet het omdat de echte de daadwerkelijke toonbank laten zien, de daadwerkelijke handen, het daadwerkelijke brood. De andere laten een lachend model zien in een keuken die alleen bestaat in een stockbibliotheek ergens in Colorado.</p>
+<p>Bezoekers lezen dat verschil meteen, ook al kunnen ze het niet benoemen. Ze beoordelen je fotografie niet. Ze controleren of de zaak echt is, of het eruitziet als een plek waar ze naar binnen zouden lopen, en of de mensen op de foto's ook de mensen zijn die straks de telefoon opnemen.</p>
+<p>Het goede nieuws: de telefoon in je zak is ruim voldoende. Het verschil tussen een telefoonfoto die vertrouwen wekt en een die je stilletjes een klant kost, zit bijna nooit in de camera. Het zit in licht, hoogte en rommel — en alle drie zijn gratis.</p>
+<p>Zo ziet één geconcentreerd uur er meestal uit.</p>
+<ol class="art-steps"><li><strong>Ronde 1 — de ruimte, 15 minuten.</strong> De voorkant, de deur, de ruimte die een klant als eerste ziet. Eerst opruimen, dan fotograferen.</li><li><strong>Ronde 2 — het werk, 20 minuten.</strong> Handen die doen waar je voor betaald wordt. Middenin de klus, niet geposeerd achteraf.</li><li><strong>Ronde 3 — de mensen, 15 minuten.</strong> Jij en iedereen die een klant echt ontmoet, op de plek waar ze je ontmoeten.</li><li><strong>Ronde 4 — de details, 10 minuten.</strong> Het gereedschap, de producten, de kleine dingen die laten zien dat dit een echt bedrijf met een echte standaard is.</li></ol>
+<h2><span class="num">1</span> Licht doet bijna al het werk</h2>
+<p>Elke telefoonfoto die goedkoop oogt heeft dezelfde oorzaak: het licht klopte niet en de telefoon probeerde het te redden. Binnen onder plafondspots schroeft de camera de lichtgevoeligheid op, worden de kleuren oranje en korrelig, en krijgen gezichten een harde schaduw onder de neus.</p>
+<p>De oplossing is fotograferen waar het daglicht al is. Zet je onderwerp bij een raam, met het licht van opzij in plaats van recht van voren, en doe het plafondlicht uit — daglicht mengen met warme lampen levert precies die vuile, tweekleurige foto's op. Moet je buiten fotograferen, vermijd dan de harde middagzon; een bewolkte dag is een gratis softbox.</p>
+<p>Nog één gewoonte die de moeite waard is: fotografeer nooit iemand met een fel raam in de rug. Jouw ogen corrigeren tegenlicht, je telefoon niet, en je houdt een silhouet over voor een uitgebrand wit vlak.</p>
+<h2><span class="num">2</span> Fotografeer op ooghoogte van het onderwerp, niet van jezelf</h2>
+<p>De snelste verbetering voor de meeste bedrijfsfoto's is dat de fotograaf door de knieën gaat. Telefoonkiekjes zien eruit als telefoonkiekjes vooral omdat ze allemaal van staande hoogte naar beneden genomen zijn — dat maakt de ruimte plat en alles op tafel klein en ver weg.</p>
+<p>Zet de camera op de hoogte van wat ertoe doet. Een bord op tafel fotografeer je op bordhoogte, of recht van boven. Een behandelstoel fotografeer je op zithoogte, want dat is de ooglijn van de klant die erin zit. Een winkelvloer fotografeer je net onder ooghoogte, waardoor het plafond hoger en de ruimte groter aanvoelt.</p>
+<figure class="art-img">
+  <img src="https://images.unsplash.com/photo-1541696500-8de3a3063c9b?auto=format&fit=crop&w=1200&q=80" alt="Een telefoon recht boven een tafel die borden met eten van bovenaf fotografeert" loading="lazy">
+  <figcaption>Recht van boven, of gelijk met het onderwerp. Juist de hoogte ertussenin laat een foto toevallig lijken.</figcaption>
+</figure>
+<p>Twee instellingen helpen. Zet het raster in je camera-app aan en leg het belangrijkste op een lijn in plaats van precies in het midden. En tik op het scherm op je onderwerp voordat je afdrukt — zo weet de telefoon waarop hij moet scherpstellen en belichten, in plaats van het hele beeld te middelen.</p>
+<h2><span class="num">3</span> Het fotolijstje dat een lokaal bedrijf echt nodig heeft</h2>
+<p>De meeste mensen fotograferen de verkeerde dingen. Ze leggen het eindproduct van twaalf kanten vast en hebben daarna niets voor de over-ons-pagina of de contactpagina. Werk in plaats daarvan een lijstje af, en stop als het klaar is.</p>
+<ul class="art-checklist">
+  <li><strong>De ingang</strong> — wat de klant ziet bij aankomst, zodat hij het op straat herkent. Deze ene foto voorkomt meer gemiste afspraken dan welke kaart dan ook.</li>
+  <li><strong>Eén overzichtsfoto van de ruimte</strong> — opgeruimd, leeg, vanuit een hoek. Die beantwoordt de vraag: waar loop ik straks binnen?</li>
+  <li><strong>Drie of vier werkfoto's</strong> — handen middenin het werk. Knippen, bedraden, mengen, bijstellen, uitleggen. Beweging leest als vakmanschap; een geposeerd paar gekruiste armen niet.</li>
+  <li><strong>Een portret van iedereen die een klant ontmoet</strong> — bij het raam, half gedraaid, in de lens kijkend. Niet de gang van het kantoor, niet de bedrijfspolo tegen een witte muur.</li>
+  <li><strong>Twee of drie detailfoto's</strong> — het gereedschap, de etiketten, de afwerking. Die vullen de gaten in een ontwerp en zijn het makkelijkst om goed te maken.</li>
+  <li><strong>Eén voor-en-na-paar</strong> — vanaf dezelfde plek en ongeveer dezelfde hoogte. Voor alles wat het huis of het haar van een klant verandert is dit het overtuigendste beeld dat je hebt.</li>
+</ul>
+<p>Maak van elk punt een handvol foto's in plaats van één. Opslag kost niets, en die tweede poging van tien centimeter lager is meestal degene die je houdt.</p>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Foto's op orde maar oogt de site nog steeds algemeen?</h3>
+    <p>Wij bouwen websites voor lokale bedrijven rondom hun eigen foto's, zodat de site eruitziet als de zaak waar klanten echt binnenlopen.</p>
+  </div>
+  <a href="/contact/" class="btn btn-red">Vraag een offerte aan →</a>
+</div>
+<h2><span class="num">4</span> Wat nooit op de website hoort te komen</h2>
+<p>Opruimen is fotografie. Negentig procent van wat een bedrijfsfoto amateuristisch maakt is geen techniek maar de rommel in beeld: een vuilniszak bij de deur, een kabel over de vloer, een kartonnen doos van een leverancier, een poster van vorig jaar die van de muur krult, een scherm met een halfafgemaakte spreadsheet.</p>
+<p>Kijk voor elke ronde naar het kader en haal alles weg wat niet bij het verhaal hoort. Kijk dan nog een keer — er is altijd nog één ding.</p>
+<div class="art-mistake"><strong>Veelgemaakte fout</strong><p>Alleen staand fotograferen. Websites zijn breed, en een staande foto die naar een brede banner wordt bijgesneden verliest de boven- en onderkant van waar het je om ging. Maak de belangrijke foto's ook liggend, ook al is de rest van je leven verticaal.</p></div>
+<p>Laat ook weg: foto's met een datumstempel in de hoek, schermafdrukken van foto's, alles waarop een klant herkenbaar staat zonder dat hij ja gezegd heeft, en de flitser. Vooral de flitser. Een telefoonflits levert een glimmend voorhoofd op, een harde zwarte schaduw achter het onderwerp en een ruimte die eruitziet als een politiedossier.</p>
+<h2><span class="num">5</span> Bewerken: drie aanpassingen, en dan stoppen</h2>
+<p>Je hebt geen app met filters nodig. De ingebouwde editor van je telefoon heeft alles wat ertoe doet, en het doel is dat de foto eruitziet zoals de ruimte eruitzag, niet als een moodboard.</p>
+<ol class="art-checklist">
+  <li><strong>Rechtzetten en bijsnijden.</strong> Een rechte horizon en een deurpost die echt verticaal staat doen meer voor de professionele uitstraling dan welk filter ook. Snijd bij op het verhaal, en snijd ruim.</li>
+  <li><strong>Belichting en schaduwen licht optillen.</strong> Binnenfoto's zijn bijna altijd net te donker. Kleine stapjes — genoeg om de hoeken te kunnen zien, niet zoveel dat het beeld grijs wordt.</li>
+  <li><strong>De witbalans corrigeren.</strong> Is de foto oranje, koel hem dan af tot witte dingen wit zijn. Deze aanpassing scheidt het vaakst een foto die gemaakt lijkt van een foto die gevonden lijkt.</li>
+</ol>
+<p>Laat hem daarna met rust. Pas dezelfde drie stappen toe op de hele set, zodat de foto's een familie vormen, en sla zware presets helemaal over — een consistente, iets vlakkere set wint het van één dramatisch beeld naast negen gewone.</p>
+<p>Nog één praktisch punt: stuur de foto's op volledige grootte naar wie je site bouwt, rechtstreeks vanaf de telefoon. Niet via een chat-app die ze tot een kwart van de resolutie comprimeert. Een fatsoenlijke website comprimeert ze zelf netjes voor het web, maar dat lukt alleen als hij met het origineel begint.</p>
+<h2>Conclusie</h2>
+<p>Je hebt geen fotograaf nodig om eerlijke foto's van je bedrijf te hebben. Je hebt een uur nodig, een raam, een opgeruimd kader en de discipline om door je knieën te gaan. Werk de vier rondes af, volg het fotolijstje en doe de drie bewerkingen.</p>
+<p>Kies deze week het uur waarop het licht in je zaak het mooist is — de meeste mensen weten precies wanneer dat is — en begin bij de ingang. Eén echte foto van je eigen voordeur is meer waard dan een galerij vol vreemden die lachen in andermans pand.</p>
+`
+ },
+
  "booking-forms-vs-phone-calls": {
   "articlesLink": "Artikelen",
   "current": "Conversie",

@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'how-to-photograph-your-own-business',
+    title:            'Hoe Je Zelf Goede Foto\'s Maakt van Je Bedrijf',
+    titleEn:          'How to Photograph Your Own Business With Just a Phone',
+    category:         'Merk & Vertrouwen',
+    categoryEn:       'Brand & Trust',
+    date:             '2026-09-18',
+    dateFormatted:    '18 september 2026',
+    dateFormattedEn:  '18 September 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-09-18T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1499881696443-e66dd9a7b496?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Je telefoon is goed genoeg. Wat bepaalt of de foto werkt zijn licht, hoogte en rommel. Een fotolijstje en een plan van een uur om je eigen bedrijf te fotograferen.',
+    excerptEn:        'Your phone is good enough. What decides whether the photo works is light, height and clutter. A shot list and a one-hour plan for photographing your own business.'
+  },
+
+  {
     slug:             'booking-forms-vs-phone-calls',
     title:            'Online Boeken of Bellen? Wat Je Klanten Echt Willen',
     titleEn:          'Booking Forms vs Phone Calls: What Customers Actually Prefer',
