@@ -15,3 +15,19 @@ Client sites live in `client-projects/<client>/` with their own `site.css`, `sit
 1. Write `client-projects/<client>/PRODUCT.md` (who it is for, tone, brand, anti-references) and `DESIGN.md` (palette, type, spacing, components). The root PRODUCT.md is WebKreatives' own — never use it for a client.
 2. `/impeccable shape` with that context, get the brief confirmed, then `/impeccable craft`. Before showing the site: `/impeccable audit`, and `redesign-existing-projects` if it still reads generic.
 3. Not-AI checklist, any hit means redesign: purple/blue gradient hero · row of three equal cards with icons in circles · Inter/Roboto by default · glass blur on everything · everything centered · "Welcome to…" copy · stock-photo placeholders · more than one accent colour · emoji as bullets. Wanted: the client's real photos, one committed type pairing, asymmetric layout, a hierarchy you can squint at, motion that explains something.
+
+## Design skill routing
+Many installed skills claim "design a page" and their descriptions overlap. Do not pick by vibe. Follow this:
+
+- **Default for any page or component design/redesign: `impeccable`** (its `shape` → `craft` → `audit` phases are the spine above). Use it unless a rule below or the user names another skill. When the user names a skill — e.g. "use minimalist-ui" — that choice wins for that task.
+- Do **not** reach for `high-end-visual-design`, `gpt-taste`, `design-taste-frontend`, or `stitch-design-taste` in place of `impeccable`. They compete for the same trigger; `impeccable` is the chosen one for this repo. Use them only if the user asks for that skill by name.
+
+Adjuncts — layer these on top of an `impeccable` pass, never as a substitute for it:
+- Reads generic after `audit`: `redesign-existing-projects`.
+- Design reference images before coding a section: `imagegen-frontend-web` (or `-mobile` for app screens).
+- Motion / scroll: `gsap-*` skills for animation, `lenis-smooth-scroll` for smooth scroll, `horizonx` for a full premium scroll-driven page.
+- A named drop-in effect (animated background, text effect, cursor): `react-bits` — port to vanilla, this repo is static.
+- Data lookup (palette, font pairing, stack-specific rule): `ui-ux-pro-max`.
+- A specific look the user asks for by name: `minimalist-ui`, `industrial-brutalist-ui`, `brandkit`, `webgpu-threejs-tsl` (3D/WebGL hero).
+
+Non-design skills, separate triggers: `cybersec` (security tasks, router), `brag` + `hyperframes-*` (make a launch video), `linkedin-*` / print / outreach as their own rules already cover.
