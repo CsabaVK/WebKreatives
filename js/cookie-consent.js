@@ -115,8 +115,7 @@
    * then the URL has no utm_ parameters and the referrer is our own site.
    * An arrival is a page with campaign parameters or an outside referrer
    * (or none); it replaces what an earlier arrival in the same tab stored.
-   * Nothing is sent anywhere until analytics is allowed; loadGA() is the
-   * only reader. */
+   * loadGA() is the only reader. */
   function landing() {
     const now = { u: location.href, r: document.referrer || '' };
     const arrival = /[?&](utm_[a-z]+|gclid|fbclid|msclkid)=/.test(location.search) || now.r.indexOf(location.origin + '/') !== 0;
@@ -146,6 +145,11 @@
     const g = k => { try { return localStorage.getItem(k) || undefined; } catch (e) { return undefined; } };
     return { site_language: g('wk-lang') || 'nl', site_currency: g('wk-currency'), site_region: g('wk-region') };
   }
+  /* Consent Mode v2, advanced: gtag.js loads on every visit with the consent
+   * state already set. Before analytics is allowed it sets no cookies and
+   * sends cookieless pings only (no client id, no cross-page stitching);
+   * GA models the rest. Once allowed, consentMode() updates the state and
+   * gtag starts storing normally, no reload needed. */
   let gaLoaded = false;
   function loadGA() {
     if (gaLoaded || !GA_ID) return;
@@ -189,7 +193,7 @@
   }
   function apply(p) {
     consentMode(p);
-    if (p.analytics) loadGA();
+    loadGA();
     if (p.marketing) loadMarketing();
   }
 
@@ -353,6 +357,7 @@
     const saved = read();
     if (saved) { apply(saved); return; }
     consentMode(NONE);
+    loadGA();
     timer = setTimeout(() => { if (!read()) open(false); }, DELAY);
   }
 

@@ -1,0 +1,50 @@
+# WebKreatives
+
+> Custom website design, hosting and care for owner-led small businesses. Fixed price agreed up front, everything in the client's name. Based in Amsterdam, working remotely with clients worldwide. Site in English with a Dutch toggle.
+
+## Services
+
+- [Website design](https://webkreatives.com/services/websites/): small business website design at a fixed price, live in days to weeks
+- [Hosting, maintenance and support](https://webkreatives.com/services/hosting/): one monthly fee for domain, security, backups, updates and support
+- [Pricing](https://webkreatives.com/pricing/): fixed prices plus a two-minute cost calculator
+- [Portfolio](https://webkreatives.com/portfolio/): live client sites by sector
+- [Case studies](https://webkreatives.com/case-studies/): what changed for real clients
+- [Contact](https://webkreatives.com/contact/): enquiry form, email info@webkreatives.com
+
+## Articles
+
+Practical guides for small business owners on websites, local SEO and conversion.
+
+- [How to Photograph Your Own Business With Just a Phone](https://webkreatives.com/articles/how-to-photograph-your-own-business/): Your phone is good enough. What decides whether the photo works is light, height and clutter. A shot list and a one-hour plan for photographing your own business.
+- [Booking Forms vs Phone Calls: What Customers Actually Prefer](https://webkreatives.com/articles/booking-forms-vs-phone-calls/): Some customers will never fill in a form. Others will never ring you. Which channel people pick depends on urgency, trade and timing — and why offering both, done properly, beats forcing one.
+- [Why Your Website Needs Analytics and Which Numbers Matter](https://webkreatives.com/articles/why-your-website-needs-analytics/): Most small business websites collect data nobody ever looks at. These are the four numbers worth checking every month, why visitors is the least useful of them, and which privacy-friendly tools to use.
+- [What Really Belongs on Your Services Page](https://webkreatives.com/articles/what-to-put-on-your-services-page/): A list of service names leaves visitors guessing. These are the five blocks per service that let someone choose: scope, outcome, price signal, proof and one button.
+- [How to Get More Google Reviews Without Being Pushy](https://webkreatives.com/articles/how-to-get-more-google-reviews/): Asking for reviews feels awkward because you are asking at the wrong moment. Here is the fixed moment, the sentence and the link that make it work.
+- [Why Page Speed and SEO Go Hand in Hand](https://webkreatives.com/articles/why-page-speed-and-seo-go-together/): Speed is not a side job next to your SEO. Here is what Google really measures, what costs local sites their position, and the order to fix it in.
+- [What a Great About Page Should Actually Say](https://webkreatives.com/articles/what-a-good-about-page-should-say/): Your about page is not an autobiography but the place where near-customers shed their last doubt. Here is what belongs on it, and what can go.
+- [How to Choose the Right Colors for Your Brand](https://webkreatives.com/articles/how-to-choose-the-right-colors-for-your-brand/): Colour online is rarely about taste. One recognisable main colour, one accent colour for actions and enough contrast will take you further than a full palette.
+- [Website Security Basics Every Small Business Needs](https://webkreatives.com/articles/website-security-basics-for-small-businesses/): Security does not have to be a technical project. These are the five basics every small business should have in order: SSL, updates, backups, hosting and access.
+- [Does Your Small Business Actually Need a Blog?](https://webkreatives.com/articles/does-your-small-business-need-a-blog/): A blog is not an obligation for a small business, but it is an opportunity. How to pick the right topics, keep it realistic, and know when your time is better spent elsewhere.
+- [Why Clear Calls-to-Action Make All the Difference](https://webkreatives.com/articles/why-your-website-needs-clear-calls-to-action/): A polished website with no clear calls-to-action quietly loses customers. Here is how sharp buttons, smart placement and the right words turn visitors into enquiries.
+- [How to Write Website Copy That Sells](https://webkreatives.com/articles/how-to-write-website-copy-that-sells/): Copy sells, not just visuals. Here is how to write for your customer, turn features into benefits and make every page persuade with a simple framework.
+- [The Hidden Cost of a DIY Website](https://webkreatives.com/articles/the-real-cost-of-a-diy-website/): A DIY website looks free, but the real price is your time, lost enquiries and trust you never win. Here is what doing it yourself actually adds up to.
+- [Why Mobile-First Design Is Non-Negotiable in 2026](https://webkreatives.com/articles/why-mobile-first-design-is-non-negotiable-in-2026/): Most visitors arrive on a phone and Google indexes mobile-first. Here is why mobile design is the starting point in 2026, not an afterthought.
+- [How Often Should You Refresh Your Website?](https://webkreatives.com/articles/how-often-should-you-update-your-website/): You don't need a yearly overhaul. Learn the difference between maintenance and a redesign, the signs your site is aging, and what to update first.
+- [Stock Photos vs Real Photos: What Builds More Trust](https://webkreatives.com/articles/stock-photos-vs-real-photos-on-your-website/): Stock photos are fast and cheap, but on the wrong page they cost you trust. Learn when stock works and when real photos win more customers.
+- [What Makes a Contact Page Actually Work](https://webkreatives.com/articles/what-makes-a-contact-page-actually-work/): Your contact page is where interest turns into an enquiry. Less friction, a choice of channels and honest expectations noticeably get more visitors to reach out.
+- [How Your Website Speed Quietly Costs You Customers](https://webkreatives.com/articles/how-website-speed-costs-you-customers/): A slow website loses customers with silence, not a bang. What Core Web Vitals mean in plain language, why speed is revenue, and the quick wins you can make today.
+- [Why a Domain Email Makes Your Business Look More Serious](https://webkreatives.com/articles/why-your-business-needs-a-domain-email/): Still sending quotes and invoices from @gmail.com? It costs you more trust than you think. Why an address on your own domain makes you look more serious.
+- [The Anatomy of a Homepage That Converts](https://webkreatives.com/articles/anatomy-of-a-homepage-that-converts/): A homepage that converts is not a pretty picture but a set of deliberate parts working together. We break the converting homepage down piece by piece.
+- [Why a One-Page Website Is Not Enough in 2026](https://webkreatives.com/articles/why-a-one-page-website-is-not-enough-in-2026/): A one-page website can look clean, but for many local businesses it is too limited for trust, SEO, and conversion.
+- [Why Your Google Business Profile Is Your New Homepage in 2026](https://webkreatives.com/articles/why-your-google-business-profile-is-your-new-homepage/): For local search results, your Google Business Profile is often the real first impression. Here is why it functions almost like a second homepage in 2026.
+- [What Does a Small Business Website Cost in 2026?](https://webkreatives.com/articles/what-does-a-small-business-website-cost-in-2026/): What does a website cost in 2026? A practical guide for small businesses that want to compare options without falling into the cheapest trap.
+- [Local SEO: How Google Finds You in Your City](https://webkreatives.com/articles/local-seo-how-google-finds-you-in-your-city/): Google Business Profile, reviews, local content, and consistent business details: these are the factors that shape how visible you are in your city.
+- [5 Reasons Customers Leave Your Website](https://webkreatives.com/articles/5-reasons-customers-leave-your-website/): Slow load times, no CTA, outdated design: small mistakes with big consequences. Use this self-check to spot what you are losing each day.
+- [Why Your Hair Salon Needs a Website](https://webkreatives.com/articles/why-your-hair-salon-needs-a-website/): 81% of customers search online before choosing a salon. Without a website, you stay invisible to most new clients.
+- [Why Online Reviews Bring You More Local Customers](https://webkreatives.com/articles/why-online-reviews-bring-you-more-local-customers/): Reviews are not just social proof. They also help shape how visible and convincing your business appears locally.
+
+## Legal
+
+- [Privacy policy](https://webkreatives.com/privacy/)
+- [Terms](https://webkreatives.com/terms/)
+- [Refund policy](https://webkreatives.com/refund-policy/)

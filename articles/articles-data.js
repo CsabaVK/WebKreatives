@@ -226,7 +226,7 @@ const WK_ARTICLES = [
     slug:             'the-real-cost-of-a-diy-website',
     title:            'De Verborgen Kosten van een Zelfgemaakte Website',
     titleEn:          'The Hidden Cost of a DIY Website',
-    category:         'Small Business',
+    category:         'Kleine Bedrijven',
     categoryEn:       'Small Business',
     date:             '2026-06-29',
     dateFormatted:    '29 juni 2026',

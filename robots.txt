@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /_rollback/
-Disallow: /index-v3-backup.html
 Sitemap: https://webkreatives.com/sitemap.xml

@@ -122,7 +122,9 @@
 
     const isEnglish = getArticleLanguage() === 'en';
     const slug      = getCurrentSlug();
-    const others    = WK_ARTICLES.filter(a => a.slug !== slug).slice(0, 3);
+    const cur       = WK_ARTICLES.find(a => a.slug === slug);
+    const others    = WK_ARTICLES.filter(a => a.slug !== slug)
+      .sort((a, b) => (b.categoryEn === (cur && cur.categoryEn)) - (a.categoryEn === (cur && cur.categoryEn))).slice(0, 3);
 
     if (!others.length) {
       el.innerHTML = `<p style="color:var(--grey-500);font-size:14px">${t('Binnenkort meer artikelen.', 'More articles coming soon.')}</p>`;

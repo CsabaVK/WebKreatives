@@ -6,6 +6,11 @@ Works for any Publora connection (facebook-…, instagram-…, linkedin-…). Re
 PUBLORA_API_KEY from .env, creates a draft, uploads the images in the order
 given, then flips the post to scheduled. Prints the postGroupId. LinkedIn PDF
 document posts cannot go through here; upload those by hand.
+
+    python _design/publora-post.py schedule <postGroupId> <ISO-8601-UTC>
+
+flips a draft to scheduled later. The Starter plan allows 3 active scheduled
+posts; a fourth create-post leaves a draft with its media uploaded.
 """
 import io
 import json
@@ -55,5 +60,14 @@ def main(platform, caption_path, when, *images):
     print(gid)
 
 
+def schedule(gid, when):
+    """Flip an existing draft to scheduled, for when the plan's slot limit was hit."""
+    sched = call("PUT", f"/update-post/{gid}", data=json.dumps({"status": "scheduled", "scheduledTime": when}))
+    print("scheduled", json.dumps(sched)[:300])
+
+
 if __name__ == "__main__":
-    main(*sys.argv[1:])
+    if sys.argv[1] == "schedule":
+        schedule(*sys.argv[2:4])
+    else:
+        main(*sys.argv[1:])

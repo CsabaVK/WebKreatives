@@ -6,6 +6,12 @@ For **leads, emails, businesses, and outreach tracking**, the **single source of
 
 <https://docs.google.com/spreadsheets/d/1qFkQl3WT9WUSGECdLGk5sUrwaWFc2ibGMIcP-EW5-es/edit?gid=1740548296#gid=1740548296>
 
+For **cold outreach** (addresses to contact, what was sent, who replied), the queue and tracker is this second Google Sheet:
+
+<https://docs.google.com/spreadsheets/d/1axNN0D_V4xvVCMjoDIhSQHEKkKL29rnEoiKr04donaM/edit>
+
+Paste addresses into column A; Claude fills the rest, sends from `info@webkreatives.com`, and writes back status and replies. Workflow and tooling: `tools/outreach/README.md` (local, not in the public repo).
+
 ## Instructions for GOAT and Cloudy
 
 - Always read live lead/business/email data from the Google Sheet above.
