@@ -1,8 +1,8 @@
-const { chromium } = require('../node_modules/playwright-core');
+const puppeteer = require('../node_modules/puppeteer-core');
 const path = require('path');
 const fs = require('fs');
 
-const logoB64 = fs.readFileSync(path.resolve(__dirname, '../assets/Horizontallogo.png')).toString('base64');
+const logoB64 = fs.readFileSync(path.resolve(__dirname, '../assets/brand/wordmark-light.png')).toString('base64');
 const logoSrc = `data:image/png;base64,${logoB64}`;
 
 const html = `<!DOCTYPE html>
@@ -66,10 +66,10 @@ body {
 </html>`;
 
 (async () => {
-  const browser = await chromium.launch();
+  const browser = await puppeteer.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: 'new' });
   const page = await browser.newPage();
-  await page.setViewportSize({ width: 1200, height: 630 });
-  await page.setContent(html, { waitUntil: 'networkidle' });
+  await page.setViewport({ width: 1200, height: 630 });
+  await page.setContent(html, { waitUntil: 'networkidle0' });
   const outPath = path.resolve(__dirname, 'og-image.png');
   await page.screenshot({ path: outPath, type: 'png', clip: { x: 0, y: 0, width: 1200, height: 630 } });
   console.log('Generated:', outPath);

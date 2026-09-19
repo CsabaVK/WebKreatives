@@ -6,7 +6,7 @@
  *   node generate-article-og.js my-new-article "Why Your Thing Matters" "https://images.unsplash.com/photo-xxx"
  */
 
-const { chromium } = require('../node_modules/playwright-core');
+const puppeteer = require('../node_modules/puppeteer-core');
 const path = require('path');
 const fs = require('fs');
 
@@ -16,7 +16,7 @@ if (!slug || !title) {
   process.exit(1);
 }
 
-const logoB64 = fs.readFileSync(path.resolve(__dirname, '../assets/Horizontallogo.png')).toString('base64');
+const logoB64 = fs.readFileSync(path.resolve(__dirname, '../assets/brand/wordmark-light.png')).toString('base64');
 const logoSrc = `data:image/png;base64,${logoB64}`;
 
 const len = title.length;
@@ -184,10 +184,10 @@ body {
 
   const outPath = path.join(outDir, `${slug}.png`);
 
-  const browser = await chromium.launch();
+  const browser = await puppeteer.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: 'new' });
   const page = await browser.newPage();
-  await page.setViewportSize({ width: 1200, height: 630 });
-  await page.setContent(html, { waitUntil: 'networkidle' });
+  await page.setViewport({ width: 1200, height: 630 });
+  await page.setContent(html, { waitUntil: 'networkidle0' });
   await page.screenshot({ path: outPath, type: 'png', clip: { x: 0, y: 0, width: 1200, height: 630 } });
   await browser.close();
 

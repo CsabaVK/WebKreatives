@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WebKreatives wordmark</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@900&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;background:transparent}
+  body.check{background:#f2ede4}
+  body.dark.check{background:#0c0a09}
+  svg{display:block}
+  text{font-family:'Figtree',sans-serif;font-weight:900;font-size:107px;letter-spacing:-.01em}
+</style>
+</head>
+<body>
+<!-- viewBox matches the original 473 x 244 PNG, so the wordmark drops in at the same size.
+     The shapes sit behind the type with a knocked-out gap around every letter (mask), so
+     type and shape stay readable on any background. Positions are measured from the
+     glyphs after the font loads, not hard-coded. -->
+<svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" width="520" height="260">
+  <defs>
+    <mask id="gap" maskUnits="userSpaceOnUse" x="0" y="0" width="520" height="260">
+      <rect width="520" height="260" fill="#fff"/>
+      <g fill="#000" stroke="#000" stroke-width="7" stroke-linejoin="round">
+        <text id="m1" x="20" y="104">Web</text>
+        <text id="m2" x="20" y="188">Kreatıves</text>
+      </g>
+    </mask>
+  </defs>
+  <g id="shapes" mask="url(#gap)">
+    <circle id="red" r="33" fill="#df3821"/>
+    <rect id="lime" width="74" height="74" fill="#b9e185"/>
+    <rect id="yellow" width="76" height="62" fill="#fbeb78"/>
+  </g>
+  <circle id="blue" r="11" fill="#648dcb"/>
+  <g id="type" fill="#0c0a09">
+    <text id="t1" x="20" y="104">Web</text>
+    <text id="t2" x="20" y="188">Kreatıves</text>
+  </g>
+</svg>
+<script>
+  // Fit the type to the box, then place every shape from the glyph it belongs to.
+  function place() {
+    const t1 = document.getElementById('t1'), t2 = document.getElementById('t2');
+    const texts = ['t1', 't2', 'm1', 'm2'].map(id => document.getElementById(id));
+    const fs = 107 * 420 / t2.getComputedTextLength();
+    texts.forEach(t => t.setAttribute('font-size', fs));
+    const cap = 0.72 * fs;                       // Figtree cap height
+    const b1 = 118, b2 = 202;                    // baselines
+    texts.forEach((t, n) => t.setAttribute('y', n % 2 ? b2 : b1));
+    const box = (t, i) => t.getExtentOfChar(i);
+    const e = box(t1, 1);                        // "e" of Web: red circle behind its top right
+    const red = document.getElementById('red');
+    red.setAttribute('cx', e.x + e.width * 0.8);
+    red.setAttribute('cy', b1 - cap - 6);
+    const i = box(t2, 5);                        // dotless i: the blue dot is its tittle
+    const blue = document.getElementById('blue');
+    blue.setAttribute('cx', i.x + i.width / 2);
+    blue.setAttribute('cy', b2 - cap - 2);
+    const s = box(t2, 8);                        // "es": lime square behind, out to the top right
+    const lime = document.getElementById('lime');
+    lime.setAttribute('x', s.x + s.width - 44);
+    lime.setAttribute('y', b2 - cap - 24);
+    const k = box(t2, 0);                        // "K": yellow square behind its foot, hanging below
+    const yellow = document.getElementById('yellow');
+    yellow.setAttribute('x', k.x - 2);
+    yellow.setAttribute('y', b2 - 20);
+  }
+  if (location.search.includes('dark')) {
+    document.body.classList.add('dark');
+    document.getElementById('type').setAttribute('fill', '#ffffff');
+  }
+  document.fonts.ready.then(() => { place(); document.body.dataset.ready = '1'; });
+</script>
+</body>
+</html>

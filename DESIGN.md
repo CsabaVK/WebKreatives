@@ -272,8 +272,10 @@ carousel arc. No freehand layouts.
 
 Every artboard shares these, whatever the template:
 
-- Wordmark bottom-left, 96px from the edges: `assets/darkmodehorizontallogo.png` on
-  ink, `assets/Horizontallogo.png` on paper. Cropped copies live in `_design/wordmark-*.png`.
+- Wordmark bottom-left, 96px from the edges: `assets/brand/wordmark-dark.png` on
+  ink, `assets/brand/wordmark-light.png` on paper. Both render from `_design/logo.html`
+  via `node _design/logo.cjs <out.png> [scale] [--dark]`; the 2025 originals sit in
+  `_retired/logos/`.
   Height 112px on portrait and square, 72px on landscape.
 - `webkreatives.com` bottom-right in meta style.
 - Eyebrow top-left with the 20px rule.
@@ -511,7 +513,7 @@ goes anywhere. Link previews still need `og:image` as an absolute JPG or PNG URL
 | `templates/print/` | the same sticker for any client: spec in, print file and proof out |
 | `_design/publora-ig.py` | Instagram carousel to Publora |
 | `_design/single-example.md` | one worked single post: render command, alt text, post text |
-| `_design/wordmark-light.png`, `wordmark-dark.png` | cropped wordmarks for the artboards |
-| `assets/Horizontallogo.png`, `darkmodehorizontallogo.png` | source logos |
+| `_design/logo.html`, `logo.cjs` | the wordmark generator (type + shapes, knocked-out gaps) |
+| `assets/brand/wordmark-light.png`, `wordmark-dark.png` | the wordmarks, 1560 x 780, transparent |
 | `assets/screenshots/*-phone.webp` | real portfolio screenshots for T3 |
 | `og/` | link preview images and their generators |

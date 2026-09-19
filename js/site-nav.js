@@ -352,7 +352,7 @@ html.wk-menu-open,html.wk-menu-open body{overflow:hidden}
 
   root.innerHTML = `
 <nav id="mainNav">
-  <a class="nav-logo" href="/"><img src="/assets/darkmodehorizontallogo.png" alt="WebKreatives"></a>
+  <a class="nav-logo" href="/"><img src="/assets/brand/wordmark-dark.png" alt="WebKreatives"></a>
   <ul class="nav-links">
       ${listItems}
   </ul>

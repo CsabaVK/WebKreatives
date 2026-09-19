@@ -4,7 +4,7 @@
   "url": "https://webkreatives.com/sticker",
   "urlText": "webkreatives.com",
   "eyebrow": "Websites by",
-  "logo": "webkreatives-wordmark-dark.png",
+  "logo": "../../../assets/brand/wordmark-dark.png",
   "logoHeight": 96,
   "fontsUrl": "https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Figtree:wght@400;600&display=swap",
   "fonts": {
