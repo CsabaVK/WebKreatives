@@ -98,7 +98,28 @@
   color:var(--cream-faint);white-space:nowrap;
 }
 .pc-add input:checked + span b{color:var(--red)}
-.pc-qtys{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+/* mono tag on rows that only work on our hosting */
+.pc-add-tag{
+  display:inline-block;margin-left:8px;vertical-align:1px;
+  font-family:var(--f-mono);font-style:normal;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cream-faint);border:1px solid var(--rule-hard);border-radius:99px;padding:2px 7px;
+}
+.pc-qtys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:16px}
+.pc-qty:last-child:nth-child(odd){grid-column:1/-1}
+@media(max-width:520px){.pc-qtys{grid-template-columns:minmax(0,1fr)}}
+/* a size switch: the answer pills above, joined into one control */
+.pc-seg{display:inline-flex;flex-shrink:0;border-radius:var(--radius);border:1px solid var(--rule-hard);overflow:hidden}
+.pc-seg button{
+  cursor:pointer;border:0;background:transparent;color:var(--cream-dim);
+  font-family:var(--f-body);font-size:13px;font-weight:500;line-height:1;padding:10px 14px;
+  display:inline-flex;align-items:center;gap:8px;transition:color .2s,background .2s;
+}
+.pc-seg button + button{border-left:1px solid var(--rule-hard)}
+.pc-seg button b{font-weight:600;font-size:11.5px;color:var(--cream-faint);transition:color .2s}
+.pc-seg button:hover{color:var(--cream)}
+.pc-seg button[aria-pressed]{background:rgba(223,56,33,.10);color:var(--cream);box-shadow:inset 0 0 0 1px var(--red)}
+.pc-seg button[aria-pressed] b{color:var(--red)}
+.pc-seg button:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
 .pc-qtys:empty{display:none}
 .pc-q[hidden]{display:none!important}
 .pc-qty{
@@ -382,6 +403,20 @@ span.pc-flag{
           <label class="pc-opt"><input type="radio" name="freq" value="day"><span data-nl="Dagelijks" data-en="Daily">Daily</span></label>
         </div>
       </div>
+
+      <div class="pc-q">
+        <div class="pc-q-h">
+          <span class="pc-q-n">06</span>
+          <span class="pc-q-t" data-nl="Hosting via WebKreatives?" data-en="Hosting through WebKreatives?">Hosting through WebKreatives?</span>
+        </div>
+        <p class="pc-q-s"
+          data-nl="Niet verplicht. Een paar extra's, zoals de bezoekersrapportage, werken alleen op onze hosting."
+          data-en="Not required. A few add-ons, such as traffic reporting, only work on our hosting.">Not required. A few add-ons, such as traffic reporting, only work on our hosting.</p>
+        <div class="pc-opts" data-group="host">
+          <label class="pc-opt"><input type="radio" name="host" value="yes" checked><span data-nl="Ja" data-en="Yes">Yes</span></label>
+          <label class="pc-opt"><input type="radio" name="host" value="no"><span data-nl="Nee, ik host zelf" data-en="No, I host it myself">No, I host it myself</span></label>
+        </div>
+      </div>
     </form>
 
     <!-- ── result ── -->
@@ -533,7 +568,7 @@ span.pc-flag{
       (a.needs ? ' data-needs="' + a.needs + '"' : '') + '>' +
     '<input type="checkbox" name="add" value="' + a.id + '"' + (a.needs ? ' disabled' : '') + '>' +
     '<span data-nl="' + a.nl + '" data-en="' + a.en + '">' +
-      '<i style="font-style:normal">' + a.nl + '</i>' +
+      '<i style="font-style:normal">' + a.nl + (a.hosting ? '<em class="pc-add-tag">hosting</em>' : '') + '</i>' +
       '<b>+' + money(price(a)) + (a.per ? '/p' : '') + '</b>' +
     '</span></label>'
   ).join(''); }
@@ -542,7 +577,9 @@ span.pc-flag{
      and clears itself if the dependency is turned back off */
   function syncLocks() {
     wrap.querySelectorAll('.pc-add[data-needs]').forEach(el => {
-      const dep = wrap.querySelector('.pc-add[data-id="' + el.dataset.needs + '"] input');
+      const dep = el.dataset.needs === 'host'
+        ? form.querySelector('input[name="host"][value="yes"]')
+        : wrap.querySelector('.pc-add[data-id="' + el.dataset.needs + '"] input');
       const ok = dep && dep.checked;
       const box = el.querySelector('input');
       el.classList.toggle('locked', !ok);
@@ -556,7 +593,7 @@ span.pc-flag{
     const L = lang();
     wrap.querySelectorAll('.pc-add').forEach((el, i) => {
       const a = ADDONS[i];
-      el.querySelector('i').textContent = L === 'en' ? a.en : a.nl;
+      el.querySelector('i').innerHTML = (L === 'en' ? a.en : a.nl) + (a.hosting ? '<em class="pc-add-tag">hosting</em>' : '');
     });
   }
 
@@ -575,18 +612,28 @@ span.pc-flag{
   const pagesQ = document.getElementById('pcPagesQ');
   const qtysE  = document.getElementById('pcQtys');
   const qty = {};   /* id -> chosen count, remembered across toggles */
+  const tier = {};  /* id -> chosen tier id, for add-ons that come in sizes */
 
   /* Anything priced per unit gets a stepper. The native number spinner
      cannot be styled to match, so it is hidden and driven by two buttons. */
   function renderQtys(picked) {
-    const want = ADDONS.filter(a => a.per && picked.indexOf(a.id) > -1);
+    const want = ADDONS.filter(a => (a.per || a.tiers) && picked.indexOf(a.id) > -1);
     const have = [...qtysE.querySelectorAll('.pc-qty')].map(e => e.dataset.id);
     if (want.map(a => a.id).join() === have.join()) return;
 
     qtysE.innerHTML = want.map(a => {
+      const label = lang() === 'en' ? a.en : a.nl;
+      if (a.tiers) {
+        tier[a.id] = tier[a.id] || a.tiers[0].id;
+        return '<div class="pc-qty" data-id="' + a.id + '">' +
+          '<label>' + label + '</label>' +
+          '<span class="pc-seg">' + a.tiers.map(t =>
+            '<button type="button" data-t="' + t.id + '"' + (t.id === tier[a.id] ? ' aria-pressed="true"' : '') + '>' +
+              (lang() === 'en' ? t.en : t.nl) + ' <b>' + money(t.p[CUR()]) + '</b></button>').join('') +
+          '</span></div>';
+      }
       const n = qty[a.id] || (a.id === 'copy' ? 4 : 1);
       qty[a.id] = n;
-      const label = lang() === 'en' ? a.en : a.nl;
       return '<div class="pc-qty" data-id="' + a.id + '">' +
         '<label>' + label + '</label>' +
         '<span class="pc-step">' +
@@ -598,6 +645,14 @@ span.pc-flag{
 
     qtysE.querySelectorAll('.pc-qty').forEach(row => {
       const id = row.dataset.id, box = row.querySelector('input');
+      if (!box) {   /* a tier switch */
+        row.querySelectorAll('.pc-seg button').forEach(b => b.addEventListener('click', () => {
+          tier[id] = b.dataset.t;
+          row.querySelectorAll('.pc-seg button').forEach(x => x.toggleAttribute('aria-pressed', x === b));
+          calc();
+        }));
+        return;
+      }
       const clamp = v => Math.max(1, Math.min(40, v | 0 || 1));
       const set = v => { qty[id] = clamp(v); box.value = qty[id]; sync(row); calc(); };
       row.querySelectorAll('button').forEach(b =>
@@ -658,7 +713,7 @@ span.pc-flag{
     const picked = d.getAll('add');
     renderQtys(picked);
 
-    const adds = picked.map(id => ({ id, qty: qty[id] || 1 }));
+    const adds = picked.map(id => ({ id, qty: qty[id] || 1, tier: tier[id] }));
     const seq = ++quoteSeq;
     fetch(QUOTE_API + '/quote', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -704,9 +759,13 @@ span.pc-flag{
       '</div>' +
       '<div class="pc-adv" tabindex="0">' +
         '<i class="pc-i">i</i>' +
-        '<span>' + t('Hosting is niet verplicht', 'Hosting is not mandatory') + '</span>' +
+        (picked.indexOf('reports') > -1
+          ? '<span>' + t('Hosting hoort bij deze scope', 'Hosting is part of this scope') + '</span>' +
+            '<span class="pc-tip">' + t('De bezoekersrapportage (GA4 + Search Console) draait op onze hosting; die zit dus bij dit project. Wil je toch zelf hosten, kies dan Nee bij vraag 06 en de rapportage valt af.',
+                                          'Traffic reporting (GA4 + Search Console) runs on our hosting, so hosting is part of this project. If you would rather host it yourself, choose No at question 06 and the reporting drops off.') + '</span>'
+          : '<span>' + t('Hosting is niet verplicht', 'Hosting is not required') + '</span>' +
         '<span class="pc-tip">' + t('Wil je alleen de website en host je zelf, dan kan dat. Je krijgt de code, de bestanden en alle toegang, en het domein staat al op jouw naam. De prijs hierboven verandert er niet door. Neem je wel een plan, dan geldt een minimale looptijd van twaalf maanden op Basis en zes op Plus en Groei.',
-              'If you only want the website and plan to host it yourself, that is fine. You get the code, the files and every login, and the domain is already in your name. The price above does not change. If you do take a plan, there is a minimum term: twelve months on Basic, six on Plus and Growth.') + '</span>' +
+              'If you only want the website and plan to host it yourself, that is fine. You get the code, the files and every login, and the domain is already in your name. The price above does not change. If you do take a plan, there is a minimum term: twelve months on Basic, six on Plus and Growth.') + '</span>') +
       '</div>';
   }
 
@@ -739,6 +798,7 @@ span.pc-flag{
       const a = ADDONS.find(x => x.id === id);
       if (!a) return null;
       const label = lang() === 'en' ? a.en : a.nl;
+      if (a.tiers) { const t = a.tiers.find(x => x.id === tier[a.id]) || a.tiers[0]; return '  - ' + label + ', ' + (lang() === 'en' ? t.en : t.nl); }
       return a.per ? '  - ' + label + ' x' + (qty[a.id] || 1) : '  - ' + label;
     }).filter(Boolean);
 
@@ -752,6 +812,7 @@ span.pc-flag{
     if (!isLanding) lines.push((nl ? "Pagina's" : 'Pages') + ': ' + L.pages);
     lines.push((nl ? 'Gewenste oplevering' : 'Wanted by') + ': ' + L.when);
     lines.push((nl ? 'Inhoud verandert' : 'Content changes') + ': ' + L.freq);
+    lines.push((nl ? 'Hosting via WebKreatives' : 'Hosting through WebKreatives') + ': ' + (d.get('host') === 'no' ? (nl ? 'nee' : 'no') : (nl ? 'ja' : 'yes')));
     lines.push((nl ? "Extra's" : 'Add-ons') + ':' + (addLines.length ? '' : ' ' + (nl ? 'geen' : 'none')));
     lines.push(...addLines);
     lines.push((nl ? 'Indicatie' : 'Indicative range') + ': ' + rangeE.textContent.trim().replace(/\s+/g, ' '));
