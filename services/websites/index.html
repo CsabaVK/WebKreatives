@@ -29,19 +29,6 @@
 <link rel="stylesheet" href="/css/theme.css?v=v8">
 <style>
 /* ═══ SERVICE PAGE ══════════════════════════════════════════════════ */
-.sv-work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,40px)}
-@media(max-width:860px){.sv-work{grid-template-columns:minmax(0,1fr)}}
-.sv-card{display:flex;flex-direction:column}
-.sv-card .wk-frame{margin-bottom:16px}
-.sv-card .wk-frame img{aspect-ratio:1200/760;object-fit:cover;object-position:top center}
-.sv-card h3{
-  font-family:var(--f-display);font-weight:900;font-size:clamp(19px,2.1vw,25px);
-  letter-spacing:-.035em;line-height:1.1;color:var(--cream);margin:0 0 8px;
-  transition:color var(--dur-fast);
-}
-.sv-card:hover h3{color:#fff}
-.sv-card p{font-size:14px;line-height:1.65;color:var(--cream-mute);margin:0}
-.sv-card .wk-meta{display:block;margin-bottom:9px}
 
 /* ── stages ───────────────────────────────────────────────────────── */
 .sv-stages{border-top:1px solid var(--rule)}
@@ -252,6 +239,22 @@
   margin:0 0 22px;padding-left:40px;max-width:70ch;
 }
 @media(max-width:600px){.sv-q-a p{padding-left:0}}
+/* ── the reel: every live build, drifting past, all pointing at the portfolio ── */
+.sv-reel-wrap{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--ink-2);padding-block:clamp(38px,5vw,64px) 0;overflow:hidden}
+.sv-reel-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;margin-bottom:clamp(24px,3vw,40px)}
+.sv-reel-head h2{margin:0 0 8px}
+.sv-reel-head p{margin:0;color:var(--cream-mute);font-size:15px;max-width:52ch}
+.sv-reel{--marquee-gap:20px;padding-bottom:clamp(38px,5vw,64px)}
+.sv-reel-track{padding-inline:20px}
+.sv-reel-item{
+  display:block;width:clamp(240px,26vw,340px);flex-shrink:0;
+  transition:transform .6s var(--ease-premium),border-color var(--dur) var(--ease-premium);
+}
+.sv-reel-item .wk-frame-bar{display:flex}
+.sv-reel-item img{aspect-ratio:640/450;object-fit:cover;object-position:top center}
+.sv-reel-item:hover{border-color:var(--bronze-rule)}
+.sv-reel-item:hover img{filter:none;transform:scale(1.03)}
+@media(max-width:860px){.sv-reel-head{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body data-page="service">
@@ -295,147 +298,31 @@
   </div>
 </section>
 
-<!-- ══ THE WORK ══════════════════════════════════════════════════ -->
-<section class="wk-section">
-  <div class="wk-wrap">
-    <div class="wk-intro">
-      <div>
-        <span class="wk-eyebrow" data-reveal data-decode data-nl="Het werk" data-en="The work">The work</span>
-        <h2 class="wk-display wk-h2" data-split
-          data-nl="Vier builds, live en aanklikbaar."
-          data-en="Four builds, live and clickable.">Four builds, live and clickable.</h2>
-      </div>
-      <p class="wk-lede" data-reveal
-        data-nl="Geen mockups in een raster. Open ze, klik erdoorheen, bekijk ze op je telefoon. Zo zie je hoe we bouwen voordat je iets uitgeeft."
-        data-en="No mockups in a grid. Open them, click through, look at them on your phone. That is how you see the way we build before you spend anything.">No mockups in a grid. Open them, click through, look at them on your phone. That is how you see the way we build before you spend anything.</p>
-    </div>
 
-    <div class="sv-work">
-      <a class="sv-card" href="/client-projects/leyenburger/" target="_blank" rel="noopener" data-reveal>
-        <div class="wk-frame">
-          <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/leyenburger</span></div>
-          <img alt="Leyenburger Grill" src="/assets/screenshots/leyenburger.webp" srcset="/assets/screenshots/leyenburger-640.webp 640w, /assets/screenshots/leyenburger.webp 1280w" sizes="(max-width:900px) 92vw, 33vw" width="1280" height="900" loading="lazy" decoding="async">
-        </div>
-        <span class="wk-meta" data-nl="Horeca · One-page" data-en="Food &amp; drink · One-page">Food &amp; drink · One-page</span>
-        <h3>Leyenburger Grill</h3>
-        <p data-nl="Voor eethuizen die sfeer, menu en locatie direct overbrengen. Donker editorial design met menukaart, openingstijden en Google Maps."
-           data-en="For restaurants that put atmosphere, menu and location front and center. Dark editorial design with menu section, opening hours and Google Maps.">For restaurants that put atmosphere, menu and location front and center. Dark editorial design with menu section, opening hours and Google Maps.</p>
-      </a>
-
-      <a class="sv-card" href="/client-projects/luna-beauty-studio/" target="_blank" rel="noopener" data-reveal data-reveal-delay=".08">
-        <div class="wk-frame">
-          <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/luna-beauty-studio</span></div>
-          <img alt="Luna Beauty Studio" src="/assets/screenshots/luna-beauty-studio.webp" srcset="/assets/screenshots/luna-beauty-studio-640.webp 640w, /assets/screenshots/luna-beauty-studio.webp 1280w" sizes="(max-width:900px) 92vw, 33vw" width="1280" height="900" loading="lazy" decoding="async">
-        </div>
-        <span class="wk-meta" data-nl="Beauty · One-page" data-en="Beauty · One-page">Beauty · One-page</span>
-        <h3>Luna Beauty Studio</h3>
-        <p data-nl="Voor salons en beautybedrijven waarbij diensten directe boekingen triggeren. Warm design met diensten, prijzen, testimonials en WhatsApp-boeking."
-           data-en="For salons and beauty brands where services need to trigger bookings. Warm design with services, pricing, testimonials and WhatsApp booking.">For salons and beauty brands where services need to trigger bookings. Warm design with services, pricing, testimonials and WhatsApp booking.</p>
-      </a>
-
-      <a class="sv-card" href="/client-projects/maison-blanc-interieur/" target="_blank" rel="noopener" data-reveal data-reveal-delay=".16">
-        <div class="wk-frame">
-          <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/maison-blanc-interieur</span></div>
-          <img alt="Maison Blanc Interieur" src="/assets/screenshots/maison-blanc-interieur.webp" srcset="/assets/screenshots/maison-blanc-interieur-640.webp 640w, /assets/screenshots/maison-blanc-interieur.webp 1280w" sizes="(max-width:900px) 92vw, 33vw" width="1280" height="900" loading="lazy" decoding="async">
-        </div>
-        <span class="wk-meta" data-nl="Interieur · One-page" data-en="Interior · One-page">Interior · One-page</span>
-        <h3>Maison Blanc Interieur</h3>
-        <p data-nl="Voor premium merken waarbij elke bezoeker verfijning moet voelen. Ultra-luxe editorial stijl met magazine-grid en antiekgouden accenten."
-           data-en="For premium brands where every visitor should feel the quality. Ultra-luxury editorial style with magazine grid and antique gold accents.">For premium brands where every visitor should feel the quality. Ultra-luxury editorial style with magazine grid and antique gold accents.</p>
-      </a>
-
-      <a class="sv-card" href="/client-projects/studio-lena-fotografie/" target="_blank" rel="noopener" data-reveal data-reveal-delay=".24">
-        <div class="wk-frame">
-          <div class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/studio-lena-fotografie</span></div>
-          <img alt="Studio Lena" src="/assets/screenshots/studio-lena-fotografie.webp" srcset="/assets/screenshots/studio-lena-fotografie-640.webp 640w, /assets/screenshots/studio-lena-fotografie.webp 1280w" sizes="(max-width:900px) 92vw, 33vw" width="1280" height="900" loading="lazy" decoding="async">
-        </div>
-        <span class="wk-meta" data-nl="Fotografie · One-page" data-en="Photography · One-page">Photography · One-page</span>
-        <h3>Studio Lena</h3>
-        <p data-nl="Voor fotografen en creatives die het werk laten spreken. Scandinavisch minimalisme met asymmetrisch fotogrid, 100vh split hero en subtiele scrollanimaties."
-           data-en="For photographers and creatives who let their work do the talking. Scandinavian minimalism with asymmetric photo grid, 100vh split hero and subtle scroll animations.">For photographers and creatives who let their work do the talking. Scandinavian minimalism with asymmetric photo grid, 100vh split hero and subtle scroll animations.</p>
-      </a>
-    </div>
-        <span class="wk-meta" data-nl="Vakwerk · Servicebedrijf" data-en="Trades · Service business">Trades · Service business</span>
-        <h3>Van den Berg Loodgieter</h3>
-        <p data-nl="Eén pagina die de hele route afdekt: wat je doet, waar je werkt, wat het kost en hoe je belt. Gebouwd voor iemand met een lekkage."
-           data-en="One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak.">One page covering the whole route: what you do, where you work, what it costs and how to call. Built for someone with a leak.</p>
-      </a>
-    </div>
-
-    <div style="margin-top:38px" data-reveal>
-      <a href="/portfolio/" class="wk-more">
-        <span data-nl="Bekijk het hele portfolio" data-en="See the full portfolio">See the full portfolio</span>
-        <span class="wk-arrow">&rarr;</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══ HOW IT RUNS ═══════════════════════════════════════════════ -->
+<!-- ══ CALCULATOR ════════════════════════════════════════════════ -->
 <section class="wk-section" style="border-top:1px solid var(--rule)">
   <div class="wk-wrap">
-    <div class="wk-intro">
+    <div class="sv-calc" data-reveal>
       <div>
-        <span class="wk-eyebrow" data-reveal data-decode data-nl="Hoe het loopt" data-en="How it runs">How it runs</span>
+        <span class="wk-eyebrow" data-decode data-nl="Kostencalculator" data-en="Cost calculator">Cost calculator</span>
         <h2 class="wk-display wk-h2" data-split
-          data-nl="Vier stappen, en je weet steeds waar je staat."
-          data-en="Four steps, and you always know where you are.">Four steps, and you always know where you are.</h2>
+          data-nl="Wil je eerst weten <em class='mark'>wat het kost</em>?"
+          data-en="Want the <em class='mark'>number first</em>?">Want the <em class="mark">number first</em>?</h2>
+        <p data-nl="Kies de omvang, vink aan wat je nodig hebt, en je ziet een bandbreedte. Geen e-mailadres, geen verkoopgesprek vooraf. Het duurt twee minuten en je zit nergens aan vast."
+           data-en="Pick the scope, tick what you need, and you get a range. No email address, no sales call first. It takes two minutes and commits you to nothing.">Pick the scope, tick what you need, and you get a range. No email address, no sales call first. It takes two minutes and commits you to nothing.</p>
+        <a href="/pricing/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Open de calculator" data-en="Open the calculator">Open the calculator</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
       </div>
-      <p class="wk-lede" data-reveal
-        data-nl="Elke stap eindigt met iets dat je kunt bekijken en goedkeuren. Er komt niets als verrassing aan het einde."
-        data-en="Every step ends with something you can look at and sign off. Nothing arrives as a surprise at the end.">Every step ends with something you can look at and sign off. Nothing arrives as a surprise at the end.</p>
-    </div>
-
-    <div class="sv-stages">
-      <div class="sv-stage" data-reveal>
-        <span class="sv-stage-n">01</span>
-        <div>
-          <h3 data-nl="Wie moet er kiezen?" data-en="Who has to choose?">Who has to choose?</h3>
-          <p data-nl="We beginnen bij de klant, niet bij het ontwerp. Wat zoekt die persoon, wat twijfelt er nog, en wat moet er op het scherm staan voordat ze bellen. Dat bepaalt de structuur van de hele site."
-             data-en="We start with the customer, not the design. What are they looking for, what are they still unsure about, and what has to be on screen before they call. That decides the structure of the whole site.">We start with the customer, not the design. What are they looking for, what are they still unsure about, and what has to be on screen before they call. That decides the structure of the whole site.</p>
-        </div>
-        <div class="sv-stage-out">
-          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
-          <span data-nl="Een pagina-indeling en een vaste prijs" data-en="A page plan and a fixed price">A page plan and a fixed price</span>
-        </div>
-      </div>
-
-      <div class="sv-stage" data-reveal>
-        <span class="sv-stage-n">02</span>
-        <div>
-          <h3 data-nl="Ontwerp op de echte inhoud" data-en="Design on the real content">Design on the real content</h3>
-          <p data-nl="Geen lorem ipsum. We ontwerpen met jouw teksten, prijzen en foto's, want een layout die mooi is met nepinhoud valt om zodra de echte tekst erin gaat."
-             data-en="No lorem ipsum. We design with your words, prices and photos, because a layout that looks good with placeholder content falls apart the moment the real text goes in.">No lorem ipsum. We design with your words, prices and photos, because a layout that looks good with placeholder content falls apart the moment the real text goes in.</p>
-        </div>
-        <div class="sv-stage-out">
-          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
-          <span data-nl="Het ontwerp, plus twee rondes feedback" data-en="The design, plus two rounds of feedback">The design, plus two rounds of feedback</span>
-        </div>
-      </div>
-
-      <div class="sv-stage" data-reveal>
-        <span class="sv-stage-n">03</span>
-        <div>
-          <h3 data-nl="Bouwen, niet samenklikken" data-en="Built, not assembled">Built, not assembled</h3>
-          <p data-nl="Handgeschreven code in plaats van een stapel plugins. Dat maakt de site sneller, veiliger en goedkoper om te onderhouden, en er zit geen thema-licentie aan vast die je elk jaar moet verlengen."
-             data-en="Hand-written code instead of a stack of plugins. That makes the site faster, safer and cheaper to maintain, and there is no theme licence to renew every year.">Hand-written code instead of a stack of plugins. That makes the site faster, safer and cheaper to maintain, and there is no theme licence to renew every year.</p>
-        </div>
-        <div class="sv-stage-out">
-          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
-          <span data-nl="Een testlink om alles op je eigen telefoon te bekijken" data-en="A preview link to check it on your own phone">A preview link to check it on your own phone</span>
-        </div>
-      </div>
-
-      <div class="sv-stage" data-reveal>
-        <span class="sv-stage-n">04</span>
-        <div>
-          <h3 data-nl="Live, op jouw naam" data-en="Live, in your name">Live, in your name</h3>
-          <p data-nl="Domein, code, teksten en accounts staan op jouw naam, niet op de onze. Je kunt op elk moment vertrekken en alles meenemen. Dat is geen gunst, dat hoort zo."
-             data-en="Domain, code, content and accounts are in your name, not ours. You can walk away at any point and take everything with you. That is not a favour, it is how it should work.">Domain, code, content and accounts are in your name, not ours. You can walk away at any point and take everything with you. That is not a favour, it is how it should work.</p>
-        </div>
-        <div class="sv-stage-out">
-          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
-          <span data-nl="Alle toegang, en een korte uitleg hoe je het beheert" data-en="Every login, and a short handover on running it">Every login, and a short handover on running it</span>
+      <div class="sv-calc-dial">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="tr" cx="50" cy="50" r="45"/>
+          <circle class="ar" cx="50" cy="50" r="45"/>
+        </svg>
+        <div class="sv-calc-dial-c">
+          <b id="svDialN">&euro;290</b>
+          <span data-nl="Gemiddeld, 2&ndash;4 pagina's" data-en="Typical, 2&ndash;4 pages">Typical, 2&ndash;4 pages</span>
         </div>
       </div>
     </div>
@@ -560,22 +447,75 @@
   </div>
 </section>
 
-<!-- ══ EXPECTATIONS ══════════════════════════════════════════════ -->
+<!-- ══ HOW IT RUNS ═══════════════════════════════════════════════ -->
 <section class="wk-section" style="border-top:1px solid var(--rule)">
   <div class="wk-wrap">
     <div class="wk-intro">
       <div>
-        <span class="wk-eyebrow" data-reveal data-decode data-nl="Wat je kunt verwachten" data-en="What to expect">What to expect</span>
+        <span class="wk-eyebrow" data-reveal data-decode data-nl="Hoe het loopt" data-en="How it runs">How it runs</span>
         <h2 class="wk-display wk-h2" data-split
-          data-nl="Tijd, geld en wat we van je nodig hebben."
-          data-en="Time, money, and what we need from you.">Time, money, and what we need from you.</h2>
+          data-nl="Vier stappen, en je weet steeds waar je staat."
+          data-en="Four steps, and you always know where you are.">Four steps, and you always know where you are.</h2>
       </div>
       <p class="wk-lede" data-reveal
-        data-nl="Scope eerst, prijs daarna. We noemen pas een bedrag als duidelijk is wat erin zit, en dat bedrag verandert daarna niet."
-        data-en="Scope first, price second. We only name a figure once it is clear what is in it, and that figure does not move afterwards.">Scope first, price second. We only name a figure once it is clear what is in it, and that figure does not move afterwards.</p>
+        data-nl="Elke stap eindigt met iets dat je kunt bekijken en goedkeuren. Er komt niets als verrassing aan het einde."
+        data-en="Every step ends with something you can look at and sign off. Nothing arrives as a surprise at the end.">Every step ends with something you can look at and sign off. Nothing arrives as a surprise at the end.</p>
     </div>
 
-    <div class="sv-exp" data-reveal>
+    <div class="sv-stages">
+      <div class="sv-stage" data-reveal>
+        <span class="sv-stage-n">01</span>
+        <div>
+          <h3 data-nl="Wie moet er kiezen?" data-en="Who has to choose?">Who has to choose?</h3>
+          <p data-nl="We beginnen bij de klant, niet bij het ontwerp. Wat zoekt die persoon, wat twijfelt er nog, en wat moet er op het scherm staan voordat ze bellen. Dat bepaalt de structuur van de hele site."
+             data-en="We start with the customer, not the design. What are they looking for, what are they still unsure about, and what has to be on screen before they call. That decides the structure of the whole site.">We start with the customer, not the design. What are they looking for, what are they still unsure about, and what has to be on screen before they call. That decides the structure of the whole site.</p>
+        </div>
+        <div class="sv-stage-out">
+          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
+          <span data-nl="Een pagina-indeling en een vaste prijs" data-en="A page plan and a fixed price">A page plan and a fixed price</span>
+        </div>
+      </div>
+
+      <div class="sv-stage" data-reveal>
+        <span class="sv-stage-n">02</span>
+        <div>
+          <h3 data-nl="Ontwerp op de echte inhoud" data-en="Design on the real content">Design on the real content</h3>
+          <p data-nl="Geen lorem ipsum. We ontwerpen met jouw teksten, prijzen en foto's, want een layout die mooi is met nepinhoud valt om zodra de echte tekst erin gaat."
+             data-en="No lorem ipsum. We design with your words, prices and photos, because a layout that looks good with placeholder content falls apart the moment the real text goes in.">No lorem ipsum. We design with your words, prices and photos, because a layout that looks good with placeholder content falls apart the moment the real text goes in.</p>
+        </div>
+        <div class="sv-stage-out">
+          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
+          <span data-nl="Het ontwerp, plus twee rondes feedback" data-en="The design, plus two rounds of feedback">The design, plus two rounds of feedback</span>
+        </div>
+      </div>
+
+      <div class="sv-stage" data-reveal>
+        <span class="sv-stage-n">03</span>
+        <div>
+          <h3 data-nl="Bouwen, niet samenklikken" data-en="Built, not assembled">Built, not assembled</h3>
+          <p data-nl="Handgeschreven code in plaats van een stapel plugins. Dat maakt de site sneller, veiliger en goedkoper om te onderhouden, en er zit geen thema-licentie aan vast die je elk jaar moet verlengen."
+             data-en="Hand-written code instead of a stack of plugins. That makes the site faster, safer and cheaper to maintain, and there is no theme licence to renew every year.">Hand-written code instead of a stack of plugins. That makes the site faster, safer and cheaper to maintain, and there is no theme licence to renew every year.</p>
+        </div>
+        <div class="sv-stage-out">
+          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
+          <span data-nl="Een testlink om alles op je eigen telefoon te bekijken" data-en="A preview link to check it on your own phone">A preview link to check it on your own phone</span>
+        </div>
+      </div>
+
+      <div class="sv-stage" data-reveal>
+        <span class="sv-stage-n">04</span>
+        <div>
+          <h3 data-nl="Live, op jouw naam" data-en="Live, in your name">Live, in your name</h3>
+          <p data-nl="Domein, code, teksten en accounts staan op jouw naam, niet op de onze. Je kunt op elk moment vertrekken en alles meenemen. Dat is geen gunst, dat hoort zo."
+             data-en="Domain, code, content and accounts are in your name, not ours. You can walk away at any point and take everything with you. That is not a favour, it is how it should work.">Domain, code, content and accounts are in your name, not ours. You can walk away at any point and take everything with you. That is not a favour, it is how it should work.</p>
+        </div>
+        <div class="sv-stage-out">
+          <b data-nl="Wat je krijgt" data-en="What you get">What you get</b>
+          <span data-nl="Alle toegang, en een korte uitleg hoe je het beheert" data-en="Every login, and a short handover on running it">Every login, and a short handover on running it</span>
+        </div>
+      </div>
+    </div>
+    <div class="sv-exp" data-reveal style="margin-top:clamp(32px,4vw,56px)">
       <div class="sv-e">
         <span class="sv-e-l" data-nl="Doorlooptijd" data-en="Timeline">Timeline</span>
         <span class="sv-e-n" data-nl="3 dagen &ndash; 8 weken" data-en="3 days &ndash; 8 weeks">3 days &ndash; 8 weeks</span>
@@ -595,43 +535,63 @@
            data-en="One conversation at the start, handing over copy and photos, and two rounds of feedback. That is all we need. If you have no copy or photos, we handle that as a separate line.">One conversation at the start, handing over copy and photos, and two rounds of feedback. That is all we need. If you have no copy or photos, we handle that as a separate line.</p>
       </div>
     </div>
-
-    <div style="margin-top:32px" data-reveal>
-      <a href="/pricing/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
-        <span data-nl="Reken je eigen scope door" data-en="Price up your own scope">Price up your own scope</span>
-        <span class="wk-arrow">&rarr;</span>
-      </a>
-    </div>
   </div>
 </section>
 
 
-<!-- ══ CALCULATOR ════════════════════════════════════════════════ -->
-<section class="wk-section" style="padding-top:0">
-  <div class="wk-wrap">
-    <div class="sv-calc" data-reveal>
-      <div>
-        <span class="wk-eyebrow" data-decode data-nl="Kostencalculator" data-en="Cost calculator">Cost calculator</span>
-        <h2 class="wk-display wk-h2" data-split
-          data-nl="Wil je eerst weten <em class='mark'>wat het kost</em>?"
-          data-en="Want the <em class='mark'>number first</em>?">Want the <em class="mark">number first</em>?</h2>
-        <p data-nl="Kies de omvang, vink aan wat je nodig hebt, en je ziet een bandbreedte. Geen e-mailadres, geen verkoopgesprek vooraf. Het duurt twee minuten en je zit nergens aan vast."
-           data-en="Pick the scope, tick what you need, and you get a range. No email address, no sales call first. It takes two minutes and commits you to nothing.">Pick the scope, tick what you need, and you get a range. No email address, no sales call first. It takes two minutes and commits you to nothing.</p>
-        <a href="/pricing/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
-          <span data-nl="Open de calculator" data-en="Open the calculator">Open the calculator</span>
-          <span class="wk-arrow">&rarr;</span>
-        </a>
-      </div>
-      <div class="sv-calc-dial">
-        <svg viewBox="0 0 100 100" aria-hidden="true">
-          <circle class="tr" cx="50" cy="50" r="45"/>
-          <circle class="ar" cx="50" cy="50" r="45"/>
-        </svg>
-        <div class="sv-calc-dial-c">
-          <b id="svDialN">&euro;290</b>
-          <span data-nl="Gemiddeld, 2&ndash;4 pagina's" data-en="Typical, 2&ndash;4 pages">Typical, 2&ndash;4 pages</span>
-        </div>
-      </div>
+
+
+
+<!-- ══ THE WORK ══════════════════════════════════════════════════ -->
+<section class="sv-reel-wrap">
+  <div class="wk-wrap sv-reel-head">
+    <div data-reveal>
+      <h2 class="wk-display wk-h3"
+        data-nl="Elke site draait echt. <span class='wk-accent'>Open ze.</span>"
+        data-en="Every site is live. <span class='wk-accent'>Open them.</span>">Every site is live. <span class='wk-accent'>Open them.</span></h2>
+      <p data-nl="Geen mockups: dit zijn de builds zelf, op je eigen telefoon te bekijken." data-en="No mockups: these are the builds themselves, there to open on your own phone.">No mockups: these are the builds themselves, there to open on your own phone.</p>
+    </div>
+    <div data-reveal data-reveal-delay=".1">
+      <a href="/portfolio/#werk" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+        <span data-nl="Naar het portfolio" data-en="See the portfolio">See the portfolio</span>
+        <span class="wk-arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+  <div class="sv-reel" data-marquee="46" data-reveal>
+    <div class="sv-reel-track">
+      <a class="wk-frame sv-reel-item" href="/portfolio/#werk" data-tilt="7" data-cursor-label="Portfolio">
+        <span class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/leyenburger</span></span>
+        <img alt="Leyenburger Grill" src="/assets/screenshots/leyenburger-640.webp" width="640" height="450" loading="lazy" decoding="async">
+      </a>
+      <a class="wk-frame sv-reel-item" href="/portfolio/#werk" data-tilt="7" data-cursor-label="Portfolio">
+        <span class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/luna-beauty-studio</span></span>
+        <img alt="Luna Beauty Studio" src="/assets/screenshots/luna-beauty-studio-640.webp" width="640" height="450" loading="lazy" decoding="async">
+      </a>
+      <a class="wk-frame sv-reel-item" href="/portfolio/#werk" data-tilt="7" data-cursor-label="Portfolio">
+        <span class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/maison-blanc-interieur</span></span>
+        <img alt="Maison Blanc Interieur" src="/assets/screenshots/maison-blanc-interieur-640.webp" width="640" height="450" loading="lazy" decoding="async">
+      </a>
+      <a class="wk-frame sv-reel-item" href="/portfolio/#werk" data-tilt="7" data-cursor-label="Portfolio">
+        <span class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/studio-lena-fotografie</span></span>
+        <img alt="Studio Lena" src="/assets/screenshots/studio-lena-fotografie-640.webp" width="640" height="450" loading="lazy" decoding="async">
+      </a>
+      <a class="wk-frame sv-reel-item" href="/portfolio/#werk" data-tilt="7" data-cursor-label="Portfolio">
+        <span class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/autodistrict</span></span>
+        <img alt="Auto District" src="/assets/screenshots/autodistrict-640.webp" width="640" height="450" loading="lazy" decoding="async">
+      </a>
+      <a class="wk-frame sv-reel-item" href="/portfolio/#werk" data-tilt="7" data-cursor-label="Portfolio">
+        <span class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/scootershopdenhaag</span></span>
+        <img alt="Scootershop Den Haag" src="/assets/screenshots/scootershopdenhaag-640.webp" width="640" height="450" loading="lazy" decoding="async">
+      </a>
+      <a class="wk-frame sv-reel-item" href="/portfolio/#werk" data-tilt="7" data-cursor-label="Portfolio">
+        <span class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/bakkerij-hartman</span></span>
+        <img alt="Bakkerij Hartman" src="/assets/screenshots/bakkerij-hartman-640.webp" width="640" height="450" loading="lazy" decoding="async">
+      </a>
+      <a class="wk-frame sv-reel-item" href="/portfolio/#werk" data-tilt="7" data-cursor-label="Portfolio">
+        <span class="wk-frame-bar"><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-url">webkreatives.com/nox-studio</span></span>
+        <img alt="Atelier Lune" src="/assets/screenshots/nox-studio-640.webp" width="640" height="450" loading="lazy" decoding="async">
+      </a>
     </div>
   </div>
 </section>

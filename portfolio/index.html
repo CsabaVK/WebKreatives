@@ -257,6 +257,67 @@
 }
 .pf-q li b{font-family:var(--f-mono);font-weight:700;font-size:10px;letter-spacing:.12em;color:var(--bronze);min-width:22px}
 .pf-case-links{display:flex;gap:10px;flex-wrap:wrap}
+/* ── the booklet ─────────────────────────────────────────────────────
+   A written-up case is a small book. Closed, the cover lies on the right
+   page; on the reveal it swings open on its spine (rotateY on the cover,
+   both faces real elements) and the spread reads screenshot left, the
+   five questions right. Reduced motion: it is simply open. */
+.pf-book{
+  position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;
+  perspective:1800px;perspective-origin:50% 50%;
+  --page-h:clamp(300px,34vw,440px);
+}
+.pf-book-page{
+  height:var(--page-h);background:var(--ink-2);border:1px solid var(--rule);
+  position:relative;
+}
+.pf-book-page--l{border-right:0;border-radius:var(--radius) 0 0 var(--radius)}
+.pf-book-page--r{
+  border-radius:0 var(--radius) var(--radius) 0;padding:clamp(18px,2.4vw,30px);
+  box-shadow:inset 6px 0 14px -10px rgba(0,0,0,.7);
+}
+.pf-book-page--r .pf-q{max-width:none;margin:0}
+.pf-book-page--r .pf-q li{padding:9px 0}
+.pf-book-folio{
+  position:absolute;bottom:12px;right:16px;font-family:var(--f-mono);font-size:9px;
+  letter-spacing:.14em;color:var(--cream-faint);
+}
+.pf-book-cover{
+  position:absolute;top:0;left:50%;width:50%;height:var(--page-h);
+  transform-origin:left center;transform-style:preserve-3d;
+  transform:rotateY(0);transition:transform 1.4s var(--ease-premium) .25s;
+  cursor:pointer;
+}
+.pf-book.is-in .pf-book-cover{transform:rotateY(-180deg)}
+.pf-book-face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border:1px solid var(--rule);overflow:hidden;display:flex;flex-direction:column;
+}
+.pf-book-front{
+  background:var(--ink-deep);border-radius:0 var(--radius) var(--radius) 0;
+  padding:clamp(18px,2.4vw,30px);justify-content:flex-end;gap:10px;
+  box-shadow:inset 10px 0 18px -14px rgba(0,0,0,.9);
+}
+.pf-book-front .wk-meta{position:absolute;top:clamp(18px,2.4vw,30px);left:clamp(18px,2.4vw,30px);color:var(--bronze)}
+.pf-book-title{font-size:clamp(24px,3vw,40px);line-height:.96;color:var(--cream)}
+.pf-book-sub{font-size:13px;color:var(--cream-mute)}
+.pf-book-open{
+  margin-top:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-faint);
+}
+.pf-book-back{
+  transform:rotateY(180deg);background:var(--ink-2);
+  border-radius:var(--radius) 0 0 var(--radius);border-right:0;
+  align-items:center;justify-content:center;padding:clamp(14px,2vw,24px);
+  box-shadow:inset -6px 0 14px -10px rgba(0,0,0,.7);
+}
+.pf-book-back img{
+  height:100%;width:auto;max-width:100%;object-fit:cover;object-position:top;
+  border-radius:8px;border:1px solid var(--rule);filter:saturate(.9);
+}
+.pf-book-cover:hover .pf-book-back img{filter:none}
+@media(prefers-reduced-motion:reduce){.pf-book-cover{transition:none;transform:rotateY(-180deg)}}
+@media(max-width:900px){.pf-book{--page-h:clamp(250px,58vw,360px)}}
 </style>
 </head>
 <body data-page="portfolio">
@@ -280,8 +341,8 @@
         data-nl="Werk dat je kunt <em class='mark'>doorklikken</em>."
         data-en="Work you can <em class='mark'>click through</em>.">Work you can <em class="mark">click through</em>.</h1>
       <p class="wk-lede" data-reveal data-reveal-delay=".15"
-        data-nl="Websites voor garages, restaurants, salons en ateliers. Geen mockups in een lijstje: elke site draait echt en opent op je eigen telefoon. Eén ervan is volledig uitgeschreven als case study."
-        data-en="Websites for garages, restaurants, salons and studios. Not mockups in a grid: every site actually runs and opens on your own phone. One is written up in full as a case study.">Websites for garages, restaurants, salons and studios. Not mockups in a grid: every site actually runs and opens on your own phone. One is written up in full as a case study.</p>
+        data-nl="Websites voor garages, restaurants, salons en ateliers. Geen mockups in een lijstje: elke site draait echt en opent op je eigen telefoon. Sommige zijn volledig uitgeschreven als case study."
+        data-en="Websites for garages, restaurants, salons and studios. Not mockups in a grid: every site actually runs and opens on your own phone. Some are written up in full as case studies.">Websites for garages, restaurants, salons and studios. Not mockups in a grid: every site actually runs and opens on your own phone. Some are written up in full as case studies.</p>
       <div class="pf-hero-more" data-reveal data-reveal-delay=".25">
         <a href="#werk" class="wk-more">
           <span data-nl="Naar alle sites" data-en="To every site">To every site</span>
@@ -594,8 +655,8 @@
       <div>
         <span class="wk-eyebrow" data-reveal data-decode data-nl="Achter het werk" data-en="Behind the work">Behind the work</span>
         <h2 class="wk-display wk-h2" data-split
-          data-nl="Eén site, volledig <em class='mark'>uitgeschreven</em>."
-          data-en="One site, written up <em class='mark'>in full</em>.">One site, written up <em class="mark">in full</em>.</h2>
+          data-nl="Het <em class='mark'>waarom</em> achter een build."
+          data-en="The <em class='mark'>why</em> behind a build.">The <em class="mark">why</em> behind a build.</h2>
       </div>
       <p class="wk-lede" data-reveal
         data-nl="Niet alleen het resultaat, maar ook waarom: wat er normaal misgaat, welke keuzes we maakten en wat we bewust hebben geschrapt."
@@ -603,13 +664,30 @@
     </div>
 
     <article class="pf-case" data-reveal>
-      <div class="pf-case-media">
-        <a class="wk-frame" href="/case-studies/leyenburger-grill/" data-tilt="6" data-cursor-label="Case study">
-          <div class="wk-frame-bar">
-            <span class="wk-frame-dot"></span><span class="wk-frame-dot"></span><span class="wk-frame-dot"></span>
-            <span class="wk-frame-url">webkreatives.com/leyenburger</span>
-          </div>
-          <img alt="Leyenburger Grill" src="/assets/screenshots/leyenburger.webp" srcset="/assets/screenshots/leyenburger-640.webp 640w, /assets/screenshots/leyenburger.webp 1280w" sizes="(max-width:900px) 92vw, 50vw" width="1280" height="900" loading="lazy" decoding="async">
+      <div class="pf-book" data-reveal aria-label="Case study Leyenburger Grill">
+        <div class="pf-book-page pf-book-page--l" aria-hidden="true"></div>
+        <div class="pf-book-page pf-book-page--r">
+          <span class="wk-meta pf-q-l" data-nl="Vijf vragen, elke case" data-en="Five questions, every case">Five questions, every case</span>
+          <ol class="pf-q">
+            <li><b>01</b><span data-nl="De opdracht" data-en="The brief">The brief</span></li>
+            <li><b>02</b><span data-nl="Wat er misgaat" data-en="What goes wrong">What goes wrong</span></li>
+            <li><b>03</b><span data-nl="Keuzes die we maakten" data-en="Decisions we made">Decisions we made</span></li>
+            <li><b>04</b><span data-nl="Wat we hebben geschrapt" data-en="What we cut">What we cut</span></li>
+            <li><b>05</b><span data-nl="Waar we op zouden sturen" data-en="What we would measure">What we would measure</span></li>
+          </ol>
+          <span class="pf-book-folio">02</span>
+        </div>
+        <a class="pf-book-cover" href="/case-studies/leyenburger-grill/" data-cursor-label="Case study">
+          <span class="pf-book-face pf-book-front">
+            <span class="wk-meta" data-nl="Case study" data-en="Case study">Case study</span>
+            <span class="pf-book-title wk-display">Leyenburger<br>Grill</span>
+            <span class="pf-book-sub" data-nl="Horeca &middot; One-page" data-en="Food &amp; drink &middot; One-page">Food &amp; drink &middot; One-page</span>
+            <span class="pf-book-open" data-nl="Opent bij het scrollen" data-en="Opens as you scroll">Opens as you scroll</span>
+          </span>
+          <span class="pf-book-face pf-book-back">
+            <img alt="Leyenburger Grill" src="/assets/screenshots/leyenburger-phone.webp" width="786" height="1380" loading="lazy" decoding="async">
+            <span class="pf-book-folio">01</span>
+          </span>
         </a>
       </div>
       <div>
@@ -618,14 +696,6 @@
         <p class="pf-case-sub" data-nl="Horeca &middot; One-page" data-en="Food &amp; drink &middot; One-page">Food &amp; drink &middot; One-page</p>
         <p data-nl="De meeste concurrenten sturen je naar een PDF of naar een bezorgplatform dat commissie pakt. Hier is de kaart de site zelf, en dat is de hele case."
            data-en="Most competitors send you to a PDF or to a delivery platform taking a cut. Here the menu is the site itself, and that is the whole case.">Most competitors send you to a PDF or to a delivery platform taking a cut. Here the menu is the site itself, and that is the whole case.</p>
-        <span class="wk-meta pf-q-l" data-nl="Vijf vragen, elke case" data-en="Five questions, every case">Five questions, every case</span>
-        <ol class="pf-q">
-          <li><b>01</b><span data-nl="De opdracht" data-en="The brief">The brief</span></li>
-          <li><b>02</b><span data-nl="Wat er misgaat" data-en="What goes wrong">What goes wrong</span></li>
-          <li><b>03</b><span data-nl="Keuzes die we maakten" data-en="Decisions we made">Decisions we made</span></li>
-          <li><b>04</b><span data-nl="Wat we hebben geschrapt" data-en="What we cut">What we cut</span></li>
-          <li><b>05</b><span data-nl="Waar we op zouden sturen" data-en="What we would measure">What we would measure</span></li>
-        </ol>
         <div class="pf-case-links">
           <a href="/case-studies/leyenburger-grill/" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
             <span data-nl="Lees de case study" data-en="Read the case study">Read the case study</span>
