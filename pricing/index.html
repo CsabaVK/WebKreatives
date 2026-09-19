@@ -211,6 +211,7 @@ span.pc-flag{
 
 /* ── the range must not break across two lines ────────────────────── */
 .pc-range{white-space:nowrap;font-size:clamp(23px,2.7vw,33px)}
+.pc-range.is-long{font-size:clamp(20px,2.1vw,26px)}
 .pc-range small{font-size:.6em}
 
 /* ── the two advice lines, each with an explanation on hover ──────── */
@@ -674,6 +675,8 @@ span.pc-flag{
      box visibly moves the number */
   let curLow = 0, curHigh = 0, rollRaf = 0, rollFallback = 0;
   function roll(low, high) {
+    /* five-figure ranges no longer fit the card at full size */
+    rangeE.classList.toggle('is-long', (money(low) + money(high)).length > 11);
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       curLow = low; curHigh = high;
       rangeE.innerHTML = money(low) + ' <small>&ndash;</small> ' + money(high);
