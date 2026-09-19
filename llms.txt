@@ -6,6 +6,8 @@
 
 - [Website design](https://webkreatives.com/services/websites/): small business website design at a fixed price, live in days to weeks
 - [Hosting, maintenance and support](https://webkreatives.com/services/hosting/): one monthly fee for domain, security, backups, updates and support
+- [Branding](https://webkreatives.com/services/branding/): stickers and business cards with print, custom QR codes, logo design, design systems, wraps; fixed prices
+- [Analytics](https://webkreatives.com/services/analytics/): website bottleneck analysis from GA4 and Search Console, written case studies
 - [Pricing](https://webkreatives.com/pricing/): fixed prices plus a two-minute cost calculator
 - [Portfolio](https://webkreatives.com/portfolio/): live client sites by sector
 - [Case studies](https://webkreatives.com/case-studies/): what changed for real clients

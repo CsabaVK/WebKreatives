@@ -187,6 +187,18 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://webkreatives.com/services/branding/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://webkreatives.com/services/analytics/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://webkreatives.com/services/hosting/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>

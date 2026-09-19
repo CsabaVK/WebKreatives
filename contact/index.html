@@ -294,7 +294,7 @@
 
 <script src="/js/motion.js?v=v8"></script>
 <script src="/js/locale.js?v=v7"></script>
-<script src="/js/site-nav.js?v=v6"></script>
+<script src="/js/site-nav.js?v=v8"></script>
 <script src="/js/site-footer.js?v=v9"></script>
 <script src="/js/cookie-consent.js?v=v10"></script>
 <script>
@@ -346,6 +346,9 @@
       if (v && v.text && Date.now() - v.at < 30 * 864e5) scope = v.text;
     } catch (e) {}
   }
+  /* a service page sends ?about=Logo design: open the message with it */
+  const about = new URLSearchParams(location.search).get('about');
+  if (!scope && about) scope = (localStorage.getItem('wk-lang') === 'en' ? 'About: ' : 'Over: ') + about.slice(0, 60) + '\n\n';
   if (!scope) return;
   try { sessionStorage.removeItem('wk-scope'); } catch (e) {}
 

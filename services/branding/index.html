@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://snap.licdn.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://wk-quote.webkreatives.workers.dev https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://px.ads.linkedin.com https://www.facebook.com; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Branding, coming soon: stickers, cards, QR codes, logos &mdash; WebKreatives</title>
+<meta name="description" content="Everything with your name on it, made to match the website: stickers, business cards, custom QR codes, logo, design system, wraps and holograms. Coming soon; leave your email and hear first.">
+<link rel="canonical" href="https://webkreatives.com/services/branding/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Branding, coming soon", "url": "https://webkreatives.com/services/branding/", "isPartOf": {"@type": "WebSite", "name": "WebKreatives", "url": "https://webkreatives.com"}}</script>
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webkreatives.com/services/branding/">
+<meta property="og:title" content="Branding, coming soon — WebKreatives">
+<meta property="og:description" content="Stickers, business cards, custom QR codes, logo, design system, wraps and holograms, all made to match the website. Leave your email and hear first.">
+<meta property="og:image" content="https://webkreatives.com/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="WebKreatives">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c0a09">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/theme.css?v=v9">
+<style>
+/* ═══ BRANDING, COMING SOON ═══════════════════════════════════════════ */
+
+/* ── hero: the pieces themselves, floating, following the pointer ── */
+.bs-hero .wk-phero-split{grid-template-columns:minmax(0,1fr) clamp(240px,26vw,380px);align-items:center}
+.bs-hero .wk-h1{font-size:clamp(34px,4.9vw,70px)}
+.bs-still{position:relative;width:clamp(240px,30vw,400px);aspect-ratio:1/1;justify-self:end}
+.bs-still > *{position:absolute;will-change:transform}
+.bs-still img{display:block;border-radius:8px;width:100%;height:auto}
+.bs-piece{transition:transform .9s var(--ease-premium)}
+.bs-piece--card{left:0;top:14%;width:74%;--r:-7deg}
+.bs-piece--sticker{right:0;top:0;width:44%;--r:9deg}
+.bs-piece--sticker img{border-radius:12px}
+.bs-piece--qr{right:8%;bottom:6%;width:34%;--r:-3deg}
+.bs-piece--qr img{background:var(--ink-deep);padding:10px;border:1px solid var(--rule);box-sizing:border-box}
+.bs-piece--card img{box-shadow:0 30px 60px rgba(0,0,0,.55)}
+.bs-piece--sticker img{box-shadow:0 22px 44px rgba(0,0,0,.5)}
+.bs-piece i{display:block;animation:bs-float var(--d,7s) ease-in-out infinite var(--dl,0s);transform:rotate(var(--r))}
+.bs-piece--card i{--d:7s}.bs-piece--sticker i{--d:6s;--dl:1.2s}.bs-piece--qr i{--d:8s;--dl:.6s}
+@keyframes bs-float{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-9px) rotate(var(--r))}}
+.bs-still-l{left:0;bottom:-30px;font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);white-space:nowrap}
+@media(max-width:900px){
+  .bs-hero .wk-phero-split{grid-template-columns:minmax(0,1fr);gap:34px}
+  .bs-still{width:min(72vw,300px);justify-self:start;margin:6px 0 30px}
+}
+@media(prefers-reduced-motion:reduce){.bs-piece i{animation:none}.bs-piece{transition:none}}
+/* the pointer preview shows the whole piece, not a landscape crop of it */
+.wk-prev{background:var(--ink-2)}
+.wk-prev img{object-fit:contain;padding:14px;box-sizing:border-box}
+
+/* ── the list: number, name, one line, a thumbnail, the tag ── */
+.bs-rows{border-top:1px solid var(--rule)}
+.bs-row{
+  display:grid;grid-template-columns:52px minmax(0,1fr) 72px auto;gap:clamp(14px,2.4vw,32px);align-items:center;
+  padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid var(--rule);position:relative;isolation:isolate;cursor:default;
+}
+.bs-row::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(223,56,33,.06),transparent 55%);opacity:0;transition:opacity var(--dur) var(--ease-premium)}
+.bs-row:hover::after{opacity:1}
+.bs-n{font-family:var(--f-display);font-size:clamp(22px,2.6vw,34px);line-height:1;color:var(--bronze);opacity:.7}
+.bs-body{min-width:0}
+.bs-row h2{font-family:var(--f-display);font-weight:900;font-size:clamp(20px,2.4vw,30px);line-height:1.05;letter-spacing:-.04em;color:var(--cream);margin:0 0 6px;transition:color var(--dur-fast)}
+.bs-row:hover h2{color:#fff}
+.bs-row p{margin:0;font-size:14.5px;color:var(--cream-mute)}
+.bs-thumb{width:72px;height:72px;object-fit:cover;border-radius:8px;border:1px solid var(--rule);background:var(--ink-2);filter:saturate(.85);transition:transform .6s var(--ease-premium),filter var(--dur)}
+.bs-row:hover .bs-thumb{transform:rotate(-4deg) scale(1.06);filter:none}
+.bs-thumb--soon{display:block;background:repeating-linear-gradient(135deg,transparent 0 6px,var(--rule) 6px 7px)}
+.bs-tag{font-family:var(--f-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);border:1px solid var(--bronze-rule);border-radius:99px;padding:6px 11px;white-space:nowrap}
+@media(max-width:600px){
+  .bs-row{grid-template-columns:minmax(0,1fr) 56px;gap:8px 14px;padding:16px 0}
+  .bs-n{display:none}
+  .bs-body{grid-area:1/1/2/2}
+  .bs-thumb{width:56px;height:56px;grid-area:1/2/3/3;align-self:start}
+  .bs-tag{grid-area:2/1/3/2;justify-self:start;padding:4px 9px;font-size:8.5px}
+  .bs-row p{font-size:13.5px}
+}
+
+/* ── notify: the glass with the mark, and one field ── */
+.bs-notify{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--ink-2)}
+.bs-notify-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center;padding-block:clamp(44px,6vw,90px)}
+.bs-glass{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:var(--radius);border:1px solid var(--rule-hard);background:linear-gradient(180deg,oklch(16% .012 25),oklch(10% .010 25))}
+.bs-glass::after{content:'';position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 60%,rgba(223,56,33,.18),transparent 70%)}
+.bs-glass-w{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:900;font-size:clamp(72px,9vw,128px);color:var(--cream);opacity:.85;z-index:1;--r:0deg;animation:bs-float 6s ease-in-out infinite}
+.bs-glass-sheen{position:absolute;top:-40%;bottom:-40%;left:-30%;width:26%;background:linear-gradient(90deg,transparent,rgba(185,225,133,.14),rgba(100,141,203,.14),rgba(251,235,120,.12),transparent);transform:skewX(-18deg);animation:bs-sheen 5.5s var(--ease-premium) infinite;z-index:2}
+@keyframes bs-sheen{0%,20%{left:-30%}70%,100%{left:120%}}
+.bs-glass-l{position:absolute;left:14px;bottom:12px;z-index:3;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint)}
+.bs-form{display:flex;gap:8px;margin-top:26px;max-width:460px}
+.bs-form input{
+  flex:1;min-width:0;padding:14px 16px;border-radius:var(--radius);border:1px solid var(--rule-hard);background:var(--ink);
+  color:var(--cream);font-family:var(--f-body);font-size:15px;outline:none;transition:border-color .2s;
+}
+.bs-form input:focus{border-color:var(--red)}
+.bs-form input::placeholder{color:var(--cream-faint)}
+.bs-form .wk-btn{white-space:nowrap}
+.bs-done{margin:18px 0 0;font-size:14.5px;color:var(--lime);display:none}
+.bs-notify.is-done .bs-form{display:none}
+.bs-notify.is-done .bs-done{display:block}
+.bs-note{margin:12px 0 0;font-size:12.5px;color:var(--cream-faint)}
+@media(max-width:860px){.bs-notify-in{grid-template-columns:minmax(0,1fr)}.bs-glass{max-width:420px}}
+@media(max-width:480px){.bs-form{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.bs-glass-w,.bs-glass-sheen{animation:none}}
+</style>
+</head>
+<body>
+<div id="globalNav"></div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="wk-phero wk-phero--service wk-grain bs-hero">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb" aria-label="Breadcrumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <span class="sep">/</span>
+      <span data-nl="Diensten" data-en="Services">Services</span>
+      <span class="sep">/</span>
+      <span data-nl="Branding" data-en="Branding">Branding</span>
+    </nav>
+    <div class="wk-phero-split">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-decode data-nl="Branding &middot; binnenkort" data-en="Branding &middot; coming soon">Branding &middot; coming soon</span>
+        <h1 class="wk-display wk-h1" data-split
+          data-nl="Alles met jouw naam erop, <em class='mark'>in één stijl</em>."
+          data-en="Everything with your name on it, <em class='mark'>made to match</em>.">Everything with your name on it, <em class="mark">made to match</em>.</h1>
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+          data-nl="Sticker, kaartje, code, logo: dezelfde kleuren en hetzelfde lettertype als de website. We zetten het klaar. Laat je e-mail achter en je hoort het als eerste."
+          data-en="Sticker, card, code, logo: the same colours and the same type as the website. We are getting it ready. Leave your email and you hear first.">Sticker, card, code, logo: the same colours and the same type as the website. We are getting it ready. Leave your email and you hear first.</p>
+        <div class="wk-cta-row" data-reveal data-reveal-delay=".25" style="margin-top:32px">
+          <a href="#notify" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+            <span data-nl="Laat het me weten" data-en="Tell me when">Tell me when</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+          <a href="/services/websites/" class="wk-btn wk-btn--ghost">
+            <span data-nl="Websites" data-en="Websites">Websites</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+      <div class="bs-still" id="bsStill" data-reveal data-reveal-delay=".2" aria-hidden="true">
+        <span class="bs-piece bs-piece--card" data-depth="14"><i><img src="/assets/branding/card-front.webp" alt="" width="900" height="603" decoding="async"></i></span>
+        <span class="bs-piece bs-piece--sticker" data-depth="26"><i><img src="/assets/branding/sticker-raw.webp" alt="" width="700" height="700" decoding="async"></i></span>
+        <span class="bs-piece bs-piece--qr" data-depth="38"><i><img src="/assets/branding/qr.svg" alt="" decoding="async"></i></span>
+        <span class="bs-still-l" data-nl="proef &middot; kaartje &middot; sticker &middot; code" data-en="proof &middot; card &middot; sticker &middot; code">proof &middot; card &middot; sticker &middot; code</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE LIST ══════════════════════════════════════════════════ -->
+<section class="wk-section" style="border-top:1px solid var(--rule)">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-decode data-nl="Wat eraan komt" data-en="What is coming">What is coming</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Zeven dingen, <em class='mark'>één merk</em>."
+          data-en="Seven pieces, <em class='mark'>one brand</em>.">Seven pieces, <em class="mark">one brand</em>.</h2>
+      </div>
+    </div>
+    <div class="bs-rows">
+      <div class="bs-row" id="sticker" data-reveal data-reveal-delay="0.00" data-preview="/assets/branding/sticker-raw.webp">
+        <span class="bs-n">01</span>
+        <div class="bs-body">
+          <h2 data-nl="Stickers" data-en="Stickers">Stickers</h2>
+          <p data-nl="Eén die mensen laten zitten." data-en="One people leave on.">One people leave on.</p>
+        </div>
+        <img class="bs-thumb" src="/assets/branding/sticker-raw.webp" alt="" loading="lazy" decoding="async">
+        <span class="bs-tag" data-nl="Binnenkort" data-en="Coming soon">Coming soon</span>
+      </div>
+      <div class="bs-row" id="card" data-reveal data-reveal-delay="0.06" data-preview="/assets/branding/card-back.webp">
+        <span class="bs-n">02</span>
+        <div class="bs-body">
+          <h2 data-nl="Visitekaartjes" data-en="Business cards">Business cards</h2>
+          <p data-nl="Twee kanten die bij de site horen." data-en="Two sides that belong to the site.">Two sides that belong to the site.</p>
+        </div>
+        <img class="bs-thumb" src="/assets/branding/card-back.webp" alt="" loading="lazy" decoding="async">
+        <span class="bs-tag" data-nl="Binnenkort" data-en="Coming soon">Coming soon</span>
+      </div>
+      <div class="bs-row" id="qr" data-reveal data-reveal-delay="0.12" data-preview="/assets/branding/qr.svg">
+        <span class="bs-n">03</span>
+        <div class="bs-body">
+          <h2 data-nl="QR-codes op maat" data-en="Custom QR codes">Custom QR codes</h2>
+          <p data-nl="In jouw kleuren, scant vanaf 2 cm." data-en="In your colours, scans from 2 cm.">In your colours, scans from 2 cm.</p>
+        </div>
+        <img class="bs-thumb" src="/assets/branding/qr.svg" alt="" loading="lazy" decoding="async">
+        <span class="bs-tag" data-nl="Binnenkort" data-en="Coming soon">Coming soon</span>
+      </div>
+      <div class="bs-row" id="logo" data-reveal data-reveal-delay="0.18">
+        <span class="bs-n">04</span>
+        <div class="bs-body">
+          <h2 data-nl="Logo" data-en="Logo">Logo</h2>
+          <p data-nl="Herkenbaar op elk formaat, van favicon tot gevel." data-en="Recognisable at every size, from favicon to shopfront.">Recognisable at every size, from favicon to shopfront.</p>
+        </div>
+        <span class="bs-thumb bs-thumb--soon" aria-hidden="true"></span>
+        <span class="bs-tag" data-nl="Binnenkort" data-en="Coming soon">Coming soon</span>
+      </div>
+      <div class="bs-row" id="design-system" data-reveal data-reveal-delay="0.24">
+        <span class="bs-n">05</span>
+        <div class="bs-body">
+          <h2 data-nl="Design system" data-en="Design system">Design system</h2>
+          <p data-nl="Eén bestand dat niemand fout kan doen." data-en="One file nobody can get wrong.">One file nobody can get wrong.</p>
+        </div>
+        <span class="bs-thumb bs-thumb--soon" aria-hidden="true"></span>
+        <span class="bs-tag" data-nl="Binnenkort" data-en="Coming soon">Coming soon</span>
+      </div>
+      <div class="bs-row" id="wrap" data-reveal data-reveal-delay="0.30">
+        <span class="bs-n">06</span>
+        <div class="bs-body">
+          <h2 data-nl="Wraps en oppervlakken" data-en="Wraps and surfaces">Wraps and surfaces</h2>
+          <p data-nl="De bus, het raam, de toonbank." data-en="The van, the window, the counter.">The van, the window, the counter.</p>
+        </div>
+        <span class="bs-thumb bs-thumb--soon" aria-hidden="true"></span>
+        <span class="bs-tag" data-nl="Binnenkort" data-en="Coming soon">Coming soon</span>
+      </div>
+      <div class="bs-row" id="hologram" data-reveal data-reveal-delay="0.36">
+        <span class="bs-n">07</span>
+        <div class="bs-body">
+          <h2 data-nl="Hologram" data-en="Hologram">Hologram</h2>
+          <p data-nl="Je merk zwevend in de etalage." data-en="Your brand floating in the shop window.">Your brand floating in the shop window.</p>
+        </div>
+        <span class="bs-thumb bs-thumb--soon" aria-hidden="true"></span>
+        <span class="bs-tag" data-nl="Binnenkort" data-en="Coming soon">Coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NOTIFY ════════════════════════════════════════════════════ -->
+<section class="bs-notify" id="notify">
+  <div class="wk-wrap bs-notify-in">
+    <div class="bs-glass" data-reveal aria-hidden="true">
+      <span class="bs-glass-w">W</span>
+      <span class="bs-glass-sheen"></span>
+      <span class="bs-glass-l" data-nl="hologram &middot; etalage" data-en="hologram &middot; shop window">hologram &middot; shop window</span>
+    </div>
+    <div data-reveal data-reveal-delay=".1">
+      <span class="wk-eyebrow" data-decode data-nl="Als eerste horen" data-en="Hear first">Hear first</span>
+      <h2 class="wk-display wk-h2" data-split
+        data-nl="Eén mail als het <em class='mark'>klaarstaat</em>."
+        data-en="One email when it is <em class='mark'>ready</em>.">One email when it is <em class="mark">ready</em>.</h2>
+      <form class="bs-form" id="bsForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="96c3a987-04bf-4ae0-9cdf-ddbe098611cd">
+        <input type="hidden" name="subject" value="Branding waitlist">
+        <input type="hidden" name="from_name" value="WebKreatives branding waitlist">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="email" name="email" required placeholder="jan@bedrijf.nl" data-nl-ph="jan@bedrijf.nl" data-en-ph="you@company.com" aria-label="Email">
+        <button type="submit" class="wk-btn wk-btn--primary" data-magnetic><span data-nl="Houd me op de hoogte" data-en="Keep me posted">Keep me posted</span><span class="wk-arrow">&rarr;</span></button>
+      </form>
+      <p class="bs-done" data-nl="Staat genoteerd. Eén mail, meer niet." data-en="Noted. One email, nothing more.">Noted. One email, nothing more.</p>
+      <p class="bs-note" data-nl="Geen nieuwsbrief. Eén bericht als het live is, daarna niets." data-en="No newsletter. One message when it is live, then nothing.">No newsletter. One message when it is live, then nothing.</p>
+    </div>
+  </div>
+</section>
+
+<div id="globalFooter"></div>
+
+<script src="/js/motion.js?v=v8"></script>
+<script src="/js/locale.js?v=v7"></script>
+<script src="/js/site-nav.js?v=v8"></script>
+<script src="/js/site-footer.js?v=v9"></script>
+<script src="/js/cookie-consent.js?v=v10"></script>
+<script>
+/* the pieces lean with the pointer, each at its own depth */
+(function () {
+  const still = document.getElementById('bsStill');
+  if (!still || !matchMedia('(hover:hover) and (pointer:fine)').matches ||
+      matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const pieces = [...still.querySelectorAll('.bs-piece')];
+  let raf = 0, tx = 0, ty = 0;
+  addEventListener('pointermove', e => {
+    tx = (e.clientX / innerWidth - .5); ty = (e.clientY / innerHeight - .5);
+    if (!raf) raf = requestAnimationFrame(() => {
+      pieces.forEach(p => { const d = +p.dataset.depth; p.style.transform = 'translate(' + (tx * d).toFixed(1) + 'px,' + (ty * d).toFixed(1) + 'px)'; });
+      raf = 0;
+    });
+  }, { passive: true });
+})();
+/* the waitlist: one field, no page load */
+(function () {
+  const f = document.getElementById('bsForm');
+  if (!f) return;
+  f.addEventListener('submit', async e => {
+    e.preventDefault();
+    const b = f.querySelector('button'); b.disabled = true;
+    const email = f.querySelector('input[type=email]').value.trim();
+    try {
+      /* the list itself, with the sign-up date, lives in the quote API */
+      const kept = fetch('https://wk-quote.webkreatives.workers.dev/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, list: 'branding', lang: localStorage.getItem('wk-lang') || 'nl', page: location.pathname }) }).then(r => r.json()).catch(() => ({}));
+      /* and a mail, so nothing waits for a login to be noticed */
+      const mailed = fetch(f.action, { method: 'POST', body: new FormData(f) }).then(r => r.json()).catch(() => ({}));
+      const [k, m] = await Promise.all([kept, mailed]);
+      if (k.ok || m.success) { f.closest('.bs-notify').classList.add('is-done'); if (window.wkTrack) wkTrack('branding_waitlist'); return; }
+    } catch (err) {}
+    b.disabled = false;
+    location.href = 'mailto:info@webkreatives.com?subject=Branding%20waitlist';
+  });
+  /* the placeholder follows the language */
+  const inp = f.querySelector('input[type=email]');
+  const ph = () => { inp.placeholder = inp.dataset[(localStorage.getItem('wk-lang') === 'en' ? 'en' : 'nl') + 'Ph']; };
+  document.addEventListener('wk:languagechange', ph); ph();
+})();
+</script>
+</body>
+</html>

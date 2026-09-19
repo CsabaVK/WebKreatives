@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://snap.licdn.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://wk-quote.webkreatives.workers.dev https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://px.ads.linkedin.com https://www.facebook.com; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Analytics: website bottleneck analysis and case studies &mdash; WebKreatives</title>
+<meta name="description" content="Numbers that say what to fix next. A bottleneck analysis from GA4 and Search Console with five ranked fixes, and a written-up case study of your site. Fixed prices, ex VAT.">
+<link rel="canonical" href="https://webkreatives.com/services/analytics/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Website analytics and bottleneck analysis", "serviceType": "Web analytics consulting", "url": "https://webkreatives.com/services/analytics/", "provider": {"@type": "Organization", "name": "WebKreatives", "url": "https://webkreatives.com"}, "areaServed": "Worldwide"}</script>
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webkreatives.com/services/analytics/">
+<meta property="og:title" content="Analytics: website bottleneck analysis and case studies — WebKreatives">
+<meta property="og:description" content="Numbers that say what to fix next. A bottleneck analysis from GA4 and Search Console with five ranked fixes, and a written-up case study of your site. Fixed prices, ex VAT.">
+<meta property="og:image" content="https://webkreatives.com/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="WebKreatives">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c0a09">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/theme.css?v=v9">
+<link rel="stylesheet" href="/css/services.css?v=v1">
+</head>
+<body>
+<div id="globalNav"></div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="wk-phero wk-phero--service wk-grain">
+  <div class="wk-field" data-field data-parallax="0.04"></div>
+  <div class="wk-phero-bg"></div>
+  <div class="wk-phero-grid"></div>
+  <div class="wk-wrap wk-phero-in">
+    <nav class="wk-crumb" aria-label="Breadcrumb">
+      <a href="/" data-nl="Home" data-en="Home">Home</a>
+      <span class="sep">/</span>
+      <span data-nl="Diensten" data-en="Services">Services</span>
+      <span class="sep">/</span>
+      <span data-nl="Analytics" data-en="Analytics">Analytics</span>
+    </nav>
+    <div class="wk-phero-split">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-decode data-nl="Analytics" data-en="Analytics">Analytics</span>
+        <h1 class="wk-display wk-h1" data-split
+          data-nl="Cijfers die zeggen wat je <em class='mark'>als volgende</em> moet fixen."
+          data-en="Numbers that say what to <em class='mark'>fix next</em>.">Numbers that say what to <em class="mark">fix next</em>.</h1>
+        <p class="wk-lede" data-reveal data-reveal-delay=".15"
+          data-nl="Niet een dashboard met veertig grafieken, maar één antwoord: op welke pagina haken klanten af, waarom, en wat je eraan doet. Gelezen uit je eigen Google Analytics en Search Console."
+          data-en="Not a dashboard with forty charts but one answer: which page loses customers, why, and what to do about it. Read from your own Google Analytics and Search Console.">Not a dashboard with forty charts but one answer: which page loses customers, why, and what to do about it. Read from your own Google Analytics and Search Console.</p>
+        <div class="wk-cta-row" data-reveal data-reveal-delay=".25" style="margin-top:32px">
+          <a href="/contact/?about=Analytics" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+            <span data-nl="Vraag een prijs" data-en="Ask for a price">Ask for a price</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+          <a href="#bottleneck" class="wk-btn wk-btn--ghost">
+            <span data-nl="Bekijk de diensten" data-en="See the services">See the services</span>
+            <span class="wk-arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══════════════════════════════════════════════════ -->
+<section class="wk-section br-list" style="border-top:1px solid var(--rule)">
+  <div class="wk-wrap br-grid">
+    <aside class="br-index" data-reveal>
+      <span class="wk-meta" data-nl="Op deze pagina" data-en="On this page">On this page</span>
+      <nav><a href="#bottleneck"><b>01</b><span data-nl="Knelpuntanalyse" data-en="Bottleneck analysis">Bottleneck analysis</span><i><span data-price data-eur='&euro;180' data-usd='$200'>&euro;180</span></i></a><a href="#case-study"><b>02</b><span data-nl="Case study" data-en="Case study">Case study</span><i><span data-price data-eur='&euro;250' data-usd='$275'>&euro;250</span></i></a></nav>
+      <p class="br-index-note" data-nl="Prijzen zijn eenmalig en exclusief btw. Je hebt toegang tot je eigen Analytics nodig, of wij zetten die op." data-en="Prices are one-time and ex VAT. You need access to your own Analytics, or we set it up.">Prices are one-time and ex VAT. You need access to your own Analytics, or we set it up.</p>
+    </aside>
+    <div class="br-items">
+      <article class="wk-row br-item" id="bottleneck" data-reveal>
+        <span class="wk-row-n">01</span>
+        <div class="wk-row-body">
+          <h2 data-nl="Knelpuntanalyse" data-en="Bottleneck analysis">Bottleneck analysis</h2>
+          <p class="wk-row-desc" data-nl="We volgen je bezoekers van binnenkomst tot afhaken en vinden de pagina waar het stokt. Je krijgt één rapport: wat er gebeurt, waarom, en vijf ingrepen op volgorde van effect." data-en="We follow your visitors from landing to leaving and find the page where it stalls. You get one report: what happens, why, and five fixes ranked by effect.">We follow your visitors from landing to leaving and find the page where it stalls. You get one report: what happens, why, and five fixes ranked by effect.</p>
+          <ul class="br-spec"><li><b data-nl="Wat je krijgt" data-en="What you get">What you get</b><span data-nl="Rapport van 6 tot 10 pagina&#x27;s, een gesprek van 30 minuten, de vijf fixes als takenlijst" data-en="A 6 to 10 page report, a 30-minute call, the five fixes as a task list">A 6 to 10 page report, a 30-minute call, the five fixes as a task list</span></li><li><b data-nl="Bron" data-en="Source">Source</b><span data-nl="Google Analytics 4 en Search Console, minimaal 30 dagen data" data-en="Google Analytics 4 and Search Console, at least 30 days of data">Google Analytics 4 and Search Console, at least 30 days of data</span></li></ul>
+          <a class="wk-row-go" href="/contact/?about=Bottleneck analysis"><span data-nl="Vraag dit aan" data-en="Ask for this">Ask for this</span> <span class="wk-arrow">&rarr;</span></a>
+        </div>
+        <div class="wk-row-fig br-fig">
+          <span class="br-from" data-nl="vanaf" data-en="from">from</span><span class="br-price"><span data-price data-eur='&euro;180' data-usd='$200'>&euro;180</span></span><p class="br-fig-note" data-nl="eenmalig, excl. btw" data-en="one-time, ex VAT">one-time, ex VAT</p>
+          
+        </div>
+      </article>      <article class="wk-row br-item" id="case-study" data-reveal>
+        <span class="wk-row-n">02</span>
+        <div class="wk-row-body">
+          <h2 data-nl="Case study" data-en="Case study">Case study</h2>
+          <p class="wk-row-desc" data-nl="Je site, volledig uitgeschreven zoals wij dat voor ons eigen werk doen: de opdracht, wat er misgaat, welke keuzes wij zouden maken, wat we zouden schrappen en waar we op zouden sturen. Openbaar op onze site, of privé voor jou alleen." data-en="Your site written up the way we do it for our own work: the brief, what goes wrong, the decisions we would make, what we would cut and what we would measure. Public on our site, or private for you alone.">Your site written up the way we do it for our own work: the brief, what goes wrong, the decisions we would make, what we would cut and what we would measure. Public on our site, or private for you alone.</p>
+          <ul class="br-spec"><li><b data-nl="Wat je krijgt" data-en="What you get">What you get</b><span data-nl="Een pagina in vijf vragen, met screenshots en de cijfers erbij" data-en="One page in five questions, with screenshots and the numbers">One page in five questions, with screenshots and the numbers</span></li><li><b data-nl="Voorbeeld" data-en="Example">Example</b><span data-nl="Lees de case study van Leyenburger Grill" data-en="Read the Leyenburger Grill case study">Read the Leyenburger Grill case study</span></li></ul>
+          <a class="wk-row-go" href="/contact/?about=Case study"><span data-nl="Vraag dit aan" data-en="Ask for this">Ask for this</span> <span class="wk-arrow">&rarr;</span></a>
+        </div>
+        <div class="wk-row-fig br-fig">
+          <span class="br-from" data-nl="vanaf" data-en="from">from</span><span class="br-price"><span data-price data-eur='&euro;250' data-usd='$275'>&euro;250</span></span><p class="br-fig-note" data-nl="eenmalig, excl. btw" data-en="one-time, ex VAT">one-time, ex VAT</p>
+          
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ═══════════════════════════════════════════════════════ -->
+<section class="wk-section" style="border-top:1px solid var(--rule)">
+  <div class="wk-wrap">
+    <div class="wk-intro">
+      <div>
+        <span class="wk-eyebrow" data-reveal data-decode data-nl="Vragen" data-en="Questions">Questions</span>
+        <h2 class="wk-display wk-h2" data-split
+          data-nl="Wat mensen meestal eerst vragen."
+          data-en="What people usually ask first.">What people usually ask first.</h2>
+      </div>
+    </div>
+    <div class="sv-faq">
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">01</span><span class="sv-q-t" data-nl="Ik heb nog geen Analytics op mijn site." data-en="I do not have Analytics on my site yet.">I do not have Analytics on my site yet.</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Dan zetten we GA4 en Search Console voor je op, met een cookiebanner die klopt, en plannen de analyse 30 dagen later. De opzet zit in de prijs van de analyse." data-en="Then we set up GA4 and Search Console for you, with a consent banner that is correct, and schedule the analysis 30 days later. The setup is included in the analysis price.">Then we set up GA4 and Search Console for you, with a consent banner that is correct, and schedule the analysis 30 days later. The setup is included in the analysis price.</p></div></div>
+      </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">02</span><span class="sv-q-t" data-nl="Voeren jullie de fixes ook uit?" data-en="Do you carry out the fixes as well?">Do you carry out the fixes as well?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Als je wilt. De vijf ingrepen komen met een vaste prijs per stuk; je kiest wat wij doen en wat je zelf of je eigen bouwer oppakt." data-en="If you want. The five fixes come with a fixed price each; you choose what we do and what you or your own builder take on.">If you want. The five fixes come with a fixed price each; you choose what we do and what you or your own builder take on.</p></div></div>
+      </div>
+      <div class="sv-q">
+        <button class="sv-q-btn"><span class="sv-q-n">03</span><span class="sv-q-t" data-nl="Wat als de cijfers niets opleveren?" data-en="What if the numbers show nothing?">What if the numbers show nothing?</span><svg class="sv-q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="sv-q-a"><div class="sv-q-a-in"><p data-nl="Dat zeggen we vooraf. Bij minder dan 200 bezoeken per maand is een analyse zelden de moeite; dan krijg je een kort advies in plaats van een rapport, zonder kosten." data-en="We say so up front. Under 200 visits a month an analysis is rarely worth it; you get short advice instead of a report, at no cost.">We say so up front. Under 200 visits a month an analysis is rarely worth it; you get short advice instead of a report, at no cost.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING CTA ═══════════════════════════════════════════════ -->
+<div class="wk-cta-wrap">
+  <div class="wk-wrap">
+    <section class="wk-cta-card wk-grain" data-cursor-grid>
+      <h2 class="wk-display wk-h2" data-split
+        data-nl="Stuur de link, wij <em class='mark'>lezen de cijfers</em>."
+        data-en="Send the link, we <em class='mark'>read the numbers</em>.">Send the link, we <em class="mark">read the numbers</em>.</h2>
+      <p class="wk-lede" data-reveal
+        data-nl="Zeg welke site en wat je verwacht dat er misgaat. Je hoort binnen één werkdag of een analyse iets oplevert, en zo niet, dan zeggen we dat ook."
+        data-en="Say which site and what you suspect goes wrong. Within one business day you hear whether an analysis would pay off, and if not, we say so.">Say which site and what you suspect goes wrong. Within one business day you hear whether an analysis would pay off, and if not, we say so.</p>
+      <div class="wk-cta-row" data-reveal data-reveal-delay=".1">
+        <a href="/contact/?about=Analytics" class="wk-btn wk-btn--primary wk-shimmer" data-magnetic>
+          <span data-nl="Stuur een briefing" data-en="Send a short brief">Send a short brief</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+        <a href="/services/branding/" class="wk-btn wk-btn--ghost">
+          <span data-nl="Branding" data-en="Branding">Branding</span>
+          <span class="wk-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="globalFooter"></div>
+
+<script src="/js/motion.js?v=v8"></script>
+<script src="/js/locale.js?v=v7"></script>
+<script src="/js/site-nav.js?v=v8"></script>
+<script src="/js/site-footer.js?v=v9"></script>
+<script src="/js/cookie-consent.js?v=v10"></script>
+<script>
+document.querySelectorAll('.sv-q-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const q = btn.parentElement, open = q.classList.contains('open');
+    document.querySelectorAll('.sv-q').forEach(x => x.classList.remove('open'));
+    if (!open) q.classList.add('open');
+  });
+});
+/* the index follows the reader: the item in view is the lit one */
+(function () {
+  const links = [...document.querySelectorAll('.br-index a')];
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    links.forEach(a => a.classList.toggle('is-here', a.getAttribute('href') === '#' + en.target.id));
+  }), { rootMargin: '-40% 0px -50% 0px' });
+  document.querySelectorAll('.br-item').forEach(el => io.observe(el));
+})();
+(function () {
+  const c = document.querySelector('.wk-cta-card');
+  if (!c) return;
+  new IntersectionObserver((es, o) => es.forEach(x => { if (x.isIntersecting) { c.classList.add('is-lit'); o.disconnect(); } }), { threshold: .3 }).observe(c);
+})();
+</script>
+</body>
+</html>

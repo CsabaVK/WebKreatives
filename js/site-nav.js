@@ -247,7 +247,7 @@ html.wk-menu-open,html.wk-menu-open body{overflow:hidden}
 .nav-sub{
   position:absolute;top:100%;left:50%;margin-top:14px;
   transform:translate(-50%,-6px);
-  min-width:236px;padding:6px;list-style:none;
+  min-width:268px;padding:6px;list-style:none;
   background:oklch(12% .010 25);border:1px solid oklch(22% .010 25);
   border-radius:12px;box-shadow:0 22px 60px rgba(0,0,0,.5);
   opacity:0;pointer-events:none;z-index:210;
@@ -296,7 +296,13 @@ html.wk-menu-open,html.wk-menu-open body{overflow:hidden}
           den: 'Design, build and launch' },
         { href: '/services/hosting/', nl: 'Hosting', en: 'Hosting',
           dnl: 'Online houden, snel en bijgewerkt',
-          den: 'Kept online, fast and up to date' }
+          den: 'Kept online, fast and up to date' },
+        { href: '/services/branding/', nl: 'Branding', en: 'Branding',
+          dnl: 'Stickers, kaartjes, QR en logo',
+          den: 'Stickers, cards, QR and logo' },
+        { href: '/services/analytics/', nl: 'Analytics', en: 'Analytics',
+          dnl: 'Waar klanten afhaken, en waarom',
+          den: 'Where customers drop off, and why' }
       ]
     },
     { href: '/pricing/',  nl: 'Prijzen',   en: 'Pricing'  },
