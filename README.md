@@ -41,26 +41,16 @@ WebKreatives is a Dutch freelance web design agency specialising in fast, afford
 │       └── client-preview.html
 │
 ├── client-projects/
-│   ├── de-groot-accountants/
 │   ├── leyenburger/
-│   │   └── index.html
-│   ├── tandarts-knoll/
-│   │   └── index.html
-│   ├── studio-lena-fotografie/
-│   │   └── index.html
 │   ├── luna-beauty-studio/
-│   │   └── index.html
-│   ├── bakkerij-hartman/
-│   │   └── index.html
-│   ├── nexus-it-solutions/
-│   │   └── index.html
 │   ├── maison-blanc-interieur/
-│   │   └── index.html
-│   ├── vanderberg-loodgieter/
-│   │   └── index.html
-│   └── klussenbedrijf-edward/
-│       └── index.html
-│
+│   ├── studio-lena-fotografie/
+│   ├── autodistrict/
+│   ├── scootershopdenhaag/
+│   ├── bakkerij-hartman/
+│   └── nox-studio/
+│       └── index.html (each; autodistrict and scootershopdenhaag are multi-page)
+
 ├── articles/
 │   ├── index.html                    ← Articles listing
 │   ├── 5-reasons-customers-leave-your-website/
