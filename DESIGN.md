@@ -310,6 +310,14 @@ meta: "WebKreatives". For quotable closes and reposts.
 two or three lines at 64px, one-line body says what changed, a strip of the changed page along
 the bottom edge as a screenshot. For "what went live this week".
 
+**T11 Flat.** The sticker's language on a post, added after the September feedback
+that the ledger rows and the lone marks read as template. Sticker ground, no grain,
+no grid, no glow. One statement of two or three lines at 100px sitting in the
+vertical middle with one red word, the four-square cluster top-right at the card's
+size, wordmark and domain in the sticker's corners. For a single strong line; the
+argument lives in the caption. `node _design/render.cjs flat out.png --headline
+"… *word* …" --mark trio`.
+
 ### Carousel arc (T7)
 
 A LinkedIn document post: five pages, 1200 x 1500 each, one arc. Grab attention, name
