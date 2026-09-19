@@ -244,6 +244,17 @@ span.pc-flag{
   background:var(--red);opacity:.8;
 }
 .pc-col--out li::before{background:var(--cream-faint)}
+/* ── referral band ──────────────────────────────────────────────────
+   The band pattern (home, portfolio): full-bleed --ink-2 between two
+   hairlines, copy left, one button right. Thin on purpose: it sits
+   between the calculator and the fine print and must not read as a
+   second offer. */
+.pc-band{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--ink-2);margin-bottom:clamp(40px,5.5vw,72px)}
+.pc-band-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;padding-block:clamp(30px,4vw,48px)}
+.pc-band h2{margin:0 0 8px}
+.pc-band p{margin:0;color:var(--cream-mute);font-size:15px;max-width:58ch}
+.pc-band-cta{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+@media(max-width:860px){.pc-band-in{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body data-page="pricing">
@@ -381,6 +392,26 @@ span.pc-flag{
       </div>
     </aside>
 
+  </div>
+</section>
+
+<!-- ══ REFERRAL ═══════════════════════════════════════════════════ -->
+<section class="pc-band">
+  <div class="wk-wrap pc-band-in">
+    <div data-reveal>
+      <h2 class="wk-display wk-h3"
+        data-nl="Ken je iemand die een site nodig heeft? <span class='wk-accent'>Stuur ze door.</span>"
+        data-en="Know someone who needs a site? <span class='wk-accent'>Send them over.</span>">Know someone who needs a site? <span class="wk-accent">Send them over.</span></h2>
+      <p data-nl="Jij krijgt 10% van het bouwbedrag zodra hun site is betaald. Zij krijgen 10% korting als ze jouw code bij het eerste contact noemen. Alleen de website telt, hosting niet."
+         data-en="You get 10% of the build price once their site is paid for. They get 10% off when they name your code at first contact. The website only, not hosting.">You get 10% of the build price once their site is paid for. They get 10% off when they name your code at first contact. The website only, not hosting.</p>
+    </div>
+    <div class="pc-band-cta" data-reveal data-reveal-delay=".1">
+      <a href="mailto:info@webkreatives.com?subject=Referral%20code" class="wk-btn wk-btn--primary" data-magnetic>
+        <span data-nl="Vraag je code aan" data-en="Get your code">Get your code</span>
+        <span class="wk-arrow">&rarr;</span>
+      </a>
+      <a href="/terms/#referral" class="wk-more" data-nl="Voorwaarden, artikel 11" data-en="Terms, section 11">Terms, section 11</a>
+    </div>
   </div>
 </section>
 
