@@ -292,7 +292,7 @@
     <div class="wk-ft-bot-top">
       <p data-nl="Minder klanten, dichterbij werken." data-en="Fewer clients, closer work.">Fewer clients, closer work.</p>
       <div class="wk-ft-legal">
-        ${L('/privacy/','Privacy','Privacy')}
+        ${L('/privacy/','Privacybeleid','Privacy Policy')}
         ${L('/terms/','Voorwaarden','Terms')}
         ${L('/refund-policy/','Herroeping &amp; restitutie','Refund Policy')}
         <a href="#cookies" id="wkFtCookies" data-nl="Cookies" data-en="Cookies">Cookies</a>
