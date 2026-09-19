@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://snap.licdn.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://px.ads.linkedin.com https://www.facebook.com; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://snap.licdn.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://wk-quote.webkreatives.workers.dev https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://px.ads.linkedin.com https://www.facebook.com; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Hire a web designer: start a project &mdash; WebKreatives</title>
 <meta name="description" content="Hire a web designer without the sales call. Say what the business does and what the site is not doing. A reply within one business day, from anywhere.">
@@ -206,6 +206,7 @@
           <input type="hidden" name="region" id="ct-region" value="">
           <input type="hidden" name="currency_shown" id="ct-currency" value="">
           <input type="hidden" name="timezone" id="ct-tz" value="">
+          <input type="hidden" name="referral" id="ct-ref" value="">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="frow">
@@ -292,7 +293,7 @@
 <div id="globalFooter"></div>
 
 <script src="/js/motion.js?v=v6"></script>
-<script src="/js/locale.js?v=v6"></script>
+<script src="/js/locale.js?v=v7"></script>
 <script src="/js/site-nav.js?v=v6"></script>
 <script src="/js/site-footer.js?v=v8"></script>
 <script src="/js/cookie-consent.js?v=v10"></script>
@@ -402,6 +403,22 @@ document.querySelector('.cform')?.addEventListener('submit', async function (e) 
 
   label.textContent = en ? 'Sending…' : 'Versturen…';
   status.className = 'ct-status';
+  /* Referral attribution for the mail: what this browser remembered, plus
+     what the quote API saw as this device's first touch (and whether the
+     enquiry email belongs to the referrer). Best effort, 1.5 s cap. */
+  const refEl = document.getElementById('ct-ref');
+  if (refEl) {
+    const local = window.wkReferral ? window.wkReferral.code + ' stored ' + window.wkReferral.at.slice(0, 10) : 'none';
+    let server = 'n/a';
+    try {
+      const ctl = new AbortController(); setTimeout(() => ctl.abort(), 1500);
+      const m = await fetch('https://wk-quote.webkreatives.workers.dev/ref/me', { method: 'POST', signal: ctl.signal,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: (document.getElementById('ct-email') || {}).value || '' }) }).then(r => r.json());
+      server = m.code ? m.code + ' first touch ' + m.at.slice(0, 10) + ' (' + m.days + ' d' + (m.self ? ', SELF-REFERRAL' : '') + ')' : 'none';
+    } catch (e) {}
+    refEl.value = 'browser: ' + local + ' | api: ' + server;
+  }
   try {
     const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) });
     const data = await res.json();

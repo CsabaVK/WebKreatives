@@ -10,6 +10,7 @@
        /qr/                      -> /?utm_source=sticker&utm_medium=qr&utm_campaign=business-sticker
        /qr/?t=/pricing/          -> that page instead of the homepage
        /qr/?c=slug               -> campaign "business-sticker", utm_content=slug (one link per post)
+       /qr/?ref=WK-ABCD          -> referral card: utm_source=referral, utm_content and ref = the code
      The redirect happens in the script below; the meta refresh is the
      fallback without JavaScript. Only paths on this site are accepted. -->
 <script>
@@ -20,6 +21,9 @@
   var c = q.get('c');
   var u = new URLSearchParams({ utm_source: 'sticker', utm_medium: 'qr', utm_campaign: c ? 'business-sticker' : 'business-sticker' });
   if (c) u.set('utm_content', c.slice(0, 80));
+  /* referral card: ?ref=WK-ABCD → the code rides along as ref= and utm_content */
+  var r = (q.get('ref') || '').toUpperCase();
+  if (/^WK-[A-HJ-NP-Z2-9]{4}$/.test(r)) { u.set('utm_source', 'referral'); u.set('utm_medium', 'card'); u.set('utm_campaign', 'referral'); u.set('utm_content', r); u.set('ref', r); }
   location.replace(t + '?' + u.toString());
 })();
 </script>

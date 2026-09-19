@@ -122,6 +122,32 @@
     refresh: function (root) { paint(root); }
   };
 
+  /* ── Referral code ─────────────────────────────────────────────────
+     /qr/?ref=WK-ABCD lands here as ?ref=WK-ABCD. The first code seen is
+     kept for 90 days (first referrer wins) and reported once to the quote
+     API, which notes the first touch for this device. The contact form
+     reads both. Nothing personal is stored in the browser: code and date. */
+  var REF = 'wk-ref', REF_DAYS = 90;
+  var refCode = (function () {
+    var m = /[?&]ref=(WK-[A-HJ-NP-Z2-9]{4})\b/i.exec(location.search);
+    return m ? m[1].toUpperCase() : '';
+  })();
+  var refSaved = null;
+  try { refSaved = JSON.parse(localStorage.getItem(REF) || 'null'); } catch (e) {}
+  if (refSaved && Date.now() - Date.parse(refSaved.at) > REF_DAYS * 86400000) refSaved = null;
+  if (refCode && !refSaved) {
+    refSaved = { code: refCode, at: new Date().toISOString() };
+    try { localStorage.setItem(REF, JSON.stringify(refSaved)); } catch (e) {}
+  }
+  if (refCode) {
+    try {
+      fetch('https://wk-quote.webkreatives.workers.dev/ref/hit', { method: 'POST', keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: refCode, page: location.pathname }) }).catch(function () {});
+    } catch (e) {}
+  }
+  window.wkReferral = refSaved;   /* { code, at } or null */
+
   document.documentElement.setAttribute('data-currency', currency);
   document.documentElement.setAttribute('data-region', region || 'XX');
 

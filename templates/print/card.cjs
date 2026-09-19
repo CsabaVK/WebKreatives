@@ -2,7 +2,7 @@
 /*
  * Render a client business card (85 x 55 mm, two sides) from a spec.
  *
- *   node templates/print/card.cjs specs/<client>.json out/
+ *   node templates/print/card.cjs specs/<client>.json out/ [--ref WK-ABCD]
  *
  * Steps: build the QR for the card's URL (qr.py, the sticker's styling),
  * fill card.html from the spec, screenshot both sides at 1820 x 1220 px
@@ -37,11 +37,19 @@ const HERE = __dirname;
 const fileUrl = p => 'file:///' + path.resolve(p).replace(/\\/g, '/');
 
 (async () => {
-  const [specPath, outDir] = process.argv.slice(2);
+  const [specPath, outDir, flag, refCode] = process.argv.slice(2);
   if (!specPath || !outDir) { console.error('usage: node templates/print/card.cjs spec.json out/'); process.exit(1); }
   const spec = JSON.parse(fs.readFileSync(specPath, 'utf8'));
   const card = spec.card || {};
-  const slug = spec.slug || path.basename(specPath, '.json');
+  let slug = spec.slug || path.basename(specPath, '.json');
+  /* --ref WK-ABCD: a referral card. The code goes to /qr/?ref=, is printed
+     as the last contact line, and names the output files. */
+  if (flag === '--ref') {
+    if (!/^WK-[A-HJ-NP-Z2-9]{4}$/.test(refCode || '')) { console.error('--ref needs a code like WK-ABCD'); process.exit(1); }
+    card.url = 'https://webkreatives.com/qr/?ref=' + refCode;
+    card.lines = (card.lines || []).concat(['Code *' + refCode + '*']);
+    slug += '-ref-' + refCode;
+  }
   fs.mkdirSync(outDir, { recursive: true });
 
   // 1. QR, same polarity and styling as the sticker
@@ -102,7 +110,14 @@ const fileUrl = p => 'file:///' + path.resolve(p).replace(/\\/g, '/');
     }
     const lines = document.querySelector('[data-slot="lines"]');
     if (!card.lines || !card.lines.length) lines.hidden = true;
-    else for (const text of card.lines) { const li = document.createElement('li'); li.textContent = text; lines.append(li); }
+    else for (const text of card.lines) {
+      /* "Code *WK-ABCD*": the starred part takes the accent, like services */
+      const li = document.createElement('li');
+      const m = /^(.*?)\*(.+)\*(.*)$/.exec(text);
+      if (m) { li.append(m[1]); const em = document.createElement('em'); em.textContent = m[2]; li.append(em, m[3]); }
+      else li.textContent = text;
+      lines.append(li);
+    }
     const services = document.querySelector('[data-slot="services"]');
     if (!card.services || !card.services.length) services.hidden = true;
     else card.services.forEach((text, i) => {
