@@ -42,7 +42,7 @@
 #mainNav a{text-decoration:none;color:inherit}
 /* the box keeps the 80px the old padded PNG had, so the bar height does not move; the mark itself sits at its old visible size */
 .nav-logo{display:flex;align-items:center;height:80px;line-height:0}
-.nav-logo img{height:50px;width:auto;display:block}
+.nav-logo img{height:58px;width:auto;display:block}
 #mainNav .nav-links{
   display:flex;gap:46px;list-style:none;justify-content:center;align-items:center;
   margin:0;padding:0;
@@ -277,7 +277,7 @@ html.wk-menu-open,html.wk-menu-open body{overflow:hidden}
   #mainNav{grid-template-columns:auto 1fr auto;padding:14px 18px}
   #mainNav.scrolled{padding:10px 18px}
   .nav-logo{height:58px}
-  .nav-logo img{height:36px}
+  .nav-logo img{height:42px}
   #mainNav .nav-links,#mainNav .nav-cta,.nav-divider{display:none}
   .mobile-toggle{display:flex}
 }
