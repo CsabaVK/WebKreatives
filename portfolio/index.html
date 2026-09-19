@@ -25,7 +25,7 @@
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/css/theme.css?v=v8">
+<link rel="stylesheet" href="/css/theme.css?v=v9">
 <style>
 /* ═══ PORTFOLIO v5 ══════════════════════════════════════════════════
    Four jobs, in order: show the work before the first scroll (hero wall),
@@ -127,6 +127,21 @@
 }
 .pf-f:hover{color:var(--cream-dim);border-color:var(--rule)}
 .pf-f.is-on{color:#fff;background:var(--bronze);border-color:var(--bronze);font-weight:600}
+/* On a phone the pills do not wrap into a ragged block: the label takes its
+   own line and the pills sit in one row you slide sideways, the last one
+   fading at the edge so it reads as a strip, not a cut. */
+@media(max-width:600px){
+  .pf-filters{display:block;position:relative}
+  .pf-filters-l{display:block;margin:0 0 10px}
+  .pf-filters-row{
+    display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;
+    padding-bottom:6px;margin-right:calc(-1 * var(--gutter,5vw));padding-right:var(--gutter,5vw);
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);
+  }
+  .pf-filters-row::-webkit-scrollbar{display:none}
+  .pf-f{flex-shrink:0;scroll-snap-align:start;border-color:var(--rule);padding:8px 13px}
+}
 .pf-f:focus-visible{outline:2px solid var(--bronze);outline-offset:2px}
 
 /* ── grid: two columns, the right one hung lower, like frames on a wall ─ */
@@ -317,7 +332,17 @@
 }
 .pf-book-cover:hover .pf-book-back img{filter:none}
 @media(prefers-reduced-motion:reduce){.pf-book-cover{transition:none;transform:rotateY(-180deg)}}
-@media(max-width:900px){.pf-book{--page-h:clamp(250px,58vw,360px)}}
+/* On a phone there is no room for a spread. The book lies open flat:
+   the screenshot page on top, the five questions beneath it. */
+@media(max-width:900px){
+  .pf-book{display:flex;flex-direction:column;perspective:none}
+  .pf-book-page--l,.pf-book-front,.pf-book-open{display:none}
+  .pf-book-cover,.pf-book.is-in .pf-book-cover{position:relative;left:0;width:100%;height:auto;transform:none;transition:none;display:block;order:-1}
+  .pf-book-back{position:relative;inset:auto;transform:none;border-right:1px solid var(--rule);border-radius:var(--radius) var(--radius) 0 0;padding:20px 20px 28px;box-shadow:none}
+  .pf-book-back img{height:auto;width:min(58%,260px)}
+  .pf-book-page--r{height:auto;border-top:0;border-radius:0 0 var(--radius) var(--radius);box-shadow:none;padding-bottom:36px}
+  .pf-book-page--r .pf-q li{padding:11px 0}
+}
 </style>
 </head>
 <body data-page="portfolio">
@@ -404,6 +429,7 @@
 
     <div class="pf-filters" role="group" aria-label="Filter by sector" data-reveal>
       <span class="wk-meta pf-filters-l" data-nl="Branche" data-en="Sector">Sector</span>
+      <div class="pf-filters-row">
       <button class="pf-f is-on" aria-pressed="true" data-filter="all" data-nl="Alles" data-en="All">All</button>
       <button class="pf-f" aria-pressed="false" data-filter="automotive" data-nl="Automotive" data-en="Automotive">Automotive</button>
       <button class="pf-f" aria-pressed="false" data-filter="restaurant" data-nl="Restaurant" data-en="Restaurant">Restaurant</button>
@@ -412,6 +438,7 @@
       <button class="pf-f" aria-pressed="false" data-filter="interior" data-nl="Interieur" data-en="Interior">Interior</button>
       <button class="pf-f" aria-pressed="false" data-filter="bakery" data-nl="Bakkerij" data-en="Bakery">Bakery</button>
       <button class="pf-f" aria-pressed="false" data-filter="jewellery" data-nl="Sieraden" data-en="Jewellery">Jewellery</button>
+      </div>
     </div>
 
     <div class="pf-grid" id="pfGrid">
@@ -740,10 +767,10 @@
 
 <div id="globalFooter"></div>
 
-<script src="/js/motion.js?v=v7"></script>
+<script src="/js/motion.js?v=v8"></script>
 <script src="/js/locale.js?v=v7"></script>
 <script src="/js/site-nav.js?v=v6"></script>
-<script src="/js/site-footer.js?v=v8"></script>
+<script src="/js/site-footer.js?v=v9"></script>
 <script src="/js/cookie-consent.js?v=v10"></script>
 <script>
 /* ── sector filter ─────────────────────────────────────────────── */

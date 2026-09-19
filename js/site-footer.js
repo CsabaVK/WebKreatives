@@ -104,7 +104,17 @@
 /* the two we quote in carry a little more weight than the rest */
 .wk-ft-cur b.lead{color:var(--cream-dim,#cfc9bf);font-weight:700}
 .wk-ft-cur b:hover{color:var(--white,#fff)}
-@media(max-width:520px){.wk-ft-cur{gap:0 14px}.wk-ft-cur b + b::before{left:-8px}}
+/* On a phone the dotted line wraps ragged. Both lists become an even grid:
+   the label on its own line, then tidy rows, no dots. */
+@media(max-width:520px){
+  .wk-ft-pay{display:block}
+  .wk-ft-pay-l{margin-bottom:10px}
+  .wk-ft-cur{display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:8px 6px}
+  .wk-ft-cur b{font-family:var(--f-mono,'Unbounded',sans-serif);font-size:10px;letter-spacing:.12em;text-align:center;padding:6px 0;border:1px solid var(--rule,rgba(239,230,210,.09));border-radius:6px}
+  .wk-ft-cur b + b::before{display:none}
+  .wk-ft-cur b.lead{border-color:var(--rule-hard,rgba(239,230,210,.18))}
+  .wk-ft-pay-icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:8px;justify-items:start}
+}
 
 /* The icons are square (24x24 viewBox) but the card was landscape, 52x34 with
    6px of padding — so object-fit:contain sized each glyph to the 22px height
@@ -151,6 +161,9 @@
   letter-spacing:.03em;color:var(--cream-faint,#635f5a);margin:0;
 }
 /* the legal links sit between the tagline and the copyright, centred */
+.wk-ft-copy i{font-style:normal;white-space:nowrap}
+.wk-ft-copy i + i::before{content:' · '}
+@media(max-width:520px){.wk-ft-copy i{display:block}.wk-ft-copy i + i::before{content:none}}
 .wk-ft-legal{
   display:flex;align-items:center;flex-wrap:wrap;justify-content:center;
   flex:1 1 auto;
@@ -284,7 +297,7 @@
         ${L('/refund-policy/','Herroeping &amp; restitutie','Refund Policy')}
         <a href="#cookies" id="wkFtCookies" data-nl="Cookies" data-en="Cookies">Cookies</a>
       </div>
-      <span>© 2026 WebKreatives · Amsterdam, NL · KVK 94051097 · All rights reserved</span>
+      <span class="wk-ft-copy"><i>© 2026 WebKreatives · Amsterdam, NL</i><i>KVK 94051097 · All rights reserved</i></span>
     </div>
   </div>
 </footer>`;

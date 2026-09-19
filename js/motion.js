@@ -79,6 +79,31 @@
       holder.querySelectorAll('*').forEach(n => { if (!n.children.length) wrapWords(n); });
       if (!holder.querySelector('.wk-word')) wrapWords(holder);
 
+      /* "<em>list</em>." splits into a word and a lone "." — two inline
+         blocks with a break opportunity between them, so on a narrow screen
+         the full stop can wrap onto its own line. Fold punctuation-only
+         words into the word before them; it keeps its own colour. */
+      const PUNCT = /^[.,;:!?…)”’]+/;
+      const fold = (text, prev) => {
+        while (prev && prev.nodeType === 3 && !prev.textContent.trim()) prev = prev.previousSibling;
+        if (!prev || prev.nodeType !== 1) return false;
+        const into = prev.classList.contains('wk-word') ? prev : [...prev.querySelectorAll('.wk-word')].pop();
+        if (!into) return false;
+        const dot = document.createElement('span');
+        dot.className = 'wk-word-dot';
+        dot.textContent = text;
+        into.querySelector('.wk-word-in').appendChild(dot);
+        return true;
+      };
+      holder.querySelectorAll('.wk-word').forEach(w => {
+        if (PUNCT.test(w.textContent) && w.textContent.replace(PUNCT, '') === '' && fold(w.textContent, w.previousSibling)) w.remove();
+      });
+      [...holder.childNodes].forEach(n => {
+        if (n.nodeType !== 3) return;
+        const m = PUNCT.exec(n.textContent);
+        if (m && fold(m[0], n.previousSibling)) n.textContent = n.textContent.slice(m[0].length);
+      });
+
       el.innerHTML = '';
       el.appendChild(sr);
       el.appendChild(holder);

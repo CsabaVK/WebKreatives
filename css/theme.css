@@ -375,6 +375,7 @@ button{font:inherit}
 
 /* ── emphasised phrase, drawn underline ───────────────────────────────── */
 .mark{font-style:normal;color:var(--bronze);position:relative;white-space:nowrap}
+.mark .wk-word-dot{color:var(--cream)}
 .mark::after{
   content:'';position:absolute;left:0;right:0;bottom:.06em;height:.07em;
   background:currentColor;opacity:.35;transform:scaleX(0);transform-origin:left;
