@@ -143,19 +143,12 @@
     els.forEach(e => io.observe(e));
   }
 
-  /* ── 5. Magnetic buttons ────────────────────────────────────────────── */
-  function initMagnetic() {
-    if (reduced || window.matchMedia('(pointer:coarse)').matches) return;
-    document.querySelectorAll('[data-magnetic]').forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const r = btn.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width / 2) * .22;
-        const y = (e.clientY - r.top - r.height / 2) * .3;
-        btn.style.transform = `translate(${x}px,${y}px)`;
-      });
-      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-    });
-  }
+  /* ── 5. Buttons ──────────────────────────────────────────────────
+     [data-magnetic] used to follow the pointer, which moved the element
+     under the cursor and made every mousemove read a shifted rect: the
+     button jittered. Now it presses: a scale-down on hover, a little more
+     on mousedown, pure CSS in theme.css. The attribute stays so no page
+     changes. Nothing to initialise. */
 
   /* ── 6. Parallax ────────────────────────────────────────────────────── */
   function initParallax() {
@@ -664,7 +657,6 @@
     initSplit();
     initReveal();
     initCounters();
-    initMagnetic();
     initParallax();
     initMarquee();
     initProgress();
@@ -681,9 +673,9 @@
   else boot();
 
   /* re-scan after language switches (nav/footer re-render their text) */
-  window.wkRescanMotion = () => { initReveal(); initMagnetic(); initWipe(); initTilt(); };
+  window.wkRescanMotion = () => { initReveal(); initWipe(); initTilt(); };
 
   document.addEventListener('wk:languagechange', () => {
-    setTimeout(() => { initReveal(); initMagnetic(); }, 60);
+    setTimeout(() => { initReveal(); }, 60);
   });
 })();

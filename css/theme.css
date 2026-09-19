@@ -151,6 +151,12 @@ button{font:inherit}
 .wk-btn span{position:relative;z-index:1}
 .wk-btn .wk-arrow{transition:transform var(--dur-fast) var(--ease-premium)}
 .wk-btn:hover .wk-arrow{transform:translateX(4px)}
+/* press, not float: the button sinks a touch under the pointer and a
+   touch more on mousedown. Scale about its own centre, so it never drifts. */
+[data-magnetic]{transition-duration:.16s}
+[data-magnetic]:hover{transform:scale(.97)}
+[data-magnetic]:active{transform:scale(.94)}
+@media(prefers-reduced-motion:reduce){[data-magnetic]:hover,[data-magnetic]:active{transform:none}}
 .wk-btn--primary{background:var(--bronze);color:#fff;font-weight:600}
 .wk-btn--primary::before{
   content:'';position:absolute;inset:0;background:#f14b35;
