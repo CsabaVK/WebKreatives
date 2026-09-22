@@ -48,6 +48,85 @@
   };
 
   const dutch = {
+ "accessibility-basics-for-small-websites": {
+  "articlesLink": "Artikelen",
+  "current": "Webdesign Tips",
+  "category": "Webdesign Tips",
+  "title": "Toegankelijkheid: De Basis<br><em>voor Elke Kleine Website</em>",
+  "date": "22 september 2026",
+  "read": "7 min lezen",
+  "coverAlt": "Close-up van handen die typen op een laptoptoetsenbord",
+  "docTitle": "Toegankelijkheid: De Basis voor Elke Kleine Website | WebKreatives",
+  "bottomTitle": "Wil je een website die elke<br>klant echt kan gebruiken?",
+  "bottomText": "We bouwen websites voor kleine bedrijven met contrast, leesbare tekst en toetsenbordtoegang die er vanaf het begin in zitten — niet achteraf geplakt met een widget.",
+  "bottomPrimaryBtn": "Start jouw project →",
+  "bottomSecondaryBtn": "Lees meer artikelen",
+  "relatedTitle": "Lees meer",
+  "content": `
+<p>Vraag een klein bedrijf naar toegankelijkheid en je krijgt meestal een van twee reacties: een licht bezorgde blik ("moeten we nu een rechtszaakbestendige website hebben?"), of een schouderophalen ("dat is voor banken en overheidssites, niet voor ons"). Beide missen waar het echt om gaat. Toegankelijkheid van een website is geen juridische categorie of een keurmerk. Het is een lijst van echte mensen die je site op dit moment niet goed kunnen gebruiken — en elk van hen kan een klant zijn.</p>
+<p>Niets hiervan vraagt om een herontwerp of een ontwikkelaar met speciale training. De aanpassingen die het meeste verschil maken voor een klein bedrijf zijn klein: contrast, tekstgrootte, alt-tekst, hoe je site reageert op een toetsenbord, en wat je links precies zeggen. Krijg die goed voor elkaar en je hebt het overgrote deel van de praktische drempels weggenomen, zonder ooit een compliance-checklist te openen.</p>
+<div class="art-mistake">
+  <h3>De denkfout die het van de lijst houdt</h3>
+  <p>De meeste kleine bedrijven die wél aan toegankelijkheid denken, maken dezelfde denkfout: ze behandelen het als een eenmalige aankoop. Ze installeren een overlay-widget — het icoontje in de hoek dat belooft alles automatisch te fixen — vinken het mentaal af, en gaan verder. Zo'n widget kan tekst vergroten en contrast verhogen op verzoek, maar kan geen label toevoegen aan een formulierveld dat er nooit een had, geen afbeelding beschrijven die geen alt-tekst heeft, en geen menu laten openen met een toetsenbord. Bezoekers die echt op hulptechnologie vertrouwen ervaren zulke widgets vaker als hindernis dan als hulp. Toegankelijkheid plak je niet achteraf op je site. Het zijn gewoontes die je inbouwt terwijl je de pagina bouwt.</p>
+</div>
+<h2>Wie er echt bij gebaat is</h2>
+<p>"Toegankelijkheid" klinkt alsof het over een kleine groep mensen met gespecialiseerde software gaat. In de praktijk zijn het vooral je gewone klanten, die toevallig een lastige vijf minuten hebben.</p>
+<div class="art-mini-grid">
+  <div class="art-mini-card">
+    <span class="eyebrow">Scenario 1</span>
+    <h3>Openingstijden checken in de zon</h3>
+    <p>Lichtgrijze tekst op een witte achtergrond oogt prima op je bureaubeeldscherm binnen. Op een telefoonscherm in fel zonlicht verdwijnt hij volledig.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Scenario 2</span>
+    <h3>Lezen met oudere ogen</h3>
+    <p>Een groot deel van je klanten is boven de vijftig. Kleine bodytekst en weinig contrast kosten je lezers nog voordat ze je aanbod hebben gezien.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Scenario 3</span>
+    <h3>Boeken met één hand</h3>
+    <p>Een mitella, een verstuikte pols, een peuter op de andere arm. Ineens is een muis onhandig en doet het toetsenbord — of een duim — al het werk.</p>
+  </div>
+</div>
+<p>Geen van deze mensen zou zichzelf omschrijven als iemand die "toegankelijk" ontwerp nodig heeft. Ze haken gewoon stilletjes af zodra een site niet meewerkt, en jij komt nooit te weten waarom.</p>
+<h2>Contrast: de goedkoopste fix met het grootste effect</h2>
+<p>Lichtgrijze tekst op een witte of lichte achtergrond is op dit moment overal te zien in webdesign, omdat het rustig en modern oogt op een groot, goed verlicht scherm. In de echte wereld — een telefoon op armlengte, een balie, een bewolkte middag — is het een van de meest voorkomende redenen waarom mensen een site simpelweg niet kunnen lezen.</p>
+<p>Je hoeft geen contrastratio's te leren om dit op te lossen. Open je homepage op je telefoon, stap naar buiten, en lees hem in normaal daglicht zonder te turen. Doe hetzelfde bij elke knop: tekst op een gekleurde knop moet echt donker-op-licht of licht-op-donker zijn, geen stijlvol middengrijs. Moet je moeite doen om je eigen prijs of je eigen telefoonnummer te lezen, dan geldt dat voor iedereen.</p>
+<div class="art-quote">
+  <p>Moet je turen om je eigen homepage op je telefoon in daglicht te lezen, dan geldt dat voor iedereen — ze zeggen het je alleen nooit.</p>
+</div>
+<h2>Tekstgrootte en hoe mensen echt lezen op een telefoon</h2>
+<p>Houd bodytekst op 16 pixels of groter, en laat hem meeschalen — leg hem nooit vast op een vaste grootte die de browserinstellingen van een bezoeker negeert. Veel mensen zetten de tekstgrootte van hun telefoon permanent een stapje hoger, en een site die die aanpassing tegenwerkt voelt voor hen kapot aan, ook al klopt er technisch niets mis.</p>
+<p>Regellengte doet er net zo veel toe als grootte. Alinea's die van rand tot rand over een breed scherm lopen zijn vermoeiend om regel voor regel te volgen; door je contentkolom te begrenzen blijven zinnen automatisch op een leesbare breedte. En laat echte ruimte tussen de regels — te strak op elkaar gepakte tekst is voor iedereen lastiger te volgen, niet alleen voor mensen met een visuele beperking.</p>
+<h2>Alt-tekst die echt iets beschrijft</h2>
+<p>Alt-tekst is de korte beschrijving bij een afbeelding, die screenreaders voorlezen en die getoond wordt als de afbeelding niet laadt. De meeste kleinebedrijvensites slaan hem over of vullen hem met de bestandsnaam. Geen van beide helpt iemand, en geen van beide helpt Google de afbeelding te begrijpen.</p>
+<p>Schrijf hem zoals je de foto zou omschrijven aan iemand aan de telefoon die hem niet kan zien: "Barista schenkt latte art in een wit kopje" is beter dan "afbeelding", en ook beter dan "koffiezaak" — wees specifiek over wat er echt in beeld staat. Puur decoratieve afbeeldingen (een achtergrondtextuur, een scheidingslijn) mogen bewust een lege alt-tekst hebben, zodat een screenreader eroverheen springt in plaats van ruis voor te lezen.</p>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Weet je niet hoe je eigen site het doet?</h3>
+    <p>We controleren contrast, toetsenbordnavigatie en alt-tekst standaard bij elke website die we bouwen of beoordelen voor kleine bedrijven.</p>
+  </div>
+  <a href="/contact/" class="btn btn-red">Vraag een offerte aan →</a>
+</div>
+<h2>De toetsenbordtest die bijna niemand doet</h2>
+<p>Leg je muis twee minuten uit handbereik. Laad je homepage en druk herhaaldelijk op Tab. Zie je bij elke stap duidelijk welke link of knop op dat moment geselecteerd is? Kom je met alleen Tab, Shift+Tab en Enter bij je menu, kun je het openen, en kom je in je contactformulier?</p>
+<p>Bij verrassend veel kleinebedrijvensites is het antwoord nee. De focus-outline is uitgezet omdat het er "strakker" uitziet, of een custom dropdownmenu reageert alleen op een muis-hover. Dat raakt niet alleen mensen die helemaal geen muis kunnen gebruiken — het raakt iedereen die er even zonder zit: een haperend trackpad, een draadloze muis met lege batterij, een klant die je formulier met één hand invult.</p>
+<h2>Stop met "klik hier"</h2>
+<p>Screenreadergebruikers scannen een pagina vaak door een lijst van alle links erop op te vragen, los van hun context, zoals jij misschien een inhoudsopgave doorloopt. Een pagina vol "klik hier", "lees meer" en "meer weten" geeft die lijst nul informatie. Een pagina waar elke link zegt waar hij naartoe leidt — "bekijk onze prijzen", "download de brochure", "boek een gratis gesprek" — werkt voor die bezoeker, en leest toevallig ook beter voor iedereen die snel scant.</p>
+<p>Niets van deze vijf aanpassingen vraagt om een ontwikkelaar of een herontwerp. Hier is de versie van tien minuten die je nu direct op je eigen site kunt uitvoeren:</p>
+<ul class="art-checklist">
+  <li>Lees je homepage op je telefoon, buiten, zonder te turen.</li>
+  <li>Zoom je browser naar 200% en check of niets overlapt of wordt afgesneden.</li>
+  <li>Lees elke alt-tekst op je homepage hardop — beschrijft hij de afbeelding?</li>
+  <li>Haal de muis los en tab van begin tot eind door je eigen contactformulier.</li>
+  <li>Zoek op je site naar "klik hier" en "lees meer", en hernoem ze.</li>
+</ul>
+<h2>Conclusie</h2>
+<p>Toegankelijkheid voor een kleine website ging nooit echt over compliance — het gaat over hoeveel van de mensen die je al zoeken je site ook daadwerkelijk kunnen gebruiken. Contrast, tekstgrootte, alt-tekst, toetsenbordtoegang en eerlijke linkteksten kosten niets om te fixen en sluiten geen van je echte klanten uit.</p>
+<p>Pak er vandaag één uit de lijst en check hem. De gaten zijn meestal klein, en ze dichten maakt de hele site meteen rustiger en duidelijker voor elke bezoeker, niet alleen voor degenen waar je je zorgen om maakte.</p>
+`
+ },
+
  "how-to-photograph-your-own-business": {
   "articlesLink": "Artikelen",
   "current": "Merk & Vertrouwen",

@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'accessibility-basics-for-small-websites',
+    title:            'Toegankelijkheid: De Basis voor Elke Kleine Website',
+    titleEn:          'Accessibility Basics for Small Websites',
+    category:         'Webdesign Tips',
+    categoryEn:       'Web Design Tips',
+    date:             '2026-09-22',
+    dateFormatted:    '22 september 2026',
+    dateFormattedEn:  '22 September 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-09-22T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1772115428479-9045bc0c2a3d?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Contrast, tekstgrootte, alt-tekst, toetsenbordnavigatie en eerlijke linkteksten — vijf kleine aanpassingen waarmee meer van je klanten je site ook echt kunnen gebruiken, geen compliance-checklist.',
+    excerptEn:        'Contrast, text size, alt text, keyboard navigation and honest link wording — five small fixes that let more of your existing customers actually use your site, not a compliance checklist.'
+  },
+
+  {
     slug:             'how-to-photograph-your-own-business',
     title:            'Hoe Je Zelf Goede Foto\'s Maakt van Je Bedrijf',
     titleEn:          'How to Photograph Your Own Business With Just a Phone',
