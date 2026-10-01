@@ -48,6 +48,89 @@
   };
 
   const dutch = {
+ "website-builder-or-developer": {
+  "articlesLink": "Artikelen",
+  "current": "Kleine Bedrijven",
+  "category": "Kleine Bedrijven",
+  "title": "Websitebouwer of Webdesigner?<br><em>Een Eerlijke Vergelijking</em>",
+  "date": "1 oktober 2026",
+  "read": "7 min lezen",
+  "coverAlt": "Laptop met websitecode open op een bureau",
+  "docTitle": "Websitebouwer of Webdesigner? Een Eerlijke Vergelijking | WebKreatives",
+  "bottomTitle": "Wil je een website die meer doet<br>dan alleen bestaan?",
+  "bottomText": "We bouwen websites voor lokale kleine bedrijven rond hoe jouw klanten je echt vinden en kiezen — en we zeggen je eerlijk wanneer een websitebouwer genoeg is.",
+  "bottomPrimaryBtn": "Start jouw project →",
+  "bottomSecondaryBtn": "Lees meer artikelen",
+  "relatedTitle": "Lees meer",
+  "content": `
+<p>Elke week krijgen we een variant van dezelfde vraag, meestal een tikje verontschuldigend gesteld: "Kan ik dit niet gewoon zelf doen met Wix?" Een terechte vraag, en het eerlijke antwoord van een webbureau zal je misschien verrassen. Soms wel — en dan moet je dat ook zeker doen.</p>
+<p>Een websitebouwer en een webdesigner zijn geen twee niveaus van hetzelfde product. Ze lossen verschillende problemen op. De juiste keuze hangt minder af van je budget dan van wat de website de komende drie jaar voor je bedrijf moet <em>doen</em>. Zo verhouden de drie realistische routes zich tot elkaar, en dit zijn de vragen die meestal de doorslag geven.</p>
+<div class="art-mini-grid">
+  <div class="art-mini-card">
+    <span class="eyebrow">Route A</span>
+    <h3>Zelf bouwen met een websitebouwer</h3>
+    <p>Wix, Squarespace, Shopify en vergelijkbaar. Lage maandprijs, in een weekend online, en elk uur werk komt van jou.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Route B</span>
+    <h3>Een designer bouwt hem voor je</h3>
+    <p>Een eenmalige investering in een site die is opgebouwd rond jouw klanten, jouw diensten en de zoekopdrachten in jouw regio.</p>
+  </div>
+  <div class="art-mini-card">
+    <span class="eyebrow">Route C</span>
+    <h3>Een professional richt de bouwer in</h3>
+    <p>De middenweg: iemand met ervaring bouwt op een platform dat je daarna zelf kunt bewerken. Vaak onderschat.</p>
+  </div>
+</div>
+<h2><span class="num">1</span> Wanneer een websitebouwer echt de juiste keuze is</h2>
+<p>Websitebouwers zijn erg goed geworden. De templates zien er professioneel uit, hosting en beveiligingsupdates worden voor je geregeld, en je past je openingstijden op zondagavond aan vanaf je telefoon. Voor veel kleine bedrijven is dat alles wat een website hoeft te zijn.</p>
+<p>Een websitebouwer is meestal de slimme keuze als het meeste hiervan op jou van toepassing is:</p>
+<ul class="art-checklist">
+  <li>Je bent net begonnen en test nog welke diensten mensen echt afnemen.</li>
+  <li>De meeste klanten komen via mond-tot-mondreclame, en de site bevestigt vooral dat je bestaat.</li>
+  <li>Je hebt een eenvoudige pagina nodig met contactgegevens, wat foto's en je prijzen — geen verkoopinstrument.</li>
+  <li>Je vindt het leuk om te knutselen en hebt een paar avonden per maand om hem bij te houden.</li>
+  <li>Je budget voor dit jaar ligt eerlijk gezegd dichter bij honderd euro dan bij duizend.</li>
+</ul>
+<p>Een net geopende nagelstudio, een freelance boekhouder met drie vaste klanten, een seizoenskraam op de markt — allemaal goede kandidaten voor een websitebouwer. Duizenden euro's uitgeven aan een site voordat je weet hoe je bedrijf er over een jaar uitziet, is geld dat je beter ergens anders inzet.</p>
+<h2><span class="num">2</span> Waar de websitebouwer meer kost dan hij oplevert</h2>
+<p>Het probleem zie je zelden op dag één. Het duikt achttien maanden later op, als de site er wel staat maar niets doet. Sites uit een websitebouwer laten kleine bedrijven meestal op dezelfde paar punten in de steek.</p>
+<p><strong>Tijd.</strong> Het maandbedrag is laag, maar de echte kosten zijn jouw uren. Een template kiezen, elke pagina schrijven, foto's verkleinen, uitzoeken waarom het mobiele menu over het logo valt. Een loodgieter die twintig avonden aan zijn website besteedt, heeft ervoor betaald — alleen niet in euro's.</p>
+<p><strong>Structuur.</strong> Een template geeft je een opmaak, geen plan. Het weet niet dat mensen die zoeken op "spoed loodgieter" een telefoonnummer boven alles willen zien, of dat een tandartspraktijk per behandeling een aparte pagina nodig heeft om lokaal gevonden te worden. De meeste zelfgebouwde sites eindigen als een homepage met alles erop en een "Over ons"-pagina die niemand leest.</p>
+<p><strong>Snelheid en lokale SEO.</strong> Websitebouwers laden veel code die je nooit gebruikt. Voor een digitale folder is dat prima, maar als je met drie andere kappers in dezelfde plaats strijdt om dezelfde Google-resultaten, verliest een tragere, dunnere site ongemerkt terrein.</p>
+<div class="art-quote">
+  <p>Een websitebouwer maakt het makkelijk om een website te publiceren. Hij maakt het niet makkelijk om er een te publiceren die klanten oplevert — dat deel ligt nog steeds bij jou.</p>
+</div>
+<h2><span class="num">3</span> Waar je een webdesigner eigenlijk voor betaalt</h2>
+<p>Het is verleidelijk om een webdesigner te zien als iemand die dingen mooi maakt. Goede designers besteden het grootste deel van hun tijd aan dingen die je nooit direct ziet: uitzoeken wat je klanten proberen te vinden, op welke pagina ze vanuit Google binnenkomen, en wat ervoor zorgt dat ze de telefoon pakken in plaats van terug te klikken.</p>
+<p>In de praktijk krijg je van een designer een site die is opgebouwd rond hoe mensen bij jou kopen. Voor een fysiotherapeut kan dat een pagina per klacht betekenen — rugpijn, sportblessures, herstel na een operatie — die elk de vragen beantwoorden die patiënten in Google typen. Voor een keukenmonteur betekent het projectfoto's vooraan, een duidelijk idee van de prijsklasse en een offerteaanvraag die dertig seconden kost. Het visuele ontwerp doet ertoe, maar staat in dienst daarvan.</p>
+<p>Je betaalt ook voor beslissingen die één keer en goed worden genomen: kloppende paginatitels en beschrijvingen, snel ladende afbeeldingen, een contactformulier dat echt in je inbox aankomt, en een structuur die je niet hoeft af te breken als je volgend jaar een dienst toevoegt.</p>
+<div class="art-cta-box">
+  <div class="art-cta-box-text">
+    <h3>Twijfel je welke route bij jouw bedrijf past?</h3>
+    <p>Vertel ons wat je doet en waar je klanten vandaan komen. We zeggen je eerlijk of je ons nodig hebt — of dat een websitebouwer volstaat.</p>
+  </div>
+  <a href="/contact/" class="btn btn-red">Vraag het ons gewoon →</a>
+</div>
+<h2><span class="num">4</span> De middenweg die de meeste mensen over het hoofd zien</h2>
+<p>De keuze is niet altijd alles of niets. Steeds meer kleine bedrijven laten een professional de structuur, teksten en vormgeving opzetten op een platform dat ze daarna zelf beheren. Je krijgt het denkwerk — een paginaplan, de basis van lokale SEO, een opbouw die bezoekers naar contact leidt — zonder dat je voor elke prijswijziging van iemand anders afhankelijk bent.</p>
+<p>Het kost minder dan een volledig maatwerksite en voorkomt het probleem van het lege template. De keerzijde is dat je de grenzen van het platform overneemt op het gebied van snelheid en flexibiliteit, en als je er later uitgroeit, kan overstappen betekenen dat je opnieuw moet bouwen. Voor een bedrijf met stabiele maar bescheiden ambities is dat vaak een heel verstandige deal.</p>
+<h2><span class="num">5</span> De vragen die de doorslag geven</h2>
+<p>Vergeet de discussie over wat "beter" is. Beantwoord deze vijf vragen eerlijk en de juiste route wordt meestal vanzelf duidelijk:</p>
+<ul class="art-checklist">
+  <li>Vinden nieuwe klanten je via Google, of vooral via mensen die je al kennen?</li>
+  <li>Zou één extra afspraak of klus per maand een betere website binnen een jaar terugverdienen?</li>
+  <li>Hoeveel uur kun je realistisch aan de site besteden — en wat is een uur van jouw tijd waard?</li>
+  <li>Concurreer je lokaal met bedrijven die al sterke, snelle websites hebben?</li>
+  <li>Verwacht je de komende twee jaar diensten, locaties of personeel toe te voegen?</li>
+</ul>
+<p>Antwoordde je vooral "mond-tot-mond", "niet echt" en "nee"? Begin dan met een websitebouwer en kijk er over een jaar opnieuw naar. Brengt Google je klanten, dekt één extra klus de kosten en lopen je concurrenten online al voor? Dan is de goedkope optie waarschijnlijk de dure.</p>
+<h2>Conclusie</h2>
+<p>Een websitebouwer is niet de amateurkeuze en een webdesigner niet de luxe. Een websitebouwer is gereedschap om snel en goedkoop online te komen; een webdesigner is een investering in een site die actief klanten voor je binnenhaalt. Beide zijn voor iemand de juiste keuze.</p>
+<p>De fout is kiezen op prijs alleen. Bepaal wat de site moet doen, tel je eigen uren eerlijk mee en kies de route die daarbij past. En begin je met een websitebouwer en merk je later dat hij je tegenhoudt, dan is dat geen weggegooid geld — het is een duidelijk teken dat je bedrijf is gegroeid tot iets dat meer verdient.</p>
+`
+ },
+
  "accessibility-basics-for-small-websites": {
   "articlesLink": "Artikelen",
   "current": "Webdesign Tips",

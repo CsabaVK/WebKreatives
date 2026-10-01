@@ -19,6 +19,23 @@
 
 const WK_ARTICLES = [
   {
+    slug:             'website-builder-or-developer',
+    title:            'Websitebouwer of Webdesigner? Een Eerlijke Vergelijking',
+    titleEn:          'Website Builder or Web Designer? An Honest Comparison',
+    category:         'Kleine Bedrijven',
+    categoryEn:       'Small Business',
+    date:             '2026-10-01',
+    dateFormatted:    '1 oktober 2026',
+    dateFormattedEn:  '1 October 2026',
+    readTime:         '7 min lezen',
+    readTimeEn:       '7 min read',
+    publishedAt:      '2026-10-01T09:00:00+02:00',
+    image:            'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=760&q=80',
+    excerpt:          'Wix of een webdesigner? Wanneer een websitebouwer echt de juiste keuze is, wanneer hij meer kost dan hij oplevert, en de vijf vragen die de doorslag geven.',
+    excerptEn:        'Wix or a web designer? When a website builder is genuinely the right call, when it costs more than it saves, and the five questions that decide it.'
+  },
+
+  {
     slug:             'accessibility-basics-for-small-websites',
     title:            'Toegankelijkheid: De Basis voor Elke Kleine Website',
     titleEn:          'Accessibility Basics for Small Websites',
